@@ -9,3 +9,6 @@
 
 #misc
 yarn.lock
+
+#log
+yarn-error.log
