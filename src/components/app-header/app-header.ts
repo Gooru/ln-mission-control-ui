@@ -16,7 +16,7 @@ export default class AppHeader extends Vue {
    * @return {SessionModel}
    */
   get session() {
-    return sessionService.getSession();
+    return sessionService.getSession()
   }
 
 }
