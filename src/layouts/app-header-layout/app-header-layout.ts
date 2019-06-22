@@ -4,12 +4,11 @@ import { Events } from '@/events';
 import AppNav from '@/components/app-nav/app-nav.vue';
 
 @Component({
-  name: 'app-header',
   components: {
     AppNav,
   },
 })
-export default class AppHeader extends Vue {
+export default class AppHeaderLayout extends Vue {
   // -------------------------------------------------------------------------
   // Properties
 

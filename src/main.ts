@@ -1,10 +1,12 @@
-import 'mutationobserver-shim';
 import Vue from 'vue';
+import 'mutationobserver-shim';
+import '@/registerServiceWorker';
+import '@/plugins/font-awesome-icon';
 import '@/plugins/bootstrap-vue';
+import '@/plugins/vue-lazyload';
 import App from '@/app/app.vue';
 import router from '@/routes/router';
 import store from '@/store';
-import '@/registerServiceWorker';
 import { authService } from '@/providers/services/auth/auth';
 import i18n from '@/i18n';
 

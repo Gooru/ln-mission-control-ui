@@ -1,7 +1,6 @@
 <template>
   <div id="mission-control">
-    <router-view></router-view>
-    <router-view name="container"></router-view>
+    <router-view/>
   </div>
 </template>
 
