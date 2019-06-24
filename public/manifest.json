@@ -1,6 +1,6 @@
 {
   "name": "mission-control",
-  "short_name": "mission-control",
+  "short_name": "mc",
   "start_url": "./index.html",
   "display": "standalone"
 }

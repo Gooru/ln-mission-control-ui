@@ -1,8 +1,17 @@
 // Colors
 // --------------------------------------------------
 
-//** White
 $white: #ffffff;
+$blue: #007bff !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #ffc107 !default;
+$green: #28a745 !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
 
 //** Green
 $green-100: #d1e2ce !default;
@@ -33,6 +42,13 @@ $dark-700: #36424a !default;
 $dark-800: #4a4a4a !default;
 $dark-900: #35424b !default;
 
+//** Light
+$light-100: #f1f3f7 !default;
+$light-200: #e3e5ea !default;
+$light-300: #cdd2d6 !default;
+$light-400: #b8bfc4 !default;
+$light-500: #959a9e !default;
+$light-600: #cccccc !default;
 
 // Screen Sizes
 // --------------------------------------------------

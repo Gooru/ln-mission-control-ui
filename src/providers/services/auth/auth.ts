@@ -2,9 +2,7 @@ import { authAPI } from '@/providers/apis/auth/auth';
 import { sessionService } from '@/providers/services/auth/session';
 import { Events } from '@/events';
 
-
 export class AuthService {
-
   private static INSTANCE = new AuthService();
 
   static get instance() {
@@ -35,4 +33,4 @@ export class AuthService {
   }
 }
 
-export  const authService = AuthService.instance;
+export const authService = AuthService.instance;

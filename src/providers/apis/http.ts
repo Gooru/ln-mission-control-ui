@@ -5,12 +5,10 @@ import { SessionModel } from '@/models/auth/session';
 import { sessionService } from '@/providers/services/auth/session';
 import 'rxjs/add/observable/throw';
 
-
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
 export class Http {
-
   private static INSTANCE = new Http();
 
   static get instance() {
@@ -26,7 +24,6 @@ export class Http {
     };
     return ajax(options).pipe(catchError(this.handleError));
   }
-
 
   public post(url: string, data?: any, headers?: any): Observable<any> {
     const options = {
@@ -65,14 +62,17 @@ export class Http {
     };
   }
 
-  public getTokenHeaders() {
-    const session: SessionModel | null = sessionService.getSession();
-    if (session) {
-      return {
-        'Content-Type': 'application/json',
-        'Authorization': `Token ${session.access_token}`,
-      };
+  public getTokenHeaders(token?: string) {
+    if (!token) {
+      const session: SessionModel | null = sessionService.getSession();
+      if (session) {
+        token = session.access_token;
+      }
     }
+    return {
+      'Content-Type': 'application/json',
+      'Authorization': `Token ${token}`,
+    };
   }
 
   private formURL(url: string) {
@@ -87,4 +87,4 @@ export class Http {
   }
 }
 
-export  const http = Http.instance;
+export const http = Http.instance;

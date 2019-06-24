@@ -10,7 +10,6 @@ import 'rxjs/Rx';
  *
  */
 export class AuthAPI {
-
   private static INSTANCE = new AuthAPI();
 
   static get instance() {
@@ -32,12 +31,38 @@ export class AuthAPI {
     });
   }
 
+  public signInWithCredential(
+    usernameOrEmail: string,
+    password: string,
+  ): Observable<SessionModel> {
+    const data = {
+      client_id: process.env.VUE_APP_CLIENT_ID,
+      client_key: process.env.VUE_APP_CLIENT_KEY,
+      grant_type: 'credential',
+    };
+    const endpoint = `${this.authNamespace}/v2/signin`;
+    const token = `${usernameOrEmail}:${password}`;
+    const headers = http.getBasicHeaders(token);
+    return http.post(endpoint, data, headers).map((ajaxResponse) => {
+      const res = ajaxResponse.response;
+      return authSerializer.sessionModelSerializer(res);
+    });
+  }
+
+  public signInWithToken(token: string): Observable<SessionModel> {
+    const endpoint = `${this.authNamespace}/v2/token`;
+    const headers = http.getTokenHeaders(token);
+    return http.get(endpoint, null, headers).map((ajaxResponse) => {
+      const res = ajaxResponse.response;
+      return authSerializer.sessionModelSerializer(res);
+    });
+  }
+
   public signOut(): Observable<void> {
     const reqOpts = { headers: http.getTokenHeaders() };
     const endpoint = `${this.authNamespace}/v2/signout`;
     return http.delete(endpoint, reqOpts);
   }
-
 }
 
 export const authAPI = AuthAPI.instance;

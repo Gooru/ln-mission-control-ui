@@ -6,7 +6,6 @@ import { SessionModel } from '@/models/auth/session';
  *
  */
 export class AuthSerializer {
-
   private static INSTANCE = new AuthSerializer();
 
   static get instance() {
@@ -20,9 +19,15 @@ export class AuthSerializer {
       cdn_urls: res.cdn_urls,
       provided_at: res.provided_at,
       user_id: res.user_id,
+      username: res.username,
+      email: res.email,
+      first_name: res.first_name,
+      last_name: res.last_name,
+      user_category: res.user_category,
+      thumbnail: res.thumbnail,
     };
     return result;
   }
 }
 
-export  const authSerializer = AuthSerializer.instance;
+export const authSerializer = AuthSerializer.instance;

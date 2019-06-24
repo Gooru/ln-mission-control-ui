@@ -1,10 +1,15 @@
 //Multi-line Ellipsis using pure CSS as a work around - http://revelry.co/multi-line-ellipsis-using-pure-css
 
-@mixin ellipsis($font-size, $line-height, $lines-to-show, $excerpt-bg: transparent) {
+@mixin ellipsis(
+  $font-size,
+  $line-height,
+  $lines-to-show,
+  $excerpt-bg: transparent
+) {
   background: $excerpt-bg;
   display: block; /* Fallback for non-webkit */
   display: -webkit-box;
-  max-height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  max-height: $font-size * $line-height * $lines-to-show; /* Fallback for non-webkit */
   font-size: $font-size;
   line-height: $line-height;
   -webkit-line-clamp: $lines-to-show;
@@ -20,12 +25,12 @@
       position: absolute;
       right: 0;
       float: right;
-      content: '\2026';
+      content: "\2026";
       margin-left: -3rem;
       width: 3rem;
     }
     &:after {
-      content: '';
+      content: "";
       background: $excerpt-bg;
       position: absolute;
       height: 50px;
@@ -80,7 +85,11 @@
 }
 
 // Flexbox Flow (shorthand)
-@mixin flex-flow($values: (row nowrap)) {
+@mixin flex-flow(
+  $values: (
+    row nowrap
+  )
+) {
   -webkit-flex-flow: $values;
   -ms-flex-flow: $values;
   flex-flow: $values;
@@ -118,13 +127,12 @@
 
 // Flexbox "Flex" (shorthand)
 @mixin flex($fg: 1, $fs: null, $fb: null) {
-
   // Set a variable to be used by box-flex properties
   $fg-boxflex: $fg;
 
   // Box-Flex only supports a flex-grow value so let's grab the
   // first item in the list and just return that.
-  @if type-of($fg) == 'list' {
+  @if type-of($fg) == "list" {
     $fg-boxflex: nth($fg, 1);
   }
 
@@ -203,9 +211,17 @@
   align-content: $value;
 }
 
-@mixin linear-gradient($startColor, $endColor){
+@mixin linear-gradient($startColor, $endColor) {
   background: $startColor; /* Old browsers */
-  background: -moz-linear-gradient(left, $startColor 0%, $endColor 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(left, $startColor 0%,$endColor 100%); /* Chrome10-25,Safari5.1-6 */
+  background: -moz-linear-gradient(
+    left,
+    $startColor 0%,
+    $endColor 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    left,
+    $startColor 0%,
+    $endColor 100%
+  ); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(-90deg, $startColor 0%, $endColor 100%);
 }
