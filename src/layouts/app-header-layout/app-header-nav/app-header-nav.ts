@@ -3,8 +3,8 @@ import { Events } from '@/events';
 import { NAVIGATION_MENUS } from '@/utils/constants';
 
 
-@Component({ name: 'app-nav' })
-export default class AppNav extends Vue {
+@Component({ name: 'app-header-nav' })
+export default class AppHeaderNav extends Vue {
 
   // -------------------------------------------------------------------------
   //  Properties

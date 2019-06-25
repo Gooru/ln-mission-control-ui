@@ -10,10 +10,10 @@
     <div class="selected-app-nav-menu d-sm-none">
       {{$t(currentRouteName)}}
     </div>
-    <app-nav class="d-none d-sm-block" />
+    <app-header-nav class="d-none d-sm-block" />
     <div class="user-info-container">
       <div class="user-profile-img">
-        <img v-bind:src="session.thumbnail_url" />
+        <img v-lazy="session.thumbnail_url"  />
       </div>
       <div class="username d-none d-sm-block">{{session.user_display_name}}</div>
     </div>
@@ -36,7 +36,7 @@
         </div>
         <i class="material-icons close-app-nav" @click="closeAppNav()">close</i>
       </div>
-      <app-nav v-on:send="onChangeRoute" />
+      <app-header-nav v-on:send="onChangeRoute" />
     </div>
   </header>
   <div class="body-container">
