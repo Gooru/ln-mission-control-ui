@@ -9,7 +9,7 @@ export class SessionService {
     return this.INSTANCE;
   }
 
-  private SESSION: string = 'MISSION_CONTROL_SESSION';
+  private SESSION: string = 'MC_SESSION';
   private ANONYMOUS: string = 'anonymous';
 
   public getSession() {
@@ -24,10 +24,6 @@ export class SessionService {
 
   public setSession(session: SessionModel) {
     localStorage.setItem(this.SESSION, JSON.stringify(session));
-  }
-
-  public deleteSession() {
-    localStorage.removeItem(this.SESSION);
   }
 
   public isAuthorized() {

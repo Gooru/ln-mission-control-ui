@@ -4,8 +4,8 @@ import { ajax } from 'rxjs/ajax';
 import { SessionModel } from '@/models/auth/session';
 import { sessionService } from '@/providers/services/auth/session';
 import 'rxjs/add/observable/throw';
-import {Events} from '@/events';
-
+import { Events } from '@/events';
+import { appConfigService } from '@/providers/services/app/app-config';
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -77,8 +77,9 @@ export class Http {
   }
 
   private formURL(url: string) {
-    if (process.env.VUE_APP_API_ENDPOINT && !url.includes('http')) {
-      url = `${process.env.VUE_APP_API_ENDPOINT}/${url}`;
+    const apiUrl = appConfigService.getApiUrl();
+    if (apiUrl && !url.includes('http')) {
+      url = `${apiUrl}/${url}`;
     }
     return url;
   }

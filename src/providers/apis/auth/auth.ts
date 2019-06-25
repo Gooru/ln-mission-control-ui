@@ -1,8 +1,10 @@
 import { http } from '@/providers/apis/http';
 import { Observable } from 'rxjs/Observable';
 import { SessionModel } from '@/models/auth/session';
+import { appConfigService } from '@/providers/services/app/app-config';
 import { authSerializer } from '@/providers/serializers/auth/auth';
 import 'rxjs/Rx';
+
 
 /**
  *
@@ -20,8 +22,8 @@ export class AuthAPI {
 
   public signInAsAnonymous(): Observable<SessionModel> {
     const data = {
-      client_id: process.env.VUE_APP_CLIENT_ID,
-      client_key: process.env.VUE_APP_CLIENT_KEY,
+      client_id: appConfigService.getClientId(),
+      client_key: appConfigService.getClientKey(),
       grant_type: 'anonymous',
     };
     const endpoint = `${this.authNamespace}/v2/signin`;
@@ -36,8 +38,8 @@ export class AuthAPI {
     password: string,
   ): Observable<SessionModel> {
     const data = {
-      client_id: process.env.VUE_APP_CLIENT_ID,
-      client_key: process.env.VUE_APP_CLIENT_KEY,
+      client_id: appConfigService.getClientId(),
+      client_key: appConfigService.getClientKey(),
       grant_type: 'credential',
     };
     const endpoint = `${this.authNamespace}/v2/signin`;
