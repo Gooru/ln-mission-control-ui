@@ -1,25 +1,26 @@
 export const NAVIGATION_MENUS = [
   {
     name: 'network',
-    path: '/',
+    path: '/network',
+    icon: 'fa-network-wired',
   },
   {
     name: 'competency',
     path: '/competency',
+    icon: 'fa-chart-line',
   },
   {
     name: 'catalog',
     path: '/catalog',
+    icon: 'fa-book',
   },
   {
     name: 'console',
     path: '/console',
+    icon: 'fa-tools',
   },
 ];
 
-export const NAVIGATION_MENUS_INDEX: any = {
-  network: 0,
-  competency: 1,
-  catalog: 2,
-  console: 3,
+export const DEFAULT_IMAGES_PATH: any = {
+  profile: '/img/default-images/profile.png',
 };

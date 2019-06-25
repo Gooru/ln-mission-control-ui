@@ -2,8 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import AppLayout from '@/layouts/app-layout/app-layout.vue';
 import AppHeaderLayout from '@/layouts/app-header-layout/app-header-layout.vue';
-import Network from '@/routes/views/network/network.vue';
-import Login from '@/routes/views/login/login.vue';
 import { sessionService } from '@/providers/services/auth/session';
 
 Vue.use(Router);
@@ -18,6 +16,24 @@ const routes = [
         path: '/network',
         name: 'network',
         component: () => import('@/routes/views/network/network.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
+        path: '/competency',
+        name: 'competency',
+        component: () => import('@/routes/views/competency/competency.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
+        path: '/catalog',
+        name: 'catalog',
+        component: () => import('@/routes/views/catalog/catalog.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
+        path: '/console',
+        name: 'console',
+        component: () => import('@/routes/views/console/console.vue'),
         meta: { isRequiredAuth: true },
       },
     ],

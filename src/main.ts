@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import 'mutationobserver-shim';
 import '@/registerServiceWorker';
-import '@/plugins/font-awesome-icon';
 import '@/plugins/bootstrap-vue';
 import '@/plugins/vue-lazyload';
 import '@/plugins/vee-validation';

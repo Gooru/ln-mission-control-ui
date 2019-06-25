@@ -17,7 +17,7 @@
         <span v-show="errors.has('password')" class="error">{{ $t('errors.required', {fieldname: 'password'}) }}.</span>
       </div>
     </b-form>
-    <b-button block :disabled="!allowLogin" class="login-btn" @click="doLogin()" variant="success">{{ $t('login') }}</b-button>
+    <b-button block  class="login-btn" @click="doLogin()" variant="success">{{ $t('login') }}</b-button>
   </div>
 </div>
 </template>

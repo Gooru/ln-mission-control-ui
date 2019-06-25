@@ -15,7 +15,7 @@ export class Http {
     return this.INSTANCE;
   }
 
-  public get(url: string, data?: any, headers?: any): Observable<any> {
+  public get(url: string, headers?: any, data?: any): Observable<any> {
     const options = {
       url: this.formURL(url),
       method: 'GET',
@@ -25,7 +25,7 @@ export class Http {
     return ajax(options).pipe(catchError(this.handleError));
   }
 
-  public post(url: string, data?: any, headers?: any): Observable<any> {
+  public post(url: string, headers?: any, data?: any): Observable<any> {
     const options = {
       url: this.formURL(url),
       method: 'POST',
@@ -35,22 +35,22 @@ export class Http {
     return ajax(options).pipe(catchError(this.handleError));
   }
 
-  public put(url: string, params?: any, headers?: any): Observable<any> {
+  public put(url: string, headers?: any, data?: any): Observable<any> {
     const options = {
-      url,
+      url: this.formURL(url),
       method: 'PUT',
       headers,
-      params,
+      data,
     };
     return ajax(options).pipe(catchError(this.handleError));
   }
 
-  public delete(url: string, params?: any, headers?: any): Observable<any> {
+  public delete(url: string, headers?: any, data?: any): Observable<any> {
     const options = {
-      url,
+      url: this.formURL(url),
       method: 'DELETE',
       headers,
-      params,
+      data,
     };
     return ajax(options).pipe(catchError(this.handleError));
   }

@@ -1,7 +1,7 @@
 <template>
-  <div id="mission-control">
+<div id="mission-control">
     <router-view/>
-  </div>
+</div>
 </template>
 
 <style lang="scss" src="./app.scss"></style>

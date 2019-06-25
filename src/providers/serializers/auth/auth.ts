@@ -1,4 +1,5 @@
 import { SessionModel } from '@/models/auth/session';
+import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
 
 /**
  *
@@ -25,9 +26,37 @@ export class AuthSerializer {
       last_name: res.last_name,
       user_category: res.user_category,
       thumbnail: res.thumbnail,
+      thumbnail_url: this.getThumbnailUrl(res),
+      user_display_name: this.getUserDisplayName(res),
     };
     return result;
   }
+
+  private getThumbnailUrl(res: any) {
+    let thumbnailUrl: string = '';
+    if (res.thumbnail) {
+      thumbnailUrl = (res.cdn_urls.user_cdn_url + res.thumbnail);
+    } else {
+      thumbnailUrl = DEFAULT_IMAGES_PATH.profile;
+    }
+    return thumbnailUrl;
+  }
+
+  private getUserDisplayName(res: any) {
+    let userDisplayName: string = '';
+    if (res.first_name) {
+      userDisplayName = res.first_name;
+      if (res.last_name) {
+        userDisplayName += ` ${res.last_name}`;
+      }
+    } else if (res.username) {
+      userDisplayName = res.username;
+    } else if (res.email) {
+      userDisplayName = res.email.split('@')[0];
+    }
+    return userDisplayName;
+  }
+
 }
 
 export const authSerializer = AuthSerializer.instance;

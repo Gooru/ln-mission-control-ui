@@ -25,7 +25,7 @@ export class AuthAPI {
       grant_type: 'anonymous',
     };
     const endpoint = `${this.authNamespace}/v2/signin`;
-    return http.post(endpoint, data).map((ajaxResponse) => {
+    return http.post(endpoint, null, data).map((ajaxResponse) => {
       const res = ajaxResponse.response;
       return authSerializer.sessionModelSerializer(res);
     });
@@ -43,7 +43,7 @@ export class AuthAPI {
     const endpoint = `${this.authNamespace}/v2/signin`;
     const token = `${usernameOrEmail}:${password}`;
     const headers = http.getBasicHeaders(token);
-    return http.post(endpoint, data, headers).map((ajaxResponse) => {
+    return http.post(endpoint, headers, data).map((ajaxResponse) => {
       const res = ajaxResponse.response;
       return authSerializer.sessionModelSerializer(res);
     });
@@ -52,16 +52,16 @@ export class AuthAPI {
   public signInWithToken(token: string): Observable<SessionModel> {
     const endpoint = `${this.authNamespace}/v2/token`;
     const headers = http.getTokenHeaders(token);
-    return http.get(endpoint, null, headers).map((ajaxResponse) => {
+    return http.get(endpoint, headers).map((ajaxResponse) => {
       const res = ajaxResponse.response;
       return authSerializer.sessionModelSerializer(res);
     });
   }
 
   public signOut(): Observable<void> {
-    const reqOpts = { headers: http.getTokenHeaders() };
+    const headers = http.getTokenHeaders();
     const endpoint = `${this.authNamespace}/v2/signout`;
-    return http.delete(endpoint, reqOpts);
+    return http.delete(endpoint, headers);
   }
 }
 

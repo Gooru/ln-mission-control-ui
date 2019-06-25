@@ -26,17 +26,13 @@ export default class Login extends Vue {
   private allowLogin: boolean = false;
 
   // -------------------------------------------------------------------------
+  // Hooks
+
+
+  // -------------------------------------------------------------------------
   // Watcher's
 
-  @Watch('usernameOrEmail')
-  private onUsernameOrEmail(val: string, oldVal: string) {
-    this.validation();
-  }
 
-  @Watch('password')
-  private onPassword(val: string, oldVal: string) {
-    this.validation();
-  }
 
   // -------------------------------------------------------------------------
   // Actions
@@ -62,25 +58,26 @@ export default class Login extends Vue {
   }
 
   private signInWithCredential() {
+    this.validation();
     if (this.allowLogin) {
       authAPI
         .signInWithCredential(this.usernameOrEmail, this.password)
         .subscribe(
-          (session) => {
-            sessionService.setSession(session);
-            this.$router.push('/network');
-          },
-          (onerror) => {
-            this.$bvToast.toast(
-              this.$i18n.t('errors.login.credentials.not.valid') as string,
-              {
-                title: this.$i18n.t('errors.login.failed') as string,
-                variant: 'danger',
-                solid: true,
-              },
-            );
-          },
-        );
+        (session) => {
+          sessionService.setSession(session);
+          this.$router.push('/network');
+        },
+        (onerror) => {
+          this.$bvToast.toast(
+            this.$i18n.t('errors.login.credentials.not.valid') as string,
+            {
+              title: this.$i18n.t('errors.login.failed') as string,
+              variant: 'danger',
+              solid: true,
+            },
+          );
+        },
+      );
     }
   }
 }

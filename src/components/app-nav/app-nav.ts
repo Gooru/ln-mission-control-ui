@@ -1,13 +1,18 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { Events } from '@/events';
-import { NAVIGATION_MENUS, NAVIGATION_MENUS_INDEX } from '@/utils/constants';
-import { getRoutePathFirstOccurrence } from '@/utils/utils';
+import { NAVIGATION_MENUS } from '@/utils/constants';
+
 
 @Component({ name: 'app-nav' })
 export default class AppNav extends Vue {
 
   // -------------------------------------------------------------------------
-  // Properties
+  //  Properties
+
+  private currentRoutePath: string = '/network';
+
+  // -------------------------------------------------------------------------
+  // Computed Properties
 
   /**
    * Navigation menu items
@@ -17,14 +22,20 @@ export default class AppNav extends Vue {
     return NAVIGATION_MENUS;
   }
 
-  /**
-   * Find the active menu index from the navigation list.
-   * @property {Boolean}
-   */
-  get activeMenuIndex() {
-    const activeMenuIndex =
-      NAVIGATION_MENUS_INDEX[getRoutePathFirstOccurrence()];
-    return activeMenuIndex > -1 ? activeMenuIndex : 0;
+  // -------------------------------------------------------------------------
+  //  Hooks
+
+  public mounted() {
+    this.currentRoutePath = this.$router.currentRoute.path;
   }
+
+  // -------------------------------------------------------------------------
+  //  Methods
+
+  private onChangeRoute(currentPath: string) {
+    this.currentRoutePath = currentPath;
+    this.$router.push(currentPath);
+  }
+
 
 }

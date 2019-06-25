@@ -10,4 +10,6 @@ export interface SessionModel {
   last_name?: string;
   user_category?: string;
   thumbnail?: string;
+  thumbnail_url?: string;
+  user_display_name?: string;
 }

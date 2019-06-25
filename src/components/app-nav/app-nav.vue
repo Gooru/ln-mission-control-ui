@@ -1,11 +1,12 @@
 <template>
 <div class="app-nav">
-    <ul class="nav nav-tabs" role="tablist">
-      <li v-for="(item, index) in menuItems" role="presentation" :key="index" v-bind:class="(activeMenuIndex == index) ? 'active':''">
-          <router-link :to="{ path: item.path }" >{{ $t(item.name) }}</router-link>
-      </li>
-    </ul>
+    <div class="nav-menu-container">
+      <div class="nav-menu" v-for="(item, index) in menuItems" @click="onChangeRoute(item.path)"  :key="item.path" v-bind:class="(currentRoutePath == item.path) ? 'active':''">
+          <i class="fa" :class="item.icon"></i>
+          <span>{{ $t(item.name) }}</span>
+      </div>
+    </div>
 </div>
 </template>
 <script lang="ts" src="./app-nav.ts"></script>
-<style  lang="scss" src="./app-nav.scss"></style>
+<style  lang="scss" scoped src="./app-nav.scss"></style>
