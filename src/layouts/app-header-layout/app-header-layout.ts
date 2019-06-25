@@ -32,9 +32,6 @@ export default class AppHeaderLayout extends Vue {
   // -------------------------------------------------------------------------
   // Actions
 
-  private toggleActionMenu() {
-    this.isShowActionMenu = !this.isShowActionMenu;
-  }
 
   private doLogout() {
     authAPI.signOut().subscribe(() => {

@@ -15,25 +15,25 @@ const routes = [
       {
         path: '/network',
         name: 'network',
-        component: () => import('@/routes/views/network/network.vue'),
+        component: () => import('@/routers/views/network/network.vue'),
         meta: { isRequiredAuth: true },
       },
       {
         path: '/competency',
         name: 'competency',
-        component: () => import('@/routes/views/competency/competency.vue'),
+        component: () => import('@/routers/views/competency/competency.vue'),
         meta: { isRequiredAuth: true },
       },
       {
         path: '/catalog',
         name: 'catalog',
-        component: () => import('@/routes/views/catalog/catalog.vue'),
+        component: () => import('@/routers/views/catalog/catalog.vue'),
         meta: { isRequiredAuth: true },
       },
       {
         path: '/console',
         name: 'console',
-        component: () => import('@/routes/views/console/console.vue'),
+        component: () => import('@/routers/views/console/console.vue'),
         meta: { isRequiredAuth: true },
       },
     ],
@@ -46,7 +46,7 @@ const routes = [
       {
         path: '/login',
         name: 'login',
-        component: () => import('@/routes/views/login/login.vue'),
+        component: () => import('@/routers/views/login/login.vue'),
       },
     ],
   },

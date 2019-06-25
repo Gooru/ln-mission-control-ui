@@ -4,6 +4,7 @@ import { ajax } from 'rxjs/ajax';
 import { SessionModel } from '@/models/auth/session';
 import { sessionService } from '@/providers/services/auth/session';
 import 'rxjs/add/observable/throw';
+import {Events} from '@/events';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -83,6 +84,7 @@ export class Http {
   }
 
   private handleError(error: Response | any) {
+    Events.$emit('events.ajax.request.error', error);
     return Observable.throw(error);
   }
 }

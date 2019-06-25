@@ -65,7 +65,8 @@ export default class Login extends Vue {
         .subscribe(
         (session) => {
           sessionService.setSession(session);
-          this.$router.push('/network');
+          const redirect = this.$router.currentRoute.query.redirect;
+          this.$router.push(redirect ? redirect as string : '/network');
         },
         (onerror) => {
           this.$bvToast.toast(

@@ -5,7 +5,7 @@ import '@/plugins/bootstrap-vue';
 import '@/plugins/vue-lazyload';
 import '@/plugins/vee-validation';
 import App from '@/app/app.vue';
-import router from '@/routes/router';
+import router from '@/routers/router';
 import store from '@/store';
 import { authService } from '@/providers/services/auth/auth';
 import i18n from '@/i18n';
