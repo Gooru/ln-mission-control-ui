@@ -6,6 +6,8 @@
   "username.or.email": "Username or Email",
   "password": "Password",
   "login": "Login",
+  "support": "Support",
+  "logout": "Logout",
   "errors.required": "Please enter a {fieldname}",
   "errors.login.credentials.not.valid" : "Uh oh! Something's not right. Please double check your username and password and try again.",
   "errors.login.failed": "Login Failed!"

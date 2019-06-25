@@ -30,12 +30,17 @@ export default class AppNav extends Vue {
   }
 
   // -------------------------------------------------------------------------
-  //  Methods
+  //  Actions
 
   private onChangeRoute(currentPath: string) {
     this.currentRoutePath = currentPath;
     this.$router.push(currentPath);
+    this.$emit('send', currentPath);
   }
+
+  // -------------------------------------------------------------------------
+  //  Methods
+
 
 
 }

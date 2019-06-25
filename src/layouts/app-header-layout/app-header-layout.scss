@@ -8,8 +8,17 @@
     align-items: center;
     justify-items: center;
     box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
-    grid-template-columns: 130px 1fr 150px;
+    grid-template-columns: 130px 1fr 150px 40px;
     color: $dark-800;
+    @media only screen and (max-width: $screen-xs) {
+      grid-template-columns: 60px 1fr 50px 40px;
+    }
+
+    .app-nav-menu-slider {
+      font-size: 24px;
+      opacity: 0.8;
+      cursor: pointer;
+    }
 
     .app-logo-container {
       .app-logo {
@@ -20,12 +29,18 @@
       }
     }
 
+    .selected-app-nav-menu {
+      font-size: 15px;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: $blue-700;
+    }
+
     .user-info-container {
       display: grid;
       grid-template-columns: 40px 1fr;
       align-items: center;
       justify-items: center;
-      cursor: pointer;
 
       .username {
         font-size: 13px;
@@ -44,40 +59,91 @@
       }
     }
 
-    .app-action-menu {
+    .navbar-nav {
+      .dropdown-toggle:after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        content: "\f142";
+        color: $dark-400;
+      }
+
+      .dropdown-toggle {
+        display: flex;
+      }
+
+      .dropdown-toggle:after {
+        border: none;
+      }
+    }
+
+    .action-menu-icon {
+      cursor: pointer;
+    }
+
+    .dropdown-menu {
       position: absolute;
       justify-self: end;
-      background-color: $white;
-      top: 61px;
+      background-color: #ffffff;
+      top: 10px !important;
       min-width: 150px;
       box-shadow: 0 50px 100px rgba(50, 50, 93, 0.1),
         0 15px 35px rgba(50, 50, 93, 0.15), 0 5px 15px rgba(0, 0, 0, 0.1);
-      border-bottom-left-radius: 6px;
       min-height: 100px;
-
-      hr {
-        margin: 0;
-      }
-
-      .action-menu-group {
-        padding: 15px;
-      }
+      border-radius: 0 !important;
+      border: 0;
+      left: 13px !important;
+      border-bottom-left-radius: 6px !important;
+      padding: 0;
 
       .action-menu {
-        display: grid;
-        align-items: center;
-        grid-template-columns: 25px 1fr;
-        cursor: pointer;
-        i {
-          font-size: 20px;
+        a {
+          display: grid;
+          align-items: center;
+          grid-template-columns: 25px 1fr;
+          cursor: pointer;
+          padding: 15px;
+
+          i,
+          span {
+            font-size: 14px;
+          }
+        }
+
+        &.logout-menu {
+          border-top: 1px solid $dark-50;
         }
       }
+    }
 
-      .logout-menu {
-        padding: 15px;
+    .app-side-nav {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: $white;
+      box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
+      overflow-x: hidden;
+      transition: 0.5s;
+
+      .close-app-nav {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: right;
+        padding-right: 20px;
+        padding-top: 20px;
+      }
+
+      .side-nav-header {
+        display: grid;
+        grid-template-columns: 1fr 40px;
+        border-bottom: 1px solid $dark-50;
       }
     }
   }
+
   .body-container {
     padding-top: 60px;
   }

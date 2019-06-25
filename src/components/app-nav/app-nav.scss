@@ -4,21 +4,25 @@
     grid-template-columns: 150px 150px 150px 150px;
     align-items: center;
     justify-items: center;
-    font-size: 16px;
+    font-size: 15px;
     min-width: 600px;
+    @media only screen and (max-width: $screen-xs) {
+      display: unset;
+    }
+    @media only screen and (max-width: $screen-sm) {
+      grid-template-columns: 110px 110px 110px 110px;
+      min-width: 450px;
+    }
 
     .nav-menu {
-      display: grid;
-      grid-template-columns: 35px 1fr;
-      align-items: center;
       cursor: pointer;
-
-      i {
-        font-size: 20px;
+      @media only screen and (max-width: $screen-xs) {
+        padding-left: 30px;
+        padding-top: 15px;
+        padding-right: 30px;
       }
 
       &:hover {
-        i,
         span {
           color: $blue-700;
         }
@@ -28,14 +32,15 @@
         color: $blue-700;
 
         span {
-          font-weight: 700;
           color: $blue-700;
           font-weight: bold;
         }
       }
 
       span {
-        color: $dark-700;
+        color: $dark-400;
+        text-transform: uppercase;
+        font-weight: 300;
       }
     }
   }
