@@ -7,9 +7,7 @@ Events.$on('events.ajax.request.error', (error: any) => {
   const currentRoute = router.currentRoute;
   if (error.status === 401 && router.currentRoute.name !== 'login') {
     const redirect = `/login?redirect=${router.currentRoute.path}`;
-    authAPI.signInAsAnonymous().subscribe((session) => {
-      sessionService.setSession(session);
-      router.push(redirect);
-    });
+    sessionService.deleteSession();
+    router.push(redirect);
   }
 });

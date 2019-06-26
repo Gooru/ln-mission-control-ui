@@ -1,6 +1,6 @@
 <template>
-  <div class="mc-network">
-    network
+  <div id="mc-network">
+    <nav-learning-worldwide/>
   </div>
 </template>
 

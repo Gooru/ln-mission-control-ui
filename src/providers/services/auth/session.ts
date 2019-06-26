@@ -10,7 +10,7 @@ export class SessionService {
   }
 
   private SESSION: string = 'MC_SESSION';
-  private ANONYMOUS: string = 'anonymous';
+
 
   public getSession() {
     let session = null;
@@ -26,9 +26,13 @@ export class SessionService {
     localStorage.setItem(this.SESSION, JSON.stringify(session));
   }
 
+  public deleteSession() {
+    localStorage.removeItem(this.SESSION);
+  }
+
   public isAuthorized() {
     const session = this.getSession();
-    return (session && session.user_id !== this.ANONYMOUS);
+    return (session && session.access_token);
   }
 }
 

@@ -20,31 +20,25 @@ export class AuthAPI {
 
   private authNamespace: string = 'api/nucleus-auth';
 
-  public signInAsAnonymous(): Observable<SessionModel> {
-    const data = {
-      client_id: appConfigService.getClientId(),
-      client_key: appConfigService.getClientKey(),
-      grant_type: 'anonymous',
-    };
-    const endpoint = `${this.authNamespace}/v2/signin`;
-    return http.post(endpoint, null, data).map((ajaxResponse) => {
+  private adminAuthNamespace: string = 'api/nucleus-admin';
+
+  public impersonate(userId: string): Observable<string> {
+    const endpoint = `${this.adminAuthNamespace}/v1/auth/user/impersonate/${userId}`;
+    const headers = http.getTokenHeaders();
+    return http.post(endpoint, headers).map((ajaxResponse) => {
       const res = ajaxResponse.response;
-      return authSerializer.sessionModelSerializer(res);
+      return res.access_token;
     });
   }
 
-  public signInWithCredential(
+  public logInWithCredential(
     usernameOrEmail: string,
     password: string,
   ): Observable<SessionModel> {
-    const data = {
-      client_id: appConfigService.getClientId(),
-      client_key: appConfigService.getClientKey(),
-      grant_type: 'credential',
-    };
-    const endpoint = `${this.authNamespace}/v2/signin`;
+    const endpoint = `${this.adminAuthNamespace}/v1/authentication`;
     const token = `${usernameOrEmail}:${password}`;
     const headers = http.getBasicHeaders(token);
+    const data = {};
     return http.post(endpoint, headers, data).map((ajaxResponse) => {
       const res = ajaxResponse.response;
       return authSerializer.sessionModelSerializer(res);

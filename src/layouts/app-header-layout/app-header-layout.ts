@@ -35,7 +35,8 @@ export default class AppHeaderLayout extends Vue {
 
   private doLogout() {
     authAPI.signOut().subscribe(() => {
-      this.clearStorageAndDoAuthentication();
+      sessionService.deleteSession();
+      this.$router.push('/login');
     });
   }
 
@@ -63,13 +64,6 @@ export default class AppHeaderLayout extends Vue {
 
   // -------------------------------------------------------------------------
   // Methods
-
-  private clearStorageAndDoAuthentication() {
-    authAPI.signInAsAnonymous().subscribe((session) => {
-      sessionService.setSession(session);
-      this.$router.push('/login');
-    });
-  }
 
   private setCurrentRouteName(currentRoutePath: string) {
     const selectedMenuItems = NAVIGATION_MENUS.filter((menuItem, index) => {

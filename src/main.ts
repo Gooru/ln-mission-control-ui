@@ -7,6 +7,7 @@ import '@/plugins/vee-validation';
 import App from '@/app/app.vue';
 import router from '@/routers/router';
 import store from '@/store';
+import { appConfigAPI } from '@/providers/apis/app/app-config';
 import { appConfigService } from '@/providers/services/app/app-config';
 import { authService } from '@/providers/services/auth/auth';
 import i18n from '@/i18n';
@@ -18,9 +19,9 @@ const application = {
   store,
   i18n,
   beforeCreate() {
-    import(`@/app/config/${window.location.hostname}`).then((appConfig) => {
+    appConfigAPI.getAppConfiguration().subscribe((appConfig) => {
       appConfigService.setAppConfig(appConfig);
-      authService.doAuthentication();
+      authService.checkAuthentication();
     });
   },
   render: (h: any) => h(App),

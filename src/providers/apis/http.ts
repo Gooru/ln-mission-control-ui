@@ -31,7 +31,7 @@ export class Http {
       url: this.formURL(url),
       method: 'POST',
       headers,
-      body: JSON.stringify(data),
+      body: '{}',
     };
     return ajax(options).pipe(catchError(this.handleError));
   }

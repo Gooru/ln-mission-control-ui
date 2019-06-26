@@ -1,5 +1,6 @@
 import { authAPI } from '@/providers/apis/auth/auth';
 import { sessionService } from '@/providers/services/auth/session';
+import router from '@/routers/router';
 
 export class AuthService {
   private static INSTANCE = new AuthService();
@@ -8,12 +9,10 @@ export class AuthService {
     return this.INSTANCE;
   }
 
-  public doAuthentication() {
+  public checkAuthentication() {
     const sessionModel = sessionService.getSession();
-    if (!sessionModel) {
-      authAPI.signInAsAnonymous().subscribe((session) => {
-        sessionService.setSession(session);
-      });
+    if (sessionModel === null) {
+      router.push('/login');
     }
   }
 

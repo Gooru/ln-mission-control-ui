@@ -38,7 +38,7 @@ export default class Login extends Vue {
   // Actions
 
   private doLogin() {
-    this.signInWithCredential();
+    this.doLoginInWithCredential();
   }
 
   // -------------------------------------------------------------------------
@@ -57,28 +57,39 @@ export default class Login extends Vue {
     }
   }
 
-  private signInWithCredential() {
+  private doLoginInWithCredential() {
     this.validation();
     if (this.allowLogin) {
       authAPI
-        .signInWithCredential(this.usernameOrEmail, this.password)
+        .logInWithCredential(this.usernameOrEmail, this.password)
         .subscribe(
         (session) => {
           sessionService.setSession(session);
-          const redirect = this.$router.currentRoute.query.redirect;
-          this.$router.push(redirect ? redirect as string : '/network');
+          authAPI.impersonate(session.user_id).subscribe((accessToken) => {
+            session.access_token = accessToken;
+            sessionService.setSession(session);
+            const redirect = this.$router.currentRoute.query.redirect;
+            this.$router.push(redirect ? redirect as string : '/network');
+          },
+            (onerror) => {
+              this.validationToastMessage();
+            });
         },
         (onerror) => {
-          this.$bvToast.toast(
-            this.$i18n.t('errors.login.credentials.not.valid') as string,
-            {
-              title: this.$i18n.t('errors.login.failed') as string,
-              variant: 'danger',
-              solid: true,
-            },
-          );
+          this.validationToastMessage();
         },
       );
     }
+  }
+
+  private validationToastMessage() {
+    this.$bvToast.toast(
+      this.$i18n.t('errors.login.credentials.not.valid') as string,
+      {
+        title: this.$i18n.t('errors.login.failed') as string,
+        variant: 'danger',
+        solid: true,
+      },
+    );
   }
 }

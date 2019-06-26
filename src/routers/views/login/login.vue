@@ -5,15 +5,15 @@
       <div class="bg-logo"></div>
     </div>
     <hr/>
-    <b-form class="login-form">
+    <b-form class="login-form" v-on:submit.prevent>
       <div class="username-email-sec">
         <label for="username-or-email">{{ $t('username.or.email') }}</label>
-        <b-input v-model="usernameOrEmail" name="username-or-email" v-validate="'required'" :class="{'is-invalid': errors.has('username-or-email')}" id="username-or-email"></b-input>
+        <b-input @keyup.enter="doLogin()"  v-model="usernameOrEmail" name="username-or-email" v-validate="'required'" :class="{'is-invalid': errors.has('username-or-email')}" id="username-or-email"></b-input>
         <span v-show="errors.has('username-or-email')" class="error">{{ $t('errors.required', {fieldname: 'username or email'}) }}.</span>
       </div>
       <div class="password-sec">
         <label for="password">{{ $t('password') }}</label>
-        <b-input v-model="password" type="password" name="password" v-validate="'required'" :class="{'is-invalid': errors.has('password')}" id="password"></b-input>
+        <b-input  @keyup.enter="doLogin()" v-model="password" type="password" name="password" v-validate="'required'" :class="{'is-invalid': errors.has('password')}" id="password"></b-input>
         <span v-show="errors.has('password')" class="error">{{ $t('errors.required', {fieldname: 'password'}) }}.</span>
       </div>
     </b-form>

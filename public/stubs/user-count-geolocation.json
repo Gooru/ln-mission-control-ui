@@ -1,0 +1,34 @@
+{
+  "geoLocations": [{
+    "code": "AME",
+    "name": "America",
+    "student_total": 131082,
+    "teacher_total": 13108,
+    "active": 21581
+  }, {
+    "code": "AFR",
+    "name": "Africa",
+    "student_total": 8739,
+    "teacher_total": 873,
+    "active": 20
+  }, {
+    "code": "EUR",
+    "name": "Europe",
+    "student_total": 52433,
+    "teacher_total": 5243,
+    "active": 1076
+  }, {
+    "code": "ASI",
+    "name": "ASIA",
+    "total": 69911,
+    "student_total": 69911,
+    "teacher_total": 5243,
+    "active": 1076
+  }, {
+    "code": "OCE",
+    "name": "Oceania (Pacific/Australia/NZ)",
+    "student_total": 43694,
+    "teacher_total": 5243,
+    "active": 260
+  }]
+}

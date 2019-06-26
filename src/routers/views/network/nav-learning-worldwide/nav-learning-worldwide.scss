@@ -1,0 +1,54 @@
+#mc-nav-learning-worldwide {
+  position: relative;
+
+  h2 {
+    font-family: initial;
+    font-weight: 400;
+    font-size: 36px;
+    text-align: center;
+    position: relative;
+    top: 25px;
+    margin: 0;
+  }
+
+  #overall-user-count-container {
+    width: 600px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 40px;
+    align-items: center;
+    justify-items: center;
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+
+    .count {
+      width: 100%;
+      height: inherit;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      font-size: 15px;
+      font-weight: 900;
+      box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
+
+      &.student {
+        background-color: $green-400;
+        color: $white;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+      }
+
+      &.teacher {
+        background-color: $blue-400;
+        color: $white;
+      }
+
+      &.other {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        background-color: $white;
+      }
+    }
+  }
+}
