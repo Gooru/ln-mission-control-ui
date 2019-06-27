@@ -1,33 +1,32 @@
 [{
-  "code": "NA",
-  "latitude": "41",
-  "longitude": "-103"
+  "code": "USA",
+  "latitude": "50.778259",
+  "longitude": "-110.417931"
 }, {
-  "code": "PA",
-  "latitude": "-7.25",
-  "longitude": "154"
+  "code": "CHN",
+  "latitude": "45.913818",
+  "longitude": "90.363625"
 }, {
-  "code": "EU",
-  "latitude": "48",
-  "longitude": "5.5"
-}, {
-  "code": "AFR",
-  "latitude": "5.82",
-  "longitude": "16.8",
-  "totalPercentage": "100"
-}, {
-  "code": "LA",
-  "latitude": "-15",
+  "code": "BRA",
+  "latitude": "-1",
   "longitude": "-61"
 }, {
-  "code": "ME",
-  "latitude": "29.3",
-  "longitude": "45.7"
+  "code": "AUS",
+  "latitude": "-13.865143",
+  "longitude": "121.209900",
+  "totalPercentage": "100"
+}, {
+  "code": "ZAF",
+  "latitude": "-20",
+  "longitude": "12"
+}, {
+  "code": "RUS",
+  "latitude": "75",
+  "longitude": "85"
 }, {
   "code": "EUR",
   "latitude": "51.68",
-  "longitude": "39",
-  "totalPercentage": "100"
+  "longitude": "39"
 }, {
   "code": "FUS",
   "latitude": "61.3",
@@ -42,20 +41,17 @@
   "longitude": "104.4"
 },
 {
-  "code": "ASI",
-  "latitude": "48.26",
-  "longitude": "81.21",
-  "totalPercentage": "100"
+  "code": "IND",
+  "latitude": "29",
+  "longitude": "70"
 },
 {
   "code": "AME",
   "latitude": "36.07",
-  "longitude": "-90.70",
-  "totalPercentage": "100"
+  "longitude": "-90.70"
 },
 {
   "code": "OCE",
   "latitude": "-23.55",
-  "longitude": "132.5",
-  "totalPercentage": "100"
+  "longitude": "132.5"
 }]

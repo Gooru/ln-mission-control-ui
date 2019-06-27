@@ -1,5 +1,6 @@
 #mc-nav-learning-worldwide {
   position: relative;
+  padding-top: 40px;
 
   h2 {
     font-family: initial;
@@ -7,8 +8,29 @@
     font-size: 36px;
     text-align: center;
     position: relative;
-    top: 25px;
-    margin: 0;
+  }
+
+  #nav-learning-worldwide-map {
+    path.map-path.has-data {
+      fill: $green-400;
+    }
+
+    .pie-box-shadow {
+      filter: url("#drop-shadow");
+    }
+
+    path.map-path {
+      fill: $dark-50;
+      stroke: $white;
+      stroke-width: 1;
+      opacity: 0.8;
+      transition: 0.5s;
+    }
+
+    path.map-path.has-data.on-hover-country {
+      stroke-width: 3;
+      opacity: 0.8;
+    }
   }
 
   #overall-user-count-container {
