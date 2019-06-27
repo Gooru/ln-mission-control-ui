@@ -225,7 +225,7 @@ export default class NavLearningWorldWide extends Vue {
   }
 
   private numberFormat(value: number) {
-    return value;
+    return numberFormatWithTextSuffix(value);
   }
 
 }
