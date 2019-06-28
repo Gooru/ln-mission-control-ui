@@ -1,8 +1,7 @@
 import { http } from '@/providers/apis/http';
-import { Observable } from 'rxjs/Observable';
 import { appConfigSerializer } from '@/providers/serializers/app/app-config';
 import { AppConfigModel } from '@/models/app/app-config';
-import 'rxjs/Rx';
+
 
 /**
  *
@@ -19,11 +18,12 @@ export class AppConfigAPI {
 
   private appConfigNamespace: string = 'config';
 
-  public getAppConfiguration(): Observable<AppConfigModel> {
+  public getAppConfiguration(): Promise<AppConfigModel> {
     const endpoint = `${window.location.origin}/${this.appConfigNamespace}/${window.location.hostname}.json`;
-    return http.get(endpoint).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return appConfigSerializer.appConfigModelSerializer(res);
+    return new Promise((resolve) => {
+      return http.get(endpoint).then((response) => {
+        resolve(appConfigSerializer.appConfigModelSerializer(response.data));
+      });
     });
   }
 }

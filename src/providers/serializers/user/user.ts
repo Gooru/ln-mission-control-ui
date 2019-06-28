@@ -26,9 +26,15 @@ export class UserSerializer {
     const result: UserDistributionByGeoLocationModel = {
       code: res.code,
       name: res.name,
-      student_total: res.student_total,
-      teacher_total: res.teacher_total,
-      active: res.active,
+      total_teacher: res.total_teacher,
+      total_student: res.total_student,
+      total_other: res.total_other,
+      active_student: res.active_student,
+      active_classroom: res.active_classroom,
+      competencies_gained: res.competencies_gained,
+      total_timespent: res.total_timespent,
+      activities_conducted: res.activities_conducted,
+      navigator_courses: res.navigator_courses,
     };
     return result;
   }

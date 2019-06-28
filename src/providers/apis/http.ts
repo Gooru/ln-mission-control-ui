@@ -1,11 +1,8 @@
-import { fromEvent, Observable, Subscriber } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { ajax } from 'rxjs/ajax';
 import { SessionModel } from '@/models/auth/session';
 import { sessionService } from '@/providers/services/auth/session';
-import 'rxjs/add/observable/throw';
-import { Events } from '@/events';
 import { appConfigService } from '@/providers/services/app/app-config';
+import axios from 'axios';
+
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
@@ -16,44 +13,44 @@ export class Http {
     return this.INSTANCE;
   }
 
-  public get(url: string, headers?: any, data?: any): Observable<any> {
+  public get(url: string, headers?: any, data?: any) {
     const options = {
       url: this.formURL(url),
       method: 'GET',
       headers,
       data,
     };
-    return ajax(options).pipe(catchError(this.handleError));
+    return axios(options);
   }
 
-  public post(url: string, headers?: any, data?: any): Observable<any> {
+  public post(url: string, headers?: any, data?: any) {
     const options = {
       url: this.formURL(url),
       method: 'POST',
       headers,
-      body: '{}',
+      data: data ? JSON.stringify(data)  : '{}',
     };
-    return ajax(options).pipe(catchError(this.handleError));
+    return axios(options);
   }
 
-  public put(url: string, headers?: any, data?: any): Observable<any> {
+  public put(url: string, headers?: any, data?: any) {
     const options = {
       url: this.formURL(url),
       method: 'PUT',
       headers,
       data,
     };
-    return ajax(options).pipe(catchError(this.handleError));
+    return axios(options);
   }
 
-  public delete(url: string, headers?: any, data?: any): Observable<any> {
+  public delete(url: string, headers?: any, data?: any) {
     const options = {
       url: this.formURL(url),
       method: 'DELETE',
       headers,
       data,
     };
-    return ajax(options).pipe(catchError(this.handleError));
+    return axios(options);
   }
 
   public getBasicHeaders(token: string) {
@@ -82,11 +79,6 @@ export class Http {
       url = `${apiUrl}/${url}`;
     }
     return url;
-  }
-
-  private handleError(error: Response | any) {
-    Events.$emit('events.ajax.request.error', error);
-    return Observable.throw(error);
   }
 }
 

@@ -2,8 +2,8 @@ import { Component, Vue } from 'vue-property-decorator';
 import * as d3 from 'd3';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { userAPI } from '@/providers/apis/user/user';
-import { Observable } from 'rxjs/Observable';
-import {numberFormatWithTextSuffix} from '@/helpers/number-format';
+import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-format';
+
 @Component({ name: 'nav-learning-worldwide' })
 export default class NavLearningWorldWide extends Vue {
 
@@ -52,6 +52,24 @@ export default class NavLearningWorldWide extends Vue {
    */
   private mapData: any;
 
+  /**
+   * Maintains the value of total number of students
+   * @type {Number}
+   */
+  private totalStudentCount: number = 0;
+
+  /**
+   * Maintains the value of total number of teachers
+   * @type {Number}
+   */
+  private totalTeacherCount: number = 0;
+
+  /**
+   * Maintains the value of total number of others
+   * @type {Number}
+   */
+  private totalOtherCount: number = 0;
+
 
   // -------------------------------------------------------------------------
   // Computed Properties
@@ -79,7 +97,7 @@ export default class NavLearningWorldWide extends Vue {
       .translate([this.width / 2, this.height / 2]);
     this.dropShadow();
     const worldMapDataSet = this.fetchNavWorldWideMapData();
-    worldMapDataSet.subscribe((data) => {
+    worldMapDataSet.then((data) => {
       this.mapData = data;
       this.drawMap();
       this.drawPieChart();
@@ -188,12 +206,12 @@ export default class NavLearningWorldWide extends Vue {
   }
 
   private fetchNavWorldWideMapData() {
-    return Observable.forkJoin([
+    return Promise.all([
       mapDataSetAPI.getCountries(),
       userAPI.getUserDistributionByGeoLocation(),
       mapDataSetAPI.getCountriesRegion(),
     ])
-      .map((data: any[]) => {
+      .then((data: any[]) => {
         const countries = data[0];
         const userDistributionByGeoLocation = data[1];
         const countriesRegion = data[2];
@@ -204,8 +222,22 @@ export default class NavLearningWorldWide extends Vue {
             });
             if (country) {
               country.has_data = true;
+
               country.total_student = geoLocation.student_total;
               country.total_teacher = geoLocation.teacher_total;
+              country.total_other = geoLocation.total_other;
+              country.active_student = geoLocation.active_student;
+              country.active_classroom = geoLocation.active_classroom;
+              country.competencies_gained = geoLocation.competencies_gained;
+              country.total_timespent = geoLocation.total_timespent;
+              country.activities_conducted = geoLocation.activities_conducted;
+              country.navigator_courses = geoLocation.navigator_courses;
+
+              // Calculate the overall count of Student, Teachers and Others
+              this.totalStudentCount += geoLocation.total_student;
+              this.totalTeacherCount += geoLocation.total_teacher;
+              this.totalOtherCount += geoLocation.total_other;
+
               const countryRegion = countriesRegion.find((region: any) => {
                 return region.code === geoLocation.code;
               });
@@ -225,7 +257,7 @@ export default class NavLearningWorldWide extends Vue {
   }
 
   private numberFormat(value: number) {
-    return numberFormatWithTextSuffix(value);
+    return numberFormat(value);
   }
 
 }

@@ -62,10 +62,10 @@ export default class Login extends Vue {
     if (this.allowLogin) {
       authAPI
         .logInWithCredential(this.usernameOrEmail, this.password)
-        .subscribe(
+        .then(
         (session) => {
           sessionService.setSession(session);
-          authAPI.impersonate(session.user_id).subscribe((accessToken) => {
+          authAPI.impersonate(session.user_id).then((accessToken: string) => {
             session.access_token = accessToken;
             sessionService.setSession(session);
             const redirect = this.$router.currentRoute.query.redirect;

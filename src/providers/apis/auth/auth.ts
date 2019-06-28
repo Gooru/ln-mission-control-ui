@@ -1,9 +1,7 @@
 import { http } from '@/providers/apis/http';
-import { Observable } from 'rxjs/Observable';
 import { SessionModel } from '@/models/auth/session';
 import { appConfigService } from '@/providers/services/app/app-config';
 import { authSerializer } from '@/providers/serializers/auth/auth';
-import 'rxjs/Rx';
 
 
 /**
@@ -22,39 +20,41 @@ export class AuthAPI {
 
   private adminAuthNamespace: string = 'api/nucleus-admin';
 
-  public impersonate(userId: string): Observable<string> {
+  public impersonate(userId: string): Promise<string> {
     const endpoint = `${this.adminAuthNamespace}/v1/auth/user/impersonate/${userId}`;
     const headers = http.getTokenHeaders();
-    return http.post(endpoint, headers).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return res.access_token;
+    return new Promise((resolve, reject) => {
+      return http.post(endpoint, headers).then((response) => {
+        resolve(response.data.access_token);
+      });
     });
   }
 
   public logInWithCredential(
     usernameOrEmail: string,
     password: string,
-  ): Observable<SessionModel> {
+  ): Promise<SessionModel> {
     const endpoint = `${this.adminAuthNamespace}/v1/authentication`;
     const token = `${usernameOrEmail}:${password}`;
     const headers = http.getBasicHeaders(token);
-    const data = {};
-    return http.post(endpoint, headers, data).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return authSerializer.sessionModelSerializer(res);
+    return new Promise((resolve, reject) => {
+      return http.post(endpoint, headers).then((response) => {
+        resolve(authSerializer.sessionModelSerializer(response.data));
+      });
     });
   }
 
-  public signInWithToken(token: string): Observable<SessionModel> {
+  public signInWithToken(token: string): Promise<SessionModel> {
     const endpoint = `${this.authNamespace}/v2/token`;
     const headers = http.getTokenHeaders(token);
-    return http.get(endpoint, headers).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return authSerializer.sessionModelSerializer(res);
+    return new Promise((resolve) => {
+      return http.get(endpoint, headers).then((response) => {
+        resolve(authSerializer.sessionModelSerializer(response.data));
+      });
     });
   }
 
-  public signOut(): Observable<void> {
+  public signOut() {
     const headers = http.getTokenHeaders();
     const endpoint = `${this.authNamespace}/v2/signout`;
     return http.delete(endpoint, headers);

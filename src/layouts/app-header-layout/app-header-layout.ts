@@ -34,7 +34,7 @@ export default class AppHeaderLayout extends Vue {
 
 
   private doLogout() {
-    authAPI.signOut().subscribe(() => {
+    authAPI.signOut().then(() => {
       sessionService.deleteSession();
       this.$router.push('/login');
     });

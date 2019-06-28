@@ -1,6 +1,4 @@
 import { http } from '@/providers/apis/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
 
 /**
  *
@@ -17,19 +15,21 @@ export class MapDataSetAPI {
 
   private mapDataSetNamespace: string = 'map-dataset';
 
-  public getCountries(): Observable<any> {
+  public getCountries(): Promise<any> {
     const endpoint = `${window.location.origin}/${this.mapDataSetNamespace}/countries.json`;
-    return http.get(endpoint).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return res;
+    return new Promise((resolve) => {
+      return http.get(endpoint).then((response) => {
+        resolve(response.data);
+      });
     });
   }
 
-  public getCountriesRegion(): Observable<any> {
+  public getCountriesRegion(): Promise<any> {
     const endpoint = `${window.location.origin}/${this.mapDataSetNamespace}/countries-region.json`;
-    return http.get(endpoint).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return res;
+    return new Promise((resolve) => {
+      return http.get(endpoint).then((response) => {
+        resolve(response.data);
+      });
     });
   }
 }

@@ -7,3 +7,7 @@ export function numberFormatWithTextSuffix(value: number) {
         `${Math.round(Number(value) / 1.0e+3)}K` :
         value;
 }
+
+export function numberFormat(value: number, langCode: string = 'en-US') {
+  return new Intl.NumberFormat(langCode).format(value);
+}

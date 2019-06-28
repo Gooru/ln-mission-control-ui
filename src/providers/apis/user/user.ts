@@ -1,7 +1,6 @@
 import { http } from '@/providers/apis/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
 import { userSerializer } from '@/providers/serializers/user/user';
+import { UserDistributionByGeoLocationModel } from '@/models/user/user-distribution-by-geolocation';
 
 /**
  *
@@ -18,11 +17,13 @@ export class UserAPI {
 
   private stubsNamespace: string = 'stubs';
 
-  public getUserDistributionByGeoLocation(): Observable<object> {
+  public getUserDistributionByGeoLocation(): Promise<UserDistributionByGeoLocationModel[]> {
     const endpoint = `${window.location.origin}/${this.stubsNamespace}/user-count-geolocation.json`;
-    return http.get(endpoint).map((ajaxResponse) => {
-      const res = ajaxResponse.response;
-      return userSerializer.usersDistributionByGeoLocationModelSerializer(res);
+
+    return new Promise((resolve, reject) => {
+      return http.get(endpoint).then((response) => {
+        resolve(userSerializer.usersDistributionByGeoLocationModelSerializer(response.data));
+      });
     });
   }
 }

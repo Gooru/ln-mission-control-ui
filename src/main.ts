@@ -19,7 +19,7 @@ const application = {
   store,
   i18n,
   beforeCreate() {
-    appConfigAPI.getAppConfiguration().subscribe((appConfig) => {
+    appConfigAPI.getAppConfiguration().then((appConfig) => {
       appConfigService.setAppConfig(appConfig);
       authService.checkAuthentication();
     });
