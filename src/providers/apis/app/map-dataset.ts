@@ -17,19 +17,15 @@ export class MapDataSetAPI {
 
   public getCountries(): Promise<any> {
     const endpoint = `${window.location.origin}/${this.mapDataSetNamespace}/countries.json`;
-    return new Promise((resolve) => {
-      return http.get(endpoint).then((response) => {
-        resolve(response.data);
-      });
+    return http.get(endpoint).then((response) => {
+      return response.data;
     });
   }
 
   public getCountriesRegion(): Promise<any> {
     const endpoint = `${window.location.origin}/${this.mapDataSetNamespace}/countries-region.json`;
-    return new Promise((resolve) => {
-      return http.get(endpoint).then((response) => {
-        resolve(response.data);
-      });
+    return http.get(endpoint).then((response) => {
+      return response.data;
     });
   }
 }

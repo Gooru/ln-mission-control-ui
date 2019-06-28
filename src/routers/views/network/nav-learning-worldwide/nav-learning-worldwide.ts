@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { userAPI } from '@/providers/apis/user/user';
 import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-format';
+import axios from 'axios';
 
 @Component({ name: 'nav-learning-worldwide' })
 export default class NavLearningWorldWide extends Vue {
@@ -206,15 +207,12 @@ export default class NavLearningWorldWide extends Vue {
   }
 
   private fetchNavWorldWideMapData() {
-    return Promise.all([
+    return axios.all([
       mapDataSetAPI.getCountries(),
       userAPI.getUserDistributionByGeoLocation(),
       mapDataSetAPI.getCountriesRegion(),
     ])
-      .then((data: any[]) => {
-        const countries = data[0];
-        const userDistributionByGeoLocation = data[1];
-        const countriesRegion = data[2];
+      .then(axios.spread((countries, userDistributionByGeoLocation, countriesRegion) => {
         if (userDistributionByGeoLocation) {
           userDistributionByGeoLocation.map((geoLocation: any) => {
             const country = countries.features.find((countryData: any) => {
@@ -253,7 +251,7 @@ export default class NavLearningWorldWide extends Vue {
           countries,
           userDistributionByGeoLocation,
         };
-      });
+      }));
   }
 
   private numberFormat(value: number) {

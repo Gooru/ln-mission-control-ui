@@ -19,11 +19,8 @@ export class UserAPI {
 
   public getUserDistributionByGeoLocation(): Promise<UserDistributionByGeoLocationModel[]> {
     const endpoint = `${window.location.origin}/${this.stubsNamespace}/user-count-geolocation.json`;
-
-    return new Promise((resolve, reject) => {
-      return http.get(endpoint).then((response) => {
-        resolve(userSerializer.usersDistributionByGeoLocationModelSerializer(response.data));
-      });
+    return http.get(endpoint).then((response) => {
+      return userSerializer.usersDistributionByGeoLocationModelSerializer(response.data);
     });
   }
 }

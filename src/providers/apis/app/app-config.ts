@@ -20,10 +20,8 @@ export class AppConfigAPI {
 
   public getAppConfiguration(): Promise<AppConfigModel> {
     const endpoint = `${window.location.origin}/${this.appConfigNamespace}/${window.location.hostname}.json`;
-    return new Promise((resolve) => {
-      return http.get(endpoint).then((response) => {
-        resolve(appConfigSerializer.appConfigModelSerializer(response.data));
-      });
+    return http.get(endpoint).then((response) => {
+      return appConfigSerializer.appConfigModelSerializer(response.data);
     });
   }
 }

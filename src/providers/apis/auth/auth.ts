@@ -23,10 +23,8 @@ export class AuthAPI {
   public impersonate(userId: string): Promise<string> {
     const endpoint = `${this.adminAuthNamespace}/v1/auth/user/impersonate/${userId}`;
     const headers = http.getTokenHeaders();
-    return new Promise((resolve, reject) => {
-      return http.post(endpoint, headers).then((response) => {
-        resolve(response.data.access_token);
-      });
+    return http.post(endpoint, headers).then((response) => {
+      return response.data.access_token;
     });
   }
 
@@ -37,20 +35,16 @@ export class AuthAPI {
     const endpoint = `${this.adminAuthNamespace}/v1/authentication`;
     const token = `${usernameOrEmail}:${password}`;
     const headers = http.getBasicHeaders(token);
-    return new Promise((resolve, reject) => {
-      return http.post(endpoint, headers).then((response) => {
-        resolve(authSerializer.sessionModelSerializer(response.data));
-      });
+    return http.post(endpoint, headers).then((response) => {
+      return authSerializer.sessionModelSerializer(response.data);
     });
   }
 
   public signInWithToken(token: string): Promise<SessionModel> {
     const endpoint = `${this.authNamespace}/v2/token`;
     const headers = http.getTokenHeaders(token);
-    return new Promise((resolve) => {
-      return http.get(endpoint, headers).then((response) => {
-        resolve(authSerializer.sessionModelSerializer(response.data));
-      });
+    return http.get(endpoint, headers).then((response) => {
+      return authSerializer.sessionModelSerializer(response.data);
     });
   }
 
