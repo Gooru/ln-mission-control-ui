@@ -204,8 +204,8 @@ export default class NavLearningWorldWide extends Vue {
             });
             if (country) {
               country.has_data = true;
-              country.student_total = geoLocation.student_total;
-              country.teacher_total = geoLocation.teacher_total;
+              country.total_student = geoLocation.student_total;
+              country.total_teacher = geoLocation.teacher_total;
               const countryRegion = countriesRegion.find((region: any) => {
                 return region.code === geoLocation.code;
               });

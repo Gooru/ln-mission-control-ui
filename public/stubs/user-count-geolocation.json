@@ -2,47 +2,82 @@
   "geoLocations": [{
     "code": "USA",
     "name": "Unitied States Of America",
-    "student_total": 131082,
-    "teacher_total": 13108,
-    "active": 21581
+    "total_student": 131082,
+    "total_teacher": 13108,
+    "active_student": 21581,
+    "active_classroom": 2181,
+    "competencies_gained": 345,
+    "total_timespent": 123455690,
+    "activities_conducted": 1234,
+    "navigator_courses": 345
   }, {
     "code": "BRA",
     "name": "Brazil",
-    "student_total": 8739,
-    "teacher_total": 873,
-    "active": 20
+    "total_student": 81739,
+    "total_teacher": 8173,
+    "active_student": 215181,
+    "active_classroom": 21811,
+    "competencies_gained": 3245,
+    "total_timespent": 1234556190,
+    "activities_conducted": 13234,
+    "navigator_courses": 3451
   }, {
     "code": "CHN",
     "name": "China",
-    "student_total": 52433,
-    "teacher_total": 5243,
-    "active": 1076
+    "total_student": 521433,
+    "total_teacher": 590243,
+    "active_student": 2123581,
+    "active_classroom": 214581,
+    "competencies_gained": 38945,
+    "total_timespent": 123455690,
+    "activities_conducted": 12434,
+    "navigator_courses": 34589
   }, {
     "code": "IND",
     "name": "India",
-    "total": 69911,
-    "student_total": 69911,
-    "teacher_total": 5243,
-    "active": 1076
+    "total": 699111,
+    "total_student": 698911,
+    "total_teacher": 52043,
+    "active_student": 291581,
+    "active_classroom": 21681,
+    "competencies_gained": 3425,
+    "total_timespent": 1234557690,
+    "activities_conducted": 1234,
+    "navigator_courses": 3435
   }, {
     "code": "AUS",
     "name": "Australia",
-    "student_total": 43694,
-    "teacher_total": 5243,
-    "active": 260
+    "total_student": 439694,
+    "total_teacher": 52943,
+    "active_student": 215981,
+    "active_classroom": 21818,
+    "competencies_gained": 3455,
+    "total_timespent": 1234554690,
+    "activities_conducted": 11234,
+    "navigator_courses": 3415
   },
   {
     "code": "ZAF",
     "name": "South Afirca",
-    "student_total": 431694,
-    "teacher_total": 52413,
-    "active": 26009
+    "total_student": 431694,
+    "total_teacher": 524131,
+    "active_student": 215811,
+    "active_classroom": 21811,
+    "competencies_gained": 3145,
+    "total_timespent": 12345690,
+    "activities_conducted": 12434,
+    "navigator_courses": 3451
   },
   {
     "code": "RUS",
     "name": "Russia",
-    "student_total": 4316194,
-    "teacher_total": 524113,
-    "active": 260109
+    "total_student": 4316194,
+    "total_teacher": 524113,
+    "active_student": 2151,
+    "active_classroom": 218,
+    "competencies_gained": 34,
+    "total_timespent": 12355690,
+    "activities_conducted": 234,
+    "navigator_courses": 345
   }]
 }
