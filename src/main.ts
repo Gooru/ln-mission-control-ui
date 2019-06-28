@@ -4,6 +4,7 @@ import '@/registerServiceWorker';
 import '@/plugins/bootstrap-vue';
 import '@/plugins/vue-lazyload';
 import '@/plugins/vee-validation';
+import '@/plugins/axios';
 import App from '@/app/app.vue';
 import router from '@/routers/router';
 import store from '@/store';
