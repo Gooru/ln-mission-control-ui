@@ -11,25 +11,54 @@
   }
 
   #nav-learning-worldwide-map {
-    path.map-path.has-data {
-      fill: $green-400;
+    #countries-container {
+      path.map-path.has-data {
+        fill: $green-400;
+      }
+
+      path.map-path {
+        fill: $dark-600;
+        stroke: $white;
+        stroke-width: 1;
+        opacity: 0.8;
+        transition: 0.5s;
+      }
+
+      path.map-path.has-data.on-hover-country {
+        stroke-width: 3;
+        opacity: 0.8;
+      }
     }
 
-    .pie-box-shadow {
-      filter: url("#drop-shadow");
-    }
+    #country-pie-chart {
+      .pie-box-shadow {
+        filter: url("#drop-shadow");
+      }
 
-    path.map-path {
-      fill: $dark-600;
-      stroke: $white;
-      stroke-width: 1;
-      opacity: 0.8;
-      transition: 0.5s;
-    }
+      .key-student {
+        fill: $green-400;
+      }
 
-    path.map-path.has-data.on-hover-country {
-      stroke-width: 3;
-      opacity: 0.8;
+      .key-teacher {
+        fill: $blue-400;
+      }
+
+      .key-other {
+        fill: $white;
+      }
+
+      .user-total-count {
+        font-size: 17px;
+        color: $white;
+        font-weight: bold;
+        position: relative;
+        top: -11px;
+        left: -21px;
+        text-align: center;
+        width: 41px;
+        margin: 0;
+        text-shadow: 1px 1px $dark-900;
+      }
     }
   }
 

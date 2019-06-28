@@ -151,9 +151,9 @@ export default class NavLearningWorldWide extends Vue {
       return country.has_data;
     });
 
-    countriesHasData.map((countryHasData: any) => {
-      const longitude = countryHasData.longitude;
-      const latitude = countryHasData.latitude;
+    countriesHasData.map((countryData: any) => {
+      const longitude = countryData.longitude;
+      const latitude = countryData.latitude;
       const pieChartContainer = countryPieChartContainer.append('svg')
         .attr('x', projection([longitude, latitude])[0])
         .attr('y', projection([longitude, latitude])[1])
@@ -161,17 +161,18 @@ export default class NavLearningWorldWide extends Vue {
         .attr('width', this.pieWidth)
         .attr('height', this.pieHeight).append('g')
         .attr('transform', 'translate(' + this.pieWidth / 2 + ',' + this.pieHeight / 2 + ')');
+      const total = countryData.total_student + countryData.total_teacher + countryData.total_other;
       const pieData = [{
-        color: 'green',
-        value: 30,
+        key: 'teacher',
+        value: countryData.total_student,
       },
       {
-        color: 'white',
-        value: 20,
+        key: 'student',
+        value: countryData.total_teacher,
       },
       {
-        color: 'blue',
-        value: 90,
+        key: 'other',
+        value: countryData.total_other,
       }];
 
       const pieChart = pieChartContainer.selectAll('.arc')
@@ -179,9 +180,15 @@ export default class NavLearningWorldWide extends Vue {
 
       pieChart.append('path')
         .attr('d', arc)
-        .style('fill', (d: any) => {
-          return d.data.color;
+        .attr('class', (d: any) => {
+          return `key-${d.data.key}`;
         });
+
+      pieChartContainer.append('foreignObject')
+        .append('xhtml:div')
+        .append('p')
+        .attr('class', 'user-total-count')
+        .text(numberFormatWithTextSuffix(total));
     });
 
   }
@@ -221,8 +228,8 @@ export default class NavLearningWorldWide extends Vue {
             if (country) {
               country.has_data = true;
 
-              country.total_student = geoLocation.student_total;
-              country.total_teacher = geoLocation.teacher_total;
+              country.total_student = geoLocation.total_student;
+              country.total_teacher = geoLocation.total_teacher;
               country.total_other = geoLocation.total_other;
               country.active_student = geoLocation.active_student;
               country.active_classroom = geoLocation.active_classroom;
