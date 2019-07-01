@@ -6,6 +6,7 @@ import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-forma
 import axios from 'axios';
 import NavLearningWorldWidePopover from './nav-learning-worldwide-popover/nav-learning-worldwide-popover';
 
+
 @Component({
   name: 'nav-learning-worldwide',
   components: {
@@ -210,7 +211,7 @@ export default class NavLearningWorldWide extends Vue {
         const className = 'map-path has-data';
         const element = d3.select(`#country-code-${countryData.id}`);
         element.attr('class', className);
-        this.activeCountry = null;
+        //  this.activeCountry = null;
       });
 
       pieChartContainer.append('foreignObject')
