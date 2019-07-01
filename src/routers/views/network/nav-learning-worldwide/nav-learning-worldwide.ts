@@ -4,8 +4,14 @@ import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { userAPI } from '@/providers/apis/user/user';
 import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-format';
 import axios from 'axios';
+import NavLearningWorldWidePopover from './nav-learning-worldwide-popover/nav-learning-worldwide-popover';
 
-@Component({ name: 'nav-learning-worldwide' })
+@Component({
+  name: 'nav-learning-worldwide',
+  components: {
+    'nav-learning-worldwide-popover': NavLearningWorldWidePopover,
+  },
+})
 export default class NavLearningWorldWide extends Vue {
 
   // -------------------------------------------------------------------------
@@ -71,9 +77,18 @@ export default class NavLearningWorldWide extends Vue {
    */
   private totalOtherCount: number = 0;
 
+  /**
+   * Maintains the country object when hover the pie chart.
+   */
+  private activeCountry: any = null;
 
-  // -------------------------------------------------------------------------
-  // Computed Properties
+  private popoverStyle: any = {
+    top: '0px',
+    left: '0px',
+    right: '0px',
+    bottom: '0px',
+  };
+
 
   // -------------------------------------------------------------------------
   // Actions
@@ -158,6 +173,7 @@ export default class NavLearningWorldWide extends Vue {
         .attr('x', projection([longitude, latitude])[0])
         .attr('y', projection([longitude, latitude])[1])
         .attr('class', 'pie-box-shadow')
+        .attr('id', `pie-country-${countryData.id}`)
         .attr('width', this.pieWidth)
         .attr('height', this.pieHeight).append('g')
         .attr('transform', 'translate(' + this.pieWidth / 2 + ',' + this.pieHeight / 2 + ')');
@@ -183,6 +199,19 @@ export default class NavLearningWorldWide extends Vue {
         .attr('class', (d: any) => {
           return `key-${d.data.key}`;
         });
+
+      pieChartContainer.on('mouseover', () => {
+        const element = d3.select(`#country-code-${countryData.id}`);
+        const currentClass = element.attr('class');
+        element.attr('class', `${currentClass} on-hover-country`);
+        this.activeCountry = countryData;
+        this.showNavLearningWorldwidePopover(countryData.id);
+      }).on('mouseout', () => {
+        const className = 'map-path has-data';
+        const element = d3.select(`#country-code-${countryData.id}`);
+        element.attr('class', className);
+        this.activeCountry = null;
+      });
 
       pieChartContainer.append('foreignObject')
         .append('xhtml:div')
@@ -261,8 +290,21 @@ export default class NavLearningWorldWide extends Vue {
       }));
   }
 
+
   private numberFormat(value: number) {
     return numberFormat(value);
+  }
+
+  private showNavLearningWorldwidePopover(countryId: string) {
+    const element = `#pie-country-${countryId}`;
+    const xAxis = Number(d3.select(element).attr('x'));
+    const yAxis = Number(d3.select(element).attr('y'));
+    const newXAxisVal = (xAxis + 580) > window.innerWidth ? (xAxis - 340) : (xAxis + 80);
+    const style = {
+      top: `${yAxis}px`,
+      left: `${newXAxisVal}px`,
+    };
+    this.popoverStyle = style;
   }
 
 }

@@ -12,4 +12,5 @@ axios.interceptors.response.use((response) => {
     sessionService.deleteSession();
     router.push(redirect);
   }
+  return Promise.reject(error);
 });

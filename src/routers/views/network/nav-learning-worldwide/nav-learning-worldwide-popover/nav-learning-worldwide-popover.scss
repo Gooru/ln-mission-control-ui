@@ -1,0 +1,144 @@
+#nav-learning-worldwide-popover {
+  width: 320px;
+  height: 360px;
+  box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  position: absolute;
+
+  #country-name-container {
+    height: 40px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    background: $white;
+    font-size: 20px;
+    font-weight: bold;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    text-transform: capitalize;
+
+    #country-name {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  .category-header {
+    text-align: center;
+    padding: 5px;
+    font-size: 18px;
+    color: $white;
+    font-weight: bold;
+  }
+
+  #student-data-container {
+    height: 160px;
+    background-color: $green-400;
+
+    #student-body-container {
+      display: grid;
+      grid-template-columns: 85px 100px 90px;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      span {
+        display: block;
+        line-height: 1.2;
+        text-align: center;
+        color: $white;
+        font-size: 13px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+        &.title {
+          font-style: italic;
+        }
+
+        &.count {
+          font-weight: bold;
+          font-style: italic;
+        }
+      }
+
+      i {
+        display: block;
+        font-size: 40px;
+        text-align: center;
+        color: $white;
+
+        &.competencies-gained-icon {
+          width: 32px;
+          height: 32px;
+          background: $blue-400;
+          margin: 0 auto;
+          border-radius: 5px;
+          box-shadow: 0 0 2px 3px rgba(255, 255, 255, 0.5);
+          margin-top: 3px;
+          margin-bottom: 3px;
+        }
+      }
+    }
+  }
+
+  #teacher-data-container {
+    height: 160px;
+    background-color: $blue-400;
+
+    #teacher-body-container {
+      display: grid;
+      grid-template-columns: 85px 100px 90px;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin-left: 20px;
+      margin-right: 20px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+
+      span {
+        display: block;
+        line-height: 1.2;
+        text-align: center;
+        color: $white;
+        font-size: 13px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+
+        &.title {
+          font-style: italic;
+        }
+
+        &.count {
+          font-weight: bold;
+          font-style: italic;
+        }
+      }
+
+      i {
+        display: block;
+        font-size: 40px;
+        text-align: center;
+        color: $white;
+
+        &.fa-chalkboard-teacher,
+        &.fa-thumbtack {
+          font-size: 33px;
+          margin-top: 2px;
+          margin-bottom: 2px;
+        }
+
+        &.navigation {
+          transform: rotate(60deg);
+        }
+      }
+    }
+  }
+}

@@ -33,6 +33,11 @@
     #country-pie-chart {
       .pie-box-shadow {
         filter: url("#drop-shadow");
+        cursor: pointer;
+      }
+
+      p.user-total-count:hover {
+        text-shadow: 2px 2px $dark-900;
       }
 
       .key-student {
@@ -48,7 +53,7 @@
       }
 
       .user-total-count {
-        font-size: 17px;
+        font-size: 15px;
         color: $white;
         font-weight: bold;
         position: relative;
@@ -58,6 +63,8 @@
         width: 41px;
         margin: 0;
         text-shadow: 1px 1px $dark-900;
+        cursor: pointer;
+        transition: 0.5s;
       }
     }
   }

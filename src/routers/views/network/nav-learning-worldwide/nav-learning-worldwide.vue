@@ -7,6 +7,7 @@
     <div class="teacher count">{{numberFormat(totalTeacherCount)}} {{$tc('teacher', 2)}}</div>
     <div class="other count">{{numberFormat(totalOtherCount)}} {{$tc('other', 2)}}</div>
   </div>
+  <nav-learning-worldwide-popover :style="popoverStyle" v-if="activeCountry" :country="activeCountry" v-show="activeCountry" />
 </div>
 </template>
 <script lang="ts" src="./nav-learning-worldwide.ts"></script>
