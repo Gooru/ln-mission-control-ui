@@ -15,6 +15,10 @@
     }
 
     .nav-menu {
+      visibility: hidden;
+      &:first-child {
+        visibility: visible;
+      }
       cursor: pointer;
       @media only screen and (max-width: $screen-xs) {
         padding-left: 30px;

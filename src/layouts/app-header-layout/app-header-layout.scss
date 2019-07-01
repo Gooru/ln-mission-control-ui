@@ -24,7 +24,8 @@
     .app-logo-container {
       .app-logo {
         width: 115px;
-        height: 60px;
+        height: 63px;
+        background-size: 115px 63px;
         background-repeat: no-repeat;
         background-image: url($logo);
       }
@@ -104,10 +105,12 @@
           cursor: pointer;
           padding: 15px;
           transition: 0.5;
+
           &:hover {
             background-color: $light-100;
             border-bottom-left-radius: 6px !important;
           }
+
           &:active {
             color: $dark-400;
           }
@@ -149,6 +152,7 @@
         display: grid;
         grid-template-columns: 1fr 40px;
         border-bottom: 1px solid $dark-50;
+        justify-item: center;
       }
     }
   }
