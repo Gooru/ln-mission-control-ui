@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source: /mc
+    destination: /var/www
+hooks:
+  AfterInstall:
+    - location: ./.deploy/mc.sh
+      runas: root
