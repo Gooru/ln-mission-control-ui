@@ -17,7 +17,7 @@ checkStatus() {
 checkServiceDir() {
   moduleName=$1
   echo "[info] '$moduleName' initiated"
-  [ -d $BASE_PATH/$DEPLOY_SERVICE ]
+  [ -d /tmp/$DEPLOY_SERVICE ]
   checkStatus
 }
 
@@ -27,10 +27,10 @@ renameServiceDir() {
   if [ -d $BASE_PATH/$SERVICE ]; then
     sudo rm -rf $BASE_PATH/$SERVICE_BKP
     sudo mv $BASE_PATH/$SERVICE $BASE_PATH/$SERVICE_BKP
-    sudo mv $BASE_PATH/$DEPLOY_SERVICE $BASE_PATH/$SERVICE
+    sudo mv /tmp/$DEPLOY_SERVICE $BASE_PATH/$SERVICE
   else
     sudo rm -rf $BASE_PATH/$SERVICE_BKP
-    sudo mv $BASE_PATH/$DEPLOY_SERVICE $BASE_PATH/$SERVICE
+    sudo mv /tmp/$DEPLOY_SERVICE $BASE_PATH/$SERVICE
   fi
 }
 

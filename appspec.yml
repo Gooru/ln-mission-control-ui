@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /mc
-    destination: /var/www
+    destination: /tmp/mc
 hooks:
   AfterInstall:
     - location: ./.deploy/mc.sh
