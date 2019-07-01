@@ -25,6 +25,6 @@ fi
 info "Publishing artifacts..."
 
 silent aws s3 cp mc-${VERSION}.tar.gz \
-  s3://${S3_BUCKET}/frontend-30/builds/${GIT_BRANCH}/mc-$VERSION.tar.gz
+  s3://${S3_BUCKET}/frontend-30/builds/mc/${GIT_BRANCH}/mc-$VERSION.tar.gz
 
 info "Done publishing artifacts"

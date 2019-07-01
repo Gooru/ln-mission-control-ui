@@ -84,7 +84,7 @@ VERSION=${GIT_BRANCH}-${BUILD_NUMBER}
 
 DEPLOYMENT_ID=$(aws deploy create-deployment \
   --application-name "${CODE_DEPLOY_APP_NAME}" \
-  --s3-location "bucket=${S3_BUCKET},key=frontend-30/builds/${GIT_BRANCH}/mc-${VERSION}.tar.gz,bundleType=tar" \
+  --s3-location "bucket=${S3_BUCKET},key=frontend-30/builds/mc/${GIT_BRANCH}/mc-${VERSION}.tar.gz,bundleType=tar" \
   --deployment-group-name "${DEPLOYMENT_GROUP}" --query deploymentId | tr -d '"')
 
 info "Deployment \"$DEPLOYMENT_ID\" created"
