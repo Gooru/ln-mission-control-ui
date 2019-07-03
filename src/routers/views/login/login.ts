@@ -33,7 +33,6 @@ export default class Login extends Vue {
   // Watcher's
 
 
-
   // -------------------------------------------------------------------------
   // Actions
 
@@ -65,15 +64,8 @@ export default class Login extends Vue {
         .then(
         (session) => {
           sessionService.setSession(session);
-          authAPI.impersonate(session.user_id).then((accessToken: string) => {
-            session.access_token = accessToken;
-            sessionService.setSession(session);
-            const redirect = this.$router.currentRoute.query.redirect;
-            this.$router.push(redirect ? redirect as string : '/network');
-          },
-            (onerror) => {
-              this.validationToastMessage();
-            });
+          const redirect = this.$router.currentRoute.query.redirect;
+          this.$router.push(redirect ? redirect as string : '/network');
         },
         (onerror) => {
           this.validationToastMessage();

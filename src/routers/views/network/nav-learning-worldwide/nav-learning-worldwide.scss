@@ -12,6 +12,7 @@
 
   #nav-learning-worldwide-map {
     height: 420px;
+
     #countries-container {
       path.map-path.has-data {
         fill: $green-400;
@@ -54,18 +55,11 @@
       }
 
       .user-total-count {
-        font-size: 15px;
-        color: $white;
-        font-weight: bold;
-        position: relative;
-        top: -11px;
-        left: -21px;
-        text-align: center;
-        width: 41px;
-        margin: 0;
-        text-shadow: 1px 1px $dark-900;
-        cursor: pointer;
+        fill: $white;
         transition: 0.5s;
+        font-size: 15px;
+        font-weight: bold;
+        filter: url("#drop-shadow");
       }
     }
   }

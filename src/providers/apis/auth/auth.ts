@@ -18,24 +18,20 @@ export class AuthAPI {
 
   private authNamespace: string = 'api/nucleus-auth';
 
-  private adminAuthNamespace: string = 'api/nucleus-admin';
-
-  public impersonate(userId: string): Promise<string> {
-    const endpoint = `${this.adminAuthNamespace}/v1/auth/user/impersonate/${userId}`;
-    const headers = http.getTokenHeaders();
-    return http.post(endpoint, headers).then((response) => {
-      return response.data.access_token;
-    });
-  }
 
   public logInWithCredential(
     usernameOrEmail: string,
     password: string,
   ): Promise<SessionModel> {
-    const endpoint = `${this.adminAuthNamespace}/v1/authentication`;
+    const data = {
+      client_id: process.env.VUE_APP_CLIENT_ID,
+      client_key: process.env.VUE_APP_CLIENT_KEY,
+      grant_type: 'credential',
+    };
+    const endpoint = `${this.authNamespace}/v2/signin`;
     const token = `${usernameOrEmail}:${password}`;
     const headers = http.getBasicHeaders(token);
-    return http.post(endpoint, headers).then((response) => {
+    return http.post(endpoint, headers, data).then((response) => {
       return authSerializer.sessionModelSerializer(response.data);
     });
   }

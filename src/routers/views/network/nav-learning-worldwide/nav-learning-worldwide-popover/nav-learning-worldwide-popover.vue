@@ -33,17 +33,17 @@
       <div id="teacher-body-container">
         <div id="active-classrooms-container">
           <span class="title">{{$t('active')}} {{$tc('classroom', 2)}}</span>
-          <font-awesome-icon icon="fa-chalkboard-teacher" />
+          <mc-icon icon="classroom-white" />
           <span class="count">{{numberFormat(country.active_classroom)}}</span>
         </div>
         <div id="activities-conducted-container">
           <span class="title">{{$tc('activity', 2)}} {{$t('conducted')}}</span>
-          <font-awesome-icon icon="fa-thumbtack" />
+          <mc-icon icon="pin-white" />
           <span class="count">{{numberFormat(country.activities_conducted)}}</span>
         </div>
         <div id="nav-courses-container">
           <span class="title">{{$t('navigator')}} {{$tc('course', 2)}}</span>
-          <google-material-icon class="icon" icon="navigation" />
+          <mc-icon icon="navigator-white" />
           <span class="count">{{numberFormat(country.navigator_courses)}}</span>
         </div>
       </div>

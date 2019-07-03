@@ -127,17 +127,7 @@
         font-size: 40px;
         text-align: center;
         color: $white;
-
-        &.fa-chalkboard-teacher,
-        &.fa-thumbtack {
-          font-size: 33px;
-          margin-top: 2px;
-          margin-bottom: 2px;
-        }
-
-        &.navigation {
-          transform: rotate(60deg);
-        }
+        margin: 0 auto;
       }
     }
   }

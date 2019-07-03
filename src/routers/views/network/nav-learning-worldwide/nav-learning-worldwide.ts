@@ -214,10 +214,10 @@ export default class NavLearningWorldWide extends Vue {
         this.activeCountry = null;
       });
 
-      pieChartContainer.append('foreignObject')
-        .append('xhtml:div')
-        .append('p')
+      pieChartContainer.append('text')
         .attr('class', 'user-total-count')
+        .attr('dominant-baseline', 'middle')
+        .attr('text-anchor', 'middle')
         .text(numberFormatWithTextSuffix(total));
     });
 

@@ -2,6 +2,7 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import { numberFormat } from '@/helpers/number-format';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import FontAwesomeIcon from '@/components/icons/font-awesome-icon/font-awesome-icon';
+import McIcon from '@/components/icons/mc-icon/mc-icon';
 
 
 @Component({
@@ -9,6 +10,7 @@ import FontAwesomeIcon from '@/components/icons/font-awesome-icon/font-awesome-i
   components: {
     'google-material-icon': GoogleMaterialIcon,
     'font-awesome-icon': FontAwesomeIcon,
+    'mc-icon': McIcon,
   },
 })
 export default class NavLearningWorldWidePopover extends Vue {

@@ -22,12 +22,14 @@
     }
 
     .app-logo-container {
+      padding-left: 30px;
       .app-logo {
         width: 115px;
-        height: 63px;
-        background-size: 115px 63px;
+        height: 60px;
+        background-size: 115px 36px;
         background-repeat: no-repeat;
         background-image: url($logo);
+        background-position: center;
       }
     }
 
