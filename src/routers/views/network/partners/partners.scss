@@ -51,6 +51,7 @@
           grid-template-columns: 125px 1fr;
           font-style: italic;
           font-weight: bold;
+
           .count {
             justify-self: end;
           }
@@ -61,8 +62,13 @@
             display: grid;
             grid-template-columns: 125px 1fr;
             padding-top: 8px;
+
             .count {
               justify-self: end;
+            }
+
+            .name {
+              @include ellipsis(12px, 1.2, 1);
             }
           }
         }
@@ -73,6 +79,38 @@
       .header-panel-conatiner {
         .panel-body {
           background-color: $blue-400;
+        }
+      }
+    }
+
+    #partner-panel {
+      .panel-body {
+        .mc-icon.navigator-mix-color {
+          margin: 0 auto;
+          width: 60px;
+          height: 70px;
+          background-size: 60px 60px;
+          background-position: 0px 10px;
+        }
+
+        p {
+          margin: 0 auto;
+          text-align: center;
+          color: $blue-800;
+          line-height: 1.3;
+        }
+
+        #partner-count {
+          font-size: 24px;
+        }
+
+        #partner-active-count {
+          font-size: 14px;
+        }
+
+        #no-of-countries {
+          font-style: italic;
+          font-weight: bold;
         }
       }
     }
