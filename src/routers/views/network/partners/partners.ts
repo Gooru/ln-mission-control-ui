@@ -52,13 +52,13 @@ export default class Partners extends Vue {
   // Methods
 
   private parsePartnersData() {
-    this.partition1PartnersData.push(this.createPartner('tool.providers', this.partners.tools_provider));
+    this.partition1PartnersData.push(this.createPartner('tool.providers', this.partners.tools_providers));
     this.partition1PartnersData.push(this.createPartner('researcher.partners', this.partners.researchers));
-    this.partition1PartnersData.push(this.createPartner('content.developers', this.partners.content_development));
-    this.partition1PartnersData.push(this.createPartner('administrators', this.partners.tenant_administrators));
+    this.partition1PartnersData.push(this.createPartner('content.developers', this.partners.content_developers));
+    this.partition1PartnersData.push(this.createPartner('administrators', this.partners.administrators));
 
-    this.partition2PartnersData.push(this.createPartner('integration.partners', this.partners.integration));
-    this.partition2PartnersData.push(this.createPartner('instructors', this.partners.implementation));
+    this.partition2PartnersData.push(this.createPartner('integration.partners', this.partners.integration_partners));
+    this.partition2PartnersData.push(this.createPartner('instructors', this.partners.implementation_partners));
     this.partition2PartnersData.push(this.createPartner('learners', this.partners.learners));
     this.partition2PartnersData.push(this.createPartner('funders', this.partners.funders));
 

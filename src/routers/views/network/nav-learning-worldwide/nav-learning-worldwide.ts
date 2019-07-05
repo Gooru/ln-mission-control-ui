@@ -1,11 +1,11 @@
 import { Component, Vue } from 'vue-property-decorator';
 import * as d3 from 'd3';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
-import { userAPI } from '@/providers/apis/user/user';
+import { statsAPI } from '@/providers/apis/stats/stats';
 import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-format';
 import axios from 'axios';
 import NavLearningWorldWidePopover from './nav-learning-worldwide-popover/nav-learning-worldwide-popover';
-
+import { CountryModel } from '@/models/stats/country';
 
 @Component({
   name: 'nav-learning-worldwide',
@@ -135,16 +135,16 @@ export default class NavLearningWorldWide extends Vue {
       .attr('class', (d: any) => {
         return d.has_data ? 'map-path has-data' : 'map-path';
       }).attr('id', (d: any) => {
-        return `country-code-${d.id}`;
+        return `country-code-${d.country_code}`;
       })
       .on('mouseover', (d: any) => {
-        const element = d3.select(`#country-code-${d.id}`);
+        const element = d3.select(`#country-code-${d.country_code}`);
         const currentClass = element.attr('class');
         element.attr('class', `${currentClass} on-hover-country`);
       })
       .on('mouseout', (d: any) => {
         const className = d.has_data ? 'map-path has-data' : 'map-path';
-        const element = d3.select(`#country-code-${d.id}`);
+        const element = d3.select(`#country-code-${d.country_code}`);
         element.attr('class', className);
       });
   }
@@ -174,7 +174,7 @@ export default class NavLearningWorldWide extends Vue {
         .attr('x', projection([longitude, latitude])[0])
         .attr('y', projection([longitude, latitude])[1])
         .attr('class', 'pie-box-shadow')
-        .attr('id', `pie-country-${countryData.id}`)
+        .attr('id', `pie-country-${countryData.country_code}`)
         .attr('width', this.pieWidth)
         .attr('height', this.pieHeight).append('g')
         .attr('transform', 'translate(' + this.pieWidth / 2 + ',' + this.pieHeight / 2 + ')');
@@ -202,14 +202,14 @@ export default class NavLearningWorldWide extends Vue {
         });
 
       pieChartContainer.on('mouseover', () => {
-        const element = d3.select(`#country-code-${countryData.id}`);
+        const element = d3.select(`#country-code-${countryData.country_code}`);
         const currentClass = element.attr('class');
         element.attr('class', `${currentClass} on-hover-country`);
         this.activeCountry = countryData;
-        this.showNavLearningWorldwidePopover(countryData.id);
+        this.showNavLearningWorldwidePopover(countryData.country_code);
       }).on('mouseout', () => {
         const className = 'map-path has-data';
-        const element = d3.select(`#country-code-${countryData.id}`);
+        const element = d3.select(`#country-code-${countryData.country_code}`);
         element.attr('class', className);
         this.activeCountry = null;
       });
@@ -246,35 +246,37 @@ export default class NavLearningWorldWide extends Vue {
   private fetchNavWorldWideMapData() {
     return axios.all([
       mapDataSetAPI.getCountries(),
-      userAPI.getUserDistributionByGeoLocation(),
+      statsAPI.getCountries(),
       mapDataSetAPI.getCountriesRegion(),
     ])
-      .then(axios.spread((countries, userDistributionByGeoLocation, countriesRegion) => {
-        if (userDistributionByGeoLocation) {
-          userDistributionByGeoLocation.map((geoLocation: any) => {
+      .then(axios.spread((countries, statsCountries, countriesRegion) => {
+        if (statsCountries) {
+          statsCountries.map((statsCountry: CountryModel) => {
             const country = countries.features.find((countryData: any) => {
-              return geoLocation.code === countryData.id;
+              return statsCountry.country_code === countryData.country_code;
             });
             if (country) {
               country.has_data = true;
 
-              country.total_student = geoLocation.total_student;
-              country.total_teacher = geoLocation.total_teacher;
-              country.total_other = geoLocation.total_other;
-              country.active_student = geoLocation.active_student;
-              country.active_classroom = geoLocation.active_classroom;
-              country.competencies_gained = geoLocation.competencies_gained;
-              country.total_timespent = geoLocation.total_timespent;
-              country.activities_conducted = geoLocation.activities_conducted;
-              country.navigator_courses = geoLocation.navigator_courses;
+              country.total_student = statsCountry.total_student;
+              country.total_teacher = statsCountry.total_teacher;
+              country.total_other = statsCountry.total_other;
+              country.active_student = statsCountry.active_student;
+              country.active_classroom = statsCountry.active_classroom;
+              country.competencies_gained = statsCountry.competencies_gained;
+              country.total_timespent = statsCountry.total_timespent;
+              country.activities_conducted = statsCountry.activities_conducted;
+              country.navigator_courses = statsCountry.navigator_courses;
+              country.country_name = statsCountry.country_name;
+
 
               // Calculate the overall count of Student, Teachers and Others
-              this.totalStudentCount += geoLocation.total_student;
-              this.totalTeacherCount += geoLocation.total_teacher;
-              this.totalOtherCount += geoLocation.total_other;
+              this.totalStudentCount += statsCountry.total_student;
+              this.totalTeacherCount += statsCountry.total_teacher;
+              this.totalOtherCount += statsCountry.total_other;
 
               const countryRegion = countriesRegion.find((region: any) => {
-                return region.code === geoLocation.code;
+                return region.country_code === statsCountry.country_code;
               });
               if (countryRegion) {
                 country.latitude = countryRegion.latitude;
@@ -286,7 +288,7 @@ export default class NavLearningWorldWide extends Vue {
 
         return {
           countries,
-          userDistributionByGeoLocation,
+          statsCountries,
         };
       }));
   }
@@ -296,8 +298,8 @@ export default class NavLearningWorldWide extends Vue {
     return numberFormat(value);
   }
 
-  private showNavLearningWorldwidePopover(countryId: string) {
-    const element = `#pie-country-${countryId}`;
+  private showNavLearningWorldwidePopover(countryCode: string) {
+    const element = `#pie-country-${countryCode}`;
     const xAxis = Number(d3.select(element).attr('x'));
     const yAxis = Number(d3.select(element).attr('y'));
     const newXAxisVal = (xAxis + 580) > window.innerWidth ? (xAxis - 340) : (xAxis + 80);

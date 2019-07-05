@@ -1,6 +1,6 @@
-export interface UserDistributionByGeoLocationModel {
-  code: string;
-  name: string;
+export interface CountryModel {
+  country_code: string;
+  country_name: string;
   total_teacher: number;
   total_student: number;
   total_other: number;

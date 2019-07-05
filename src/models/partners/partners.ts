@@ -3,10 +3,10 @@ import { PartnerModel } from './partner';
 export interface PartnersModel {
   funders: PartnerModel[];
   researchers: PartnerModel[];
-  content_development: PartnerModel[];
-  implementation: PartnerModel[];
-  tools_provider: PartnerModel[];
-  integration: PartnerModel[];
-  tenant_administrators: PartnerModel[];
+  content_developers: PartnerModel[];
+  implementation_partners: PartnerModel[];
+  tools_providers: PartnerModel[];
+  integration_partners: PartnerModel[];
+  administrators: PartnerModel[];
   learners: PartnerModel[];
 }

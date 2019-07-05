@@ -26,13 +26,13 @@ export class PartnersSerializer {
 
   public partnersModelSerializer(res: any): PartnersModel {
     const result: PartnersModel = {
-      funders: this.partnerListModelSerializer(res.funders),
-      integration: this.partnerListModelSerializer(res.integration),
+      funders: this.partnerListModelSerializer(res.researchers),
+      integration_partners: this.partnerListModelSerializer(res.integration_partners),
       researchers: this.partnerListModelSerializer(res.researchers),
-      content_development: this.partnerListModelSerializer(res.researchers),
-      tools_provider: this.partnerListModelSerializer(res.researchers),
-      tenant_administrators: this.partnerListModelSerializer(res.researchers),
-      implementation: this.partnerListModelSerializer(res.researchers),
+      content_developers: this.partnerListModelSerializer(res.content_developers),
+      tools_providers: this.partnerListModelSerializer(res.tools_providers),
+      administrators: this.partnerListModelSerializer(res.administrators),
+      implementation_partners: this.partnerListModelSerializer(res.implementation_partners),
       learners: this.partnerListModelSerializer(res.researchers),
     };
     return result;

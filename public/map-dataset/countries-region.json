@@ -1,57 +1,54 @@
 [{
-  "code": "USA",
-  "latitude": "50.778259",
-  "longitude": "-110.417931"
-}, {
-  "code": "CHN",
-  "latitude": "45.913818",
-  "longitude": "90.363625"
-}, {
-  "code": "BRA",
-  "latitude": "-1",
-  "longitude": "-61"
-}, {
-  "code": "AUS",
-  "latitude": "-13.865143",
-  "longitude": "121.209900",
-  "totalPercentage": "100"
-}, {
-  "code": "ZAF",
-  "latitude": "-20",
-  "longitude": "12"
-}, {
-  "code": "RUS",
-  "latitude": "75",
-  "longitude": "85"
-}, {
-  "code": "EUR",
-  "latitude": "51.68",
-  "longitude": "39"
-}, {
-  "code": "FUS",
-  "latitude": "61.3",
-  "longitude": "82"
-}, {
-  "code": "AEC",
-  "latitude": "11.2",
-  "longitude": "122"
-}, {
-  "code": "CH",
-  "latitude": "33.8",
-  "longitude": "104.4"
-},
-{
-  "code": "IND",
-  "latitude": "29",
-  "longitude": "70"
-},
-{
-  "code": "AME",
-  "latitude": "36.07",
-  "longitude": "-90.70"
-},
-{
-  "code": "OCE",
-  "latitude": "-23.55",
-  "longitude": "132.5"
-}]
+    "country_code": "US",
+    "latitude": "50.778259",
+    "longitude": "-110.417931"
+  }, {
+    "country_code": "CN",
+    "latitude": "45.913818",
+    "longitude": "90.363625"
+  }, {
+    "country_code": "BR",
+    "latitude": "-1",
+    "longitude": "-61"
+  }, {
+    "country_code": "AUS",
+    "latitude": "-13.865143",
+    "longitude": "121.209900",
+    "totalPercentage": "100"
+  }, {
+    "country_code": "ZAF",
+    "latitude": "-20",
+    "longitude": "12"
+  }, {
+    "country_code": "RUS",
+    "latitude": "75",
+    "longitude": "85"
+  }, {
+    "country_code": "EUR",
+    "latitude": "51.68",
+    "longitude": "39"
+  }, {
+    "country_code": "FUS",
+    "latitude": "61.3",
+    "longitude": "82"
+  }, {
+    "country_code": "AEC",
+    "latitude": "11.2",
+    "longitude": "122"
+  },
+  {
+    "country_code": "IN",
+    "latitude": "29",
+    "longitude": "70"
+  },
+  {
+    "country_code": "AME",
+    "latitude": "36.07",
+    "longitude": "-90.70"
+  },
+  {
+    "country_code": "OCE",
+    "latitude": "-23.55",
+    "longitude": "132.5"
+  }
+]
