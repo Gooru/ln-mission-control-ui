@@ -1,4 +1,4 @@
-import {PartnerModel} from './partner';
+import { PartnerModel } from './partner';
 
 export interface PartnersModel {
   funders: PartnerModel[];
@@ -8,4 +8,5 @@ export interface PartnersModel {
   tools_provider: PartnerModel[];
   integration: PartnerModel[];
   tenant_administrators: PartnerModel[];
+  learners: PartnerModel[];
 }

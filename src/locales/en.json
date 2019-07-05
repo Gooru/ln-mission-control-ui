@@ -27,13 +27,15 @@
   "errors.login.credentials.not.valid": "Uh oh! Something's not right. Please double check your username and password and try again.",
   "errors.login.failed": "Login Failed!",
   "network.nav.learning.worldwide": "Navigated Learning Worldwide",
-  "content.providers": "Content Providers",
+  "content.developers": "Content Developers",
   "tool.providers": "Tool Providers",
   "implementers": "Implementers",
   "integration.partners": "Integration Partners",
   "researcher.partners": "Researcher Partners",
   "funders": "Funders",
-  "tenant.administrators": "Tenant Administrators",
+  "administrators": "Administrators",
   "name": "Name",
-  "of.active.users": "of active users"
+  "of.active.users": "of active users",
+  "instructors": "Instructors",
+  "learners": "Learners"
 }

@@ -26,10 +26,11 @@
             >
               <div class="tabular-data">
                 <div class="name">{{partner.partner_name}}</div>
-                <div class="count">{{partner.active_users}}</div>
+                <div class="count">{{numberFormat(partner.active_users)}}</div>
               </div>
             </div>
           </div>
+          <div :id="'connector-line-p1' + categoryIndex" class="connector-line"></div>
         </div>
       </div>
       <div id="partner-panel">
@@ -66,10 +67,11 @@
             >
               <div class="tabular-data">
                 <div class="name">{{partner.partner_name}}</div>
-                <div class="count">{{partner.active_users}}</div>
+                <div class="count">{{numberFormat(partner.active_users)}}</div>
               </div>
             </div>
           </div>
+          <div :id="'connector-line-p2' + categoryIndex" class="connector-line"></div>
         </div>
       </div>
     </div>

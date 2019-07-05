@@ -3,6 +3,7 @@ import { partnersAPI } from '@/providers/apis/partners/partners';
 import { PartnersModel } from '@/models/partners/partners';
 import { PartnerModel } from '@/models/partners/partner';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
+import { numberFormatWithTextSuffix } from '@/helpers/number-format';
 
 @Component({
   name: 'partners',
@@ -51,14 +52,17 @@ export default class Partners extends Vue {
   // Methods
 
   private parsePartnersData() {
-    this.partition1PartnersData.push(this.createPartner('content.providers', this.partners.content_development));
     this.partition1PartnersData.push(this.createPartner('tool.providers', this.partners.tools_provider));
-    this.partition1PartnersData.push(this.createPartner('implementers', this.partners.implementation));
+    this.partition1PartnersData.push(this.createPartner('researcher.partners', this.partners.researchers));
+    this.partition1PartnersData.push(this.createPartner('content.developers', this.partners.content_development));
+    this.partition1PartnersData.push(this.createPartner('administrators', this.partners.tenant_administrators));
 
-    this.partition2PartnersData.push(this.createPartner('researcher.partners', this.partners.researchers));
-    this.partition2PartnersData.push(this.createPartner('funders', this.partners.funders));
     this.partition2PartnersData.push(this.createPartner('integration.partners', this.partners.integration));
-    this.partition2PartnersData.push(this.createPartner('tenant.administrators', this.partners.tenant_administrators));
+    this.partition2PartnersData.push(this.createPartner('instructors', this.partners.implementation));
+    this.partition2PartnersData.push(this.createPartner('learners', this.partners.learners));
+    this.partition2PartnersData.push(this.createPartner('funders', this.partners.funders));
+
+
   }
 
   private createPartner(partnerCategory: string, partners: PartnerModel[]) {
@@ -68,5 +72,9 @@ export default class Partners extends Vue {
       total: partners.length,
       partners: top3PartnersData,
     };
+  }
+
+  private numberFormat(value: number) {
+    return numberFormatWithTextSuffix(value);
   }
 }

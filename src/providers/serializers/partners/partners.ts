@@ -33,6 +33,7 @@ export class PartnersSerializer {
       tools_provider: this.partnerListModelSerializer(res.researchers),
       tenant_administrators: this.partnerListModelSerializer(res.researchers),
       implementation: this.partnerListModelSerializer(res.researchers),
+      learners: this.partnerListModelSerializer(res.researchers),
     };
     return result;
   }
