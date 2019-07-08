@@ -1,5 +1,5 @@
 <template>
-  <div id="nav-partners-container">
+  <div id="nav-partners-container" v-if="partners">
     <h2>{{$tc('partner', 2)}}</h2>
     <div id="partners-data">
       <div id="left-partner-panel">

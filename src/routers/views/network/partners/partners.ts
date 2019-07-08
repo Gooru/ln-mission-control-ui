@@ -18,7 +18,7 @@ export default class Partners extends Vue {
   /**
    * Maintains the list of partners
    */
-  private partners!: PartnersModel;
+  private partners: PartnersModel | null = null;
 
   /**
    * Partition1 partners data.
@@ -52,16 +52,17 @@ export default class Partners extends Vue {
   // Methods
 
   private parsePartnersData() {
-    this.partition1PartnersData.push(this.createPartner('tool.providers', this.partners.tools_providers));
-    this.partition1PartnersData.push(this.createPartner('researcher.partners', this.partners.researchers));
-    this.partition1PartnersData.push(this.createPartner('content.developers', this.partners.content_developers));
-    this.partition1PartnersData.push(this.createPartner('administrators', this.partners.administrators));
+    if (this.partners) {
+      this.partition1PartnersData.push(this.createPartner('tool.providers', this.partners.tools_providers));
+      this.partition1PartnersData.push(this.createPartner('researcher.partners', this.partners.researchers));
+      this.partition1PartnersData.push(this.createPartner('content.developers', this.partners.content_developers));
+      this.partition1PartnersData.push(this.createPartner('administrators', this.partners.administrators));
 
-    this.partition2PartnersData.push(this.createPartner('integration.partners', this.partners.integration_partners));
-    this.partition2PartnersData.push(this.createPartner('instructors', this.partners.implementation_partners));
-    this.partition2PartnersData.push(this.createPartner('learners', this.partners.learners));
-    this.partition2PartnersData.push(this.createPartner('funders', this.partners.funders));
-
+      this.partition2PartnersData.push(this.createPartner('integration.partners', this.partners.integration_partners));
+      this.partition2PartnersData.push(this.createPartner('instructors', this.partners.implementation_partners));
+      this.partition2PartnersData.push(this.createPartner('learners', this.partners.learners));
+      this.partition2PartnersData.push(this.createPartner('funders', this.partners.funders));
+    }
 
   }
 
