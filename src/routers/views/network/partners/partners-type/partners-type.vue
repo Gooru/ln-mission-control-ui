@@ -1,5 +1,5 @@
 <template>
-  <div id="mc-network-partners-type" v-if="partners">
+  <div id="mc-network-partners-type" v-if="partners.length > 0">
     <div id="header-partners-type">
       <div id="back-button" @click="back()">
         <google-material-icon icon="arrow_back" />
@@ -16,7 +16,12 @@
       </div>
       <div id="partners-data-sheet-body">
         <div class="partners-data-sheet-content" v-for="(partner, index) in partners" :key="index">
-          <div class="name">{{partner.partner_name}}</div>
+          <div class="name">
+            <div class="partner-logo">
+              <img v-lazy="partner.logo" />
+            </div>
+            <p>{{partner.partner_name}}</p>
+          </div>
           <div class="country">{{getFirstCountryFromIndex(partner.countries)}}</div>
           <div class="learners">{{numberFormat(partner.total_students)}}</div>
           <div class="instructors">{{numberFormat(partner.total_teachers)}}</div>

@@ -70,4 +70,5 @@ export const PARTNERS_TYPE = [
 
 export const DEFAULT_IMAGES_PATH: any = {
   profile: '/img/default-images/profile.png',
+  partner: '/img/default-images/partner.png',
 };
