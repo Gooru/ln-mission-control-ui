@@ -9,4 +9,5 @@ export interface PartnersModel {
   integration_partners: PartnerModel[];
   administrators: PartnerModel[];
   learners: PartnerModel[];
+  [key: string]: PartnerModel[];
 }

@@ -36,6 +36,7 @@ export default class AppHeaderNav extends Vue {
     this.currentRoutePath = currentPath;
     this.$router.push(currentPath);
     this.$emit('send', currentPath);
+
   }
 
   // -------------------------------------------------------------------------

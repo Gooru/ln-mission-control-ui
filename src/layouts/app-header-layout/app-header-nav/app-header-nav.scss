@@ -1,11 +1,12 @@
 .app-header-nav {
   .nav-menu-container {
     display: grid;
-    grid-template-columns: 150px 150px 150px 150px;
+    grid-template-columns: 150px 180px 150px 150px;
     align-items: center;
     justify-items: center;
     font-size: 15px;
     min-width: 600px;
+    padding-left: 95px;
     @media only screen and (max-width: $screen-xs) {
       display: unset;
     }
@@ -15,10 +16,6 @@
     }
 
     .nav-menu {
-      visibility: hidden;
-      &:first-child {
-        visibility: visible;
-      }
       cursor: pointer;
       @media only screen and (max-width: $screen-xs) {
         padding-left: 30px;

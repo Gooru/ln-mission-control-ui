@@ -1,13 +1,16 @@
+import { CountryModel } from './country';
+
+
 export interface PartnerModel {
   partner_id: number;
   partner_name: string;
-  partner_url?: string;
-  partner_contact_name?: string;
-  partner_contact_phone?: string;
-  partner_logo?: string;
-  partner_brief?: string;
-  partner_shared_videos?: string[];
-  partner_shared_links?: string[];
-  active_users?: number;
+  logo?: string;
+  total_users: number;
   tenant_manager?: boolean;
+  total_students?: number;
+  total_classes?: number;
+  total_others?: number;
+  total_teachers?: number;
+  countries: CountryModel[];
+  website?: string;
 }

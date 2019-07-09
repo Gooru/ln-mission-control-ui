@@ -1,5 +1,6 @@
 import { PartnerModel } from '@/models/partners/partner';
 import { PartnersModel } from '@/models/partners/partners';
+import { CountryModel } from '@/models/partners/country';
 
 
 /**
@@ -19,7 +20,13 @@ export class PartnersSerializer {
       partner_id: res.partner_id,
       partner_name: res.partner_name,
       tenant_manager: res.tenant_manager,
-      active_users: res.active_users,
+      total_users: res.total_users,
+      logo: res.logo,
+      total_classes: res.total_classes,
+      total_others: res.total_others,
+      total_students: res.total_students,
+      total_teachers: res.total_teachers,
+      countries: this.countriesModelSerializer(res.countries),
     };
     return result;
   }
@@ -45,6 +52,26 @@ export class PartnersSerializer {
     });
     return resultSet;
   }
+
+  private countriesModelSerializer(res: any): CountryModel[] {
+    const resultSet: CountryModel[] = new Array();
+    if (res) {
+      res.map((country: object) => {
+        resultSet.push(this.countryModelSerializer(country));
+      });
+    }
+    return resultSet;
+  }
+
+  private countryModelSerializer(res: any): CountryModel {
+    const result: CountryModel = {
+      id: res.id,
+      name: res.name,
+      code: res.code,
+    };
+    return result;
+  }
+
 
 }
 

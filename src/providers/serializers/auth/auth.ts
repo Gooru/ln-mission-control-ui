@@ -1,4 +1,5 @@
 import { SessionModel } from '@/models/auth/session';
+import { SessionRGOModel } from '@/models/auth/session-rgo';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
 
 /**
@@ -28,6 +29,26 @@ export class AuthSerializer {
       thumbnail: res.thumbnail,
       thumbnail_url: this.getThumbnailUrl(res),
       user_display_name: this.getUserDisplayName(res),
+    };
+    return result;
+  }
+
+  public sessionModelRGOSerializer(res: any) {
+    const result: SessionRGOModel = {
+      authenticated: {
+        authenticator: 'authenticator:auth-api-3',
+        accessToken: res.access_token,
+        user: {
+          username: res.username,
+          id: res.user_id,
+          avatarUrl: this.getThumbnailUrl(res),
+        },
+        cdnUrls: {
+          user: res.cdn_urls.user,
+          content: res.cdn_urls.content,
+        },
+        isAuthenticated: true,
+      },
     };
     return result;
   }

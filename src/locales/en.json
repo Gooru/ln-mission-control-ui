@@ -37,5 +37,8 @@
   "name": "Name",
   "of.active.users": "of active users",
   "instructors": "Instructors",
-  "learners": "Learners"
+  "learners": "Learners",
+  "active.users": "Active Users",
+  "country": "Country | Countries",
+  "class": "Class | Classes"
 }

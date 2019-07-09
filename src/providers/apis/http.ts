@@ -13,12 +13,12 @@ export class Http {
     return this.INSTANCE;
   }
 
-  public get(url: string, headers?: any, data?: any) {
+  public get(url: string, headers?: any, params?: any) {
     const options = {
       url: this.formURL(url),
       method: 'GET',
       headers,
-      data,
+      params,
     };
     return axios(options);
   }
@@ -28,7 +28,7 @@ export class Http {
       url: this.formURL(url),
       method: 'POST',
       headers,
-      data: data ? JSON.stringify(data)  : '{}',
+      data: data ? JSON.stringify(data) : '{}',
     };
     return axios(options);
   }

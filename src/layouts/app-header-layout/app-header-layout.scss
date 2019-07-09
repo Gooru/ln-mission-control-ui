@@ -8,7 +8,7 @@
     align-items: center;
     justify-items: center;
     box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
-    grid-template-columns: 130px 1fr 160px 40px;
+    grid-template-columns: 160px 1fr 120px 50px;
     color: $dark-800;
     z-index: 1;
     @media only screen and (max-width: $screen-xs) {
@@ -22,7 +22,7 @@
     }
 
     .app-logo-container {
-      padding-left: 30px;
+      padding-left: 55px;
       .app-logo {
         width: 115px;
         height: 60px;
@@ -30,6 +30,7 @@
         background-repeat: no-repeat;
         background-image: url($logo);
         background-position: center;
+        background-position-y: 13px;
       }
     }
 
@@ -73,6 +74,13 @@
 
       .dropdown-toggle {
         display: flex;
+        justify-content: center;
+        padding-right: 8px;
+        padding-left: 5px;
+        &:hover {
+          border-radius: 5px;
+          background-color: $light-200;
+        }
       }
 
       .dropdown-toggle:after {

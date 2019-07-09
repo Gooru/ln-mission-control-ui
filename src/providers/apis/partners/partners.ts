@@ -1,5 +1,6 @@
 import { http } from '@/providers/apis/http';
 import { PartnersModel } from '@/models/partners/partners';
+import { PartnerModel } from '@/models/partners/partner';
 import { partnersSerializer } from '@/providers/serializers/partners/partners';
 /**
  *
@@ -21,6 +22,15 @@ export class PartnersAPI {
     const headers = http.getTokenHeaders();
     return http.get(endpoint, headers).then((response) => {
       return partnersSerializer.partnersModelSerializer(response.data);
+    });
+  }
+
+  public getPartnersByType(type: string): Promise<PartnerModel[]> {
+    const endpoint = `${this.partnersNamespace}/partners`;
+    const headers = http.getTokenHeaders();
+    const params = { type };
+    return http.get(endpoint, headers, params).then((response) => {
+      return partnersSerializer.partnerListModelSerializer(response.data[type]);
     });
   }
 }

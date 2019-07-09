@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import AppLayout from '@/layouts/app-layout/app-layout.vue';
 import AppHeaderLayout from '@/layouts/app-header-layout/app-header-layout.vue';
-import { sessionService } from '@/providers/services/auth/session';
+import { sessionService, SessionService } from '@/providers/services/auth/session';
 
 Vue.use(Router);
 
@@ -19,22 +19,31 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
+        path: '/network/partners/:type',
+        name: 'network-partners-type',
+        component: () => import('@/routers/views/network/partners/partners-type/partners-type.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
         path: '/competency',
         name: 'competency',
-        component: () => import('@/routers/views/competency/competency.vue'),
-        meta: { isRequiredAuth: true },
+        beforeEnter() {
+          window.location.href = '/research/competency/tree';
+        },
       },
       {
         path: '/catalog',
         name: 'catalog',
-        component: () => import('@/routers/views/catalog/catalog.vue'),
-        meta: { isRequiredAuth: true },
+        beforeEnter() {
+          window.location.href = '/research/activities';
+        },
       },
       {
-        path: '/console',
-        name: 'console',
-        component: () => import('@/routers/views/console/console.vue'),
-        meta: { isRequiredAuth: true },
+        path: '/learners',
+        name: 'learners',
+        beforeEnter() {
+          window.location.href = '/research/learners';
+        },
       },
     ],
   },
@@ -47,6 +56,14 @@ const routes = [
         path: '/login',
         name: 'login',
         component: () => import('@/routers/views/login/login.vue'),
+      },
+      {
+        path: '/logout',
+        name: 'logout',
+        beforeEnter() {
+          sessionService.deleteSession();
+          window.location.href = '/login';
+        },
       },
     ],
   },

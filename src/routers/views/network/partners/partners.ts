@@ -4,6 +4,8 @@ import { PartnersModel } from '@/models/partners/partners';
 import { PartnerModel } from '@/models/partners/partner';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
 import { numberFormatWithTextSuffix } from '@/helpers/number-format';
+import { PARTNERS_TYPE } from '@/utils/constants';
+
 
 @Component({
   name: 'partners',
@@ -24,7 +26,8 @@ export default class Partners extends Vue {
    * Partition1 partners data.
    */
   private partition1PartnersData: Array<{
-    key: string;
+    labelKey: string;
+    pathname: string;
     total: number;
     partners: PartnerModel[];
   }> = new Array();
@@ -33,10 +36,27 @@ export default class Partners extends Vue {
    * Partition2 partners data.
    */
   private partition2PartnersData: Array<{
-    key: string;
+    labelKey: string;
     total: number;
     partners: PartnerModel[];
   }> = new Array();
+
+  /**
+   * Maintains the value of partners metrics data
+   */
+  private partnerMetrics: {
+    total: number,
+    total_users: number,
+    total_countries: number,
+  } = { total: 0, total_users: 0, total_countries: 0 };
+
+  // -------------------------------------------------------------------------
+  // Actions
+
+  private onPreviewPartnersType(partnerType: string) {
+    const path = `/network/partners/${partnerType}`;
+    this.$router.push(path);
+  }
 
   // -------------------------------------------------------------------------
   // Hooks
@@ -45,6 +65,7 @@ export default class Partners extends Vue {
     partnersAPI.getPartners().then((response) => {
       this.partners = response;
       this.parsePartnersData();
+      this.computePartnerMetricsData();
     });
   }
 
@@ -52,27 +73,40 @@ export default class Partners extends Vue {
   // Methods
 
   private parsePartnersData() {
-    if (this.partners) {
-      this.partition1PartnersData.push(this.createPartner('tool.providers', this.partners.tools_providers));
-      this.partition1PartnersData.push(this.createPartner('researcher.partners', this.partners.researchers));
-      this.partition1PartnersData.push(this.createPartner('content.developers', this.partners.content_developers));
-      this.partition1PartnersData.push(this.createPartner('administrators', this.partners.administrators));
-
-      this.partition2PartnersData.push(this.createPartner('integration.partners', this.partners.integration_partners));
-      this.partition2PartnersData.push(this.createPartner('instructors', this.partners.implementation_partners));
-      this.partition2PartnersData.push(this.createPartner('learners', this.partners.learners));
-      this.partition2PartnersData.push(this.createPartner('funders', this.partners.funders));
-    }
-
+    PARTNERS_TYPE.forEach((partnerType) => {
+      if (this.partners) {
+        const data: PartnerModel[] = this.partners[partnerType.type];
+        if (partnerType.partition === 1) {
+          this.partition1PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
+        } else if (partnerType.partition === 2) {
+          this.partition2PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
+        }
+      }
+    });
   }
 
-  private createPartner(partnerCategory: string, partners: PartnerModel[]) {
+  private createPartner(labelKey: string, pathname: string, partners: PartnerModel[]) {
     const top3PartnersData = partners.slice(0, 3);
     return {
-      key: partnerCategory,
+      labelKey,
+      pathname,
       total: partners.length,
       partners: top3PartnersData,
     };
+  }
+
+  private computePartnerMetricsData() {
+    if (this.partners) {
+      const partners = this.partners;
+      Object.entries(partners).forEach(
+        ([key, data]) => {
+          this.partnerMetrics.total += data.length;
+          data.map((partner: PartnerModel) => {
+            this.partnerMetrics.total_countries += partner.countries.length;
+            this.partnerMetrics.total_users += partner.total_users;
+          });
+        });
+    }
   }
 
   private numberFormat(value: number) {

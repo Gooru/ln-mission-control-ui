@@ -6,7 +6,7 @@
         v-for="(item) in menuItems"
         @click="onChangeRoute(item.path)"
         :key="item.path"
-        v-bind:class="(currentRoutePath == item.path) ? 'active':''"
+        v-bind:class="(currentRoutePath.includes(item.path)) ? 'active':''"
       >
         <span>{{ $t(item.name) }}</span>
       </div>

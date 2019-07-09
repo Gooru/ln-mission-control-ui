@@ -64,19 +64,19 @@ export default class NavLearningWorldWide extends Vue {
    * Maintains the value of total number of students
    * @type {Number}
    */
-  private totalStudentCount: number = 0;
+  private totalStudentsCount: number = 0;
 
   /**
    * Maintains the value of total number of teachers
    * @type {Number}
    */
-  private totalTeacherCount: number = 0;
+  private totalTeachersCount: number = 0;
 
   /**
    * Maintains the value of total number of others
    * @type {Number}
    */
-  private totalOtherCount: number = 0;
+  private totalOthersCount: number = 0;
 
   /**
    * Maintains the country object when hover the pie chart.
@@ -178,18 +178,18 @@ export default class NavLearningWorldWide extends Vue {
         .attr('width', this.pieWidth)
         .attr('height', this.pieHeight).append('g')
         .attr('transform', 'translate(' + this.pieWidth / 2 + ',' + this.pieHeight / 2 + ')');
-      const total = countryData.total_student + countryData.total_teacher + countryData.total_other;
+      const total = countryData.total_students + countryData.total_teachers + countryData.total_others;
       const pieData = [{
         key: 'teacher',
-        value: countryData.total_student,
+        value: countryData.total_students,
       },
       {
         key: 'student',
-        value: countryData.total_teacher,
+        value: countryData.total_teachers,
       },
       {
         key: 'other',
-        value: countryData.total_other,
+        value: countryData.total_others,
       }];
 
       const pieChart = pieChartContainer.selectAll('.arc')
@@ -258,22 +258,22 @@ export default class NavLearningWorldWide extends Vue {
             if (country) {
               country.has_data = true;
 
-              country.total_student = statsCountry.total_student;
-              country.total_teacher = statsCountry.total_teacher;
-              country.total_other = statsCountry.total_other;
-              country.active_student = statsCountry.active_student;
-              country.active_classroom = statsCountry.active_classroom;
-              country.competencies_gained = statsCountry.competencies_gained;
+              country.total_students = statsCountry.total_students;
+              country.total_teachers = statsCountry.total_teachers;
+              country.total_others = statsCountry.total_others;
+              country.total_users = statsCountry.total_users;
+              country.total_classes = statsCountry.total_classes;
+              country.total_competencies_gained = statsCountry.total_competencies_gained;
               country.total_timespent = statsCountry.total_timespent;
-              country.activities_conducted = statsCountry.activities_conducted;
-              country.navigator_courses = statsCountry.navigator_courses;
+              country.total_activities_conducted = statsCountry.total_activities_conducted;
+              country.total_navigator_courses = statsCountry.total_navigator_courses;
               country.country_name = statsCountry.country_name;
 
 
               // Calculate the overall count of Student, Teachers and Others
-              this.totalStudentCount += statsCountry.total_student;
-              this.totalTeacherCount += statsCountry.total_teacher;
-              this.totalOtherCount += statsCountry.total_other;
+              this.totalStudentsCount += statsCountry.total_students;
+              this.totalTeachersCount += statsCountry.total_teachers;
+              this.totalOthersCount += statsCountry.total_others;
 
               const countryRegion = countriesRegion.find((region: any) => {
                 return region.country_code === statsCountry.country_code;

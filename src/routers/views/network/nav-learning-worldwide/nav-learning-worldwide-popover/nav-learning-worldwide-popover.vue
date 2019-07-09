@@ -10,12 +10,12 @@
           <div id="active-students-container">
             <span class="title">{{$t('active')}} {{$tc('student', 2)}}</span>
             <google-material-icon class="icon" icon="account_circle" />
-            <span class="count">{{numberFormat(country.active_student)}}</span>
+            <span class="count">{{numberFormat(country.total_users)}}</span>
           </div>
           <div id="competencies-gained-container">
             <span class="title">{{$t('competencies')}} {{$t('gained')}}</span>
             <i class="competencies-gained-icon" />
-            <span class="count">{{numberFormat(country.competencies_gained)}}</span>
+            <span class="count">{{numberFormat(country.total_competencies_gained)}}</span>
           </div>
           <div id="total-timespent-container">
             <span class="title">{{$t('total')}} {{$t('time')}}&nbsp;{{$t('spent')}}</span>
@@ -30,17 +30,17 @@
           <div id="active-classrooms-container">
             <span class="title">{{$t('active')}} {{$tc('classroom', 2)}}</span>
             <mc-icon icon="classroom-white" />
-            <span class="count">{{numberFormat(country.active_classroom)}}</span>
+            <span class="count">{{numberFormat(country.total_classes)}}</span>
           </div>
           <div id="activities-conducted-container">
             <span class="title">{{$tc('activity', 2)}} {{$t('conducted')}}</span>
             <mc-icon icon="pin-white" />
-            <span class="count">{{numberFormat(country.activities_conducted)}}</span>
+            <span class="count">{{numberFormat(country.total_activities_conducted)}}</span>
           </div>
           <div id="nav-courses-container">
             <span class="title">{{$t('navigator')}} {{$tc('course', 2)}}</span>
             <mc-icon icon="navigator-white" />
-            <span class="count">{{numberFormat(country.navigator_courses)}}</span>
+            <span class="count">{{numberFormat(country.total_navigator_courses)}}</span>
           </div>
         </div>
       </div>

@@ -24,15 +24,15 @@ export class StatsSerializer {
     const result: CountryModel = {
       country_code: res.country_code,
       country_name: res.country_name,
-      total_teacher: res.total_teacher,
-      total_student: res.total_student,
-      total_other: res.total_other,
-      active_student: res.active_student,
-      active_classroom: res.active_classroom,
-      competencies_gained: res.competencies_gained,
+      total_teachers: res.total_teachers,
+      total_students: res.total_students,
+      total_others: res.total_others,
+      total_users: res.total_users,
+      total_classes: res.active_classroom,
+      total_competencies_gained: res.competencies_gained,
       total_timespent: res.total_timespent,
-      activities_conducted: res.activities_conducted,
-      navigator_courses: res.navigator_courses,
+      total_activities_conducted: res.activities_conducted,
+      total_navigator_courses: res.navigator_courses,
     };
     return result;
   }

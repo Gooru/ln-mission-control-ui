@@ -9,7 +9,15 @@ export class SessionService {
     return this.INSTANCE;
   }
 
+  /**
+   * Maintains the mission control session
+   */
   private SESSION: string = 'MC_SESSION';
+
+  /**
+   * Maintains the RGO mission control session.
+   */
+  private SESSION_RGO: string = 'ember_simple_auth-research-session';
 
 
   public getSession() {
@@ -24,10 +32,12 @@ export class SessionService {
 
   public setSession(session: SessionModel) {
     localStorage.setItem(this.SESSION, JSON.stringify(session));
+    localStorage.setItem(this.SESSION_RGO, JSON.stringify(authSerializer.sessionModelRGOSerializer(session)));
   }
 
   public deleteSession() {
     localStorage.removeItem(this.SESSION);
+    localStorage.removeItem(this.SESSION_RGO);
   }
 
   public isAuthorized() {
