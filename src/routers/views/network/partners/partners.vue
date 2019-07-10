@@ -38,13 +38,13 @@
         <div class="panel-conatiner">
           <div class="panel-body">
             <mc-icon icon="navigator-mix-color" />
-            <p id="partner-count">{{numberFormat(partnerMetrics.total)}} {{$tc('partner', 2)}}</p>
+            <p id="partner-count">{{numberFormat(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
             <p
               id="partner-active-count"
-            >{{numberFormat(partnerMetrics.total_users)}} {{$t('active.users')}}</p>
+            >{{numberFormat(overallStats.total_users)}} {{$t('active.users')}}</p>
             <p
               id="no-of-countries"
-            >{{numberFormat(partnerMetrics.total_countries)}} {{$tc('country', 2)}}</p>
+            >{{numberFormat(overallStats.total_countries)}} {{$tc('country', 2)}}</p>
           </div>
         </div>
       </div>

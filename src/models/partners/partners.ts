@@ -1,5 +1,5 @@
 import { PartnerModel } from './partner';
-
+import { OverallStatsModel } from './overall-stats';
 export interface PartnersModel {
   funders: PartnerModel[];
   researchers: PartnerModel[];
@@ -9,5 +9,6 @@ export interface PartnersModel {
   integration_partners: PartnerModel[];
   administrators: PartnerModel[];
   learners: PartnerModel[];
-  [key: string]: PartnerModel[];
+  overall_stats: OverallStatsModel;
+  [key: string]: any;
 }

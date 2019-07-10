@@ -5,6 +5,7 @@ import { PartnerModel } from '@/models/partners/partner';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
 import { numberFormatWithTextSuffix } from '@/helpers/number-format';
 import { PARTNERS_TYPE } from '@/utils/constants';
+import { OverallStatsModel } from '@/models/partners/overall-stats';
 
 
 @Component({
@@ -21,6 +22,11 @@ export default class Partners extends Vue {
    * Maintains the list of partners
    */
   private partners: PartnersModel | null = null;
+
+  /**
+   * Maintains the overall stats of partners
+   */
+  private overallStats!: OverallStatsModel;
 
   /**
    * Partition1 partners data.
@@ -41,15 +47,6 @@ export default class Partners extends Vue {
     partners: PartnerModel[];
   }> = new Array();
 
-  /**
-   * Maintains the value of partners metrics data
-   */
-  private partnerMetrics: {
-    total: number,
-    total_users: number,
-    total_countries: number,
-  } = { total: 0, total_users: 0, total_countries: 0 };
-
   // -------------------------------------------------------------------------
   // Actions
 
@@ -65,7 +62,6 @@ export default class Partners extends Vue {
     partnersAPI.getPartners().then((response) => {
       this.partners = response;
       this.parsePartnersData();
-      this.computePartnerMetricsData();
     });
   }
 
@@ -81,6 +77,7 @@ export default class Partners extends Vue {
         } else if (partnerType.partition === 2) {
           this.partition2PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
         }
+        this.overallStats = this.partners.overall_stats;
       }
     });
   }
@@ -95,19 +92,6 @@ export default class Partners extends Vue {
     };
   }
 
-  private computePartnerMetricsData() {
-    if (this.partners) {
-      const partners = this.partners;
-      Object.entries(partners).forEach(
-        ([key, data]) => {
-          this.partnerMetrics.total += data.length;
-          data.map((partner: PartnerModel) => {
-            this.partnerMetrics.total_countries += partner.countries.length;
-            this.partnerMetrics.total_users += partner.total_users;
-          });
-        });
-    }
-  }
 
   private numberFormat(value: number) {
     return numberFormatWithTextSuffix(value);

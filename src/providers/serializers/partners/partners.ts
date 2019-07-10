@@ -2,7 +2,7 @@ import { PartnerModel } from '@/models/partners/partner';
 import { PartnersModel } from '@/models/partners/partners';
 import { CountryModel } from '@/models/partners/country';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
-
+import { OverallStatsModel } from '@/models/partners/overall-stats';
 
 /**
  *
@@ -10,6 +10,7 @@ import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
  *
  */
 export class PartnersSerializer {
+
   private static INSTANCE = new PartnersSerializer();
 
   static get instance() {
@@ -42,8 +43,10 @@ export class PartnersSerializer {
       administrators: this.partnerListModelSerializer(res.administrators),
       implementation_partners: this.partnerListModelSerializer(res.implementation_partners),
       learners: this.partnerListModelSerializer(res.learners),
+      overall_stats: this.overallStatsModelSerializer(res.overall_stats),
     };
     return result;
+
   }
 
   public partnerListModelSerializer(res: any): PartnerModel[] {
@@ -69,6 +72,15 @@ export class PartnersSerializer {
       id: res.id,
       name: res.name,
       code: res.code,
+    };
+    return result;
+  }
+
+  private overallStatsModelSerializer(res: any): OverallStatsModel {
+    const result: OverallStatsModel = {
+      total_partners: res.total_partners,
+      total_countries: res.total_countries,
+      total_users: res.total_users,
     };
     return result;
   }
