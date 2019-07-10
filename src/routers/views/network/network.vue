@@ -1,10 +1,8 @@
 <template>
-  <transition name="fade">
-    <div id="mc-network">
-      <nav-learning-worldwide />
-      <partners />
-    </div>
-  </transition>
+  <div id="mc-network">
+    <nav-learning-worldwide />
+    <partners />
+  </div>
 </template>
 
 <script lang="ts" src="./network.ts"></script>

@@ -22,7 +22,7 @@ export class PartnersSerializer {
       partner_name: res.partner_name,
       tenant_manager: res.tenant_manager,
       total_users: res.total_users,
-      logo: res.logo ? res.logo : DEFAULT_IMAGES_PATH.partner,
+      logo: DEFAULT_IMAGES_PATH.partner,
       total_classes: res.total_classes,
       total_others: res.total_others,
       total_students: res.total_students,
