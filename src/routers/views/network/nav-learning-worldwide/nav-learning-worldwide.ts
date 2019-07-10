@@ -181,11 +181,11 @@ export default class NavLearningWorldWide extends Vue {
       const total = countryData.total_students + countryData.total_teachers + countryData.total_others;
       const pieData = [{
         key: 'teacher',
-        value: countryData.total_students,
+        value: countryData.total_teachers,
       },
       {
         key: 'student',
-        value: countryData.total_teachers,
+        value: countryData.total_students,
       },
       {
         key: 'other',
@@ -257,7 +257,6 @@ export default class NavLearningWorldWide extends Vue {
             });
             if (country) {
               country.has_data = true;
-
               country.total_students = statsCountry.total_students;
               country.total_teachers = statsCountry.total_teachers;
               country.total_others = statsCountry.total_others;

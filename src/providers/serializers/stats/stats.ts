@@ -28,11 +28,11 @@ export class StatsSerializer {
       total_students: res.total_students,
       total_others: res.total_others,
       total_users: res.total_users,
-      total_classes: res.active_classroom,
-      total_competencies_gained: res.competencies_gained,
+      total_classes: res.total_classes,
+      total_competencies_gained: res.total_competencies_gained,
       total_timespent: res.total_timespent,
-      total_activities_conducted: res.activities_conducted,
-      total_navigator_courses: res.navigator_courses,
+      total_activities_conducted: res.total_activities_conducted,
+      total_navigator_courses: res.total_navigator_courses,
     };
     return result;
   }
