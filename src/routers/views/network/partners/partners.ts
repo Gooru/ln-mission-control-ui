@@ -35,6 +35,7 @@ export default class Partners extends Vue {
     labelKey: string;
     pathname: string;
     total: number;
+    totalTeachers: number;
     partners: PartnerModel[];
   }> = new Array();
 
@@ -44,6 +45,7 @@ export default class Partners extends Vue {
   private partition2PartnersData: Array<{
     labelKey: string;
     total: number;
+    totalTeachers: number;
     partners: PartnerModel[];
   }> = new Array();
 
@@ -84,10 +86,15 @@ export default class Partners extends Vue {
 
   private createPartner(labelKey: string, pathname: string, partners: PartnerModel[]) {
     const top3PartnersData = partners.slice(0, 3);
+    let totalTeachers = 0;
+    partners.forEach((partner) => {
+      totalTeachers += partner.total_teachers;
+    });
     return {
       labelKey,
       pathname,
       total: partners.length,
+      totalTeachers,
       partners: top3PartnersData,
     };
   }

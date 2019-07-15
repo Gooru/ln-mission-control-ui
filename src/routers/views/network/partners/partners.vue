@@ -16,20 +16,7 @@
             </p>
           </div>
           <div class="panel-body">
-            <div class="tabular-head">
-              <div class="name">{{$t('name')}}</div>
-              <div class="count"># {{$t('of.active.users')}}</div>
-            </div>
-            <div
-              class="tabular-body"
-              v-for="(partner, partnerIndex) in partnerType.partners"
-              :key="partnerIndex"
-            >
-              <div class="tabular-data">
-                <div class="name">{{partner.partner_name}}</div>
-                <div class="count">{{numberFormat(partner.total_users)}}</div>
-              </div>
-            </div>
+            <h3>{{numberFormat(partnerType.totalTeachers)}}</h3>
           </div>
           <div :id="'connector-line-p1' + typeIndex" class="connector-line"></div>
         </div>
@@ -38,7 +25,9 @@
         <div class="panel-conatiner">
           <div class="panel-body">
             <mc-icon icon="navigator-mix-color" />
-            <p id="partner-count">{{numberFormat(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
+            <p
+              id="partner-count"
+            >{{numberFormat(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
             <p
               id="partner-active-count"
             >{{numberFormat(overallStats.total_users)}} {{$t('active.users')}}</p>
@@ -53,6 +42,7 @@
           class="header-panel-conatiner"
           v-for="(partnerType, typeIndex) in partition2PartnersData"
           :key="typeIndex"
+          @click="onPreviewPartnersType(partnerType.pathname)"
         >
           <div class="panel-header">
             <p>
@@ -69,7 +59,6 @@
               class="tabular-body"
               v-for="(partner, partnerIndex) in partnerType.partners"
               :key="partnerIndex"
-              @click="onPreviewPartnersType(partnerType.pathname)"
             >
               <div class="tabular-data">
                 <div class="name">{{partner.partner_name}}</div>

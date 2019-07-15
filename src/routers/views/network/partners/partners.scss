@@ -144,6 +144,14 @@
       .header-panel-conatiner {
         .panel-body {
           background-color: $blue-400;
+          display: grid;
+          align-items: center;
+          justify-items: center;
+          h3 {
+            padding: 0;
+            margin: 0;
+            font-weight: bold;
+          }
         }
       }
     }
