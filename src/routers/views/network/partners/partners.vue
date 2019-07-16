@@ -65,7 +65,7 @@
               {{$t(partnerType.labelKey)}}
             </p>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" :class="partnerType.showTop3Partners ? '' : 'has-not-partners'">
             <div class="tabular-container" v-if="partnerType.showTop3Partners">
               <div class="tabular-head">
                 <div class="name">{{$t('name')}}</div>
