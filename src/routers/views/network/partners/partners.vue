@@ -16,7 +16,22 @@
             </p>
           </div>
           <div class="panel-body">
-            <h3>{{numberFormat(partnerType.totalTeachers)}}</h3>
+            <div class="tabular-container">
+              <div class="tabular-head">
+                <div class="name">{{$t('name')}}</div>
+                <div class="count"># {{$t('of.active.users')}}</div>
+              </div>
+              <div
+                class="tabular-body"
+                v-for="(partner, partnerIndex) in partnerType.partners"
+                :key="partnerIndex"
+              >
+                <div class="tabular-data">
+                  <div class="name">{{partner.partner_name}}</div>
+                  <div class="count">{{numberFormat(partner.total_users)}}</div>
+                </div>
+              </div>
+            </div>
           </div>
           <div :id="'connector-line-p1' + typeIndex" class="connector-line"></div>
         </div>
@@ -51,20 +66,23 @@
             </p>
           </div>
           <div class="panel-body">
-            <div class="tabular-head">
-              <div class="name">{{$t('name')}}</div>
-              <div class="count"># {{$t('of.active.users')}}</div>
-            </div>
-            <div
-              class="tabular-body"
-              v-for="(partner, partnerIndex) in partnerType.partners"
-              :key="partnerIndex"
-            >
-              <div class="tabular-data">
-                <div class="name">{{partner.partner_name}}</div>
-                <div class="count">{{numberFormat(partner.total_users)}}</div>
+            <div class="tabular-container" v-if="partnerType.showTop3Partners">
+              <div class="tabular-head">
+                <div class="name">{{$t('name')}}</div>
+                <div class="count"># {{$t('of.active.users')}}</div>
+              </div>
+              <div
+                class="tabular-body"
+                v-for="(partner, partnerIndex) in partnerType.partners"
+                :key="partnerIndex"
+              >
+                <div class="tabular-data">
+                  <div class="name">{{partner.partner_name}}</div>
+                  <div class="count">{{numberFormat(partner.total_users)}}</div>
+                </div>
               </div>
             </div>
+            <h3 v-else>{{numberFormat(partnerType.totalCount)}}</h3>
           </div>
           <div :id="'connector-line-p2' + typeIndex" class="connector-line"></div>
         </div>

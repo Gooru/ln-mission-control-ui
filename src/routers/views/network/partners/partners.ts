@@ -35,7 +35,7 @@ export default class Partners extends Vue {
     labelKey: string;
     pathname: string;
     total: number;
-    totalTeachers: number;
+    totalCount: number;
     partners: PartnerModel[];
   }> = new Array();
 
@@ -45,7 +45,7 @@ export default class Partners extends Vue {
   private partition2PartnersData: Array<{
     labelKey: string;
     total: number;
-    totalTeachers: number;
+    totalCount: number;
     partners: PartnerModel[];
   }> = new Array();
 
@@ -75,26 +75,29 @@ export default class Partners extends Vue {
       if (this.partners) {
         const data: PartnerModel[] = this.partners[partnerType.type];
         if (partnerType.partition === 1) {
-          this.partition1PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
+          this.partition1PartnersData.push(this.createPartner(partnerType, data));
         } else if (partnerType.partition === 2) {
-          this.partition2PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
+          this.partition2PartnersData.push(this.createPartner(partnerType, data));
         }
         this.overallStats = this.partners.overall_stats;
       }
     });
   }
 
-  private createPartner(labelKey: string, pathname: string, partners: PartnerModel[]) {
+  private createPartner(partnerType: any, partners: PartnerModel[]) {
     const top3PartnersData = partners.slice(0, 3);
     let totalTeachers = 0;
+    let totalStudents = 0;
     partners.forEach((partner) => {
       totalTeachers += partner.total_teachers;
+      totalStudents += partner.total_students;
     });
     return {
-      labelKey,
-      pathname,
+      labelKey: partnerType.labelKey,
+      pathname: partnerType.pathname,
       total: partners.length,
-      totalTeachers,
+      totalCount: partnerType.type === 'learners' ? totalStudents : totalTeachers,
+      showTop3Partners: partnerType.showTop3Partners,
       partners: top3PartnersData,
     };
   }
