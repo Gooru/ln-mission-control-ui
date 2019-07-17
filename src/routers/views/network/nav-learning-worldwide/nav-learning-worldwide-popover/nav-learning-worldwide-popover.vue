@@ -5,10 +5,10 @@
         <p id="country-name">{{country.country_name}}</p>
       </div>
       <div id="student-data-container">
-        <div class="category-header">{{ $tc('student', 2) }}</div>
+        <div class="category-header">{{ $t('learners') }}</div>
         <div id="student-body-container">
           <div id="active-students-container">
-            <span class="title">{{$t('active')}} {{$tc('student', 2)}}</span>
+            <span class="title">{{$t('active')}} {{$t('learners')}}</span>
             <google-material-icon class="icon" icon="account_circle" />
             <span class="count">{{numberFormat(country.total_users)}}</span>
           </div>
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div id="teacher-data-container">
-        <div class="category-header">{{ $tc('teacher', 2) }}</div>
+        <div class="category-header">{{ $t('instructors') }}</div>
         <div id="teacher-body-container">
           <div id="active-classrooms-container">
             <span class="title">{{$t('active')}} {{$tc('classroom', 2)}}</span>
