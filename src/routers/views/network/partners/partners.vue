@@ -62,7 +62,7 @@
         >
           <div class="panel-header">
             <p>
-              <b>{{partnerType.total}}</b>
+              <b v-if="partnerType.showTop3Partners">{{partnerType.total}}</b>
               {{$t(partnerType.labelKey)}}
             </p>
           </div>
