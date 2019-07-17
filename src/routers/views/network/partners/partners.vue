@@ -28,7 +28,7 @@
               >
                 <div class="tabular-data">
                   <div class="name">{{partner.partner_name}}</div>
-                  <div class="count">{{numberFormat(partner.total_users)}}</div>
+                  <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
               </div>
             </div>
@@ -42,13 +42,13 @@
             <mc-icon icon="navigator-mix-color" />
             <p
               id="partner-count"
-            >{{numberFormat(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
+            >{{numberFormatWithTextSuffix(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
             <p
               id="partner-active-count"
-            >{{numberFormat(overallStats.total_users)}} {{$t('active.users')}}</p>
+            >{{numberFormatWithTextSuffix(overallStats.total_users)}} {{$t('active.users')}}</p>
             <p
               id="no-of-countries"
-            >{{numberFormat(overallStats.total_countries)}} {{$tc('country', 2)}}</p>
+            >{{numberFormatWithTextSuffix(overallStats.total_countries)}} {{$tc('country', 2)}}</p>
           </div>
         </div>
       </div>
@@ -58,6 +58,7 @@
           v-for="(partnerType, typeIndex) in partition2PartnersData"
           :key="typeIndex"
           @click="onPreviewPartnersType(partnerType.pathname)"
+          :class="partnerType.showTop3Partners ? '' : 'has-not-partners'"
         >
           <div class="panel-header">
             <p>
@@ -65,7 +66,7 @@
               {{$t(partnerType.labelKey)}}
             </p>
           </div>
-          <div class="panel-body" :class="partnerType.showTop3Partners ? '' : 'has-not-partners'">
+          <div class="panel-body">
             <div class="tabular-container" v-if="partnerType.showTop3Partners">
               <div class="tabular-head">
                 <div class="name">{{$t('name')}}</div>
@@ -78,7 +79,7 @@
               >
                 <div class="tabular-data">
                   <div class="name">{{partner.partner_name}}</div>
-                  <div class="count">{{numberFormat(partner.total_users)}}</div>
+                  <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
               </div>
             </div>

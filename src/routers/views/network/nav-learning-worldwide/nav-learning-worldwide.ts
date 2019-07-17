@@ -1,11 +1,8 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as d3 from 'd3';
-import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
-import { statsAPI } from '@/providers/apis/stats/stats';
 import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-format';
-import axios from 'axios';
 import NavLearningWorldWidePopover from './nav-learning-worldwide-popover/nav-learning-worldwide-popover';
-import { CountryModel } from '@/models/stats/country';
+
 
 @Component({
   name: 'nav-learning-worldwide',
@@ -58,37 +55,29 @@ export default class NavLearningWorldWide extends Vue {
    * Maintains the data of map plotting values
    * @type {Object}
    */
+  @Prop()
   private mapData: any;
-
-  /**
-   * Maintains the value of total number of students
-   * @type {Number}
-   */
-  private totalStudentsCount: number = 0;
-
-  /**
-   * Maintains the value of total number of teachers
-   * @type {Number}
-   */
-  private totalTeachersCount: number = 0;
-
-  /**
-   * Maintains the value of total number of others
-   * @type {Number}
-   */
-  private totalOthersCount: number = 0;
 
   /**
    * Maintains the country object when hover the pie chart.
    */
   private activeCountry: any = null;
 
+  /**
+   * Maintains the popover default position.
+   * @return {Object}
+   */
   private popoverStyle: any = {
     top: '0px',
     left: '0px',
     right: '0px',
     bottom: '0px',
   };
+
+  /**
+   * Set the overall stats from mapData
+   */
+  private overallStats: any = {};
 
 
   // -------------------------------------------------------------------------
@@ -98,7 +87,10 @@ export default class NavLearningWorldWide extends Vue {
   // Hooks
 
   private mounted() {
-    this.draw();
+    if (this.mapData) {
+      this.overallStats = this.mapData.overallStats;
+      this.draw();
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -113,12 +105,8 @@ export default class NavLearningWorldWide extends Vue {
       .scale(this.height / Math.PI)
       .translate([this.width / 2, this.height / 2]);
     this.dropShadow();
-    const worldMapDataSet = this.fetchNavWorldWideMapData();
-    worldMapDataSet.then((data) => {
-      this.mapData = data;
-      this.drawMap();
-      this.drawPieChart();
-    });
+    this.drawMap();
+    this.drawPieChart();
   }
 
   private drawMap() {
@@ -241,55 +229,6 @@ export default class NavLearningWorldWide extends Vue {
       .attr('in', 'offsetBlur');
     feMerge.append('feMergeNode')
       .attr('in', 'SourceGraphic');
-  }
-
-  private fetchNavWorldWideMapData() {
-    return axios.all([
-      mapDataSetAPI.getCountries(),
-      statsAPI.getCountries(),
-      mapDataSetAPI.getCountriesRegion(),
-    ])
-      .then(axios.spread((countries, statsCountries, countriesRegion) => {
-        if (statsCountries) {
-          statsCountries.map((statsCountry: CountryModel) => {
-            const country = countries.features.find((countryData: any) => {
-              return statsCountry.country_code === countryData.country_code;
-            });
-            if (country) {
-              country.has_data = true;
-              country.total_students = statsCountry.total_students;
-              country.total_teachers = statsCountry.total_teachers;
-              country.total_others = statsCountry.total_others;
-              country.total_users = statsCountry.total_users;
-              country.total_classes = statsCountry.total_classes;
-              country.total_competencies_gained = statsCountry.total_competencies_gained;
-              country.total_timespent = statsCountry.total_timespent;
-              country.total_activities_conducted = statsCountry.total_activities_conducted;
-              country.total_navigator_courses = statsCountry.total_navigator_courses;
-              country.country_name = statsCountry.country_name;
-
-
-              // Calculate the overall count of Student, Teachers and Others
-              this.totalStudentsCount += statsCountry.total_students;
-              this.totalTeachersCount += statsCountry.total_teachers;
-              this.totalOthersCount += statsCountry.total_others;
-
-              const countryRegion = countriesRegion.find((region: any) => {
-                return region.country_code === statsCountry.country_code;
-              });
-              if (countryRegion) {
-                country.latitude = countryRegion.latitude;
-                country.longitude = countryRegion.longitude;
-              }
-            }
-          });
-        }
-
-        return {
-          countries,
-          statsCountries,
-        };
-      }));
   }
 
 
