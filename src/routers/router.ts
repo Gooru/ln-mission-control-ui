@@ -35,7 +35,7 @@ const routes = [
         path: '/catalog',
         name: 'catalog',
         beforeEnter() {
-          window.location.href = '/research/activities';
+          window.location.href = '/research/catalog';
         },
       },
       {

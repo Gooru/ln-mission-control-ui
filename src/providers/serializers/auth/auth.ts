@@ -44,8 +44,8 @@ export class AuthSerializer {
           avatarUrl: this.getThumbnailUrl(res),
         },
         cdnUrls: {
-          user: res.cdn_urls.user,
-          content: res.cdn_urls.content,
+          user: res.cdn_urls.user_cdn_url,
+          content: res.cdn_urls.content_cdn_url,
         },
         isAuthenticated: true,
       },
