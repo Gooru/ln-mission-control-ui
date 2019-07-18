@@ -12,7 +12,6 @@
         <div class="country">{{$tc('country', 2)}}</div>
         <div class="learners">{{$tc('learners', 2)}}</div>
         <div class="instructors">{{$t('instructors')}}</div>
-        <div class="classes">{{$tc('class', 2)}}</div>
       </div>
       <div id="partners-data-sheet-body">
         <div class="partners-data-sheet-content" v-for="(partner, index) in partners" :key="index">
@@ -25,7 +24,6 @@
           <div class="country">{{getFirstCountryFromIndex(partner.countries)}}</div>
           <div class="learners">{{numberFormat(partner.total_students)}}</div>
           <div class="instructors">{{numberFormat(partner.total_teachers)}}</div>
-          <div class="classes">{{numberFormat(partner.total_classes)}}</div>
         </div>
       </div>
     </div>

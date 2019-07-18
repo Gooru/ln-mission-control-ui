@@ -174,10 +174,6 @@ export default class NavLearningWorldWide extends Vue {
       {
         key: 'student',
         value: countryData.total_students,
-      },
-      {
-        key: 'other',
-        value: countryData.total_others,
       }];
 
       const pieChart = pieChartContainer.selectAll('.arc')

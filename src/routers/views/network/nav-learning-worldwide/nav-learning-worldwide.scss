@@ -67,7 +67,7 @@
   #overall-user-count-container {
     width: 600px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     height: 40px;
     align-items: center;
     justify-items: center;
@@ -93,12 +93,8 @@
       &.teacher {
         background-color: $blue-400;
         color: $white;
-      }
-
-      &.other {
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
-        background-color: $white;
       }
     }
   }

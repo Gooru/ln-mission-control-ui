@@ -5,7 +5,6 @@
     <div id="overall-user-count-container">
       <div class="student count">{{numberFormat(overallStats.totalStudentsCount)}} {{$t('learners')}}</div>
       <div class="teacher count">{{numberFormat(overallStats.totalTeachersCount)}} {{$t('instructors')}}</div>
-      <div class="other count">{{numberFormat(overallStats.totalOthersCount)}} {{$tc('other', 2)}}</div>
     </div>
     <nav-learning-worldwide-popover
       :style="popoverStyle"
