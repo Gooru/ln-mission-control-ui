@@ -1,5 +1,5 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import { numberFormat } from '@/helpers/number-format';
+import { numberFormatWithTextSuffix } from '@/helpers/number-format';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import FontAwesomeIcon from '@/components/icons/font-awesome-icon/font-awesome-icon';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
@@ -28,7 +28,7 @@ export default class NavLearningWorldWidePopover extends Vue {
   // Methods
 
   private numberFormat(value: number) {
-    return numberFormat(value);
+    return numberFormatWithTextSuffix(value);
   }
 
 }

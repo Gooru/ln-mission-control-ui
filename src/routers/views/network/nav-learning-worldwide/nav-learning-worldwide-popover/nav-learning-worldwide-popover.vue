@@ -5,12 +5,12 @@
         <p id="country-name">{{country.country_name}}</p>
       </div>
       <div id="student-data-container">
-        <div class="category-header">{{ $tc('student', 2) }}</div>
+        <div class="category-header">{{ $t('learners') }}</div>
         <div id="student-body-container">
           <div id="active-students-container">
-            <span class="title">{{$t('active')}} {{$tc('student', 2)}}</span>
+            <span class="title">{{$t('active')}} {{$t('learners')}}</span>
             <google-material-icon class="icon" icon="account_circle" />
-            <span class="count">{{numberFormat(country.total_users)}}</span>
+            <span class="count">{{numberFormat(country.total_students)}}</span>
           </div>
           <div id="competencies-gained-container">
             <span class="title">{{$t('competencies')}} {{$t('gained')}}</span>
@@ -25,8 +25,13 @@
         </div>
       </div>
       <div id="teacher-data-container">
-        <div class="category-header">{{ $tc('teacher', 2) }}</div>
+        <div class="category-header">{{ $t('instructors') }}</div>
         <div id="teacher-body-container">
+          <div id="active-teachers-container">
+            <span class="title">{{$t('active')}} {{$t('instructors')}}</span>
+            <google-material-icon class="icon" icon="account_circle" />
+            <span class="count">{{numberFormat(country.total_teachers)}}</span>
+          </div>
           <div id="active-classrooms-container">
             <span class="title">{{$t('active')}} {{$tc('classroom', 2)}}</span>
             <mc-icon icon="classroom-white" />
@@ -36,11 +41,6 @@
             <span class="title">{{$tc('activity', 2)}} {{$t('conducted')}}</span>
             <mc-icon icon="pin-white" />
             <span class="count">{{numberFormat(country.total_activities_conducted)}}</span>
-          </div>
-          <div id="nav-courses-container">
-            <span class="title">{{$t('navigator')}} {{$tc('course', 2)}}</span>
-            <mc-icon icon="navigator-white" />
-            <span class="count">{{numberFormat(country.total_navigator_courses)}}</span>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div id="mc-network">
-    <nav-learning-worldwide />
-    <partners />
+    <nav-learning-worldwide v-if="mapData" :mapData="mapData"  />
+    <partners v-if="mapData" :mapData="mapData"/>
   </div>
 </template>
 

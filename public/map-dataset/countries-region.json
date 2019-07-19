@@ -11,30 +11,30 @@
     "latitude": "-1",
     "longitude": "-61"
   }, {
-    "country_code": "AUS",
+    "country_code": "AU",
     "latitude": "-13.865143",
     "longitude": "121.209900",
     "totalPercentage": "100"
   }, {
-    "country_code": "ZAF",
-    "latitude": "-20",
-    "longitude": "12"
+    "country_code": "CA",
+    "latitude": "70.778259",
+    "longitude": "-120.417931"
   }, {
-    "country_code": "RUS",
-    "latitude": "75",
-    "longitude": "85"
+    "country_code": "DK",
+    "latitude": "70",
+    "longitude": "-10"
   }, {
-    "country_code": "EUR",
-    "latitude": "51.68",
-    "longitude": "39"
+    "country_code": "DE",
+    "latitude": "60",
+    "longitude": "8"
   }, {
-    "country_code": "FUS",
-    "latitude": "61.3",
-    "longitude": "82"
+    "country_code": "ID",
+    "latitude": "5.865143",
+    "longitude": "110.209900"
   }, {
-    "country_code": "AEC",
-    "latitude": "11.2",
-    "longitude": "122"
+    "country_code": "IE",
+    "latitude": "70",
+    "longitude": "-28"
   },
   {
     "country_code": "IN",
@@ -42,13 +42,33 @@
     "longitude": "70"
   },
   {
-    "country_code": "AME",
-    "latitude": "36.07",
-    "longitude": "-90.70"
+    "country_code": "JP",
+    "latitude": "50.07",
+    "longitude": "130.70"
   },
   {
-    "country_code": "OCE",
-    "latitude": "-23.55",
-    "longitude": "132.5"
+    "country_code": "MX",
+    "latitude": "28",
+    "longitude": "-110"
+  },
+  {
+    "country_code": "NZ",
+    "latitude": "-35",
+    "longitude": "148"
+  },
+  {
+    "country_code": "ES",
+    "latitude": "50",
+    "longitude": "-5"
+  },
+  {
+    "country_code": "TH",
+    "latitude": "30",
+    "longitude": "90"
+  },
+  {
+    "country_code": "GB",
+    "latitude": "60",
+    "longitude": "-15"
   }
 ]

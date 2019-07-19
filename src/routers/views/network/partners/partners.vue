@@ -16,18 +16,20 @@
             </p>
           </div>
           <div class="panel-body">
-            <div class="tabular-head">
-              <div class="name">{{$t('name')}}</div>
-              <div class="count"># {{$t('of.active.users')}}</div>
-            </div>
-            <div
-              class="tabular-body"
-              v-for="(partner, partnerIndex) in partnerType.partners"
-              :key="partnerIndex"
-            >
-              <div class="tabular-data">
-                <div class="name">{{partner.partner_name}}</div>
-                <div class="count">{{numberFormat(partner.total_users)}}</div>
+            <div class="tabular-container">
+              <div class="tabular-head">
+                <div class="name">{{$t('name')}}</div>
+                <div class="count"># {{$t('of.active.users')}}</div>
+              </div>
+              <div
+                class="tabular-body"
+                v-for="(partner, partnerIndex) in partnerType.partners"
+                :key="partnerIndex"
+              >
+                <div class="tabular-data">
+                  <div class="name">{{partner.partner_name}}</div>
+                  <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -38,13 +40,15 @@
         <div class="panel-conatiner">
           <div class="panel-body">
             <mc-icon icon="navigator-mix-color" />
-            <p id="partner-count">{{numberFormat(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
+            <p
+              id="partner-count"
+            >{{numberFormatWithTextSuffix(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
             <p
               id="partner-active-count"
-            >{{numberFormat(overallStats.total_users)}} {{$t('active.users')}}</p>
+            >{{numberFormatWithTextSuffix(overallStats.total_users)}} {{$t('active.users')}}</p>
             <p
               id="no-of-countries"
-            >{{numberFormat(overallStats.total_countries)}} {{$tc('country', 2)}}</p>
+            >{{numberFormatWithTextSuffix(overallStats.total_countries)}} {{$tc('country', 2)}}</p>
           </div>
         </div>
       </div>
@@ -53,29 +57,33 @@
           class="header-panel-conatiner"
           v-for="(partnerType, typeIndex) in partition2PartnersData"
           :key="typeIndex"
+          @click="onPreviewPartnersType(partnerType.pathname)"
+          :class="partnerType.showTop3Partners ? '' : 'has-not-partners'"
         >
           <div class="panel-header">
             <p>
-              <b>{{partnerType.total}}</b>
+              <b v-if="partnerType.showTop3Partners">{{partnerType.total}}</b>
               {{$t(partnerType.labelKey)}}
             </p>
           </div>
           <div class="panel-body">
-            <div class="tabular-head">
-              <div class="name">{{$t('name')}}</div>
-              <div class="count"># {{$t('of.active.users')}}</div>
-            </div>
-            <div
-              class="tabular-body"
-              v-for="(partner, partnerIndex) in partnerType.partners"
-              :key="partnerIndex"
-              @click="onPreviewPartnersType(partnerType.pathname)"
-            >
-              <div class="tabular-data">
-                <div class="name">{{partner.partner_name}}</div>
-                <div class="count">{{numberFormat(partner.total_users)}}</div>
+            <div class="tabular-container" v-if="partnerType.showTop3Partners">
+              <div class="tabular-head">
+                <div class="name">{{$t('name')}}</div>
+                <div class="count"># {{$t('of.active.users')}}</div>
+              </div>
+              <div
+                class="tabular-body"
+                v-for="(partner, partnerIndex) in partnerType.partners"
+                :key="partnerIndex"
+              >
+                <div class="tabular-data">
+                  <div class="name">{{partner.partner_name}}</div>
+                  <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
+                </div>
               </div>
             </div>
+            <h3 v-else>{{numberFormat(partnerType.totalCount)}}</h3>
           </div>
           <div :id="'connector-line-p2' + typeIndex" class="connector-line"></div>
         </div>

@@ -3,9 +3,8 @@
     <h2>{{$t('network.nav.learning.worldwide')}}</h2>
     <div id="nav-learning-worldwide-map"></div>
     <div id="overall-user-count-container">
-      <div class="student count">{{numberFormat(totalStudentsCount)}} {{$tc('student', 2)}}</div>
-      <div class="teacher count">{{numberFormat(totalTeachersCount)}} {{$tc('teacher', 2)}}</div>
-      <div class="other count">{{numberFormat(totalOthersCount)}} {{$tc('other', 2)}}</div>
+      <div class="student count">{{numberFormat(overallStats.totalStudentsCount)}} {{$t('learners')}}</div>
+      <div class="teacher count">{{numberFormat(overallStats.totalTeachersCount)}} {{$t('instructors')}}</div>
     </div>
     <nav-learning-worldwide-popover
       :style="popoverStyle"

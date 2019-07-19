@@ -707,7 +707,8 @@
                     ]
                 ]
             },
-            "id": "AUS"
+            "id": "AUS",
+            "country_code": "AU"
         },
         {
             "type": "Feature",
@@ -2633,7 +2634,8 @@
                     ]
                 ]
             },
-            "id": "CAN"
+            "id": "CAN",
+            "country_code": "CA"
         },
         {
             "type": "Feature",
@@ -3800,7 +3802,8 @@
                     ]
                 ]
             },
-            "id": "DEU"
+            "id": "DEU",
+            "country_code": "DE"
         },
         {
             "type": "Feature",
@@ -3873,7 +3876,8 @@
                     ]
                 ]
             },
-            "id": "DNK"
+            "id": "DNK",
+            "country_code": "DK"
         },
         {
             "type": "Feature",
@@ -4199,7 +4203,8 @@
                     ]
                 ]
             },
-            "id": "ESP"
+            "id": "ESP",
+            "country_code": "ES"
         },
         {
             "type": "Feature",
@@ -4644,7 +4649,8 @@
                     ]
                 ]
             },
-            "id": "GBR"
+            "id": "GBR",
+            "country_code": "GB"
         },
         {
             "type": "Feature",
@@ -5733,7 +5739,8 @@
                     ]
                 ]
             },
-            "id": "IDN"
+            "id": "IDN",
+            "country_code": "ID"
         },
         {
             "type": "Feature",
@@ -5911,7 +5918,8 @@
                     ]
                 ]
             },
-            "id": "IRL"
+            "id": "IRL",
+            "country_code": "IE"
         },
         {
             "type": "Feature",
@@ -6373,7 +6381,8 @@
                     ]
                 ]
             },
-            "id": "JPN"
+            "id": "JPN",
+            "country_code": "JP"
         },
         {
             "type": "Feature",
@@ -7414,7 +7423,8 @@
                     ]
                 ]
             },
-            "id": "MEX"
+            "id": "MEX",
+            "country_code": "MX"
         },
         {
             "type": "Feature",
@@ -8570,7 +8580,8 @@
                     ]
                 ]
             },
-            "id": "NZL"
+            "id": "NZL",
+            "country_code": "NZ"
         },
         {
             "type": "Feature",
@@ -11204,7 +11215,8 @@
                     ]
                 ]
             },
-            "id": "THA"
+            "id": "THA",
+            "country_code": "TH"
         },
         {
             "type": "Feature",

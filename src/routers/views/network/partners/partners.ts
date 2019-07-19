@@ -1,9 +1,9 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import { partnersAPI } from '@/providers/apis/partners/partners';
 import { PartnersModel } from '@/models/partners/partners';
 import { PartnerModel } from '@/models/partners/partner';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
-import { numberFormatWithTextSuffix } from '@/helpers/number-format';
+import { numberFormat, numberFormatWithTextSuffix } from '@/helpers/number-format';
 import { PARTNERS_TYPE } from '@/utils/constants';
 import { OverallStatsModel } from '@/models/partners/overall-stats';
 
@@ -35,6 +35,7 @@ export default class Partners extends Vue {
     labelKey: string;
     pathname: string;
     total: number;
+    totalCount: number;
     partners: PartnerModel[];
   }> = new Array();
 
@@ -44,8 +45,16 @@ export default class Partners extends Vue {
   private partition2PartnersData: Array<{
     labelKey: string;
     total: number;
+    totalCount: number;
     partners: PartnerModel[];
   }> = new Array();
+
+  /**
+   * Set the overall stats from mapData
+   */
+  @Prop()
+  private mapData: any;
+
 
   // -------------------------------------------------------------------------
   // Actions
@@ -58,11 +67,13 @@ export default class Partners extends Vue {
   // -------------------------------------------------------------------------
   // Hooks
 
-  private mounted() {
-    partnersAPI.getPartners().then((response) => {
-      this.partners = response;
-      this.parsePartnersData();
-    });
+  private created() {
+    if (this.mapData) {
+      partnersAPI.getPartners().then((response) => {
+        this.partners = response;
+        this.parsePartnersData();
+      });
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -73,27 +84,34 @@ export default class Partners extends Vue {
       if (this.partners) {
         const data: PartnerModel[] = this.partners[partnerType.type];
         if (partnerType.partition === 1) {
-          this.partition1PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
+          this.partition1PartnersData.push(this.createPartner(partnerType, data));
         } else if (partnerType.partition === 2) {
-          this.partition2PartnersData.push(this.createPartner(partnerType.labelKey, partnerType.pathname, data));
+          this.partition2PartnersData.push(this.createPartner(partnerType, data));
         }
         this.overallStats = this.partners.overall_stats;
       }
     });
   }
 
-  private createPartner(labelKey: string, pathname: string, partners: PartnerModel[]) {
+  private createPartner(partnerType: any, partners: PartnerModel[]) {
     const top3PartnersData = partners.slice(0, 3);
+    const overallStats = this.mapData.overallStats;
     return {
-      labelKey,
-      pathname,
+      labelKey: partnerType.labelKey,
+      pathname: partnerType.pathname,
       total: partners.length,
+      totalCount: partnerType.type === 'learners' ? overallStats.totalStudentsCount : overallStats.totalTeachersCount,
+      showTop3Partners: partnerType.showTop3Partners,
       partners: top3PartnersData,
     };
   }
 
 
-  private numberFormat(value: number) {
+  private numberFormatWithTextSuffix(value: number) {
     return numberFormatWithTextSuffix(value);
+  }
+
+  private numberFormat(value: number) {
+    return numberFormat(value);
   }
 }
