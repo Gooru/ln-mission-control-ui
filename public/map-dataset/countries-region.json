@@ -70,5 +70,20 @@
     "country_code": "GB",
     "latitude": "60",
     "longitude": "-15"
+  },
+  {
+    "country_code": "BD",
+    "latitude": "38",
+    "longitude": "85"
+  },
+  {
+    "country_code": "QA",
+    "latitude": "35",
+    "longitude": "45"
+  },
+  {
+    "country_code": "MA",
+    "latitude": "35",
+    "longitude": "-25"
   }
 ]
