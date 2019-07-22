@@ -7,6 +7,9 @@ import { numberFormat } from '@/helpers/number-format';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import FontAwesomeIcon from '@/components/icons/font-awesome-icon/font-awesome-icon';
 import { PARTNERS_TYPE } from '@/utils/constants';
+import axios from 'axios';
+import {sortByProperty} from '@/utils/utils';
+import { statsAPI } from '@/providers/apis/stats/stats';
 
 @Component({
     name: 'partners-type',
@@ -54,11 +57,26 @@ export default class PartnersType extends Vue {
         const partnerTypeData = PARTNERS_TYPE.find((type) => (type.pathname === partnerType));
         if (partnerTypeData) {
             this.partnerType.labelKey = partnerTypeData.labelKey;
-            partnersAPI.getPartnersByType(partnerTypeData.type).then((response) => {
-                this.partners = response;
+            statsAPI.getCountries().then((statsCountries) => {
+                partnersAPI.getPartnersByType(partnerTypeData.type).then((partners) => {
+                  partners.forEach((partner: PartnerModel) => {
+                    const countryData  = partner.countries[0];
+                    const countryCode = countryData.code;
+                    const countryStats = statsCountries.find((country: any) => (countryCode === country.country_code));
+                    if (countryStats) {
+                      partner.total_users = countryStats.total_users;
+                      partner.total_teachers = countryStats.total_teachers;
+                      partner.total_students = countryStats.total_students;
+                      partner.total_others = countryStats.total_others;
+                    }
+                  });
+                  this.partners = partners;
+                });
             });
         }
     }
+
+
 
     private getFirstCountryFromIndex(countries: CountryModel[]): string {
         const country: CountryModel = countries[0];
