@@ -4361,7 +4361,8 @@
                     ]
                 ]
             },
-            "id": "FIN"
+            "id": "FIN",
+            "country_code": "FI"
         },
         {
             "type": "Feature",

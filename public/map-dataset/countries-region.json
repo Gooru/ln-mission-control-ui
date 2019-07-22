@@ -85,5 +85,10 @@
     "country_code": "MA",
     "latitude": "35",
     "longitude": "-25"
+  },
+  {
+    "country_code": "FI",
+    "latitude": "85",
+    "longitude": "15"
   }
 ]
