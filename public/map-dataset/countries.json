@@ -1021,7 +1021,8 @@
                     ]
                 ]
             },
-            "id": "BGD"
+            "id": "BGD",
+            "country_code": "BD"
         },
         {
             "type": "Feature",
@@ -4360,7 +4361,8 @@
                     ]
                 ]
             },
-            "id": "FIN"
+            "id": "FIN",
+            "country_code": "FI"
         },
         {
             "type": "Feature",
@@ -7135,7 +7137,8 @@
                     ]
                 ]
             },
-            "id": "MAR"
+            "id": "MAR",
+            "country_code": "MA"
         },
         {
             "type": "Feature",
@@ -9399,7 +9402,8 @@
                     ]
                 ]
             },
-            "id": "QAT"
+            "id": "QAT",
+            "country_code": "QA"
         },
         {
             "type": "Feature",

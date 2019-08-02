@@ -15,3 +15,26 @@ export function getRoutePathFirstOccurrence() {
   const currentLocationPath = window.location.pathname;
   return currentLocationPath.split('/')[2];
 }
+
+/**
+ * This Method is responsible for sorting the array object by asc or desc.
+ * @param  {Array}
+ * @param  {PropertyName}
+ * @param  {string} 'ASC|DESC'
+ */
+export function sortByProperty<T>(array: T[], propName: keyof T, order: 'ASC' | 'DESC'): void {
+    array.sort((a, b) => {
+        if (a[propName] < b[propName]) {
+            return -1;
+        }
+
+        if (a[propName] > b[propName]) {
+            return 1;
+        }
+        return 0;
+    });
+
+    if (order === 'DESC') {
+        array.reverse();
+    }
+}

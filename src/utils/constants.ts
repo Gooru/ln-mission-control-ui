@@ -41,7 +41,7 @@ export const PARTNERS_TYPE = [
   },
   {
     labelKey: 'administrators',
-    type: 'administrators',
+    type: 'implementation_partners',
     pathname: 'administrators',
     partition: 1,
     showTop3Partners: true,

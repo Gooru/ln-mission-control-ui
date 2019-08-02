@@ -6,6 +6,7 @@ import McIcon from '@/components/icons/mc-icon/mc-icon';
 import { numberFormat, numberFormatWithTextSuffix } from '@/helpers/number-format';
 import { PARTNERS_TYPE } from '@/utils/constants';
 import { OverallStatsModel } from '@/models/partners/overall-stats';
+import {sortByProperty} from '@/utils/utils';
 
 
 @Component({
@@ -94,7 +95,6 @@ export default class Partners extends Vue {
   }
 
   private createPartner(partnerType: any, partners: PartnerModel[]) {
-    const top3PartnersData = partners.slice(0, 3);
     const overallStats = this.mapData.overallStats;
     return {
       labelKey: partnerType.labelKey,
@@ -102,10 +102,29 @@ export default class Partners extends Vue {
       total: partners.length,
       totalCount: partnerType.type === 'learners' ? overallStats.totalStudentsCount : overallStats.totalTeachersCount,
       showTop3Partners: partnerType.showTop3Partners,
-      partners: top3PartnersData,
+      partners: this.parsePartners(partnerType.type, partners),
     };
   }
 
+  private parsePartners(type: string, partners: PartnerModel[]) {
+     const statsCountries = this.mapData.statsCountries;
+     if (type === 'researchers' || type === 'funders') {
+      partners.forEach((partner) => {
+        const countryData  = partner.countries[0];
+        const countryCode = countryData.code;
+        const countryStats = statsCountries.find((country: any) => (countryCode === country.country_code));
+        if (countryStats) {
+          partner.total_users = countryStats.total_users;
+          partner.total_teachers = countryStats.total_teachers;
+          partner.total_students = countryStats.total_students;
+          partner.total_others = countryStats.total_others;
+        }
+      });
+    }
+     sortByProperty(partners, 'total_users',  'DESC');
+     const top3PartnersData = partners.slice(0, 3);
+     return top3PartnersData;
+  }
 
   private numberFormatWithTextSuffix(value: number) {
     return numberFormatWithTextSuffix(value);
