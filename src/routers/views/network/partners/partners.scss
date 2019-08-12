@@ -27,7 +27,6 @@
     .header-panel-conatiner {
       margin-bottom: 60px;
       position: relative;
-      // cursor: pointer;
 
       &.has-not-partners {
         .panel-body {
@@ -212,7 +211,7 @@
       border-radius: 100%;
       margin-right: 5px;
       margin-bottom: 2px;
-      background: #fff;
+      background-color: $white;
     }
   }
 }

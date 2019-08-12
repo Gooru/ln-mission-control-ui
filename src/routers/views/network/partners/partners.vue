@@ -7,9 +7,8 @@
           class="header-panel-conatiner"
           v-for="(partnerType, typeIndex) in partition1PartnersData"
           :key="typeIndex"
-         
         >
-          <div class="panel-header"  @click="onPreviewPartnersType(partnerType.pathname)">
+          <div class="panel-header" @click="onPreviewPartnersType(partnerType.pathname)">
             <p>
               <b>{{partnerType.total}}</b>
               {{$t(partnerType.labelKey)}}
@@ -27,7 +26,12 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name"><div class="partner-logo"><img v-lazy="partner.logo" /></div>{{partner.partner_name}}</div>
+                  <div class="name">
+                    <div class="partner-logo">
+                      <img v-lazy="partner.logo">
+                    </div>
+                    {{partner.partner_name}}
+                  </div>
                   <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
               </div>
@@ -39,7 +43,7 @@
       <div id="partner-panel">
         <div class="panel-conatiner">
           <div class="panel-body">
-            <mc-icon icon="navigator-mix-color" />
+            <mc-icon icon="navigator-mix-color"/>
             <p
               id="partner-count"
             >{{numberFormatWithTextSuffix(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
@@ -57,10 +61,9 @@
           class="header-panel-conatiner"
           v-for="(partnerType, typeIndex) in partition2PartnersData"
           :key="typeIndex"
-        
           :class="partnerType.showTop3Partners ? '' : 'has-not-partners'"
         >
-          <div class="panel-header"   @click="onPreviewPartnersType(partnerType.pathname)">
+          <div class="panel-header" @click="onPreviewPartnersType(partnerType.pathname)">
             <p>
               <b v-if="partnerType.showTop3Partners">{{partnerType.total}}</b>
               {{$t(partnerType.labelKey)}}
@@ -78,7 +81,12 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name"><div class="partner-logo"><img v-lazy="partner.logo" /></div>{{partner.partner_name}}</div>
+                  <div class="name">
+                    <div class="partner-logo">
+                      <img v-lazy="partner.logo">
+                    </div>
+                    {{partner.partner_name}}
+                  </div>
                   <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
               </div>
