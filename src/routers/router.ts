@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import AppLayout from '@/layouts/app-layout/app-layout.vue';
 import AppHeaderLayout from '@/layouts/app-header-layout/app-header-layout.vue';
 import { sessionService, SessionService } from '@/providers/services/auth/session';
+import 'pace-progressbar';
 
 Vue.use(Router);
 
