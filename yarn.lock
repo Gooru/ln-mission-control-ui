@@ -6331,6 +6331,11 @@ npm-which@^3.0.1:
     gauge "~2.7.3"
     set-blocking "~2.0.0"
 
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
+
 nth-check@^1.0.2, nth-check@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nth-check/-/nth-check-1.0.2.tgz#b2bd295c37e3dd58a3bf0700376663ba4d9cf05c"
@@ -6598,6 +6603,11 @@ p-try@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
+
+pace-progressbar@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/pace-progressbar/-/pace-progressbar-1.0.8.tgz#49b5c25b5a3c6c77b3f96cd975edb30d9515a1a4"
+  integrity sha512-qEOkKwBFABlUYpY5VNoOcgTHAnaqwFoP4ib1dIjoDjc16aBgdoSy2J4sUXLYI/4vmouNs7bRnQBKIDR8SBlrjA==
 
 pako@~1.0.5:
   version "1.0.10"
