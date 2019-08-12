@@ -30,7 +30,7 @@
                     <div class="partner-logo">
                       <img v-lazy="partner.logo">
                     </div>
-                    {{partner.partner_name}}
+                    <span>{{partner.partner_name}} </span>
                   </div>
                   <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
@@ -85,7 +85,7 @@
                     <div class="partner-logo">
                       <img v-lazy="partner.logo">
                     </div>
-                    {{partner.partner_name}}
+                    <span>{{partner.partner_name}}</span>
                   </div>
                   <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>

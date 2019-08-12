@@ -112,7 +112,7 @@
         }
       }
       .panel-header:hover {
-        color: #000;
+        color: $dark-900;
       }
 
       .panel-body {
@@ -151,7 +151,13 @@
             }
 
             .name {
-              @include ellipsis(12px, 2.2, 1);
+              display: grid;
+              grid-template-columns: 35px 1fr;
+              align-items: center;
+
+              span {
+                @include ellipsis(12px, 1.2, 1);
+              }
             }
           }
         }
@@ -209,7 +215,6 @@
       width: 25px;
       height: 25px;
       border-radius: 100%;
-      margin-right: 5px;
       margin-bottom: 2px;
       background-color: $white;
     }
