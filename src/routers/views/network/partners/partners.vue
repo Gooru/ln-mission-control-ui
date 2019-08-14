@@ -4,7 +4,7 @@
     <div id="partners-data">
       <div id="left-partner-panel">
         <div
-          class="header-panel-conatiner"
+          class="header-panel-container"
           v-for="(partnerType, typeIndex) in partition1PartnersData"
           :key="typeIndex"
         >
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div id="partner-panel">
-        <div class="panel-conatiner">
+        <div class="panel-container">
           <div class="panel-body">
             <mc-icon icon="navigator-mix-color"/>
             <p
@@ -58,7 +58,7 @@
       </div>
       <div id="right-partner-panel">
         <div
-          class="header-panel-conatiner"
+          class="header-panel-container"
           v-for="(partnerType, typeIndex) in partition2PartnersData"
           :key="typeIndex"
           :class="partnerType.showTop3Partners ? '' : 'has-not-partners'"

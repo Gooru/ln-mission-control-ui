@@ -15,8 +15,8 @@
     align-items: center;
     justify-items: center;
 
-    .header-panel-conatiner,
-    .panel-conatiner {
+    .header-panel-container,
+    .panel-container {
       height: 170px;
       background: $white;
       border-radius: 4px;
@@ -24,7 +24,7 @@
       width: 240px;
     }
 
-    .header-panel-conatiner {
+    .header-panel-container {
       margin-bottom: 30px;
       position: relative;
 
@@ -171,7 +171,7 @@
     }
 
     #left-partner-panel {
-      .header-panel-conatiner {
+      .header-panel-container {
         .panel-body {
           background-color: $blue-400;
         }
@@ -208,14 +208,14 @@
         }
       }
 
-      .middle-panel-container {
+      .panel-container {
         display: grid;
         align-items: center;
       }
     }
 
     #right-partner-panel {
-      .header-panel-conatiner {
+      .header-panel-container {
         .panel-body {
           background-color: $green-400;
         }
