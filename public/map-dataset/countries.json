@@ -12748,7 +12748,8 @@
                     ]
                 ]
             },
-            "id": "ZAF"
+            "id": "ZAF",
+            "country_code": "ZA"
         },
         {
             "type": "Feature",

@@ -90,5 +90,10 @@
     "country_code": "FI",
     "latitude": "85",
     "longitude": "15"
+  },
+  {
+    "country_code": "ZA",
+    "latitude": "-15",
+    "longitude": "10"
   }
 ]
