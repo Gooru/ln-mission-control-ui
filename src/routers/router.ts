@@ -26,6 +26,12 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
+        path: '/network/partners-profile/:id',
+        name: 'network-partners-profile',
+        component: () => import('@/routers/views/network/partners/partner-profile/partner-profile.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
         path: '/competency',
         name: 'competency',
         beforeEnter() {

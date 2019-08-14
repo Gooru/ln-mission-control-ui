@@ -26,7 +26,7 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name">
+                  <div class="name" @click="onPreviewPartnersDetails(partner.partner_id)">
                     <div class="partner-logo">
                       <img v-lazy="partner.logo">
                     </div>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div id="partner-panel">
-        <div class="panel-conatiner">
+        <div class="panel-conatiner middle-panel-container">
           <div class="panel-body">
             <mc-icon icon="navigator-mix-color"/>
             <p

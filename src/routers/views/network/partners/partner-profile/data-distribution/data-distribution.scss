@@ -1,0 +1,18 @@
+#data-distribution {
+  display: grid;
+  grid-template-columns: 33.33% 1fr 33.33%;
+  align-items: center;
+  text-align: center;
+  color: $white;
+
+  .distribution-competencies {
+    h5 {
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    h4 {
+      font-weight: 900;
+    }
+  }
+}
