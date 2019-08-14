@@ -39,7 +39,7 @@
   {
     "country_code": "IN",
     "latitude": "29",
-    "longitude": "70"
+    "longitude": "60"
   },
   {
     "country_code": "JP",
@@ -74,17 +74,17 @@
   {
     "country_code": "BD",
     "latitude": "38",
-    "longitude": "85"
+    "longitude": "75"
   },
   {
     "country_code": "QA",
-    "latitude": "35",
-    "longitude": "45"
+    "latitude": "38",
+    "longitude": "38"
   },
   {
     "country_code": "MA",
-    "latitude": "35",
-    "longitude": "-25"
+    "latitude": "46",
+    "longitude": "-23"
   },
   {
     "country_code": "FI",

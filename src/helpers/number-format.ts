@@ -1,10 +1,10 @@
 export function numberFormatWithTextSuffix(value: number) {
   return Number(value) >= 1.0e+9 ?
-    `${Math.round(Number(value) / 1.0e+9)}B` :
+    `${(Number(value) / 1.0e+9).toFixed(2)}B` :
     Math.round(Number(value)) >= 1.0e+6 ?
-      `${Math.round(Number(value) / 1.0e+6)}M` :
+      `${(Number(value) / 1.0e+6).toFixed(2)}M` :
       Math.round(Number(value)) >= 1.0e+3 ?
-        `${Math.round(Number(value) / 1.0e+3)}K` :
+        `${(Number(value) / 1.0e+3).toFixed(2)}K` :
         value;
 }
 
