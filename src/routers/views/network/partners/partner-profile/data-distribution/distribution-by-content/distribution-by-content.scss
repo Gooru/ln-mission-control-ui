@@ -1,2 +1,9 @@
 #distribution-content-section {
+  .heighlight {
+    color: red;
+  }
+  #my_dataviz {
+    display: grid;
+    grid-template-columns: 30px 1fr;
+  }
 }

@@ -34,20 +34,27 @@ export default class DistributionByContent extends Vue {
 
 
     private darwCircle() {
-
+        const clr = ['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374'];
         const data: any = { IN: 9, AUS: 20, US: 30, UAE: 8, ENG: 12 };
-        const color = d3.scaleOrdinal(['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374']);
+        const color = d3.scaleOrdinal(clr);
         const pie: any = d3.pie()
             .value( (d: any) =>  d.value );
         const dataready = pie(d3.entries(data));
         const arcGenerator: any = d3.arc()
             .innerRadius(0)
             .outerRadius(this.radius);
+        const labelarc: any = d3.arc().innerRadius(this.radius).outerRadius(this.radius - 80);
         this.svg
             .selectAll('mySlices')
             .data(dataready)
             .enter()
             .append('path')
+            .on('mouseover', (d: any) => {
+                d3.select(d3.event.target).attr('style', 'opacity:0.6');
+              })
+              .on('mouseout', (d: any) => {
+                d3.select(d3.event.target).attr('style', 'opacity:1');
+              })
             .attr('d', arcGenerator)
             .attr('fill', (d: any) =>  color(d.data.key) )
             .style('opacity', 1);
@@ -57,7 +64,10 @@ export default class DistributionByContent extends Vue {
             .enter()
             .append('text')
             .text( (d: any) =>   d.data.key )
-            .attr('transform', (d: any) =>  'translate(' + arcGenerator.centroid(d) + ')' )
+            .on('mouseover', (d: any) => {
+                d3.select(d3.event.target).attr('color', 'red');
+              })
+            .attr('transform', (d: any) =>  'translate(' + labelarc.centroid(d) + ')' )
             .style('text-anchor', 'middle')
             .style('color', '#fff')
             .style('font-size', 13);

@@ -1,6 +1,6 @@
 <template>
     <div  id="distribution-category-section">
-        <div id="piechart"><div id="piechartinner"></div></div>
+        <div id="piechart"></div>
         <div>
                 <p>Distribution by Category/Subject</p>
         </div>

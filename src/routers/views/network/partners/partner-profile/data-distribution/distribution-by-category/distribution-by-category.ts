@@ -8,49 +8,79 @@ import * as d3 from 'd3';
 })
 
 export default class DistributionByCategory extends Vue {
-    private width = 300;
-    private height = 300;
-    private margin = 40;
-    private svg: any = null;
-    private radius = Math.min(this.width, this.height) / 2 - this.margin;
 
     private mounted() {
         this.selectDiv();
     }
 
     private selectDiv() {
-        this.svg = d3.select('#piechart')
-            .append('svg')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .append('g')
-            .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
-        this.darwCircle(this.svg, 0 , 38);
-        this.svg = d3.select('#piechartinner')
-            .append('svg')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .append('g')
-            .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
-        this.darwCircle(this.svg, 40, 70);
-        }
+        const dataset = {
+            apples: [53245, 28479, 19697, 24037, 40245],
+            pear: [53245, 28479],
+        };
+        const width = 300;
+        const height = 300;
+        const margin = 30;
+        const radius = Math.min(width, height) / 2 - margin;
 
-    private darwCircle(svg: any , outer: any, inner: any) {
-        const data: any = { IN: 9, AUS: 20, US: 30, UAE: 8, ENG: 12 };
         const color = d3.scaleOrdinal(['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374']);
-        const pie: any = d3.pie()
-            .value( (d: any) => d.value);
-        const dataready = pie(d3.entries(data));
-        svg
-            .selectAll('whatever')
-            .data(dataready)
-            .enter()
-            .append('path')
-            .attr('d', d3.arc()
-                .innerRadius(this.radius - inner)
-                .outerRadius(this.radius - outer),
-            )
-            .attr('fill', (d: any) => color(d.data.key))
-            .style('opacity', 1);
+
+        const pie = d3.pie()
+            .sort(null);
+
+        const piedata = pie(dataset.apples);
+        const piedata2 = pie(dataset.pear);
+
+        const arc: any = d3.arc()
+            .innerRadius(radius - 100)
+            .outerRadius(radius - 70);
+        const arc2: any = d3.arc()
+            .innerRadius(radius - 10)
+            .outerRadius(radius - 60);
+
+        const svg = d3.select('#piechart').append('svg')
+            .attr('width', width)
+            .attr('height', height)
+            .append('g')
+            .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+        const div = d3.select('#piechart').append('div').attr('class', 'tooltip');
+
+        const path2 = svg.selectAll('g').append('g').attr('id', 'pie')
+            .data(piedata)
+            .enter().append('path')
+            .attr('fill', (d, i: any) => {
+                return color(i);
+            })
+            .on('mousemove', (d) => {
+                div.html('this is tooltip ' + d.data)
+                    .style('left', (d3.event.pageX + 12) + 'px')
+                    .style('top', (d3.event.pageY - 10) + 'px')
+                    .style('opacity', 1).style('display', 'block');
+            })
+            .on('mouseout', (d) => {
+                div.style('display', 'none').style('opacity', 0);
+            })
+            .attr('d', arc2);
+
+        const path = svg.selectAll('g').append('g').attr('id', 'donut')
+            .data(piedata2)
+            .enter().append('path')
+            .attr('fill', (d, i: any) => {
+                return color(i);
+            })
+            .on('mousemove', (d) => {
+                div.html('this is tooltip')
+                    .style('left', (d3.event.pageX + 12) + 'px')
+                    .style('top', (d3.event.pageY - 10) + 'px')
+                    .style('opacity', 1).style('display', 'block');
+            })
+            .on('mouseout', (d) => {
+                div.style('display', 'none').style('opacity', 0);
+            })
+            .attr('d', arc);
+
+
+
+
     }
 }

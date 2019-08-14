@@ -1,8 +1,9 @@
 #distribution-category-section {
   color: $white;
 
-  #piechartinner {
-    position: absolute;
-    margin-left: 43px;
+  .tooltip {
+    background-color: $light-300;
+    padding: 20px;
+    border-radius: 5px;
   }
 }
