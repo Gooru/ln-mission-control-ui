@@ -27,7 +27,7 @@ export default class DistributionByContent extends Vue {
         .append('g')
         .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
         const clr = ['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374'];
-        const data: any = { IN: 9, AUS: 20, US: 30, UAE: 8, ENG: 12 };
+        const data: any = { IND: 9, AUS: 20, US: 30, UAE: 8, ENG: 12 };
         const color = d3.scaleOrdinal(clr);
         const pie: any = d3.pie()
             .value( (d: any) =>  d.value );
@@ -37,12 +37,15 @@ export default class DistributionByContent extends Vue {
             .outerRadius(this.radius);
         const labelarc: any = d3.arc().innerRadius(this.radius).outerRadius(this.radius - 80);
         divList.selectAll('li')
-            .data(clr)
+            .data(dataready)
             .enter()
             .append('li')
             .style('background-color', (d: any, i: any) => {
                 return color(i);
-            }).append('span');
+            }).append('span').text((d: any) => d.data.key)
+            .style('right', (d: any) =>
+             d.data.key.length  >= 5 ? d.data.key.length - 1 + '0px'
+             : d.data.key.length + '0px');
         this.svg
             .selectAll('mySlices')
             .data(dataready)

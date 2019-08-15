@@ -110,8 +110,8 @@ export default class PartnerContentUsage extends Vue {
         return `country-code-${d.country_code}`;
       }).on('mousemove', (d: any) => {
         if (d.has_data) {
-          const boxX = d3.event.x;
-          const boxY = d3.event.y;
+          const boxX = d3.mouse(d3.event.target)[0];
+          const boxY = d3.mouse(d3.event.target)[1];
           this.activeCountry = d;
           this.showNavLearningWorldwidePopover(d.country_code, boxX, boxY);
         }
@@ -134,7 +134,7 @@ export default class PartnerContentUsage extends Vue {
     const element = `#country-code-${countryCode}`;
     const xAxis = x;
     const yAxis = y;
-    const newXAxisVal = (xAxis + 500) > window.innerWidth ? (xAxis - 340) : (xAxis - 100);
+    const newXAxisVal = (xAxis + 600) > window.innerWidth ? (xAxis - 400) : (xAxis + 50);
     const style = {
       top: `${yAxis}px`,
       left: `${newXAxisVal}px`,

@@ -2,7 +2,7 @@
     <div  id="distribution-category-section">
         <div id="piechart-category"></div>
         <div>
-                <p>Distribution by <br>Category/Subject</p>
+                <p>Distribution by Category/Subject</p>
         </div>
     </div>
 </template>

@@ -20,7 +20,7 @@ export default class DistributionByCategory extends Vue {
         };
         const width = 300;
         const height = 300;
-        const margin = 30;
+        const margin = 40;
         const radius = Math.min(width, height) / 2 - margin;
 
         const color = d3.scaleOrdinal(['#3180c0', '#bad4ea', '#8db8dc', '#5f9cce', '#ffffff']);
@@ -32,11 +32,17 @@ export default class DistributionByCategory extends Vue {
         const piedata2 = pie(dataset.pear);
 
         const arc: any = d3.arc()
-            .innerRadius(radius - 90)
-            .outerRadius(radius - 60);
-        const arc2: any = d3.arc()
-            .innerRadius(radius - 10)
+            .innerRadius(radius - 80)
             .outerRadius(radius - 50);
+        const arc2: any = d3.arc()
+            .innerRadius(radius)
+            .outerRadius(radius - 40);
+        const arcOver: any = d3.arc()
+            .innerRadius(radius + 5 )
+            .outerRadius(radius - 45);
+        const arcOver1: any = d3.arc()
+            .innerRadius(radius - 85)
+            .outerRadius(radius - 45);
 
         const svg = d3.select('#piechart-category').append('svg')
             .attr('width', width)
@@ -51,7 +57,7 @@ export default class DistributionByCategory extends Vue {
             .append('li')
             .style('background-color', (d: any, i: any) => {
                 return color(i);
-            }).append('span').text((d: any) => d.data );
+            }).append('span').text((d: any) => d.data);
         const path2 = svg.selectAll('g').append('g').attr('id', 'pie')
             .data(piedata)
             .enter().append('path')
@@ -59,14 +65,22 @@ export default class DistributionByCategory extends Vue {
                 return color(i);
             })
             .on('mousemove', (d) => {
+                d3.select(d3.event.target)
+                    .attr('stroke', 'white')
+                    .attr('d', arcOver);
+
                 div.html('<h6>Tooltip Value ' + d.data + '</h6>')
                     .style('left', (d3.event.pageX + 12) + 'px')
                     .style('top', (d3.event.pageY - 10) + 'px')
                     .style('opacity', 1)
-                    .style('background-color', d3.select(d3.event.target).attr('fill'))
                     .style('display', 'block');
             })
             .on('mouseout', (d) => {
+                d3.select(d3.event.target)
+                    .attr('stroke', 'none')
+                    .transition()
+                    .duration(100)
+                    .attr('d', arc2);
                 div.style('display', 'none').style('opacity', 0);
             })
             .attr('d', arc2);
@@ -78,14 +92,23 @@ export default class DistributionByCategory extends Vue {
                 return color(i);
             })
             .on('mousemove', (d) => {
+
+                d3.select(d3.event.target)
+                .attr('stroke', 'white')
+                .attr('d', arcOver1);
+
                 div.html('<h6>Tooltip Value ' + d.data + '</h6>')
                     .style('left', (d3.event.pageX + 12) + 'px')
                     .style('top', (d3.event.pageY - 10) + 'px')
                     .style('opacity', 1)
-                    .style('background-color', d3.select(d3.event.target).attr('fill'))
                     .style('display', 'block');
             })
             .on('mouseout', (d) => {
+                d3.select(d3.event.target)
+                    .attr('stroke', 'none')
+                    .transition()
+                    .duration(100)
+                    .attr('d', arc);
                 div.style('display', 'none').style('opacity', 0);
             })
             .attr('d', arc);

@@ -21,5 +21,15 @@
       padding: 5px;
       list-style: none;
     }
+    #content-usage-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      #usage-total {
+        text-align: right;
+      }
+      tr {
+        line-height: 1.5;
+      }
+    }
   }
 }

@@ -1,8 +1,10 @@
 #distribution-content-section {
   #my_dataviz {
-    display: grid;
-    grid-template-columns: 10% 1fr;
+    display: flex;
     align-items: center;
+    svg {
+      margin: 0 auto;
+    }
     .list-content {
       list-style: none;
       padding: 0;
@@ -11,6 +13,9 @@
         width: 20px;
         height: 20px;
         margin: 5px 0;
+        span {
+          position: relative;
+        }
       }
     }
   }
