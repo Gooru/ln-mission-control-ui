@@ -389,7 +389,8 @@
                     ]
                 ]
             },
-            "id": "ARG"
+            "id": "ARG",
+            "country_code": "AR"
         },
         {
             "type": "Feature",
@@ -1064,7 +1065,8 @@
                     ]
                 ]
             },
-            "id": "BGR"
+            "id": "BGR",
+            "country_code": "BG"
         },
         {
             "type": "Feature",
@@ -4530,7 +4532,8 @@
                     ]
                 ]
             },
-            "id": "FRA"
+            "id": "FRA",
+            "country_code": "FR"
         },
         {
             "type": "Feature",
@@ -6236,7 +6239,8 @@
                     ]
                 ]
             },
-            "id": "ITA"
+            "id": "ITA",
+            "country_code": "IT"
         },
         {
             "type": "Feature",
@@ -6808,7 +6812,8 @@
                     ]
                 ]
             },
-            "id": "LBN"
+            "id": "LBN",
+            "country_code": "LB"
         },
         {
             "type": "Feature",
@@ -8344,7 +8349,8 @@
                     ]
                 ]
             },
-            "id": "NLD"
+            "id": "NLD",
+            "country_code": "NL"
         },
         {
             "type": "Feature",
@@ -9037,7 +9043,8 @@
                     ]
                 ]
             },
-            "id": "PHL"
+            "id": "PHL",
+            "country_code": "PH"
         },
         {
             "type": "Feature",
@@ -10123,7 +10130,8 @@
                     ]
                 ]
             },
-            "id": "RUS"
+            "id": "RUS",
+            "country_code": "RU"
         },
         {
             "type": "Feature",
@@ -10282,7 +10290,8 @@
                     ]
                 ]
             },
-            "id": "SAU"
+            "id": "SAU",
+            "country_code": "SA"
         },
         {
             "type": "Feature",
@@ -11545,7 +11554,8 @@
                     ]
                 ]
             },
-            "id": "TWN"
+            "id": "TWN",
+            "country_code": "TW"
         },
         {
             "type": "Feature",

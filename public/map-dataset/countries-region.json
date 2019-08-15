@@ -25,12 +25,12 @@
     "longitude": "-10"
   }, {
     "country_code": "DE",
-    "latitude": "60",
-    "longitude": "8"
+    "latitude": "65",
+    "longitude": "-1"
   }, {
     "country_code": "ID",
-    "latitude": "5.865143",
-    "longitude": "110.209900"
+    "latitude": "8.865143",
+    "longitude": "100.209900"
   }, {
     "country_code": "IE",
     "latitude": "70",
@@ -58,8 +58,8 @@
   },
   {
     "country_code": "ES",
-    "latitude": "50",
-    "longitude": "-5"
+    "latitude": "52",
+    "longitude": "-15"
   },
   {
     "country_code": "TH",
@@ -68,7 +68,7 @@
   },
   {
     "country_code": "GB",
-    "latitude": "60",
+    "latitude": "70",
     "longitude": "-15"
   },
   {
@@ -95,5 +95,55 @@
     "country_code": "ZA",
     "latitude": "-15",
     "longitude": "10"
+  },
+  {
+    "country_code": "AR",
+    "latitude": "-23",
+    "longitude": "-81"
+  },
+  {
+    "country_code": "BG",
+    "latitude": "60",
+    "longitude": "8"
+  },
+  {
+    "country_code": "FR",
+    "latitude": "60",
+    "longitude": "-10"
+  },
+  {
+    "country_code": "IT",
+    "latitude": "55",
+    "longitude": "-1"
+  },
+  {
+    "country_code": "LB",
+    "latitude": "45",
+    "longitude": "20"
+  },
+  {
+    "country_code": "SA",
+    "latitude": "38",
+    "longitude": "30"
+  },
+  {
+    "country_code": "PH",
+    "latitude": "23",
+    "longitude": "110"
+  },
+  {
+    "country_code": "NL",
+    "latitude": "73",
+    "longitude": "-5"
+  },
+  {
+    "country_code": "RU",
+    "latitude": "75.913818",
+    "longitude": "90.363625"
+  },
+  {
+    "country_code": "TW",
+    "latitude": "40",
+    "longitude": "110"
   }
 ]
