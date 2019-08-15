@@ -2,7 +2,7 @@
     <div id="distribution-content-section">
         <div id="my_dataviz"></div>
         <div>
-                <p>Distribution by Content</p>
+                <p>Distribution by <br> Content Type </p>
         </div>
     </div>
 </template>

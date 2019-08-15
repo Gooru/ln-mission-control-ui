@@ -1,9 +1,17 @@
 #distribution-content-section {
-  .heighlight {
-    color: red;
-  }
   #my_dataviz {
     display: grid;
-    grid-template-columns: 30px 1fr;
+    grid-template-columns: 10% 1fr;
+    align-items: center;
+    .list-content {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      li {
+        width: 20px;
+        height: 20px;
+        margin: 5px 0;
+      }
+    }
   }
 }

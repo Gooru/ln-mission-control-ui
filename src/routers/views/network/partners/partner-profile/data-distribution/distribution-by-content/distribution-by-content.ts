@@ -16,24 +16,16 @@ export default class DistributionByContent extends Vue {
 
 
     private mounted() {
-        this.selectDiv();
-    }
-
-
-
-    private selectDiv() {
-        this.svg = d3.select('#my_dataviz')
-            .append('svg')
-            .attr('width', this.width)
-            .attr('height', this.height)
-            .append('g')
-            .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
         this.darwCircle();
     }
-
-
-
     private darwCircle() {
+        const divList = d3.select('#my_dataviz').append('ul').classed('list-content', true);
+        this.svg = d3.select('#my_dataviz')
+        .append('svg')
+        .attr('width', this.width)
+        .attr('height', this.height)
+        .append('g')
+        .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
         const clr = ['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374'];
         const data: any = { IN: 9, AUS: 20, US: 30, UAE: 8, ENG: 12 };
         const color = d3.scaleOrdinal(clr);
@@ -44,6 +36,13 @@ export default class DistributionByContent extends Vue {
             .innerRadius(0)
             .outerRadius(this.radius);
         const labelarc: any = d3.arc().innerRadius(this.radius).outerRadius(this.radius - 80);
+        divList.selectAll('li')
+            .data(clr)
+            .enter()
+            .append('li')
+            .style('background-color', (d: any, i: any) => {
+                return color(i);
+            }).append('span');
         this.svg
             .selectAll('mySlices')
             .data(dataready)

@@ -4,9 +4,9 @@
       <distribution-by-category/>
     </div>
     <div class="distribution-competencies">
-      <h5>COMPETENCIES GAINED</h5>
-      <h4>2193824984</h4>
-      <h5>simply dummy text of the printing</h5>
+      <h5 id="competencies-heading">COMPETENCIES GAINED</h5>
+      <h3 id="competencies-total">2,933,824</h3>
+      <p id="competencies-content">simply dummy text of the printing</p>
     </div>
 
     <div class="distribution-content">

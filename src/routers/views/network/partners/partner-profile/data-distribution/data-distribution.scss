@@ -6,13 +6,15 @@
   color: $white;
 
   .distribution-competencies {
-    h5 {
-      font-size: 15px;
+    padding: 10px 20px;
+    #competencies-heading {
+      font-size: 14px;
       font-weight: 900;
     }
 
-    h4 {
+    #competencies-total {
       font-weight: 900;
+      font-size: 30px;
     }
   }
 }
