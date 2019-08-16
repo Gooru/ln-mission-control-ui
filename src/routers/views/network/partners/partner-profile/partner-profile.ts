@@ -8,7 +8,6 @@ import PartnerContentUsage from './partner-content-usage/partner-content-usage';
 import axios from 'axios';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { statsAPI } from '@/providers/apis/stats/stats';
-import { CountryModel } from '@/models/stats/country';
 import { PartnersModel } from '@/models/partners/partners';
 import { partnersAPI } from '@/providers/apis/partners/partners';
 @Component({
@@ -50,9 +49,9 @@ export default class PartnerProfile extends Vue {
     ])
       .then(axios.spread((partnersData, countries, statsCountries, countriesRegion) => {
         if (statsCountries) {
-          countries.features.map((statsCountry: PartnersModel) => {
+          partnersData.countries.map((statsCountry: PartnersModel) => {
             const country = countries.features.find((countryData: any) => {
-              return statsCountry.country_code === countryData.country_code;
+              return statsCountry.code === countryData.country_code;
             });
             if (country) {
               country.has_data = true;

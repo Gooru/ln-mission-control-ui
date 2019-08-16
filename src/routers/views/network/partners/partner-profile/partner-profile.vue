@@ -1,5 +1,5 @@
 <template>
-  <div id="partners-profile-container">
+  <div id="partners-profile-container" v-if="mapData">
     <div id="partner-profile-data">
       <div class="partner-info-section">
         <div class="back-button" @click="back()">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="profile-distribution">
-      <profile-distribution/>
+      <profile-distribution v-if="profileData" :profileData="profileData"/>
     </div>
     <div class="partner-content-usage">
       <partner-content-usage v-if="mapData" :mapData="mapData"/>

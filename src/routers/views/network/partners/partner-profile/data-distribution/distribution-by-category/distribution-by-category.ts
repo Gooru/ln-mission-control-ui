@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as d3 from 'd3';
 
 @Component({
@@ -8,16 +8,15 @@ import * as d3 from 'd3';
 })
 
 export default class DistributionByCategory extends Vue {
-
+    @Prop()
+    private profileData: any;
     private mounted() {
         this.selectDiv();
     }
 
     private selectDiv() {
-        const dataset = {
-            apples: [53245, 28479, 19697, 24037, 40245],
-            pear: [53245, 28479],
-        };
+        const dataset1 = this.profileData.categories_usage;
+        const dataset2 = this.profileData.subjects_usage;
         const width = 300;
         const height = 300;
         const margin = 40;
@@ -26,11 +25,7 @@ export default class DistributionByCategory extends Vue {
         const color = d3.scaleOrdinal(['#3180c0', '#bad4ea', '#8db8dc', '#5f9cce', '#ffffff']);
 
         const pie = d3.pie()
-            .sort(null);
-
-        const piedata = pie(dataset.apples);
-        const piedata2 = pie(dataset.pear);
-
+            .value((d: any) => d.total_count);
         const arc: any = d3.arc()
             .innerRadius(radius - 80)
             .outerRadius(radius - 50);
@@ -38,7 +33,7 @@ export default class DistributionByCategory extends Vue {
             .innerRadius(radius)
             .outerRadius(radius - 40);
         const arcOver: any = d3.arc()
-            .innerRadius(radius + 5 )
+            .innerRadius(radius + 5)
             .outerRadius(radius - 45);
         const arcOver1: any = d3.arc()
             .innerRadius(radius - 85)
@@ -50,26 +45,17 @@ export default class DistributionByCategory extends Vue {
             .append('g')
             .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
         const div = d3.select('#piechart-category').append('div').attr('class', 'tooltip');
-        const divList = d3.select('#piechart-category').append('ul').classed('list-category', true);
-        divList.selectAll('li')
-            .data(piedata)
-            .enter()
-            .append('li')
-            .style('background-color', (d: any, i: any) => {
-                return color(i);
-            }).append('span').text((d: any) => d.data);
         const path2 = svg.selectAll('g').append('g').attr('id', 'pie')
-            .data(piedata)
+            .data(pie(dataset1))
             .enter().append('path')
             .attr('fill', (d, i: any) => {
                 return color(i);
             })
-            .on('mousemove', (d) => {
+            .on('mousemove', (d: any) => {
                 d3.select(d3.event.target)
                     .attr('stroke', 'white')
                     .attr('d', arcOver);
-
-                div.html('<h6>Tooltip Value ' + d.data + '</h6>')
+                div.html('<h6>' + d.data.name + '<br>' + d.data.total_count + '</h6>')
                     .style('left', (d3.event.pageX + 12) + 'px')
                     .style('top', (d3.event.pageY - 10) + 'px')
                     .style('opacity', 1)
@@ -86,18 +72,18 @@ export default class DistributionByCategory extends Vue {
             .attr('d', arc2);
 
         const path = svg.selectAll('g').append('g').attr('id', 'donut')
-            .data(piedata2)
+            .data(pie(dataset2))
             .enter().append('path')
             .attr('fill', (d, i: any) => {
                 return color(i);
             })
-            .on('mousemove', (d) => {
+            .on('mousemove', (d: any) => {
 
                 d3.select(d3.event.target)
-                .attr('stroke', 'white')
-                .attr('d', arcOver1);
+                    .attr('stroke', 'white')
+                    .attr('d', arcOver1);
 
-                div.html('<h6>Tooltip Value ' + d.data + '</h6>')
+                div.html('<h6>' + d.data.name + '<br>' + d.data.total_count + '</h6>')
                     .style('left', (d3.event.pageX + 12) + 'px')
                     .style('top', (d3.event.pageY - 10) + 'px')
                     .style('opacity', 1)

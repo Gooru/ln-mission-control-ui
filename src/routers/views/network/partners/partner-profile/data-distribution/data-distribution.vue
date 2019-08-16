@@ -1,7 +1,7 @@
 <template>
   <div id="data-distribution">
     <div class="distribution-category">
-      <distribution-by-category/>
+      <distribution-by-category v-if="profileData" :profileData="profileData"/>
     </div>
     <div class="distribution-competencies">
       <h5 id="competencies-heading">COMPETENCIES GAINED</h5>
@@ -10,7 +10,7 @@
     </div>
 
     <div class="distribution-content">
-      <distribution-by-content/>
+      <distribution-by-content v-if="profileData" :profileData="profileData"/>
     </div>
   </div>
 </template>

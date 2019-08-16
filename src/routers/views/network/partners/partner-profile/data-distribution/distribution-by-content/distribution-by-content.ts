@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as d3 from 'd3';
 
 @Component({
@@ -8,6 +8,8 @@ import * as d3 from 'd3';
 })
 
 export default class DistributionByContent extends Vue {
+    @Prop()
+    private profileData: any;
     private width = 300;
     private height = 300;
     private margin = 40;
@@ -26,12 +28,11 @@ export default class DistributionByContent extends Vue {
         .attr('height', this.height)
         .append('g')
         .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
-        const clr = ['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374'];
-        const data: any = { IND: 9, AUS: 20, US: 30, UAE: 8, ENG: 12 };
-        const color = d3.scaleOrdinal(clr);
+        const color = d3.scaleOrdinal(['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374']);
+        const data: any = this.profileData.subjects_usage;
         const pie: any = d3.pie()
-            .value( (d: any) =>  d.value );
-        const dataready = pie(d3.entries(data));
+             .value( (d: any) =>  d.total_count );
+        const dataready = pie(data);
         const arcGenerator: any = d3.arc()
             .innerRadius(0)
             .outerRadius(this.radius);
@@ -42,10 +43,8 @@ export default class DistributionByContent extends Vue {
             .append('li')
             .style('background-color', (d: any, i: any) => {
                 return color(i);
-            }).append('span').text((d: any) => d.data.key)
-            .style('right', (d: any) =>
-             d.data.key.length  >= 5 ? d.data.key.length - 1 + '0px'
-             : d.data.key.length + '0px');
+            }).append('span').text((d: any) => d.data.name)
+            .style('left', '21px');
         this.svg
             .selectAll('mySlices')
             .data(dataready)
@@ -58,20 +57,18 @@ export default class DistributionByContent extends Vue {
                 d3.select(d3.event.target).attr('style', 'opacity:1');
               })
             .attr('d', arcGenerator)
-            .attr('fill', (d: any) =>  color(d.data.key) )
+            .attr('fill', (d: any, i: any) =>  color(i) )
             .style('opacity', 1);
         this.svg
             .selectAll('mySlices')
             .data(dataready)
             .enter()
             .append('text')
-            .text( (d: any) =>   d.data.key )
-            .on('mouseover', (d: any) => {
-                d3.select(d3.event.target).attr('color', 'red');
-              })
+            .text( (d: any) =>   d.data.name )
             .attr('transform', (d: any) =>  'translate(' + labelarc.centroid(d) + ')' )
             .style('text-anchor', 'middle')
-            .style('color', '#fff')
+            .style('fill', '#000')
+            .style('font-weight', '900')
             .style('font-size', 13);
     }
 }
