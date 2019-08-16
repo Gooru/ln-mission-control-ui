@@ -10,7 +10,7 @@
                       <tr v-for="data in details" :key="data.type">
                           <td><b>{{data.type}}</b></td>
                           <td><progress id="usage-detail-progress" :value="data.total" :max="data.total+1000"></progress></td>
-                          <td id="usage-total">{{data.total}}</td>
+                          <td id="usage-total"><b>{{data.total}}</b></td>
                       </tr>
                   </tbody>
               </table>

@@ -33,6 +33,15 @@ export class PartnersAPI {
       return partnersSerializer.partnerListModelSerializer(response.data[type]);
     });
   }
+
+  public getPartnerByID(): Promise<any> {
+    const endpoint = `${window.location.origin}/stubs/partner-profile.json`;
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint).then( (res) => {
+      return res.data;
+    });
+  }
+
 }
 
 export const partnersAPI = PartnersAPI.instance;

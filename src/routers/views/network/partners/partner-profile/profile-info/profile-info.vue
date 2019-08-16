@@ -7,12 +7,12 @@
         class="profile-description"
       >{{profileData.intro}}</p>
       <div class="profile-button">
-        <a :href="profileData.website"><button class="btn-links">Links</button></a>
+        <a :href="profileData.website"><button class="btn-links">Images</button></a>
         <a :href="profileData.videos[0]" target="_blank"><button class="btn-videos">Videos</button></a>
       </div>
     </div>
     <div class="profile-info-map">
-      <profile-info-map v-if="mapData" :mapData="mapData"/>
+      <profile-info-map v-if="mapData" :profileData="profileData" :mapData="mapData"/>
     </div>
   </div>
 </template>

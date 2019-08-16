@@ -54,7 +54,8 @@ export default class ProfileInfoMap extends Vue {
    */
   @Prop()
   private mapData: any;
-
+  @Prop()
+  private profileData: any;
 
   /**
    * Set the overall stats from mapData

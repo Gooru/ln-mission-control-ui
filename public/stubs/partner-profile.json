@@ -1,0 +1,77 @@
+{
+    "logo": "https://nile-tenants.s3-us-west-1.amazonaws.com/partners/77ba26e3-1bc6-4fca-9eed-bdacae71c849.png",
+    "website": null,
+    "countries": [{
+        "id": 101,
+        "code": "US",
+        "name": "India"
+    },
+    {
+        "id": 101,
+        "code": "IN",
+        "name": "India"
+    }],
+    "partner_id": 61,
+    "total_users": 4488,
+    "partner_name": "Ideaphora",
+    "total_others": 0,
+    "total_classes": 874,
+    "tenant_manager": true,
+    "total_students": 4368,
+    "total_teachers": 120,
+    "videos": ["https://youtu.be/xpyFkDros_o"],
+    "states": [
+    {
+        "id": 1032,
+        "code": "IN",
+        "country_code": "IN",
+        "name": "california"
+    }],
+    "partner_type": "implementation_partners",
+    "intro": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+    "categories_usage": [{
+            "code": "K12IN",
+            "name": "K12 IND",
+            "total_count": 123
+        },
+        {
+            "code": "K12US",
+            "name": "K12 US",
+            "total_count": 321
+        }, {
+            "code": "K12AUS",
+            "name": "K12 AUS",
+            "total_count": 23
+        },
+        {
+            "code": "K12UAE",
+            "name": "K12 UAE",
+            "total_count": 123
+        }
+    ],
+    "subjects_usage": [{
+        "code": "K12IN.MA",
+        "name": "Math",
+        "total_count": 1231
+    },{
+        "code": "K12IN.SC",
+        "name": "Science",
+        "total_count": 1231
+    },{
+        "code": "K12IN.SS",
+        "name": "Social",
+        "total_count": 1231
+    },{
+        "code": "K12IN.EN",
+        "name": "English",
+        "total_count": 1231
+    },{
+        "code": "K12IN.BIO",
+        "name": "Biology",
+        "total_count": 1231
+    }],
+    "content_types_usage": [{
+        "content_type": "video",
+        "total_count": 100
+    }]
+}
