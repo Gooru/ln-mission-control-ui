@@ -34,11 +34,11 @@ export class PartnersAPI {
     });
   }
 
-  public getPartnerByID(): Promise<any> {
+  public getPartnerByID(): Promise<PartnerModel> {
     const endpoint = `${window.location.origin}/stubs/partner-profile.json`;
     const headers = http.getTokenHeaders();
     return http.get(endpoint).then( (res) => {
-      return res.data;
+      return partnersSerializer.partnerModelSerializer(res.data);
     });
   }
 

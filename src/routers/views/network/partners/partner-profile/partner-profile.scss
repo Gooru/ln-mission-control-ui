@@ -17,6 +17,9 @@
     background: $light-200;
     font-size: 20px;
     border-radius: 50%;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .profile-distribution {
     background-image: linear-gradient(to right, $blue-400, $green-400);

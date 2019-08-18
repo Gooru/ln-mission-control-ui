@@ -19,6 +19,8 @@ export interface PartnerModel {
   total_teachers: number;
   countries: CountryModel[];
   website?: string;
+  partner_type?: string;
+  intro?: string;
   categories_usage?: Categories[];
   subjects_usage?: Subjects[];
   content_types_usage?: ContentType[];

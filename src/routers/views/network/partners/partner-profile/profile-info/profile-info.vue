@@ -7,8 +7,8 @@
         class="profile-description"
       >{{profileData.intro}}</p>
       <div class="profile-button">
-        <a :href="profileData.website"><button class="btn-links">Images</button></a>
-        <a :href="profileData.videos[0]" target="_blank"><button class="btn-videos">Videos</button></a>
+        <a :href="profileData.websites"><button class="btn-links">Images</button></a>
+        <a :href="profileData.videos" target="_blank"><button class="btn-videos">Videos</button></a>
       </div>
     </div>
     <div class="profile-info-map">

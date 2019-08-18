@@ -32,6 +32,8 @@ export class PartnersSerializer {
       total_others: res.total_others,
       total_students: res.total_students,
       total_teachers: res.total_teachers,
+      intro: res.intro,
+      partner_type: res.partner_type,
       countries: this.countriesModelSerializer(res.countries),
       subjects_usage: this.subjectsModelSerializer(res.subjects_usage),
       categories_usage: this.categoriesModelSerializer(res.categories_usage),
