@@ -2,7 +2,7 @@
   <div id="profile-info">
     <div class="profile-info-description">
       <h3 class="profile-heading">{{profileData.partner_name}}</h3>
-      <span class="profile-sub-title">{{profileData.partner_type}}</span>
+      <span class="profile-sub-title">{{$t(profileData.labelKey)}}</span>
       <p
         class="profile-description"
       >{{profileData.intro}}</p>

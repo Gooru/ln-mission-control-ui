@@ -92,5 +92,9 @@ export default class PartnersType extends Vue {
         return numberFormat(value);
     }
 
+    private onPreviewPartnersDetails(parternID: number) {
+        this.$router.push({ name: 'network-partners-profile', params: { id: `${parternID}` }});
+      }
+
 
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { statsAPI } from '@/providers/apis/stats/stats';
 import { CountryModel } from '@/models/stats/country';
+import { PARTNERS_TYPE } from '@/utils/constants';
 
 @Component({
   name: 'profile-info',
@@ -19,4 +20,16 @@ export default class ProfileInfo extends Vue {
   private mapData: any;
   @Prop()
   private profileData: any;
+
+  private created() {
+    this.initialize();
+  }
+
+  private initialize() {
+    const partnerTypeData = PARTNERS_TYPE.find((type) => (type.type === this.profileData.partner_type));
+    if (partnerTypeData) {
+      this.profileData.labelKey = partnerTypeData.labelKey;
+    }
+  }
+
 }

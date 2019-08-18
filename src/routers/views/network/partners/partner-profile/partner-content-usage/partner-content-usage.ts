@@ -60,6 +60,8 @@ export default class PartnerContentUsage extends Vue {
    */
   @Prop()
   private mapData: any;
+  @Prop()
+  private profileData: any;
   /**
    * Set the overall stats from mapData
    */

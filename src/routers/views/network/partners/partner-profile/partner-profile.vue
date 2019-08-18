@@ -14,7 +14,7 @@
       <profile-distribution v-if="profileData" :profileData="profileData"/>
     </div>
     <div class="partner-content-usage">
-      <partner-content-usage v-if="mapData" :mapData="mapData"/>
+      <partner-content-usage v-if="mapData" :profileData="profileData" :mapData="mapData"/>
     </div>
   </div>
 </template>
