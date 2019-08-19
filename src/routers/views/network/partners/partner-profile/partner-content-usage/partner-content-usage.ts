@@ -114,12 +114,12 @@ export default class PartnerContentUsage extends Vue {
         if (d.has_data) {
           const boxX = d3.mouse(d3.event.target)[0];
           const boxY = d3.mouse(d3.event.target)[1];
-          this.activeCountry = d;
           this.showNavLearningWorldwidePopover(d.country_code, boxX, boxY);
+          const element = d3.select(`#country-code-${d.country_code}`);
+          const currentClass = element.attr('class');
+          element.attr('class', `${currentClass} on-hover-country`);
+          this.activeCountry = d;
         }
-        const element = d3.select(`#country-code-${d.country_code}`);
-        const currentClass = element.attr('class');
-        element.attr('class', `${currentClass} on-hover-country`);
       })
       .on('mouseout', (d: any) => {
         const className = d.has_data ? 'map-path has-data' : 'map-path';

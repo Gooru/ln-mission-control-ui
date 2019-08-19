@@ -2,23 +2,14 @@
   color: $white;
 
   .tooltip {
-    padding: 20px;
+    padding: 5px;
     border-radius: 5px;
     z-index: 1;
-    background-color: $dark-500;
-    &::before {
-      position: absolute;
-      content: "";
-      margin-left: -30px;
-      width: 0;
-      height: 0;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
-      border-right: 10px solid $dark-500;
-    }
-    h6 {
+    background-color: $white;
+    p {
       margin: 0;
-      color: $light-400;
+      padding: 0;
+      color: $dark-400;
     }
   }
 

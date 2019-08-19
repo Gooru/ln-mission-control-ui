@@ -24,11 +24,31 @@
     #content-usage-details {
       display: grid;
       grid-template-columns: 1fr;
-      #usage-total {
+      .usage-total {
         text-align: right;
       }
-      tr {
-        line-height: 1.5;
+      progress {
+        border-radius: 10px;
+      }
+      progress::-webkit-progress-bar {
+        background-color: $light-300;
+        border-radius: 10px;
+      }
+      progress::-webkit-progress-value {
+        border-radius: 10px;
+        background-color: $green;
+      }
+      progress::-moz-progress-bar {
+        background-color: $light-300;
+        border-radius: 10px;
+      }
+      progress::-moz-progress-value {
+        border-radius: 10px;
+        background-color: $green;
+      }
+      .content-type-stats {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
       }
     }
   }

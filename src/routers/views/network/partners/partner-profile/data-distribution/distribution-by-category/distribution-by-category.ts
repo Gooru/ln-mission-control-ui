@@ -15,8 +15,8 @@ export default class DistributionByCategory extends Vue {
     }
 
     private selectDiv() {
-        const dataset1 = this.profileData.categories_usage;
-        const dataset2 = this.profileData.subjects_usage;
+        const dataset1 = this.profileData.subject_stats;
+        const dataset2 = this.profileData.category_stats;
         const width = 300;
         const height = 300;
         const margin = 40;
@@ -33,11 +33,11 @@ export default class DistributionByCategory extends Vue {
             .innerRadius(radius)
             .outerRadius(radius - 40);
         const arcOver: any = d3.arc()
-            .innerRadius(radius + 5)
-            .outerRadius(radius - 45);
+            .innerRadius(radius + 2)
+            .outerRadius(radius - 42);
         const arcOver1: any = d3.arc()
-            .innerRadius(radius - 85)
-            .outerRadius(radius - 45);
+            .innerRadius(radius - 82)
+            .outerRadius(radius - 48);
 
         const svg = d3.select('#piechart-category').append('svg')
             .attr('width', width)
@@ -45,7 +45,7 @@ export default class DistributionByCategory extends Vue {
             .append('g')
             .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
         const div = d3.select('#piechart-category').append('div').attr('class', 'tooltip');
-        const path2 = svg.selectAll('g').append('g').attr('id', 'pie')
+        const path = svg.selectAll('g').append('g').attr('id', 'pie')
             .data(pie(dataset1))
             .enter().append('path')
             .attr('fill', (d, i: any) => {
@@ -55,13 +55,19 @@ export default class DistributionByCategory extends Vue {
                 d3.select(d3.event.target)
                     .attr('stroke', 'white')
                     .attr('d', arcOver);
-                div.html('<h6>' + d.data.name + '<br>' + d.data.total_count + '</h6>')
+                d3.select('#' + d.data.category_id).attr('stroke', 'white')
+                    .attr('d', arcOver1);
+                div.html(`
+                     <p> <b>Subject Name:</b> ${d.data.name} </p>
+                     <p> <b>Category Name:</b> ${dataset2.find( (x: any) => x.id === d.data.category_id).name} </p>
+                     <p> <b>Total Count:</b> ${d.data.total_count}</p>`)
                     .style('left', (d3.event.pageX + 12) + 'px')
                     .style('top', (d3.event.pageY - 10) + 'px')
                     .style('opacity', 1)
                     .style('display', 'block');
             })
-            .on('mouseout', (d) => {
+            .on('mouseout', (d: any) => {
+                d3.select('#' + d.data.category_id).attr('stroke', 'none').attr('d', arc);
                 d3.select(d3.event.target)
                     .attr('stroke', 'none')
                     .transition()
@@ -71,9 +77,10 @@ export default class DistributionByCategory extends Vue {
             })
             .attr('d', arc2);
 
-        const path = svg.selectAll('g').append('g').attr('id', 'donut')
+        const path1 = svg.selectAll('g').append('g').attr('id', 'donut')
             .data(pie(dataset2))
             .enter().append('path')
+            .attr('id', (d: any) => d.data.id )
             .attr('fill', (d, i: any) => {
                 return color(i);
             })
@@ -83,7 +90,7 @@ export default class DistributionByCategory extends Vue {
                     .attr('stroke', 'white')
                     .attr('d', arcOver1);
 
-                div.html('<h6>' + d.data.name + '<br>' + d.data.total_count + '</h6>')
+                div.html('<p>' + d.data.name + '</p>')
                     .style('left', (d3.event.pageX + 12) + 'px')
                     .style('top', (d3.event.pageY - 10) + 'px')
                     .style('opacity', 1)

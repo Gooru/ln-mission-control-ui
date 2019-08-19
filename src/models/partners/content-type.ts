@@ -1,4 +1,5 @@
 export interface ContentType {
-    name: string;
+    content_type: string;
     total_count: string;
+    country_code: string;
 }

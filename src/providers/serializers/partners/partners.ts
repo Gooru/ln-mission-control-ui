@@ -32,13 +32,14 @@ export class PartnersSerializer {
       total_others: res.total_others,
       total_students: res.total_students,
       total_teachers: res.total_teachers,
+      total_competencies_gained: res.total_competencies_gained,
       intro: res.intro,
       partner_type: res.partner_type,
       countries: this.countriesModelSerializer(res.countries),
-      subjects_usage: this.subjectsModelSerializer(res.subjects_usage),
-      categories_usage: this.categoriesModelSerializer(res.categories_usage),
+      subject_stats: this.subjectsModelSerializer(res.subject_stats),
+      category_stats: this.categoriesModelSerializer(res.category_stats),
       states: this.statesModelSerializer(res.states),
-      content_types_usage: this.contentTypesModelSerializer(res.content_types_usage),
+      content_type_stats: this.contentTypesModelSerializer(res.content_type_stats),
     };
     return result;
   }
@@ -88,8 +89,10 @@ export class PartnersSerializer {
 
   private subjectModelSerializer(res: any): Subjects {
     const result: Subjects = {
+      id: res.id,
       code: res.id,
       name: res.name,
+      category_id: res.category_id,
       total_count: res.total_count,
     };
     return result;
@@ -107,6 +110,7 @@ export class PartnersSerializer {
 
   private categoryModelSerializer(res: any): Categories {
     const result: Categories = {
+      id: res.id,
       code: res.code,
       name: res.name,
       total_count: res.total_count,
@@ -145,8 +149,9 @@ export class PartnersSerializer {
   }
   private contentTypeModelSerializer(res: any): ContentType {
     const result: ContentType = {
-      name: res.name,
+      content_type: res.content_type,
       total_count: res.total_count,
+      country_code: res.country_code,
     };
     return result;
   }

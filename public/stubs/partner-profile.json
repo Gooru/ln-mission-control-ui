@@ -19,6 +19,7 @@
     "tenant_manager": true,
     "total_students": 4368,
     "total_teachers": 120,
+    "total_competencies_gained": 302930,
     "videos": ["https://youtu.be/xpyFkDros_o"],
     "states": [
     {
@@ -29,49 +30,92 @@
     }],
     "partner_type": "implementation_partners",
     "intro": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-    "categories_usage": [{
+    "category_stats": [{
+            "id": "K12IN",
             "code": "K12IN",
             "name": "K12 IND",
             "total_count": 123
         },
         {
+            "id": "K12US",
             "code": "K12US",
             "name": "K12 US",
             "total_count": 321
-        }, {
+        },{
+            "id": "K12AUS",
             "code": "K12AUS",
             "name": "K12 AUS",
             "total_count": 23
         },
         {
+            "id": "K12UAE",
             "code": "K12UAE",
             "name": "K12 UAE",
             "total_count": 123
         }
     ],
-    "subjects_usage": [{
+    "subject_stats": [{
+        "id": "K12IN.MA",
         "code": "K12IN.MA",
         "name": "Math",
-        "total_count": 1231
+        "category_id": "K12IN",
+        "total_count": 26346
     },{
+        "id": "K12IN.SC",
         "code": "K12IN.SC",
         "name": "Science",
-        "total_count": 1231
+        "category_id": "K12US",
+        "total_count": 62723
     },{
+        "id": "K12IN.SC",
         "code": "K12IN.SS",
         "name": "Social",
-        "total_count": 1231
+        "category_id": "K12AUS",
+        "total_count": 25262
     },{
+        "id": "K12IN.EN",
         "code": "K12IN.EN",
+        "category_id": "K12UAE",
         "name": "English",
-        "total_count": 1231
-    },{
-        "code": "K12IN.BIO",
-        "name": "Biology",
-        "total_count": 1231
+        "total_count": 23252
     }],
-    "content_types_usage": [{
-        "content_type": "video",
-        "total_count": 100
+    "content_type_stats": [{
+        "content_type": "assessment",
+        "total_count": 25220,
+        "country_code": "CA"
+    },
+    {
+        "content_type": "collection",
+        "total_count": 32250,
+        "country_code": "IN"
+    },
+    {
+        "content_type": "assessment-external",
+        "total_count": 52363,
+        "country_code": "UAE"
+    },
+    {
+        "content_type": "question",
+        "total_count": 22343,
+        "country_code": "US"
+    },
+    {
+        "content_type": "resource",
+        "total_count": 50223,
+        "country_code": "AU"
+    },
+    {
+        "content_type": "collection-external",
+        "total_count": 42340,
+        "country_code": "US"
+    },{
+        "content_type": "offline-activity",
+        "total_count": 93230,
+        "country_code": "US"
+    },
+    {
+        "content_type": "course",
+        "total_count": 39980,
+        "country_code": "US"
     }]
 }

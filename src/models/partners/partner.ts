@@ -17,13 +17,14 @@ export interface PartnerModel {
   total_classes?: number;
   total_others?: number;
   total_teachers: number;
+  total_competencies_gained?: number;
   countries: CountryModel[];
   website?: string;
   partner_type?: string;
   intro?: string;
-  categories_usage?: Categories[];
-  subjects_usage?: Subjects[];
-  content_types_usage?: ContentType[];
+  category_stats?: Categories[];
+  subject_stats?: Subjects[];
+  content_type_stats?: ContentType[];
   states?: States[];
 
 }

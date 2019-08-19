@@ -2,7 +2,12 @@
     <div id="content-usage-section">
         <h3>Content Usage</h3>
         <div id="parnter-content-usage-map"></div>
-        <content-usage-map-popup v-show="activeCountry" :profileData="profileData" :style="popoverStyle"/>
+        <content-usage-map-popup 
+         v-if="activeCountry"
+         :country="activeCountry"
+         :profileData="profileData"
+         v-show="activeCountry" 
+         :style="popoverStyle"/>
     </div>
 </template>
 

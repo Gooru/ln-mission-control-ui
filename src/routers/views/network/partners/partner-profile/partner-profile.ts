@@ -49,25 +49,25 @@ export default class PartnerProfile extends Vue {
     ])
       .then(axios.spread((partnersData, countries, statsCountries, countriesRegion) => {
         if (statsCountries) {
-          partnersData.countries.map((statsCountry: PartnersModel) => {
+          partnersData.content_type_stats.map((statsCountry: PartnersModel) => {
             const country = countries.features.find((countryData: any) => {
-              return statsCountry.code === countryData.country_code;
+              return statsCountry.country_code === countryData.country_code;
             });
             if (country) {
               country.has_data = true;
-              country.total_students = statsCountry.total_students;
-              country.total_teachers = statsCountry.total_teachers;
-              country.total_others = statsCountry.total_others;
-              country.total_users = statsCountry.total_users;
-              country.total_classes = statsCountry.total_classes;
-              country.total_competencies_gained = statsCountry.total_competencies_gained;
-              country.total_timespent = statsCountry.total_timespent;
-              country.total_activities_conducted = statsCountry.total_activities_conducted;
-              country.total_navigator_courses = statsCountry.total_navigator_courses;
-              country.country_name = statsCountry.country_name;
-              overallStats.totalStudentsCount += statsCountry.total_students;
-              overallStats.totalTeachersCount += statsCountry.total_teachers;
-              overallStats.totalOthersCount += statsCountry.total_others;
+              country.total_students = partnersData.total_students;
+              country.total_teachers = partnersData.total_teachers;
+              country.total_others = partnersData.total_others;
+              country.total_users = partnersData.total_users;
+              country.total_classes = partnersData.total_classes;
+              country.total_competencies_gained = partnersData.total_competencies_gained;
+              country.total_timespent = partnersData.total_timespent;
+              country.total_activities_conducted = partnersData.total_activities_conducted;
+              country.total_navigator_courses = partnersData.total_navigator_courses;
+              country.country_name = partnersData.country_name;
+              overallStats.totalStudentsCount += partnersData.total_students;
+              overallStats.totalTeachersCount += partnersData.total_teachers;
+              overallStats.totalOthersCount += partnersData.total_others;
               const countryRegion = countriesRegion.find((region: any) => {
                 return region.country_code === statsCountry.country_code;
               });
