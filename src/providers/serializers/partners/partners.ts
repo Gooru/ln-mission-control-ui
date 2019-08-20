@@ -7,6 +7,7 @@ import { Subjects } from '@/models/partners/subjects';
 import { Categories } from '@/models/partners/category';
 import { States } from '@/models/partners/states';
 import { ContentType } from '@/models/partners/content-type';
+import { ContentDistribution } from '@/models/partners/content-distribution';
 
 /**
  *
@@ -34,12 +35,16 @@ export class PartnersSerializer {
       total_teachers: res.total_teachers,
       total_competencies_gained: res.total_competencies_gained,
       intro: res.intro,
+      videos: res.videos,
+      images: res.images,
+      website: res.website,
       partner_type: res.partner_type,
       countries: this.countriesModelSerializer(res.countries),
-      subject_stats: this.subjectsModelSerializer(res.subject_stats),
-      category_stats: this.categoriesModelSerializer(res.category_stats),
+      subject_distribution: this.subjectsModelSerializer(res.subject_distribution),
+      category_distribution: this.categoriesModelSerializer(res.category_distribution),
       states: this.statesModelSerializer(res.states),
       content_type_stats: this.contentTypesModelSerializer(res.content_type_stats),
+      content_type_distribution: this.contentDistributionsModelSerializer(res.content_type_distribution),
     };
     return result;
   }
@@ -165,6 +170,25 @@ export class PartnersSerializer {
     }
     return resultSet;
   }
+
+  private contentDistributionModelSerializer(res: any): ContentDistribution {
+    const result: ContentDistribution = {
+      content_type: res.content_type,
+      total_count: res.total_count,
+    };
+    return result;
+  }
+
+  private contentDistributionsModelSerializer(res: any): ContentDistribution[] {
+    const resultSet: ContentDistribution[] = new Array();
+    if (res) {
+      res.map((content: object) => {
+        resultSet.push(this.contentDistributionModelSerializer(content));
+      });
+    }
+    return resultSet;
+  }
+
 
   private overallStatsModelSerializer(res: any): OverallStatsModel {
     const result: OverallStatsModel = {

@@ -5,11 +5,13 @@ import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { statsAPI } from '@/providers/apis/stats/stats';
 import { CountryModel } from '@/models/stats/country';
 import { PARTNERS_TYPE } from '@/utils/constants';
+import ProfileGallery from './profile-gallery/profile-gallery';
 
 @Component({
   name: 'profile-info',
   components: {
     'profile-info-map': ProfileInfoMap,
+    'profile-gallery': ProfileGallery,
   },
 })
 
@@ -20,6 +22,9 @@ export default class ProfileInfo extends Vue {
   private mapData: any;
   @Prop()
   private profileData: any;
+
+  private galleryPopUp: boolean = false;
+  private galleryData: string = '';
 
   private created() {
     this.initialize();
@@ -32,4 +37,11 @@ export default class ProfileInfo extends Vue {
     }
   }
 
+  private galleryImage(value: string) {
+    this.galleryData = value;
+    this.galleryPopUp = true;
+  }
+  private galleryPop(value: boolean) {
+    this.galleryPopUp = value;
+  }
 }

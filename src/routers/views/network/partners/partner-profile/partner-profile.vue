@@ -2,8 +2,10 @@
   <div id="partners-profile-container" v-if="mapData">
     <div id="partner-profile-data">
       <div class="partner-info-section">
-        <div class="back-button" @click="back()">
-          <google-material-icon icon="arrow_back"/>
+        <div class="back-button">
+         <div @click="back()">
+            <google-material-icon icon="arrow_back"/>
+         </div>
         </div>
         <div class="profile-content">
           <profile-info v-if="mapData" :mapData="mapData" :profileData="profileData"/>

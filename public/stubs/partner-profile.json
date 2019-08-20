@@ -20,7 +20,8 @@
     "total_students": 4368,
     "total_teachers": 120,
     "total_competencies_gained": 302930,
-    "videos": ["https://youtu.be/xpyFkDros_o"],
+    "videos": ["https://www.youtube.com/embed/xpyFkDros_o","https://www.youtube.com/embed/xpyFkDros_o"],
+    "images": ["https://picsum.photos/1024/480/?image=58","https://picsum.photos/1024/480/?image=58"],
     "states": [
     {
         "id": 1032,
@@ -30,7 +31,7 @@
     }],
     "partner_type": "implementation_partners",
     "intro": "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-    "category_stats": [{
+    "category_distribution": [{
             "id": "K12IN",
             "code": "K12IN",
             "name": "K12 IND",
@@ -54,7 +55,7 @@
             "total_count": 123
         }
     ],
-    "subject_stats": [{
+    "subject_distribution": [{
         "id": "K12IN.MA",
         "code": "K12IN.MA",
         "name": "Math",
@@ -117,5 +118,36 @@
         "content_type": "course",
         "total_count": 39980,
         "country_code": "US"
+    }],
+    "content_type_distribution":[{
+        "content_type": "assessment",
+        "total_count": 25220
+    },
+    {
+        "content_type": "collection",
+        "total_count": 32250
+    },
+    {
+        "content_type": "assessment-external",
+        "total_count": 52363
+    },
+    {
+        "content_type": "question",
+        "total_count": 22343
+    },
+    {
+        "content_type": "resource",
+        "total_count": 50223
+    },
+    {
+        "content_type": "collection-external",
+        "total_count": 42340
+    },{
+        "content_type": "offline-activity",
+        "total_count": 93230
+    },
+    {
+        "content_type": "course",
+        "total_count": 39980
     }]
 }

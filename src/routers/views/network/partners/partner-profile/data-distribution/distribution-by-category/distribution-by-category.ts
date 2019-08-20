@@ -15,8 +15,8 @@ export default class DistributionByCategory extends Vue {
     }
 
     private selectDiv() {
-        const dataset1 = this.profileData.subject_stats;
-        const dataset2 = this.profileData.category_stats;
+        const dataset1 = this.profileData.subject_distribution;
+        const dataset2 = this.profileData.category_distribution;
         const width = 300;
         const height = 300;
         const margin = 40;

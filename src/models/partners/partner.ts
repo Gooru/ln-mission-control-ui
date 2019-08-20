@@ -2,8 +2,8 @@ import { CountryModel } from './country';
 import { Categories } from './category';
 import { Subjects } from './subjects';
 import { ContentType } from './content-type';
-
 import { States } from './states';
+import { ContentDistribution } from './content-distribution';
 
 
 
@@ -20,11 +20,14 @@ export interface PartnerModel {
   total_competencies_gained?: number;
   countries: CountryModel[];
   website?: string;
+  images?: string;
+  videos?: string;
   partner_type?: string;
   intro?: string;
-  category_stats?: Categories[];
-  subject_stats?: Subjects[];
+  category_distribution?: Categories[];
+  subject_distribution?: Subjects[];
   content_type_stats?: ContentType[];
   states?: States[];
+  content_type_distribution?: ContentDistribution[];
 
 }

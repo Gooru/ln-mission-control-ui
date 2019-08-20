@@ -20,13 +20,13 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
-        path: '/network/partners/:type',
+        path: '/network/partners/type/:type',
         name: 'network-partners-type',
         component: () => import('@/routers/views/network/partners/partners-type/partners-type.vue'),
         meta: { isRequiredAuth: true },
       },
       {
-        path: '/network/partners-profile/:id',
+        path: '/network/partners/:id',
         name: 'network-partners-profile',
         component: () => import('@/routers/views/network/partners/partner-profile/partner-profile.vue'),
         meta: { isRequiredAuth: true },

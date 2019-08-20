@@ -4,51 +4,197 @@
   box-shadow: 0 0 5px $light-400;
   position: absolute;
   border-radius: 3px;
+
   #content-usage-popup-container {
     padding: 20px;
+
     .usage-heading {
       margin: 0;
       border-bottom: 2px solid $light-300;
       padding-bottom: 5px;
       font-weight: 700;
     }
+
     #usage-implementation {
       margin: 10px auto;
       border-bottom: 2px solid $light-300;
       padding-bottom: 5px;
     }
+
     #implementation-blk {
       padding: 5px;
       list-style: none;
     }
+
     #content-usage-details {
       display: grid;
       grid-template-columns: 1fr;
+
+      p {
+        margin: 5px 0;
+      }
+
+      .content-type-stats {
+        display: grid;
+        grid-template-columns: 50% 40% 10%;
+        align-items: center;
+      }
+
       .usage-total {
         text-align: right;
       }
+
       progress {
         border-radius: 10px;
+        height: 8px;
+        width: 100px;
       }
+
       progress::-webkit-progress-bar {
         background-color: $light-300;
         border-radius: 10px;
       }
+
       progress::-webkit-progress-value {
         border-radius: 10px;
         background-color: $green;
       }
+
       progress::-moz-progress-bar {
         background-color: $light-300;
         border-radius: 10px;
       }
+
       progress::-moz-progress-value {
         border-radius: 10px;
         background-color: $green;
       }
-      .content-type-stats {
-        display: grid;
-        grid-template-columns: 3fr 1fr 1fr;
+
+      .icon_assessment {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\f15b";
+          left: 8px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 6px;
+          margin-top: -2px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+
+      .icon_collection {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\f1c0";
+          left: 8px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 6px;
+          margin-top: -2px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+
+      .icon_assessment-external {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\F002";
+          left: 8px;
+          margin-top: 10px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 6px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+
+      .icon_resource {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\F085";
+          left: 8px;
+          margin-top: -2px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 5px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+
+      .icon_collection-external {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\F0AE";
+          left: 8px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 5px;
+          margin-top: -2px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+
+      .icon_offline-activity {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\F013";
+          left: 8px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 6px;
+          margin-top: -2px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+
+      .icon_course {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\f15c";
+          left: 8px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 6px;
+          margin-top: -2px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
+      }
+      .icon_question {
+        margin-left: 20px;
+
+        &::before {
+          position: absolute;
+          content: "\f15c";
+          left: 8px;
+          font-size: 12px;
+          font-family: fontAwesome;
+          padding: 2px 6px;
+          margin-top: -2px;
+          border: 2px solid $green;
+          border-radius: 50%;
+        }
       }
     }
   }

@@ -3,12 +3,25 @@
     <div class="profile-info-description">
       <h3 class="profile-heading">{{profileData.partner_name}}</h3>
       <span class="profile-sub-title">{{$t(profileData.labelKey)}}</span>
-      <p
-        class="profile-description"
-      >{{profileData.intro}}</p>
+      <p class="profile-description">{{profileData.intro}}</p>
+      <a :href="profileData.website" target="_blank">{{profileData.website}}</a>
       <div class="profile-button">
-        <a :href="profileData.websites"><button class="btn-links">Images</button></a>
-        <a :href="profileData.videos" target="_blank"><button class="btn-videos">Videos</button></a>
+        <profile-gallery
+          :galleryData="this.galleryData"
+          :profileData="profileData"
+          @closePopUp="galleryPop($event)"
+        ></profile-gallery>
+        <button
+          class="btn-links"
+          v-if="profileData.images.length > 0"
+          v-b-modal="'my-modal'"
+          @click="galleryImage('image')"
+        >Images</button>
+          <button class="btn-videos"
+          v-if="profileData.videos.length > 0"
+          v-b-modal="'my-modal'"
+          @click="galleryImage('video')"
+          >Videos</button>
       </div>
     </div>
     <div class="profile-info-map">

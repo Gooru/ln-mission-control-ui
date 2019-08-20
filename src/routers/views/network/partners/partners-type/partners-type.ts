@@ -93,7 +93,8 @@ export default class PartnersType extends Vue {
     }
 
     private onPreviewPartnersDetails(parternID: number) {
-        this.$router.push({ name: 'network-partners-profile', params: { id: `${parternID}` }});
+        const path = `/network/partners/${parternID}`;
+        this.$router.push(path);
       }
 
 
