@@ -14,7 +14,7 @@
         <div class="instructors">{{$t('instructors')}}</div>
       </div>
       <div id="partners-data-sheet-body">
-        <div class="partners-data-sheet-content" v-for="(partner, index) in partners" :key="index">
+        <div class="partners-data-sheet-content" v-for="(partner, index) in partners" :key="index" @click="onPreviewPartnersDetails(partner.partner_id)">
           <div class="name">
             <div class="partner-logo">
               <img v-lazy="partner.logo" />

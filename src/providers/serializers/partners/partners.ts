@@ -3,6 +3,10 @@ import { PartnersModel } from '@/models/partners/partners';
 import { CountryModel } from '@/models/partners/country';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
 import { OverallStatsModel } from '@/models/partners/overall-stats';
+import { Subjects } from '@/models/partners/subjects';
+import { Categories } from '@/models/partners/category';
+import { States } from '@/models/partners/states';
+import { ContentType } from '@/models/partners/content-type';
 
 /**
  *
@@ -28,7 +32,14 @@ export class PartnersSerializer {
       total_others: res.total_others,
       total_students: res.total_students,
       total_teachers: res.total_teachers,
+      total_competencies_gained: res.total_competencies_gained,
+      intro: res.intro,
+      partner_type: res.partner_type,
       countries: this.countriesModelSerializer(res.countries),
+      subject_stats: this.subjectsModelSerializer(res.subject_stats),
+      category_stats: this.categoriesModelSerializer(res.category_stats),
+      states: this.statesModelSerializer(res.states),
+      content_type_stats: this.contentTypesModelSerializer(res.content_type_stats),
     };
     return result;
   }
@@ -76,6 +87,85 @@ export class PartnersSerializer {
     return result;
   }
 
+  private subjectModelSerializer(res: any): Subjects {
+    const result: Subjects = {
+      id: res.id,
+      code: res.id,
+      name: res.name,
+      category_id: res.category_id,
+      total_count: res.total_count,
+    };
+    return result;
+  }
+
+  private subjectsModelSerializer(res: any): Subjects[] {
+    const resultSet: Subjects[] = new Array();
+    if ( res ) {
+      res.map((subject: object) => {
+        resultSet.push(this.subjectModelSerializer(subject));
+      });
+    }
+    return resultSet;
+  }
+
+  private categoryModelSerializer(res: any): Categories {
+    const result: Categories = {
+      id: res.id,
+      code: res.code,
+      name: res.name,
+      total_count: res.total_count,
+    };
+    return result;
+  }
+
+  private categoriesModelSerializer(res: any): Categories[] {
+    const resultSet: Categories[] = new Array();
+    if (res) {
+      res.map((category: object) => {
+        resultSet.push(this.categoryModelSerializer(category));
+      });
+    }
+    return resultSet;
+  }
+
+  private stateModelSerializer(res: any): States {
+    const result: States = {
+      id: res.id,
+      code: res.code,
+      country_code: res.country_code,
+      name: res.name,
+    };
+    return result;
+  }
+
+  private statesModelSerializer(res: any): States[] {
+    const resultSet: States[] = new Array();
+    if (res) {
+      res.map((states: object) => {
+        resultSet.push(this.stateModelSerializer(states));
+      });
+    }
+    return resultSet;
+  }
+  private contentTypeModelSerializer(res: any): ContentType {
+    const result: ContentType = {
+      content_type: res.content_type,
+      total_count: res.total_count,
+      country_code: res.country_code,
+    };
+    return result;
+  }
+
+  private contentTypesModelSerializer(res: any): ContentType[] {
+    const resultSet: ContentType[] = new Array();
+    if (res) {
+      res.map((content: object) => {
+        resultSet.push(this.contentTypeModelSerializer(content));
+      });
+    }
+    return resultSet;
+  }
+
   private overallStatsModelSerializer(res: any): OverallStatsModel {
     const result: OverallStatsModel = {
       total_partners: res.total_partners,
@@ -84,6 +174,7 @@ export class PartnersSerializer {
     };
     return result;
   }
+
 
 
 }

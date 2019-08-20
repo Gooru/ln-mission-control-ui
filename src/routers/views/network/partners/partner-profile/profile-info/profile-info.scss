@@ -1,0 +1,31 @@
+#profile-info {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+
+  .profile-info-description {
+    .profile-heading {
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .profile-sub-title {
+      font-size: 13px;
+    }
+
+    .profile-description {
+      padding-top: 30px;
+    }
+
+    .profile-button {
+      button {
+        padding: 10px 60px;
+        margin: 30px 5px 50px 0;
+        border: none;
+        background-image: linear-gradient(to right, $blue-700, $blue-500);
+        color: $white;
+        box-shadow: 0 0 6px $light-500;
+        font-weight: 600;
+      }
+    }
+  }
+}

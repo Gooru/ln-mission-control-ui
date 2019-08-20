@@ -1,0 +1,39 @@
+#distribution-category-section {
+  color: $white;
+
+  .tooltip {
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 1;
+    background-color: $white;
+    p {
+      margin: 0;
+      padding: 0;
+      color: $dark-400;
+    }
+  }
+
+  #piechart-category {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin: 0 auto;
+    }
+
+    .list-category {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        width: 20px;
+        height: 20px;
+        margin: 5px 0;
+        span {
+          margin-left: 25px;
+        }
+      }
+    }
+  }
+}

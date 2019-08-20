@@ -1,0 +1,55 @@
+#content-usage-popup {
+  width: 350px;
+  background-color: $white;
+  box-shadow: 0 0 5px $light-400;
+  position: absolute;
+  border-radius: 3px;
+  #content-usage-popup-container {
+    padding: 20px;
+    .usage-heading {
+      margin: 0;
+      border-bottom: 2px solid $light-300;
+      padding-bottom: 5px;
+      font-weight: 700;
+    }
+    #usage-implementation {
+      margin: 10px auto;
+      border-bottom: 2px solid $light-300;
+      padding-bottom: 5px;
+    }
+    #implementation-blk {
+      padding: 5px;
+      list-style: none;
+    }
+    #content-usage-details {
+      display: grid;
+      grid-template-columns: 1fr;
+      .usage-total {
+        text-align: right;
+      }
+      progress {
+        border-radius: 10px;
+      }
+      progress::-webkit-progress-bar {
+        background-color: $light-300;
+        border-radius: 10px;
+      }
+      progress::-webkit-progress-value {
+        border-radius: 10px;
+        background-color: $green;
+      }
+      progress::-moz-progress-bar {
+        background-color: $light-300;
+        border-radius: 10px;
+      }
+      progress::-moz-progress-value {
+        border-radius: 10px;
+        background-color: $green;
+      }
+      .content-type-stats {
+        display: grid;
+        grid-template-columns: 3fr 1fr 1fr;
+      }
+    }
+  }
+}

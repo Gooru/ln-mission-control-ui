@@ -1,0 +1,60 @@
+#content-usage-section {
+  position: relative;
+  padding-top: 20px;
+  h3 {
+    padding: 20px;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: initial;
+    font-weight: 400;
+    font-size: 36px;
+    text-align: center;
+    position: relative;
+  }
+
+  #parnter-content-usage-map {
+    width: 100%;
+
+    path.map-path.has-data {
+      fill: $green-400;
+    }
+    path.map-path.has-data.on-hover-country {
+      stroke-width: 3;
+      opacity: 0.8;
+      stroke: $white;
+    }
+    path.map-path {
+      fill: $light-400;
+      stroke: $light-200;
+      stroke-width: 1;
+      opacity: 0.8;
+      transition: 0.5s;
+    }
+
+    #countries-container {
+      path.map-path.has-data {
+        fill: $green-400;
+      }
+    }
+
+    #country-pie-chart {
+      .pie-box-shadow {
+        filter: url("#drop-shadow");
+        cursor: pointer;
+      }
+
+      .key-student {
+        fill: $green-400;
+      }
+
+      .key-teacher {
+        fill: $blue-400;
+      }
+
+      .key-other {
+        fill: $white;
+      }
+    }
+  }
+}
