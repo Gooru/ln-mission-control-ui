@@ -2,14 +2,6 @@
   position: relative;
   padding-top: 20px;
 
-  h2 {
-    font-family: initial;
-    font-weight: 400;
-    font-size: 36px;
-    text-align: center;
-    position: relative;
-  }
-
   #profile-info-map {
     width: 100%;
     #countries-container {
@@ -23,25 +15,6 @@
         stroke-width: 1;
         opacity: 0.8;
         transition: 0.5s;
-      }
-    }
-
-    #country-pie-chart {
-      .pie-box-shadow {
-        filter: url("#drop-shadow");
-        cursor: pointer;
-      }
-
-      .key-student {
-        fill: $green-400;
-      }
-
-      .key-teacher {
-        fill: $blue-400;
-      }
-
-      .key-other {
-        fill: $white;
       }
     }
   }

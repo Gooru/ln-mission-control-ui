@@ -3,11 +3,10 @@ import { PartnersModel } from '@/models/partners/partners';
 import { CountryModel } from '@/models/partners/country';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
 import { OverallStatsModel } from '@/models/partners/overall-stats';
-import { Subjects } from '@/models/partners/subjects';
-import { Categories } from '@/models/partners/category';
-import { States } from '@/models/partners/states';
-import { ContentType } from '@/models/partners/content-type';
-import { ContentDistribution } from '@/models/partners/content-distribution';
+import { SubjectModel } from '@/models/partners/subjects';
+import { CategoryModel } from '@/models/partners/category';
+import { StateModel } from '@/models/partners/states';
+import { ContentTypeModel } from '@/models/partners/content-type';
 
 /**
  *
@@ -44,7 +43,7 @@ export class PartnersSerializer {
       category_distribution: this.categoriesModelSerializer(res.category_distribution),
       states: this.statesModelSerializer(res.states),
       content_type_stats: this.contentTypesModelSerializer(res.content_type_stats),
-      content_type_distribution: this.contentDistributionsModelSerializer(res.content_type_distribution),
+      content_type_distribution: this.contentTypesModelSerializer(res.content_type_distribution),
     };
     return result;
   }
@@ -92,10 +91,10 @@ export class PartnersSerializer {
     return result;
   }
 
-  private subjectModelSerializer(res: any): Subjects {
-    const result: Subjects = {
+  private subjectModelSerializer(res: any): SubjectModel {
+    const result: SubjectModel = {
       id: res.id,
-      code: res.id,
+      code: res.code,
       name: res.name,
       category_id: res.category_id,
       total_count: res.total_count,
@@ -103,9 +102,9 @@ export class PartnersSerializer {
     return result;
   }
 
-  private subjectsModelSerializer(res: any): Subjects[] {
-    const resultSet: Subjects[] = new Array();
-    if ( res ) {
+  private subjectsModelSerializer(res: any): SubjectModel[] {
+    const resultSet: SubjectModel[] = new Array();
+    if (res) {
       res.map((subject: object) => {
         resultSet.push(this.subjectModelSerializer(subject));
       });
@@ -113,8 +112,8 @@ export class PartnersSerializer {
     return resultSet;
   }
 
-  private categoryModelSerializer(res: any): Categories {
-    const result: Categories = {
+  private categoryModelSerializer(res: any): CategoryModel {
+    const result: CategoryModel = {
       id: res.id,
       code: res.code,
       name: res.name,
@@ -123,8 +122,8 @@ export class PartnersSerializer {
     return result;
   }
 
-  private categoriesModelSerializer(res: any): Categories[] {
-    const resultSet: Categories[] = new Array();
+  private categoriesModelSerializer(res: any): CategoryModel[] {
+    const resultSet: CategoryModel[] = new Array();
     if (res) {
       res.map((category: object) => {
         resultSet.push(this.categoryModelSerializer(category));
@@ -133,8 +132,8 @@ export class PartnersSerializer {
     return resultSet;
   }
 
-  private stateModelSerializer(res: any): States {
-    const result: States = {
+  private stateModelSerializer(res: any): StateModel {
+    const result: StateModel = {
       id: res.id,
       code: res.code,
       country_code: res.country_code,
@@ -143,8 +142,8 @@ export class PartnersSerializer {
     return result;
   }
 
-  private statesModelSerializer(res: any): States[] {
-    const resultSet: States[] = new Array();
+  private statesModelSerializer(res: any): StateModel[] {
+    const resultSet: StateModel[] = new Array();
     if (res) {
       res.map((states: object) => {
         resultSet.push(this.stateModelSerializer(states));
@@ -152,8 +151,8 @@ export class PartnersSerializer {
     }
     return resultSet;
   }
-  private contentTypeModelSerializer(res: any): ContentType {
-    const result: ContentType = {
+  private contentTypeModelSerializer(res: any): ContentTypeModel {
+    const result: ContentTypeModel = {
       content_type: res.content_type,
       total_count: res.total_count,
       country_code: res.country_code,
@@ -161,8 +160,8 @@ export class PartnersSerializer {
     return result;
   }
 
-  private contentTypesModelSerializer(res: any): ContentType[] {
-    const resultSet: ContentType[] = new Array();
+  private contentTypesModelSerializer(res: any): ContentTypeModel[] {
+    const resultSet: ContentTypeModel[] = new Array();
     if (res) {
       res.map((content: object) => {
         resultSet.push(this.contentTypeModelSerializer(content));
@@ -170,25 +169,6 @@ export class PartnersSerializer {
     }
     return resultSet;
   }
-
-  private contentDistributionModelSerializer(res: any): ContentDistribution {
-    const result: ContentDistribution = {
-      content_type: res.content_type,
-      total_count: res.total_count,
-    };
-    return result;
-  }
-
-  private contentDistributionsModelSerializer(res: any): ContentDistribution[] {
-    const resultSet: ContentDistribution[] = new Array();
-    if (res) {
-      res.map((content: object) => {
-        resultSet.push(this.contentDistributionModelSerializer(content));
-      });
-    }
-    return resultSet;
-  }
-
 
   private overallStatsModelSerializer(res: any): OverallStatsModel {
     const result: OverallStatsModel = {

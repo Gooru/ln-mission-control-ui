@@ -36,38 +36,12 @@
 
       .content-type-stats {
         display: grid;
-        grid-template-columns: 50% 40% 10%;
+        grid-template-columns: 160px 100px 55px;
         align-items: center;
       }
 
       .usage-total {
         text-align: right;
-      }
-
-      progress {
-        border-radius: 10px;
-        height: 8px;
-        width: 100px;
-      }
-
-      progress::-webkit-progress-bar {
-        background-color: $light-300;
-        border-radius: 10px;
-      }
-
-      progress::-webkit-progress-value {
-        border-radius: 10px;
-        background-color: $green;
-      }
-
-      progress::-moz-progress-bar {
-        background-color: $light-300;
-        border-radius: 10px;
-      }
-
-      progress::-moz-progress-value {
-        border-radius: 10px;
-        background-color: $green;
       }
 
       .icon_assessment {

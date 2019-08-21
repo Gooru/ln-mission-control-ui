@@ -24,17 +24,32 @@ import { partnersAPI } from '@/providers/apis/partners/partners';
 
 export default class PartnerProfile extends Vue {
 
+  // -------------------------------------------------
+  // Properties
+
   private mapData: any = null;
   private profileData: any = null;
+
+  // -------------------------------------------------
+  // Hooks
+
   private created() {
     const worldMapDataSet = this.fetchNavWorldWideMapData();
     worldMapDataSet.then((data) => {
       this.mapData = data;
     });
   }
+
+  // --------------------------------------------------
+  // Actions
+
   private back() {
     this.$router.back();
   }
+
+  // --------------------------------------------------
+  // Methods
+
   private fetchNavWorldWideMapData() {
     const overallStats = {
       totalStudentsCount: 0,

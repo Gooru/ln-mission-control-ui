@@ -80,44 +80,44 @@ export const CONTENT_TYPE = [
   {
     labelKey: 'content.assessment',
     type: 'assessment',
-    name: 'Assessments',
   },
   {
     labelKey: 'content.collection',
     type: 'collection',
-    name: 'Collections',
   },
   {
-    labelKey: 'content.assessment-external',
+    labelKey: 'content.assessment.external',
     type: 'assessment-external',
-    name: 'External Assessments',
   },
   {
-    labelKey: 'content.question',
+    labelKey: 'content.resource',
     type: 'resource',
-    name: 'Resources',
   },
   {
-    labelKey: 'content.collection-external',
+    labelKey: 'content.collection.external',
     type: 'collection-external',
-    name: 'External Collections',
   },
   {
-    labelKey: 'content.offline-activity',
+    labelKey: 'content.offline.activity',
     type: 'offline-activity',
-    name: 'Offline Activities',
   },
   {
     labelKey: 'content.course',
     type: 'course',
-    name: 'Courses',
   },
   {
     labelKey: 'content.question',
     type: 'question',
-    name: 'Questions',
   },
 ];
+
+export const CONTENT_DISTRIBUTION = {
+  color: ['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374'],
+};
+
+export const CATEGORY_DISTRIBUTION = {
+  color: ['#3180c0', '#bad4ea', '#8db8dc', '#5f9cce', '#ffffff'],
+};
 
 export const DEFAULT_IMAGES_PATH: any = {
   profile: '/img/default-images/profile.png',

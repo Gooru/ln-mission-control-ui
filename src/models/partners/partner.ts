@@ -1,9 +1,8 @@
 import { CountryModel } from './country';
-import { Categories } from './category';
-import { Subjects } from './subjects';
-import { ContentType } from './content-type';
-import { States } from './states';
-import { ContentDistribution } from './content-distribution';
+import { CategoryModel } from './category';
+import { SubjectModel } from './subjects';
+import { ContentTypeModel } from './content-type';
+import { StateModel } from './states';
 
 
 
@@ -24,10 +23,10 @@ export interface PartnerModel {
   videos?: string;
   partner_type?: string;
   intro?: string;
-  category_distribution?: Categories[];
-  subject_distribution?: Subjects[];
-  content_type_stats?: ContentType[];
-  states?: States[];
-  content_type_distribution?: ContentDistribution[];
+  category_distribution?: CategoryModel[];
+  subject_distribution?: SubjectModel[];
+  content_type_stats?: ContentTypeModel[];
+  states?: StateModel[];
+  content_type_distribution?: ContentTypeModel[];
 
 }

@@ -8,20 +8,18 @@
          </div>
         </div>
         <div class="profile-content">
-          <profile-info v-if="mapData" :mapData="mapData" :profileData="profileData"/>
+          <profile-info :mapData="mapData" :profileData="profileData"/>
         </div>
       </div>
     </div>
     <div class="profile-distribution">
-      <profile-distribution v-if="profileData" :profileData="profileData"/>
+      <profile-distribution  :profileData="profileData"/>
     </div>
     <div class="partner-content-usage">
-      <partner-content-usage v-if="mapData" :profileData="profileData" :mapData="mapData"/>
+      <partner-content-usage  :profileData="profileData" :mapData="mapData"/>
     </div>
   </div>
 </template>
-
-
 
 <script lang="ts" src="./partner-profile.ts"></script>
 <style lang="scss" scoped  src="./partner-profile.scss"></style>

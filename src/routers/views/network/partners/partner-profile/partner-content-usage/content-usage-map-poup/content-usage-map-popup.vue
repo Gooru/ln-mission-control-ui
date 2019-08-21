@@ -1,12 +1,12 @@
 <template>
     <div id="content-usage-popup">
         <div id="content-usage-popup-container">
-            <h5 class="usage-heading">{{country.properties.name}}</h5>
-            <p id="usage-implementation">Implementation Splits</p>
+            <h5 class="usage-heading">{{activeCountry.properties.name}}</h5>
+            <p id="usage-implementation">{{$t('implementation.split')}}</p>
              <div id="content-usage-details">
-             <div class="content-type-stats" v-for="(type,index) in contentData" :key="index">
-                 <p :class="'icon_' + type.type">{{type.name}}</p>
-                 <p><progress :value="contentFindByType(type.type)" :max="contentFindByType(type.type)+1000"></progress></p>
+             <div class="content-type-stats" v-for="(type,index) in contentTypeData" :key="index">
+                 <p :class="'icon_' + type.type">{{$t(type.labelKey)}}</p>
+                 <p><b-progress height="8px" variant="success" :value="contentFindByType(type.type)" :max="contentFindByType(type.type)+10000"></b-progress></p>
                  <p class="usage-total"><b>{{numberFormatWithTextSuffix(contentFindByType(type.type))}}</b></p>
               </div>
            </div>

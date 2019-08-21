@@ -1,12 +1,11 @@
 #data-distribution {
   display: grid;
-  grid-template-columns: 33.33% 1fr 33.33%;
+  grid-template-columns: auto auto auto;
   align-items: center;
   text-align: center;
   color: $white;
 
   .distribution-competencies {
-    padding: 10px 25%;
     #competencies-heading {
       font-size: 13px;
       font-weight: 900;

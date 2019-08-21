@@ -10,16 +10,14 @@
   }
   .partner-info-section {
     display: grid;
-    grid-template-columns: 7% 1fr;
+    grid-template-columns: 60px 1fr;
   }
   .back-button i {
     padding: 15px;
     background: $light-200;
     font-size: 20px;
     border-radius: 50%;
-    &:hover {
-      cursor: pointer;
-    }
+    cursor: pointer;
   }
   .profile-distribution {
     background-image: linear-gradient(to right, $blue-400, $green-400);

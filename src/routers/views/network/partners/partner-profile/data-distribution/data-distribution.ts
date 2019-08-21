@@ -1,4 +1,4 @@
-import { Component , Vue, Prop   } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import DistributionByContent from './distribution-by-content/distribution-by-content';
 import DistributionByCategory from './distribution-by-category/distribution-by-category';
 
@@ -11,6 +11,11 @@ import DistributionByCategory from './distribution-by-category/distribution-by-c
 })
 
 export default class ProfileDistribution extends Vue {
+
+    // -----------------------------------------------
+    // Properties
+
     @Prop()
     private profileData: any;
+
 }

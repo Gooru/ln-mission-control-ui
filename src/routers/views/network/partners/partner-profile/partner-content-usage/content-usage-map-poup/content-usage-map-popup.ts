@@ -9,27 +9,41 @@ import { CONTENT_TYPE } from '@/utils/constants';
 
 export default class ContentUsageMapPopup extends Vue {
 
+    // ---------------------------------------------------------
+    // Properties
+
+    // Getting available country
+    private filerByCountry: any = null;
+
     @Prop()
-    private country: any;
+    private activeCountry: any;
+
     @Prop()
     private profileData: any;
 
-    private filerByCountry: any = null;
-    private contentData: any = CONTENT_TYPE;
+    private contentTypeData: any = CONTENT_TYPE;
+
+    // -----------------------------------------------------------
+    // Hookes
+
     private created() {
-        const country_code = this.country.country_code;
+        const country_code = this.activeCountry.country_code;
         this.filerByCountry = this.profileData.content_type_stats.filter((x: any) => {
             return x.country_code === country_code;
         });
     }
+
+    // -------------------------------------------------------------
+    // Methods
+
     private numberFormatWithTextSuffix(value: number) {
         return numberFormatWithTextSuffix(value);
-      }
+    }
 
     private contentFindByType(value: any) {
-        return this.filerByCountry.find( (x: any) =>
-        x.content_type === value) ? this.filerByCountry.find( (x: any) =>
-        x.content_type === value).total_count : 0;
+        return this.filerByCountry.find((x: any) =>
+            x.content_type === value) ? this.filerByCountry.find((x: any) =>
+                x.content_type === value).total_count : 0;
     }
 
 }

@@ -4,9 +4,9 @@
       <distribution-by-category v-if="profileData" :profileData="profileData"/>
     </div>
     <div class="distribution-competencies">
-      <h5 id="competencies-heading">COMPETENCIES GAINED</h5>
+      <h5 id="competencies-heading">{{$t("competencies.gained")}}</h5>
       <h3 id="competencies-total">{{profileData.total_competencies_gained}}</h3>
-      <p id="competencies-content">studying {{$t(profileData.labelKey)}} content</p>
+      <p id="competencies-content">{{$t('studying')}} {{$t(profileData.labelKey)}} {{$t("content")}}</p>
     </div>
 
     <div class="distribution-content">

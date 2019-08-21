@@ -1,8 +1,11 @@
 <template>
     <div id="distribution-content-section">
-        <div id="my_dataviz"></div>
+        <div id="content-distribution-piechart"></div>
         <div>
-                <p>Distribution by Content Type </p>
+                <p>{{$t('distribution.by.content.type')}}</p>
+        </div>
+        <div id="content-type-tooltip">
+            <p>{{$t(contentTypeTooltipLabel)}}</p>
         </div>
     </div>
 </template>

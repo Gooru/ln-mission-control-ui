@@ -1,4 +1,4 @@
-import { Component, Vue , Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import ProfileInfoMap from './profile-info-map/profile-info-map';
 import axios from 'axios';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
@@ -18,17 +18,28 @@ import ProfileGallery from './profile-gallery/profile-gallery';
 
 export default class ProfileInfo extends Vue {
 
+  // ---------------------------------------------------
+  // Properties
+
   @Prop()
   private mapData: any;
+
   @Prop()
   private profileData: any;
 
   private galleryPopUp: boolean = false;
+
   private galleryData: string = '';
+
+  // ---------------------------------------------------
+  // Hooks
 
   private created() {
     this.initialize();
   }
+
+  // ---------------------------------------------------
+  // Methods
 
   private initialize() {
     const partnerTypeData = PARTNERS_TYPE.find((type) => (type.type === this.profileData.partner_type));
@@ -41,6 +52,7 @@ export default class ProfileInfo extends Vue {
     this.galleryData = value;
     this.galleryPopUp = true;
   }
+
   private galleryPop(value: boolean) {
     this.galleryPopUp = value;
   }

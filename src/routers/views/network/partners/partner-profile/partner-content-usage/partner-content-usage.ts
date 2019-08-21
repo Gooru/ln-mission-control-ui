@@ -28,18 +28,6 @@ export default class PartnerContentUsage extends Vue {
   private height: number = 500;
 
   /**
-   * Maintains the value of  nav learning world map pie  chart width
-   * @type {Number}
-   */
-  private pieWidth: number = 50;
-
-  /**
-   * Maintains the value of  nav learning world map pie chart height
-   * @type {Number}
-   */
-  private pieHeight: number = 50;
-
-  /**
    * Maintains the element of map container
    * @type {DOM}
    */

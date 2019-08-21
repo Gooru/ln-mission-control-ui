@@ -9,7 +9,6 @@
         <profile-gallery
           :galleryData="this.galleryData"
           :profileData="profileData"
-          @closePopUp="galleryPop($event)"
         ></profile-gallery>
         <button
           class="btn-links"
@@ -25,7 +24,7 @@
       </div>
     </div>
     <div class="profile-info-map">
-      <profile-info-map v-if="mapData" :profileData="profileData" :mapData="mapData"/>
+      <profile-info-map :profileData="profileData" :mapData="mapData"/>
     </div>
   </div>
 </template>

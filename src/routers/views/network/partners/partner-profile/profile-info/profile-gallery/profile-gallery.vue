@@ -1,6 +1,6 @@
 <template>
   <div id="profile-gallery">
-    <b-modal size="lg" id="my-modal" :title="galleryData.toUpperCase()" ok-only> 
+    <b-modal size="lg" id="my-modal" :title="$t(galleryData)"  hide-footer> 
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -22,7 +22,6 @@
           v-for="(video,index) in profileData.videos"
           :key="index"
           img-blank
-          img-alt="Blank image"
         >
           <iframe
             width="500"

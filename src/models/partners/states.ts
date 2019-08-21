@@ -1,4 +1,4 @@
-export interface States {
+export interface StateModel {
     id: number;
     code: string;
     country_code: string;
