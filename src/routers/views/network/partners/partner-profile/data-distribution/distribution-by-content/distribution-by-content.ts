@@ -14,26 +14,41 @@ export default class DistributionByContent extends Vue {
     // ---------------------------------------------------------------------
     // Properties
 
-    // Width of content type svg
+    /**
+     * Width of content type svg
+     */
     private width: number = 300;
 
-    // Height of content type svg
+    /**
+     * Height of content type svg
+     */
     private height: number = 300;
 
-    // Margin for Dount chart
+    /**
+     * Margin for Dount chart
+     */
     private margin: number = 40;
 
-    // Dount radius
+    /**
+     * Dount radius
+     */
     private radius: number = Math.min(this.width, this.height) / 2 - this.margin;
 
-    // Get content types for pie chart
+    /**
+     * Get content types for pie chart
+     */
     private constantData: any = CONTENT_TYPE;
 
-    // Showing content type label data
+    /**
+     * Showing content type label data
+     */
     private contentTypeTooltipLabel: any = null;
 
+    /**
+     * Maintain partner profile data
+     */
     @Prop()
-    private profileData: any;
+    private partnerProfile: any;
 
     // -----------------------------------------------------------------------
     // Hooks
@@ -55,7 +70,7 @@ export default class DistributionByContent extends Vue {
         const ContentTypeColor = d3.scaleOrdinal(CONTENT_DISTRIBUTION.color);
         const pie: any = d3.pie()
             .value((d: any) => d.total_count);
-        const contentDistributionData = pie(this.profileData.content_type_distribution);
+        const contentDistributionData = pie(this.partnerProfile.content_type_distribution);
         const ContentTypeArc: any = d3.arc()
             .innerRadius(0)
             .outerRadius(this.radius);
@@ -93,7 +108,9 @@ export default class DistributionByContent extends Vue {
         return numberFormatWithTextSuffix(value);
     }
 
-    // Showing Tooltip while hovering pie
+    /**
+     * Showing Tooltip while hovering pie
+     */
     private contentTypeTooltipData(d: any) {
         this.contentTypeTooltipLabel = this.constantData.find((type: any) =>
             (type.type === d.data.content_type)).labelKey;

@@ -19,13 +19,13 @@ export default class PartnerContentUsage extends Vue {
    * Maintains the value of  nav learning world map  chart width
    * @return {Number}
    */
-  private width: number = 1200;
+  private width: number = 960;
 
   /**
    * Maintains the value of  nav learning world map  chart height
    * @type {Number}
    */
-  private height: number = 500;
+  private height: number = 400;
 
   /**
    * Maintains the element of map container
@@ -39,9 +39,16 @@ export default class PartnerContentUsage extends Vue {
    */
   private mapProjection: any;
 
+  /**
+   * Maintain active countries
+   */
   private activeCountry: any = null;
 
+  /**
+   * Set position for Popup
+   */
   private popoverStyle: any = null;
+
   /**
    * Maintains the data of map plotting values
    * @type {Object}
@@ -49,9 +56,12 @@ export default class PartnerContentUsage extends Vue {
   @Prop()
   private mapData: any;
 
-  // Maintains partner profile data
+  /**
+   * Maintains partner profile data
+   */
   @Prop()
-  private profileData: any;
+  private partnerProfile: any;
+
   /**
    * Set the overall stats from mapData
    */
@@ -104,7 +114,7 @@ export default class PartnerContentUsage extends Vue {
         if (d.has_data) {
           const boxX = d3.mouse(d3.event.target)[0];
           const boxY = d3.mouse(d3.event.target)[1];
-          this.showNavLearningWorldwidePopover(d.country_code, boxX, boxY);
+          this.showContentTypePopover(d.country_code, boxX, boxY);
           const element = d3.select(`#country-code-${d.country_code}`);
           const currentClass = element.attr('class');
           element.attr('class', `${currentClass} on-hover-country`);
@@ -122,7 +132,7 @@ export default class PartnerContentUsage extends Vue {
     return numberFormat(value);
   }
 
-  private showNavLearningWorldwidePopover(countryCode: string, x: any, y: any) {
+  private showContentTypePopover(countryCode: string, x: any, y: any) {
     const element = `#country-code-${countryCode}`;
     const xAxis = x;
     const yAxis = y;

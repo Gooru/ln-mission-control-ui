@@ -15,8 +15,10 @@ export default class ProfileDistribution extends Vue {
     // -----------------------------------------------
     // Properties
 
-    // Maintain partner profile data
+    /**
+     * Maintain partner profile data
+     */
     @Prop()
-    private profileData: any;
+    private partnerProfile: any;
 
 }

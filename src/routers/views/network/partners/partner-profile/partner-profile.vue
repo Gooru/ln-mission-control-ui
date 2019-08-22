@@ -8,15 +8,15 @@
          </div>
         </div>
         <div class="profile-content">
-          <profile-info :mapData="mapData" :profileData="profileData"/>
+          <profile-info :mapData="mapData" :partnerProfile="partnerProfile"/>
         </div>
       </div>
     </div>
     <div class="profile-distribution">
-      <profile-distribution  :profileData="profileData"/>
+      <profile-distribution  :partnerProfile="partnerProfile"/>
     </div>
     <div class="partner-content-usage">
-      <partner-content-usage  :profileData="profileData" :mapData="mapData"/>
+      <partner-content-usage  :partnerProfile="partnerProfile" :mapData="mapData"/>
     </div>
   </div>
 </template>

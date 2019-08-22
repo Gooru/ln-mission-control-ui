@@ -86,16 +86,8 @@ export const CONTENT_TYPE = [
     type: 'collection',
   },
   {
-    labelKey: 'content.assessment.external',
-    type: 'assessment-external',
-  },
-  {
     labelKey: 'content.resource',
     type: 'resource',
-  },
-  {
-    labelKey: 'content.collection.external',
-    type: 'collection-external',
   },
   {
     labelKey: 'content.offline.activity',

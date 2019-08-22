@@ -10,6 +10,7 @@ import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { statsAPI } from '@/providers/apis/stats/stats';
 import { PartnersModel } from '@/models/partners/partners';
 import { partnersAPI } from '@/providers/apis/partners/partners';
+
 @Component({
   name: 'partner-profile',
   components: {
@@ -27,11 +28,16 @@ export default class PartnerProfile extends Vue {
   // -------------------------------------------------
   // Properties
 
-  // Maintains the data of map plotting values
+  /**
+   * Maintains the data of map plotting values
+   */
+
   private mapData: any = null;
 
-  // Maintains the partner profile datas
-  private profileData: any = null;
+  /**
+   * Maintains the partner profile datas
+   */
+  private partnerProfile: any = null;
 
   // -------------------------------------------------
   // Hooks
@@ -62,11 +68,10 @@ export default class PartnerProfile extends Vue {
     return axios.all([
       partnersAPI.getPartnerById(this.$route.params.id),
       mapDataSetAPI.getCountries(),
-      statsAPI.getCountries(),
       mapDataSetAPI.getCountriesRegion(),
     ])
-      .then(axios.spread((partnersData, countries, statsCountries, countriesRegion) => {
-        if (statsCountries) {
+      .then(axios.spread((partnersData, countries, countriesRegion) => {
+        if (partnersData) {
           partnersData.content_type_stats.map((statsCountry: PartnersModel) => {
             const country = countries.features.find((countryData: any) => {
               return statsCountry.country_code === countryData.country_code;
@@ -96,10 +101,9 @@ export default class PartnerProfile extends Vue {
             }
           });
         }
-        this.profileData = partnersData;
+        this.partnerProfile = partnersData;
         return {
           countries,
-          statsCountries,
           overallStats,
         };
       }));

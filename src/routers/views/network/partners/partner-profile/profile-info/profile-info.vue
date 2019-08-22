@@ -1,30 +1,30 @@
 <template>
   <div id="profile-info">
     <div class="profile-info-description">
-      <h3 class="profile-heading">{{profileData.partner_name}}</h3>
-      <span class="profile-sub-title">{{$t(profileData.labelKey)}}</span>
-      <p class="profile-description">{{profileData.intro}}</p>
-      <a :href="profileData.website" target="_blank">{{profileData.website}}</a>
+      <h3 class="profile-heading">{{partnerProfile.partner_name}}</h3>
+      <span class="profile-sub-title">{{$t(partnerProfile.labelKey)}}</span>
+      <p class="profile-description">{{partnerProfile.intro}}</p>
+      <a :href="partnerProfile.website" target="_blank">{{partnerProfile.website}}</a>
       <div class="profile-button">
         <profile-gallery
           :galleryData="this.galleryData"
-          :profileData="profileData"
+          :partnerProfile="partnerProfile"
         ></profile-gallery>
         <button
           class="btn-links"
-          v-if="profileData.images"
+          v-if="partnerProfile.images"
           v-b-modal="'my-modal'"
           @click="galleryImage('image')"
-        >Images</button>
+        >{{$tc('image',2)}}</button>
           <button class="btn-videos"
-          v-if="profileData.videos"
+          v-if="partnerProfile.videos"
           v-b-modal="'my-modal'"
           @click="galleryImage('video')"
-          >Videos</button>
+          >{{$tc('video',2)}}</button>
       </div>
     </div>
     <div class="profile-info-map">
-      <profile-info-map :profileData="profileData" :mapData="mapData"/>
+      <profile-info-map/>
     </div>
   </div>
 </template>

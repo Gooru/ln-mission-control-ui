@@ -26,7 +26,7 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name" @click="onPreviewPartnersDetails(partner.partner_id)">
+                  <div class="name" @click="onPreviewPartnerDetails(partner.partner_id)">
                     <div class="partner-logo">
                       <img v-lazy="partner.logo">
                     </div>
@@ -81,7 +81,7 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name" @click="onPreviewPartnersDetails(partner.partner_id)">
+                  <div class="name" @click="onPreviewPartnerDetails(partner.partner_id)">
                     <div class="partner-logo">
                       <img v-lazy="partner.logo">
                     </div>

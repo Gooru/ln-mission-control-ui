@@ -5,8 +5,8 @@
             <p id="usage-implementation">{{$t('implementation.split')}}</p>
              <div id="content-usage-details">
              <div class="content-type-stats" v-for="(type,index) in contentTypeData" :key="index">
-                 <p :class="'icon_' + type.type">{{$t(type.labelKey)}}</p>
-                 <p><b-progress height="8px" variant="success" :value="contentFindByType(type.type)" :max="contentFindByType(type.type)+10000"></b-progress></p>
+                 <p :class="'icon_' + type.type"><span><mc-icon :icon="type.type + '-gray'" /></span>{{$t(type.labelKey)}}</p>
+                 <p><b-progress height="8px" variant="success" :value="contentFindByType(type.type)" :max="totalContentTypeCount"></b-progress></p>
                  <p class="usage-total"><b>{{numberFormatWithTextSuffix(contentFindByType(type.type))}}</b></p>
               </div>
            </div>

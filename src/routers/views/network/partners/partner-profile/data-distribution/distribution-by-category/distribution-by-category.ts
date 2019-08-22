@@ -13,24 +13,36 @@ export default class DistributionByCategory extends Vue {
     // --------------------------------------------------------------------------------
     // Properties
 
-    // Width of category svg
+    /**
+     * Width of category svg
+     */
     private width: number = 300;
 
-    // Height of category svg
+    /**
+     * Height of category svg
+     */
     private height: number = 300;
 
-    // Margin for Dount chart
+    /**
+     * Margin for Dount chart
+     */
     private margin: number = 40;
 
-    // Dount radius
+    /**
+     * Dount radius
+     */
     private radius: number = Math.min(this.width, this.height) / 2 - this.margin;
 
-    // Passing data while hovering dount chart
+    /**
+     * Passing data while hovering dount chart
+     */
     private categoryDountOverData: object = {};
 
-
+    /**
+     * Maintains partner profile data
+     */
     @Prop()
-    private profileData: any;
+    private partnerProfile: any;
 
     // ---------------------------------------------------------------------------------
     // Hooks
@@ -44,8 +56,8 @@ export default class DistributionByCategory extends Vue {
 
     private drawDount() {
 
-        const subjectDountData = this.profileData.subject_distribution;
-        const categoryDountData = this.profileData.category_distribution;
+        const subjectDountData = this.partnerProfile.subject_distribution;
+        const categoryDountData = this.partnerProfile.category_distribution;
 
         const color = d3.scaleOrdinal(CATEGORY_DISTRIBUTION.color);
 
@@ -126,7 +138,9 @@ export default class DistributionByCategory extends Vue {
 
     }
 
-    // Maintain popup while hover on dount chart
+    /**
+     * Maintain popup while hover on dount chart
+     */
     private dountChartOverPop(d: any, dountId: any) {
         this.categoryDountOverData = d.data;
         return d3.select('#' + dountId)
@@ -135,9 +149,11 @@ export default class DistributionByCategory extends Vue {
             .style('display', 'block');
     }
 
-    // Find category name by category id
+    /**
+     * Find category name by category id
+     */
     private findCategoryNameById(id: any) {
-        return this.profileData.category_distribution.find((x: any) => x.id === id).name;
+        return this.partnerProfile.category_distribution.find((x: any) => x.id === id).name;
     }
 
 

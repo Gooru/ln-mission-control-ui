@@ -65,7 +65,7 @@ export default class Partners extends Vue {
     this.$router.push(path);
   }
 
-  private onPreviewPartnersDetails(parternID: number) {
+  private onPreviewPartnerDetails(parternID: number) {
     const path = `/network/partners/${parternID}`;
     this.$router.push(path);
   }

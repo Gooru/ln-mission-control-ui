@@ -1,6 +1,6 @@
 <template>
   <div id="profile-gallery">
-    <b-modal size="lg" id="my-modal" :title="$t(galleryData)"  hide-footer> 
+    <b-modal size="lg" id="my-modal" :title="$tc(galleryData,1)"  hide-footer> 
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -15,11 +15,11 @@
       @sliding-end="onSlideEnd"
     >
       <div v-if="galleryData == 'image'">
-        <b-carousel-slide v-for="(img,index) in profileData.images" :key="index" :img-src="img"></b-carousel-slide>
+        <b-carousel-slide v-for="(img,index) in partnerProfile.images" :key="index" :img-src="img"></b-carousel-slide>
       </div>
       <div class="video-gallery" v-if="galleryData == 'video'">
         <b-carousel-slide
-          v-for="(video,index) in profileData.videos"
+          v-for="(video,index) in partnerProfile.videos"
           :key="index"
           img-blank
         >

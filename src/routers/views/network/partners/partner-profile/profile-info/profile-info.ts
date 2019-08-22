@@ -6,6 +6,7 @@ import { statsAPI } from '@/providers/apis/stats/stats';
 import { CountryModel } from '@/models/stats/country';
 import { PARTNERS_TYPE } from '@/utils/constants';
 import ProfileGallery from './profile-gallery/profile-gallery';
+import { PartnerModel } from '@/models/partners/partner';
 
 @Component({
   name: 'profile-info',
@@ -21,15 +22,24 @@ export default class ProfileInfo extends Vue {
   // ---------------------------------------------------
   // Properties
 
-  // Maintains the data of map values
+  /**
+   * Maintains the data of map values
+   */
+
   @Prop()
   private mapData: any;
 
-  // Maintains the data of partner profile
-  @Prop()
-  private profileData: any;
+  /**
+   * Maintains the data of partner profile
+   */
 
-  // Maintains the gallery data that are showen in front end
+  @Prop()
+  private partnerProfile: any;
+
+  /**
+   * Maintains the gallery data that are showen in front end
+   */
+
   private galleryData: string = '';
 
   // ---------------------------------------------------
@@ -43,13 +53,15 @@ export default class ProfileInfo extends Vue {
   // Methods
 
   private initialize() {
-    const partnerTypeData = PARTNERS_TYPE.find((type) => (type.type === this.profileData.partner_type));
+    const partnerTypeData = PARTNERS_TYPE.find((type) => (type.type === this.partnerProfile.partner_type));
     if (partnerTypeData) {
-      this.profileData.labelKey = partnerTypeData.labelKey;
+      this.partnerProfile.labelKey = partnerTypeData.labelKey;
     }
   }
 
-  // Passing gallery heading to the popup
+  /**
+   * Passing gallery heading to the popup
+   */
   private galleryImage(value: string) {
     this.galleryData = value;
   }

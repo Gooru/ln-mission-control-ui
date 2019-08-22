@@ -4,7 +4,7 @@
     <div id="parnter-content-usage-map"></div>
     <content-usage-map-popup
       :activeCountry="activeCountry"
-      :profileData="profileData"
+      :partnerProfile="partnerProfile"
       :style="popoverStyle"
       v-if="activeCountry"
     />
