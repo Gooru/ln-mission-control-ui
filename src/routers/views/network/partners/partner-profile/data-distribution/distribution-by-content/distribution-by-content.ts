@@ -14,10 +14,10 @@ export default class DistributionByContent extends Vue {
     // ---------------------------------------------------------------------
     // Properties
 
-    // Width of svg
+    // Width of content type svg
     private width: number = 300;
 
-    // Height of svg
+    // Height of content type svg
     private height: number = 300;
 
     // Margin for Dount chart
@@ -93,6 +93,7 @@ export default class DistributionByContent extends Vue {
         return numberFormatWithTextSuffix(value);
     }
 
+    // Showing Tooltip while hovering pie
     private contentTypeTooltipData(d: any) {
         this.contentTypeTooltipLabel = this.constantData.find((type: any) =>
             (type.type === d.data.content_type)).labelKey;

@@ -9,13 +9,17 @@ export default class ProfileGallery extends Vue {
     // ----------------------------------------------
     // Properties
 
+    // Initial setup for carousel slide
     private slide: any = 0;
 
+    // Initial setup for carousel slide
     private sliding: any = null;
 
+    // Maintains partner profile page data
     @Prop()
     private profileData: any;
 
+    // Maintains gallery data for images or videos
     @Prop()
     private galleryData: any;
 
@@ -32,11 +36,6 @@ export default class ProfileGallery extends Vue {
     private onSlideEnd(slide: any) {
         this.sliding = false;
     }
-
-    private onClickPopp(event: any) {
-        this.$emit('closePopUp', false);
-    }
-
     // ---------------------------------------
     // Methods
 

@@ -21,14 +21,15 @@ export default class ProfileInfo extends Vue {
   // ---------------------------------------------------
   // Properties
 
+  // Maintains the data of map values
   @Prop()
   private mapData: any;
 
+  // Maintains the data of partner profile
   @Prop()
   private profileData: any;
 
-  private galleryPopUp: boolean = false;
-
+  // Maintains the gallery data that are showen in front end
   private galleryData: string = '';
 
   // ---------------------------------------------------
@@ -48,12 +49,9 @@ export default class ProfileInfo extends Vue {
     }
   }
 
+  // Passing gallery heading to the popup
   private galleryImage(value: string) {
     this.galleryData = value;
-    this.galleryPopUp = true;
   }
 
-  private galleryPop(value: boolean) {
-    this.galleryPopUp = value;
-  }
 }

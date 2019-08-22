@@ -13,10 +13,10 @@ export default class DistributionByCategory extends Vue {
     // --------------------------------------------------------------------------------
     // Properties
 
-    // Width of svg
+    // Width of category svg
     private width: number = 300;
 
-    // Height of svg
+    // Height of category svg
     private height: number = 300;
 
     // Margin for Dount chart
@@ -126,6 +126,7 @@ export default class DistributionByCategory extends Vue {
 
     }
 
+    // Maintain popup while hover on dount chart
     private dountChartOverPop(d: any, dountId: any) {
         this.categoryDountOverData = d.data;
         return d3.select('#' + dountId)
@@ -134,6 +135,7 @@ export default class DistributionByCategory extends Vue {
             .style('display', 'block');
     }
 
+    // Find category name by category id
     private findCategoryNameById(id: any) {
         return this.profileData.category_distribution.find((x: any) => x.id === id).name;
     }

@@ -15,12 +15,15 @@ export default class ContentUsageMapPopup extends Vue {
     // Getting available country
     private filerByCountry: any = null;
 
+    // Maintain active country data
     @Prop()
     private activeCountry: any;
 
+    // Maintain partner profile data
     @Prop()
     private profileData: any;
 
+    // Maintains content type data constant
     private contentTypeData: any = CONTENT_TYPE;
 
     // -----------------------------------------------------------
@@ -40,6 +43,7 @@ export default class ContentUsageMapPopup extends Vue {
         return numberFormatWithTextSuffix(value);
     }
 
+    // Find content type total count by its type
     private contentFindByType(value: any) {
         return this.filerByCountry.find((x: any) =>
             x.content_type === value) ? this.filerByCountry.find((x: any) =>

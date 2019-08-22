@@ -27,7 +27,10 @@ export default class PartnerProfile extends Vue {
   // -------------------------------------------------
   // Properties
 
+  // Maintains the data of map plotting values
   private mapData: any = null;
+
+  // Maintains the partner profile datas
   private profileData: any = null;
 
   // -------------------------------------------------
@@ -57,7 +60,7 @@ export default class PartnerProfile extends Vue {
       totalOthersCount: 0,
     };
     return axios.all([
-      partnersAPI.getPartnerByID(),
+      partnersAPI.getPartnerById(this.$route.params.id),
       mapDataSetAPI.getCountries(),
       statsAPI.getCountries(),
       mapDataSetAPI.getCountriesRegion(),

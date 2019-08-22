@@ -48,6 +48,8 @@ export default class PartnerContentUsage extends Vue {
    */
   @Prop()
   private mapData: any;
+
+  // Maintains partner profile data
   @Prop()
   private profileData: any;
   /**

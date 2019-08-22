@@ -12,12 +12,12 @@
         ></profile-gallery>
         <button
           class="btn-links"
-          v-if="profileData.images.length > 0"
+          v-if="profileData.images"
           v-b-modal="'my-modal'"
           @click="galleryImage('image')"
         >Images</button>
           <button class="btn-videos"
-          v-if="profileData.videos.length > 0"
+          v-if="profileData.videos"
           v-b-modal="'my-modal'"
           @click="galleryImage('video')"
           >Videos</button>
