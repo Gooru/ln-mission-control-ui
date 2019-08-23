@@ -1,12 +1,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import ProfileInfoMap from './profile-info-map/profile-info-map';
-import axios from 'axios';
-import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
-import { statsAPI } from '@/providers/apis/stats/stats';
-import { CountryModel } from '@/models/stats/country';
 import { PARTNERS_TYPE } from '@/utils/constants';
 import ProfileGallery from './profile-gallery/profile-gallery';
-import { PartnerModel } from '@/models/partners/partner';
 
 @Component({
   name: 'profile-info',

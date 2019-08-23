@@ -61,7 +61,7 @@ export default class DistributionByCategory extends Vue {
 
         const color = d3.scaleOrdinal(CATEGORY_DISTRIBUTION.color);
 
-        const CategoryPie = d3.pie()
+        const categoryPie = d3.pie()
             .value((d: any) => d.total_count);
 
         const categoryDountArc: any = d3.arc()
@@ -84,7 +84,7 @@ export default class DistributionByCategory extends Vue {
             .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
 
         const subjectDountPath = svg.selectAll('g').append('g').attr('id', 'pie')
-            .data(CategoryPie(subjectDountData))
+            .data(categoryPie(subjectDountData))
             .enter().append('path')
             .attr('fill', (d, i: any) => {
                 return color(i);
@@ -114,7 +114,7 @@ export default class DistributionByCategory extends Vue {
             .attr('d', subjectDountArc);
 
         const categoryDountPath = svg.selectAll('g').append('g').attr('id', 'donut')
-            .data(CategoryPie(categoryDountData))
+            .data(categoryPie(categoryDountData))
             .enter().append('path')
             .attr('id', (d: any) => d.data.id)
             .attr('fill', (d, i: any) => {

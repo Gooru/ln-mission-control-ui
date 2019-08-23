@@ -134,7 +134,7 @@ export default class DistributionByContent extends Vue {
         this.contentTypeTooltipLabel = this.constantData.find((type: any) =>
             (type.type === d.data.content_type));
         this.lowContentTotal = null;
-        if (d.data.total_count < this.totalContentTypeCount) {
+        if (d.data.total_count) {
             this.lowContentTotal = this.numberFormatWithTextSuffix(d.data.total_count);
         }
         return d3.select('#content-type-tooltip')

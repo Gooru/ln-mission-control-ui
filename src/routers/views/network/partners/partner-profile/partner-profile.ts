@@ -43,7 +43,7 @@ export default class PartnerProfile extends Vue {
   // Hooks
 
   private created() {
-    const worldMapDataSet = this.fetchNavWorldWideMapData();
+    const worldMapDataSet = this.fetchPartnerProfileMapData();
     worldMapDataSet.then((data) => {
       this.mapData = data;
     });
@@ -59,12 +59,7 @@ export default class PartnerProfile extends Vue {
   // --------------------------------------------------
   // Methods
 
-  private fetchNavWorldWideMapData() {
-    const overallStats = {
-      totalStudentsCount: 0,
-      totalTeachersCount: 0,
-      totalOthersCount: 0,
-    };
+  private fetchPartnerProfileMapData() {
     return axios.all([
       partnersAPI.getPartnerById(this.$route.params.id),
       mapDataSetAPI.getCountries(),
@@ -78,19 +73,6 @@ export default class PartnerProfile extends Vue {
             });
             if (country) {
               country.has_data = true;
-              country.total_students = partnersData.total_students;
-              country.total_teachers = partnersData.total_teachers;
-              country.total_others = partnersData.total_others;
-              country.total_users = partnersData.total_users;
-              country.total_classes = partnersData.total_classes;
-              country.total_competencies_gained = partnersData.total_competencies_gained;
-              country.total_timespent = partnersData.total_timespent;
-              country.total_activities_conducted = partnersData.total_activities_conducted;
-              country.total_navigator_courses = partnersData.total_navigator_courses;
-              country.country_name = partnersData.country_name;
-              overallStats.totalStudentsCount += partnersData.total_students;
-              overallStats.totalTeachersCount += partnersData.total_teachers;
-              overallStats.totalOthersCount += partnersData.total_others;
               const countryRegion = countriesRegion.find((region: any) => {
                 return region.country_code === statsCountry.country_code;
               });
@@ -104,7 +86,6 @@ export default class PartnerProfile extends Vue {
         this.partnerProfile = partnersData;
         return {
           countries,
-          overallStats,
         };
       }));
   }

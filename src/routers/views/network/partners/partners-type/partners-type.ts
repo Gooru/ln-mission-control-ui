@@ -42,12 +42,12 @@ export default class PartnersType extends Vue {
         this.$router.back();
     }
 
-    /*****
+    /**
      * Change Route to partner profile page
      */
 
-    private onPreviewPartnerDetails(parternID: number) {
-        const path = `/network/partners/${parternID}`;
+    private onPreviewPartnerDetails(partnerId: number) {
+        const path = `/network/partners/${partnerId}`;
         this.$router.push(path);
     }
 
