@@ -1,0 +1,34 @@
+#content-usage-section {
+  position: relative;
+  padding-top: 20px;
+  h3 {
+    padding: 20px;
+    font-weight: 700;
+  }
+
+  #parnter-content-usage-map {
+    width: 100%;
+
+    path.map-path.has-data {
+      fill: $green-400;
+    }
+    path.map-path.has-data.on-hover-country {
+      stroke-width: 3;
+      opacity: 0.8;
+      stroke: $white;
+    }
+    path.map-path {
+      fill: $light-400;
+      stroke: $light-200;
+      stroke-width: 1;
+      opacity: 0.8;
+      transition: 0.5s;
+    }
+
+    #countries-container {
+      path.map-path.has-data {
+        fill: $green-400;
+      }
+    }
+  }
+}

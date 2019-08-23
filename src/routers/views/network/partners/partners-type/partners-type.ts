@@ -8,7 +8,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import FontAwesomeIcon from '@/components/icons/font-awesome-icon/font-awesome-icon';
 import { PARTNERS_TYPE } from '@/utils/constants';
 import axios from 'axios';
-import {sortByProperty} from '@/utils/utils';
+import { sortByProperty } from '@/utils/utils';
 import { statsAPI } from '@/providers/apis/stats/stats';
 
 @Component({
@@ -42,6 +42,16 @@ export default class PartnersType extends Vue {
         this.$router.back();
     }
 
+    /**
+     * Change Route to partner profile page
+     */
+
+    private onPreviewPartnerDetails(partnerId: number) {
+        const path = `/network/partners/${partnerId}`;
+        this.$router.push(path);
+    }
+
+
     // -------------------------------------------------------------------------
     // Hooks
 
@@ -60,22 +70,22 @@ export default class PartnersType extends Vue {
             const type = partnerTypeData.type;
             statsAPI.getCountries().then((statsCountries) => {
                 partnersAPI.getPartnersByType(partnerTypeData.type).then((partners) => {
-                  if (type === 'researchers' || type === 'funders') {
-                    partners.forEach((partner: PartnerModel) => {
-                      const countryData  = partner.countries[0];
-                      const countryCode = countryData.code;
-                      const countryStats = statsCountries.find((country: any) =>
-                      (countryCode === country.country_code));
-                      if (countryStats) {
-                        partner.total_users = countryStats.total_users;
-                        partner.total_teachers = countryStats.total_teachers;
-                        partner.total_students = countryStats.total_students;
-                        partner.total_others = countryStats.total_others;
-                      }
-                    });
-                }
-                  sortByProperty(partners, 'total_users',  'DESC');
-                  this.partners = partners;
+                    if (type === 'researchers' || type === 'funders') {
+                        partners.forEach((partner: PartnerModel) => {
+                            const countryData = partner.countries[0];
+                            const countryCode = countryData.code;
+                            const countryStats = statsCountries.find((country: any) =>
+                                (countryCode === country.country_code));
+                            if (countryStats) {
+                                partner.total_users = countryStats.total_users;
+                                partner.total_teachers = countryStats.total_teachers;
+                                partner.total_students = countryStats.total_students;
+                                partner.total_others = countryStats.total_others;
+                            }
+                        });
+                    }
+                    sortByProperty(partners, 'total_users', 'DESC');
+                    this.partners = partners;
                 });
             });
         }

@@ -1,0 +1,21 @@
+.profile-info-map {
+  position: relative;
+  padding-top: 20px;
+
+  #profile-info-map {
+    width: 100%;
+    #countries-container {
+      path.map-path.has-data {
+        fill: $green-400;
+      }
+
+      path.map-path {
+        fill: $light-400;
+        stroke: $light-200;
+        stroke-width: 1;
+        opacity: 0.8;
+        transition: 0.5s;
+      }
+    }
+  }
+}

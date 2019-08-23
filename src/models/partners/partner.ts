@@ -1,4 +1,9 @@
 import { CountryModel } from './country';
+import { CategoryModel } from './category';
+import { SubjectModel } from './subjects';
+import { ContentTypeModel } from './content-type';
+import { StateModel } from './states';
+
 
 
 export interface PartnerModel {
@@ -11,6 +16,17 @@ export interface PartnerModel {
   total_classes?: number;
   total_others?: number;
   total_teachers: number;
+  total_competencies_gained?: number;
   countries: CountryModel[];
   website?: string;
+  images?: string;
+  videos?: string;
+  partner_type?: string;
+  intro?: string;
+  category_distribution?: CategoryModel[];
+  subject_distribution?: SubjectModel[];
+  content_type_stats?: ContentTypeModel[];
+  states?: StateModel[];
+  content_type_distribution?: ContentTypeModel[];
+
 }

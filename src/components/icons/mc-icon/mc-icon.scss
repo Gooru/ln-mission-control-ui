@@ -20,4 +20,22 @@
   &.navigator-mix-color {
     background-image: url($mc-icon-navigator-mix-color);
   }
+  &.offline-activity-gray {
+    background-image: url($mc-icon-offline-gray);
+  }
+  &.course-gray {
+    background-image: url($mc-icon-course-gray);
+  }
+  &.collection-gray {
+    background-image: url($mc-icon-collection-gray);
+  }
+  &.question-gray {
+    background-image: url($mc-icon-question-gray);
+  }
+  &.resource-gray {
+    background-image: url($mc-icon-resource-gray);
+  }
+  &.assessment-gray {
+    background-image: url($mc-icon-assessment-gray);
+  }
 }

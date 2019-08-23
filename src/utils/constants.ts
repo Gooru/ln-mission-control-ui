@@ -76,6 +76,41 @@ export const PARTNERS_TYPE = [
   },
 ];
 
+export const CONTENT_TYPE = [
+  {
+    labelKey: 'content.assessment',
+    type: 'assessment',
+  },
+  {
+    labelKey: 'content.collection',
+    type: 'collection',
+  },
+  {
+    labelKey: 'content.resource',
+    type: 'resource',
+  },
+  {
+    labelKey: 'content.offline.activity',
+    type: 'offline-activity',
+  },
+  {
+    labelKey: 'content.course',
+    type: 'course',
+  },
+  {
+    labelKey: 'content.question',
+    type: 'question',
+  },
+];
+
+export const CONTENT_DISTRIBUTION = {
+  color: ['#ffffff', '#c5e5d0', '#9ed5b2', '#77c493', '#51b374'],
+};
+
+export const CATEGORY_DISTRIBUTION = {
+  color: ['#3180c0', '#bad4ea', '#8db8dc', '#5f9cce', '#ffffff'],
+};
+
 export const DEFAULT_IMAGES_PATH: any = {
   profile: '/img/default-images/profile.png',
   partner: '/img/default-images/partner.png',
