@@ -149,8 +149,10 @@ export default class DistributionByContent extends Vue {
      */
 
     private sumContentType() {
-        this.totalContentTypeCount = (this.partnerProfile.content_type_distribution.map((o: any) => o.total_count)
-            .reduce((a: any, c: any) => a + c)) / (this.partnerProfile.content_type_distribution.length);
+        if (this.partnerProfile.content_type_distribution.length) {
+            this.totalContentTypeCount = (this.partnerProfile.content_type_distribution.map((o: any) => o.total_count)
+                .reduce((a: any, c: any) => a + c)) / (this.partnerProfile.content_type_distribution.length);
+        }
     }
 
 
