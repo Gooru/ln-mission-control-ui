@@ -4,8 +4,9 @@
         <div>
                 <p>{{$t('distribution.by.content.type')}}</p>
         </div>
-        <div id="content-type-tooltip">
-            <p>{{$t(contentTypeTooltipLabel)}}</p>
+        <div id="content-type-tooltip"  >
+            <p v-if="lowContentTotal">{{lowContentTotal}}</p>
+            <p>{{contentTypeTooltipLabel ? $t(contentTypeTooltipLabel.labelKey) : ''}}</p>
         </div>
     </div>
 </template>

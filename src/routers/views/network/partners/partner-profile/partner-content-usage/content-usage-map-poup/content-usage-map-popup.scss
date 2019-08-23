@@ -44,43 +44,12 @@
         text-align: right;
       }
 
-      .icon_assessment {
+      .icon_header {
         display: grid;
-        grid-template-columns: 30px auto;
-      }
-
-      .icon_collection {
-        display: grid;
-        grid-template-columns: 30px auto;
-      }
-
-      .icon_assessment-external {
-        display: grid;
-        grid-template-columns: 30px auto;
-      }
-
-      .icon_resource {
-        display: grid;
-        grid-template-columns: 30px auto;
-      }
-
-      .icon_collection-external {
-        display: grid;
-        grid-template-columns: 30px auto;
-      }
-
-      .icon_offline-activity {
-        display: grid;
-        grid-template-columns: 30px auto;
-      }
-
-      .icon_course {
-        display: grid;
-        grid-template-columns: 30px auto;
-      }
-      .icon_question {
-        display: grid;
-        grid-template-columns: 30px auto;
+        grid-template-columns: 37px auto;
+        span {
+          margin-top: -5px;
+        }
       }
     }
   }

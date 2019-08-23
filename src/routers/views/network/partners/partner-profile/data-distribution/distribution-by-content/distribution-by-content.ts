@@ -44,6 +44,18 @@ export default class DistributionByContent extends Vue {
      */
     private contentTypeTooltipLabel: any = null;
 
+
+    /**
+     * Sum of the content by pie chart vaulue
+     */
+
+    private totalContentTypeCount: any;
+
+    /**
+     * Maintain low content total;
+     */
+    private lowContentTotal: any = null;
+
     /**
      * Maintain partner profile data
      */
@@ -52,6 +64,10 @@ export default class DistributionByContent extends Vue {
 
     // -----------------------------------------------------------------------
     // Hooks
+
+    private created() {
+        this.sumContentType();
+    }
 
     private mounted() {
         this.darwPie();
@@ -91,7 +107,10 @@ export default class DistributionByContent extends Vue {
             .attr('fill', (d: any, i: any) => ContentTypeColor(i));
 
         ContentTypepath.append('text')
-            .text((d: any) => numberFormatWithTextSuffix(d.data.total_count))
+            .text((d: any) => {
+                return (d.data.total_count > this.totalContentTypeCount)
+                    ? numberFormatWithTextSuffix(d.data.total_count) : '';
+            })
             .attr('transform', (d: any) => 'translate(' + contentTypeLabelArc.centroid(d) + ')')
             .attr('dy', '.35em')
             .style('text-anchor', 'middle')
@@ -113,12 +132,26 @@ export default class DistributionByContent extends Vue {
      */
     private contentTypeTooltipData(d: any) {
         this.contentTypeTooltipLabel = this.constantData.find((type: any) =>
-            (type.type === d.data.content_type)).labelKey;
+            (type.type === d.data.content_type));
+        this.lowContentTotal = null;
+        if (d.data.total_count < this.totalContentTypeCount) {
+            this.lowContentTotal = this.numberFormatWithTextSuffix(d.data.total_count);
+        }
         return d3.select('#content-type-tooltip')
             .style('left', d3.event.pageX + 10 + 'px')
             .style('top', d3.event.pageY - 12 + 'px')
             .style('display', 'block');
 
     }
+
+    /**
+     * Calculate sum of the pie chart values
+     */
+
+    private sumContentType() {
+        this.totalContentTypeCount = (this.partnerProfile.content_type_distribution.map((o: any) => o.total_count)
+            .reduce((a: any, c: any) => a + c)) / (this.partnerProfile.content_type_distribution.length);
+    }
+
 
 }
