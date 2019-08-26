@@ -71,7 +71,7 @@ export default class ContentUsageMapPopup extends Vue {
     private sumContentType() {
         if (this.filterByCountry.length) {
             this.totalContentTypeCount = (this.filterByCountry.map((o: any) => o.total_count)
-                .reduce((a: any, c: any) => a + c)) / (this.filterByCountry.length);
+                .reduce((a: any, c: any) => a + c));
         }
     }
 
