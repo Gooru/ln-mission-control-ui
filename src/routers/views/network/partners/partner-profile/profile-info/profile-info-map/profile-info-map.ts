@@ -1,9 +1,5 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as d3 from 'd3';
-import axios from 'axios';
-import { partnersAPI } from '@/providers/apis/partners/partners';
-import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
-import { PartnersModel } from '@/models/partners/partners';
 
 @Component({
   name: 'profile-info-map',
@@ -41,8 +37,8 @@ export default class ProfileInfoMap extends Vue {
 
   /**
    * Maintains the data of map plotting values
-   * @type {Object}
    */
+  @Prop()
   private mapData: any;
 
   // -------------------------------------------------------------------------
@@ -51,12 +47,10 @@ export default class ProfileInfoMap extends Vue {
   // -------------------------------------------------------------------------
   // Hooks
 
-  private created() {
-    const worldMapDataSet = this.fetchPartnerProfileMapData();
-    worldMapDataSet.then((data) => {
-      this.mapData = data;
+  private mounted() {
+    if (this.mapData) {
       this.draw();
-    });
+    }
   }
 
   // -------------------------------------------------------------------------
@@ -79,7 +73,7 @@ export default class ProfileInfoMap extends Vue {
     const path = d3.geoPath()
       .projection(projection);
     const countriesContainer = this.mapContainer.append('svg:g').attr('id', 'countries-container');
-    const countries = data.countries;
+    const countries = data.partnerCountries;
     countriesContainer.selectAll('path')
       .data(countries.features)
       .enter().append('path')
@@ -89,35 +83,6 @@ export default class ProfileInfoMap extends Vue {
       });
   }
 
-  private fetchPartnerProfileMapData() {
 
-    return axios.all([
-      partnersAPI.getPartnerById(this.$route.params.id),
-      mapDataSetAPI.getCountries(),
-      mapDataSetAPI.getCountriesRegion(),
-    ])
-      .then(axios.spread((partnersData, countries, countriesRegion) => {
-        if (partnersData) {
-          partnersData.countries.map((statsCountry: PartnersModel) => {
-            const country = countries.features.find((countryData: any) => {
-              return statsCountry.code === countryData.country_code;
-            });
-            if (country) {
-              country.has_data = true;
-              const countryRegion = countriesRegion.find((region: any) => {
-                return region.country_code === statsCountry.country_code;
-              });
-              if (countryRegion) {
-                country.latitude = countryRegion.latitude;
-                country.longitude = countryRegion.longitude;
-              }
-            }
-          });
-        }
-        return {
-          countries,
-        };
-      }));
-  }
 
 }
