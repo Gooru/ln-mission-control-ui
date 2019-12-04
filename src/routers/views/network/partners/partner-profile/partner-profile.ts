@@ -39,6 +39,11 @@ export default class PartnerProfile extends Vue {
    */
   private partnerProfile: any = null;
 
+  /**
+   * Maintain countries data constant
+   */
+  private storeCountries: any = null;
+
   // -------------------------------------------------
   // Hooks
 
@@ -65,28 +70,43 @@ export default class PartnerProfile extends Vue {
       mapDataSetAPI.getCountries(),
       mapDataSetAPI.getCountriesRegion(),
     ])
-      .then(axios.spread((partnersData, countries, countriesRegion) => {
-        if (partnersData) {
-          partnersData.content_type_stats.map((statsCountry: PartnersModel) => {
-            const country = countries.features.find((countryData: any) => {
-              return statsCountry.country_code === countryData.country_code;
-            });
-            if (country) {
-              country.has_data = true;
-              const countryRegion = countriesRegion.find((region: any) => {
-                return region.country_code === statsCountry.country_code;
-              });
-              if (countryRegion) {
-                country.latitude = countryRegion.latitude;
-                country.longitude = countryRegion.longitude;
-              }
-            }
-          });
-        }
+      .then(axios.spread((partnersData, countriesData, countriesRegion) => {
         this.partnerProfile = partnersData;
+        const countries = JSON.parse(JSON.stringify(countriesData));
+        const partnerCountries = JSON.parse(JSON.stringify(countriesData));
+        if (partnersData) {
+          this.getActiveCountriesDetails(partnersData.content_type_stats,
+            countries.features, countriesRegion, 'content');
+          this.getActiveCountriesDetails(partnersData.countries,
+            partnerCountries.features, countriesRegion, 'partner');
+        }
         return {
           countries,
+          partnerCountries,
         };
       }));
+  }
+
+  /**
+   * Get active countires for partner info and content usage section
+   */
+
+  private getActiveCountriesDetails(partnersData: any, countries: any, countriesRegion: any, contentType: string) {
+    partnersData.map((statsCountry: PartnersModel) => {
+      const country = countries.find((countryData: any) => {
+        return (contentType === 'content' ? statsCountry.country_code : statsCountry.code) === countryData.country_code;
+      });
+      if (country) {
+        country.has_data = true;
+        const countryRegion = countriesRegion.find((region: any) => {
+          return region.country_code === (contentType === 'content' ? statsCountry.country_code : statsCountry.code);
+        });
+        if (countryRegion) {
+          country.latitude = countryRegion.latitude;
+          country.longitude = countryRegion.longitude;
+        }
+      }
+      return country;
+    });
   }
 }

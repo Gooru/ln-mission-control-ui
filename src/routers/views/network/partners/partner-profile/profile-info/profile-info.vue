@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="profile-info-map">
-      <profile-info-map/>
+      <profile-info-map :mapData="mapData" />
     </div>
   </div>
 </template>
