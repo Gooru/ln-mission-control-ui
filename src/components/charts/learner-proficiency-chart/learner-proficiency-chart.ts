@@ -19,6 +19,7 @@ import * as d3 from 'd3';
 export default class LearnerProficiencyChart extends Vue {
 
   @Prop()
+  // TODO userId needs to be shared via selected user
   private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
 
   @Prop()
@@ -82,7 +83,7 @@ export default class LearnerProficiencyChart extends Vue {
   private gradeBoundaries!: GradeBoundaryModel[];
 
   @Prop()
-  private activeGrade!: GradeModel;
+  private activeGrade: any = {};
 
   @Prop()
   private isShowTaxonomyGradeList: boolean = false;
@@ -116,6 +117,7 @@ export default class LearnerProficiencyChart extends Vue {
       component.compressedGraphCellHeight :
       component.expandedGraphCellHeight;
     component.drawProficiencyChart();
+    component.drawGradeBoundaryLine();
     component.isShowExpandedGraph = !component.isShowExpandedGraph;
   }
 
@@ -138,6 +140,7 @@ export default class LearnerProficiencyChart extends Vue {
       component.domainCompetencyMatrix = domainCompetencyMatrix;
       component.chartData = component.parseChartData(domainCoOrdinates, domainCompetencyMatrix);
       component.drawProficiencyChart();
+      component.isLoading = false;
       // component.parseGradeBoundaryChartData();
     }));
   }
@@ -200,7 +203,6 @@ export default class LearnerProficiencyChart extends Vue {
       skylineCompetency.isSkyLineCompetency = true;
       chartData.push(domainChartData);
     });
-    // console.log('chartData', chartData);
     component.maxDomainSize = maxDomainSize;
     return chartData;
   }
@@ -247,13 +249,13 @@ export default class LearnerProficiencyChart extends Vue {
       .attr('width', chartWidth)
       .attr('height', chartHeight);
     svg.append('g').attr('id', 'cells-group');
-    // component.skylineContainer = svg.append('g').attr('id', 'skyline-group');
-    // component.gradelineContainer = svg.append('g').attr('id', 'gradeline-group');
-    // component.proficiencyChartContainer = svg;
-    // proficiencyChartData.map((domainChartData: any) => {
-    //   component.drawDomainChart(domainChartData);
-    // });
-    // component.drawProficiencySkyline();
+    component.skylineContainer = svg.append('g').attr('id', 'skyline-group');
+    component.gradelineContainer = svg.append('g').attr('id', 'gradeline-group');
+    component.proficiencyChartContainer = svg;
+    proficiencyChartData.map((domainChartData: any) => {
+      component.drawDomainChart(domainChartData);
+    });
+    component.drawProficiencySkyline();
     component.isLoading = false;
   }
 

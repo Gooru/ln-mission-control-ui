@@ -1,7 +1,7 @@
 <template>
   <div id="domain-info-panel">
     <div class="domain-info-header">
-      <div class="subject-classification-title" v-if="classification.code">
+      <div class="subject-classification-title" v-if="classification">
         {{classification.code}}/{{subject.title}}
       </div>
       <div class="domain-name">

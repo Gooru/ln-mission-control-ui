@@ -16,32 +16,34 @@ import axios from 'axios';
 export default class DomainsListPanel extends Vue {
 
   @Prop()
-  public subject!: SubjectModel;
+  private subject!: SubjectModel;
 
   @Prop()
-  public classification!: ClassificationModel;
+  private classification!: ClassificationModel;
 
-  public subjectCode: string = 'K12.MA';
+  private domainMatrix!: any;
 
-  public domainMatrix!: any;
-
-  public matrixCoOrdinates!: any;
+  private matrixCoOrdinates!: any;
 
   @Prop()
-  public domainProficiencyData!: DomainModel[];
+  private domainProficiencyData!: DomainModel[];
 
-  public isShowDomainInfo: boolean = false;
+  private isShowDomainInfo: boolean = false;
 
   @Prop()
-  public activeDomainInfo!: DomainModel;
+  private activeDomainInfo!: DomainModel;
 
-  public isLoading: boolean = false;
+  private isLoading: boolean = false;
+
+  get subjectCode() {
+    return this.subject ? this.subject.code : 'K12.MA';
+  }
 
   public created() {
     this.loadProficiencyData();
   }
 
-  public onSelectdomain(domain: DomainModel) {
+  public onSelectdomain(domain: any) {
     const component = this;
     component.activeDomainInfo = domain;
     component.isShowDomainInfo = true;
@@ -53,7 +55,6 @@ export default class DomainsListPanel extends Vue {
 
   @Watch('subject')
   public onChangeSubject() {
-    this.subjectCode = this.subject.code;
     this.loadProficiencyData();
   }
 

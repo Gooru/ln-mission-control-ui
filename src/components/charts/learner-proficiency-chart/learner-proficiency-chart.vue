@@ -14,8 +14,8 @@
       <div class="toggle-graph-view" @click="onToggleGraphView()"><google-material-icon :icon="isShowExpandedGraph ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedGraph ? 'Compressed' : 'Expanded'}} Chart</div>
     </div>
     <div class="proficiency-chart-container">
-      <div class="loading-spinner">
-        <b-spinner v-if="isLoading" variant="primary" label="Spinning"></b-spinner>
+      <div class="loading-spinner" v-if="isLoading">
+        <b-spinner variant="primary" label="Spinning"></b-spinner>
       </div>
       <div id="chart-area"></div>
     </div>
@@ -23,6 +23,4 @@
 </template>
 
 <script lang="ts" src="./learner-proficiency-chart.ts"></script>
-<style lang="scss">
-  @import "./learner-proficiency-chart.scss";
-</style>
+<style lang="scss" src="./learner-proficiency-chart.scss"></style>

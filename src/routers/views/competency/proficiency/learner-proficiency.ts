@@ -28,10 +28,10 @@ export default class LearnerProficiency extends Vue {
   private defaultSubjectCode: string = 'K12.MA';
 
   @Prop()
-  private activeCategory!: any;
+  private activeCategory!: ClassificationModel;
 
   @Prop()
-  private activeSubject!: any;
+  private activeSubject!: SubjectModel;
 
   private isShowCategories: boolean = false;
 
@@ -51,7 +51,7 @@ export default class LearnerProficiency extends Vue {
     component.isShowCategories = false;
   }
 
-  public onSelectSubject(subject: object) {
+  public onSelectSubject(subject: SubjectModel) {
     const component = this;
     component.activeSubject = subject;
     component.isShowSubjects = false;

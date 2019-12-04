@@ -3,6 +3,8 @@ import DomainsListPanel from '@/components/proficiency/domains-list-panel/domain
 import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
 import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
 import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
+import { SubjectModel } from '@/models/taxonomy/subject';
+import { ClassificationModel } from '@/models/taxonomy/classification';
 
 @Component({
   name: 'subject-info-panel',
@@ -17,10 +19,10 @@ import PreferencesPanel from '@/components/proficiency/preferences-panel/prefere
 export default class SubjectInfoPanel extends Vue {
 
   @Prop()
-  public classification: object = {};
+  public classification!: ClassificationModel;
 
   @Prop()
-  public subject: object = {};
+  public subject!: SubjectModel;
 
   public activeTab: object = {
     title: 'Domains',
