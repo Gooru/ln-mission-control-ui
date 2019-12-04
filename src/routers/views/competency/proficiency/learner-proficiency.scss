@@ -1,0 +1,58 @@
+#learner-proficiency {
+  background-color: #ededed;
+  display: grid;
+  grid-template-columns: 1fr 35%;
+  justify-content: center;
+  padding: 8px 15px;
+  .proficiency-left-panel {
+    justify-self: center;
+    .proficiency-header-container {
+      .taxonomy-selector {
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        .category-selector,
+        .subject-selector {
+          position: relative;
+          .active-category,
+          .active-subject {
+            height: 40px;
+            font-size: 16px;
+            padding: 0 8px;
+            color: #000;
+            text-transform: capitalize;
+            cursor: pointer;
+            display: grid;
+            grid-template-columns: auto auto;
+            justify-content: left;
+            align-items: center;
+          }
+          .categories,
+          .subjects {
+            position: absolute;
+            top: 40px;
+            box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.3);
+            width: max-content;
+            z-index: 9;
+            background-color: #fff;
+            .category,
+            .subject {
+              height: 30px;
+              line-height: 30px;
+              padding: 0 8px;
+              cursor: pointer;
+              font-size: 13px;
+              &.active,
+              &:hover {
+                background-color: rgba(0, 0, 0, 0.2);
+              }
+            }
+          }
+        }
+      }
+    }
+    .proficiency-body-container {
+    }
+  }
+  .proficiency-right-panel {
+  }
+}

@@ -1,0 +1,15 @@
+#competency-info-panel {
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  .competency-info-header {
+    .close-panel {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  }
+}
