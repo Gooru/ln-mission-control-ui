@@ -1,0 +1,33 @@
+// Common Style
+
+// Comptency Color
+.competency-status-0 {
+  background-color: #e7e8e9;
+}
+
+.competency-status-1 {
+  background-color: #1aa9eb;
+}
+
+.competency-status-2,
+.competency-status-3,
+.competency-status-4,
+.competency-status-5 {
+  background-color: #1d7dc2;
+}
+
+//Fill competency color at svg
+.competency-status-fill-0 {
+  fill: #e7e8e9;
+}
+
+.competency-status-fill-1 {
+  fill: #1aa9eb;
+}
+
+.competency-status-fill-2,
+.competency-status-fill-3,
+.competency-status-fill-4,
+.competency-status-fill-5 {
+  fill: #1d7dc2;
+}

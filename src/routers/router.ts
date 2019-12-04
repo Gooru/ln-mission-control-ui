@@ -47,10 +47,9 @@ const routes = [
       },
       {
         path: '/learners',
-        name: 'learners',
-        beforeEnter() {
-          window.location.href = '/research/learners';
-        },
+        name: 'learner-proficiency',
+        component: () => import('@/routers/views/competency/proficiency/learner-proficiency.vue'),
+        meta: {isRequiredAuth: true},
       },
     ],
   },

@@ -1,0 +1,90 @@
+#learner-proficiency-chart {
+  .chart-actions {
+    display: grid;
+    grid-template-columns: auto auto;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid;
+    .grade-selector {
+      position: relative;
+      .active-grade {
+        height: 40px;
+        line-height: 40px;
+        cursor: pointer;
+        display: grid;
+        grid-template-columns: auto auto;
+        align-items: center;
+        justify-content: left;
+      }
+      .taxonomy-grade-list {
+        position: absolute;
+        top: 40px;
+        background-color: #fff;
+        z-index: 9;
+        box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.3);
+        .taxonomy-grade {
+          padding: 0 8px;
+          height: 30px;
+          line-height: 30px;
+          cursor: pointer;
+          &.active,
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+          }
+        }
+      }
+    }
+    .toggle-graph-view {
+      display: grid;
+      grid-template-columns: auto auto;
+      column-gap: 5px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: 40px;
+      background-color: #fff;
+      line-height: 40px;
+      border-radius: 20px;
+      width: max-content;
+      padding: 0 12px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      color: rgb(26, 169, 235);
+      font-weight: bold;
+      justify-self: right;
+    }
+  }
+  .proficiency-chart-container {
+    transform: rotateX(180deg);
+    transform-style: preserve-3d;
+    max-height: 400px;
+    overflow-y: auto;
+    width: max-content;
+    #chart-area {
+      svg#chart-graph {
+        width: max-content;
+        #cells-group {
+          #competency-cell {
+            stroke: #fff;
+            stroke-width: 1;
+            shape-rendering: crispedges;
+            stroke-opacity: 0.7;
+            cursor: pointer;
+          }
+        }
+        #skyline-group {
+          filter: url(#back-shadow);
+          line {
+            stroke: #fff;
+            stroke-width: 6px;
+          }
+        }
+        #gradeline-group {
+          line {
+            stroke: #8fd383;
+            stroke-width: 4px;
+          }
+        }
+      }
+    }
+  }
+}
