@@ -1,0 +1,28 @@
+#progress-bar {
+  position: relative;
+  width: inherit;
+  .bar-label {
+    position: relative;
+    .label-text {
+      text-transform: capitalize;
+    }
+    .fill-value {
+      color: #56acdb;
+      font-size: 16px;
+      font-weight: bold;
+      position: absolute;
+    }
+  }
+  .progress {
+    height: 12px;
+    border: 1px solid #e5f2fb;
+    border-radius: 6px;
+    width: 100%;
+    background-color: #e5f2fb;
+    .fill-area {
+      // background-color: #56acdb;
+      background-color: #e5f2fb;
+      background-image: linear-gradient(to right, #afdbf5, #56acdb);
+    }
+  }
+}

@@ -38,4 +38,28 @@
   &.assessment-gray {
     background-image: url($mc-icon-assessment-gray);
   }
+
+  &.video-resource {
+    background-image: url($mc-icon-video-resource);
+  }
+
+  &.audio-resource {
+    background-image: url($mc-icon-audio-resource);
+  }
+
+  &.interactive-resource {
+    background-image: url($mc-icon-interactive-resource);
+  }
+
+  &.text-resource {
+    background-image: url($mc-icon-text-resource);
+  }
+
+  &.website-resource {
+    background-image: url($mc-icon-website-resource);
+  }
+
+  &.image-resource {
+    background-image: url($mc-icon-image-resource);
+  }
 }

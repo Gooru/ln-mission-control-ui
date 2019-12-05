@@ -1,0 +1,41 @@
+#step-progress-bar {
+  position: relative;
+  width: inherit;
+  .label-info {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    .icon {
+    }
+    .label-text {
+      font-size: 12px;
+    }
+    .label-value {
+      color: #4a9847;
+      font-size: 16px;
+      font-weight: bold;
+    }
+  }
+  .progress {
+    height: 10px;
+    width: 100%;
+    border: 1px solid #dbebdb;
+    background-color: #dbebdb;
+    border-radius: 5px;
+    position: relative;
+    .fill-area {
+      background-color: #dbebdb;
+      background-image: linear-gradient(to right, #e6e6e6, #4a9847);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      display: flex;
+    }
+    .connector {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      top: 1px;
+      background-color: #fff;
+    }
+  }
+}
