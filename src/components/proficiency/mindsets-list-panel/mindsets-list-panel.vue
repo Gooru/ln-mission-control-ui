@@ -1,6 +1,8 @@
 <template>
   <div id="mindsets-list-panel">
-    Mindsets List will goes here
+    <div class="mindset-info" v-for="learnerVector in learnerVectors">
+      <progress-bar :label="learnerVector.label" :fillValue="learnerVector.value" />
+    </div>
   </div>
 </template>
 
