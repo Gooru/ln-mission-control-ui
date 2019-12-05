@@ -47,9 +47,24 @@ const routes = [
       },
       {
         path: '/learners',
-        name: 'learner-proficiency',
-        component: () => import('@/routers/views/competency/proficiency/learner-proficiency.vue'),
-        meta: {isRequiredAuth: true},
+        name: 'learners',
+        component: () => import('@/routers/views/learners/learners.vue'),
+        meta: { isRequiredAuth: true },
+        children: [
+          {
+            path: '',
+            name: 'learners-table',
+            component: () => import('@/routers/views/learners/learners-table/learners-table.vue'),
+            meta: { isRequiredAuth: true },
+          },
+          {
+            path: '/learners/proficiency',
+            name: 'learners-proficiency',
+            component: () => import('@/routers/views/learners/proficiency/learner-proficiency.vue'),
+            meta: { isRequiredAuth: true },
+
+          },
+        ],
       },
     ],
   },

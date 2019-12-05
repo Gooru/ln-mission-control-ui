@@ -1,0 +1,31 @@
+export default interface LearnersProfile {
+     userId: string;
+     username: string;
+     firstName: string;
+     lastName: string;
+     parent_user_id: string;
+     user_category: string;
+     birth_date: string;
+     course: string;
+     thumbnail: string;
+     gender: string;
+     about: string;
+     school_id: string;
+     school: string;
+     school_district_id: string;
+     school_district: string;
+     email: string;
+     country_id: string;
+     login_type: string;
+     country: string;
+     state_id: string;
+     state: string;
+     metadata: string;
+     roster_id: string;
+     roster_global_userid: string;
+     created_at: string;
+     updated_at: string;
+     followers: number;
+     followings: number;
+     isFollowing: boolean;
+}

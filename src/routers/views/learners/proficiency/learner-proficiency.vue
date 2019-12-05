@@ -8,7 +8,7 @@
               {{activeCategory.title}} <google-material-icon :icon="isShowCategories ? 'arrow_drop_up' : 'arrow_drop_down'" />
             </div>
             <div class="categories" v-if="isShowCategories">
-              <div class="category" v-for="category in categories" v-bind:class="{active : activeCategory == category}" @click="onSelectCategory(category)">
+              <div class="category" v-for="category in categories" v-bind:class="{active : activeCategory == category}" :key="category" @click="onSelectCategory(category)">
                 {{category.title}}
               </div>
             </div>
@@ -18,7 +18,7 @@
               {{activeSubject.title}} <google-material-icon :icon="isShowSubjects ? 'arrow_drop_up' : 'arrow_drop_down'" />
             </div>
             <div class="subjects" v-if="isShowSubjects">
-              <div class="subject" v-for="subject in subjects" v-bind:class="{active : activeSubject == subject}" @click="onSelectSubject(subject)">
+              <div class="subject" v-for="subject in subjects" v-bind:class="{active : activeSubject == subject}" :key="subject" @click="onSelectSubject(subject)">
                 {{subject.title}}
               </div>
             </div>
@@ -36,4 +36,4 @@
 </template>
 
 <script lang="ts" src="./learner-proficiency.ts"></script>
-<style lang="scss" src="./learner-proficiency.scss"></style>
+<style lang="scss" scoped src="./learner-proficiency.scss"></style>
