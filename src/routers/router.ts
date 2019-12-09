@@ -20,6 +20,12 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
+        path: '/network/texas',
+        name: 'texas',
+        component: () => import('@/routers/views/network/texas/texas.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
         path: '/network/partners/type/:type',
         name: 'network-partners-type',
         component: () => import('@/routers/views/network/partners/partners-type/partners-type.vue'),
