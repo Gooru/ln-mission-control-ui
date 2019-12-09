@@ -12,4 +12,6 @@ import LearnersCompetencyFilter from './learners-competency-filter/learners-comp
 
 export default class LearnersMatrix extends Vue {
 
+
+
 }
