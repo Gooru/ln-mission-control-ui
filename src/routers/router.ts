@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import AppLayout from '@/layouts/app-layout/app-layout.vue';
 import AppHeaderLayout from '@/layouts/app-header-layout/app-header-layout.vue';
 import { sessionService, SessionService } from '@/providers/services/auth/session';
+import LearnersMatrix from '@/routers/views/learners/learners-competency-matrix/learners-competency-matrix.vue';
 import 'pace-progressbar';
 
 Vue.use(Router);
@@ -62,7 +63,12 @@ const routes = [
             name: 'learners-proficiency',
             component: () => import('@/routers/views/learners/proficiency/learner-proficiency.vue'),
             meta: { isRequiredAuth: true },
-
+          },
+          {
+            path: '/learners/learners-competency-matrix',
+            name: 'learners-learners-competency-matrix',
+            component: LearnersMatrix,
+            meta: { isRequiredAuth: true },
           },
         ],
       },
