@@ -1,0 +1,60 @@
+#texas-card-container {
+  width: 100%;
+  margin: 0 auto;
+  background-color: $blue-600;
+  color: $white;
+  .texas-district-title {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid $white;
+    margin-bottom: 5px;
+    .texas-distict-name {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+      text-transform: uppercase;
+    }
+  }
+  .texas-district-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 5px;
+    border-bottom: 1px solid $light-400;
+    .card-heading {
+      .card-title {
+        text-transform: capitalize;
+        font-size: 12px;
+        margin: 0;
+        text-decoration: underline;
+      }
+      .texas-card-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-flex;
+        li {
+          margin: 0 5px;
+          font-size: 12px;
+          i {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .card-total {
+      text-align: right;
+      .total-count {
+        font-size: 13px;
+        margin: 0;
+        font-weight: bold;
+      }
+      span {
+        text-transform: uppercase;
+        font-size: 10px;
+      }
+    }
+  }
+}

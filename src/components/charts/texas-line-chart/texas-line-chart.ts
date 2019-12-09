@@ -20,7 +20,7 @@ export default class TexasLineChart extends Vue {
         // set the dimensions and margins of the graph
         const margin = { top: 10, right: 30, bottom: 30, left: 60 };
         const width = 460 - margin.left - margin.right;
-        const height = 400 - margin.top - margin.bottom;
+        const height = 200 - margin.top - margin.bottom;
         // append the svg object to the body of the page
         const svg = d3.select('#texas_chart')
             .append('svg')
@@ -77,7 +77,7 @@ export default class TexasLineChart extends Vue {
             .attr('stroke', '#fff')
             .attr('stroke-width', 1.5)
             .attr('d', d3.line()
-                .x((d: any) => x(d3.timeParse('%Y-%m-%d')(d.date)))
+                .x((d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
                 .y((d: any) => y(d.value)),
             );
 
@@ -86,8 +86,8 @@ export default class TexasLineChart extends Vue {
             .data(data)
             .enter()
             .append('line')
-            .attr('x1', (d) => x(d3.timeParse('%Y-%m-%d')(d.date)))
-            .attr('x2', (d) => x(d3.timeParse('%Y-%m-%d')(d.date)))
+            .attr('x1', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
+            .attr('x2', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
             .attr('y1', (d: any) => y(d.value))
             .attr('y2', y(0))
             .attr('stroke', '#ffffff3d')
@@ -100,7 +100,7 @@ export default class TexasLineChart extends Vue {
             .data(data)
             .enter()
             .append('circle')
-            .attr('cx', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date)))
+            .attr('cx', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
             .attr('cy', (d: any) => y(d.value))
             .attr('r', 5)
             .attr('fill', '#2073bb')

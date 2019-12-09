@@ -1,10 +1,14 @@
 import {Component, Vue} from 'vue-property-decorator';
-import TexasLineChart from '@/components/charts/texas-line-chart/texas-line-chart';
+import TexasDistrictCard from './texas-district-card/texas-district-card';
+import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import TexasChart from './texas-chart/texas-chart';
 
 @Component({
     name: 'texas',
     components: {
-        'texas-line-chart': TexasLineChart,
+        'texas-chart': TexasChart,
+        'texas-district-card': TexasDistrictCard,
+        'material-icon': GoogleMaterialIcon,
     },
 })
 

@@ -1,6 +1,13 @@
 <template>
-    <div>
-        <texas-line-chart />
+    <div id="texas-container">
+        <div class="texas-charts-with-district">
+           <div class="texas-chart">
+                   <texas-chart />
+           </div>
+           <div class="texas-district">
+                   <texas-district-card />
+           </div>
+        </div>
     </div>
 </template>
 
