@@ -1,0 +1,42 @@
+#competencies-list-panel {
+  display: flex;
+  flex-wrap: wrap;
+  .competency-info {
+    height: 180px;
+    width: 180px;
+    background-color: #fff;
+    padding: 8px;
+    display: grid;
+    grid-template-rows: 40px 1fr;
+    box-shadow: 0px 1px 7px 1px rgba(0, 0, 0, 0.3);
+    margin: 8px;
+    row-gap: 5px;
+    .competency-header {
+      display: grid;
+      grid-template-columns: 1fr 30px;
+      column-gap: 8px;
+      align-items: center;
+      border-bottom: 1px solid #37424b;
+      .code {
+        font-size: 11px;
+        color: #37424b;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .status {
+        width: 30px;
+        height: 30px;
+        display: block;
+      }
+    }
+    .competency-body {
+      font-size: 13px;
+      display: -webkit-box;
+      line-height: 1.2;
+      -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}

@@ -115,3 +115,13 @@ export const DEFAULT_IMAGES_PATH: any = {
   profile: '/img/default-images/profile.png',
   partner: '/img/default-images/partner.png',
 };
+
+// Competency status
+export const COMPETENCY_STATUS = [
+  'Not Started',
+  'In Progress',
+  'Mastered (Inferred)',
+  'Mastered (Asserted)',
+  'Mastered (Earned)',
+  'Mastered (Demonstrated)',
+];
