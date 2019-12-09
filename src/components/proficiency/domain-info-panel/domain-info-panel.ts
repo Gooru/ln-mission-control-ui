@@ -1,5 +1,8 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import ComepetencyInfoPanel from '@/components/proficiency/competency-info-panel/competency-info-panel';
+import CompetenciesListPanel from '@/components/proficiency/competencies-list-panel/competencies-list-panel';
+import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
+import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
+import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
@@ -8,8 +11,11 @@ import { DomainModel } from '@/models/proficiency/domain';
 @Component({
   name: 'domain-info-panel',
   components: {
-    'competency-info-panel': ComepetencyInfoPanel,
     'google-material-icon': GoogleMaterialIcon,
+    'competencies-list-panel': CompetenciesListPanel,
+    'mindsets-list-panel': MindsetsListPanel,
+    'portfolio-panel': PortfolioPanel,
+    'preferences-panel': PreferencesPanel,
   },
 })
 export default class DomainInfoPanel extends Vue {
@@ -23,17 +29,27 @@ export default class DomainInfoPanel extends Vue {
   @Prop()
   public classification!: ClassificationModel;
 
-  public activeCompetency!: any;
+  public activeTab: object = {
+    title: 'Competencies',
+    component: 'competencies-list-panel',
+  };
 
-  public isShowCompetencyPanel: boolean = false;
-
-  public onSelectCompetency(competency: any) {
-    const component = this;
-    component.activeCompetency = competency;
-    component.isShowCompetencyPanel = true;
-  }
-
-  public onCloseCompetencyInfoPanel() {
-    this.isShowCompetencyPanel = false;
-  }
+  public tabItems = [
+    {
+      title: 'Competencies',
+      component: 'competencies-list-panel',
+    },
+    {
+      title: 'Mindsets',
+      component: 'mindsets-list-panel',
+    },
+    {
+      title: 'Portfolio',
+      component: 'portfolio-panel',
+    },
+    {
+      title: 'Preferences',
+      component: 'preferences-panel',
+    },
+  ];
 }

@@ -1,0 +1,33 @@
+#month-year-picker {
+  .year-selector {
+  }
+  .month-year-items {
+    display: flex;
+    .month-year-item {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      padding: 0 12px;
+      cursor: pointer;
+      .month {
+        text-transform: uppercase;
+        font-size: 22px;
+        font-weight: bold;
+        color: rgb(195, 198, 201);
+        text-align: center;
+      }
+      .year {
+        color: rgb(195, 198, 201);
+        text-align: center;
+      }
+
+      &.active {
+        background-color: #b7daed;
+        background-image: linear-gradient(to top right, #2070b9, #4aaedb);
+        .month,
+        .year {
+          color: #fff;
+        }
+      }
+    }
+  }
+}

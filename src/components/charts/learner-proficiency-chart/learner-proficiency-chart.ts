@@ -8,6 +8,7 @@ import { competencyAPI } from '@/providers/apis/competency/competency';
 import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
 import axios from 'axios';
 import * as d3 from 'd3';
+import moment from 'moment';
 
 @Component({
   name: 'learner-proficiency-chart',
@@ -18,78 +19,74 @@ import * as d3 from 'd3';
 
 export default class LearnerProficiencyChart extends Vue {
 
-  @Prop()
-  // TODO userId needs to be shared via selected user
   private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
 
   @Prop()
-  private subjectCode: string = 'K12.MA';
+  private subjectCode!: string;
 
-  @Prop()
   private proficiencyChartContainer!: any;
 
-  @Prop()
   private domainCompetencyMatrix!: DomainModel[];
 
-  @Prop()
   private domainCoOrdinates!: DomainModel[];
 
-  @Prop()
   private chartData!: any;
 
-  @Prop()
   private skylineContainer!: any;
 
-  @Prop()
   private gradelineContainer!: any;
 
-  @Prop()
   private proficiencyChartWidth: number = 400;
 
-  @Prop()
   private proficiencyChartHeight: number = 600;
 
-  @Prop()
   private expandedGraphCellWidth: number = 40;
 
-  @Prop()
   private expandedGraphCellHeight: number = 40;
 
-  @Prop()
   private compressedGraphCellWidth: number = 40;
 
-  @Prop()
   private compressedGraphCellHeight: number = 10;
 
-  @Prop()
   private cellWidth: number = 40;
 
-  @Prop()
   private cellHeight: number = 10;
 
   @Prop()
   private selectedCompetency!: any;
 
-  @Prop()
   private maxDomainSize: number = 0;
 
-  @Prop()
   private isShowExpandedGraph: boolean = false;
 
-  @Prop()
   private taxonomyGrades!: GradeModel[];
 
-  @Prop()
   private gradeBoundaries!: GradeBoundaryModel[];
 
-  @Prop()
   private activeGrade: any = {};
 
-  @Prop()
-  private isShowTaxonomyGradeList: boolean = false;
+  private isLoading: boolean = false;
 
   @Prop()
-  private isLoading: boolean = false;
+  private timeline!: string;
+
+  get chartHeight() {
+    const component = this;
+    const proficiencyChartData = component.chartData;
+    const chartContainer = component.$el.querySelector('.proficiency-chart-container') as HTMLElement;
+    const chartContainerHeight = chartContainer.offsetHeight;
+    const chartHeight = component.isShowExpandedGraph ?
+     component.maxDomainSize * component.expandedGraphCellHeight + 5 :
+      chartContainerHeight ;
+    return chartHeight;
+  }
+
+  get chartWidth() {
+    const component = this;
+    const proficiencyChartData = component.chartData;
+    const chartContainer = component.$el.querySelector('.proficiency-chart-container') as HTMLElement;
+    return chartContainer.offsetWidth;
+  }
 
   public created() {
     this.loadChartData();
@@ -102,7 +99,6 @@ export default class LearnerProficiencyChart extends Vue {
     component.loadChartData();
     component.loadTaxonomyGrades();
     component.activeGrade = {};
-    component.isShowTaxonomyGradeList = false;
   }
 
   // -------------------------------------------------------------------------
@@ -110,15 +106,10 @@ export default class LearnerProficiencyChart extends Vue {
 
   public onToggleGraphView() {
     const component = this;
-    component.cellWidth = component.isShowExpandedGraph ?
-      component.compressedGraphCellWidth :
-      component.expandedGraphCellWidth;
-    component.cellHeight = component.isShowExpandedGraph ?
-      component.compressedGraphCellHeight :
-      component.expandedGraphCellHeight;
+    component.isShowExpandedGraph = !component.isShowExpandedGraph;
     component.drawProficiencyChart();
     component.drawGradeBoundaryLine();
-    component.isShowExpandedGraph = !component.isShowExpandedGraph;
+
   }
 
   public onSelectGrade(grade: GradeModel | any) {
@@ -127,7 +118,6 @@ export default class LearnerProficiencyChart extends Vue {
     component.loadTaxonomyGradeBoundaries(grade.id).then(() => {
       component.parseGradeBoundaryChartData();
     });
-    component.isShowTaxonomyGradeList = false;
   }
 
   public loadChartData() {
@@ -240,8 +230,10 @@ export default class LearnerProficiencyChart extends Vue {
   public drawProficiencyChart() {
     const component = this;
     const proficiencyChartData = component.chartData;
-    const chartWidth = proficiencyChartData.length * component.cellWidth;
-    const chartHeight = component.maxDomainSize * component.cellHeight + 5;
+    const chartHeight = component.chartHeight;
+    const chartWidth = component.chartWidth;
+    component.cellHeight = this.isShowExpandedGraph ? 40 : chartHeight / component.maxDomainSize;
+    component.cellWidth = chartWidth / proficiencyChartData.length;
     d3.select('svg#chart-graph').remove();
     const svg = d3.select('#chart-area')
       .append('svg')
@@ -429,9 +421,14 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   public fetchUserDomainCompetencyMatrix() {
+    const timeline = this.timeline;
+    const month = timeline !== '' && timeline ? moment(timeline).format('MM') : undefined;
+    const year = timeline !== '' && timeline ? moment(timeline).format('YYYY') : undefined;
     const params = {
       user: this.userId,
       subject: this.subjectCode,
+      month,
+      year,
     };
     return competencyAPI.fetchUserDomainCompetencyMatrix(params);
   }
@@ -446,6 +443,12 @@ export default class LearnerProficiencyChart extends Vue {
   public selectCompetency(competency: any) {
     const component = this;
     component.selectedCompetency = competency;
+  }
+
+  @Watch('timeline')
+  private onChangeTimeline() {
+    const component = this;
+    component.loadChartData();
   }
 
   private drawProficiencySkyline() {

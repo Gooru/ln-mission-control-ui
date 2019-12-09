@@ -1,9 +1,19 @@
 #learner-proficiency {
   background-color: #ededed;
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  justify-content: center;
   padding: 8px 15px;
+  .month-year-picker {
+    display: grid;
+    justify-content: right;
+    width: 100%;
+    background-color: #fff;
+    padding: 0 30px;
+  }
+  .proficiency-panels-container {
+    display: grid;
+    grid-template-columns: 1fr 35%;
+    justify-content: center;
+    padding: 15px;
+  }
   .proficiency-left-panel {
     justify-self: center;
     .proficiency-header-container {

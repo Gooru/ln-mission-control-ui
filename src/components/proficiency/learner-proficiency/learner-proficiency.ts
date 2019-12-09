@@ -39,6 +39,9 @@ export default class LearnerProficiency extends Vue {
 
   private isShowSubjects: boolean = false;
 
+  @Prop()
+  private activeTimeline!: string;
+
   public created() {
     this.loadTaxonomyData();
   }
@@ -57,6 +60,10 @@ export default class LearnerProficiency extends Vue {
     const component = this;
     component.activeSubject = subject;
     component.isShowSubjects = false;
+  }
+
+  public onChageTimeline(timeline: string) {
+    this.activeTimeline = timeline;
   }
 
   public loadTaxonomyData() {

@@ -5,4 +5,7 @@ export interface CompetencyModel {
   competencySeq: number;
   competencyStudentDesc: string;
   status: number;
+  competencyStatus?: number;
+  domainCode?: string;
+  domainName?: string;
 }

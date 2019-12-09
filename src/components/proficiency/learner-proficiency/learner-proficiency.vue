@@ -1,9 +1,10 @@
 <template>
   <div id="learner-proficiency">
     <div class="month-year-picker">
-      <month-year-picker />
+      <month-year-picker
+        @onChageTimeline="onChageTimeline"/>
     </div>
-    <div class="proficiency-panel-container">
+    <div class="proficiency-panels-container">
       <div class="proficiency-left-panel">
         <div class="proficiency-header-container">
           <div class="taxonomy-selector">
@@ -30,7 +31,9 @@
           </div>
         </div>
         <div class="proficiency-body-container" v-if="activeSubject">
-          <learner-proficiency-chart :subjectCode="activeSubject.code" />
+          <learner-proficiency-chart
+            :subjectCode="activeSubject.code"
+            :timeline = "activeTimeline"/>
         </div>
       </div>
       <div class="proficiency-right-panel" v-if="activeSubject">
