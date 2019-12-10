@@ -3,8 +3,8 @@
             <div class="new-user-card">
                 <new-user-card/>
             </div>
-            <div class="competency-peformance-card">
-                <new-user-card/>
+            <div class="competency-performance-card">
+                <competency-gained-card/>
             </div>
             <div class="suggestion-mode-card">
                 <new-user-card/>
