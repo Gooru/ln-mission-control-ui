@@ -1,0 +1,54 @@
+#avarage-card-container {
+  .avarage-card-panel {
+    background-color: $white;
+    padding: 5px 20px;
+    box-shadow: 0 0 10px $light-300;
+    border-radius: 2px;
+    .avarage-card-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      border-bottom: 1px solid $light-300;
+      .new-user-count {
+        font-size: 40px;
+      }
+      .user-details-panel {
+        .user-details-title {
+          display: grid;
+          grid-template-columns: 30px 1fr;
+          align-items: center;
+          font-weight: bold;
+          font-size: 12px;
+        }
+        .texas-card-list {
+          list-style: none;
+          display: inline-flex;
+          margin: 0;
+          padding: 0;
+          li {
+            padding: 0 4px;
+            font-size: 12px;
+            display: grid;
+            align-items: center;
+            &.down {
+              color: $red;
+            }
+            i {
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+    .avarage-card-footer {
+      p {
+        margin: 0;
+        font-size: 13px;
+        padding: 5px 0;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

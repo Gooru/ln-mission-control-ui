@@ -1,8 +1,9 @@
 #texas-card-container {
   width: 100%;
   margin: 0 auto;
-  background-color: $blue-600;
+  background-color: #105472;
   color: $white;
+  height: 100%;
   .texas-district-title {
     display: grid;
     grid-template-columns: 1fr 40px;
@@ -10,11 +11,16 @@
     padding: 5px;
     border-bottom: 1px solid $white;
     margin-bottom: 5px;
+    height: 40px;
     .texas-distict-name {
       font-size: 14px;
       font-weight: bold;
       margin: 0;
       text-transform: uppercase;
+      margin-left: 20px;
+    }
+    i {
+      margin: 0 auto;
     }
   }
   .texas-district-card {
@@ -23,10 +29,13 @@
     align-items: center;
     padding: 5px;
     border-bottom: 1px solid $light-400;
+    margin-left: 20px;
     .card-heading {
+      display: grid;
+      align-items: center;
       .card-title {
         text-transform: capitalize;
-        font-size: 12px;
+        font-size: 14px;
         margin: 0;
         text-decoration: underline;
       }
@@ -35,19 +44,27 @@
         padding: 0;
         list-style: none;
         display: inline-flex;
+        opacity: 0.5;
         li {
           margin: 0 5px;
-          font-size: 12px;
+          font-size: 13px;
+          display: grid;
+          align-items: center;
+          line-height: 1.4;
           i {
-            font-size: 12px;
+            font-size: 20px;
           }
         }
       }
     }
     .card-total {
       text-align: right;
+      display: grid;
+      align-items: center;
+      padding-right: 5px;
+
       .total-count {
-        font-size: 13px;
+        font-size: 20px;
         margin: 0;
         font-weight: bold;
       }

@@ -1,0 +1,9 @@
+#texas-cards-list-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+  margin: 20px 0;
+}

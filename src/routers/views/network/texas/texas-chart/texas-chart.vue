@@ -3,7 +3,7 @@
         <div class="texas-header">
             <div class="texas-title">
                  <material-icon icon="arrow_back" />
-                 <span>Texas</span>
+                 <h5 class="texas-title-head">Texas</h5>
             </div>
             <div class="texas-pullup-table">
                 <material-icon icon="bar_chart" />
@@ -19,7 +19,7 @@
                  <span>Competencies Gained</span>
             </div>
             <div class="competenc-from">
-                <h4><material-icon icon="arrow_downward" /> 80%</h4>
+                <h4 class="perfomance-avarage"><material-icon icon="arrow_downward" /> 8.0%</h4>
                 <span>Since last month</span>
             </div>
         </div>
@@ -29,4 +29,4 @@
 </template>
 
 <script lang="ts" src="./texas-chart.ts"></script>
-<style lang="scss" src="./texas-chart.scss"></style>
+<style lang="scss" scoped src="./texas-chart.scss"></style>

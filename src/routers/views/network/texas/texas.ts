@@ -2,6 +2,7 @@ import {Component, Vue} from 'vue-property-decorator';
 import TexasDistrictCard from './texas-district-card/texas-district-card';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import TexasChart from './texas-chart/texas-chart';
+import TexasCardsList from './texas-cards-list/texas-cards-list';
 
 @Component({
     name: 'texas',
@@ -9,6 +10,7 @@ import TexasChart from './texas-chart/texas-chart';
         'texas-chart': TexasChart,
         'texas-district-card': TexasDistrictCard,
         'material-icon': GoogleMaterialIcon,
+        'texas-card-list': TexasCardsList,
     },
 })
 

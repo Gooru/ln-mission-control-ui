@@ -1,0 +1,17 @@
+#texas-container {
+  width: 90%;
+  margin: 20px auto;
+  .texas-charts-with-district {
+    width: 70%;
+    .chart-top {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+    }
+    .texas-perfomance-cards {
+      width: 100%;
+    }
+  }
+  .texas-perfomance-by-grade {
+  }
+}
