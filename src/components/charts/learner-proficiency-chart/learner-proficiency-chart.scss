@@ -99,6 +99,8 @@
     }
     .domains-seq-list {
       grid-column-start: 2;
+      display: flex;
+      text-align: center;
     }
   }
 }
