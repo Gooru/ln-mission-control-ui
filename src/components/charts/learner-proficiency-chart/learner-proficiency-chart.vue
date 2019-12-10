@@ -4,7 +4,7 @@
       <div class="toggle-graph-view" @click="onToggleGraphView()"><google-material-icon :icon="isShowExpandedGraph ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedGraph ? 'Compressed' : 'Expanded'}} Chart</div>
     </div>
     <div class="chart-view">
-      <div v-if="taxonomyGrades" class="grade-selector">
+      <div class="grade-selector">
         <div class="grade-label">
           <!-- Hi-Line {{activeGrade.grade}} <google-material-icon :icon="isShowTaxonomyGradeList ? 'arrow_drop_up' : 'arrow_drop_down'"/> -->
           Grade Selector
