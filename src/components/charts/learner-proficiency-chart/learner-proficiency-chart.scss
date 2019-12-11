@@ -24,12 +24,13 @@
     }
   }
   .chart-view {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    display: flex;
+    // grid-template-columns: 150px 1fr;
     .grade-selector {
       position: relative;
-      max-height: 300px;
-      overflow-y: auto;
+      margin-right: 15px;
+      // max-height: 300px;
+
       .grade-label {
         border-bottom: 1px solid #000;
         color: #000;
@@ -38,6 +39,8 @@
         font-weight: bold;
       }
       .taxonomy-grade-list {
+        height: calc(100vh - 250px);
+        overflow-y: auto;
         .taxonomy-grade {
           height: 30px;
           line-height: 30px;
@@ -61,46 +64,51 @@
       }
     }
 
-    .proficiency-chart-container {
-      transform: rotateX(180deg);
-      transform-style: preserve-3d;
-      overflow-y: auto;
-      width: max-content;
-      height: 300px;
-      width: 605px;
-      align-self: baseline;
-      #chart-area {
-        svg#chart-graph {
-          width: max-content;
-          #cells-group {
-            #competency-cell {
-              stroke: #fff;
-              stroke-width: 1;
-              shape-rendering: crispedges;
-              stroke-opacity: 0.7;
-              cursor: pointer;
+    .graph-visual {
+      display: grid;
+      .proficiency-chart-container {
+        transform: rotateX(180deg);
+        transform-style: preserve-3d;
+        overflow-y: auto;
+        width: max-content;
+        // height: 300px;
+        height: calc(100vh - 250px);
+        // min-width: 300px;
+        // max-width: 500px;
+        width: 450px;
+        align-self: baseline;
+        #chart-area {
+          svg#chart-graph {
+            width: max-content;
+            #cells-group {
+              #competency-cell {
+                stroke: #fff;
+                stroke-width: 1;
+                shape-rendering: crispedges;
+                stroke-opacity: 0.7;
+                cursor: pointer;
+              }
             }
-          }
-          #skyline-group {
-            filter: url(#back-shadow);
-            line {
-              stroke: #fff;
-              stroke-width: 6px;
+            #skyline-group {
+              filter: url(#back-shadow);
+              line {
+                stroke: #fff;
+                stroke-width: 6px;
+              }
             }
-          }
-          #gradeline-group {
-            line {
-              stroke: #8fd383;
-              stroke-width: 4px;
+            #gradeline-group {
+              line {
+                stroke: #8fd383;
+                stroke-width: 4px;
+              }
             }
           }
         }
       }
-    }
-    .domains-seq-list {
-      grid-column-start: 2;
-      display: flex;
-      text-align: center;
+      .domains-seq-list {
+        display: flex;
+        text-align: center;
+      }
     }
   }
 }

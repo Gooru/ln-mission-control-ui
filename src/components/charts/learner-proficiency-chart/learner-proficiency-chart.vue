@@ -9,22 +9,23 @@
           <!-- Hi-Line {{activeGrade.grade}} <google-material-icon :icon="isShowTaxonomyGradeList ? 'arrow_drop_up' : 'arrow_drop_down'"/> -->
           Grade Selector
         </div>
-
         <div class="taxonomy-grade-list">
           <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : taxonomyGrade == activeGrade}" @click="onSelectGrade(taxonomyGrade)">
             <google-material-icon icon="adjust" />{{taxonomyGrade.grade}}
           </div>
         </div>
       </div>
-      <div class="proficiency-chart-container">
-        <div class="loading-spinner" v-if="isLoading">
-          <b-spinner variant="primary" label="Spinning"></b-spinner>
+      <div class="graph-visual">
+        <div class="proficiency-chart-container">
+          <div class="loading-spinner" v-if="isLoading">
+            <b-spinner variant="primary" label="Spinning"></b-spinner>
+          </div>
+          <div id="chart-area"></div>
         </div>
-        <div id="chart-area"></div>
-      </div>
-      <div class="domains-seq-list">
-        <div class="domain-seq" v-for="domain in domainCoOrdinates" :style="{width: cellWidth + 'px'}">
-          {{domain.domainSeq}}
+        <div class="domains-seq-list">
+          <div class="domain-seq" v-for="domain in domainCoOrdinates" :style="{width: cellWidth + 'px'}">
+            {{domain.domainSeq}}
+          </div>
         </div>
       </div>
     </div>

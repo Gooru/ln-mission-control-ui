@@ -46,5 +46,35 @@
       padding: 15px;
       border-bottom: 1px dashed #666;
     }
+    .tabbed-header {
+      display: flex;
+      height: 40px;
+      line-height: 40px;
+      overflow-x: auto;
+      .tab-item {
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 1px solid;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: bold;
+        padding: 0 6px;
+        &.active,
+        &:hover {
+          color: rgb(26, 169, 235);
+          border-bottom: 3px solid rgb(26, 169, 235);
+        }
+      }
+      &::-webkit-scrollbar {
+        height: 6px;
+        width: 8px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #bbb;
+        border: 1px solid #bbb;
+        border-radius: 5px;
+      }
+    }
   }
 }

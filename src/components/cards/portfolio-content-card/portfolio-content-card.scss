@@ -1,0 +1,213 @@
+#portfolio-content-card {
+  display: grid;
+  grid-template-columns: 1fr 80px;
+  background-color: $white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  margin-bottom: 5px;
+  .left-panel {
+    display: grid;
+    grid-template-rows: 55px auto 35px;
+    .activity-info,
+    .activity-details {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      column-gap: 5px;
+    }
+
+    .activity-info {
+      .activity-thumbnail {
+        width: 80px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .activity-title {
+        display: grid;
+        grid-template-rows: auto auto;
+        align-items: center;
+        .title {
+          font-weight: bold;
+          @include ellipsis(
+            $font-size: 14px,
+            $line-height: 1,
+            $lines-to-show: 2
+          );
+        }
+        .owner {
+          font-size: 10px;
+        }
+      }
+    }
+    .activity-details {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      .description {
+        @include ellipsis(
+          $font-size: 12px,
+          $line-height: 1.2,
+          $lines-to-show: 3
+        );
+      }
+      .taxonomies {
+        display: grid;
+        align-items: center;
+        .gru-taxonomy-tag-list {
+          display: grid;
+          justify-content: center;
+          .gru-taxonomy-tag {
+            min-width: 70px;
+            max-width: 80px;
+            height: 20px;
+            border-radius: 12px;
+            background-color: #2d2d2d;
+
+            .standard-tag {
+              text-align: center;
+              padding: 0;
+
+              .tag-label {
+                font-size: 10px;
+                font-weight: bold;
+                color: $white;
+                line-height: 18px;
+              }
+
+              .tag-caption {
+                font-size: 10px;
+                display: none;
+              }
+            }
+          }
+
+          .non-visible-tags {
+            width: 40px;
+            height: 20px;
+            border-radius: 12px;
+            background-color: $white;
+            color: #2d2d2d;
+            padding: 0;
+            justify-self: center;
+
+            span {
+              font-weight: bold;
+              margin-left: 0;
+              height: 20px;
+              line-height: 20px;
+              font-size: 11px;
+              display: grid;
+              align-items: center;
+              justify-content: center;
+              width: inherit;
+            }
+          }
+        }
+      }
+    }
+    .activity-metadata {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: space-between;
+      height: 35px;
+      line-height: 35px;
+      border-top: 1px solid rgba(0, 0, 0, 0.3);
+      padding: 0 5px;
+      .last-accessed {
+        align-self: center;
+        font-size: 13px;
+      }
+      .content-count {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 6px;
+        .count {
+          display: grid;
+          grid-template-columns: auto auto;
+          align-items: center;
+          justify-content: center;
+          column-gap: 5px;
+        }
+
+        %icon-style {
+          width: 20px;
+          background-size: 20px;
+          background-position: center;
+          height: 35px;
+          background-repeat: no-repeat;
+        }
+        .resource-count {
+          .icon i {
+            @extend %icon-style;
+          }
+        }
+
+        .question-count {
+          .icon i {
+            @extend %icon-style;
+            width: 18px;
+            background-size: 18px;
+          }
+        }
+
+        .task-count {
+          .icon i {
+            @extend %icon-style;
+          }
+        }
+      }
+    }
+  }
+  .right-panel {
+    display: grid;
+    .activity-reef-values {
+      display: grid;
+      > div {
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        background-color: rgba(0, 114, 188, 0.5);
+        color: $white;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        border-left: 1px solid rgba(0, 0, 0, 0.3);
+        height: 35px;
+        &.activity-reef-value {
+          span {
+            text-align: center;
+            font-size: 11px;
+            &.reef-label {
+              align-self: self-end;
+              line-height: 1;
+            }
+            &.reef-value {
+              align-self: self-start;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .activity-performance {
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      color: $white;
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+      &.timespent {
+        background-color: rgba(184, 191, 196, 0.5);
+        color: #4a4a4a;
+      }
+    }
+  }
+
+  @media screen and (max-width: $screen-320) {
+    .left-panel {
+      .activity-metadata {
+        .last-accessed {
+          font-size: 11px;
+        }
+      }
+    }
+  }
+}
