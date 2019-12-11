@@ -4,7 +4,7 @@
         <div class="performance-and-competency-panel">
             <div class="performance-competency-panel-heading">
                 <div class="performance-top-header">
-                    <div class="competency-back">
+                    <div class="competency-back" @click="onGoBack">
                         <material-icon icon="arrow_back"/>
                         <span>Back to Dashboard</span>
                     </div>
@@ -17,16 +17,40 @@
                         <li class="active">All</li>
                         <li>Math</li>
                         <li>Physics</li>
+                        <li>Economics</li>
                         <li>ela</li>
+                        <li>philosophy</li>
+                        <li>chemistry</li>
+                        <li>social studies</li>
                     </ul>
                 </div>
             </div>
             <div class="performance-competency-panel-body">
                 <div class="panel-body-left-section">
                     <div class="dount-chart-left">
-                        <dount-chart width="200" height="200" diff="23" margin="20" count="75%" title="Monthly Avarage"/>
+                        <dount-chart width="200" 
+                        height="200" 
+                        diff="23" 
+                        margin="20" 
+                        count="75%" 
+                        title="Monthly Avarage"
+                        :data ="data"/>
                         <div class="dount-chart-title">
                             <span>Avg. Performance</span>
+                        </div>
+                    </div>
+                    <div class="top-activity">
+                        <div class="top-activity-last-month">
+                            <h4 class="activity-percentage"><material-icon icon="arrow_downward" /> 8.9%</h4>
+                            <span>Since last month</span>
+                        </div>
+                        <div class="activity-body">
+                            <span class="percent-icon">%</span>
+                            <span class="activity-title">Top Activity</span>
+                            <div class="activity-footer">
+                                <span class="footer-title">Signature Assessments</span>
+                                <span class="counts">(43,029 Conducted)</span>
+                            </div>
                         </div>
                     </div>
 
@@ -69,7 +93,28 @@
                 </div>
                 <div class="panel-body-right-section">
                      <div class="dount-chart-right">
-                        <dount-chart width="200" height="200" diff="23" margin="20" count="23,223" title="Monthly Avarage"/>
+                        <dount-chart
+                         width="200"
+                         height="200" 
+                         diff="23" 
+                         margin="20" 
+                         :data ="data1"
+                         count="23,223" 
+                         title="Competency Mastered"/>
+                    </div>
+                    <div class="progress-bar-right">
+                        <div class="mastery-bar">
+                            <span :style="{'right': '0', 'top': '-10px', color: '#2070b9'}">64% mastered</span>
+                            <performance-bar progressWidth="50%" backgroundColor="#2070b9" />
+                        </div>
+                        <div class="progress-current">
+                            <span :style="{'right': '10%', 'top': '-10px', color: '#7ccff7'}">10% Progress</span>
+                            <performance-bar progressWidth="50%" backgroundColor="#fff" progressWidth1="10%" backgroundColor1="#7ccff7"/>
+                        </div>
+                        <div class="not-started">
+                            <span :style="{'left': '0', 'top': '-10px', color: '#959a9e'}">40% Not Started</span>
+                            <performance-bar progressWidth="50%" backgroundColor="#fff" progressWidth1="10%" backgroundColor1="#fff"/>
+                        </div>
                     </div>
                 </div>
             </div>

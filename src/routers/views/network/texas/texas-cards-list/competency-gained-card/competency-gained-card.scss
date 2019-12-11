@@ -1,48 +1,51 @@
-#competency-gained-container {
-  background-color: $white;
-  padding: 5px 10px;
-  box-shadow: 0 0 10px $light-300;
-  border-radius: 2px;
-  height: 100%;
-  .gained-header {
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    border-bottom: 1px solid $light-300;
-    height: 60px;
-    .gained-percentage {
-      font-size: 50px;
-      font-weight: bold;
-      margin: 0;
-      color: $yellow;
-      text-align: left;
-      span {
-        position: relative;
-        font-size: 20px;
-        right: 10px;
-        font-weight: 100;
+#card-container {
+  #competency-gained-container {
+    background-color: $white;
+    padding: 5px 10px;
+    box-shadow: 0 0 10px $light-300;
+    border-radius: 2px;
+    height: 100%;
+    cursor: pointer;
+    .gained-header {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      border-bottom: 1px solid $light-300;
+      height: 60px;
+      .gained-percentage {
+        font-size: 50px;
+        font-weight: bold;
+        margin: 0;
+        color: $yellow;
+        text-align: left;
+        span {
+          position: relative;
+          font-size: 20px;
+          right: 10px;
+          font-weight: 100;
+        }
+      }
+      .gained-counts {
+        font-size: 50px;
+        font-weight: bold;
+        margin: 0;
+        color: $blue-400;
+        text-align: right;
       }
     }
-    .gained-counts {
-      font-size: 50px;
+    .gained-footer {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      padding: 5px;
+      font-size: 12px;
       font-weight: bold;
-      margin: 0;
-      color: $blue-400;
-      text-align: right;
-    }
-  }
-  .gained-footer {
-    display: grid;
-    grid-template-columns: auto auto;
-    align-items: center;
-    padding: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    .performance-title {
-      text-align: left;
-    }
-    .competency-title {
-      text-align: right;
+      .performance-title {
+        text-align: left;
+      }
+      .competency-title {
+        text-align: right;
+      }
     }
   }
   .competency-gained-pullup {
@@ -51,7 +54,6 @@
     top: 0;
     width: 80%;
     height: 100%;
-    // display: none;
     background-color: $white;
   }
 }

@@ -12,4 +12,16 @@ import CompetencyGainedPullup from './competency-gained-pullup/competency-gained
 
 export default class CompentencyGainedCard extends Vue {
 
+    // ------------------------------------------------------------
+    // Properties
+
+    private isShowCompetency: boolean = false;
+
+
+    // ------------------------------------------------------------
+    // Actions
+
+    private onGoBack(show: boolean) {
+        this.isShowCompetency = show;
+    }
 }

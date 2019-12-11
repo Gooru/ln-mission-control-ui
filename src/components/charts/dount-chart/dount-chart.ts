@@ -23,8 +23,6 @@ export default class DountChart extends Vue {
     private margin?: any;
     @Prop()
     private data?: any;
-    @Prop()
-    private color?: any;
 
     // -------------------------------------------------------------
     // Hooks
@@ -43,25 +41,14 @@ export default class DountChart extends Vue {
             .attr('height', this.height)
             .append('g')
             .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
-        const data: any = [{
-            name: 'chart',
-            value: 530,
-        },
-        {
-            name: 'chart1',
-            value: 300,
-        },
-        ];
-        const color: any = d3.scaleOrdinal()
-            .domain(data)
-            .range(['#febb2b', '#ebeced' ].reverse());
+        const data: any = this.data;
         const pie = d3.pie()
-            .value((d: any) =>  d.value);
+            .value((d: any) => d.value);
 
         const arc: any = d3.arc()
             .innerRadius(radius - this.diff)
             .outerRadius(radius);
-
+        const maxData: any = d3.min(data, (d: any) => d);
         const g = svg.selectAll('.arc')
             .data(pie(data))
             .enter().append('g');
@@ -69,9 +56,18 @@ export default class DountChart extends Vue {
         g.append('text')
             .attr('text-anchor', 'middle')
             .attr('font-size', '20px')
-            .attr('dy', 5)
+            .style('font-weight', 'bold')
+            .append('svg:tspan')
+            .attr('x', 0)
             .text(this.count)
-            .style('fill', '#febb2b');
+            .style('fill', maxData.color)
+            .append('svg:tspan')
+            .style('font-size', '11px')
+            .attr('x', 0)
+            .style('font-weight', '100')
+            .attr('dy', 20)
+            .text(this.title)
+            .style('fill', '#000');
 
 
         svg.selectAll('arc')
@@ -79,7 +75,7 @@ export default class DountChart extends Vue {
             .enter()
             .append('path')
             .attr('d', arc)
-            .attr('fill', (d: any, i: any) =>  color(i))
+            .attr('fill', (d: any) => d.data.color)
             .style('opacity', 0.7);
 
     }
