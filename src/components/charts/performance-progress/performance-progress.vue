@@ -1,6 +1,9 @@
 <template>
   <div id="performance-progress-bar">
-    <span v-for="(width, widthIndex) in totalWidth" :key="widthIndex" :style="{'width': width,'backgroundColor': color[widthIndex]}"></span>
+    <span v-for="(width, widthIndex) in totalWidth" :key="widthIndex"
+     v-on="isEnbleHover ? {mousemove: $event => onShowMessage($event,  widthIndex), mouseleave: () => onHideMessage()} : {}" 
+     :style="{'width': width,'backgroundColor' 
+     :color[widthIndex]}"></span>
   </div>
 </template>
 

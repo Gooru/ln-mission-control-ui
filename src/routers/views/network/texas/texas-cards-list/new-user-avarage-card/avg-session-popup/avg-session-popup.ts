@@ -47,6 +47,10 @@ export default class AvgSessionPopup extends Vue {
 
     private dataList?: any = [];
 
+    private isShowMessage: boolean = false;
+
+    private messageBoxStyle?: any = null;
+
     private get level() {
         return this.dataList[0].sub_type;
     }
@@ -56,6 +60,18 @@ export default class AvgSessionPopup extends Vue {
 
     private onGoBack() {
         this.$emit('onGoBack', false);
+    }
+
+    private onShowMessage(event: any, index: any = 0) {
+        this.isShowMessage = true;
+        this.messageBoxStyle = {
+            top: (event.pageY - 255) + 'px',
+            left: (event.pageX - 150) + 'px',
+        };
+    }
+
+    private onHideMessage() {
+        this.isShowMessage = false;
     }
 
     // ------------------------------------------------------------------------

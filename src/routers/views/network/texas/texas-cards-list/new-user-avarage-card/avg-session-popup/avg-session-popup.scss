@@ -10,6 +10,7 @@
     z-index: 1;
     cursor: pointer;
   }
+
   .avg-session-panel {
     position: absolute;
     left: 0;
@@ -18,12 +19,14 @@
     width: 80%;
     height: 100%;
     background-color: $white;
+
     .avg-session-panel-heading {
       .avg-session-top-header {
         display: grid;
         grid-template-columns: 150px 1fr 150px;
         align-items: center;
         padding: 10px;
+
         .avg-session-back {
           display: grid;
           grid-template-columns: 30px 1fr;
@@ -31,6 +34,7 @@
           font-size: 12px;
           cursor: pointer;
         }
+
         .avg-session-title {
           font-size: 20px;
           font-weight: bold;
@@ -39,18 +43,21 @@
           text-transform: uppercase;
         }
       }
+
       .avg-session-nav-tab-panel {
         width: 100%;
         text-align: center;
         padding-top: 5px;
         border-top: 1px solid $orange;
         border-bottom: 1px solid $orange;
+
         .nav-tab-list-blk {
           margin: 0;
           padding: 0;
           display: inline-flex;
           list-style: none;
           text-align: center;
+
           li {
             padding: 5px;
             margin: 0 10px;
@@ -59,6 +66,7 @@
             border-bottom: 5px solid transparent;
             cursor: pointer;
             text-transform: uppercase;
+
             &.active {
               color: $orange;
               border-bottom: 5px solid $orange;
@@ -68,15 +76,69 @@
         }
       }
     }
+
     .avg-session-panel-body {
       display: grid;
       grid-template-columns: 200px 1fr;
       margin-top: 30px;
+
       .avg-session-left {
+        .avg-session-time-icon {
+          width: fit-content;
+          margin: 0 auto;
+
+          i {
+            font-size: 200px;
+            background: -webkit-linear-gradient(0deg, #f8b69b 45%, #ff8353 40%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+
+        .avg-session-title {
+          text-align: center;
+          text-transform: capitalize;
+
+          .avg-session-time-count {
+            font-size: 30px;
+            font-weight: bold;
+            color: #ff8353;
+            margin: 0;
+            line-height: 1.3;
+          }
+
+          .avg-session-time-title {
+            font-weight: bold;
+            font-size: 13px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid $dark-400;
+          }
+        }
+
+        .avg-session-trading {
+          color: $green;
+          opacity: 0.6;
+          text-align: center;
+          margin-top: 30px;
+
+          .trading-percent {
+            margin: 0;
+            font-size: 30px;
+            font-weight: bold;
+            line-height: 1;
+          }
+
+          span {
+            text-transform: uppercase;
+            font-size: 13px;
+          }
+        }
       }
+
       .avg-session-right {
         .avg-session-right-panel {
           padding-right: 30px;
+
           .avg-session-panel-title {
             margin: 0;
             padding: 10px;
@@ -86,6 +148,7 @@
             font-size: 15px;
             margin-bottom: 20px;
           }
+
           .avg-session-panel-sub-body {
             .avg-session-sub-title {
               display: grid;
@@ -94,12 +157,15 @@
               align-items: center;
               text-transform: uppercase;
               font-size: 13px;
+              margin-bottom: 20px;
               font-weight: bold;
+
               .avg-session-sub-title-left {
                 border-bottom: 1px solid $orange;
                 text-align: right;
                 padding-bottom: 10px;
               }
+
               .avg-session-sub-title-right {
                 display: grid;
                 align-items: center;
@@ -108,20 +174,144 @@
                 .avg-session-sub-title-blk {
                   padding: 0;
                   margin: 0;
-                  display: inline-flex;
+                  display: flex;
+                  justify-content: space-between;
                   list-style: none;
                   padding-bottom: 10px;
+                  width: 100%;
+
                   li {
-                    padding: 0 5px;
+                    color: #141f82;
+
+                    &.video {
+                      opacity: 0.8;
+                    }
+
+                    &.interactive {
+                      opacity: 0.7;
+                    }
+
+                    &.text {
+                      opacity: 0.6;
+                    }
+
+                    &.webpage {
+                      opacity: 0.5;
+                    }
+
+                    &.other {
+                      opacity: 0.4;
+                    }
                   }
                 }
               }
             }
+
             .avg-session-sub-body {
+              display: grid;
+              grid-template-columns: 250px 1fr;
+              align-items: center;
+              padding: 10px 0;
+              grid-column-gap: 10px;
+
+              .avg-session-sub-body-left {
+                display: grid;
+                grid-template-columns: 1fr 50px;
+                align-items: center;
+
+                .level-title {
+                  text-transform: capitalize;
+                }
+
+                .level-time {
+                  font-weight: bold;
+                  font-size: 15px;
+                }
+              }
+
+              .avg-session-sub-body-right {
+              }
             }
           }
         }
       }
+    }
+  }
+
+  .message-box {
+    position: absolute;
+    width: 150px;
+    height: 160px;
+    z-index: 10;
+    background-color: #4655b2;
+    box-shadow: 0 0 10px $light-500;
+    border-radius: 5px;
+    color: $white;
+    padding: 10px;
+    .header {
+      margin: 0;
+      text-align: center;
+      line-height: 1;
+      font-weight: 100;
+      font-size: 50px;
+      display: flex;
+      align-items: center;
+
+      i {
+        font-size: 50px;
+      }
+    }
+
+    .body {
+      text-align: center;
+      width: 100%;
+      border-top: 1px solid $white;
+      border-bottom: 1px solid $white;
+      span {
+        font-size: 13px;
+        font-weight: bold;
+      }
+      .time-spent {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: inline-flex;
+        align-items: center;
+        font-size: 12px;
+        li {
+          padding: 0 5px;
+          display: flex;
+          align-items: center;
+          i {
+            font-weight: bold;
+            font-size: 15px;
+          }
+        }
+      }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 5px;
+      text-transform: capitalize;
+      span {
+        display: block;
+        font-weight: bold;
+        font-size: 13px;
+      }
+    }
+
+    &::before {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid #4655b2;
+      content: "";
+      z-index: 10;
+      top: 100%;
+      position: absolute;
+      left: 65px;
     }
   }
 }

@@ -8,4 +8,19 @@ export default class PerformanceProgress extends Vue {
   private totalWidth?: string;
   @Prop()
   private color?: string;
+  @Prop()
+  private isEnbleHover?: boolean;
+
+
+  // -------------------------------------------------------------
+  // Actions
+
+  private onShowMessage(event: any, index: any) {
+    this.$emit('onShowMessage', event, index);
+  }
+
+  private onHideMessage() {
+    this.$emit('onHideMessage');
+  }
+
 }
