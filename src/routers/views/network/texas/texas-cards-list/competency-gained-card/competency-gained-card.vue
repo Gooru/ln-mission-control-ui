@@ -11,7 +11,8 @@
             </div>
         </div>
         <div class="competency-gained-pullup" v-if="isShowCompetency">
-            <competency-gained-pullup v-on:onGoBack="onGoBack"/>
+             <div class="backdrop" @click="isShowCompetency = !isShowCompetency"></div>
+            <competency-gained-pullup :dataList="districtList" v-on:onGoBack="onGoBack"/>
         </div>
     </div>
     

@@ -5,12 +5,7 @@ import { Component, Vue, Prop} from 'vue-property-decorator';
 })
 export default class PerformanceProgress extends Vue {
   @Prop()
-  private progressWidth?: string;
+  private totalWidth?: string;
   @Prop()
-  private progressWidth1?: string;
-  @Prop()
-  private backgroundColor?: string;
-  @Prop()
-  private backgroundColor1?: string;
-
+  private color?: string;
 }

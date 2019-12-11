@@ -1,5 +1,6 @@
 <template>
     <div id="competency-gained-pullup-container">
+        <div class="backdrop" @click="onGoBack()"></div>
         <div class="performance-and-competency-panel">
             <div class="performance-competency-panel-heading">
                 <div class="performance-top-header">
@@ -75,7 +76,7 @@
                                 </div>
                                 <div class="performance-bar-chart-body">
                                     <div class="bar-percentage">{{level.performance}}%</div>
-                                    <performance-bar :totalWidth="[level.performance+'%']" :color="['#5b8f42']"/>
+                                    <performance-bar :progressWidth="level.performance+'%'" backgroundColor="#5b8f42"/>
                                 </div>
                            </div>
                            
@@ -85,7 +86,7 @@
                                 Competency Mastery
                             </div>
                             <div class="mastery-body" v-for="(level, levelIndex) in dataList" :key="levelIndex">
-                                <performance-bar :totalWidth ="['50%','10%']" :color="['#2070b9','#7ccff7']"/>
+                                <performance-bar progressWidth="50%" backgroundColor="#2070b9" progressWidth1="10%" backgroundColor1="#7ccff7"/>
                             </div>
                         </div>
                     </div>
@@ -104,15 +105,15 @@
                     <div class="progress-bar-right">
                         <div class="mastery-bar">
                             <span :style="{'right': '0', 'top': '-10px', color: '#2070b9'}">64% mastered</span>
-                            <performance-bar :totalWidth ="['50%']" :color="['#2070b9']"/>
+                            <performance-bar progressWidth="50%" backgroundColor="#2070b9" />
                         </div>
                         <div class="progress-current">
                             <span :style="{'right': '10%', 'top': '-10px', color: '#7ccff7'}">10% Progress</span>
-                            <performance-bar :totalWidth ="['50%','10%']" :color="['#2070b9','#7ccff7']"/>
+                            <performance-bar progressWidth="50%" backgroundColor="#fff" progressWidth1="10%" backgroundColor1="#7ccff7"/>
                         </div>
                         <div class="not-started">
                             <span :style="{'left': '0', 'top': '-10px', color: '#959a9e'}">40% Not Started</span>
-                            <performance-bar :totalWidth ="['50%','10%']" :color="['#fff','#fff']"/>
+                            <performance-bar progressWidth="50%" backgroundColor="#fff" progressWidth1="10%" backgroundColor1="#fff"/>
                         </div>
                     </div>
                 </div>
@@ -122,5 +123,5 @@
     </div>
 </template>
 
-<script lang="ts" src="./competency-gained-pullup.ts"></script>
-<style lang="scss" scoped src="./competency-gained-pullup.scss"></style>
+<script lang="ts" src="./new-user-popup.ts"></script>
+<style lang="scss" scoped src="./new-user-popup.scss"></style>

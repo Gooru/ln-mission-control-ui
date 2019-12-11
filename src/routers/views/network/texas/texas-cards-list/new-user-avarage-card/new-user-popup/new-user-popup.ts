@@ -4,7 +4,7 @@ import PerformanceProgress from '@/components/charts/performance-progress/perfor
 import DountChart from '@/components/charts/dount-chart/dount-chart';
 
 @Component({
-    name: 'competency-gained-pullup',
+    name: 'new-user-popup',
     components: {
         'material-icon': GoogleMaterialIcon,
         'performance-bar': PerformanceProgress,
@@ -12,7 +12,7 @@ import DountChart from '@/components/charts/dount-chart/dount-chart';
     },
 })
 
-export default class CompetencyGainedPullup extends Vue {
+export default class NewUserPopup extends Vue {
 
     private itrate: any = ['0%', '10%', '30%', '40%', '50%', '60%'];
 
@@ -45,8 +45,27 @@ export default class CompetencyGainedPullup extends Vue {
     },
     ];
 
-    @Prop()
-    private dataList?: any;
+    private dataList?: any = [{
+    id: 1,
+    name: 'Baster',
+    code: '2215',
+    type: 'system',
+    sub_type: 'district',
+    timespent: 23,
+    performance: 45.6,
+    completed_competencies: 100,
+        inprogress_competencies: 50,
+  }, {
+    id: 2,
+    name: 'DHAMTARI',
+    code: '2213',
+    type: 'system',
+    sub_type: 'district',
+    timespent: 986,
+    performance: 85.1,
+  completed_competencies: 80,
+inprogress_competencies: 20,
+  }];
 
     private get level() {
         return this.dataList[0].sub_type;

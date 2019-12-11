@@ -9,12 +9,12 @@
                         <texas-district-card />
                 </div>
            </div>
-           <div class="texas-perfomance-cards">
+           <div class="texas-performance-cards">
                  <texas-card-list/>
            </div>
         </div>
-        <div class="texas-perfomance-by-grade">
-           
+        <div class="texas-performance-by-grade">
+           <texas-grade-list />
         </div>
     </div>
 </template>

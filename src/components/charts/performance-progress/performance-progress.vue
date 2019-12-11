@@ -1,7 +1,6 @@
 <template>
   <div id="performance-progress-bar">
-    <span :style="{'width': progressWidth,'backgroundColor':backgroundColor}"></span>
-    <span :if="progressWidth1" :style="{'width': progressWidth1,'backgroundColor':backgroundColor1}"></span>
+    <span v-for="(width, widthIndex) in totalWidth" :key="widthIndex" :style="{'width': width,'backgroundColor': color[widthIndex]}"></span>
   </div>
 </template>
 

@@ -4,38 +4,49 @@ import { performanceSerializer } from '@/providers/serializers/performance/perfo
 
 export class PerfomanceAPI {
 
-  private static INSTANCE = new PerfomanceAPI();
+    private static INSTANCE = new PerfomanceAPI();
 
-  private namespace = 'api/reports/v1/performance';
+    private namespace = 'stubs';
 
-  static get instance() {
-    return this.INSTANCE;
-  }
+    static get instance() {
+        return this.INSTANCE;
+    }
 
-  public fetchStateByCountryID(params: any): Promise<any> {
-    const endpoint = `this.namespace/countries/${params.country_id}`;
-    const headers = http.getTokenHeaders();
-    return http.get(endpoint, headers).then((response) => {
-        return performanceSerializer.serializeState(response.data);
-    });
-  }
+    public fetchStateByCountryID(): Promise<any> {
+        const endpoint = `${window.location.origin}/${this.namespace}/countries/district.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return performanceSerializer.serializeState(response.data);
+        });
+    }
 
-  public fetchDistrictByStateID(params: any): Promise<any> {
-    const endpoint = `this.namespace/countries/${params.country_id}/states/${params.state_id}`;
-    const headers = http.getTokenHeaders();
-    return http.get(endpoint, headers).then((response) => {
-        return performanceSerializer.serializeDistrict(response.data);
-    });
-  }
+    public fetchDistrictByStateID(): Promise<any> {
+        const endpoint = `${window.location.origin}/${this.namespace}/countries/district.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return performanceSerializer.serializeDistrict(response.data);
+        });
+    }
 
-  public fetchSchoolByDistrictID(params: any): Promise<any> {
-    const endpoint = `this.namespace/countries/${params.country_id}/states/${params.state_id}`;
-    const headers = http.getTokenHeaders();
-    return http.get(endpoint, headers).then((response) => {
-        return performanceSerializer.serializeDistrict(response.data);
-    });
-  }
+    public fetchSchoolByDistrictID(): Promise<any> {
+        const endpoint = `${window.location.origin}/${this.namespace}/countries/schools.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return performanceSerializer.serializeSchool(response.data);
+        });
+    }
 
+    public fetchClassBySchoolID(): Promise<any> {
+        const endpoint = `${window.location.origin}/${this.namespace}/countries/classes.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return performanceSerializer.serializeClass(response.data);
+        });
+    }
+
+    public fetchClassRoomsByClassID() {
+        return [];
+    }
 
 }
 

@@ -1,12 +1,12 @@
 <template>
     <div id="avarage-card-container">
-        <div class="avarage-card-panel">
-            <div class="avarage-card-header">
+        <div class="avarage-card-panel" @click="isShowPopup = !isShowPopup">
+            <div :class="['avarage-card-header', cardName]">
                 <h4 class="new-user-count">150k</h4>
                 <div class="user-details-panel">
                     <div class="user-details-title">
-                        <material-icon icon="people" />
-                        New Users in July
+                        <material-icon :icon="iconName" />
+                        {{cardTitle}}
                     </div>
                     <ul class="texas-card-list">
                     <li class="down"><material-icon icon="trending_down"/></li>
@@ -19,6 +19,11 @@
                 <p>v/s <span>97,303</span> avarage across all States</p>
             </div>
         </div>
+       <div class="card-popup-card">
+            <new-user-popup v-on:onGoBack="closePopup" v-if="isShowPopup && cardName === 'new-user'"/>
+            <avg-session-popup v-on:onGoBack="closePopup" v-if="isShowPopup && cardName === 'avarage-time'"/>
+       </div>
+       
     </div>
 </template>
 

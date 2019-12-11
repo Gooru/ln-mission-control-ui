@@ -4,7 +4,7 @@ import PerformanceProgress from '@/components/charts/performance-progress/perfor
 import DountChart from '@/components/charts/dount-chart/dount-chart';
 
 @Component({
-    name: 'competency-gained-pullup',
+    name: 'avg-session-popup',
     components: {
         'material-icon': GoogleMaterialIcon,
         'performance-bar': PerformanceProgress,
@@ -12,7 +12,7 @@ import DountChart from '@/components/charts/dount-chart/dount-chart';
     },
 })
 
-export default class CompetencyGainedPullup extends Vue {
+export default class AvgSessionPopup extends Vue {
 
     private itrate: any = ['0%', '10%', '30%', '40%', '50%', '60%'];
 
@@ -45,8 +45,7 @@ export default class CompetencyGainedPullup extends Vue {
     },
     ];
 
-    @Prop()
-    private dataList?: any;
+    private dataList?: any = [];
 
     private get level() {
         return this.dataList[0].sub_type;

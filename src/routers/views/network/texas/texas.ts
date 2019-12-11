@@ -3,6 +3,7 @@ import TexasDistrictCard from './texas-district-card/texas-district-card';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import TexasChart from './texas-chart/texas-chart';
 import TexasCardsList from './texas-cards-list/texas-cards-list';
+import PerformanceByGrade from './performance-by-grade/performance-by-grade';
 
 @Component({
     name: 'texas',
@@ -11,6 +12,7 @@ import TexasCardsList from './texas-cards-list/texas-cards-list';
         'texas-district-card': TexasDistrictCard,
         'material-icon': GoogleMaterialIcon,
         'texas-card-list': TexasCardsList,
+        'texas-grade-list': PerformanceByGrade,
     },
 })
 

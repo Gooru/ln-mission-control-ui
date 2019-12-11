@@ -2,17 +2,20 @@
   width: 1200px;
   margin: 20px auto;
   position: relative;
+  display: grid;
+  grid-template-columns: 80% 20%;
+  grid-column-gap: 20px;
   .texas-charts-with-district {
-    width: 80%;
     .chart-top {
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 300px;
     }
-    .texas-perfomance-cards {
+    .texas-performance-cards {
       width: 100%;
     }
   }
-  .texas-perfomance-by-grade {
+  .texas-performance-by-grade {
+    height: 100%;
   }
 }
