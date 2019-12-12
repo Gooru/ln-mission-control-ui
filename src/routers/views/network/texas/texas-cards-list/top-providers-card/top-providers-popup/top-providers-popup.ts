@@ -3,18 +3,20 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import PerformanceProgress from '@/components/charts/performance-progress/performance-progress';
 import DountChart from '@/components/charts/dount-chart/dount-chart';
 import FontAwesomeIcon from '@/components/icons/font-awesome-icon/font-awesome-icon';
+import TopProvidersPopupCard from './top-providers-popup-card/top-providers-popup-card';
 
 @Component({
-    name: 'new-user-popup',
+    name: 'top-providers-popup',
     components: {
         'material-icon': GoogleMaterialIcon,
         'performance-bar': PerformanceProgress,
         'dount-chart': DountChart,
         'font-awesome': FontAwesomeIcon,
+        'top-provider-popup-card': TopProvidersPopupCard,
     },
 })
 
-export default class NewUserPopup extends Vue {
+export default class TopProvidersPopup extends Vue {
 
     private itrate: any = ['0%', '10%', '30%', '40%', '50%', '60%'];
 

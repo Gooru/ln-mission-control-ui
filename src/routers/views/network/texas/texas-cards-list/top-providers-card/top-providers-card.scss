@@ -1,0 +1,46 @@
+#top-providers-container {
+  .top-providers-panel {
+    background-color: $white;
+    padding: 5px 10px;
+    box-shadow: 0 0 10px $light-300;
+    border-radius: 2px;
+    height: 100%;
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    .provider-identity {
+      padding-right: 10px;
+      font-size: 20px;
+    }
+    .provider-content {
+      .top-providers-header {
+        border-bottom: 1px solid $light-300;
+        height: 60px;
+        line-height: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 10px 0;
+        span {
+          display: block;
+          font-size: 12px;
+        }
+        .provider-title {
+          margin: 0;
+          font-size: 15px;
+          font-weight: bold;
+        }
+      }
+      .top-providers-footer {
+        p {
+          margin: 0;
+          font-size: 13px;
+          padding: 5px 0;
+          span {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}

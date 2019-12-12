@@ -1,4 +1,4 @@
-#competency-gained-pullup-container {
+#new-user-pullup-container {
   .backdrop {
     position: fixed;
     width: 100%;
@@ -10,7 +10,7 @@
     z-index: 1;
     cursor: pointer;
   }
-  .performance-and-competency-panel {
+  .new-user-pullup-panel {
     position: absolute;
     left: 0;
     top: 0;
@@ -18,20 +18,20 @@
     width: 80%;
     height: 100%;
     background-color: $white;
-    .performance-competency-panel-heading {
-      .performance-top-header {
+    .new-user-pullup-panel-heading {
+      .new-user-pullup-top-header {
         display: grid;
         grid-template-columns: 150px 1fr 150px;
         align-items: center;
         padding: 10px;
-        .competency-back {
+        .new-user-pullup-back {
           display: grid;
           grid-template-columns: 30px 1fr;
           align-items: center;
           font-size: 12px;
           cursor: pointer;
         }
-        .competency-title {
+        .new-user-pullup-title {
           font-size: 20px;
           font-weight: bold;
           margin: 0;
@@ -39,12 +39,12 @@
           text-transform: uppercase;
         }
       }
-      .performance-nav-tab-panel {
+      .new-user-pullup-nav-tab-panel {
         width: 100%;
         text-align: center;
         padding-top: 5px;
-        border-top: 1px solid $yellow;
-        border-bottom: 1px solid $yellow;
+        border-top: 1px solid $orange;
+        border-bottom: 1px solid $orange;
         .nav-tab-list-blk {
           margin: 0;
           padding: 0;
@@ -60,17 +60,17 @@
             cursor: pointer;
             text-transform: uppercase;
             &.active {
-              color: $yellow;
-              border-bottom: 5px solid $yellow;
+              color: $orange;
+              border-bottom: 5px solid $orange;
               font-weight: bold;
             }
           }
         }
       }
     }
-    .performance-competency-panel-body {
+    .new-user-pullup-panel-body {
       display: grid;
-      grid-template-columns: 200px 1fr 200px;
+      grid-template-columns: 200px 1fr 40px;
       .panel-body-left-section {
         .dount-chart-left {
           .dount-chart-title {
@@ -79,193 +79,160 @@
               display: block;
               padding: 5px;
               margin: 0 auto;
-              border-bottom: 1px solid $yellow;
+              border-bottom: 1px solid $orange;
               font-weight: bold;
               font-size: 12px;
             }
           }
         }
-        .top-activity {
-          .top-activity-last-month {
-            width: fit-content;
-            margin: 0 auto;
-            color: #f87275;
-            text-align: center;
-            padding: 20px;
-            .activity-percentage {
-              margin: 0;
-              font-weight: bold;
-              padding: 0;
-              line-height: 1;
-              font-size: 40px;
-              i {
-                position: relative;
-                left: 10px;
-                top: 5px;
-              }
-            }
-            span {
-              text-transform: uppercase;
-              font-size: 12px;
-            }
-          }
-          .activity-body {
-            text-align: center;
-            .percent-icon {
-              padding: 0 10px;
-              font-size: 30px;
-              background-color: $yellow;
-              border-radius: 2px;
-              color: $white;
-              display: block;
-              width: fit-content;
-              line-height: 1.2;
-              margin: 10px auto;
-              font-weight: bold;
-            }
-            .activity-title {
-              width: fit-content;
-              margin: 0 auto;
-              border-bottom: 1px solid $yellow;
-              padding: 5px;
-              font-size: 12px;
-              font-weight: bold;
-              text-transform: capitalize;
-            }
-            .activity-footer {
-              margin-top: 10px;
-              span {
-                display: block;
-              }
-              .footer-title {
-                width: fit-content;
-                margin: 0 auto;
-                font-size: 11px;
-              }
-              .counts {
-                width: fit-content;
-                margin: 0 auto;
-                font-size: 11px;
-                font-weight: bold;
-                text-transform: capitalize;
-              }
-            }
-          }
-        }
-      }
-      .panel-body-center-section {
-        margin-top: 20px;
-        .country-header {
-          padding: 10px 0;
-          text-align: center;
-          border-bottom: 1px solid $yellow;
-          text-transform: capitalize;
-        }
-        .country-progress-bar {
-          margin-top: 20px;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-column-gap: 20px;
+        .student-teacher-ratio {
+          width: fit-content;
+          margin: 30px auto;
 
-          .performance-bar {
-            .performance-bar-header {
-              border-bottom: 1px solid $yellow;
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              align-items: center;
-              padding: 5px 0;
-              font-weight: bold;
-              font-size: 12px;
-              margin-bottom: 20px;
-              height: 40px;
-              .performance-list-header {
-                display: grid;
-                grid-template-columns: 1fr 30px;
-                align-items: center;
-                text-transform: capitalize;
-                i {
-                  font-size: 20px;
-                }
-              }
-            }
-            .performance-bar-body {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              align-items: center;
-              padding: 5px 0;
-              height: 40px;
-              .performance-list-body {
-                font-size: 12px;
-                text-transform: capitalize;
-                line-height: 1.3;
-                padding-right: 10px;
-                overflow: hidden;
-              }
-              .performance-bar-chart-body {
-                display: grid;
-                grid-template-columns: auto 1fr;
-                width: 100%;
-                align-items: center;
-                .bar-percentage {
-                  padding-right: 2px;
-                  font-size: 12px;
-                  font-weight: bold;
-                }
-              }
+          .student-count {
+            font-size: 30px;
+            font-weight: bold;
+            display: grid;
+            grid-template-columns: 30px auto;
+            align-items: center;
+            border-bottom: 1px solid $orange;
+            padding-bottom: 10px;
+            span {
+              display: block;
+              width: 30px;
+              height: 30px;
+              background-image: url($student);
+              background-size: 30px 30px;
+              background-repeat: no-repeat;
             }
           }
-          .mastery-bar {
-            .mastery-header {
-              border-bottom: 1px solid $blue-500;
-              padding: 5px 0;
-              font-weight: bold;
-              font-size: 12px;
-              margin-bottom: 20px;
-              height: 40px;
-              display: grid;
-              align-items: center;
-              text-align: right;
-            }
-            .mastery-body {
-              height: 40px;
-              display: flex;
-              align-items: center;
-              #performance-progress-bar {
-                flex-flow: row-reverse;
-              }
+          .teacher-count {
+            font-size: 15px;
+            font-weight: bold;
+            display: grid;
+            grid-template-columns: 30px auto;
+            align-items: center;
+            padding: 5px;
+            span {
+              display: block;
+              width: 20px;
+              height: 20px;
+              background-image: url($teacher);
+              background-size: 20px 20px;
+              background-repeat: no-repeat;
             }
           }
         }
       }
       .panel-body-right-section {
-        .progress-bar-right {
-          #performance-progress-bar {
-            border-radius: 20px;
-            border: 1px solid $light-500;
-            background-color: $white;
-            flex-direction: row-reverse;
-          }
+        margin-top: 20px;
+        .country-header {
+          padding: 10px 0;
+          text-align: center;
+          border-bottom: 1px solid $orange;
+          text-transform: uppercase;
         }
-        .mastery-bar,
-        .progress-current,
-        .not-started {
-          padding: 10px;
-          display: flex;
-          position: relative;
-          margin: 10px 10px;
-          span {
-            position: absolute;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: capitalize;
+        .panel-body-content-section {
+          margin-top: 20px;
+          .panel-sub-header-section {
+            display: grid;
+            grid-template-columns: 1fr 100px;
+            align-items: center;
+            grid-column-gap: 20px;
+
+            .panel-sub-header-left {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr 70px;
+              grid-column-gap: 10px;
+              align-items: center;
+              font-size: 12px;
+              font-weight: bold;
+              text-transform: uppercase;
+              border-bottom: 2px solid #feede6;
+              padding-bottom: 10px;
+
+              .teacher-list {
+                text-align: right;
+              }
+            }
+            .panel-sub-header-right {
+              font-size: 12px;
+              font-weight: bold;
+              text-transform: uppercase;
+              border-bottom: 2px solid #feede6;
+              padding-bottom: 10px;
+              text-align: right;
+            }
           }
-        }
-        .not-started {
-          #performance-progress-bar {
-            border-radius: 20px;
-            border: 1px solid $light-500;
-            background-color: $light-200;
-            flex-direction: row-reverse;
+          .panel-sub-body-section {
+            display: grid;
+            grid-template-columns: 1fr 100px;
+            align-items: center;
+            grid-column-gap: 20px;
+            padding: 10px 0;
+            .panel-sub-body-left {
+              display: grid;
+              grid-template-columns: 1fr 1fr 1fr 60px;
+              grid-column-gap: 10px;
+              align-items: center;
+              font-size: 12px;
+              text-transform: capitalize;
+              .body-left-sub-content {
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                padding-right: 10px;
+                border-right: 2px solid $light-300;
+                border-right-style: dashed;
+                .level-count {
+                  font-weight: bold;
+                  font-size: 15px;
+                }
+              }
+              .body-center-sub-content {
+                display: inline-flex;
+                align-items: center;
+                span {
+                  display: block;
+                  width: 20px;
+                  height: 20px;
+                  background-image: url($student);
+                  background-size: 20px 20px;
+                  background-repeat: no-repeat;
+                }
+              }
+              .body-right-sub-content {
+                display: inline-flex;
+                align-items: center;
+                justify-self: end;
+                padding-right: 10px;
+                border-right: 2px solid $light-300;
+                border-right-style: dashed;
+                span {
+                  display: block;
+                  margin: 0 3px;
+                  width: 20px;
+                  height: 20px;
+                  background-image: url($teacher);
+                  background-size: 20px 20px;
+                  background-repeat: no-repeat;
+                }
+              }
+              .body-last-sub-count {
+                text-align: right;
+                display: grid;
+                align-items: center;
+                span {
+                  font-weight: bold;
+                  font-size: 15px;
+                }
+              }
+            }
+            .panel-sub-body-right {
+              text-align: right;
+              font-weight: bold;
+              font-size: 15px;
+            }
           }
         }
       }

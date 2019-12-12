@@ -49,12 +49,12 @@
                             </div>
                             <div class="avg-session-sub-title-right">
                                 <ul class="avg-session-sub-title-blk" >
-                                    <li class="audio">audio</li>
-                                    <li class="video">video</li>
-                                    <li class="interactive">interactive</li>
-                                    <li class="text">text</li>
-                                    <li class="webpage">web page</li>
-                                    <li class="other">others</li>
+                                    <li class="audio"><material-icon icon="volume_up" />audio</li>
+                                    <li class="video"><material-icon icon="ondemand_video"/>video</li>
+                                    <li class="interactive"> <material-icon icon="filter_vintage"/>interactive</li>
+                                    <li class="text"><material-icon icon="list_alt" />text</li>
+                                    <li class="webpage"><material-icon icon="language" />web page</li>
+                                    <li class="other"><material-icon icon="image" />others</li>
                                 </ul>
                             </div>
                         </div>

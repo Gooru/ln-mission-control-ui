@@ -55,7 +55,7 @@ export default class DountChart extends Vue {
 
         g.append('text')
             .attr('text-anchor', 'middle')
-            .attr('font-size', '20px')
+            .attr('font-size', '30px')
             .style('font-weight', 'bold')
             .append('svg:tspan')
             .attr('x', 0)

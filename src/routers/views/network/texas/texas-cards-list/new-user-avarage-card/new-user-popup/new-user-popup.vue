@@ -1,18 +1,18 @@
 <template>
-    <div id="competency-gained-pullup-container">
+    <div id="new-user-pullup-container">
         <div class="backdrop" @click="onGoBack()"></div>
-        <div class="performance-and-competency-panel">
-            <div class="performance-competency-panel-heading">
-                <div class="performance-top-header">
-                    <div class="competency-back" @click="onGoBack">
+        <div class="new-user-pullup-panel">
+            <div class="new-user-pullup-panel-heading">
+                <div class="new-user-pullup-top-header">
+                    <div class="new-user-pullup-back" @click="onGoBack">
                         <material-icon icon="arrow_back"/>
                         <span>Back to Dashboard</span>
                     </div>
-                    <h4 class="competency-title">
-                        Performance & Competency Gains
+                    <h4 class="new-user-pullup-title">
+                        New Users
                     </h4>
                 </div>
-                <div class="performance-nav-tab-panel">
+                <div class="new-user-pullup-nav-tab-panel">
                     <ul class="nav-tab-list-blk">
                         <li class="active">All</li>
                         <li>Math</li>
@@ -25,96 +25,72 @@
                     </ul>
                 </div>
             </div>
-            <div class="performance-competency-panel-body">
+            <div class="new-user-pullup-panel-body">
                 <div class="panel-body-left-section">
                     <div class="dount-chart-left">
                         <dount-chart width="200" 
                         height="200" 
                         diff="23" 
                         margin="20" 
-                        count="75%" 
-                        title="Monthly Avarage"
+                        count="150k" 
+                        title="New Users"
                         :data ="data"/>
                         <div class="dount-chart-title">
-                            <span>Avg. Performance</span>
+                            <span>July 2018</span>
                         </div>
                     </div>
-                    <div class="top-activity">
-                        <div class="top-activity-last-month">
-                            <h4 class="activity-percentage"><material-icon icon="arrow_downward" /> 8.9%</h4>
-                            <span>Since last month</span>
+                    <div class="student-teacher-ratio">
+                        <div class="student-count">
+                            <span></span> 340k
                         </div>
-                        <div class="activity-body">
-                            <span class="percent-icon">%</span>
-                            <span class="activity-title">Top Activity</span>
-                            <div class="activity-footer">
-                                <span class="footer-title">Signature Assessments</span>
-                                <span class="counts">(43,029 Conducted)</span>
-                            </div>
+                        <div class="teacher-count">
+                            <span></span> 14,024
                         </div>
                     </div>
 
                 </div>
-                <div class="panel-body-center-section">
+                <div class="panel-body-right-section">
                     <div class="country-header">
                         State of Texas
                     </div>
-                    <div class="country-progress-bar">
-                        <div class="performance-bar">
-                           <div class="performance-bar-header">
-                                <div class="performance-list-header">
-                                    {{level}}
-                                    <material-icon icon="search"/>
-                                </div>
-                                <div class="performance-bar-chart-header">
-                                    Performance
-                                </div>
-                           </div>
-                           <div class="performance-bar-body" v-for="(level, levelIndex) in dataList" :key="levelIndex">
-                                <div class="performance-list-body">
-                                    {{level.name}}
-                                </div>
-                                <div class="performance-bar-chart-body">
-                                    <div class="bar-percentage">{{level.performance}}%</div>
-                                    <performance-bar :progressWidth="level.performance+'%'" backgroundColor="#5b8f42"/>
-                                </div>
-                           </div>
-                           
+                    <div class="panel-body-content-section">
+                    <div class="panel-sub-header-section">
+                        <div class="panel-sub-header-left">
+                            <span class="level-list">district</span>
+                            <span class="student-list">new students</span>
+                            <span class="teacher-list">new teachers</span>
                         </div>
-                        <div class="mastery-bar">
-                            <div class="mastery-header">
-                                Competency Mastery
-                            </div>
-                            <div class="mastery-body" v-for="(level, levelIndex) in dataList" :key="levelIndex">
-                                <performance-bar progressWidth="50%" backgroundColor="#2070b9" progressWidth1="10%" backgroundColor1="#7ccff7"/>
-                            </div>
+                        <div class="panel-sub-header-right">
+                            <span>new classes</span>
                         </div>
                     </div>
-                </div>
-                <div class="panel-body-right-section">
-                     <div class="dount-chart-right">
-                        <dount-chart
-                         width="200"
-                         height="200" 
-                         diff="23" 
-                         margin="20" 
-                         :data ="data1"
-                         count="23,223" 
-                         title="Competency Mastered"/>
+                    <div class="panel-sub-body-section" v-for="list in itrate" :key="list">
+                        <div class="panel-sub-body-left">
+                            <div class="body-left-sub-content">
+                                <div class="level-content">5th District</div>
+                                <div class="level-count">20,392</div>
+                            </div>
+                            <div class="body-center-sub-content">
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                            </div>
+                            <div class="body-right-sub-content">
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                                 <span></span>
+                            </div>
+                            <div class="body-last-sub-count">
+                                <span>302</span>
+                            </div>
+                        </div>
+                        <div class="panel-sub-body-right">
+                            50,304
+                        </div>
                     </div>
-                    <div class="progress-bar-right">
-                        <div class="mastery-bar">
-                            <span :style="{'right': '0', 'top': '-10px', color: '#2070b9'}">64% mastered</span>
-                            <performance-bar progressWidth="50%" backgroundColor="#2070b9" />
-                        </div>
-                        <div class="progress-current">
-                            <span :style="{'right': '10%', 'top': '-10px', color: '#7ccff7'}">10% Progress</span>
-                            <performance-bar progressWidth="50%" backgroundColor="#fff" progressWidth1="10%" backgroundColor1="#7ccff7"/>
-                        </div>
-                        <div class="not-started">
-                            <span :style="{'left': '0', 'top': '-10px', color: '#959a9e'}">40% Not Started</span>
-                            <performance-bar progressWidth="50%" backgroundColor="#fff" progressWidth1="10%" backgroundColor1="#fff"/>
-                        </div>
                     </div>
                 </div>
             </div>

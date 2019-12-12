@@ -13,7 +13,7 @@
       <new-user-card iconName="access_time" cardTitle="Avg. session time" cardName="avarage-time"/>
     </div>
     <div class="top-provider-card">
-      <new-user-card iconName="people" cardTitle="New Users in July" cardName="new"/>
+      <top-providers />
     </div>
     <div class="class-activities-card">
       <new-user-card iconName="people" cardTitle="Class Activities Conducted" cardName="class-activity"/>

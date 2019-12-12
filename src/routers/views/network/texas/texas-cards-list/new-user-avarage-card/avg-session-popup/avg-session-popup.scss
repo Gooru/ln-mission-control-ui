@@ -179,10 +179,17 @@
                   list-style: none;
                   padding-bottom: 10px;
                   width: 100%;
-
                   li {
                     color: #141f82;
-
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    align-items: center;
+                    padding: 0 2px;
+                    font-size: 12px;
+                    i {
+                      font-size: 15px;
+                      padding: 3px;
+                    }
                     &.video {
                       opacity: 0.8;
                     }
