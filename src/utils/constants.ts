@@ -114,6 +114,8 @@ export const CATEGORY_DISTRIBUTION = {
 export const DEFAULT_IMAGES_PATH: any = {
   profile: '/img/default-images/profile.png',
   partner: '/img/default-images/partner.png',
+  collection: '/img/default-images/collection-default.png',
+  assessment: '/img/default-images/assessment-default.png',
 };
 
 // Competency status
@@ -124,4 +126,70 @@ export const COMPETENCY_STATUS = [
   'Mastered (Asserted)',
   'Mastered (Earned)',
   'Mastered (Demonstrated)',
+];
+
+export const LEARNING_MAP_CONTENT_TYPE = [
+  {
+    labelKey: 'assessment',
+    type: 'assessment',
+  },
+  {
+    labelKey: 'collection',
+    type: 'collection',
+  },
+  {
+    labelKey: 'resource',
+    type: 'resource',
+  },
+  {
+    labelKey: 'offline activity',
+    type: 'offline-activity',
+  },
+  {
+    labelKey: 'course',
+    type: 'course',
+  },
+  {
+    labelKey: 'question',
+    type: 'question',
+  },
+  {
+    labelKey: 'lesson',
+    type: 'lesson',
+  },
+  {
+    labelKey: 'unit',
+    type: 'unit',
+  },
+  {
+    labelKey: 'rubric',
+    type: 'rubric',
+  },
+];
+
+export const GRADING_SCALE = [{
+  LOWER_LIMIT: 0,
+  COLOR: '#F46360',
+  RANGE: '0-59',
+},
+{
+  LOWER_LIMIT: 60,
+  COLOR: '#ED8E36',
+  RANGE: '60-69',
+},
+{
+  LOWER_LIMIT: 70,
+  COLOR: '#FABA36',
+  RANGE: '70-79',
+},
+{
+  LOWER_LIMIT: 80,
+  COLOR: '#A8C99C',
+  RANGE: '80-89',
+},
+{
+  LOWER_LIMIT: 90,
+  COLOR: '#4B9740',
+  RANGE: '90-100',
+},
 ];

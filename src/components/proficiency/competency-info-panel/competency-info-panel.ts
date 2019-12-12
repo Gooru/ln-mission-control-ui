@@ -6,6 +6,7 @@ import PreferencesPanel from '@/components/proficiency/preferences-panel/prefere
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
+import { searchAPI } from '@/providers/apis/search/search';
 
 @Component({
   name: 'competency-info-panel',
@@ -25,6 +26,7 @@ export default class CompetencyInfoPanel extends Vue {
 
   private activeTab: object = {
     title: 'Portfolio',
+    component: 'portfolio-panel',
   };
 
   private tabItems = [
@@ -48,12 +50,28 @@ export default class CompetencyInfoPanel extends Vue {
     },
     {
       title: 'Learning Map',
+      component: 'learning-map',
     },
   ];
+
+  private learningMapData!: any;
+
+  private created() {
+    this.loadLearningMapContents();
+  }
 
 
   private competencyLevel() {
     return this.competency.competencyStatus ? competencyStatus(this.competency.competencyStatus) : '';
+  }
+
+  private loadLearningMapContents() {
+    const component = this;
+    const competencyCode = this.competency.competencyCode;
+    searchAPI.fetchLearningMapContents(competencyCode).then((learningMapData) => {
+      component.learningMapData = learningMapData;
+    });
+
   }
 
 }

@@ -137,7 +137,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   public loadTaxonomyGrades() {
     const component = this;
-    return taxonomyAPI.fetchTaxonomyGrades(this.subjectCode).then((taxonomyGrades) => {
+    return taxonomyAPI.fetchTaxonomyGrades(this.subjectCode).then((taxonomyGrades: GradeModel[]) => {
       component.taxonomyGrades = taxonomyGrades;
     });
   }

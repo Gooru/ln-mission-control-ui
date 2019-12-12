@@ -19,7 +19,7 @@
         </div>
       </div>
         <div class="active-tab-contents">
-          <component v-bind:is="activeTab.component" v-bind="{subject: subject, domain: domain}"/>
+          <component v-bind:is="activeTab.component" v-bind="{subject: subject, domain: domain, statsBucket: 'domain'}"/>
         </div>
     </div>
   </div>

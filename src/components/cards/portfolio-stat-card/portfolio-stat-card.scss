@@ -1,0 +1,40 @@
+#portfolio-stat-card {
+  .portfolio-stat-header {
+    display: grid;
+    grid-template-columns: 30px 1fr 30px;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    .seq-no {
+      text-align: center;
+    }
+    .stat-info {
+      display: grid;
+      .title {
+        font-size: 13px;
+      }
+      .total-count {
+        font-size: 10px;
+        opacity: 0.9;
+      }
+    }
+  }
+  .portfolio-stat-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+    height: 95px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    .stat-detail {
+      display: grid;
+      align-items: center;
+      .content-count {
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+  }
+}

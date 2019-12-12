@@ -3,8 +3,11 @@
   top: 0;
   z-index: 9;
   background-color: #fff;
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
   .domain-info-header {
     padding: 8px 15px;
     border-bottom: 1px solid rgb(204, 204, 204);
@@ -33,11 +36,23 @@
     }
   }
   .domain-info-body {
-    .tabbed-header {
+    > .tabbed-header {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
       height: 40px;
+      line-height: 40px;
       .tab-item {
-        line-height: 40px;
-        height: inherit;
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 1px solid;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: bold;
+        &.active,
+        &:hover {
+          color: rgb(26, 169, 235);
+          border-bottom: 3px solid rgb(26, 169, 235);
+        }
       }
     }
     .active-tab-contents {

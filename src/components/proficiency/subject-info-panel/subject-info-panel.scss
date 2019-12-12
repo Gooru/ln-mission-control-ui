@@ -9,9 +9,11 @@
     }
   }
   .subject-info-body {
-    .tabbed-header {
+    > .tabbed-header {
       display: grid;
       grid-template-columns: repeat(4, auto);
+      height: 40px;
+      line-height: 40px;
       .tab-item {
         cursor: pointer;
         text-align: center;
