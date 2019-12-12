@@ -1,0 +1,44 @@
+#consumed-progress {
+  display: grid;
+  grid-template-columns: 25px 1fr 90px;
+  align-items: center;
+  opacity: 0.6;
+  .content-icon {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 2px solid;
+    align-items: center;
+    display: grid;
+    text-align: center;
+    i {
+      font-size: 15px;
+      color: $dark-400;
+    }
+  }
+
+  .consumed-bar {
+    display: inline-flex;
+    align-items: center;
+    margin-left: -1px;
+    span {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      height: 10px;
+    }
+    .content-score {
+      padding: 0 5px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+  .content-trading {
+    justify-content: end;
+    padding: 0 5px;
+    display: grid;
+    font-size: 12px;
+    font-weight: bold;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+  }
+}

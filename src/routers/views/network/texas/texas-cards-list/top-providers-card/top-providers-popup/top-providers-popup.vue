@@ -27,6 +27,8 @@
             </div>
             <div class="top-providers-pullup-panel-body">
                 <top-provider-popup-card />
+                <top-provider-popup-card />
+                <top-provider-popup-card />
             </div>
         </div>
         
