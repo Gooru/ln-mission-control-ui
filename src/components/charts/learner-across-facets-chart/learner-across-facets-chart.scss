@@ -1,0 +1,43 @@
+#learner-across-facets-chart {
+  width: inherit;
+  #facets-chart-view {
+    width: inherit;
+    height: calc(100vh - 200px);
+    background-color: #fff;
+    svg#chart-container {
+      transform: rotateX(180deg);
+      transform-style: preserve-3d;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      margin: auto;
+      #facets-group {
+        rect {
+          stroke: #000;
+          stroke-width: 2;
+          shape-rendering: crispedges;
+          stroke-opacity: 0.2;
+          cursor: pointer;
+        }
+        // Comptency Color
+        rect.notstarted {
+          fill: #e7e8e9;
+        }
+
+        rect.inprogress {
+          fill: #1aa9eb;
+        }
+
+        rect.mastered {
+          fill: #1d7dc2;
+        }
+      }
+      #skyline-group {
+        polyline.skyline {
+          fill: none;
+          stroke: #fff;
+          stroke-width: 6px;
+          filter: url(#back-shadow);
+        }
+      }
+    }
+  }
+}

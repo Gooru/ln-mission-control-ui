@@ -31,8 +31,10 @@ export default class PortfolioStatCard extends Vue {
     const statType = this.statType;
     if (statType === 'subject') {
       title = this.statInfo.domainName;
-    } else {
+    } else if (statType === 'domain') {
       title = this.statInfo.competencyCode;
+    } else {
+      title = this.statInfo.subjectName;
     }
     return title;
   }

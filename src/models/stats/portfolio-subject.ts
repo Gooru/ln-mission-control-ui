@@ -10,4 +10,5 @@ export interface PortfolioSubjectStat {
   assessmentExternalCount: number;
   collectionExternalCount: number;
   oaCount: number;
+  totalCount: number;
 }

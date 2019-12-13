@@ -4,6 +4,7 @@ import { SubjectModel } from '@/models/taxonomy/subject';
 import { DomainModel } from '@/models/proficiency/domain';
 import { CompetencyModel } from '@/models/proficiency/competency';
 import { PortfolioContent } from '@/models/portfolio/portfolio-content';
+import { PortfolioSubjectStat } from '@/models/stats/portfolio-subject';
 import { PortfolioDomainStat } from '@/models/stats/portfolio-domain';
 import { PortfolioCompetencyStat } from '@/models/stats/portfolio-competency';
 import PortfolioContentCard from '@/components/cards/portfolio-content-card/portfolio-content-card';
@@ -18,6 +19,19 @@ import PortfolioStatCard from '@/components/cards/portfolio-stat-card/portfolio-
 })
 
 export default class PortfolioPanel extends Vue {
+
+  get portfolioStats() {
+    let portfolioStats: PortfolioDomainStat[] | PortfolioCompetencyStat[] | PortfolioSubjectStat[] = [];
+    const statsBucket = this.statsBucket;
+    if (statsBucket === 'subject') {
+      portfolioStats = this.portfolioSubjectStats;
+    } else if (statsBucket === 'domain') {
+      portfolioStats = this.portfolioDomainStats;
+    } else {
+      portfolioStats = this.portfolioFacetsStats;
+    }
+    return portfolioStats;
+  }
 
   @Prop()
   private subject!: SubjectModel;
@@ -34,27 +48,18 @@ export default class PortfolioPanel extends Vue {
 
   private portfolioContents: PortfolioContent[] = [];
 
+  private portfolioFacetsStats: PortfolioSubjectStat[] = [];
+
   private portfolioSubjectStats: PortfolioDomainStat[] = [];
 
   private portfolioDomainStats: PortfolioCompetencyStat[] = [];
 
-  private protfolioStats: PortfolioDomainStat[] | PortfolioCompetencyStat[] = [];
+  private protfolioStats: PortfolioDomainStat[] | PortfolioCompetencyStat[] | PortfolioSubjectStat[] = [];
 
   private isLoadContents: boolean = false;
 
   @Prop()
   private statsBucket!: string;
-
-  get portfolioStats() {
-    let portfolioStats: PortfolioDomainStat[] | PortfolioCompetencyStat[] = [];
-    const statsBucket = this.statsBucket;
-    if (statsBucket === 'subject') {
-      portfolioStats = this.portfolioSubjectStats;
-    } else if (statsBucket === 'domain') {
-      portfolioStats = this.portfolioDomainStats;
-    }
-    return portfolioStats;
-  }
 
   public created() {
     this.loadData();
@@ -78,8 +83,10 @@ export default class PortfolioPanel extends Vue {
     const component = this;
     if (component.statsBucket === 'subject') {
       component.getPortfolioStatsBySubject();
-    } else {
+    } else if (component.statsBucket === 'domain') {
       component.getPortfolioStatsByDomain();
+    } else {
+      component.getAllFacetsPortfolioStats();
     }
   }
 
@@ -127,5 +134,13 @@ export default class PortfolioPanel extends Vue {
       requestParams.tx_domain_code = component.domain.domainCode;
     }
     return requestParams;
+  }
+
+  private getAllFacetsPortfolioStats() {
+    const component = this;
+    const requestParams = component.getStatsParams();
+    portfolioAPI.fetchPortfolioStatsAllFacets(requestParams).then((portfolioFacetsStats: PortfolioSubjectStat[]) => {
+      component.portfolioFacetsStats = portfolioFacetsStats;
+    });
   }
 }

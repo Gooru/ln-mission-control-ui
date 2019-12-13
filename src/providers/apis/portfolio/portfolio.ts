@@ -38,6 +38,14 @@ export class PortfolioAPI {
     });
   }
 
+  public fetchPortfolioStatsAllFacets(requestParams: object = {}) {
+    const endpoint = `${this.portfolioNamespace}/learner/portfolio/stats`;
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint, headers, requestParams).then((response) => {
+      return portfolioSerializer.serializePortfolioStatsAllFacets(response.data);
+    });
+  }
+
 }
 
 export const portfolioAPI = PortfolioAPI.instance;
