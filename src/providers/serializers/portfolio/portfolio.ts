@@ -6,11 +6,11 @@ import { sessionService } from '@/providers/services/auth/session';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
 
 export class PortfolioSerializer {
-  private static INSTANCE = new PortfolioSerializer();
 
   static get instance() {
     return this.INSTANCE;
   }
+  private static INSTANCE = new PortfolioSerializer();
 
   public serializePortfolioContents(portfolioContents: any) {
     const cdnUrls = sessionService.getCdnUrl();
@@ -46,11 +46,20 @@ export class PortfolioSerializer {
     return serializedPortfolioContents;
   }
 
+  public serializePortfolioStatsAllFacets(portfolioStats: any) {
+    const serializer = this;
+    const learnerPortfolioStats = portfolioStats.learnerPortfolioStats || [];
+    const serializedPortfolioStats: PortfolioSubjectStat[] = learnerPortfolioStats.map( (subjectStat: any) => {
+      return serializer.normalizeSubjectStat(subjectStat);
+    });
+    return serializedPortfolioStats;
+  }
+
   public serializePortfolioStatsBySubject(portfolioStats: any) {
     const serializer = this;
     const learnerPortfolioStats = portfolioStats.learnerPortfolioStats || [];
-    const serializedPortfolioStats: PortfolioDomainStat[] = learnerPortfolioStats.map( (subjectStat: any) => {
-      return serializer.normalizeDomainStat(subjectStat);
+    const serializedPortfolioStats: PortfolioDomainStat[] = learnerPortfolioStats.map( (domainStat: any) => {
+      return serializer.normalizeDomainStat(domainStat);
     });
     return serializedPortfolioStats;
   }
@@ -58,40 +67,21 @@ export class PortfolioSerializer {
   public serializePortfolioStatsByDomain(portfolioStats: any) {
     const serializer = this;
     const learnerPortfolioStats = portfolioStats.learnerPortfolioStats || [];
-    const serializedPortfolioStats: PortfolioCompetencyStat[] = learnerPortfolioStats.map( (domainStat: any) => {
-      return serializer.normalizeCompetencyStat(domainStat);
+    const serializedPortfolioStats: PortfolioCompetencyStat[] = learnerPortfolioStats.map( (competencyStat: any) => {
+      return serializer.normalizeCompetencyStat(competencyStat);
     });
     return serializedPortfolioStats;
   }
 
-  public normalizeDomainStat(subjectStat: PortfolioDomainStat) {
-    const normalizedSubjectStat: PortfolioDomainStat = {
-      assessmentCount: subjectStat.assessmentCount,
-      assessmentExternalCount: subjectStat.assessmentExternalCount,
-      collectionCount: subjectStat.collectionCount,
-      collectionExternalCount: subjectStat.collectionExternalCount,
-      domainCode: subjectStat.domainCode,
-      domainName: subjectStat.domainName,
-      domainSeq: subjectStat.domainSeq,
-      oaCount: subjectStat.oaCount,
-      totalCount: subjectStat.assessmentCount +
-        subjectStat.assessmentExternalCount +
-        subjectStat.collectionCount +
-        subjectStat.collectionExternalCount +
-        subjectStat.oaCount,
-    };
-    return normalizedSubjectStat;
-  }
-
-  public normalizeCompetencyStat(domainStat: PortfolioCompetencyStat) {
-    const normalizedDomainStat: PortfolioCompetencyStat = {
+  public normalizeDomainStat(domainStat: PortfolioDomainStat) {
+    const normalizedDomainStat: PortfolioDomainStat = {
       assessmentCount: domainStat.assessmentCount,
       assessmentExternalCount: domainStat.assessmentExternalCount,
       collectionCount: domainStat.collectionCount,
       collectionExternalCount: domainStat.collectionExternalCount,
-      competencyCode: domainStat.competencyCode,
-      competencyName: domainStat.competencyName,
-      competencySeq: domainStat.competencySeq,
+      domainCode: domainStat.domainCode,
+      domainName: domainStat.domainName,
+      domainSeq: domainStat.domainSeq,
       oaCount: domainStat.oaCount,
       totalCount: domainStat.assessmentCount +
         domainStat.assessmentExternalCount +
@@ -100,6 +90,47 @@ export class PortfolioSerializer {
         domainStat.oaCount,
     };
     return normalizedDomainStat;
+  }
+
+  public normalizeCompetencyStat(competencyStat: PortfolioCompetencyStat) {
+    const normalizedCompetencyStat: PortfolioCompetencyStat = {
+      assessmentCount: competencyStat.assessmentCount,
+      assessmentExternalCount: competencyStat.assessmentExternalCount,
+      collectionCount: competencyStat.collectionCount,
+      collectionExternalCount: competencyStat.collectionExternalCount,
+      competencyCode: competencyStat.competencyCode,
+      competencyName: competencyStat.competencyName,
+      competencySeq: competencyStat.competencySeq,
+      oaCount: competencyStat.oaCount,
+      totalCount: competencyStat.assessmentCount +
+        competencyStat.assessmentExternalCount +
+        competencyStat.collectionCount +
+        competencyStat.collectionExternalCount +
+        competencyStat.oaCount,
+    };
+    return normalizedCompetencyStat;
+  }
+
+  private normalizeSubjectStat(subjectStat: any) {
+    const normalizedSubjectStat: PortfolioSubjectStat = {
+      subjectCode: subjectStat.subjectCode,
+      subjectName: subjectStat.subjectName,
+      classificationCode: subjectStat.classificationCode,
+      classificationName: subjectStat.classificationName,
+      subjectSeq: subjectStat.subjectSeq,
+      classificationSeq: subjectStat.classificationSeq,
+      collectionCount: subjectStat.collectionCount,
+      assessmentCount: subjectStat.assessmentCount,
+      assessmentExternalCount: subjectStat.assessmentExternalCount,
+      collectionExternalCount: subjectStat.collectionExternalCount,
+      oaCount: subjectStat.oaCount,
+      totalCount: subjectStat.assessmentCount +
+        subjectStat.assessmentExternalCount +
+        subjectStat.collectionCount +
+        subjectStat.collectionExternalCount +
+        subjectStat.oaCount,
+    };
+    return normalizedSubjectStat;
   }
 }
 

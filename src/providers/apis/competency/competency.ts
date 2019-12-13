@@ -1,6 +1,7 @@
 import { http } from '@/providers/apis/http';
 import { competencySerializer } from '@/providers/serializers/competency/competency';
 import { DomainModel } from '@/models/proficiency/domain';
+import { FacetMatrix } from '@/models/proficiency/facet-matrix';
 
 export class CompetencyAPI {
 
@@ -25,6 +26,14 @@ export class CompetencyAPI {
     const headers = http.getTokenHeaders();
     return http.get(endpoint, headers, params).then((response) => {
       return competencySerializer.serializeMatrixCoOrdinates(response.data);
+    });
+  }
+
+  public fetchAllFacetsCompetencyMatrix<T>(params: any): Promise<FacetMatrix[]> {
+    const endpoint = `${this.namespace}/v2/tx/subjects/competency/matrix`;
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint, headers, params).then((response) => {
+      return competencySerializer.serializeFacetsCompetencyMatrix(response.data);
     });
   }
 
