@@ -20,7 +20,7 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
-        path: '/network/countries/:id',
+        path: '/network/countries/:id/:name?',
         name: 'countries-with-state',
         component: () => import('@/routers/views/network/country-drill-down/country-drill-down.vue'),
         meta: { isRequiredAuth: true },

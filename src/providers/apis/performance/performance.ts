@@ -8,6 +8,8 @@ export class PerfomanceAPI {
 
     private namespace = 'stubs';
 
+    private namespace1 = 'api/reports/v1/performance';
+
     static get instance() {
         return this.INSTANCE;
     }
@@ -47,6 +49,20 @@ export class PerfomanceAPI {
 
     public fetchClassRoomsByClassID() {
         return [];
+    }
+
+    public fetchCountrySubject(params: any): Promise<any> {
+        const endpoint = `${this.namespace}/countries/${params.country_id}/subjects`;
+        const headers = http.getTokenHeaders();
+        const dataParams: any = {
+            month: params.month,
+            year: params.year,
+            frequency: params.frequency,
+            week: params.week,
+        };
+        return http.get(endpoint, headers, dataParams).then((response) => {
+            return response.data.subjects;
+        });
     }
 
 }

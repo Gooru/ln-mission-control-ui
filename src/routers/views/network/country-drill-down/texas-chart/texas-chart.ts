@@ -19,6 +19,8 @@ export default class TexasChart extends Vue {
     private dataList: any;
     @Prop()
     private cardTitle?: string;
+    @Prop()
+    private breadcrumb?: string;
 
     private totalCompetencyGained: number = getSum(this.dataList);
 
@@ -26,6 +28,13 @@ export default class TexasChart extends Vue {
 
     // ----------------------------------------------------------------------
     // Hooks
+
+    // -------------------------------------------------------------------------
+    // Actions
+
+    private onChangeBreadcrumb(seletedLevel: any) {
+        this.$emit('onChangeBreadcrumb', seletedLevel);
+    }
     // --------------------------------------------------------------------------
     // Methods
 

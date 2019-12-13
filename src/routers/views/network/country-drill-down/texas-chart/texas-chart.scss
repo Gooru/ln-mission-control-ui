@@ -21,6 +21,35 @@
       }
     }
     .texas-pullup-table {
+      i {
+        display: none;
+      }
+    }
+    .texas-nav-tab {
+      .texas-breadcrumb {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: inline-flex;
+        font-size: 12px;
+        text-transform: capitalize;
+        opacity: 0.8;
+        li {
+          cursor: pointer;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: bold;
+          span {
+            padding: 0 2px;
+          }
+          &:last-child {
+            span {
+              display: none;
+            }
+          }
+        }
+      }
     }
   }
   .chart-container {

@@ -3,7 +3,7 @@
         <div class="texas-charts-with-district">
            <div class="chart-top">
                 <div class="texas-chart">
-                    <texas-chart v-if="isLoaded" :dataList="stateList" :cardTitle ="countryId"/>
+                    <texas-chart v-if="isLoaded" :breadcrumb="breadcrumb" v-on:onChangeBreadcrumb="onSelectLevel" :dataList="stateList" :cardTitle ="countryName"/>
                 </div>
                 <div class="texas-district">
                     <texas-district-card v-if="isLoaded" v-on:onSelectLevel="onSelectLevel" :dataList="stateList"/>
