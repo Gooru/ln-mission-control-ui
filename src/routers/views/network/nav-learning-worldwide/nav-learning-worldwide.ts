@@ -169,6 +169,8 @@ export default class NavLearningWorldWide extends Vue {
         const element = d3.select(`#country-code-${countryData.country_code}`);
         element.attr('class', className);
         this.activeCountry = null;
+      }).on('click' , (d: any) => {
+        this.$router.push(`/network/countries/${countryData.id}`);
       });
       const numberOfDigits = total.toString().length;
       circleChartContainer.append('circle').attr('r', this.circleRadius(numberOfDigits));

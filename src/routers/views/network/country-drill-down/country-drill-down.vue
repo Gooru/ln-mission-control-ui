@@ -3,14 +3,14 @@
         <div class="texas-charts-with-district">
            <div class="chart-top">
                 <div class="texas-chart">
-                        <texas-chart />
+                    <texas-chart v-if="isLoaded" :dataList="stateList" :cardTitle ="countryId"/>
                 </div>
                 <div class="texas-district">
-                        <texas-district-card />
+                    <texas-district-card v-if="isLoaded" v-on:onSelectLevel="onSelectLevel" :dataList="stateList"/>
                 </div>
            </div>
            <div class="texas-performance-cards">
-                 <texas-card-list/>
+                 <texas-card-list v-if="isLoaded" :dataList="stateList"/>
            </div>
         </div>
         <div class="texas-performance-by-grade">
@@ -19,5 +19,5 @@
     </div>
 </template>
 
-<script lang="ts" src="./texas.ts"></script>
-<style lang="scss" scoped src="./texas.scss"></style>
+<script lang="ts" src="./country-drill-down.ts"></script>
+<style lang="scss" scoped src="./country-drill-down.scss"></style>

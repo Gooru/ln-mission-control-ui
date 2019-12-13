@@ -33,6 +33,7 @@
     }
 
     #country-circle-container {
+      cursor: pointer;
       circle {
         fill: $blue-400;
         opacity: 0.8;

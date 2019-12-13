@@ -38,3 +38,8 @@ export function sortByProperty<T>(array: T[], propName: keyof T, order: 'ASC' | 
         array.reverse();
     }
 }
+
+export function getSum(dataList: any) {
+     return dataList.reduce(
+        (count: any, data: any) => count + data.completed_competencies, 0);
+}

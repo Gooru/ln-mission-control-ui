@@ -40,7 +40,10 @@ export default class CompentencyGainedCard extends Vue {
     // Methods
 
     private loadStatesList() {
-        perfomanceAPI.fetchDistrictByStateID().then((districts) => {
+        const params: any = {};
+        params.country_id = 'USA';
+        params.state_id = 1;
+        perfomanceAPI.fetchDistrictByStateID(params).then((districts) => {
             this.districtList = districts;
         });
     }

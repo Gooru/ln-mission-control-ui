@@ -1,4 +1,4 @@
-import { Component, Vue } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as d3 from 'd3';
 
 @Component({
@@ -6,6 +6,11 @@ import * as d3 from 'd3';
 })
 
 export default class TexasLineChart extends Vue {
+
+    // ------------------------------------------------------------------
+    // Properties
+    @Prop()
+    private dataList: any;
 
     // -----------------------------------------------------------------
     // Hooks

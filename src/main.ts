@@ -11,6 +11,7 @@ import { appConfigAPI } from '@/providers/apis/app/app-config';
 import { appConfigService } from '@/providers/services/app/app-config';
 import { authService } from '@/providers/services/auth/auth';
 import i18n from '@/i18n';
+import './filters/filters';
 
 
 Vue.config.productionTip = false;

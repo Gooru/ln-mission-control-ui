@@ -1,12 +1,12 @@
 <template>
     <div id="texas-card-container">
         <div class="texas-district-title">
-         <h5 class="texas-distict-name">districts</h5>
+         <h5 class="texas-distict-name">{{cardName}}</h5>
             <material-icon icon="search" />
          </div>
-          <div class="texas-district-card" v-for="count in counts" :key="count">
+          <div class="texas-district-card" v-for="(level, levelIndex) in dataList" :key="levelIndex" @click="onSelectLevel(level)">
               <div class="card-heading">
-                <h5 class="card-title">lytle school district</h5>
+                <h5 class="card-title">{{level.name}}</h5>
                 <ul class="texas-card-list">
                     <li><material-icon icon="trending_up"/></li>
                     <li>37%</li>
@@ -14,7 +14,7 @@
                 </ul>
               </div>
               <div class="card-total">
-                  <h4 class="total-count">35,999</h4>
+                  <h4 class="total-count">{{level.completed_competencies}}</h4>
                   <span>Total</span>
               </div>
           </div>
