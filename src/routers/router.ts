@@ -51,6 +51,15 @@ const routes = [
         component: () => import('@/routers/views/learners/learners.vue'),
         meta: {isRequiredAuth: true},
       },
+      {
+        path: '/learners/:id',
+        name: 'learners-proficiency',
+        component: () => {
+           // this need to move view
+          return import('@/components/proficiency/learner-facets-proficiency/learner-facets-proficiency.vue');
+        },
+        meta: { isRequiredAuth: true },
+      },
     ],
   },
   {
