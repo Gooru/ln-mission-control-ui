@@ -3,6 +3,8 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import NewUserAvarageCard from './new-user-avarage-card/new-user-avarage-card';
 import CompentencyGainedCard from './competency-gained-card/competency-gained-card';
 import TopProvidersCard from './top-providers-card/top-providers-card';
+import {getSum} from '@/utils/utils';
+import {formatTime} from '@/utils/date';
 
 @Component({
     name: 'texas-cards-list',
@@ -26,4 +28,11 @@ export default class TexasCardsList extends Vue {
     @Prop()
     private subjectsList: any;
 
+
+    // -------------------------------------------------------------------------------
+    // Methods
+
+    private getSumValue(value: any) {
+        return formatTime(getSum(value, 'timespent'));
+    }
 }

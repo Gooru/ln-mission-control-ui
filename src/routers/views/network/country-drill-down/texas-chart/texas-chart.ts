@@ -24,7 +24,7 @@ export default class TexasChart extends Vue {
     @Prop()
     private breadcrumb?: any;
 
-    private totalCompetencyGained: number = getSum(this.dataList);
+    private totalCompetencyGained: number =  getSum(this.dataList, 'completedCompetencies');
 
     private hideScore: boolean = false;
 

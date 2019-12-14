@@ -10,7 +10,7 @@
       <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
     </div>
     <div class="avarage-time-card">
-      <new-user-card iconName="access_time" cardValue="26m" cardTitle="Avg. session time" cardName="avarage-time"/>
+      <new-user-card iconName="access_time" :cardValue="getSumValue(dataList)" cardTitle="Avg. session time" cardName="avarage-time"/>
     </div>
     <div class="top-provider-card">
       <top-providers />

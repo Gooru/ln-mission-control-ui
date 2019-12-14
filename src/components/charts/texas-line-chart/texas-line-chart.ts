@@ -1,5 +1,6 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import * as d3 from 'd3';
+import moment from 'moment';
 
 @Component({
     name: 'texas-line-chart',
@@ -11,6 +12,10 @@ export default class TexasLineChart extends Vue {
     // Properties
     @Prop()
     private dataList: any;
+
+    private tooltipData?: any = null;
+
+    private tooltipStyle?: any = null;
 
     // -----------------------------------------------------------------
     // Hooks
@@ -34,45 +39,45 @@ export default class TexasLineChart extends Vue {
             .append('g')
             .attr('transform',
                 'translate(' + margin.left + ',' + margin.top + ')');
+
         const data: any = [
             {
-                date: '2018-04-14',
-                value: 3140.71,
+                week: 48,
+                competency_count: 3140.71,
             },
             {
-                date: '2018-04-15',
-                value: 3040.71,
+                week: 49,
+                competency_count: 1140.71,
             },
             {
-                date: '2018-04-16',
-                value: 4371.15,
-            },
-            {
-                date: '2018-04-17',
-                value: 2285.96,
-            },
-            {
-                date: '2018-04-18',
-                value: 5197.8,
+                week: 50,
+                competency_count: 5140.71,
             },
         ];
 
-        const x = d3.scaleTime()
-            .domain(d3.extent(data, (d: any) => d3.timeParse('%Y-%m-%d')(d.date)) as [Date, Date])
+        const xMinValue: any = d3.min(data, (d: any) => d.week);
+
+        const x = d3.scaleLinear()
+            .domain([xMinValue - .3 , xMinValue + 5])
             .range([0, width]);
 
         svg.append('g')
             .attr('transform', 'translate(0,' + height + ')')
-            .call(d3.axisBottom(x).ticks(5).tickSize(10))
+            .call(d3.axisBottom(x).ticks(5).tickSize(10).tickFormat((d: any) => {
+                return 'Week ' + d;
+            }))
             .attr('stroke', '#fff');
 
+        const yMaxValue: any = d3.max(data, (d: any) => d.competency_count);
+
+
         const y = d3.scaleLinear()
-            .domain([0, 8000])
+            .domain([0, yMaxValue + 1])
             .range([height, 0]);
 
         svg.append('g')
             .attr('class', 'y-axis')
-            .call(d3.axisLeft(y).ticks(5).tickSize(0).tickPadding(20))
+            .call(d3.axisLeft(y).ticks(6).tickSize(0).tickPadding(20))
             .attr('stroke', '#fff');
 
         // Add the line
@@ -82,8 +87,8 @@ export default class TexasLineChart extends Vue {
             .attr('stroke', '#fff')
             .attr('stroke-width', 1)
             .attr('d', d3.line()
-                .x((d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
-                .y((d: any) => y(d.value)),
+                .x((d: any) => x(d.week))
+                .y((d: any) => y(d.competency_count)),
             );
 
         // Lines
@@ -91,12 +96,20 @@ export default class TexasLineChart extends Vue {
             .data(data)
             .enter()
             .append('line')
-            .attr('x1', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
-            .attr('x2', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
-            .attr('y1', (d: any) => y(d.value))
+            .attr('x1', (d: any) => x(d.week))
+            .attr('x2', (d: any) => x(d.week))
+            .attr('y1', (d: any) => y(d.competency_count))
             .attr('y2', y(0))
-            .attr('stroke', '#ffffff3d')
-            .attr('stroke-width', 10);
+            .on('mousemove', (d: any) => {
+                 this.tooltipActive(d, x, y);
+            })
+            .on('mouseleave', (d: any) => {
+                this.tooltipData = null;
+            })
+            .attr('stroke', (d: any) => {
+                return this.tooltipActive(d, x, y);
+            })
+            .attr('stroke-width', 30);
 
         // Add the points
         svg
@@ -105,13 +118,27 @@ export default class TexasLineChart extends Vue {
             .data(data)
             .enter()
             .append('circle')
-            .attr('cx', (d: any) => x(d3.timeParse('%Y-%m-%d')(d.date) as Date))
-            .attr('cy', (d: any) => y(d.value))
-            .attr('r', 3)
+            .attr('cx', (d: any) => x(d.week) as number)
+            .attr('cy', (d: any) => y(d.competency_count))
+            .attr('r', 4)
             .attr('fill', '#2073bb')
-            .attr('stroke', '#fff');
+            .attr('stroke', '#fff')
+            .on('mousemove', (d: any) => {
+                this.tooltipActive(d, x, y);
+            })
+            .on('mouseleave', (d: any) => {
+                this.tooltipData = null;
+            });
 
+    }
 
+    private tooltipActive(d: any, x: any, y: any) {
+        this.tooltipStyle = {
+            toolX: x(d.week) + 40,
+            toolY: y(d.competency_count) + 20,
+        };
+        this.tooltipData = d;
+        return (d.week === moment().week()) ? '#fff' : '#ffffff3d';
     }
 
 }

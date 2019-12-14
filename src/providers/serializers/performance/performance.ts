@@ -36,6 +36,12 @@ export class PerformanceSerializer {
         return classRoomList;
    }
 
+   public serializeSubject(subjects: any) {
+    const serializer = this;
+    const subjectsList = subjects.subjects ? subjects.subjects : [];
+    return subjectsList;
+}
+
 
 
 }

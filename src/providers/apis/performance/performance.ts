@@ -8,6 +8,8 @@ export class PerfomanceAPI {
 
     private namespace = 'api/reports/v1/performance';
 
+    private namespace1 = 'api/ds/users/v2/nc/atc/pvc';
+
     static get instance() {
         return this.INSTANCE;
     }
@@ -45,15 +47,19 @@ export class PerfomanceAPI {
         });
     }
 
-    public fetchClassRoomsByClassID() {
-        return [];
+    public fetchStudentsByClassID(data: any): Promise<any> {
+        const endpoint = `${this.namespace1}`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers, data).then((response) => {
+            return response.data;
+        });
     }
 
     public fetchCountrySubject(params: any, data: any): Promise<any> {
         const endpoint = `${this.namespace}/countries/${params.country_id}/subjects`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
-            return response.data.subjects;
+            return performanceSerializer.serializeSubject(response.data);
         });
     }
 

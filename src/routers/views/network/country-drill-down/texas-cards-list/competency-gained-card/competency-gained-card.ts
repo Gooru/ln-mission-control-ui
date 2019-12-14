@@ -35,7 +35,7 @@ export default class CompentencyGainedCard extends Vue {
 
     private dataSet: any = {};
 
-    private totalCompetencyGained: number = getSum(this.dataList);
+    private totalCompetencyGained: number = getSum(this.dataList, 'completedCompetencies');
 
     // ------------------------------------------------------------
     // Actions
