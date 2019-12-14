@@ -6,7 +6,7 @@ export class PerfomanceAPI {
 
     private static INSTANCE = new PerfomanceAPI();
 
-    private namespace = 'api/reports/v1/performance';
+    private namespace = 'api/reports/v1';
 
     private namespace1 = 'api/ds/users/v2/nc/atc/pvc';
 
@@ -15,7 +15,7 @@ export class PerfomanceAPI {
     }
 
     public fetchStateByCountryID(params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespace}/countries/${params.country_id}`;
+        const endpoint = `${this.namespace}/${params.api_type}/countries/${params.country_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeState(response.data);
@@ -24,7 +24,7 @@ export class PerfomanceAPI {
 
     public fetchDistrictByStateID(params: any, data: any): Promise<any> {
         const endpoint =
-        `${this.namespace}/countries/${params.country_id}/states/${params.state_id}`;
+        `${this.namespace}/${params.api_type}/countries/${params.country_id}/states/${params.state_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeDistrict(response.data);
@@ -32,7 +32,7 @@ export class PerfomanceAPI {
     }
 
     public fetchSchoolByDistrictID(params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespace}/groups/${params.group_id}`;
+        const endpoint = `${this.namespace}/${params.api_type}/groups/${params.group_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeSchool(response.data);
@@ -40,7 +40,7 @@ export class PerfomanceAPI {
     }
 
     public fetchClassBySchoolID(params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespace}/schools/${params.school_id}`;
+        const endpoint = `${this.namespace}/${params.api_type}/schools/${params.school_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers).then((response) => {
             return performanceSerializer.serializeClass(response.data);
@@ -56,7 +56,7 @@ export class PerfomanceAPI {
     }
 
     public fetchCountrySubject(params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespace}/countries/${params.country_id}/subjects`;
+        const endpoint = `${this.namespace}/${params.api_type}/countries/${params.country_id}/subjects`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeSubject(response.data);

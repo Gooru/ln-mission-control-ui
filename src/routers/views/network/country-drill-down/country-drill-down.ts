@@ -97,6 +97,7 @@ export default class CountryDrillDown extends Vue {
     private getStateList() {
         const params: any = this.paramsIds;
         params.country_id = this.countryId;
+        params.api_type = 'performance';
         axios.all([
             perfomanceAPI.fetchStateByCountryID(params, this.dataParams),
             perfomanceAPI.fetchCountrySubject(params, this.dataParams),
