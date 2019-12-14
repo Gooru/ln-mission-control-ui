@@ -1,4 +1,5 @@
 import { http } from '@/providers/apis/http';
+import { searchSerializer } from '@/providers/serializers/search/search';
 
 export class SearchAPI {
   private static INSTANCE = new SearchAPI();
@@ -16,7 +17,9 @@ export class SearchAPI {
     const options = {
       isDisplayCode: true,
     };
-    return http.get(endpoint, headers);
+    return http.get(endpoint, headers).then((response) => {
+      return searchSerializer.serializeLearningMapData(response.data);
+    });
   }
 
 }

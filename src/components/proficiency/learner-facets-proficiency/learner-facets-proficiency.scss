@@ -1,0 +1,19 @@
+#learner-facets-proficiency {
+  padding: 0 15px 15px 15px;
+  display: grid;
+  row-gap: 15px;
+  .proficiency-header {
+    background-color: $white;
+    display: grid;
+    justify-content: right;
+  }
+  .proficiency-body {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    column-gap: 15px;
+    height: calc(100vh - 200px);
+    .facets-right-panel {
+      height: inherit;
+    }
+  }
+}

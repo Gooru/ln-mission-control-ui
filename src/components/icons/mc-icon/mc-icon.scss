@@ -39,6 +39,18 @@
     background-image: url($mc-icon-assessment-gray);
   }
 
+  &.lesson-gray {
+    background-image: url($mc-icon-lesson-gray);
+  }
+
+  &.unit-gray {
+    background-image: url($mc-icon-unit-gray);
+  }
+
+  &.rubric-gray {
+    background-image: url($mc-icon-rubric-gray);
+  }
+
   &.video-resource {
     background-image: url($mc-icon-video-resource);
   }

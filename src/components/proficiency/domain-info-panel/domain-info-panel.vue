@@ -1,8 +1,8 @@
 <template>
   <div id="domain-info-panel">
     <div class="domain-info-header">
-      <div class="subject-classification-title" v-if="classification">
-        {{classification.code}}/{{subject.title}}
+      <div class="subject-classification-title">
+        {{classification.code}} / {{subject.title}}
       </div>
       <div class="domain-name">
         {{domain.domainName}}
@@ -13,25 +13,15 @@
       </div>
     </div>
     <div class="domain-info-body">
-      <div class="competencies-list">
-        <div class="competency-info" v-for="competency in domain.competencies" @click="onSelectCompetency(competency)">
-          <div class="competency-header">
-            <div class="code">
-              {{competency.competencyCode}}
-            </div>
-            <div :class="['competency-status-' + competency.competencyStatus, 'status']">
-            </div>
-          </div>
-          <div class="competency-body">
-            {{competency.competencyName}}
-          </div>
+      <div class="tabbed-header">
+        <div class="tab-item" v-for="tabItem in tabItems" :class="{active: activeTab.title == tabItem.title}" @click="activeTab = tabItem">
+          {{tabItem.title}}
         </div>
       </div>
+        <div class="active-tab-contents">
+          <component v-bind:is="activeTab.component" v-bind="{subject: subject, domain: domain, statsBucket: 'domain'}"/>
+        </div>
     </div>
-    <competency-info-panel
-      v-if="isShowCompetencyPanel"
-      :competency="activeCompetency"
-      @onCloseCompetencyInfoPanel = "onCloseCompetencyInfoPanel"/>
   </div>
 </template>
 

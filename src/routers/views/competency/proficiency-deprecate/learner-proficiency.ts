@@ -3,6 +3,7 @@ import LearnerProficiencyChart from '@/components/charts/learner-proficiency-cha
 import SubjectInfoPanel from '@/components/proficiency/subject-info-panel/subject-info-panel';
 import DomainsListPanel from '@/components/proficiency/domains-list-panel/domains-list-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import MonthYearPicker from '@/components/selector/month-year-picker/month-year-picker';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
@@ -15,6 +16,7 @@ import axios from 'axios';
     'domains-list-panel': DomainsListPanel,
     'google-material-icon': GoogleMaterialIcon,
     'subject-info-panel': SubjectInfoPanel,
+    'month-year-picker': MonthYearPicker,
   },
 })
 export default class LearnerProficiency extends Vue {

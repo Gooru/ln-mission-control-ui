@@ -53,8 +53,8 @@ const routes = [
       },
       {
         path: '/learners',
-        name: 'learner-proficiency',
-        component: () => import('@/routers/views/competency/proficiency/learner-proficiency.vue'),
+        name: 'learners',
+        component: () => import('@/routers/views/learners/learners.vue'),
         meta: {isRequiredAuth: true},
       },
     ],

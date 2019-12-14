@@ -1,21 +1,51 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import MCIcon from '@/components/icons/mc-icon/mc-icon';
 import { searchAPI } from '@/providers/apis/search/search';
+import { CompetencyModel } from '@/models/proficiency/competency';
+import { LEARNING_MAP_CONTENT_TYPE } from '@/utils/constants';
 
 @Component({
   name: 'learning-map',
+  components: {
+    'mc-icon': MCIcon,
+  },
 })
 
 export default class LearningMap extends Vue {
 
-  @Prop()
-  public competencyCode!: string;
-
-  public created() {
-    this.loadLearningMapContents();
+  get signatureAssessments() {
+    return this.learningMapData.signatureAssessments || [];
   }
 
-  public loadLearningMapContents() {
-    const competencyCode = this.competencyCode;
-    searchAPI.fetchLearningMapContents(competencyCode);
+  get signatureCollections() {
+    return this.learningMapData.signatureCollections || [];
+  }
+
+  @Prop()
+  public competency!: string;
+
+  @Prop()
+  private learningMapData!: any;
+
+  private contentWiseCount!: any;
+
+  private created() {
+    this.parseLearningMapData();
+  }
+
+  private parseLearningMapData() {
+    const component = this;
+    const learningMapData = component.learningMapData;
+    const contentWiseCount: any = [];
+    const learningMapContents = learningMapData ? learningMapData.contents : {};
+    LEARNING_MAP_CONTENT_TYPE.map( (contentType: any) => {
+      contentWiseCount.push({
+        count: learningMapContents[contentType.type] ? learningMapContents[contentType.type].length : 0,
+        type: contentType.type,
+        icon: `${contentType.type}-gray`,
+        label: contentType.labelKey,
+      });
+    });
+    component.contentWiseCount = contentWiseCount;
   }
 }

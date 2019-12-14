@@ -1,2 +1,47 @@
 #learning-map {
+  background-color: #fff;
+  .contents-count {
+    display: flex;
+    .content-count {
+      width: calc(100% / 8);
+      text-align: center;
+      border: 1px solid #666;
+      padding: 10px 0;
+      .icon-area {
+        display: grid;
+        justify-content: center;
+        i {
+          width: 20px;
+          height: 20px;
+          background-size: 20px;
+        }
+      }
+    }
+  }
+
+  .signature-contents {
+    margin: 15px 0;
+    .content-type {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4a4a4a;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #4a4a4a;
+      text-transform: uppercase;
+    }
+    .signature-content {
+      height: 55px;
+      border-bottom: 1px solid #979797;
+      display: grid;
+      grid-template-columns: 50px 1fr;
+      align-items: center;
+      column-gap: 8px;
+      .thumbnail-image {
+        width: 53px;
+        height: 53px;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+  }
 }

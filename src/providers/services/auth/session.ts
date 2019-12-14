@@ -44,6 +44,12 @@ export class SessionService {
     const session = this.getSession();
     return (session && session.access_token);
   }
+
+  public getCdnUrl() {
+    const service = this;
+    const session = service.getSession();
+    return session ? session.cdn_urls : null;
+  }
 }
 
 export const sessionService = SessionService.instance;
