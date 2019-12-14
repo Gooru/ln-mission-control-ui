@@ -1,9 +1,9 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import LearnerFacetsProficiency from '@/components/proficiency/learner-facets-proficiency/learner-facets-proficiency';
+import LearnerList from './learner-list/learner-list';
 
 @Component({
   components: {
-    'learner-facets-proficiency': LearnerFacetsProficiency,
+    'learner-list': LearnerList,
   },
 })
 export default class Learners extends Vue {
