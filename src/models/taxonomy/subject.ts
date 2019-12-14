@@ -5,4 +5,5 @@ export interface SubjectModel {
   id: string;
   sequenceId: string;
   title: string;
+  isActive?: boolean;
 }

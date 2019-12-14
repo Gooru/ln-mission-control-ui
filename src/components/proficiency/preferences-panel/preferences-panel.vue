@@ -1,6 +1,6 @@
 <template>
   <div id="preferences-panel">
-    <div class="preference-info" v-for="preference in preferenceItems">
+    <div class="preference-info" v-for="preference in learnerPreferences">
       <div class="label-info">
         <span class="icon" :class="preference.format">
           <mc-icon :icon="preference.icon" />

@@ -1,8 +1,10 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import StepProgressBar from '@/components/charts/step-progress-bar/step-progress-bar';
 import { SubjectModel } from '@/models/taxonomy/subject';
-import { PreferenceModel } from '@/models/proficiency/preference';
+import { LearnerPreference } from '@/models/proficiency/learner-preference';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
+import { learnerAPI } from '@/providers/apis/learner/learner';
+import { LEARNER_PREFERENCE_META } from '@/utils/constants';
 
 @Component({
   name: 'preferences-panel',
@@ -18,35 +20,9 @@ export default class PreferencesPanel extends Vue {
   private subject!: SubjectModel;
 
   @Prop()
-  private preferenceItems!: PreferenceModel[];
+  private learnerPreferences: LearnerPreference[] = [];
 
-  @Prop()
-  private preferenceDataValues: any = {
-    video_pref: {
-      label: 'Video Resources',
-      icon: 'video-resource',
-    },
-    webpage_pref: {
-      label: 'Web Based Resources',
-      icon: 'website-resource',
-    },
-    interactive_pref: {
-      label: 'Interactive Resources',
-      icon: 'interactive-resource',
-    },
-    image_pref: {
-      label: 'Image Resources',
-      icon: 'image-resource',
-    },
-    text_pref: {
-      label: 'Text Resources',
-      icon: 'text-resource',
-    },
-    audio_pref: {
-      label: 'Audio Resources',
-      icon: 'audio-resource',
-    },
-  };
+  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
 
   public created() {
     this.loadPreferenceData();
@@ -54,27 +30,25 @@ export default class PreferencesPanel extends Vue {
 
   public loadPreferenceData() {
     const component = this;
-    const payload: any = {
-                  video_pref: 0.8,
-                  webpage_pref: 0.4,
-                  interactive_pref: 0.7,
-                  image_pref: 0.8,
-                  text_pref: 0.4,
-                  audio_pref: 0.9,
-                };
-    const preferenceDataValues = component.preferenceDataValues;
-    const preferenceItems: PreferenceModel[] = [];
-    const preferenceKeys = Object.keys(payload);
-    preferenceKeys.map( (preferenceKey: string) => {
-      const preferenceDataValue = preferenceDataValues[preferenceKey];
-      preferenceItems.push({
-          label: preferenceDataValue.label,
-          value: payload[preferenceKey],
-          icon: preferenceDataValue.icon,
+    const requestParams = component.getRequestParams();
+    const learnerPreferences: LearnerPreference[] = [];
+    learnerAPI.fetchLearnerPreferences(requestParams).then((preferences: LearnerPreference[]) => {
+      preferences.map( (preference: LearnerPreference) => {
+        learnerPreferences.push({
+          label: LEARNER_PREFERENCE_META[preference.label].labelKey,
+          icon: LEARNER_PREFERENCE_META[preference.label].icon,
+          value: preference.value,
         });
+      });
+      component.learnerPreferences = learnerPreferences;
     });
-    component.preferenceItems = preferenceItems;
+  }
 
+  private getRequestParams() {
+    const requestParams = {
+      user: this.userId,
+    };
+    return requestParams;
   }
 
 }

@@ -1,6 +1,7 @@
 #learner-proficiency {
-  background-color: #dcdfe0;
-  padding: 8px 15px;
+  background-color: #ededed;
+  width: inherit;
+  height: inherit;
   .month-year-picker {
     display: grid;
     justify-content: right;
@@ -13,10 +14,15 @@
     display: grid;
     grid-template-columns: 1fr 400px;
     justify-content: center;
-    padding: 15px;
+    width: inherit;
+    height: inherit;
+    column-gap: 15px;
+    height: calc(100vh - 156px);
   }
   .proficiency-left-panel {
     justify-self: center;
+    width: inherit;
+    height: inherit;
     .proficiency-header-container {
       display: none;
       .taxonomy-selector {
@@ -63,8 +69,10 @@
       }
     }
     .proficiency-body-container {
+      width: inherit;
     }
   }
   .proficiency-right-panel {
+    height: inherit;
   }
 }

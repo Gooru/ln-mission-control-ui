@@ -1,13 +1,13 @@
 #domains-list-panel {
   background-color: #fff;
+  height: inherit;
+  overflow-y: auto;
   .panel-header {
     padding: 15px;
     border-bottom: 1px solid;
   }
   .panel-body {
     padding: 4px 15px 15px 15px;
-    max-height: 400px;
-    overflow-y: auto;
     .domains-label {
       font-size: 13px;
       font-weight: 700;

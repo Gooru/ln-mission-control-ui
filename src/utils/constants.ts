@@ -193,3 +193,34 @@ export const GRADING_SCALE = [{
   RANGE: '90-100',
 },
 ];
+
+export const LEARNER_PREFERENCE_META: any = {
+  video: {
+    labelKey: 'Video Resources',
+    icon: 'video-resource',
+  },
+  webpage: {
+    labelKey: 'Web Based Resources',
+    icon: 'website-resource',
+  },
+  interactive: {
+    labelKey: 'Interactive Resources',
+    icon: 'interactive-resource',
+  },
+  image: {
+    labelKey: 'Image Resources',
+    icon: 'image-resource',
+  },
+  text: {
+    labelKey: 'Text Resources',
+    icon: 'text-resource',
+  },
+  audio: {
+    labelKey: 'Audio Resources',
+    icon: 'audio-resource',
+  },
+  project: {
+    labelKey: 'Project',
+    icon: 'offline-activity-gray',
+  },
+};

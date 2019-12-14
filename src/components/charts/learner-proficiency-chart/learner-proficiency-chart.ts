@@ -19,6 +19,24 @@ import moment from 'moment';
 
 export default class LearnerProficiencyChart extends Vue {
 
+  get chartHeight() {
+    const component = this;
+    const proficiencyChartData = component.chartData;
+    const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
+    const chartContainerHeight = chartContainer.offsetHeight;
+    const chartHeight = component.isShowExpandedGraph ?
+     component.maxDomainSize * component.expandedGraphCellHeight + 5 :
+      chartContainerHeight ;
+    return chartHeight - 15;
+  }
+
+  get chartWidth() {
+    const component = this;
+    const proficiencyChartData = component.chartData;
+    const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
+    return chartContainer.offsetWidth - 30;
+  }
+
   private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
 
   @Prop()
@@ -28,7 +46,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   private domainCompetencyMatrix!: DomainModel[];
 
-  private domainCoOrdinates!: DomainModel[];
+  private domainCoOrdinates: DomainModel[] = [];
 
   private chartData!: any;
 
@@ -59,7 +77,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   private isShowExpandedGraph: boolean = false;
 
-  private taxonomyGrades!: GradeModel[];
+  private taxonomyGrades: GradeModel[] = [];
 
   private gradeBoundaries!: GradeBoundaryModel[];
 
@@ -69,24 +87,6 @@ export default class LearnerProficiencyChart extends Vue {
 
   @Prop()
   private timeline!: string;
-
-  get chartHeight() {
-    const component = this;
-    const proficiencyChartData = component.chartData;
-    const chartContainer = component.$el.querySelector('.proficiency-chart-container') as HTMLElement;
-    const chartContainerHeight = chartContainer.offsetHeight;
-    const chartHeight = component.isShowExpandedGraph ?
-     component.maxDomainSize * component.expandedGraphCellHeight + 5 :
-      chartContainerHeight ;
-    return chartHeight;
-  }
-
-  get chartWidth() {
-    const component = this;
-    const proficiencyChartData = component.chartData;
-    const chartContainer = component.$el.querySelector('.proficiency-chart-container') as HTMLElement;
-    return chartContainer.offsetWidth;
-  }
 
   public created() {
     this.loadChartData();

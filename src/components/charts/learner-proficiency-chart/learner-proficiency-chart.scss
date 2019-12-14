@@ -1,9 +1,34 @@
 #learner-proficiency-chart {
+  width: inherit;
+  display: grid;
   .chart-actions {
     display: grid;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
+    grid-template-columns: repeat(2, 1fr);
     border-bottom: 1px solid;
+    height: 50px;
+    align-items: top;
+    .back-action {
+      padding-left: 15px;
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: left;
+      column-gap: 5px;
+      align-items: top;
+      cursor: pointer;
+      width: max-content;
+      .back-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $white;
+        display: grid;
+        text-align: center;
+        align-content: center;
+      }
+      .subject-title {
+        line-height: 40px;
+      }
+    }
     .toggle-graph-view {
       display: grid;
       grid-template-columns: auto auto;
@@ -11,20 +36,23 @@
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      height: 40px;
+      height: 30px;
       background-color: #fff;
-      line-height: 40px;
+      line-height: 30px;
       border-radius: 20px;
       width: max-content;
       padding: 0 12px;
-      border: 1px solid rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.1);
       color: rgb(26, 169, 235);
       font-weight: bold;
       justify-self: right;
+      font-size: 12px;
     }
   }
   .chart-view {
     display: flex;
+    width: inherit;
+    height: calc(100vh - 210px);
     // grid-template-columns: 150px 1fr;
     .grade-selector {
       position: relative;
@@ -39,9 +67,11 @@
         font-weight: bold;
       }
       .taxonomy-grade-list {
-        height: calc(100vh - 250px);
+        width: max-content;
+        height: calc(100% - 30px);
         overflow-y: auto;
         .taxonomy-grade {
+          padding: 0 5px;
           height: 30px;
           line-height: 30px;
           cursor: pointer;
@@ -66,48 +96,56 @@
 
     .graph-visual {
       display: grid;
-      .proficiency-chart-container {
+
+      // height: 300px;
+
+      // min-width: 300px;
+      // max-width: 500px;
+      width: inherit;
+      #chart-area {
+        width: inherit;
         transform: rotateX(180deg);
         transform-style: preserve-3d;
-        overflow-y: auto;
-        width: max-content;
-        // height: 300px;
         height: calc(100vh - 250px);
-        // min-width: 300px;
-        // max-width: 500px;
-        width: 450px;
-        align-self: baseline;
-        #chart-area {
-          svg#chart-graph {
-            width: max-content;
-            #cells-group {
-              #competency-cell {
-                stroke: #fff;
-                stroke-width: 1;
-                shape-rendering: crispedges;
-                stroke-opacity: 0.7;
-                cursor: pointer;
-              }
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        overflow-y: auto;
+        svg#chart-graph {
+          width: max-content;
+          #cells-group {
+            #competency-cell {
+              stroke: #fff;
+              stroke-width: 1;
+              shape-rendering: crispedges;
+              stroke-opacity: 0.7;
+              cursor: pointer;
             }
-            #skyline-group {
-              filter: url(#back-shadow);
-              line {
-                stroke: #fff;
-                stroke-width: 6px;
-              }
+          }
+          #skyline-group {
+            filter: url(#back-shadow);
+            line {
+              stroke: #fff;
+              stroke-width: 6px;
             }
-            #gradeline-group {
-              line {
-                stroke: #8fd383;
-                stroke-width: 4px;
-              }
+          }
+          #gradeline-group {
+            line {
+              stroke: #8fd383;
+              stroke-width: 4px;
             }
           }
         }
       }
       .domains-seq-list {
+        margin: auto;
         display: flex;
         text-align: center;
+        height: 30px;
+        line-height: 30px;
+        .domain-seq {
+          font-weight: bold;
+        }
       }
     }
   }

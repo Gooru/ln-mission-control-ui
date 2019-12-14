@@ -2,7 +2,8 @@
   <div id="domain-info-panel">
     <div class="domain-info-header">
       <div class="subject-classification-title">
-        {{classification.code}} / {{subject.title}}
+        <!-- {{classification.code}} /  -->
+        {{subject.title}}
       </div>
       <div class="domain-name">
         {{domain.domainName}}

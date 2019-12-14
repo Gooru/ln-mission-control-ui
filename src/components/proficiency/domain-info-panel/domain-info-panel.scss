@@ -36,6 +36,7 @@
     }
   }
   .domain-info-body {
+    height: calc(100% - 60px);
     > .tabbed-header {
       display: grid;
       grid-template-columns: repeat(4, auto);
@@ -55,9 +56,10 @@
         }
       }
     }
-    .active-tab-contents {
+    > .active-tab-contents {
       max-height: 400px;
       overflow-y: auto;
+      height: calc(100% - 60px);
     }
   }
 }
