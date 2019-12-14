@@ -1,6 +1,6 @@
 <template>
   <div id="learners">
-    <learner-facets-proficiency />
+    <learner-list/>
   </div>
 </template>
 
