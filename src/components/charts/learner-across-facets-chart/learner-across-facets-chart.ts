@@ -2,6 +2,7 @@ import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import { competencyAPI } from '@/providers/apis/competency/competency';
 import { FacetMatrix } from '@/models/proficiency/facet-matrix';
 import { FacetMatrixCount } from '@/models/proficiency/facet-matrix-count';
+import { SubjectModel } from '@/models/taxonomy/subject';
 import * as d3 from 'd3';
 import moment from 'moment';
 
@@ -26,6 +27,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
   private skylinePoints: any = [];
 
+  private activeFacet: any = {};
+
+  @Prop()
+  private facets!: SubjectModel[];
+
   @Watch('month')
   public onChageTimeline() {
     this.skylinePoints = [];
@@ -34,6 +40,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
   public created() {
     this.loadFacetsCompetencyMatrixData();
+  }
+
+  @Watch('facets')
+  private onUpdateFacets() {
+    this.loadChartData();
   }
 
   private loadFacetsCompetencyMatrixData() {
@@ -83,11 +94,12 @@ export default class LearnerAcrossFacetsChart extends Vue {
           count: notstartedCompetenciescount,
         },
       ];
-      let parsedFacetCompetencyMatrix = {
+      let parsedFacetCompetencyMatrix: any = {
         competenciesCount: facetCompetenciesCount,
       };
       parsedFacetCompetencyMatrix = Object.assign(parsedFacetCompetencyMatrix, facetCompetencyMatrix);
       totalCompetenciesCount = masteredCompetenciesCount + inprogressCompetenciescount + notstartedCompetenciescount;
+      parsedFacetCompetencyMatrix.totalCompetenciesCount = totalCompetenciesCount;
       maxFacetCompetenciesCount = totalCompetenciesCount > maxFacetCompetenciesCount ?
         totalCompetenciesCount :
         maxFacetCompetenciesCount;
@@ -95,20 +107,31 @@ export default class LearnerAcrossFacetsChart extends Vue {
     });
     component.maxFacetCompetenciesCount = maxFacetCompetenciesCount;
     component.facetsCompetencyMatrixData = parsedFacetsCompetencyMatrix;
-    component.drawFacetsChart(parsedFacetsCompetencyMatrix);
+    component.loadChartData();
+  }
+
+  private loadChartData() {
+    const component = this;
+    const facets = component.facets;
+    const facetsCompetencyMatrixData = component.facetsCompetencyMatrixData;
+    const activeFacetsMatrix: FacetMatrix[] = facets.map((facet: SubjectModel) => {
+      return facetsCompetencyMatrixData.find(
+        (facetCompetencyMatrix: FacetMatrix) => facetCompetencyMatrix.subjectCode === facet.code );
+    });
+    component.drawFacetsChart(activeFacetsMatrix);
   }
 
   private drawFacetsChart(facetsMatrix: FacetMatrix[]) {
     const component = this;
     d3.select('#chart-container').remove();
     const chartViewElement = component.$el.querySelector('#facets-chart-view') as HTMLElement;
-    const chartWidth = chartViewElement.offsetWidth;
-    const chartHeight = chartViewElement.offsetHeight;
+    const chartWidth = chartViewElement.offsetWidth - 60;
+    const chartHeight = chartViewElement.offsetHeight - 40;
     const totalFacets = facetsMatrix.length || 0;
     const facetColumnWidth = Number(chartWidth / totalFacets);
     const svg = d3.select('#facets-chart-view')
       .append('svg').attr('id', 'chart-container')
-      .attr('width', chartWidth - 15).attr('height', chartHeight + 10);
+      .attr('width', chartWidth ).attr('height', chartHeight);
     const facetsGroup = svg.append('g').attr('id', 'facets-group');
     const skylineGroup = svg.append('g').attr('id', 'skyline-group');
     facetsMatrix.forEach((facetMatrix: FacetMatrix, seq: number) => {
@@ -124,7 +147,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const facetsGroup = d3.select('#facets-group');
     let yAxis = 0;
     const chartViewElement: any = component.$el.querySelector('#facets-chart-view') as HTMLElement;
-    const chartHeight: number = chartViewElement.offsetHeight;
+    const chartHeight: number = chartViewElement.offsetHeight - 40;
     let height: number = 0;
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
       height = competency.count / chartHeightLevel * 100;
@@ -135,7 +158,10 @@ export default class LearnerAcrossFacetsChart extends Vue {
         .attr('x', columnWidth * seq)
         .attr('y', `${yAxis}`)
         .attr('width', columnWidth)
-        .attr('height', `${height}`);
+        .attr('height', `${height}`)
+        .on('click', () => {
+          component.selectFacet(facetMatrix);
+        });
       if (competency.status === 'mastered') {
         component.skylinePoints.push({
           x1: columnWidth * seq,
@@ -176,5 +202,12 @@ export default class LearnerAcrossFacetsChart extends Vue {
       .attr('x2', 0)
       .attr('y2', 30)
       .attr('class', `skyline-shadow`);
+  }
+
+  private selectFacet(facetData: any) {
+    const component = this;
+    this.activeFacet = component.facets.find(
+      (facet: SubjectModel) => facet.code === facetData.subjectCode);
+    this.$emit('onSelectSubject', this.activeFacet);
   }
 }

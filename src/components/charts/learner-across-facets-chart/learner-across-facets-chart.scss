@@ -2,8 +2,9 @@
   width: inherit;
   #facets-chart-view {
     width: inherit;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 210px);
     background-color: #fff;
+    display: grid;
     svg#chart-container {
       transform: rotateX(180deg);
       transform-style: preserve-3d;

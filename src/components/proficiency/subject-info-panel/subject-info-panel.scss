@@ -1,6 +1,7 @@
 #subject-info-panel {
   background-color: #fff;
   position: relative;
+  height: inherit;
   .subject-info-header {
     padding: 15px;
     .panel-label {
@@ -9,6 +10,7 @@
     }
   }
   .subject-info-body {
+    height: calc(100% - 70px);
     > .tabbed-header {
       display: grid;
       grid-template-columns: repeat(4, auto);
@@ -28,7 +30,8 @@
         }
       }
     }
-    .active-tab-contents {
+    > .active-tab-contents {
+      height: calc(100% - 40px);
       #domains-list-panel {
         .panel-header {
           //Hiding subject/header in domain list panel

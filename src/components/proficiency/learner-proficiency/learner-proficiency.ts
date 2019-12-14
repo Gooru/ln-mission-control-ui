@@ -21,19 +21,28 @@ import axios from 'axios';
 })
 export default class LearnerProficiency extends Vue {
 
+  get subjectCode() {
+    return this.activeSubject ? this.activeSubject.code : 'K12.MA';
+  }
+
   private categories!: ClassificationModel[];
 
   private subjects!: SubjectModel[];
 
+  @Prop()
   private defaultCategoryId: string = 'k_12';
 
+  @Prop()
+  private classificationCode!: string;
+
+  @Prop()
   private defaultSubjectCode: string = 'K12.MA';
 
   @Prop()
   private activeCategory!: ClassificationModel;
 
   @Prop()
-  private activeSubject!: SubjectModel;
+  private activeSubject!: SubjectModel | any;
 
   private isShowCategories: boolean = false;
 
@@ -51,7 +60,8 @@ export default class LearnerProficiency extends Vue {
     component.activeCategory = category;
     component.fetchTaxonomySubjects(category.id).then((taxonomySubjects: SubjectModel[]) => {
       component.subjects = taxonomySubjects;
-      component.activeSubject = taxonomySubjects[0];
+      component.activeSubject = taxonomySubjects.find(
+        (subject: SubjectModel) => component.defaultSubjectCode === subject.code);
     });
     component.isShowCategories = false;
   }
@@ -68,19 +78,23 @@ export default class LearnerProficiency extends Vue {
 
   public loadTaxonomyData() {
     const component = this;
-    axios.all([
-      taxonomyAPI.fetchTaxonomyClassifications(),
-      component.fetchTaxonomySubjects(),
-    ]).then(axios.spread((subjectClassifications: any, taxonomySubjects: any) =>  {
-      component.categories = subjectClassifications;
-      component.subjects = taxonomySubjects;
-      component.activeSubject = taxonomySubjects.find((subject: any) =>
-        subject.code === component.defaultSubjectCode,
-      );
-      component.activeCategory = subjectClassifications.find(
-        (category: any) => category.id === component.defaultCategoryId,
-      );
-    }));
+    // axios.all([
+    //   taxonomyAPI.fetchTaxonomyClassifications(),
+    //   component.fetchTaxonomySubjects(),
+    // ]).then(axios.spread((subjectClassifications: any, taxonomySubjects: any) =>  {
+    //   component.categories = subjectClassifications;
+    //   component.subjects = taxonomySubjects;
+    //   component.activeSubject = taxonomySubjects.find((subject: any) =>
+    //     subject.code === component.defaultSubjectCode,
+    //   );
+    //   component.activeCategory = subjectClassifications.find(
+    //     (category: any) => category.id === component.defaultCategoryId,
+    //   );
+    // }));
+  }
+
+  private backAction() {
+    this.$emit('backAction');
   }
 
   private fetchTaxonomySubjects(subjectId: string = '') {

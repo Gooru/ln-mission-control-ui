@@ -1,4 +1,4 @@
-export interface LearnerVectorModel {
+export interface LearnerVector {
   label: string;
   value: string | number;
 }

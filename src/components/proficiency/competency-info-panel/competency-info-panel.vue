@@ -38,4 +38,4 @@
 
 
 <script lang="ts" src="./competency-info-panel.ts"></script>
-<style lang="scss" src="./competency-info-panel.scss"></style>
+<style lang="scss" scoped src="./competency-info-panel.scss"></style>

@@ -1,7 +1,9 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import ProgressBar from '@/components/charts/progress-bar/progress-bar';
 import { SubjectModel } from '@/models/taxonomy/subject';
-import { LearnerVectorModel } from '@/models/proficiency/learner-vector';
+import { DomainModel } from '@/models/proficiency/domain';
+import { LearnerVector } from '@/models/proficiency/learner-vector';
+import { learnerAPI } from '@/providers/apis/learner/learner';
 
 @Component({
   name: 'mindsets-list-panel',
@@ -15,39 +17,15 @@ export default class MindsetsListPanel extends Vue {
   @Prop()
   public subject!: SubjectModel;
 
-  private learnerVectors!: LearnerVectorModel[];
+  @Prop()
+  private domain!: DomainModel;
 
   @Prop()
-  private mindsets = [
-    {
-      label: 'Authority',
-      value: 0.9,
-    },
-    {
-      label: 'Citizenship',
-      value: 0.9,
-    },
-    {
-      label: 'Reputation',
-      value: 0.8,
-    },
-    {
-      label: 'Grit',
-      value: 0.7,
-    },
-    {
-      label: 'Perseverance',
-      value: 0.9,
-    },
-    {
-      label: 'Motivation',
-      value: 0.4,
-    },
-    {
-      label: 'Self-Confidence',
-      value: 0.8,
-    },
-  ];
+  private statsBucket!: string;
+
+  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
+
+  private learnerVectors: LearnerVector[] = [];
 
   public created() {
     this.loadLearnerVectors();
@@ -55,24 +33,24 @@ export default class MindsetsListPanel extends Vue {
 
   public loadLearnerVectors() {
     const component = this;
-    const learnerVectors: LearnerVectorModel[] = [];
-    const payload: any = {
-                      authority: 0.9,
-                      citizenship: 0.9,
-                      reputation: 0.8,
-                      grit: 0.7,
-                      perseverance: 0.9,
-                      motivation: 0.4,
-                      selfConfidence: 0.8,
-                    };
-    const vectorItems = Object.keys(payload);
-    vectorItems.map((vectorItem: string) => {
-      learnerVectors.push({
-        label: vectorItem,
-        value: payload[vectorItem],
-      });
+    const learnerVectors: LearnerVector[] = [];
+    const requestParams = component.getVectorReqParams();
+    learnerAPI.fetchLearnerVectors(requestParams).then((learnerVectorPoints: LearnerVector[]) => {
+        component.learnerVectors = learnerVectorPoints;
     });
-    component.learnerVectors = learnerVectors;
+  }
+
+  private getVectorReqParams() {
+    const component = this;
+    const requestParams: any = {};
+    requestParams.user = component.userId;
+    if (component.statsBucket === 'subject') {
+      requestParams.tx_subject_code = component.subject.code;
+    } else if (component.statsBucket === 'domain') {
+      requestParams.tx_subject_code = component.subject.code;
+      requestParams.tx_domain_code = component.domain.domainCode;
+    }
+    return requestParams;
   }
 
 }
