@@ -22,6 +22,8 @@ export default class NewUserAvarageCard extends Vue {
     private cardTitle?: string;
     @Prop()
     private iconName?: string;
+    @Prop()
+    private cardValue?: string;
 
     private isShowPopup: boolean = false;
 

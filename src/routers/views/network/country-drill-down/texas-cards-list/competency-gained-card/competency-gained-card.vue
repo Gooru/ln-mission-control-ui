@@ -2,8 +2,8 @@
     <div id="card-container">
         <div id="competency-gained-container" @click="isShowCompetency = !isShowCompetency">
             <div class="gained-header">
-                <h4 class="gained-percentage">80 <span>%</span></h4>
-                <h4 class="gained-counts">407,939</h4>
+                <h4 class="gained-percentage">{{averagePerformance}} <span>%</span></h4>
+                <h4 class="gained-counts">{{totalCompetencyGained}}</h4>
             </div>
             <div class="gained-footer">
                 <span class="performance-title">Performance</span>
@@ -12,7 +12,7 @@
         </div>
         <div class="competency-gained-pullup" v-if="isShowCompetency">
              <div class="backdrop" @click="isShowCompetency = !isShowCompetency"></div>
-            <competency-gained-pullup :dataList="districtList" v-on:onGoBack="onGoBack"/>
+            <competency-gained-pullup :dataList="dataList" :subjectsList="subjectsList" v-on:onGoBack="onGoBack"/>
         </div>
     </div>
     

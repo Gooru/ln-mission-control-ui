@@ -170,7 +170,7 @@ export default class NavLearningWorldWide extends Vue {
         element.attr('class', className);
         this.activeCountry = null;
       }).on('click' , (d: any) => {
-        this.$router.push(`/network/countries/${countryData.id}/${countryData.country_name}`);
+        this.$router.push(`/network/countries/${countryData.country_id}/${countryData.country_name}`);
       });
       const numberOfDigits = total.toString().length;
       circleChartContainer.append('circle').attr('r', this.circleRadius(numberOfDigits));

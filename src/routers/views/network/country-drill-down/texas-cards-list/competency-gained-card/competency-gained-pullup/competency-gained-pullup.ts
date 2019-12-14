@@ -14,8 +14,6 @@ import DountChart from '@/components/charts/dount-chart/dount-chart';
 
 export default class CompetencyGainedPullup extends Vue {
 
-    private itrate: any = ['0%', '10%', '30%', '40%', '50%', '60%'];
-
     private data: any = [{
         name: 'chart',
         value: 530,
@@ -47,9 +45,13 @@ export default class CompetencyGainedPullup extends Vue {
 
     @Prop()
     private dataList?: any;
+    @Prop()
+    private subjectsList: any;
+
+    private hideDiv: boolean = false;
 
     private get level() {
-        return this.dataList[0].sub_type;
+        return this.dataList[0].type;
     }
 
     // -----------------------------------------------------------------------

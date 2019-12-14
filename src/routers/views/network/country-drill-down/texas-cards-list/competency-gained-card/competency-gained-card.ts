@@ -1,8 +1,10 @@
-import {Component, Vue} from 'vue-property-decorator';
+import {Component, Vue, Prop} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import CompetencyGainedPullup from './competency-gained-pullup/competency-gained-pullup';
 import axios from 'axios';
 import { perfomanceAPI } from '@/providers/apis/performance/performance';
+import { getSum } from '@/utils/utils';
+import moment from 'moment';
 
 @Component({
     name: 'competency-gained-card',
@@ -16,11 +18,24 @@ export default class CompentencyGainedCard extends Vue {
 
     // ------------------------------------------------------------
     // Properties
+    @Prop()
+    private dataList: any;
+    @Prop()
+    private averagePerformance: any;
+    @Prop()
+    private countryData: any;
+    @Prop()
+    private selectedDate?: string;
+    @Prop()
+    private subjectsList?: any;
 
     private isShowCompetency: boolean = false;
 
     private districtList: any  = [];
 
+    private dataSet: any = {};
+
+    private totalCompetencyGained: number = getSum(this.dataList);
 
     // ------------------------------------------------------------
     // Actions
@@ -31,23 +46,6 @@ export default class CompentencyGainedCard extends Vue {
 
     // ---------------------------------------------------------------
     // Hooks
-
-    private mounted() {
-        this.loadStatesList();
-    }
-
-    // --------------------------------------------------------------
-    // Methods
-
-    private loadStatesList() {
-        const params: any = {};
-        params.country_id = 'USA';
-        params.state_id = 1;
-        perfomanceAPI.fetchDistrictByStateID(params).then((districts) => {
-            this.districtList = districts;
-        });
-    }
-
 
 
 }

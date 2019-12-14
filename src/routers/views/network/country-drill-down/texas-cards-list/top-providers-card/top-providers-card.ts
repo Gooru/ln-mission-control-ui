@@ -17,7 +17,7 @@ export default class TopProvidersCard extends Vue {
 
     private isShowPopup: boolean = false;
 
-    private isEnablePopup: boolean = true;
+    private isEnablePopup: boolean = false;
 
 
 

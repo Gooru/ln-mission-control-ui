@@ -63,5 +63,5 @@ export function getGradeRange(score: number): string {
 
 export function getSum(dataList: any) {
      return dataList.reduce(
-        (count: any, data: any) => count + data.completed_competencies, 0);
+        (count: any, data: any) => count + data.completedCompetencies, 0);
 }

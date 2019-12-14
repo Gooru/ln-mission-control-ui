@@ -12,15 +12,8 @@
                     </h4>
                 </div>
                 <div class="performance-nav-tab-panel">
-                    <ul class="nav-tab-list-blk">
-                        <li class="active">All</li>
-                        <li>Math</li>
-                        <li>Physics</li>
-                        <li>Economics</li>
-                        <li>ela</li>
-                        <li>philosophy</li>
-                        <li>chemistry</li>
-                        <li>social studies</li>
+                    <ul class="nav-tab-list-blk" v-if="subjectsList.length">
+                        <li v-for="(subject, subjectIndex) in subjectsList" :key="subjectIndex">{{subject.name}}</li>
                     </ul>
                 </div>
             </div>
@@ -34,11 +27,11 @@
                         count="75%" 
                         title="Monthly Avarage"
                         :data ="data"/>
-                        <div class="dount-chart-title">
+                        <div class="dount-chart-title" v-if="hideDiv">
                             <span>Avg. Performance</span>
                         </div>
                     </div>
-                    <div class="top-activity">
+                    <div class="top-activity" v-if="hideDiv">
                         <div class="top-activity-last-month">
                             <h4 class="activity-percentage"><material-icon icon="arrow_downward" /> 8.9%</h4>
                             <span>Since last month</span>
@@ -56,7 +49,9 @@
                 </div>
                 <div class="panel-body-center-section">
                     <div class="country-header">
-                        State of Texas
+                         <div class="country-header-container">
+                             <span><material-icon icon="arrow_upward" /></span>  State of Texas
+                         </div>
                     </div>
                     <div class="country-progress-bar">
                         <div class="performance-bar">

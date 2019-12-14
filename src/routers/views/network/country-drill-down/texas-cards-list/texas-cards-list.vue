@@ -1,22 +1,22 @@
 <template>
   <div id="texas-cards-list-container">
     <div class="new-user-card">
-      <new-user-card iconName="people" cardTitle="New Users in July" cardName="new-user"/>
+      <new-user-card iconName="people" cardValue="99k" cardTitle="New Users in July" cardName="new-user"/>
     </div>
     <div class="competency-performance-card">
-      <competency-gained-card/>
+      <competency-gained-card :averagePerformance="averagePerformance" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData" :dataList="dataList"/>
     </div>
     <div class="suggestion-mode-card">
-      <new-user-card iconName="explore" cardTitle="Suggestions mode" cardName="suggestion"/>
+      <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
     </div>
     <div class="avarage-time-card">
-      <new-user-card iconName="access_time" cardTitle="Avg. session time" cardName="avarage-time"/>
+      <new-user-card iconName="access_time" cardValue="26m" cardTitle="Avg. session time" cardName="avarage-time"/>
     </div>
     <div class="top-provider-card">
       <top-providers />
     </div>
     <div class="class-activities-card">
-      <new-user-card iconName="people" cardTitle="Class Activities Conducted" cardName="class-activity"/>
+      <new-user-card iconName="people" cardValue="100k" cardTitle="Class Activities Conducted" cardName="class-activity"/>
     </div>
   </div>
 </template>

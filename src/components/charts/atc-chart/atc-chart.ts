@@ -7,23 +7,51 @@ import * as d3 from 'd3';
 
 export default class AtcChart extends Vue {
 
+  // ------------------------------------------------------------------------
+  // Properties
+
+  // ------------------------------------------------------------------------
+  // Hooks
+  private mounted() {
+    const dataSet: any = [{
+      completedCompetencies: 19,
+      grade: 'Grade 8',
+      gradeId: 260,
+      inprogressCompetencies: 0,
+      percentCompletion: 7.34,
+      percentScore: 17.65,
+      totalCompetencies: 259,
+      userId: '139ad682-8c7a-49ba-b370-b54e24296363',
+    }, {
+      completedCompetencies: 70,
+      grade: 'Grade 8',
+      gradeId: 260,
+      inprogressCompetencies: 1,
+      percentCompletion: 27.03,
+      percentScore: 47.66,
+      totalCompetencies: 259,
+      userId: '4a39f558-37d9-4715-8933-3f2a5e7ab27c',
+    }];
+    this.drawAtcChart(dataSet);
+  }
+
+
+  // -------------------------------------------------------------------------
+  // Methods
   private drawAtcChart(dataset: any) {
-    const component = this;
     const margin = {
-        top: 50,
+        top: 10,
         right: 20,
         bottom: 30,
         left: 50,
       };
-    const width = 830 - margin.left - margin.right;
-    const height = 450 - margin.top - margin.bottom;
+    const width = this.$el.clientWidth - margin.left - margin.right;
+    const height = 200 - margin.top - margin.bottom;
 
     const xScale = d3.scaleLinear()
       .domain([
         0,
-        d3.max(dataset, (d: any) => {
-          return d.totalCompetencies;
-        }),
+        d3.max(dataset, (d: any) => d.totalCompetencies as number) as number,
       ])
       .range([0, width]);
 
@@ -37,8 +65,10 @@ export default class AtcChart extends Vue {
 
     const yAxis = d3
       .axisLeft(yScale)
+      .ticks(5)
       .tickSize(-width)
-      .tickPadding(10);
+      .tickPadding(10)
+      .tickFormat((d) => d + '%');
 
     const svg = d3
       .select(this.$el)
@@ -60,28 +90,6 @@ export default class AtcChart extends Vue {
       .attr('class', 'y axis')
       .call(yAxis);
 
-    svg
-      .append('g')
-      .attr('transform', 'translate(-460, 500) rotate(-90)')
-      .append('text')
-      .attr('class', 'placeholder')
-      .attr('x', '130')
-      .attr('y', '445')
-      .text(
-         'edited performance',
-      );
-
-    svg
-      .append('g')
-      .attr('transform', 'translate(-50, -21)')
-      .append('text')
-      .attr('class', 'placeholder')
-      .attr('x', '50')
-      .attr('y', '415')
-      .text(
-        'label',
-      );
-
     const studentNode = svg
       .selectAll('.student-nodes')
       .data(dataset)
@@ -100,17 +108,17 @@ export default class AtcChart extends Vue {
       .attr('r', 16)
       .style('fill', (d: any) => d);
 
-    studentNode
-      .append('svg:image')
-      .attr('class', 'student-profile')
-      .attr('x', -7)
-      .attr('y', -7)
-      .attr({
-        'xlink:href'(d: any) {
-          return d.thumbnail;
-        },
-        'width': 24,
-        'height': 24,
-      });
+    // studentNode
+    //   .append('svg:image')
+    //   .attr('class', 'student-profile')
+    //   .attr('x', -7)
+    //   .attr('y', -7)
+    //   .attr({
+    //     'xlink:href': function(d) {
+    //       return d.thumbnail;
+    //     },
+    //     width: 24,
+    //     height: 24
+    //   });
   }
 }

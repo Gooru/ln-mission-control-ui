@@ -1,9 +1,9 @@
 <template>
     <div id="texas-chart-container">
         <div class="texas-header">
-            <div class="texas-title">
-                 <material-icon icon="arrow_back" />
-                 <h5 class="texas-title-head">{{cardTitle}}</h5>
+            <div :class="['texas-title', breadcrumb.length ? '' : 'on-breadcrumb']">
+                 <span v-on="breadcrumb.length ? {click :onBack} : {}"><material-icon icon="arrow_back"/></span>
+                 <h5 class="texas-title-head">{{seletedLevel.name}}</h5>
             </div>
             <div class="texas-pullup-table">
                 <material-icon icon="bar_chart" />
@@ -20,12 +20,13 @@
                  <h4 class="total-counts">{{totalCompetencyGained}}</h4>
                  <span>Competencies Gained</span>
             </div>
-            <div class="competenc-from">
+            <div class="competenc-from" v-if="hideScore">
                 <h4 class="perfomance-avarage"><material-icon icon="arrow_downward" /> 8.0%</h4>
                 <span>Since last month</span>
             </div>
         </div>
-           <texas-line-chart :dataList="dataList"/>
+           <texas-line-chart v-if="seletedLevel.type !== 'student'" :dataList="dataList"/>
+           <atc-view v-else/>
        </div>
     </div>
 </template>

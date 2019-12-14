@@ -14,7 +14,7 @@
                 </ul>
               </div>
               <div class="card-total">
-                  <h4 class="total-count">{{level.completed_competencies}}</h4>
+                  <h4 class="total-count">{{level.completedCompetencies}}</h4>
                   <span>Total</span>
               </div>
           </div>

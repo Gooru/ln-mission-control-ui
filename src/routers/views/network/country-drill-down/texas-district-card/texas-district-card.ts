@@ -18,7 +18,8 @@ export default class TexasDistrictCard extends Vue {
 
     get cardName() {
         const dataList = this.dataList;
-        return dataList.length ? dataList[0].type : 'states';
+        const type = dataList.length ? dataList[0].type : 'state';
+        return type === 'system' ? 'district' : type;
     }
 
     // ---------------------------------------------------------------

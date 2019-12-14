@@ -5896,6 +5896,7 @@
                 ]
             },
             "id": "IND",
+            "country_id": 101,
             "country_code": "IN"
         },
         {
@@ -12303,7 +12304,7 @@
                 ]
             },
             "id": "USA",
-            "country_id": 108,
+            "country_id": 231,
             "country_code": "US"
         },
         {
