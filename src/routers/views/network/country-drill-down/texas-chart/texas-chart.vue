@@ -25,8 +25,8 @@
                 <span>Since last month</span>
             </div>
         </div>
-           <texas-line-chart v-if="seletedLevel.type !== 'student'" :dataList="dataList"/>
-           <atc-view v-else/>
+           <texas-line-chart v-if="seletedLevel.type !== 'student' && dataList.data" :dataList="dataList.data"/>
+           <atc-view v-else :dataList="dataList"/>
        </div>
     </div>
 </template>

@@ -13,7 +13,7 @@
                 </div>
                 <div class="performance-nav-tab-panel">
                     <ul class="nav-tab-list-blk" v-if="subjectsList.length">
-                        <li v-for="(subject, subjectIndex) in subjectsList" :key="subjectIndex">{{subject.name}}</li>
+                        <li v-for="(subject, subjectIndex) in subjectsList" :key="subjectIndex">{{subject.framework}} / {{subject.name}}</li>
                     </ul>
                 </div>
             </div>
@@ -24,9 +24,9 @@
                         height="200" 
                         diff="23" 
                         margin="20" 
-                        count="75%" 
-                        title="Monthly Avarage"
-                        :data ="data"/>
+                        :count="perfromanceAverage + '%'" 
+                        title="Monthly Average"
+                        :data ="averageDount"/>
                         <div class="dount-chart-title" v-if="hideDiv">
                             <span>Avg. Performance</span>
                         </div>
@@ -50,7 +50,7 @@
                 <div class="panel-body-center-section">
                     <div class="country-header">
                          <div class="country-header-container">
-                             <span><material-icon icon="arrow_upward" /></span>  State of Texas
+                             <span @click="levelBack"><material-icon icon="arrow_upward" /></span>  State of Texas
                          </div>
                     </div>
                     <div class="country-progress-bar">
@@ -64,13 +64,13 @@
                                     Performance
                                 </div>
                            </div>
-                           <div class="performance-bar-body" v-for="(level, levelIndex) in dataList" :key="levelIndex">
+                           <div class="performance-bar-body" v-for="(level, levelIndex) in dataList.data" :key="levelIndex" v-on="level.type !== 'class' ? {click: () => onSelectLevel(level)} : {}">
                                 <div class="performance-list-body">
                                     {{level.name}}
                                 </div>
                                 <div class="performance-bar-chart-body">
                                     <div class="bar-percentage">{{level.performance}}%</div>
-                                    <performance-bar :totalWidth="[level.performance+'%']" :color="['#5b8f42']"/>
+                                    <performance-bar :totalWidth="[level.performance+'%']" :color="[performanceColor(level.performance)]"/>
                                 </div>
                            </div>
                            
@@ -79,8 +79,8 @@
                             <div class="mastery-header">
                                 Competency Mastery
                             </div>
-                            <div class="mastery-body" v-for="(level, levelIndex) in dataList" :key="levelIndex">
-                                <performance-bar :totalWidth ="['50%','10%']" :color="['#2070b9','#7ccff7']"/>
+                            <div class="mastery-body" v-for="(level, levelIndex) in dataList.data" :key="levelIndex">
+                                <performance-bar :totalWidth ="[level.inprogressCompetencies+'%',level.completedCompetencies+'%']" :color="['#2070b9','#7ccff7']"/>
                             </div>
                         </div>
                     </div>
@@ -92,8 +92,8 @@
                          height="200" 
                          diff="23" 
                          margin="20" 
-                         :data ="data1"
-                         count="23,223" 
+                         :data ="competencyDount"
+                         :count="competencyGained" 
                          title="Competency Mastered"/>
                     </div>
                     <div class="progress-bar-right">

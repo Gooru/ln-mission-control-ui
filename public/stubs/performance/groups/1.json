@@ -1,4 +1,7 @@
 {
+	"overallStats": {
+       	"averagePerformance": 61.620000000000005
+    	},
 	"data": [{
 		"id": 1,
 		"name": "ABUJHMAD (ORCHA)",
@@ -6,9 +9,9 @@
 		"type": "school",
 		"sub_type": null,
 		"timespent": 23,
-		"performance": 45.6,
-	"completed_competencies": 100,
-"inprogress_competencies": 50
+		"performance": 20.6,
+		"completedCompetencies": 80,
+		"inprogressCompetencies": 20
 	}, {
 		"id": 2,
 		"name": "BADERAJPUR",
@@ -17,7 +20,7 @@
 		"sub_type": null,
 		"timespent": 986,
 		"performance": 85.1,
-		"completed_competencies": 80,
-"inprogress_competencies": 20
+		"completedCompetencies": 80,
+	"inprogressCompetencies": 20
 	}]
 }

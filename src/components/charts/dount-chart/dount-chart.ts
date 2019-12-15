@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import * as d3 from 'd3';
 
 @Component({
@@ -22,18 +22,24 @@ export default class DountChart extends Vue {
     @Prop()
     private margin?: any;
     @Prop()
-    private data?: any;
+    private data: any;
+
+    @Watch('data')
+    private dountChange(data: any) {
+        this.drawDonut(data);
+    }
 
     // -------------------------------------------------------------
     // Hooks
 
     private mounted() {
-        this.drawDonut();
+        this.drawDonut(this.data);
     }
 
     // ---------------------------------------------------------------
     // Methods
-    private drawDonut() {
+    private drawDonut(data: any) {
+        d3.select(this.$el).select('svg').remove();
         const radius = Math.min(this.width, this.height) / 2 - this.margin;
         const svg = d3.select(this.$el)
             .append('svg')
@@ -41,7 +47,6 @@ export default class DountChart extends Vue {
             .attr('height', this.height)
             .append('g')
             .attr('transform', 'translate(' + this.width / 2 + ',' + this.height / 2 + ')');
-        const data: any = this.data;
         const pie = d3.pie()
             .value((d: any) => d.value);
 

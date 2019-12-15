@@ -32,7 +32,7 @@ export class PerformanceSerializer {
 
    public serializeClassRooms(classRooms: any) {
         const serializer = this;
-        const classRoomList = classRooms.data ? classRooms.data : [];
+        const classRoomList = classRooms.competencyStats ? classRooms.competencyStats : [];
         return classRoomList;
    }
 

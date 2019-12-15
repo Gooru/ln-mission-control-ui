@@ -1,4 +1,4 @@
-import {Vue, Component} from 'vue-property-decorator';
+import {Vue, Component, Prop} from 'vue-property-decorator';
 import * as d3 from 'd3';
 
 @Component({
@@ -9,30 +9,13 @@ export default class AtcChart extends Vue {
 
   // ------------------------------------------------------------------------
   // Properties
+  @Prop()
+  private dataList: any;
 
   // ------------------------------------------------------------------------
   // Hooks
   private mounted() {
-    const dataSet: any = [{
-      completedCompetencies: 19,
-      grade: 'Grade 8',
-      gradeId: 260,
-      inprogressCompetencies: 0,
-      percentCompletion: 7.34,
-      percentScore: 17.65,
-      totalCompetencies: 259,
-      userId: '139ad682-8c7a-49ba-b370-b54e24296363',
-    }, {
-      completedCompetencies: 70,
-      grade: 'Grade 8',
-      gradeId: 260,
-      inprogressCompetencies: 1,
-      percentCompletion: 27.03,
-      percentScore: 47.66,
-      totalCompetencies: 259,
-      userId: '4a39f558-37d9-4715-8933-3f2a5e7ab27c',
-    }];
-    this.drawAtcChart(dataSet);
+    this.drawAtcChart(this.dataList);
   }
 
 

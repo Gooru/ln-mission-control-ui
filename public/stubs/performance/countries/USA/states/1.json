@@ -8,7 +8,7 @@
 		"timespent": 23,
 		"performance": 45.6,
 		"completed_competencies": 100,
-        "inprogress_competencies": 50
+"inprogress_competencies": 50
 	}, {
 		"id": 2,
 		"name": "DHAMTARI",
@@ -17,7 +17,7 @@
 		"sub_type": "district",
 		"timespent": 986,
 		"performance": 85.1,
- 		"completed_competencies": 80,
-    	"inprogress_competencies": 20
+	"completed_competencies": 80,
+"inprogress_competencies": 20
 	}]
 }

@@ -1,4 +1,4 @@
-<template>
+/<template>
     <div id="card-container">
         <div id="competency-gained-container" @click="isShowCompetency = !isShowCompetency">
             <div class="gained-header">
@@ -12,7 +12,14 @@
         </div>
         <div class="competency-gained-pullup" v-if="isShowCompetency">
              <div class="backdrop" @click="isShowCompetency = !isShowCompetency"></div>
-            <competency-gained-pullup :dataList="dataList" :subjectsList="subjectsList" v-on:onGoBack="onGoBack"/>
+            <competency-gained-pullup 
+             v-if ="isShowCompetency"
+             :dataList="dataList"
+             :subjectsList="subjectsList" 
+             :selectedDate="selectedDate" 
+             :countryData="countryData" 
+             v-on:onGoBack="onGoBack"
+             v-on:onSelectLevel="onSelectLevel" />
         </div>
     </div>
     

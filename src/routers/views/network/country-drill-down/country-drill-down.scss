@@ -46,6 +46,13 @@
       width: 100%;
       display: grid;
       grid-template-columns: 70% 30%;
+      .texas-chart {
+        overflow-y: auto;
+      }
+      .texas-district {
+        max-height: 325px;
+        overflow-y: auto;
+      }
     }
     .texas-performance-cards {
       width: 100%;

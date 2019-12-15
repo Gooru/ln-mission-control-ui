@@ -28,6 +28,10 @@ export default class CountryDrillDown extends Vue {
 
     private stateList: any = [];
 
+    private performanceData: any = [];
+
+    private competencyData: any = [];
+
     private countryId?: string;
 
     private countryData?: any;
@@ -47,11 +51,9 @@ export default class CountryDrillDown extends Vue {
     private subjectsList?: any;
 
     private dataParams: any = {
-        month: 8,
-        year: 2019,
+        month: moment().format('MM'),
+        year: moment().format('YYYY'),
         frequency: 'monthly',
-        subject: 'K12IND.MA',
-        framework: 'SBCG',
     };
 
     private hideProperty: boolean = false;
@@ -97,14 +99,15 @@ export default class CountryDrillDown extends Vue {
     private getStateList() {
         const params: any = this.paramsIds;
         params.country_id = this.countryId;
-        params.api_type = 'performance';
         axios.all([
-            perfomanceAPI.fetchStateByCountryID(params, this.dataParams),
-            perfomanceAPI.fetchCountrySubject(params, this.dataParams),
-        ]).then(axios.spread((states, subjects) => {
-            this.stateList = states.data;
+            perfomanceAPI.fetchStateByCountryID('performance', params, this.dataParams),
+            perfomanceAPI.fetchStateByCountryID('competency', params, this.dataParams),
+            perfomanceAPI.fetchCountrySubject('performance', params, this.dataParams),
+        ]).then(axios.spread((performance, competency, subjects) => {
+            this.performanceData = performance;
+            this.competencyData = competency;
             this.subjectsList = subjects;
-            this.averagePerformance = Math.round(states.overallStats.averagePerformance);
+            this.averagePerformance = Math.round(performance.overallStats.averagePerformance);
             this.isLoaded = true;
         }));
 
@@ -112,24 +115,32 @@ export default class CountryDrillDown extends Vue {
 
     private selectLevelService(seletectLevel: any) {
         let serviceLevel = Promise.resolve([]);
-        switch (seletectLevel.type || seletectLevel.sub_type) {
+        switch (seletectLevel.type) {
             case 'country':
                 this.paramsIds.country_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchStateByCountryID(this.paramsIds, this.dataParams);
+                serviceLevel = perfomanceAPI.fetchStateByCountryID('competency', this.paramsIds, this.dataParams);
                 break;
             case 'state':
                 this.paramsIds.state_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchDistrictByStateID(this.paramsIds, this.dataParams);
+                serviceLevel = perfomanceAPI.fetchDistrictByStateID('competency', this.paramsIds, this.dataParams);
                 break;
             case 'system':
                 this.paramsIds.group_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchSchoolByDistrictID(this.paramsIds, this.dataParams);
+                serviceLevel = perfomanceAPI.fetchSchoolByDistrictID('competency', this.paramsIds, this.dataParams);
                 break;
             case 'school':
                 this.paramsIds.school_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchClassBySchoolID(this.paramsIds, this.dataParams);
+                serviceLevel = perfomanceAPI.fetchClassBySchoolID('competency', this.paramsIds, this.dataParams);
                 break;
             default:
+                const params = {
+                    classId: seletectLevel.id,
+                    courseId: seletectLevel.course_id,
+                    subjectCode: 'K12.MA',
+                    month: this.dataParams.month,
+                    year: this.dataParams.year,
+                };
+                serviceLevel = perfomanceAPI.fetchStudentsByClassID(params);
                 break;
 
         }
@@ -139,7 +150,7 @@ export default class CountryDrillDown extends Vue {
     private fetchSelectLevelData(seletectLevel: any) {
         const selectedService = this.selectLevelService(seletectLevel);
         return selectedService.then((levelData: any) => {
-            this.stateList = levelData.data;
+            this.competencyData = levelData;
         });
     }
 

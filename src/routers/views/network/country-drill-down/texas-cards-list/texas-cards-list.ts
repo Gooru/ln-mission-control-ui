@@ -27,12 +27,11 @@ export default class TexasCardsList extends Vue {
     private selectedDate: any;
     @Prop()
     private subjectsList: any;
+    @Prop()
+    private competencyData: any;
 
 
     // -------------------------------------------------------------------------------
     // Methods
 
-    private getSumValue(value: any) {
-        return formatTime(getSum(value, 'timespent'));
-    }
 }

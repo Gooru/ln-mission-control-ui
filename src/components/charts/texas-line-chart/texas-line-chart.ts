@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import * as d3 from 'd3';
 import moment from 'moment';
 
@@ -17,16 +17,22 @@ export default class TexasLineChart extends Vue {
 
     private tooltipStyle?: any = null;
 
+    @Watch('dataList')
+    private onChartDataChange(data: any) {
+       this.drawLineChart(data);
+    }
+
     // -----------------------------------------------------------------
     // Hooks
     private mounted() {
-        this.drawLineChart();
+        this.drawLineChart(this.dataList);
     }
 
     // ------------------------------------------------------------------
     // Methods
 
-    private drawLineChart() {
+    private drawLineChart(data: any) {
+        d3.select('svg').remove();
         // set the dimensions and margins of the graph
         const margin = { top: 10, right: 30, bottom: 30, left: 60 };
         const width = this.$el.clientWidth - margin.left - margin.right;
@@ -39,33 +45,6 @@ export default class TexasLineChart extends Vue {
             .append('g')
             .attr('transform',
                 'translate(' + margin.left + ',' + margin.top + ')');
-
-        const data: any = [
-            {
-                week: 47,
-                competency_count: 6140.71,
-            },
-            {
-                week: 48,
-                competency_count: 5140.71,
-            },
-            {
-                week: 49,
-                competency_count: 3140.71,
-            },
-            {
-                week: 50,
-                competency_count: 7140.71,
-            },
-            {
-                week: 51,
-                competency_count: 5140.71,
-            },
-            {
-                week: 52,
-                competency_count: 7140.71,
-            },
-        ];
 
         const xMinValue: any = d3.min(data, (d: any) => d.week);
 
@@ -81,7 +60,7 @@ export default class TexasLineChart extends Vue {
             .style('font-size', '12px')
             .attr('stroke', '#fff');
 
-        const yMaxValue: any = d3.max(data, (d: any) => d.competency_count);
+        const yMaxValue: any = d3.max(data, (d: any) => d.completedCompetencies);
 
 
         const y = d3.scaleLinear()
@@ -101,7 +80,7 @@ export default class TexasLineChart extends Vue {
             .attr('stroke-width', 1)
             .attr('d', d3.line()
                 .x((d: any) => x(d.week))
-                .y((d: any) => y(d.competency_count)),
+                .y((d: any) => y(d.completedCompetencies)),
             );
         // Lines
         svg.append('g').selectAll('myline')
@@ -111,7 +90,7 @@ export default class TexasLineChart extends Vue {
             .attr('x1', (d: any) => x(d.week))
             .attr('x2', (d: any) => x(d.week))
             .attr('y2', y(0))
-            .attr('y1', (d: any) => y(d.competency_count))
+            .attr('y1', (d: any) => y(d.completedCompetencies))
             .on('mousemove', (d: any) => {
                 this.tooltipActive(d, x, y);
             })
@@ -120,11 +99,7 @@ export default class TexasLineChart extends Vue {
             })
             .attr('stroke', (d: any) => {
                 if ((d.week === moment().week())) {
-                    this.tooltipStyle = {
-                        toolX: x(d.week) + 40,
-                        toolY: y(d.competency_count) + 180,
-                    };
-                    this.tooltipData = d;
+                    this.tooltipActive(d, x, y);
                 }
                 return (d.week === moment().week()) ? '#fff' : '#ffffff3d';
             })
@@ -138,7 +113,7 @@ export default class TexasLineChart extends Vue {
             .enter()
             .append('circle')
             .attr('cx', (d: any) => x(d.week) as number)
-            .attr('cy', (d: any) => y(d.competency_count))
+            .attr('cy', (d: any) => y(d.completedCompetencies))
             .attr('r', 4)
             .attr('fill', '#2073bb')
             .attr('stroke', '#fff')
@@ -153,8 +128,8 @@ export default class TexasLineChart extends Vue {
 
     private tooltipActive(d: any, x: any, y: any) {
         this.tooltipStyle = {
-            toolX: x(d.week) + 40,
-            toolY: y(d.competency_count) + 180,
+            toolX: x(d.week) + 47 - d.completedCompetencies.toString().length + 6,
+            toolY: y(d.completedCompetencies) + 180,
         };
         this.tooltipData = d;
     }

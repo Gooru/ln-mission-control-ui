@@ -16,14 +16,14 @@
         </div>
            <div class="chart-top">
                 <div class="texas-chart">
-                    <texas-chart v-if="isLoaded" :breadcrumb="breadcrumb" v-on:onBack ="onBack" v-on:onChangeBreadcrumb="onSelectLevel" :dataList="stateList" :seletedLevel ="seletedLevel"/>
+                    <texas-chart v-if="isLoaded" :breadcrumb="breadcrumb" v-on:onBack ="onBack" v-on:onChangeBreadcrumb="onSelectLevel" :dataList="competencyData" :seletedLevel ="seletedLevel"/>
                 </div>
                 <div class="texas-district">
-                    <texas-district-card v-if="isLoaded" v-on:onSelectLevel="onSelectLevel" :dataList="stateList"/>
+                    <texas-district-card v-if="isLoaded" v-on:onSelectLevel="onSelectLevel" :dataList="competencyData"/>
                 </div>
            </div>
            <div class="texas-performance-cards">
-                 <texas-card-list v-if="isLoaded" :selectedDate="selectedDate" :subjectsList="subjectsList" :averagePerformance="averagePerformance" :countryData="countryData" :dataList="stateList"/>
+                 <texas-card-list v-if="isLoaded" :selectedDate="selectedDate" :subjectsList="subjectsList" :averagePerformance="averagePerformance" :countryData="countryData" :competencyData = "competencyData" :dataList="performanceData"/>
            </div>
         </div>
         <div class="texas-performance-by-grade" v-if="hideProperty">

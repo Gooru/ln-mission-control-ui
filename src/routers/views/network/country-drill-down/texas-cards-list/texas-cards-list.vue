@@ -4,13 +4,13 @@
       <new-user-card iconName="people" cardValue="99k" cardTitle="New Users in July" cardName="new-user"/>
     </div>
     <div class="competency-performance-card">
-      <competency-gained-card :averagePerformance="averagePerformance" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData" :dataList="dataList"/>
+      <competency-gained-card :averagePerformance="averagePerformance" :competencyData="competencyData" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
     </div>
     <div class="suggestion-mode-card">
       <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
     </div>
     <div class="avarage-time-card">
-      <new-user-card iconName="access_time" :cardValue="getSumValue(dataList)" cardTitle="Avg. session time" cardName="avarage-time"/>
+      <new-user-card iconName="access_time" cardValue="10m" cardTitle="Avg. session time" cardName="avarage-time"/>
     </div>
     <div class="top-provider-card">
       <top-providers />

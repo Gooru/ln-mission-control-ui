@@ -1,0 +1,27 @@
+{
+	"overallStats": {
+			   "averagePerformance": 30.620000000000005
+			},
+		"data": [{
+			"id": 1,
+			"name": "Alabama",
+			"code": "AB",
+			"type": "state",
+			"sub_type": null,
+			"timespent": 23,
+			"performance": 35.6,
+			"completedCompetencies": 100,
+	"inprogressCompetencies": 50
+		}, {
+			"id": 2,
+			"name": "Alaska",
+			"code": "AK",
+			"type": "state",
+			"sub_type": null,
+			"timespent": 65,
+			"performance": 85.1,
+	"completedCompetencies": 80,
+	"inprogressCompetencies": 20
+		}]
+	}
+	
