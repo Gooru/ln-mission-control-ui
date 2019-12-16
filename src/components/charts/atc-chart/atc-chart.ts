@@ -96,12 +96,10 @@ export default class AtcChart extends Vue {
       .attr('class', 'student-profile')
       .attr('x', -7)
       .attr('y', -7)
-      .attr({
-        'xlink:href'(d: any) {
+      .attr('xlink:href' , (d: any) => {
           return d.thumbnail;
-        },
-        'width': 24,
-        'height': 24,
-      });
+        })
+      .attr('width', 24)
+      .attr('height', 24);
   }
 }
