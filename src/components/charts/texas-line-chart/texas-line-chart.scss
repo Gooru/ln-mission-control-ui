@@ -1,0 +1,26 @@
+#texas_chart {
+  svg {
+    .y-axis path {
+      display: none;
+    }
+  }
+  .line-chart-tooltip {
+    position: absolute;
+    background: $white;
+    color: #000;
+    padding: 5px;
+    font-weight: bold;
+    width: fit-content;
+    &::before {
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid $white;
+      position: absolute;
+      top: 100%;
+      content: "";
+      left: 40%;
+    }
+  }
+}

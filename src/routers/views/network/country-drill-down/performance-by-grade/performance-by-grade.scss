@@ -1,0 +1,105 @@
+#performance-by-grade-container {
+  height: 100%;
+  width: 100%;
+  .performance-by-grade-panel {
+    background-color: $white;
+    border-left: 1px solid $light-200;
+    box-shadow: 0 0 10px $light-200;
+
+    .grade-panel-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid $light-200;
+      .grade-dropdown {
+        line-height: 1.2;
+        span {
+          font-size: 12px;
+        }
+        .grade-selection {
+          display: grid;
+          grid-template-columns: 1fr 40px;
+          align-items: center;
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+      .grade-percentage {
+        font-size: 25px;
+        font-weight: bold;
+        color: $yellow;
+      }
+    }
+    .grade-panel-body {
+      display: grid;
+      grid-template-columns: 60px 1fr 1fr;
+      align-items: center;
+      border-bottom: 1px solid $light-200;
+      .grade-count-list {
+        padding: 5px;
+        span {
+          padding: 18px;
+          border-radius: 50%;
+          display: block;
+          width: 30px;
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+          height: 30px;
+          border: 2px solid $light-200;
+          justify-content: center;
+          display: flex;
+          align-items: center;
+        }
+      }
+      .grade-name-list {
+        display: grid;
+        align-items: center;
+        .grade-title {
+          margin: 0;
+          padding: 0;
+          font-size: 17px;
+          font-weight: bold;
+          small {
+            font-weight: bold;
+          }
+        }
+        .grade-sub-title {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          display: inline-flex;
+          color: $green;
+          li {
+            padding: 0 5px;
+            display: grid;
+            align-items: center;
+          }
+        }
+      }
+      .grade-percentage-list {
+        background-image: linear-gradient(to right, $white 20%, $green 60%);
+        padding: 5px 10px;
+        text-align: center;
+        display: grid;
+        align-items: center;
+        justify-content: end;
+        .grade-percentage {
+          margin: 0;
+          font-weight: bold;
+          font-size: 20px;
+          color: $white;
+          span {
+            font-size: 15px;
+            position: relative;
+            right: 5px;
+          }
+        }
+        .grade-avarage-title {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

@@ -60,3 +60,8 @@ export function getGradeRange(score: number): string {
   }
   return range;
 }
+
+export function getSum(dataList: any, property: any) {
+     return dataList.reduce(
+        (count: any, data: any) => count + data[property], 0);
+}

@@ -1,0 +1,27 @@
+{
+	"overallStats": {
+				"averagePerformance": 61.620000000000005
+			},
+		"data": [{
+			"id": "d2011a2b-2a6f-4687-8e6d-6a1295de0f21",
+			"name": "Period 4",
+	"code": "ABHU34L",
+			"type": "class",
+			"sub_type": null,
+			"timespent": 23,
+			"performance": 45.6,
+			"completedCompetencies": 80,
+	"inprogressCompetencies": 20
+		}, {
+			"id": "a9c461bc-201c-47e5-8807-10584c00bcb6",
+			"name": "Period 3",
+	"code": "WEWJ67S",
+			"type": "class",
+			"sub_type": null,
+			"timespent": 986,
+			"performance": 85.1,
+			"completedCompetencies": 80,
+	"inprogressCompetencies": 20
+		}]
+	}
+	

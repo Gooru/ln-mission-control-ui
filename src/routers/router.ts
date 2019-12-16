@@ -20,6 +20,12 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
+        path: '/network/countries/:id/:name?',
+        name: 'countries-with-state',
+        component: () => import('@/routers/views/network/country-drill-down/country-drill-down.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
         path: '/network/partners/type/:type',
         name: 'network-partners-type',
         component: () => import('@/routers/views/network/partners/partners-type/partners-type.vue'),
