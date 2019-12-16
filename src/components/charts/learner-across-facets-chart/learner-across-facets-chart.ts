@@ -186,8 +186,8 @@ export default class LearnerAcrossFacetsChart extends Vue {
         })
         .on('mousemove', (event) => {
           component.tooltipPos = {
-            left: `${d3.event.pageX - 30}px`,
-            top: `${d3.event.pageY + 30}px`,
+            left: `${width * seq + 250}px`,
+            top: `${d3.event.pageY - 130}px`,
           };
           component.tooltipInfo = facetMatrix;
           component.isShowTooltip = true;

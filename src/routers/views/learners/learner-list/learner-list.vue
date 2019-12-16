@@ -13,7 +13,6 @@
              <div class="learner-table-section">
                <div class="learner-table-seaction-header">
                    <span class="learner-user-name">Name</span>
-                   <span>Institution</span>
                    <span>Role</span>
                    <span>UserID</span>
                    <span class="learner-country">Country</span>
@@ -22,10 +21,7 @@
                     <div class="learner-table-section-body-content" v-for="(learner, learnerKey) in learnerDetails" :key="learnerKey" @click="onSelectLearner(learner)">
                         <div class="user-profile">
                            <img :src="learner.thumbnail" alt="">
-                          <span>{{learner.username}}</span>
-                        </div>
-                        <div class="learner-institution">
-                          {{learner.schoolDistrict}}
+                          <span>{{learner.firstname}} {{learner.lastname}}</span>
                         </div>
                         <div class="learner-role">
                           {{learner.userCategory}}
