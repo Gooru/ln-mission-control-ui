@@ -22,7 +22,7 @@ export default class TaxonomyFilter extends Vue {
   // --------------------------------------------------------------
   // Properties
 
-  private showDropdown: boolean = false;
+  private isShowFilterBody: boolean = false;
 
   private defaultClassificationId: string = 'k_12';
 
@@ -67,6 +67,7 @@ export default class TaxonomyFilter extends Vue {
 
   private onApplyFilters() {
     this.$emit('listActiveFacets', this.selectedSubjects);
+    this.isShowFilterBody = false;
   }
 
 
@@ -81,6 +82,9 @@ export default class TaxonomyFilter extends Vue {
         (classification: ClassificationModel) => classification.id === component.defaultClassificationId,
       );
       component.loadTaxonomySubjects(defaultClassification.id).then((taxonomySubjects: SubjectModel[]) => {
+        taxonomySubjects.forEach((subject: SubjectModel) => {
+          subject.isActive = true;
+        });
         component.selectedSubjects = (JSON.parse(JSON.stringify(taxonomySubjects)));
         component.$emit('listActiveFacets', taxonomySubjects);
       });
@@ -92,6 +96,13 @@ export default class TaxonomyFilter extends Vue {
     const component = this;
     return taxonomyAPI.fetchTaxonomySubjects(classificationCode).then((taxonomySubjects: SubjectModel[]) => {
       component.subjects = taxonomySubjects;
+      const selectedSubjects = component.selectedSubjects;
+      selectedSubjects.map( (selectedSubject: SubjectModel) => {
+        const existingSubject = taxonomySubjects.find((subject: SubjectModel) => selectedSubject.code === subject.code);
+        if (existingSubject) {
+          existingSubject.isActive = true;
+        }
+      });
       return taxonomySubjects;
     });
   }

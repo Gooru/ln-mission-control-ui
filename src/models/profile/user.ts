@@ -1,8 +1,10 @@
 export interface User {
-  id: string;
   lastName?: string;
   firstName?: string;
+  fullName?: string;
   displayName?: string;
   thumbnailUrl?: string;
-  username: string;
+  username?: string;
+  userId?: string | any;
+  email?: string;
 }

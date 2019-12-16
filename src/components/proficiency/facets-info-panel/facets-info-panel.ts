@@ -13,6 +13,15 @@ import PreferencesPanel from '@/components/proficiency/preferences-panel/prefere
 })
 export default class FacetsInfoPanel extends Vue {
 
+  @Prop()
+  private userId!: string;
+
+  @Prop()
+  private month!: string;
+
+  @Prop()
+  private year!: string;
+
   private activeTab: object = {
     label: 'Mindsets',
     component: 'mindsets-list-panel',

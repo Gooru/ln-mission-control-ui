@@ -29,6 +29,9 @@ export default class CompetencyInfoPanel extends Vue {
     component: 'portfolio-panel',
   };
 
+  @Prop()
+  private userId!: string;
+
   private tabItems = [
     {
       title: 'Portfolio',

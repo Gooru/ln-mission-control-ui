@@ -11,7 +11,8 @@ import moment from 'moment';
 })
 export default class LearnerAcrossFacetsChart extends Vue {
 
-  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
+  @Prop()
+  private userId!: string;
 
   @Prop()
   private month: string = moment().format('MM');
@@ -32,6 +33,16 @@ export default class LearnerAcrossFacetsChart extends Vue {
   @Prop()
   private facets!: SubjectModel[];
 
+  private maxFacetWidth: number = 120;
+
+  private minFacetWidth: number = 40;
+
+  private tooltipText: string = '';
+
+  private tooltipPos: any = {};
+
+  private isShowTooltip: boolean = false;
+
   @Watch('month')
   public onChageTimeline() {
     this.skylinePoints = [];
@@ -44,6 +55,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
   @Watch('facets')
   private onUpdateFacets() {
+    this.skylinePoints = [];
     this.loadChartData();
   }
 
@@ -105,7 +117,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
         maxFacetCompetenciesCount;
       return parsedFacetCompetencyMatrix;
     });
-    component.maxFacetCompetenciesCount = maxFacetCompetenciesCount;
+    // component.maxFacetCompetenciesCount = maxFacetCompetenciesCount;
     component.facetsCompetencyMatrixData = parsedFacetsCompetencyMatrix;
     component.loadChartData();
   }
@@ -114,10 +126,17 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const component = this;
     const facets = component.facets;
     const facetsCompetencyMatrixData = component.facetsCompetencyMatrixData;
+    let maxFacetCompetenciesCount: any = 0;
     const activeFacetsMatrix: FacetMatrix[] = facets.map((facet: SubjectModel) => {
       return facetsCompetencyMatrixData.find(
         (facetCompetencyMatrix: FacetMatrix) => facetCompetencyMatrix.subjectCode === facet.code );
     });
+    activeFacetsMatrix.map( (activeFacetMatrix: FacetMatrix | any) => {
+      maxFacetCompetenciesCount = activeFacetMatrix.totalCompetenciesCount > maxFacetCompetenciesCount ?
+       activeFacetMatrix.totalCompetenciesCount :
+        maxFacetCompetenciesCount;
+    });
+    component.maxFacetCompetenciesCount = maxFacetCompetenciesCount;
     component.drawFacetsChart(activeFacetsMatrix);
   }
 
@@ -128,7 +147,10 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const chartWidth = chartViewElement.offsetWidth - 60;
     const chartHeight = chartViewElement.offsetHeight - 40;
     const totalFacets = facetsMatrix.length || 0;
-    const facetColumnWidth = Number(chartWidth / totalFacets);
+    // const facetColumnWidth = Number(chartWidth / totalFacets);
+    const facetColumnWidth = component.maxFacetWidth * totalFacets > chartWidth ?
+     chartWidth / totalFacets :
+      component.maxFacetWidth;
     const svg = d3.select('#facets-chart-view')
       .append('svg').attr('id', 'chart-container')
       .attr('width', chartWidth ).attr('height', chartHeight);
@@ -140,38 +162,48 @@ export default class LearnerAcrossFacetsChart extends Vue {
     component.drawSkyline();
   }
 
-  private drawFacetColumn(facetMatrix: FacetMatrix | any, columnWidth: number = 10, seq = 0) {
+  private drawFacetColumn(facetMatrix: FacetMatrix | any, width: number = this.maxFacetWidth, seq = 0) {
     const component = this;
-    // value: number => utilized as threshold 100% of column
+    // value: number => utilized as threshold 100% of bar
     const chartHeightLevel = component.maxFacetCompetenciesCount;
     const facetsGroup = d3.select('#facets-group');
     let yAxis = 0;
     const chartViewElement: any = component.$el.querySelector('#facets-chart-view') as HTMLElement;
     const chartHeight: number = chartViewElement.offsetHeight - 40;
-    let height: number = 0;
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
-      height = competency.count / chartHeightLevel * 100;
-      height = Number((height * chartHeight) / 100);
-      facetsGroup
+    let height = competency.count / chartHeightLevel * 100;
+    height = Number((height * chartHeight) / 100);
+    facetsGroup
         .append('rect')
         .attr('class', `${competency.status}`)
-        .attr('x', columnWidth * seq)
+        .attr('x', width * seq)
         .attr('y', `${yAxis}`)
-        .attr('width', columnWidth)
+        .attr('width', width)
         .attr('height', `${height}`)
         .on('click', () => {
           component.selectFacet(facetMatrix);
+        })
+        .on('mousemove', (event) => {
+          component.tooltipPos = {
+            left: `${d3.event.pageX - 30}px`,
+            top: `${d3.event.pageY + 30}px`,
+          };
+          component.tooltipText = facetMatrix.subjectName;
+          component.isShowTooltip = true;
+        })
+        .on('mouseout', () => {
+          component.isShowTooltip = false;
         });
-      if (competency.status === 'mastered') {
+    if (competency.status === 'mastered') {
         component.skylinePoints.push({
-          x1: columnWidth * seq,
+          x1: width * seq,
           y1: height,
-          x2: columnWidth * seq + columnWidth,
+          x2: width * seq + width,
           y2: height,
         });
       }
 
-      yAxis = height;
+    yAxis = yAxis + height;
     });
   }
 

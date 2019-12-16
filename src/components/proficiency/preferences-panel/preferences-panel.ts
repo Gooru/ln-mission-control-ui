@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import StepProgressBar from '@/components/charts/step-progress-bar/step-progress-bar';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { LearnerPreference } from '@/models/proficiency/learner-preference';
@@ -22,7 +22,14 @@ export default class PreferencesPanel extends Vue {
   @Prop()
   private learnerPreferences: LearnerPreference[] = [];
 
-  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
+  @Prop()
+  private userId!: string;
+
+  @Prop()
+  private month!: string;
+
+  @Prop()
+  private year!: string;
 
   public created() {
     this.loadPreferenceData();
@@ -44,9 +51,17 @@ export default class PreferencesPanel extends Vue {
     });
   }
 
+  @Watch('month')
+  private onChageTimeline() {
+    this.loadPreferenceData();
+  }
+
   private getRequestParams() {
+    const component = this;
     const requestParams = {
-      user: this.userId,
+      user: component.userId,
+      month: Number(component.month),
+      year: Number(component.year),
     };
     return requestParams;
   }

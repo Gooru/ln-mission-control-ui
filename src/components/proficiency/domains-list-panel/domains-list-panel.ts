@@ -21,6 +21,9 @@ export default class DomainsListPanel extends Vue {
   @Prop()
   private classification!: ClassificationModel;
 
+  @Prop()
+  private userId!: string;
+
   private domainMatrix!: any;
 
   private matrixCoOrdinates!: any;
@@ -129,7 +132,7 @@ export default class DomainsListPanel extends Vue {
 
   public fetchUserDomainCompetencyMatrix() {
     const params = {
-      user: '5a43c256-6b9f-4543-9fbb-b5e32864d2c6',
+      user: this.userId,
       subject: this.subjectCode,
     };
     return competencyAPI.fetchUserDomainCompetencyMatrix(params);

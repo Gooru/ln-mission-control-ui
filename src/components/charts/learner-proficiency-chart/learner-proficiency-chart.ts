@@ -4,6 +4,7 @@ import { DomainModel } from '@/models/proficiency/domain';
 import { CompetencyModel } from '@/models/proficiency/competency';
 import { GradeBoundaryModel } from '@/models/taxonomy/grade-boundary';
 import { GradeModel } from '@/models/taxonomy/grade';
+import { SubjectModel } from '@/models/taxonomy/subject';
 import { competencyAPI } from '@/providers/apis/competency/competency';
 import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
 import axios from 'axios';
@@ -37,10 +38,15 @@ export default class LearnerProficiencyChart extends Vue {
     return chartContainer.offsetWidth - 30;
   }
 
-  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
+  get subjectCode() {
+    return this.subject.code;
+  }
 
   @Prop()
-  private subjectCode!: string;
+  private userId!: string;
+
+  @Prop()
+  private subject!: SubjectModel;
 
   private proficiencyChartContainer!: any;
 
@@ -86,7 +92,10 @@ export default class LearnerProficiencyChart extends Vue {
   private isLoading: boolean = false;
 
   @Prop()
-  private timeline!: string;
+  private month: string = moment().format('MM');
+
+  @Prop()
+  private year: string = moment().format('YYYY');
 
   public created() {
     this.loadChartData();
@@ -100,6 +109,7 @@ export default class LearnerProficiencyChart extends Vue {
     component.loadTaxonomyGrades();
     component.activeGrade = {};
   }
+
 
   // -------------------------------------------------------------------------
   // Actions
@@ -118,6 +128,10 @@ export default class LearnerProficiencyChart extends Vue {
     component.loadTaxonomyGradeBoundaries(grade.id).then(() => {
       component.parseGradeBoundaryChartData();
     });
+  }
+
+  public onSelectDomain(domain: DomainModel) {
+    this.$emit('onSelectDomain', domain);
   }
 
   public loadChartData() {
@@ -421,9 +435,8 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   public fetchUserDomainCompetencyMatrix() {
-    const timeline = this.timeline;
-    const month = timeline !== '' && timeline ? moment(timeline).format('MM') : undefined;
-    const year = timeline !== '' && timeline ? moment(timeline).format('YYYY') : undefined;
+    const month = Number(this.month);
+    const year = Number(this.year);
     const params = {
       user: this.userId,
       subject: this.subjectCode,
@@ -445,7 +458,7 @@ export default class LearnerProficiencyChart extends Vue {
     component.selectedCompetency = competency;
   }
 
-  @Watch('timeline')
+  @Watch('month')
   private onChangeTimeline() {
     const component = this;
     component.loadChartData();

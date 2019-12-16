@@ -32,13 +32,27 @@
         </div>
         <div class="proficiency-body-container" v-if="activeSubject">
           <learner-proficiency-chart
+            :subject="activeSubject"
             :subjectCode="subjectCode"
             :timeline = "activeTimeline"
-            @backAction="backAction"/>
+            :userId="userId"
+            :month="month"
+            :year="year"
+            @backAction="backAction"
+            @onSelectDomain="onSelectDomain"/>
         </div>
       </div>
       <div class="proficiency-right-panel" v-if="subjectCode">
-        <subject-info-panel :subject="activeSubject" :classification="activeCategory" />
+        <domain-info-panel
+          v-if="isShowDomainInfo"
+          :domain="activeDomainInfo"
+          :subject="activeSubject"
+          :classification="classification"
+          :userId="userId"
+          :month="month"
+          :year="year"
+          @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"/>
+        <subject-info-panel v-else :subject="activeSubject" :classification="activeCategory" :userId="userId" />
       </div>
     </div>
   </div>

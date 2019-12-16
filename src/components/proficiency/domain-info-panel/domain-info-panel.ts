@@ -7,6 +7,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { DomainModel } from '@/models/proficiency/domain';
+import moment from 'moment';
 
 @Component({
   name: 'domain-info-panel',
@@ -52,4 +53,13 @@ export default class DomainInfoPanel extends Vue {
       component: 'preferences-panel',
     },
   ];
+
+  @Prop()
+  private userId!: string;
+
+  @Prop()
+  private month: string = moment().format('MM');
+
+  @Prop()
+  private year: string = moment().format('YYYY');
 }
