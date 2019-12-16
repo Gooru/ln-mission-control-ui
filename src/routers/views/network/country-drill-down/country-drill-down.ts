@@ -8,6 +8,7 @@ import { perfomanceAPI } from '@/providers/apis/performance/performance';
 import axios from 'axios';
 import MonthYearPicker from '@/components/selector/month-year-picker/month-year-picker';
 import moment from 'moment';
+import { profileAPI } from '@/providers/apis/profile/profile';
 
 @Component({
     name: 'country-drill-down',
@@ -28,8 +29,6 @@ export default class CountryDrillDown extends Vue {
 
     private stateList: any = [];
 
-    private performanceData: any = [];
-
     private competencyData: any = [];
 
     private countryId?: string;
@@ -46,8 +45,6 @@ export default class CountryDrillDown extends Vue {
 
     private selectedDate: string = '';
 
-    private averagePerformance?: any;
-
     private subjectsList?: any;
 
     private dataParams: any = {
@@ -57,6 +54,8 @@ export default class CountryDrillDown extends Vue {
     };
 
     private hideProperty: boolean = false;
+
+    private filteredData: any = [];
 
     // --------------------------------------------------------------
     // Hooks
@@ -74,8 +73,8 @@ export default class CountryDrillDown extends Vue {
 
     // ---------------------------------------------------------------
     // Actions
-    private onSelectLevel(seletectLevel: any) {
-        this.selectedLevelData(seletectLevel);
+    private onSelectLevel(selectedLevel: any) {
+        this.selectedLevelData(selectedLevel);
     }
 
     private backButton() {
@@ -100,72 +99,89 @@ export default class CountryDrillDown extends Vue {
         const params: any = this.paramsIds;
         params.country_id = this.countryId;
         axios.all([
-            perfomanceAPI.fetchStateByCountryID('performance', params, this.dataParams),
-            perfomanceAPI.fetchStateByCountryID('competency', params, this.dataParams),
-            perfomanceAPI.fetchCountrySubject('performance', params, this.dataParams),
-        ]).then(axios.spread((performance, competency, subjects) => {
-            this.performanceData = performance;
+            perfomanceAPI.fetchStateCompetencyByCountryID(params, this.dataParams),
+            perfomanceAPI.fetchCountrySubject(params, this.dataParams),
+        ]).then(axios.spread((competency, subjects) => {
             this.competencyData = competency;
             this.subjectsList = subjects;
-            this.averagePerformance = Math.round(performance.overallStats.averagePerformance);
             this.isLoaded = true;
         }));
 
     }
 
-    private selectLevelService(seletectLevel: any) {
+    private selectLevelService(selectedLevel: any) {
         let serviceLevel = Promise.resolve([]);
-        switch (seletectLevel.type) {
+        switch (selectedLevel.type) {
             case 'country':
-                this.paramsIds.country_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchStateByCountryID('competency', this.paramsIds, this.dataParams);
+                this.paramsIds.country_id = selectedLevel.id;
+                serviceLevel = perfomanceAPI.fetchStateCompetencyByCountryID(this.paramsIds, this.dataParams);
                 break;
             case 'state':
-                this.paramsIds.state_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchDistrictByStateID('competency', this.paramsIds, this.dataParams);
+                this.paramsIds.state_id = selectedLevel.id;
+                serviceLevel = perfomanceAPI.fetchDistrictCompetencyByStateID(this.paramsIds, this.dataParams);
                 break;
             case 'system':
-                this.paramsIds.group_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchSchoolByDistrictID('competency', this.paramsIds, this.dataParams);
+                this.paramsIds.group_id = selectedLevel.id;
+                serviceLevel = perfomanceAPI.fetchSchoolCompetencyByDistrictID(this.paramsIds, this.dataParams);
                 break;
             case 'school':
-                this.paramsIds.school_id = seletectLevel.id;
-                serviceLevel = perfomanceAPI.fetchClassBySchoolID('competency', this.paramsIds, this.dataParams);
+                this.paramsIds.school_id = selectedLevel.id;
+                serviceLevel = perfomanceAPI.fetchClassCompetencyBySchoolID(this.paramsIds, this.dataParams);
                 break;
             default:
                 const params = {
-                    classId: seletectLevel.id,
-                    courseId: seletectLevel.course_id,
+                    classId: selectedLevel.id,
+                    courseId: selectedLevel.courseId,
                     subjectCode: 'K12.MA',
                     month: this.dataParams.month,
                     year: this.dataParams.year,
                 };
-                serviceLevel = perfomanceAPI.fetchStudentsByClassID(params);
+                this.fetchClassRoomStudentList(params);
                 break;
 
         }
         return serviceLevel;
     }
 
-    private fetchSelectLevelData(seletectLevel: any) {
-        const selectedService = this.selectLevelService(seletectLevel);
+    private fetchSelectLevelData(selectedLevel: any) {
+        const selectedService = this.selectLevelService(selectedLevel);
         return selectedService.then((levelData: any) => {
             this.competencyData = levelData;
         });
     }
 
-    private selectedLevelData(seletectLevel: any) {
-        const isBreadcrumb = this.breadcrumb.indexOf(seletectLevel);
+    private selectedLevelData(selectedLevel: any) {
+        const isBreadcrumb = this.breadcrumb.indexOf(selectedLevel);
         if (isBreadcrumb !== -1) {
             this.breadcrumb = this.breadcrumb.slice(0, isBreadcrumb);
         } else {
             if (this.breadcrumb.length === 0) {
                 this.breadcrumb.push(this.countryData);
             }
-            this.breadcrumb.push(seletectLevel);
+            this.breadcrumb.push(selectedLevel);
         }
-        this.seletedLevel = seletectLevel;
-        this.fetchSelectLevelData(seletectLevel);
+        this.seletedLevel = selectedLevel;
+        this.fetchSelectLevelData(selectedLevel);
+    }
+
+    private fetchClassRoomStudentList(params: any) {
+
+         perfomanceAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
+           const studentsId: any = [];
+           atcClassStudents.map((students: any) => {
+                return studentsId.push(students.userId);
+            });
+           const filteredData: any = [];
+           profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
+             profileList.map((profile) => {
+                    const findProfile = atcClassStudents.find((item: any) => item.userId === profile.userId);
+                    if (findProfile) {
+                        filteredData.push(Object.assign({}, findProfile, profile));
+                    }
+                });
+            });
+           this.competencyData = filteredData;
+         });
     }
 
 }

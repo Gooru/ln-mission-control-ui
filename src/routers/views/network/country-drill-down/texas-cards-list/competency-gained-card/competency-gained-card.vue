@@ -1,8 +1,8 @@
 /<template>
     <div id="card-container">
-        <div id="competency-gained-container" @click="isShowCompetency = !isShowCompetency">
+        <div id="competency-gained-container" @click="toggleCompetencyData">
             <div class="gained-header">
-                <h4 class="gained-percentage">{{averagePerformance}} <span>%</span></h4>
+                <h4 class="gained-percentage">{{totalPerformance}} <span>%</span></h4>
                 <h4 class="gained-counts">{{totalCompetencyGained}}</h4>
             </div>
             <div class="gained-footer">
@@ -10,14 +10,16 @@
                 <span class="competency-title">Competencies Gained</span>
             </div>
         </div>
-        <div class="competency-gained-pullup" v-if="isShowCompetency">
-             <div class="backdrop" @click="isShowCompetency = !isShowCompetency"></div>
-            <competency-gained-pullup 
-             v-if ="isShowCompetency"
-             :dataList="dataList"
+        <div class="competency-gained-pullup" v-if="subjectsList.length && isShowCompetency">
+             <div class="backdrop" @click="toggleCompetencyData"></div>
+            <competency-gained-pullup
              :subjectsList="subjectsList" 
              :selectedDate="selectedDate" 
              :countryData="countryData" 
+             :performanceData="performanceData.data"
+             :totalCompetencyGained="totalCompetencyGained"
+             :totalPerformance ="totalPerformance"
+             v-on:onSelectSubject="onSelectSubject"
              v-on:onGoBack="onGoBack"
              v-on:onSelectLevel="onSelectLevel" />
         </div>

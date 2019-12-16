@@ -22,8 +22,6 @@ export default class TexasCardsList extends Vue {
     @Prop()
     private countryData: any;
     @Prop()
-    private averagePerformance: any;
-    @Prop()
     private selectedDate: any;
     @Prop()
     private subjectsList: any;

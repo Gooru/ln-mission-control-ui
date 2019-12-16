@@ -10,17 +10,17 @@ export default class DountChart extends Vue {
     // --------------------------------------------------------------
     // Properties
     @Prop()
-    private width?: any;
+    private width: any;
     @Prop()
-    private height?: any;
+    private height: any;
     @Prop()
-    private diff?: any;
+    private diff: any;
     @Prop()
-    private count?: any;
+    private count: any;
     @Prop()
-    private title?: any;
+    private title: any;
     @Prop()
-    private margin?: any;
+    private margin: any;
     @Prop()
     private data: any;
 
@@ -53,7 +53,7 @@ export default class DountChart extends Vue {
         const arc: any = d3.arc()
             .innerRadius(radius - this.diff)
             .outerRadius(radius);
-        const maxData: any = d3.min(data, (d: any) => d);
+        const color: any = data[0].color;
         const g = svg.selectAll('.arc')
             .data(pie(data))
             .enter().append('g');
@@ -65,7 +65,7 @@ export default class DountChart extends Vue {
             .append('svg:tspan')
             .attr('x', 0)
             .text(this.count)
-            .style('fill', maxData.color)
+            .style('fill', color)
             .append('svg:tspan')
             .style('font-size', '11px')
             .attr('x', 0)

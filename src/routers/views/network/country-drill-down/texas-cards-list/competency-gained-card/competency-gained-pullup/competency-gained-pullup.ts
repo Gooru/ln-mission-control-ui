@@ -18,21 +18,38 @@ export default class CompetencyGainedPullup extends Vue {
     // --------------------------------------------------------------------
     // Properties
     @Prop()
-    private dataList: any;
+    private performanceData: any;
     @Prop()
     private subjectsList: any;
+    @Prop()
+    private countryData: any;
+    @Prop()
+    private totalPerformance: any;
+    @Prop()
+    private totalCompetencyGained: any;
 
     private breadCrumb: any = [];
 
+    get progressPercent() {
+        const total = this.totalCompetencyGained;
+        const completed: number = total / 100 * getSum(this.performanceData, 'inprogressCompetencies') || 0;
+        const inprogress: number = total / 100 * getSum(this.performanceData, 'inprogressCompetencies') || 0;
+        const notStarted = 100 - completed - inprogress;
+        return {
+            completed: completed + '%',
+            inprogress: inprogress + '%',
+            notStarted: notStarted + '%',
+        };
+    }
     private get averageDount() {
         return [{
             name: 'chart',
-            value: 100,
-            color: '#febb2b',
+            value: this.totalPerformance,
+            color: this.performanceColor(this.totalPerformance),
         },
         {
             name: 'chart1',
-            value: this.perfromanceAverage || 0,
+            value: 100 - this.totalPerformance,
             color: '#ebeced',
         },
         ];
@@ -41,33 +58,26 @@ export default class CompetencyGainedPullup extends Vue {
     private get competencyDount() {
         return [{
             name: 'chart',
-            value: getSum(this.dataList.data, 'completedCompetencies'),
+            value:  this.performanceData ? getSum(this.performanceData, 'completedCompetencies') : 1,
             color: '#0a66ba',
         },
         {
             name: 'chart1',
-            value: 300,
+            value: this.totalCompetencyGained,
             color: '#ebeced',
         },
         {
             name: 'chart2',
-            value: getSum(this.dataList.data, 'inprogressCompetencies'),
+            value:  this.performanceData ?  getSum(this.performanceData, 'inprogressCompetencies') : 0,
             color: '#7ccff7',
         }];
     }
 
-    private get perfromanceAverage() {
-        return this.dataList.overallStats ? Math.round(this.dataList.overallStats.averagePerformance) : 0;
-    }
-
-    private get competencyGained() {
-        return this.dataList.data ? getSum(this.dataList.data, 'completedCompetencies') : 0;
-    }
 
     private hideDiv: boolean = false;
 
     private get level() {
-        const dataList = this.dataList.data ? this.dataList.data : this.dataList;
+        const dataList = this.performanceData;
         const type = dataList[0].type ? dataList[0].type : 'student';
         return type === 'system' ? dataList[0].sub_type : type;
     }
@@ -91,9 +101,16 @@ export default class CompetencyGainedPullup extends Vue {
         this.$emit('onSelectLevel', selectedLevel);
     }
 
+    private onSelectSubject(subject: any) {
+        this.subjectsList.map((subjects: any) => {
+            subjects.isActive = false;
+        });
+        subject.isActive = true;
+        this.$emit('onSelectSubject', subject);
+    }
+
     // ------------------------------------------------------------------------
     // Hooks
-
 
     // --------------------------------------------------------------------------
     // Methods
@@ -108,5 +125,17 @@ export default class CompetencyGainedPullup extends Vue {
         } else {
             return '#fa787a';
         }
+    }
+
+    private getPercentage(competency: any) {
+        const total = this.totalCompetencyGained;
+        const completed: number = total / 100 * competency.completedCompetencies;
+        const inprogress: number = total / 100 * competency.inprogressCompetencies;
+        const notStarted = 100 - completed - inprogress;
+        return {
+            completed: completed + '%',
+            inprogress: inprogress + '%',
+            notStarted: notStarted + '%',
+        };
     }
 }

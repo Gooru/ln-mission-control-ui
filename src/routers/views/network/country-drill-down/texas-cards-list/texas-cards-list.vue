@@ -4,7 +4,7 @@
       <new-user-card iconName="people" cardValue="99k" cardTitle="New Users in July" cardName="new-user"/>
     </div>
     <div class="competency-performance-card">
-      <competency-gained-card :averagePerformance="averagePerformance" :competencyData="competencyData" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
+      <competency-gained-card :competencyData="competencyData" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
     </div>
     <div class="suggestion-mode-card">
       <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
