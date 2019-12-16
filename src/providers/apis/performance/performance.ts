@@ -16,35 +16,35 @@ export class PerfomanceAPI {
         return this.INSTANCE;
     }
 
-    public fetchStateByCountryID(apiType: any, params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespaceStub}/${apiType}/countries/${params.country_id}.json`;
+    public fetchStateCompetencyByCountryID(params: any, data: any): Promise<any> {
+        const endpoint = `${this.namespace}/competency/countries/${params.country_id}`;
         const headers = http.getTokenHeaders();
-        return http.get(endpoint, headers).then((response) => {
+        return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeState(response.data);
         });
     }
 
-    public fetchDistrictByStateID(apiType: any, params: any, data: any): Promise<any> {
+    public fetchDistrictCompetencyByStateID(params: any, data: any): Promise<any> {
         const endpoint =
-        `${this.namespaceStub}/${apiType}/countries/${params.country_id}/states/${params.state_id}.json`;
+        `${this.namespace}/competency/countries/${params.country_id}/states/${params.state_id}`;
         const headers = http.getTokenHeaders();
-        return http.get(endpoint, headers).then((response) => {
+        return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeDistrict(response.data);
         });
     }
 
-    public fetchSchoolByDistrictID(apiType: any, params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespaceStub}/${apiType}/groups/${params.group_id}.json`;
+    public fetchSchoolCompetencyByDistrictID(params: any, data: any): Promise<any> {
+        const endpoint = `${this.namespace}/competency/groups/${params.group_id}`;
         const headers = http.getTokenHeaders();
-        return http.get(endpoint, headers).then((response) => {
+        return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeSchool(response.data);
         });
     }
 
-    public fetchClassBySchoolID(apiType: any, params: any, data: any): Promise<any> {
-        const endpoint = `${this.namespaceStub}/${apiType}/schools/${params.school_id}.json`;
+    public fetchClassCompetencyBySchoolID( params: any, data: any): Promise<any> {
+        const endpoint = `${this.namespace}/competency/schools/${params.school_id}`;
         const headers = http.getTokenHeaders();
-        return http.get(endpoint, headers).then((response) => {
+        return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeClass(response.data);
         });
     }
@@ -57,11 +57,44 @@ export class PerfomanceAPI {
         });
     }
 
-    public fetchCountrySubject(apiType: any, params: any, data: any): Promise<any> {
+    public fetchCountrySubject(params: any, data: any): Promise<any> {
         const endpoint = `${this.namespace}/performance/countries/${params.country_id}/subjects`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return performanceSerializer.serializeSubject(response.data);
+        });
+    }
+
+    public fetchStatePerformanceByCountryID(params: any, data: any): Promise<any> {
+        const endpoint = `${this.namespace}/performance/countries/${params.country_id}`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers, data).then((response) => {
+            return performanceSerializer.serializeState(response.data);
+        });
+    }
+
+    public fetchDistrictPerformanceByStateID(params: any, data: any): Promise<any> {
+        const endpoint =
+        `${this.namespace}/performance/countries/${params.country_id}/states/${params.state_id}`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers, data).then((response) => {
+            return performanceSerializer.serializeDistrict(response.data);
+        });
+    }
+
+    public fetchSchoolPerformanceByDistrictID(params: any, data: any): Promise<any> {
+        const endpoint = `${this.namespace}/performance/groups/${params.group_id}`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers, data).then((response) => {
+            return performanceSerializer.serializeSchool(response.data);
+        });
+    }
+
+    public fetchClassPerformanceBySchoolID(params: any, data: any): Promise<any> {
+        const endpoint = `${this.namespace}/performance/schools/${params.school_id}`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers, data).then((response) => {
+            return performanceSerializer.serializeClass(response.data);
         });
     }
 

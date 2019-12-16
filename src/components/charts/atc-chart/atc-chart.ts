@@ -91,17 +91,17 @@ export default class AtcChart extends Vue {
       .attr('r', 16)
       .style('fill', (d: any) => d);
 
-    // studentNode
-    //   .append('svg:image')
-    //   .attr('class', 'student-profile')
-    //   .attr('x', -7)
-    //   .attr('y', -7)
-    //   .attr({
-    //     'xlink:href': function(d) {
-    //       return d.thumbnail;
-    //     },
-    //     width: 24,
-    //     height: 24
-    //   });
+    studentNode
+      .append('svg:image')
+      .attr('class', 'student-profile')
+      .attr('x', -7)
+      .attr('y', -7)
+      .attr({
+        'xlink:href'(d) {
+          return d.thumbnail;
+        },
+        'width': 24,
+        'height': 24,
+      });
   }
 }
