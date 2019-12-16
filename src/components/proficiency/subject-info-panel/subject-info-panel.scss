@@ -26,13 +26,15 @@
         &.active,
         &:hover {
           color: rgb(26, 169, 235);
-          border-bottom: 3px solid rgb(26, 169, 235);
+          border-bottom-width: 3px;
+          border-bottom-color: rgb(26, 169, 235);
         }
       }
     }
     > .active-tab-contents {
       height: calc(100% - 40px);
       #domains-list-panel {
+        margin-top: 4px;
         .panel-header {
           //Hiding subject/header in domain list panel
           display: none;

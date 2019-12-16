@@ -33,11 +33,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
   @Prop()
   private facets!: SubjectModel[];
 
-  private maxFacetWidth: number = 120;
+  private maxFacetWidth: number = 90;
 
   private minFacetWidth: number = 40;
 
-  private tooltipText: string = '';
+  private tooltipInfo: any = {};
 
   private tooltipPos: any = {};
 
@@ -144,13 +144,14 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const component = this;
     d3.select('#chart-container').remove();
     const chartViewElement = component.$el.querySelector('#facets-chart-view') as HTMLElement;
-    const chartWidth = chartViewElement.offsetWidth - 60;
+    let chartWidth = chartViewElement.offsetWidth - 60;
     const chartHeight = chartViewElement.offsetHeight - 40;
     const totalFacets = facetsMatrix.length || 0;
     // const facetColumnWidth = Number(chartWidth / totalFacets);
     const facetColumnWidth = component.maxFacetWidth * totalFacets > chartWidth ?
      chartWidth / totalFacets :
       component.maxFacetWidth;
+    chartWidth = facetColumnWidth * totalFacets > chartWidth ? chartWidth : facetColumnWidth * totalFacets;
     const svg = d3.select('#facets-chart-view')
       .append('svg').attr('id', 'chart-container')
       .attr('width', chartWidth ).attr('height', chartHeight);
@@ -169,7 +170,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const facetsGroup = d3.select('#facets-group');
     let yAxis = 0;
     const chartViewElement: any = component.$el.querySelector('#facets-chart-view') as HTMLElement;
-    const chartHeight: number = chartViewElement.offsetHeight - 40;
+    const chartHeight: number = chartViewElement.offsetHeight - 45;
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
     let height = competency.count / chartHeightLevel * 100;
     height = Number((height * chartHeight) / 100);
@@ -188,7 +189,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
             left: `${d3.event.pageX - 30}px`,
             top: `${d3.event.pageY + 30}px`,
           };
-          component.tooltipText = facetMatrix.subjectName;
+          component.tooltipInfo = facetMatrix;
           component.isShowTooltip = true;
         })
         .on('mouseout', () => {

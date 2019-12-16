@@ -1,13 +1,14 @@
 #learner-facets-proficiency {
-  padding: 0 15px 15px 15px;
+  // padding: 0 15px 15px 15px;
   display: grid;
   grid-template-rows: auto 1fr;
   row-gap: 15px;
+  background-color: #ededed;
   > .proficiency-header {
     background-color: $white;
     display: grid;
     justify-content: right;
-    box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.5);
     grid-template-columns: auto auto 1fr;
     padding-left: 30px;
     align-items: center;

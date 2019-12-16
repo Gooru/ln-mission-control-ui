@@ -23,7 +23,7 @@
       <div class="facets-left-panel">
         <div class="left-panel-header">
           <div class="learner-info">
-            <div class="student-name">StudentName's Complete Skyline</div>
+            <div class="student-name">{{learner.firstName}}'s Complete Skyline</div>
             <div class="skyline-info">Each bar represent a subject within the relevant category</div>
           </div>
           <div class="filter-container">

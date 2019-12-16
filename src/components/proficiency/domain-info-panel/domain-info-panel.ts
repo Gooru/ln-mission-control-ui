@@ -22,7 +22,7 @@ import moment from 'moment';
 export default class DomainInfoPanel extends Vue {
 
   @Prop()
-  public domain!: any;
+  public domain!: DomainModel;
 
   @Prop()
   public subject!: SubjectModel;
@@ -58,8 +58,8 @@ export default class DomainInfoPanel extends Vue {
   private userId!: string;
 
   @Prop()
-  private month: string = moment().format('MM');
+  private month!: string;
 
   @Prop()
-  private year: string = moment().format('YYYY');
+  private year!: string;
 }

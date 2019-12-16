@@ -43,6 +43,7 @@
   }
   .competency-info-body {
     height: calc(100% - 63px);
+    overflow-y: auto;
     .competency-name {
       padding: 15px;
       border-bottom: 1px dashed #666;
@@ -59,7 +60,7 @@
         text-transform: uppercase;
         font-size: 11px;
         font-weight: bold;
-        padding: 0 6px;
+        padding: 0 15px;
         &.active,
         &:hover {
           color: rgb(26, 169, 235);
@@ -78,7 +79,7 @@
       }
     }
     > .active-tab-contents {
-      height: calc(100% - 177px);
+      // height: calc(100% - 130px);
       overflow-y: auto;
     }
   }

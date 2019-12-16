@@ -39,7 +39,7 @@
   }
   .filter-body {
     display: grid;
-    grid-template-columns: auto 150px auto;
+    grid-template-columns: 1fr 150px 350px;
     border-top: 1px solid $dark-500;
     padding: 20px 10px;
     height: 350px;

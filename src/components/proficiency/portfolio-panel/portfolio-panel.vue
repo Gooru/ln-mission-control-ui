@@ -11,6 +11,9 @@
           <portfolio-stat-card :statInfo="statInfo" :statType="statsBucket" :sequence="index + 1" />
         </div>
       </div>
+      <div v-if="isNoPortfolioItems" class="no-items">
+        No Portfolio Items
+      </div>
     </div>
   </div>
 </template>

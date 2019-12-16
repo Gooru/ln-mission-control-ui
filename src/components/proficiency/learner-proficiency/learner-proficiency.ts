@@ -3,6 +3,7 @@ import LearnerProficiencyChart from '@/components/charts/learner-proficiency-cha
 import SubjectInfoPanel from '@/components/proficiency/subject-info-panel/subject-info-panel';
 import DomainsListPanel from '@/components/proficiency/domains-list-panel/domains-list-panel';
 import DomainInfoPanel from '@/components/proficiency/domain-info-panel/domain-info-panel';
+import CompetencyInfoPanel from '@/components/proficiency/competency-info-panel/competency-info-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import MonthYearPicker from '@/components/selector/month-year-picker/month-year-picker';
 import { SubjectModel } from '@/models/taxonomy/subject';
@@ -21,6 +22,7 @@ import moment from 'moment';
     'subject-info-panel': SubjectInfoPanel,
     'month-year-picker': MonthYearPicker,
     'domain-info-panel': DomainInfoPanel,
+    'competency-info-panel': CompetencyInfoPanel,
   },
 })
 export default class LearnerProficiency extends Vue {
@@ -61,6 +63,10 @@ export default class LearnerProficiency extends Vue {
   private activeDomainInfo!: DomainModel;
 
   private isShowDomainInfo: boolean = false;
+
+  private activeCompetency!: any;
+
+  private isShowCompetencyPanel: boolean = false;
 
   @Prop()
   private month: string = moment().format('MM');
@@ -115,8 +121,18 @@ export default class LearnerProficiency extends Vue {
     this.isShowDomainInfo = true;
   }
 
+  private onSelectCompetency(competency: any) {
+    this.activeCompetency = competency;
+    this.isShowCompetencyPanel = true;
+    this.isShowDomainInfo = false;
+  }
+
   private onCloseDomainInfoPanel() {
     this.isShowDomainInfo = false;
+  }
+
+  private onCloseCompetencyInfoPanel() {
+    this.isShowCompetencyPanel = false;
   }
 
   private backAction() {

@@ -5,6 +5,7 @@ import { LearnerPreference } from '@/models/proficiency/learner-preference';
 import McIcon from '@/components/icons/mc-icon/mc-icon';
 import { learnerAPI } from '@/providers/apis/learner/learner';
 import { LEARNER_PREFERENCE_META } from '@/utils/constants';
+import moment from 'moment';
 
 @Component({
   name: 'preferences-panel',

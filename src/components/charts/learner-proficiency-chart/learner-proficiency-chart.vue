@@ -5,7 +5,10 @@
         <div class="back-icon" @click="$emit('backAction')">
           <google-material-icon icon="keyboard_backspace" />
         </div>
-        <span class="subject-title">{{subject.title}}</span>
+        <span class="subject-title">
+          <span class="title">{{subject.title}}</span>
+          <span class="total-competencies">{{totalCompetencies}} Competencies</span>
+        </span>
       </div>
       <div class="toggle-graph-view" @click="onToggleGraphView()"><google-material-icon :icon="isShowExpandedGraph ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedGraph ? 'Compressed' : 'Expanded'}} Chart</div>
     </div>
@@ -26,10 +29,12 @@
           <!-- <div class="loading-spinner" v-if="isLoading">
             <b-spinner variant="primary" label="Spinning"></b-spinner>
           </div> -->
-          <div id="chart-area"></div>
+          <div class="scrollable-chart">
+            <div id="chart-area"></div>
+          </div>
         <!-- </div> -->
-        <div class="domains-seq-list" v-if="chartData">
-          <div class="domain-seq" v-for="domain in chartData" :key="domain.domainSeq" :style="{width: cellWidth + 'px'}" @click="onSelectDomain(domain)">
+        <div class="domains-seq-list" v-if="domainCoOrdinates">
+          <div :class="['domain-seq', 'domain-' + domain.domainSeq]" v-for="domain in chartData" :key="domain.domainSeq" :style="{width: cellWidth + 'px'}" @click="onSelectDomain(domain)">
             {{domain.domainSeq}}
           </div>
         </div>

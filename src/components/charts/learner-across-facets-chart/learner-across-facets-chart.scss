@@ -42,7 +42,7 @@
     }
   }
 
-  .facet-tooltiop {
+  .facet-tooltip {
     position: absolute;
     background-color: #37424b;
     color: $white;
@@ -72,6 +72,29 @@
       height: 0;
       border: 9px solid transparent;
       border-bottom-color: #37424b;
+    }
+    display: grid;
+    .subject {
+    }
+    .count-info {
+      display: grid;
+      grid-template-columns: 25px auto;
+      padding: 3px 0;
+      justify-items: left;
+      .count-label {
+        width: 20px;
+        height: 20px;
+        display: block;
+        &.mastered {
+          background-color: #1d7dc2;
+        }
+        &.inprogress {
+          background-color: #1aa9eb;
+        }
+        &.notstarted {
+          background-color: #dcdfe0;
+        }
+      }
     }
   }
 }

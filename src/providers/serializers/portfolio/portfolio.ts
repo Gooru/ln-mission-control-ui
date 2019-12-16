@@ -13,6 +13,7 @@ export class PortfolioSerializer {
   private static INSTANCE = new PortfolioSerializer();
 
   public serializePortfolioContents(portfolioContents: any) {
+    const serializer = this;
     const cdnUrls = sessionService.getCdnUrl();
     const contentCdnUrl = cdnUrls.content_cdn_url;
     const portfolioContentItems = portfolioContents.items ? portfolioContents.items.usageData : [];
@@ -29,9 +30,9 @@ export class PortfolioSerializer {
           taskCount: portfolioContent.taskCount || 0,
           score: portfolioContent.score || 0,
           sessionId: portfolioContent.sessionId,
-          efficacy: portfolioContent.efficacy || 0.5,
-          engagement: portfolioContent.engagement || 0.5,
-          relevance: portfolioContent.relevance || 0.5,
+          efficacy: portfolioContent.efficacy || serializer.getRandomREEfValue(),
+          engagement: portfolioContent.engagement || serializer.getRandomREEfValue(),
+          relevance: portfolioContent.relevance || serializer.getRandomREEfValue(),
           contentType: portfolioContent.type,
           subType: portfolioContent.subType,
           thumbnailUrl,
@@ -131,6 +132,10 @@ export class PortfolioSerializer {
         subjectStat.oaCount,
     };
     return normalizedSubjectStat;
+  }
+
+  private getRandomREEfValue() {
+    return (Math.random() * (0.6 - 0.4) + 0.4).toFixed(1);
   }
 }
 
