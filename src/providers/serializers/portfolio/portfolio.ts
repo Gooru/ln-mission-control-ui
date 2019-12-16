@@ -135,7 +135,7 @@ export class PortfolioSerializer {
   }
 
   private getRandomREEfValue() {
-    return (Math.random() * (0.6 - 0.4) + 0.4).toFixed(1);
+    return (Math.random() * (0.6 - 0.4) + 0.4).toFixed(2);
   }
 }
 

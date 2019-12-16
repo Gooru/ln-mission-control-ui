@@ -2,6 +2,7 @@ import {Component, Vue} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import {learnerAPI} from '@/providers/apis/learners/learners';
 import LearnerModel from '@/models/learners/learner';
+import { sortByProperty as sortBy } from '@/utils/utils';
 
 @Component({
   name: 'learner-list',
@@ -15,13 +16,14 @@ export default class LearnerList extends Vue {
   /**
    * @property {Array} learnerDetails used to hold learner details
    */
-  public learnerDetails: LearnerModel[] = new Array();
+  public learnerDetails: LearnerModel[] | any = new Array();
 
   // --------------------------------------------------------------------
   // Hooks
   public created() {
-     learnerAPI.fetchLearners().then((learners) => {
-       this.learnerDetails = learners;
+    const component = this;
+    learnerAPI.fetchLearners().then((learners) => {
+       component.learnerDetails = learners;
      });
   }
 

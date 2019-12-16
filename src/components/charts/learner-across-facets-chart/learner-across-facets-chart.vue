@@ -6,9 +6,9 @@
     <div v-if="isShowTooltip" class="facet-tooltip" :style="tooltipPos">
       <span v-for="competency in tooltipInfo.competenciesCount" class="count-info">
         <span :class="['count-label', competency.status]"></span>
-        <span>{{competency.count}}</span>
+        <span>{{competency.count}} Competencies</span>
       </span>
-      <span class="subject">{{tooltipInfo.subjectName}}</span>
+      <span class="subject">{{tooltipInfo.classificationCode + '/'+ tooltipInfo.subjectName}}</span>
     </div>
   </div>
 </template>
