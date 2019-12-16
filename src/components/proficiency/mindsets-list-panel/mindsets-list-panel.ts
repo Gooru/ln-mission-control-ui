@@ -4,6 +4,7 @@ import { SubjectModel } from '@/models/taxonomy/subject';
 import { DomainModel } from '@/models/proficiency/domain';
 import { LearnerVector } from '@/models/proficiency/learner-vector';
 import { learnerAPI } from '@/providers/apis/learner/learner';
+import moment from 'moment';
 
 @Component({
   name: 'mindsets-list-panel',
@@ -23,7 +24,14 @@ export default class MindsetsListPanel extends Vue {
   @Prop()
   private statsBucket!: string;
 
-  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
+  @Prop()
+  private userId!: string;
+
+  @Prop()
+  private month: string = moment().format('MM');
+
+  @Prop()
+  private year: string = moment().format('YYYY');
 
   private learnerVectors: LearnerVector[] = [];
 
@@ -40,10 +48,18 @@ export default class MindsetsListPanel extends Vue {
     });
   }
 
+  @Watch('month')
+  private onChageTimeline() {
+    this.loadLearnerVectors();
+  }
+
   private getVectorReqParams() {
     const component = this;
-    const requestParams: any = {};
-    requestParams.user = component.userId;
+    const requestParams: any = {
+      user: component.userId,
+      month: Number(component.month),
+      year: Number(component.year),
+    };
     if (component.statsBucket === 'subject') {
       requestParams.tx_subject_code = component.subject.code;
     } else if (component.statsBucket === 'domain') {

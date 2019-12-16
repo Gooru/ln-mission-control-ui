@@ -5,7 +5,7 @@
         <div class="back-icon" @click="$emit('backAction')">
           <google-material-icon icon="keyboard_backspace" />
         </div>
-        <span class="subject-title">Subject Title</span>
+        <span class="subject-title">{{subject.title}}</span>
       </div>
       <div class="toggle-graph-view" @click="onToggleGraphView()"><google-material-icon :icon="isShowExpandedGraph ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedGraph ? 'Compressed' : 'Expanded'}} Chart</div>
     </div>
@@ -28,8 +28,8 @@
           </div> -->
           <div id="chart-area"></div>
         <!-- </div> -->
-        <div class="domains-seq-list">
-          <div class="domain-seq" v-for="domain in domainCoOrdinates" :style="{width: cellWidth + 'px'}">
+        <div class="domains-seq-list" v-if="chartData">
+          <div class="domain-seq" v-for="domain in chartData" :key="domain.domainSeq" :style="{width: cellWidth + 'px'}" @click="onSelectDomain(domain)">
             {{domain.domainSeq}}
           </div>
         </div>

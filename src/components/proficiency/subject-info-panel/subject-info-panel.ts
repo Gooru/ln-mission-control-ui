@@ -47,4 +47,7 @@ export default class SubjectInfoPanel extends Vue {
       component: 'preferences-panel',
     },
   ];
+
+  @Prop()
+  private userId!: string;
 }

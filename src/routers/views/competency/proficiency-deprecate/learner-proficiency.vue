@@ -30,7 +30,7 @@
           </div>
         </div>
         <div class="proficiency-body-container" v-if="activeSubject">
-          <learner-proficiency-chart :subjectCode="activeSubject.code" />
+          <learner-proficiency-chart :subject="activeSubject" />
         </div>
       </div>
       <div class="proficiency-right-panel" v-if="activeSubject">

@@ -9,6 +9,7 @@ import { PortfolioDomainStat } from '@/models/stats/portfolio-domain';
 import { PortfolioCompetencyStat } from '@/models/stats/portfolio-competency';
 import PortfolioContentCard from '@/components/cards/portfolio-content-card/portfolio-content-card';
 import PortfolioStatCard from '@/components/cards/portfolio-stat-card/portfolio-stat-card';
+import moment from 'moment';
 
 @Component({
   name: 'portfolio-panel',
@@ -42,7 +43,14 @@ export default class PortfolioPanel extends Vue {
   @Prop()
   private competency!: CompetencyModel;
 
-  private userId: string = '5a43c256-6b9f-4543-9fbb-b5e32864d2c6';
+  @Prop()
+  private userId!: string;
+
+  @Prop()
+  private month: string = moment().format('MM');
+
+  @Prop()
+  private year: string = moment().format('YYYY');
 
   private activityType = 'assessment';
 
@@ -61,12 +69,12 @@ export default class PortfolioPanel extends Vue {
   @Prop()
   private statsBucket!: string;
 
-  public created() {
+  @Watch('subject')
+  public onChangeSubject() {
     this.loadData();
   }
 
-  @Watch('subject')
-  public onChangeSubject() {
+  public created() {
     this.loadData();
   }
 
@@ -123,9 +131,9 @@ export default class PortfolioPanel extends Vue {
   public getStatsParams() {
     const component = this;
     const requestParams: any = {
-      user: this.userId,
-      month: 12,
-      year: 2019,
+      user: component.userId,
+      month: Number(component.month),
+      year: Number(component.year),
     };
     if (component.statsBucket === 'subject') {
       requestParams.tx_subject_code = component.subject.code;
@@ -134,6 +142,11 @@ export default class PortfolioPanel extends Vue {
       requestParams.tx_domain_code = component.domain.domainCode;
     }
     return requestParams;
+  }
+
+  @Watch('month')
+  private onChageTimeline() {
+    this.loadData();
   }
 
   private getAllFacetsPortfolioStats() {

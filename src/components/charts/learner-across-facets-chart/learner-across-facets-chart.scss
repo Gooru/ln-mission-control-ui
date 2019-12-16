@@ -36,9 +36,42 @@
           fill: none;
           stroke: #fff;
           stroke-width: 6px;
-          filter: url(#back-shadow);
+          // filter: url(#back-shadow);
         }
       }
+    }
+  }
+
+  .facet-tooltiop {
+    position: absolute;
+    background-color: #37424b;
+    color: $white;
+    padding: 3px 5px;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: calc(100% / 2);
+      bottom: 100%;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-bottom-color: #37424b;
+    }
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: calc(100% / 2);
+      bottom: 100%;
+      width: 0;
+      height: 0;
+      border: 9px solid transparent;
+      border-bottom-color: #37424b;
     }
   }
 }

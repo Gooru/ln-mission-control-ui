@@ -2,6 +2,10 @@
   <div id="learner-across-facets-chart">
     <div id="facets-chart-view">
     </div>
+
+    <div v-if="isShowTooltip" class="facet-tooltiop" :style="tooltipPos">
+      {{tooltipText}}
+    </div>
   </div>
 </template>
 

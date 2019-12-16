@@ -13,7 +13,9 @@
         </div>
       </div>
       <div class="active-tab-contents">
-        <component v-bind:is="activeTab.component" v-bind="{statsBucket: 'facets'}" />
+        <component
+          v-bind:is="activeTab.component"
+          v-bind="{statsBucket: 'facets', userId: userId, month: month, year: year}" />
       </div>
     </div>
   </div>

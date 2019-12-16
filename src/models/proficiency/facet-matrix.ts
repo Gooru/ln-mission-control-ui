@@ -4,6 +4,7 @@ export interface FacetMatrix {
   classificationName: string;
   classificationSeq: number;
   competencyStats: FacetMatrixCount[];
+  totalCompetenciesCount?: number;
   subjectCode: string;
   subjectName: string;
   subjectSeq: number;

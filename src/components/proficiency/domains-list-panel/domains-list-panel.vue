@@ -37,7 +37,8 @@
       :domain="activeDomainInfo"
       :subject="subject"
       :classification="classification"
-      @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"/>
+      @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"
+      :userId="userId"/>
   </div>
 </template>
 

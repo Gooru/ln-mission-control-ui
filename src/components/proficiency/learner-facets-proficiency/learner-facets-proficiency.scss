@@ -8,6 +8,37 @@
     display: grid;
     justify-content: right;
     box-shadow: 0 5px 7px 0 rgba(0, 0, 0, 0.5);
+    grid-template-columns: auto auto 1fr;
+    padding-left: 30px;
+    align-items: center;
+    column-gap: 8px;
+    .back-action {
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .learner-info {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      column-gap: 8px;
+      .learner-thumbnail {
+        width: 30px;
+        height: 30px;
+        display: block;
+        background-size: cover;
+        border-radius: 50%;
+      }
+      .learner-name {
+        display: grid;
+        align-items: center;
+        .student-label {
+          font-size: 12px;
+        }
+      }
+    }
+    .month-picker {
+      justify-self: center;
+    }
   }
   > .facets-proficiency-body {
     display: grid;

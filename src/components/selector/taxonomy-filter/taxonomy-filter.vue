@@ -1,11 +1,11 @@
 <template>
   <div id="taxonomy-filter">
     <div class="filter-header">
-      <div class="toggle-filter" @click="showDropdown = !showDropdown">
-        <material-icon :icon="showDropdown ? 'close' : 'filter_list'" />
+      <div class="toggle-filter" @click="isShowFilterBody = !isShowFilterBody">
+        <material-icon :icon="isShowFilterBody ? 'close' : 'filter_list'" />
       </div>
     </div>
-    <div class="filter-body" v-if="showDropdown">
+    <div class="filter-body" v-if="isShowFilterBody">
       <div class="selected-filters">
         <h5 class="selected-label">Seleted Facets</h5>
         <ul class="active-facet-list">
@@ -25,7 +25,7 @@
         </ul>
       </div>
     </div>
-    <div v-if="showDropdown" class="apply-filter" @click="onApplyFilters()">
+    <div v-if="isShowFilterBody" class="apply-filter" @click="onApplyFilters()">
       Apply
     </div>
   </div>

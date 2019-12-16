@@ -56,6 +56,8 @@
         list-style: none;
         border: 1px solid transparent;
         text-transform: capitalize;
+        height: 250px;
+        overflow-y: auto;
         li {
           height: 30px;
           line-height: 30px;
@@ -80,6 +82,8 @@
         font-size: 13px;
         height: 100%;
         margin-top: 15px;
+        height: 250px;
+        overflow-y: auto;
         li.classification {
           text-overflow: ellipsis;
           overflow: hidden;
@@ -107,6 +111,8 @@
         height: 100%;
         margin-top: 15px;
         padding: 0;
+        height: 250px;
+        overflow-y: auto;
         li.subject {
           display: grid;
           grid-template-columns: 40px 1fr;
@@ -114,8 +120,48 @@
           height: 30px;
           line-height: 30px;
           padding-left: 12px;
-          input {
+          cursor: pointer;
+          input[type="checkbox"] {
             cursor: pointer;
+            -webkit-appearance: none;
+            outline: none;
+            &:after {
+              content: "";
+              display: block;
+              width: 18px;
+              height: 18px;
+              margin-top: -2px;
+              margin-right: 5px;
+              border: 2px solid #666;
+              border-radius: 2px;
+              transition: 240ms;
+            }
+            &:checked:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 6px;
+              display: table;
+              width: 6px;
+              height: 12px;
+              border: 2px solid #fff;
+              border-top-width: 0;
+              border-left-width: 0;
+              transform: rotate(45deg);
+            }
+            &:checked:after {
+              background-color: #0072bc;
+              border-color: #0072bc;
+              content: "";
+              display: block;
+              width: 18px;
+              height: 18px;
+              margin-top: -2px;
+              margin-right: 5px;
+              border: 2px solid #666;
+              border-radius: 2px;
+              transition: 240ms;
+            }
           }
           span {
             font-size: 13px;

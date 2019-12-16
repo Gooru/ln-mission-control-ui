@@ -25,6 +25,9 @@ export default class LearningMap extends Vue {
   public competency!: string;
 
   @Prop()
+  private userId!: string;
+
+  @Prop()
   private learningMapData!: any;
 
   private contentWiseCount!: any;

@@ -4,7 +4,10 @@ import LearnerProficiency from '@/components/proficiency/learner-proficiency/lea
 import FacetsInfoPanel from '@/components/proficiency/facets-info-panel/facets-info-panel';
 import MonthYearPicker from '@/components/selector/month-year-picker/month-year-picker';
 import TaxonomyFilter from '@/components/selector/taxonomy-filter/taxonomy-filter';
+import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import { SubjectModel } from '@/models/taxonomy/subject';
+import { User } from '@/models/profile/user';
+import { profileAPI } from '@/providers/apis/profile/profile';
 import moment from 'moment';
 
 @Component({
@@ -15,10 +18,15 @@ import moment from 'moment';
     'month-year-picker': MonthYearPicker,
     'learner-proficiency': LearnerProficiency,
     'taxonomy-filter': TaxonomyFilter,
+    'google-material-icon': GoogleMaterialIcon,
   },
 })
 
 export default class LearnerFacetsProficiency extends Vue {
+
+  private get learnerId() {
+    return this.$route.params.id;
+  }
 
   public activeMonth: string = moment().format('MM');
 
@@ -34,10 +42,16 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private activeSubject!: SubjectModel;
 
+  private learner: User = {};
+
   public onChageTimeline(timeline: string) {
     const component = this;
     component.activeYear = moment(timeline).format('YYYY');
     component.activeMonth = moment(timeline).format('MM');
+  }
+
+  private created() {
+    this.loadUserData();
   }
 
   private onSelectSubject(subject: SubjectModel) {
@@ -46,11 +60,22 @@ export default class LearnerFacetsProficiency extends Vue {
     this.isShowFacetsProficiency = false;
   }
 
+  private onClickBack() {
+    this.$router.back();
+  }
+
   private backAction() {
     this.isShowFacetsProficiency = true;
   }
 
   private listActiveFacets(facets: SubjectModel[]) {
     this.activeFacets = facets;
+  }
+
+  private loadUserData() {
+    const component = this;
+    profileAPI.fetchUserProfiles(component.learnerId).then((userProfile: User[]) => {
+      component.learner = userProfile[0];
+    });
   }
 }

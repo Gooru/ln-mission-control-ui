@@ -2,12 +2,15 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 import LearnerProficiencyChart from '@/components/charts/learner-proficiency-chart/learner-proficiency-chart';
 import SubjectInfoPanel from '@/components/proficiency/subject-info-panel/subject-info-panel';
 import DomainsListPanel from '@/components/proficiency/domains-list-panel/domains-list-panel';
+import DomainInfoPanel from '@/components/proficiency/domain-info-panel/domain-info-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import MonthYearPicker from '@/components/selector/month-year-picker/month-year-picker';
 import { SubjectModel } from '@/models/taxonomy/subject';
+import { DomainModel } from '@/models/proficiency/domain';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
 import axios from 'axios';
+import moment from 'moment';
 
 @Component({
   name: 'learner-proficiency',
@@ -17,6 +20,7 @@ import axios from 'axios';
     'google-material-icon': GoogleMaterialIcon,
     'subject-info-panel': SubjectInfoPanel,
     'month-year-picker': MonthYearPicker,
+    'domain-info-panel': DomainInfoPanel,
   },
 })
 export default class LearnerProficiency extends Vue {
@@ -50,6 +54,19 @@ export default class LearnerProficiency extends Vue {
 
   @Prop()
   private activeTimeline!: string;
+
+  @Prop()
+  private userId!: string;
+
+  private activeDomainInfo!: DomainModel;
+
+  private isShowDomainInfo: boolean = false;
+
+  @Prop()
+  private month: string = moment().format('MM');
+
+  @Prop()
+  private year: string = moment().format('YYYY');
 
   public created() {
     this.loadTaxonomyData();
@@ -91,6 +108,15 @@ export default class LearnerProficiency extends Vue {
     //     (category: any) => category.id === component.defaultCategoryId,
     //   );
     // }));
+  }
+
+  private onSelectDomain(domain: DomainModel) {
+    this.activeDomainInfo = domain;
+    this.isShowDomainInfo = true;
+  }
+
+  private onCloseDomainInfoPanel() {
+    this.isShowDomainInfo = false;
   }
 
   private backAction() {
