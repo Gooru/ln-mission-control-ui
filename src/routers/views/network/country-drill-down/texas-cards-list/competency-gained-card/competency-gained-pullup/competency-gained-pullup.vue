@@ -50,8 +50,8 @@
                 <div class="panel-body-center-section">
                     <div class="country-header">
                          <div class="country-header-container">
-                             <span @click="levelBack"><material-icon icon="arrow_upward" /></span>  
-                             State of Texas
+                             <span @click="levelBack" v-if="!isFirstBreadCrumb"><material-icon icon="arrow_upward" /></span>  
+                             {{isFirstBreadCrumb ? 'state' : (breadCrumb[breadCrumb.length - 2] ? breadCrumb[breadCrumb.length - 2] .name : 'district') }} of {{isFirstBreadCrumb ? countryData.name : breadCrumb[breadCrumb.length -1].name }}
                          </div>
                     </div>
                     <div class="country-progress-bar" v-if="subjectsList.length && performanceData.length">

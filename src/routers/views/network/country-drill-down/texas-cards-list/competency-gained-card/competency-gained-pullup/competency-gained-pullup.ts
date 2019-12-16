@@ -30,6 +30,8 @@ export default class CompetencyGainedPullup extends Vue {
 
     private breadCrumb: any = [];
 
+    private isFirstBreadCrumb: boolean = true;
+
     get progressPercent() {
         const total = this.totalCompetencyGained;
         const completed: number = total / 100 * getSum(this.performanceData, 'inprogressCompetencies') || 0;
@@ -92,13 +94,18 @@ export default class CompetencyGainedPullup extends Vue {
 
     private onSelectLevel(level: any) {
         this.breadCrumb.push(level);
+        this.isFirstBreadCrumb = this.breadCrumb[this.breadCrumb.length - 1] ? false : true;
         this.$emit('onSelectLevel', level);
     }
 
     private levelBack() {
         this.breadCrumb.pop();
-        const selectedLevel = this.breadCrumb.length ? this.breadCrumb[this.breadCrumb.length - 1] : null;
-        this.$emit('onSelectLevel', selectedLevel);
+        if (!this.isFirstBreadCrumb) {
+            this.isFirstBreadCrumb = this.breadCrumb[this.breadCrumb.length - 1] ? false : true;
+            const selectedLevel = this.breadCrumb.length ? this.breadCrumb[this.breadCrumb.length - 1] : null;
+            this.$emit('onSelectLevel', selectedLevel);
+        }
+
     }
 
     private onSelectSubject(subject: any) {

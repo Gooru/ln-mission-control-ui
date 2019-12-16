@@ -1,0 +1,53 @@
+{
+	"01_2019": {
+        "user_count": 0,
+        "avg_count": "12m 30s"
+	 },
+	 "02_2019": {
+		"user_count": 242,
+        "avg_count": "20m 10s"
+	 },
+	 "03_2019": {
+		"user_count": 0,
+        "avg_count": "0m"
+	 },
+	 "04_2019": {
+        "user_count": 0,
+        "avg_count": "0m"
+	 },
+	 "05_2019" : {
+		"user_count": 0,
+        "avg_count": "40m"
+	 },
+	 "06_2019" : {
+		"user_count": 0,
+        "avg_count": "30m 3s"
+	 },
+	 "07_2019" : {
+		"user_count": 758,
+        "avg_count": "10m 40s"
+	 },
+	 "08_2019" : {
+		"user_count": 1723,
+        "avg_count": "20m 3s"
+	 },
+	 "09_2019" : {
+		"user_count": 0,
+        "avg_count": "30m 2s"
+	 },
+	 "10_2019": {
+		"user_count": 0,
+        "avg_count": "40m"
+	 },
+	 "11_2019" : {
+		"user_count": 1518,
+        "avg_count": "0m"
+	 },
+	 "12_2019" : {
+		"user_count": 537,
+        "avg_count": "10m"
+	 },
+	 "total" : {
+				"user_count": 4778
+	 }
+}

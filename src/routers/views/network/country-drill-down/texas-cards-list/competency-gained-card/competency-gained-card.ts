@@ -52,6 +52,7 @@ export default class CompentencyGainedCard extends Vue {
     private dataList: any = {};
 
     private selectedLevel: any;
+
     @Prop()
     private competencySelectLevel: any;
 
@@ -65,11 +66,26 @@ export default class CompentencyGainedCard extends Vue {
 
     private totalPerformance: number = 0;
 
+    private totalCompetency: number = 0;
+
+    private totalPerformances: number = 0;
+
+    private isFromCompetency: boolean = false;
+
 
 
     @Watch('subjectsList')
     private changeSubject(value: any) {
        this.initLoader();
+       this.isFromCompetency = true;
+    }
+
+    @Watch('competencySelectLevel')
+    private changeFromCompetencyLevel(value: any) {
+        this.isFromCompetency = true;
+        if (this.subjectsList.length) {
+            this.loadPerformanceData(value);
+        }
     }
     // ------------------------------------------------------------
     // Actions
@@ -90,17 +106,21 @@ export default class CompentencyGainedCard extends Vue {
         this.loadPerformanceData(this.selectedLevel);
     }
 
+    private toggleCompetencyData() {
+        if (this.subjectsList.length) {
+            this.isFromCompetency = false;
+            this.isShowCompetency = !this.isShowCompetency;
+            if (this.isShowCompetency) {
+                this.initLoader();
+            }
+        }
+    }
+
     // ---------------------------------------------------------------
     // Hooks
 
     private created() {
         this.initLoader();
-    }
-
-    private toggleCompetencyData() {
-        if (this.subjectsList.length) {
-            this.isShowCompetency = !this.isShowCompetency;
-        }
     }
 
     // ----------------------------------------------------------------
@@ -152,6 +172,10 @@ export default class CompentencyGainedCard extends Vue {
             this.totalPerformance = performance.overallStats.averagePerformance || 0;
             this.performanceData = performance;
             this.competencyData = competency;
+            if (this.isFromCompetency) {
+                this.totalCompetency = competency.overallStats.totalCompetencies || 0;
+                this.totalPerformances = performance.overallStats.averagePerformance || 0;
+            }
         }));
     }
 
@@ -161,6 +185,9 @@ export default class CompentencyGainedCard extends Vue {
             this.selectedSubject.isActive = true;
             this.selectedLevel = this.countryData;
             this.loadPerformanceData(this.selectedLevel);
+        } else {
+            this.totalCompetency =  0;
+            this.totalPerformances = 0;
         }
     }
 
