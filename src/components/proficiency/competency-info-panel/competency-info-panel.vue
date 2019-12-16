@@ -29,7 +29,9 @@
         </div>
       </div>
       <div class="active-tab-contents">
-        <component v-bind:is="activeTab.component" v-bind="{competency: competency, learningMapData: learningMapData, statsBucket: 'competency', userId: userId}" />
+        <component
+        v-bind:is="activeTab.component"
+        v-bind="{competency: competency, learningMapData: learningMapData, statsBucket: 'competency', userId: userId, month: month, year: year}" />
       </div>
     </div>
     <!-- <learning-map v-if="competency" :competencyCode = "competency.competencyCode" /> -->

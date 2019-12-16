@@ -5,6 +5,7 @@ import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-p
 import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
+import moment from 'moment';
 
 @Component({
   name: 'subject-info-panel',
@@ -47,6 +48,12 @@ export default class SubjectInfoPanel extends Vue {
       component: 'preferences-panel',
     },
   ];
+
+  @Prop()
+  private month: string = moment().format('MM');
+
+  @Prop()
+  private year: string = moment().format('YYYY');
 
   @Prop()
   private userId!: string;

@@ -28,10 +28,10 @@ export default class MindsetsListPanel extends Vue {
   private userId!: string;
 
   @Prop()
-  private month: string = moment().format('MM');
+  private month!: string;
 
   @Prop()
-  private year: string = moment().format('YYYY');
+  private year!: string;
 
   private learnerVectors: LearnerVector[] = [];
 

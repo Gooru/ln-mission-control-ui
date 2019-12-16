@@ -16,7 +16,9 @@
       v-if="isShowCompetencyPanel"
       :competency="activeCompetency"
       @onCloseCompetencyInfoPanel = "onCloseCompetencyInfoPanel"
-      :userId="userId"/>
+      :userId="userId"
+      :month="month"
+      :year="year"/>
   </div>
 </template>
 

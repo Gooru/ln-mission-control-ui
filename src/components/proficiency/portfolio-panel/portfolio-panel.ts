@@ -47,10 +47,10 @@ export default class PortfolioPanel extends Vue {
   private userId!: string;
 
   @Prop()
-  private month: string = moment().format('MM');
+  private month!: string;
 
   @Prop()
-  private year: string = moment().format('YYYY');
+  private year!: string;
 
   private activityType = 'assessment';
 
@@ -68,6 +68,10 @@ export default class PortfolioPanel extends Vue {
 
   @Prop()
   private statsBucket!: string;
+
+  get isNoPortfolioItems() {
+    return !(this.portfolioContents.length || this.portfolioStats.length);
+  }
 
   @Watch('subject')
   public onChangeSubject() {

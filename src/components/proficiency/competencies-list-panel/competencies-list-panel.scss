@@ -1,6 +1,8 @@
 #competencies-list-panel {
   display: flex;
   flex-wrap: wrap;
+  background-color: $white;
+  height: 100%;
   .competency-info {
     height: 180px;
     width: 180px;

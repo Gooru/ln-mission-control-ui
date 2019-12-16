@@ -12,7 +12,7 @@
       display: grid;
       grid-template-columns: auto auto;
       justify-content: left;
-      column-gap: 5px;
+      column-gap: 10px;
       align-items: top;
       cursor: pointer;
       width: max-content;
@@ -26,7 +26,17 @@
         align-content: center;
       }
       .subject-title {
-        line-height: 40px;
+        display: grid;
+        align-items: center;
+        grid-template-rows: 20px 20px;
+        .title {
+          font-size: 18px;
+          color: #000;
+        }
+        .total-competencies {
+          font-size: 14px;
+          text-transform: uppercase;
+        }
       }
     }
     .toggle-graph-view {
@@ -57,6 +67,7 @@
     .grade-selector {
       position: relative;
       margin-right: 15px;
+      padding-left: 8px;
       // max-height: 300px;
 
       .grade-label {
@@ -65,6 +76,12 @@
         font-size: 13px;
         text-transform: uppercase;
         font-weight: bold;
+        display: grid;
+        // grid-template-columns: auto auto;
+        align-items: center;
+        i {
+          font-size: 16px;
+        }
       }
       .taxonomy-grade-list {
         width: max-content;
@@ -102,6 +119,8 @@
       // min-width: 300px;
       // max-width: 500px;
       width: inherit;
+      .scrollable-chart {
+      }
       #chart-area {
         width: inherit;
         transform: rotateX(180deg);
@@ -113,6 +132,14 @@
         overflow-y: auto;
         svg#chart-graph {
           width: max-content;
+
+          .non-active {
+            opacity: 0.2;
+          }
+
+          .active {
+            opacity: 1;
+          }
           #cells-group {
             #competency-cell {
               stroke: #fff;
@@ -138,13 +165,13 @@
         }
       }
       .domains-seq-list {
-        margin: auto;
         display: flex;
         text-align: center;
         height: 30px;
         line-height: 30px;
         .domain-seq {
           font-weight: bold;
+          cursor: pointer;
         }
       }
     }

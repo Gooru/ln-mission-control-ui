@@ -1,5 +1,7 @@
 #preferences-panel {
   padding: 15px;
+  height: 100%;
+  overflow-y: auto;
   .preference-info {
     display: grid;
     margin-bottom: 12px;

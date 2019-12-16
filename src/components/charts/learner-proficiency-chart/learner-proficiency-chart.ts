@@ -76,8 +76,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   private cellHeight: number = 10;
 
-  @Prop()
-  private selectedCompetency!: any;
+  private activeCompetency!: any;
 
   private maxDomainSize: number = 0;
 
@@ -97,9 +96,11 @@ export default class LearnerProficiencyChart extends Vue {
   @Prop()
   private year: string = moment().format('YYYY');
 
+  private totalCompetencies: number = 0;
+
   public created() {
-    this.loadChartData();
     this.loadTaxonomyGrades();
+    this.loadChartData();
   }
 
   @Watch('subjectCode')
@@ -131,7 +132,14 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   public onSelectDomain(domain: DomainModel) {
+    const component = this;
+    if (!domain.competencies) {
+      domain = this.chartData.find( (domainChart: DomainModel) => {
+        return domainChart.domainCode === domain.domainCode;
+      });
+    }
     this.$emit('onSelectDomain', domain);
+    component.highlightDomainBar(domain.domainSeq);
   }
 
   public loadChartData() {
@@ -167,6 +175,7 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     const chartData: any = [];
     let maxDomainSize = 0;
+    let totalCompetencies = 0;
     domainCoOrdinates.map( (domainCoOrdinate: any) => {
       const domainMatrixData = domainCompetencyMatrix.find(
         (domainMatrix: any) => domainMatrix.domainCode === domainCoOrdinate.domainCode,
@@ -182,6 +191,7 @@ export default class LearnerProficiencyChart extends Vue {
         competencies: [],
       };
       maxDomainSize = competencies.length > maxDomainSize ? competencies.length : maxDomainSize;
+      totalCompetencies += competencies.length;
       competencies.map( (competency: CompetencyModel) => {
         const competencyData = {
           domainName,
@@ -208,6 +218,7 @@ export default class LearnerProficiencyChart extends Vue {
       chartData.push(domainChartData);
     });
     component.maxDomainSize = maxDomainSize;
+    component.totalCompetencies = totalCompetencies;
     return chartData;
   }
 
@@ -271,7 +282,8 @@ export default class LearnerProficiencyChart extends Vue {
     const cellWidth = component.cellWidth;
     const cellHeight = component.cellHeight;
     let competencySeq = -1;
-    const competencyCells = svg.selectAll('.competency').data(domainChartData.competencies);
+    const domainGroup = svg.append('g').attr('id', `domain-group-${domainChartData.domainSeq}`);
+    const competencyCells = domainGroup.selectAll('.competency').data(domainChartData.competencies);
     competencyCells
       .enter()
       .append('rect')
@@ -455,7 +467,19 @@ export default class LearnerProficiencyChart extends Vue {
 
   public selectCompetency(competency: any) {
     const component = this;
-    component.selectedCompetency = competency;
+    // component.activeCompetency = competency;
+    if (component.isShowExpandedGraph) {
+      this.$emit('onSelectCompetency', competency);
+    } else {
+      const activeDomain = component.chartData.find( (domain: DomainModel) => {
+        return domain.domainCode === competency.domainCode;
+      });
+      component.onSelectDomain(activeDomain);
+    }
+  }
+
+  private onClearGrade() {
+    d3.select('#gradeline-group').remove();
   }
 
   @Watch('month')
@@ -485,6 +509,20 @@ export default class LearnerProficiencyChart extends Vue {
       component.joinSkylineVerticalPoints(elementIndex, linePoint);
     });
     component.addSkylineBackshadow();
+  }
+
+  private highlightDomainBar(seq: number) {
+    const component = this;
+    component.domainCoOrdinates.forEach((domainCoOrdinate: any) => {
+      const domainBar: any = component.$el.querySelector(`#domain-group-${domainCoOrdinate.domainSeq}`);
+      domainBar.classList.remove('non-active', 'active');
+      domainBar.classList.add('non-active');
+    });
+    if (seq) {
+      const activeDomainBar: any = component.$el.querySelector(`#domain-group-${seq}`);
+      activeDomainBar.classList.add('active');
+      activeDomainBar.classList.remove('non-active');
+    }
   }
 
 }

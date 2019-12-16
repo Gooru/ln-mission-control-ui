@@ -7,6 +7,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
 import { searchAPI } from '@/providers/apis/search/search';
+import moment from 'moment';
 
 @Component({
   name: 'competency-info-panel',
@@ -52,10 +53,16 @@ export default class CompetencyInfoPanel extends Vue {
       title: 'Metadata',
     },
     {
-      title: 'Learning Map',
+      title: 'LearningMap',
       component: 'learning-map',
     },
   ];
+
+  @Prop()
+  private month!: string;
+
+  @Prop()
+  private year!: string;
 
   private learningMapData!: any;
 

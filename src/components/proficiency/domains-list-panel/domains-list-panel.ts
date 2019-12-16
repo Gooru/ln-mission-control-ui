@@ -15,6 +15,10 @@ import axios from 'axios';
 })
 export default class DomainsListPanel extends Vue {
 
+  get subjectCode() {
+    return this.subject ? this.subject.code : 'K12.MA';
+  }
+
   @Prop()
   private subject!: SubjectModel;
 
@@ -38,9 +42,11 @@ export default class DomainsListPanel extends Vue {
 
   private isLoading: boolean = false;
 
-  get subjectCode() {
-    return this.subject ? this.subject.code : 'K12.MA';
-  }
+  @Prop()
+  private month!: string;
+
+  @Prop()
+  private year!: string;
 
   public created() {
     this.loadProficiencyData();
@@ -134,6 +140,8 @@ export default class DomainsListPanel extends Vue {
     const params = {
       user: this.userId,
       subject: this.subjectCode,
+      month: Number(this.month),
+      year: Number(this.year),
     };
     return competencyAPI.fetchUserDomainCompetencyMatrix(params);
   }
@@ -143,6 +151,11 @@ export default class DomainsListPanel extends Vue {
       subject: this.subjectCode,
     };
     return competencyAPI.getCompetencyMatrixCoordinates(params);
+  }
+
+  @Watch('month')
+  private onChageTimeline() {
+    this.loadProficiencyData();
   }
 
 }

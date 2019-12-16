@@ -25,6 +25,12 @@ export default class CompetenciesListPanel extends Vue {
   @Prop()
   private userId!: string;
 
+  @Prop()
+  private month!: string;
+
+  @Prop()
+  private year!: string;
+
   public onSelectCompetency(competency: any) {
     const component = this;
     component.activeCompetency = competency;

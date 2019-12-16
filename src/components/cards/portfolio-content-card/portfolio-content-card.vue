@@ -21,7 +21,7 @@
       </div>
       <div class="activity-metadata">
         <div class="last-accessed">
-          <span>Last Accessed on</span>
+          <span>Last Accessed on </span>
           <span>{{content.activityTimestamp | formatDate}}</span>
         </div>
         <div class="content-count">
