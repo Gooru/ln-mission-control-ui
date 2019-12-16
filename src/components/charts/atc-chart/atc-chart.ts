@@ -97,7 +97,7 @@ export default class AtcChart extends Vue {
       .attr('x', -7)
       .attr('y', -7)
       .attr({
-        'xlink:href'(d) {
+        'xlink:href'(d: any) {
           return d.thumbnail;
         },
         'width': 24,
