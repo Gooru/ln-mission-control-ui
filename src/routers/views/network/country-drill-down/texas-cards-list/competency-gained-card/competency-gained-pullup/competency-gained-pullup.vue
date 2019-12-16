@@ -50,7 +50,8 @@
                 <div class="panel-body-center-section">
                     <div class="country-header">
                          <div class="country-header-container">
-                             <span @click="levelBack"><material-icon icon="arrow_upward" /></span>  State of Texas
+                             <span @click="levelBack"><material-icon icon="arrow_upward" /></span>  
+                             State of Texas
                          </div>
                     </div>
                     <div class="country-progress-bar" v-if="subjectsList.length && performanceData.length">
