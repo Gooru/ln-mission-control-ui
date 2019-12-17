@@ -106,6 +106,30 @@ export class PerfomanceAPI {
         });
     }
 
+    public fetchCardsDatabyStateLevel(params: any) {
+        const endpoint = `${this.namespaceStub}/stats/countries/${params.country_id}/states/${params.state_id}.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return response.data;
+        });
+    }
+
+    public fetchCardsDatabyDistrictLevel(params: any) {
+        const endpoint = `${this.namespaceStub}/stats/groups/${params.group_id}.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return response.data;
+        });
+    }
+
+    public fetchCardsDatabySchoolLevel(params: any) {
+        const endpoint = `${this.namespaceStub}/stats/schools/${params.school_id}.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return response.data;
+        });
+    }
+
 
 }
 

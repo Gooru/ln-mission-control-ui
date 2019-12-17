@@ -1,5 +1,6 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import { sortByProperty } from '@/utils/utils';
 
 
 @Component({
@@ -25,9 +26,15 @@ export default class TexasDistrictCard extends Vue {
     }
 
     get cardData() {
-        const cardData = this.dataList.drilldown ? this.dataList.drilldown : this.dataList;
-        return cardData.sort((a: any, b: any) =>
-         Math.abs(b.completedCompetencies) - Math.abs(a.completedCompetencies));
+        let cardData = this.dataList.drilldown ? this.dataList.drilldown : this.dataList;
+        cardData = cardData.sort((a: any, b: any) => {
+            if (a.name < b.name) { return -1; }
+            if (a.name > b.name) { return 1; }
+            if (a.fullName < b.fullName) { return -1; }
+            if (a.fullName > b.fullName) { return 1; }
+            return 0;
+        });
+        return cardData.sort((a: any, b: any) => Math.abs(b.completedCompetencies) - Math.abs(a.completedCompetencies));
     }
 
 

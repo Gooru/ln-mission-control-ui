@@ -4,6 +4,8 @@
     padding: 10px;
     box-shadow: 0 0 10px $light-300;
     min-height: 220px;
+    max-height: 220px;
+    overflow-y: auto;
     .panel-heading {
       .header-title {
         padding: 0;
@@ -42,6 +44,11 @@
         .sub-content-title {
           font-size: 12px;
           text-transform: capitalize;
+          overflow: hidden;
+          width: 260px;
+          text-overflow: ellipsis;
+          font-weight: bold;
+          white-space: nowrap;
         }
       }
     }
