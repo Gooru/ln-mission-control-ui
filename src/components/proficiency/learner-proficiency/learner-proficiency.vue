@@ -14,6 +14,8 @@
             :userId="userId"
             :month="month"
             :year="year"
+            :isDomainActive="isShowDomainInfo"
+            :isCompetencyActive="isShowCompetencyPanel"
             @backAction="backAction"
             @onSelectDomain="onSelectDomain"
             @onSelectCompetency="onSelectCompetency"/>

@@ -38,7 +38,9 @@
       :subject="subject"
       :classification="classification"
       @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"
-      :userId="userId"/>
+      :userId="userId"
+      :month="month"
+      :year="year"/>
   </div>
 </template>
 

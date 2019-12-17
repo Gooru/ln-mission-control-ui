@@ -50,10 +50,10 @@ export default class SubjectInfoPanel extends Vue {
   ];
 
   @Prop()
-  private month: string = moment().format('MM');
+  private month!: string;
 
   @Prop()
-  private year: string = moment().format('YYYY');
+  private year!: string;
 
   @Prop()
   private userId!: string;

@@ -44,6 +44,8 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private learner: User = {};
 
+  private isShowExpandedFacetChart: boolean = false;
+
   public onChageTimeline(timeline: string) {
     const component = this;
     component.activeYear = moment(timeline).format('YYYY');

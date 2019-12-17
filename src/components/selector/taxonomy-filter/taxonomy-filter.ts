@@ -34,6 +34,13 @@ export default class TaxonomyFilter extends Vue {
 
   private selectedSubjects: SubjectModel[] = [];
 
+  private defaultOrderOfFacets: any = [
+    'K12.SS',
+    'K12.MA',
+    'K12.ELA',
+    'K12.SC',
+  ];
+
   // ----------------------------------------------------------------
   // Hooks
 
@@ -85,8 +92,13 @@ export default class TaxonomyFilter extends Vue {
         taxonomySubjects.forEach((subject: SubjectModel) => {
           subject.isActive = true;
         });
-        component.selectedSubjects = (JSON.parse(JSON.stringify(taxonomySubjects)));
-        component.$emit('listActiveFacets', taxonomySubjects);
+        const parsedSubjects =  (JSON.parse(JSON.stringify(taxonomySubjects)));
+        component.defaultOrderOfFacets.map((subjectCode: string) => {
+          component.selectedSubjects.push(
+            parsedSubjects.find( (subject: any) => subject.code === subjectCode),
+          );
+        });
+        component.$emit('listActiveFacets', component.selectedSubjects);
       });
       component.activeClassification = defaultClassification;
     });

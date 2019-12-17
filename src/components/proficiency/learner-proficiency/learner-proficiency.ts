@@ -69,10 +69,10 @@ export default class LearnerProficiency extends Vue {
   private isShowCompetencyPanel: boolean = false;
 
   @Prop()
-  private month: string = moment().format('MM');
+  private month!: string;
 
   @Prop()
-  private year: string = moment().format('YYYY');
+  private year!: string;
 
   public created() {
     this.loadTaxonomyData();
