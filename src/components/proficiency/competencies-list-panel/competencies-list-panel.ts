@@ -35,6 +35,7 @@ export default class CompetenciesListPanel extends Vue {
     const component = this;
     component.activeCompetency = competency;
     component.isShowCompetencyPanel = true;
+    component.$emit('onSelectCompetency', competency);
   }
 
   public onCloseCompetencyInfoPanel() {

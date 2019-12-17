@@ -66,6 +66,11 @@ export default class CompetencyInfoPanel extends Vue {
 
   private learningMapData!: any;
 
+  @Watch('competency')
+  private onChangeCompetency() {
+    this.loadLearningMapContents();
+  }
+
   private created() {
     this.loadLearningMapContents();
   }

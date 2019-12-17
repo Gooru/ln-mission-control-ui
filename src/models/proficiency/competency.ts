@@ -8,4 +8,5 @@ export interface CompetencyModel {
   competencyStatus?: number;
   domainCode?: string;
   domainName?: string;
+  domainSeq?: number;
 }

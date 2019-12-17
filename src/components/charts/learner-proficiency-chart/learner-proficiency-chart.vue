@@ -40,6 +40,8 @@
         </div>
       </div>
     </div>
+    <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus]" :style="activeCompetencyStyle">
+    </div>
   </div>
 </template>
 

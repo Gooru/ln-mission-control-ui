@@ -1,14 +1,6 @@
 <template>
   <div id="learner-container">
       <div class="learner-section-container">
-          <div class="learner-section-header">
-            <h4 class="learner-section-header-title">
-              1.3 Million Students | 31 Countries
-            </h4>
-            <span>
-              active in the last 365 days
-            </span>
-          </div>
           <div class="learner-table-section-container">
              <div class="learner-table-section">
                <div class="learner-table-seaction-header">

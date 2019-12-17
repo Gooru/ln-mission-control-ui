@@ -148,6 +148,11 @@ export default class PortfolioPanel extends Vue {
     return requestParams;
   }
 
+  @Watch('competency')
+  private onChangeCompetency() {
+    this.loadData();
+  }
+
   private onSelectPortfolioStat(portfolioStat: PortfolioDomainStat | PortfolioCompetencyStat | PortfolioSubjectStat) {
     this.$emit('onSelectPortfolioStat', portfolioStat);
   }

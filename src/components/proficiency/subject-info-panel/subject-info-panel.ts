@@ -57,4 +57,12 @@ export default class SubjectInfoPanel extends Vue {
 
   @Prop()
   private userId!: string;
+
+  public onSelectDomain(domain: any) {
+    this.$emit('onSelectDomain', domain);
+  }
+
+  public onSelectCompetency(competency: any) {
+    this.$emit('onSelectCompetency', competency);
+  }
 }

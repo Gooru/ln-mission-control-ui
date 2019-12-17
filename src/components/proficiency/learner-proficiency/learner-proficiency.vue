@@ -16,6 +16,8 @@
             :year="year"
             :isDomainActive="isShowDomainInfo"
             :isCompetencyActive="isShowCompetencyPanel"
+            :activeDomainSeq="activeDomainSeq"
+            :activeCompetency="activeCompetency"
             @backAction="backAction"
             @onSelectDomain="onSelectDomain"
             @onSelectCompetency="onSelectCompetency"/>
@@ -30,15 +32,16 @@
           :userId="userId"
           :month="month"
           :year="year"
-          @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"/>
+          @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"
+          @onSelectCompetency="onSelectCompetency"/>
 
         <competency-info-panel
           v-else-if="isShowCompetencyPanel"
           :competency="activeCompetency"
-          @onCloseCompetencyInfoPanel = "onCloseCompetencyInfoPanel"
           :userId="userId"
           :month="month"
-          :year="year"/>
+          :year="year"
+          @onCloseCompetencyInfoPanel = "onCloseCompetencyInfoPanel"/>
 
         <subject-info-panel
           v-else
@@ -46,7 +49,9 @@
           :classification="activeCategory"
           :userId="userId"
           :month="month"
-          :year="year" />
+          :year="year"
+          @onSelectDomain="onSelectDomain"
+          @onSelectCompetency="onSelectCompetency"/>
       </div>
     </div>
   </div>
