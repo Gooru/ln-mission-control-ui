@@ -8,6 +8,11 @@ import moment from 'moment';
 
 @Component({
   name: 'learner-across-facets-chart',
+  filters: {
+    extractClassification(subjectCode: string) {
+      return subjectCode ? subjectCode.split('.')[0] : '';
+    },
+  },
 })
 export default class LearnerAcrossFacetsChart extends Vue {
 
@@ -43,6 +48,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
   private isShowTooltip: boolean = false;
 
+  private facetWidth: number = 40;
+
+  @Prop()
+  private isExpandedMode: boolean = false;
+
   @Watch('month')
   public onChageTimeline() {
     this.skylinePoints = [];
@@ -57,6 +67,16 @@ export default class LearnerAcrossFacetsChart extends Vue {
   private onUpdateFacets() {
     this.skylinePoints = [];
     this.loadChartData();
+  }
+
+  @Watch('isExpandedMode')
+  private onToggleFacetChart() {
+    const component = this;
+    this.skylinePoints = [];
+    component.loadChartData();
+    // Scroll to bottom of the chart while in full view
+    const chartContainer = component.$el.querySelector('#facets-chart-view') as HTMLElement;
+    chartContainer.scrollTop = chartContainer.scrollHeight;
   }
 
   private loadFacetsCompetencyMatrixData() {
@@ -143,14 +163,27 @@ export default class LearnerAcrossFacetsChart extends Vue {
   private drawFacetsChart(facetsMatrix: FacetMatrix[]) {
     const component = this;
     d3.select('#chart-container').remove();
+
     const chartViewElement = component.$el.querySelector('#facets-chart-view') as HTMLElement;
     let chartWidth = chartViewElement.offsetWidth - 60;
-    const chartHeight = chartViewElement.offsetHeight - 40;
+    let chartHeight = chartViewElement.offsetHeight - 40;
     const totalFacets = facetsMatrix.length || 0;
+
+    // Set vitual height of chart based on expand/collapse mode
+    if (this.isExpandedMode) {
+      let totalCompetencies: number | any = 0;
+      facetsMatrix.map((facet) => {
+        totalCompetencies += facet.totalCompetenciesCount;
+      });
+      const meanValue = totalCompetencies / facetsMatrix.length;
+      chartHeight = meanValue + (meanValue / 100);
+    }
+
     // const facetColumnWidth = Number(chartWidth / totalFacets);
     const facetColumnWidth = component.maxFacetWidth * totalFacets > chartWidth ?
      chartWidth / totalFacets :
       component.maxFacetWidth;
+    component.facetWidth = facetColumnWidth;
     chartWidth = facetColumnWidth * totalFacets > chartWidth ? chartWidth : facetColumnWidth * totalFacets;
     const svg = d3.select('#facets-chart-view')
       .append('svg').attr('id', 'chart-container')
@@ -158,19 +191,24 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const facetsGroup = svg.append('g').attr('id', 'facets-group');
     const skylineGroup = svg.append('g').attr('id', 'skyline-group');
     facetsMatrix.forEach((facetMatrix: FacetMatrix, seq: number) => {
-      component.drawFacetColumn(facetMatrix, facetColumnWidth, seq);
+      component.drawFacetColumn(facetMatrix, chartHeight, facetColumnWidth, seq);
     });
     component.drawSkyline();
   }
 
-  private drawFacetColumn(facetMatrix: FacetMatrix | any, width: number = this.maxFacetWidth, seq = 0) {
+  private drawFacetColumn(
+    facetMatrix: FacetMatrix | any,
+    chartHeight: number,
+    width: number = this.maxFacetWidth,
+    seq = 0) {
     const component = this;
     // value: number => utilized as threshold 100% of bar
     const chartHeightLevel = component.maxFacetCompetenciesCount;
     const facetsGroup = d3.select('#facets-group');
     let yAxis = 0;
     const chartViewElement: any = component.$el.querySelector('#facets-chart-view') as HTMLElement;
-    const chartHeight: number = chartViewElement.offsetHeight - 45;
+    // const chartHeight: number = chartViewElement.offsetHeight - 45;
+    chartHeight = chartHeight - 5;
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
     let height = competency.count / chartHeightLevel * 100;
     height = Number((height * chartHeight) / 100);
@@ -186,7 +224,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
         })
         .on('mousemove', (event) => {
           component.tooltipPos = {
-            left: `${width * seq + 250}px`,
+            left: `${d3.event.pageX - 90}px`,
             top: `${d3.event.pageY - 130}px`,
           };
           component.tooltipInfo = facetMatrix;

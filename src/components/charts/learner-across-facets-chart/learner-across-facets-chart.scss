@@ -2,9 +2,10 @@
   width: inherit;
   #facets-chart-view {
     width: inherit;
-    height: calc(100vh - 210px);
+    height: calc(100vh - 230px);
     background-color: #fff;
     display: grid;
+    overflow-y: auto;
     svg#chart-container {
       transform: rotateX(180deg);
       transform-style: preserve-3d;
@@ -39,6 +40,17 @@
           // filter: url(#back-shadow);
         }
       }
+    }
+  }
+
+  .facets-placeholder {
+    margin: auto;
+    display: flex;
+    grid-row-start: 2;
+    .facet-placeholder {
+      font-size: 11px;
+      color: #000;
+      text-align: center;
     }
   }
 

@@ -14,6 +14,8 @@
             :userId="userId"
             :month="month"
             :year="year"
+            :isDomainActive="isShowDomainInfo"
+            :isCompetencyActive="isShowCompetencyPanel"
             @backAction="backAction"
             @onSelectDomain="onSelectDomain"
             @onSelectCompetency="onSelectCompetency"/>
@@ -28,7 +30,6 @@
           :userId="userId"
           :month="month"
           :year="year"
-          :key="activeDomainInfo.domainCode"
           @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"/>
 
         <competency-info-panel

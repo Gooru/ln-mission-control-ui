@@ -91,10 +91,16 @@ export default class LearnerProficiencyChart extends Vue {
   private isLoading: boolean = false;
 
   @Prop()
-  private month: string = moment().format('MM');
+  private isDomainActive: boolean = false;
 
   @Prop()
-  private year: string = moment().format('YYYY');
+  private isCompetencyActive: boolean = false;
+
+  @Prop()
+  private month!: string;
+
+  @Prop()
+  private year!: string;
 
   private totalCompetencies: number = 0;
 
@@ -139,7 +145,7 @@ export default class LearnerProficiencyChart extends Vue {
       });
     }
     this.$emit('onSelectDomain', domain);
-    component.highlightDomainBar(domain.domainSeq);
+    component.toggleActiveDomainBar(domain.domainSeq);
   }
 
   public loadChartData() {
@@ -478,6 +484,13 @@ export default class LearnerProficiencyChart extends Vue {
     }
   }
 
+  @Watch('isDomainActive')
+  private onCloseDomain() {
+    if (!this.isDomainActive) {
+      this.toggleActiveDomainBar(0, false);
+    }
+  }
+
   private onClearGrade() {
     d3.select('#gradeline-group').remove();
   }
@@ -511,14 +524,16 @@ export default class LearnerProficiencyChart extends Vue {
     component.addSkylineBackshadow();
   }
 
-  private highlightDomainBar(seq: number) {
+  private toggleActiveDomainBar(seq: number, isActive: boolean = true) {
     const component = this;
     component.domainCoOrdinates.forEach((domainCoOrdinate: any) => {
       const domainBar: any = component.$el.querySelector(`#domain-group-${domainCoOrdinate.domainSeq}`);
       domainBar.classList.remove('non-active', 'active');
-      domainBar.classList.add('non-active');
+      if (isActive) {
+        domainBar.classList.add('non-active');
+      }
     });
-    if (seq) {
+    if (seq > 0) {
       const activeDomainBar: any = component.$el.querySelector(`#domain-group-${seq}`);
       activeDomainBar.classList.add('active');
       activeDomainBar.classList.remove('non-active');

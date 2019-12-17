@@ -26,6 +26,9 @@
             <div class="student-name">{{learner.firstName}}'s Complete Skyline</div>
             <div class="skyline-info">Each bar represent a subject within the relevant category</div>
           </div>
+          <div class="facet-toggle" @click="isShowExpandedFacetChart = !isShowExpandedFacetChart">
+            <google-material-icon :icon="isShowExpandedFacetChart ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedFacetChart ? 'Compressed' : 'Expanded'}} Chart
+          </div>
           <div class="filter-container">
             <taxonomy-filter @listActiveFacets="listActiveFacets" />
           </div>
@@ -36,14 +39,16 @@
           :year="activeYear"
           @onSelectSubject="onSelectSubject"
           :facets="activeFacets"
-          :userId="learnerId"/>
+          :userId="learnerId"
+          :isExpandedMode="isShowExpandedFacetChart"/>
         </div>
       </div>
       <div class="facets-right-panel">
         <facets-info-panel
         :userId="learnerId"
         :month="activeMonth"
-        :year="activeYear"/>
+        :year="activeYear"
+        @onSelectPortfolioStat="onSelectPortfolioStat"/>
       </div>
     </div>
     <div v-else class="subject-proficiency-body">
