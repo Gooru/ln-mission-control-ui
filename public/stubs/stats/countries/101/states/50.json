@@ -1,8 +1,8 @@
 {
 	"01_2019": {
         "user_count": 0,
-        "avg_count": "12m 30s",
-				"gained_comp": "10%",
+        "avg_count": "18m10 s",
+				"gained_comp": "31%",
 				"stugglingCompetency":[{
 					"code": "3.NO.1",
 					"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -63,7 +63,7 @@
 	 },
 	 "05_2019" : {
 		"user_count": 0,
-    "avg_count": "40m",
+    "avg_count": "26m 30s",
 		"gained_comp": "10%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
@@ -90,7 +90,7 @@
 	 },
 	 "06_2019" : {
 		"user_count": 0,
-    "avg_count": "30m 3s",
+    "avg_count": "26m 30s",
 		"gained_comp": "10%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
@@ -117,8 +117,8 @@
 	 },
 	 "07_2019" : {
 		"user_count": 758,
-    "avg_count": "10m 40s",
-		"gained_comp": "10%",
+    "avg_count": "26m 30s",
+		"gained_comp": "43%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -144,8 +144,8 @@
 	 },
 	 "08_2019" : {
 		"user_count": 1723,
-    "avg_count": "20m 3s",
-		"gained_comp": "10%",
+    "avg_count": "26m 30s",
+		"gained_comp": "56%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -171,8 +171,8 @@
 	 },
 	 "09_2019" : {
 		"user_count": 0,
-    "avg_count": "30m 2s",
-		"gained_comp": "10%",
+    "avg_count": "23m 05s",
+		"gained_comp": "24%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -198,8 +198,8 @@
 	 },
 	 "10_2019": {
 		"user_count": 0,
-    "avg_count": "40m",
-		"gained_comp": "10%",
+    "avg_count": "33m 41s",
+		"gained_comp": "61%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -225,8 +225,8 @@
 	 },
 	 "11_2019" : {
 		"user_count": 1518,
-    "avg_count": "0m",
-		"gained_comp": "30%",
+    "avg_count": "19m 25s",
+		"gained_comp": "51%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -251,9 +251,9 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 537,
-    "avg_count": "10m",
-		"gained_comp": "23%",
+		"user_count": 11,
+    "avg_count": "17m 02s",
+		"gained_comp": "35%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
