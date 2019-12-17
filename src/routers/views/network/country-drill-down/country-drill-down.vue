@@ -19,7 +19,7 @@
                     <texas-chart v-if="isLoaded" :countryData="countryData"  :breadcrumb="breadcrumb" v-on:onBack ="onBack" v-on:onChangeBreadcrumb="onSelectLevel" :dataList="competencyData" :seletedLevel ="seletedLevel"/>
                 </div>
                 <div class="texas-district">
-                    <texas-district-card v-if="isLoaded && ((competencyData.drilldown && competencyData.drilldown.length))" v-on:onSelectLevel="onSelectLevel" :dataList="competencyData"/>
+                    <texas-district-card v-if="isLoaded && ((competencyData.drilldown && competencyData.drilldown.length) || competencyData.length)" v-on:onSelectLevel="onSelectLevel" :dataList="competencyData"/>
                 </div>
            </div>
            <div class="texas-performance-cards">

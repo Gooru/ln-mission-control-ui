@@ -84,8 +84,14 @@ export default class CountryDrillDown extends Vue {
     }
 
     private onBack() {
-        const removedLevel = this.breadcrumb.pop();
-        this.fetchSelectLevelData(removedLevel);
+         this.breadcrumb.pop();
+         if (this.breadcrumb.length > 1) {
+            this.seletedLevel = this.breadcrumb[this.breadcrumb.length - 1];
+         } else {
+            this.seletedLevel = this.countryData;
+            this.breadcrumb = [];
+         }
+         this.fetchSelectLevelData(this.seletedLevel);
     }
 
     private onChageTimeline(date: any) {
