@@ -251,22 +251,10 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 537,
+		"user_count": 5,
     "avg_count": "31m 10s",
-		"gained_comp": "53%",
+		"gained_comp": "32%",
 		"stugglingCompetency":[{
-			"code": "3.NO.1",
-			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
-		},{
-			"code": "3.M.3",
-			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
-		},{
-			"code": "4.FD.2",
-			"name": "Develops an understanding of unit fractions"
-		},{
-			"code": "4.G.4",
-			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
-		},{
 			"code": "5.NO.4",
 			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
 		},{

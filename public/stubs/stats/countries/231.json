@@ -2,7 +2,7 @@
 	"01_2019": {
         "user_count": 321,
         "avg_count": "12m 30s",
-				"gained_comp": "10%",
+				"gained_comp": "43%",
 				"stugglingCompetency":[{
 					"code": "3.NO.1",
 					"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -29,7 +29,7 @@
 	 "02_2019": {
 		"user_count": 7,
 		"avg_count": "20m 10s",
-		"gained_comp": "10%",
+		"gained_comp": "52%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -55,16 +55,18 @@
 	 },
 	 "03_2019": {
 		"user_count": 4,
-        "avg_count": "0m"
+    "avg_count": "0m",
+		"gained_comp": "38%"
 	 },
 	 "04_2019": {
-        "user_count": 2,
-        "avg_count": "0m"
+    "user_count": 2,
+    "avg_count": "0m",
+		"gained_comp": "43%"
 	 },
 	 "05_2019" : {
 		"user_count": 1,
     "avg_count": "40m",
-		"gained_comp": "10%",
+		"gained_comp": "44%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -91,7 +93,7 @@
 	 "06_2019" : {
 		"user_count": 199,
     "avg_count": "30m 3s",
-		"gained_comp": "10%",
+		"gained_comp": "51%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -118,7 +120,7 @@
 	 "07_2019" : {
 		"user_count": 44,
     "avg_count": "10m 40s",
-		"gained_comp": "10%",
+		"gained_comp": "29%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -145,7 +147,7 @@
 	 "08_2019" : {
 		"user_count": 8,
     "avg_count": "20m 3s",
-		"gained_comp": "10%",
+		"gained_comp": "46%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -172,7 +174,7 @@
 	 "09_2019" : {
 		"user_count": 8,
     "avg_count": "30m 2s",
-		"gained_comp": "10%",
+		"gained_comp": "44%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -199,7 +201,7 @@
 	 "10_2019": {
 		"user_count": 112,
     "avg_count": "40m",
-		"gained_comp": "10%",
+		"gained_comp": "38%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -226,7 +228,7 @@
 	 "11_2019" : {
 		"user_count": 32,
     "avg_count": "0m",
-		"gained_comp": "30%",
+		"gained_comp": "38%",
 		"stugglingCompetency":[{
 			"code": "3.NO.1",
 			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
@@ -253,29 +255,26 @@
 	 "12_2019" : {
 		"user_count": 6,
     "avg_count": "10m",
-		"gained_comp": "23%",
+		"gained_comp": "53%",
 		"stugglingCompetency":[{
-			"code": "3.NO.1",
-			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
-		},{
-			"code": "3.M.3",
-			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
-		},{
-			"code": "4.FD.2",
-			"name": "Develops an understanding of unit fractions"
-		},{
-			"code": "4.G.4",
-			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
-		},{
-			"code": "5.NO.4",
-			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
-		},{
-			"code": "5.M.5",
-			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
-		},{
-			"code": "5.PD.6",
-			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
-		}]
+        "code": "6.RP.3.B",
+        "name": "Solve unit rate problems including those involving unit pricing and constant speed. For example, if it took 7 hours to mow 4 lawns, then at that rate, how many lawns could be mowed in 35 hours? At what rate were lawns being mowed?"
+    },{
+        "code": "7.SP.5",
+        "name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+    },{
+        "code": "8.NS.2",
+        "name": "Use rational approximations of irrational numbers to compare the size of irrational"
+    },{
+        "code": "7.SP.5",
+        "name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+    },{
+        "code": "8.F.4",
+        "name": "Construct a function to model a linear relationship between two quantities. Determine the rate of change and initial value of the function from a description of a relationship or from two (x, y) values, including reading these from a table or from a graph."
+    },{
+        "code": "8.G.3",
+        "name": "Describe the effect of dilations, translations, rotations, and reflections on two-dimensional figures using coordinates."
+    }]
 	 },
 	 "total" : {
 				"user_count": 4778
