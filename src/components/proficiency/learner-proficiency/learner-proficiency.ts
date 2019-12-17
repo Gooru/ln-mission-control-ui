@@ -9,6 +9,7 @@ import MonthYearPicker from '@/components/selector/month-year-picker/month-year-
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { DomainModel } from '@/models/proficiency/domain';
 import { ClassificationModel } from '@/models/taxonomy/classification';
+import { CompetencyModel } from '@/models/proficiency/competency';
 import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
 import axios from 'axios';
 import moment from 'moment';
@@ -62,9 +63,20 @@ export default class LearnerProficiency extends Vue {
 
   private activeDomainInfo!: DomainModel;
 
+  private activeDomainSeq: number = 0;
+
   private isShowDomainInfo: boolean = false;
 
-  private activeCompetency!: any;
+  private activeCompetency: CompetencyModel = {
+    competencyCode: '',
+    competencyDesc: '',
+    competencyName: '',
+    competencySeq: 0,
+    competencyStudentDesc: '',
+    status: 0,
+  };
+
+  private activeCompetencySeq!: number;
 
   private isShowCompetencyPanel: boolean = false;
 
@@ -118,17 +130,20 @@ export default class LearnerProficiency extends Vue {
 
   private onSelectDomain(domain: DomainModel) {
     this.activeDomainInfo = domain;
+    this.activeDomainSeq = domain.domainSeq;
     this.isShowDomainInfo = true;
   }
 
-  private onSelectCompetency(competency: any) {
-    this.activeCompetency = competency;
-    this.isShowCompetencyPanel = true;
+  private onSelectCompetency(competency: CompetencyModel) {
     this.isShowDomainInfo = false;
+    this.isShowCompetencyPanel = true;
+    this.activeCompetencySeq = competency.competencySeq;
+    this.activeCompetency = competency;
   }
 
   private onCloseDomainInfoPanel() {
     this.isShowDomainInfo = false;
+    this.activeDomainSeq = 0;
   }
 
   private onCloseCompetencyInfoPanel() {

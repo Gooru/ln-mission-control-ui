@@ -52,10 +52,11 @@ export default class DomainsListPanel extends Vue {
     this.loadProficiencyData();
   }
 
-  public onSelectdomain(domain: any) {
+  public onSelectDomain(domain: any) {
     const component = this;
     component.activeDomainInfo = domain;
     component.isShowDomainInfo = true;
+    component.$emit('onSelectDomain', domain);
   }
 
   public onCloseDomainInfoPanel() {
@@ -151,6 +152,10 @@ export default class DomainsListPanel extends Vue {
       subject: this.subjectCode,
     };
     return competencyAPI.getCompetencyMatrixCoordinates(params);
+  }
+
+  private onSelectCompetency(competency: any) {
+    this.$emit('onSelectCompetency', competency);
   }
 
   @Watch('month')

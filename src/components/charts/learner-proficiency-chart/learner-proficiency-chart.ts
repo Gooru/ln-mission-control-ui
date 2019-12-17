@@ -76,6 +76,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   private cellHeight: number = 10;
 
+  @Prop()
   private activeCompetency!: any;
 
   private maxDomainSize: number = 0;
@@ -104,6 +105,12 @@ export default class LearnerProficiencyChart extends Vue {
 
   private totalCompetencies: number = 0;
 
+  @Prop()
+  private activeDomainSeq: number = 0;
+
+  private activeCompetencyStyle: any = null;
+
+
   public created() {
     this.loadTaxonomyGrades();
     this.loadChartData();
@@ -126,7 +133,9 @@ export default class LearnerProficiencyChart extends Vue {
     component.isShowExpandedGraph = !component.isShowExpandedGraph;
     component.drawProficiencyChart();
     component.drawGradeBoundaryLine();
-
+    if (component.activeDomainSeq) {
+      component.toggleActiveDomainBar(component.activeDomainSeq);
+    }
   }
 
   public onSelectGrade(grade: GradeModel | any) {
@@ -474,6 +483,7 @@ export default class LearnerProficiencyChart extends Vue {
   public selectCompetency(competency: any) {
     const component = this;
     // component.activeCompetency = competency;
+    component.activeCompetency = competency;
     if (component.isShowExpandedGraph) {
       this.$emit('onSelectCompetency', competency);
     } else {
@@ -482,13 +492,21 @@ export default class LearnerProficiencyChart extends Vue {
       });
       component.onSelectDomain(activeDomain);
     }
+    component.highlightCompetency(competency);
   }
 
   @Watch('isDomainActive')
-  private onCloseDomain() {
+  private onToggleDomain() {
     if (!this.isDomainActive) {
       this.toggleActiveDomainBar(0, false);
+    } else {
+      this.toggleActiveDomainBar(this.activeDomainSeq, true);
     }
+  }
+
+  @Watch('isCompetencyActive')
+  private onToggleCompetency() {
+    this.highlightCompetency(this.activeCompetency);
   }
 
   private onClearGrade() {
@@ -538,6 +556,20 @@ export default class LearnerProficiencyChart extends Vue {
       activeDomainBar.classList.add('active');
       activeDomainBar.classList.remove('non-active');
     }
+  }
+
+  private highlightCompetency(competency: CompetencyModel) {
+    const component = this;
+    const competencyContainer: any = component.$el.querySelector(
+      `.domain-${competency.domainSeq}.competency-${competency.competencySeq}`);
+    const rect = competencyContainer.getBoundingClientRect();
+    const scrollLeft: any = window.pageXOffset;
+    const scrollTop: any = window.pageYOffset;
+    component.activeCompetencyStyle = {
+      top: rect.top + scrollTop + 'px',
+      left: rect.left + scrollLeft + 'px',
+      width: component.cellWidth + 'px',
+      height: component.cellHeight + 'px' };
   }
 
 }

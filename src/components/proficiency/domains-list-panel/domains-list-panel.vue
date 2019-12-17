@@ -9,7 +9,7 @@
         <b-spinner v-if="isLoading" variant="primary" label="Spinning"></b-spinner>
       </div>
       <div class="domains-list" v-if="!isLoading">
-        <div class="domain-info" v-for="domain in domainProficiencyData" @click="onSelectdomain(domain)">
+        <div class="domain-info" v-for="domain in domainProficiencyData" @click="onSelectDomain(domain)">
           <div class="domain-name">
             <span class="domain-seq">{{domain.domainSeq}}.</span>
             <span class="domain-title">{{domain.domainName}}</span>
@@ -37,10 +37,11 @@
       :domain="activeDomainInfo"
       :subject="subject"
       :classification="classification"
-      @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"
       :userId="userId"
       :month="month"
-      :year="year"/>
+      :year="year"
+      @onSelectCompetency="onSelectCompetency"
+      @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"/>
   </div>
 </template>
 

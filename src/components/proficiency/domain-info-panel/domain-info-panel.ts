@@ -62,4 +62,8 @@ export default class DomainInfoPanel extends Vue {
 
   @Prop()
   private year!: string;
+
+  public onSelectCompetency(competency: any) {
+    this.$emit('onSelectCompetency', competency);
+  }
 }
