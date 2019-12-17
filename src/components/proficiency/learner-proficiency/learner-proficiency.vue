@@ -30,7 +30,6 @@
           :userId="userId"
           :month="month"
           :year="year"
-          :key="activeDomainInfo.domainCode"
           @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"/>
 
         <competency-info-panel

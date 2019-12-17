@@ -1,10 +1,10 @@
 <template>
   <div id="portfolio-stat-card">
-    <div class="portfolio-stat-header" @click="isShowStatDetails = !isShowStatDetails">
+    <div class="portfolio-stat-header">
       <div class="seq-no">
         {{sequence}}.
       </div>
-      <div class="stat-info">
+      <div class="stat-info" @click="$emit('onSelectPortfolioStat', statInfo)">
         <span class="title">
           {{title}}
         </span>
@@ -12,7 +12,7 @@
           {{totalCount}} Activities Completed
         </span>
       </div>
-      <div class="toggle">
+      <div class="toggle" @click="isShowStatDetails = !isShowStatDetails">
         <google-material-icon :icon="isShowStatDetails ? 'arrow_drop_up' : 'arrow_drop_down'" />
       </div>
     </div>
