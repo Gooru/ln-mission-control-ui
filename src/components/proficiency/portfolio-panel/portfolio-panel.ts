@@ -34,6 +34,10 @@ export default class PortfolioPanel extends Vue {
     return portfolioStats;
   }
 
+  get isNoPortfolioItems() {
+    return !(this.portfolioContents.length || this.portfolioStats.length);
+  }
+
   @Prop()
   private subject!: SubjectModel;
 
@@ -68,10 +72,6 @@ export default class PortfolioPanel extends Vue {
 
   @Prop()
   private statsBucket!: string;
-
-  get isNoPortfolioItems() {
-    return !(this.portfolioContents.length || this.portfolioStats.length);
-  }
 
   @Watch('subject')
   public onChangeSubject() {
@@ -146,6 +146,10 @@ export default class PortfolioPanel extends Vue {
       requestParams.tx_domain_code = component.domain.domainCode;
     }
     return requestParams;
+  }
+
+  private onSelectPortfolioStat(portfolioStat: PortfolioDomainStat | PortfolioCompetencyStat | PortfolioSubjectStat) {
+    this.$emit('onSelectPortfolioStat', portfolioStat);
   }
 
   @Watch('month')

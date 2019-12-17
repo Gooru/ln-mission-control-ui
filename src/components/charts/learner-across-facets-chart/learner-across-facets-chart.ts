@@ -72,9 +72,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
   @Watch('isExpandedMode')
   private onToggleFacetChart() {
     const component = this;
-    // component.isExpandedMode = !component.isExpandedMode;
     this.skylinePoints = [];
     component.loadChartData();
+    // Scroll to bottom of the chart while in full view
+    const chartContainer = component.$el.querySelector('#facets-chart-view') as HTMLElement;
+    chartContainer.scrollTop = chartContainer.scrollHeight;
   }
 
   private loadFacetsCompetencyMatrixData() {
@@ -174,7 +176,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
         totalCompetencies += facet.totalCompetenciesCount;
       });
       const meanValue = totalCompetencies / facetsMatrix.length;
-      chartHeight = meanValue + (meanValue / 100 * 50);
+      chartHeight = meanValue + (meanValue / 100);
     }
 
     // const facetColumnWidth = Number(chartWidth / totalFacets);
@@ -185,7 +187,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     chartWidth = facetColumnWidth * totalFacets > chartWidth ? chartWidth : facetColumnWidth * totalFacets;
     const svg = d3.select('#facets-chart-view')
       .append('svg').attr('id', 'chart-container')
-      .attr('width', chartWidth ).attr('height', chartHeight - 40);
+      .attr('width', chartWidth ).attr('height', chartHeight);
     const facetsGroup = svg.append('g').attr('id', 'facets-group');
     const skylineGroup = svg.append('g').attr('id', 'skyline-group');
     facetsMatrix.forEach((facetMatrix: FacetMatrix, seq: number) => {
@@ -206,7 +208,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     let yAxis = 0;
     const chartViewElement: any = component.$el.querySelector('#facets-chart-view') as HTMLElement;
     // const chartHeight: number = chartViewElement.offsetHeight - 45;
-    chartHeight = chartHeight - 45;
+    chartHeight = chartHeight - 5;
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
     let height = competency.count / chartHeightLevel * 100;
     height = Number((height * chartHeight) / 100);

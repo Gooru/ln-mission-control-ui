@@ -8,7 +8,11 @@
       </div>
       <div v-else>
         <div v-for="(statInfo, index) in portfolioStats">
-          <portfolio-stat-card :statInfo="statInfo" :statType="statsBucket" :sequence="index + 1" />
+          <portfolio-stat-card
+            :statInfo="statInfo"
+            :statType="statsBucket"
+            :sequence="index + 1"
+            @onSelectPortfolioStat="onSelectPortfolioStat" />
         </div>
       </div>
       <div v-if="isNoPortfolioItems" class="no-items">

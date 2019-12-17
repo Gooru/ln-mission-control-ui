@@ -23,22 +23,26 @@ export default class FacetsInfoPanel extends Vue {
   private year!: string;
 
   private activeTab: object = {
-    label: 'Mindsets',
-    component: 'mindsets-list-panel',
+    label: 'Portfolio',
+    component: 'portfolio-panel',
   };
 
   private tabItems = [
     {
-      label: 'Mindsets',
-      component: 'mindsets-list-panel',
-    },
-    {
       label: 'Portfolio',
       component: 'portfolio-panel',
+    },
+    {
+      label: 'Mindsets',
+      component: 'mindsets-list-panel',
     },
     {
       label: 'Preferences',
       component: 'preferences-panel',
     },
   ];
+
+  private onSelectPortfolioStat(portfolioStat: any) {
+    this.$emit('onSelectPortfolioStat', portfolioStat);
+  }
 }
