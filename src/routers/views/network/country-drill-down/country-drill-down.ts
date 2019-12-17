@@ -137,7 +137,7 @@ export default class CountryDrillDown extends Vue {
             default:
                 const params = {
                     classId: selectedLevel.id,
-                    courseId: selectedLevel.courseId,
+                    courseId: selectedLevel.classId,
                     subjectCode: 'K12.MA',
                     month: this.dataParams.month,
                     year: this.dataParams.year,

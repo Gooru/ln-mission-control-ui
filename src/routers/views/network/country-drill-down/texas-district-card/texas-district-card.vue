@@ -6,7 +6,7 @@
          </div>
           <div class="texas-district-card" v-for="(level, levelIndex) in cardData" :key="levelIndex" v-on="cardName !== 'student' ? {click : () => onSelectLevel(level) } : {}">
               <div class="card-heading">
-                <h5 class="card-title">{{level.type ? level.name : level.name}}</h5>
+                <h5 class="card-title">{{level.type ? level.name : level.fullName}}</h5>
                 <ul class="texas-card-list" v-if="hiddenData">
                     <li><material-icon icon="trending_up"/></li>
                     <li>37%</li>
@@ -14,7 +14,7 @@
                 </ul>
               </div>
               <div class="card-total">
-                  <h4 class="total-count">{{level.completedCompetencies}}</h4>
+                  <h4 class="total-count">{{Math.abs(level.completedCompetencies)}}</h4>
                   <span>Total</span>
               </div>
           </div>

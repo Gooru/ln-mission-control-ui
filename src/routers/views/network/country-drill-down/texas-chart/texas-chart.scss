@@ -27,6 +27,9 @@
       .texas-title-head {
         font-weight: bold;
         margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
     .texas-pullup-table {
@@ -35,11 +38,12 @@
       }
     }
     .texas-nav-tab {
+      overflow: hidden;
       .texas-breadcrumb {
         padding: 0;
         margin: 0;
         list-style: none;
-        display: inline-flex;
+        display: flex;
         font-size: 12px;
         text-transform: capitalize;
         opacity: 0.8;

@@ -23,12 +23,21 @@ export default class TexasChart extends Vue {
     private seletedLevel?: string;
     @Prop()
     private breadcrumb?: any;
+    @Prop()
+    private countryData: any;
 
     private hideScore: boolean = false;
 
     get totalCompetencyGained() {
-        const dataList = this.dataList.data ? this.dataList.data : this.dataList;
-        return dataList.length ? getSum(dataList, 'completedCompetencies') : 0;
+        return this.dataList.data
+        ? Math.abs(this.dataList.overallStats.totalCompetencies)
+        : Math.abs(getSum(this.dataList, 'completedCompetencies'));
+    }
+
+    get chartData() {
+        const dataList = this.dataList.data
+        ? this.dataList.data.sort((a: any, b: any) => a.week - b.week ) : [];
+        return dataList;
     }
     // ----------------------------------------------------------------------
     // Hooks
