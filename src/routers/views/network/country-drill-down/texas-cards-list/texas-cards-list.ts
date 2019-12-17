@@ -34,6 +34,7 @@ export default class TexasCardsList extends Vue {
     @Prop()
     private cardDetails: any;
 
+
     private hiddenData: boolean = false;
 
 

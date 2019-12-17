@@ -5,7 +5,7 @@
                 <h4 class="header-title">Struggling Competencies</h4>
             </div>
             <div class="panel-body">
-                <div class="panel-content"  v-for="competency in strugglingCompetencies">
+                <div class="panel-content"  v-for="competency in strugglingCompetencies" :key="competency.code">
                     <div class="top-content">
                         <div class="content-title">{{competency.code}}</div>
                         <div class="content-progress" v-if="hiddenData">

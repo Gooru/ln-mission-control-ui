@@ -116,23 +116,35 @@ export default class CountryDrillDown extends Vue {
     }
 
     private selectLevelService(selectedLevel: any) {
-        let serviceLevel = Promise.resolve([]);
+        let serviceLevel: any = Promise.resolve([]);
         switch (selectedLevel.type) {
             case 'country':
                 this.paramsIds.country_id = selectedLevel.id;
-                serviceLevel = perfomanceAPI.fetchStateCompetencyByCountryID(this.paramsIds, this.dataParams);
+                serviceLevel = axios.all([
+                    perfomanceAPI.fetchStateCompetencyByCountryID(this.paramsIds, this.dataParams),
+                    perfomanceAPI.fetchCardsDatabyCountryLevel(this.paramsIds),
+                ]);
                 break;
             case 'state':
                 this.paramsIds.state_id = selectedLevel.id;
-                serviceLevel = perfomanceAPI.fetchDistrictCompetencyByStateID(this.paramsIds, this.dataParams);
+                serviceLevel = axios.all([
+                    perfomanceAPI.fetchDistrictCompetencyByStateID(this.paramsIds, this.dataParams),
+                    perfomanceAPI.fetchCardsDatabyStateLevel(this.paramsIds),
+                ]);
                 break;
             case 'system':
                 this.paramsIds.group_id = selectedLevel.id;
-                serviceLevel = perfomanceAPI.fetchSchoolCompetencyByDistrictID(this.paramsIds, this.dataParams);
+                serviceLevel = axios.all([
+                    perfomanceAPI.fetchSchoolCompetencyByDistrictID(this.paramsIds, this.dataParams),
+                    perfomanceAPI.fetchCardsDatabyDistrictLevel(this.paramsIds),
+                ]);
                 break;
             case 'school':
                 this.paramsIds.school_id = selectedLevel.id;
-                serviceLevel = perfomanceAPI.fetchClassCompetencyBySchoolID(this.paramsIds, this.dataParams);
+                serviceLevel = axios.all([
+                    perfomanceAPI.fetchClassCompetencyBySchoolID(this.paramsIds, this.dataParams),
+                    perfomanceAPI.fetchCardsDatabySchoolLevel(this.paramsIds),
+                ]);
                 break;
             default:
                 const params = {
@@ -151,9 +163,10 @@ export default class CountryDrillDown extends Vue {
 
     private fetchSelectLevelData(selectedLevel: any) {
         const selectedService = this.selectLevelService(selectedLevel);
-        return selectedService.then((levelData: any) => {
+        return selectedService.then(axios.spread((levelData: any, cardData: any) => {
             this.competencyData = levelData;
-        });
+            this.cardDetails = this.getDataBasedOnData(cardData);
+        }));
     }
 
     private selectedLevelData(selectedLevel: any) {
@@ -172,22 +185,24 @@ export default class CountryDrillDown extends Vue {
 
     private fetchClassRoomStudentList(params: any) {
 
-         perfomanceAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
-           const studentsId: any = [];
-           atcClassStudents.map((students: any) => {
+        perfomanceAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
+            const studentsId: any = [];
+            atcClassStudents.map((students: any) => {
                 return studentsId.push(students.userId);
             });
-           const filteredData: any = [];
-           profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
-             profileList.map((profile) => {
-                    const findProfile = atcClassStudents.find((item: any) => item.userId === profile.userId);
-                    if (findProfile) {
-                        filteredData.push(Object.assign({}, findProfile, profile));
-                    }
+            const filteredData: any = [];
+            if (studentsId.length) {
+                profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
+                    profileList.map((profile) => {
+                        const findProfile = atcClassStudents.find((item: any) => item.userId === profile.userId);
+                        if (findProfile) {
+                            filteredData.push(Object.assign({}, findProfile, profile));
+                        }
+                    });
                 });
-            });
-           this.competencyData = filteredData;
-         });
+            }
+            this.competencyData = filteredData;
+        });
     }
 
     private getDataBasedOnData(userData: any) {
