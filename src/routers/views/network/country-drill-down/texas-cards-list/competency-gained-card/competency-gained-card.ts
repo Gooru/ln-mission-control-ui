@@ -83,7 +83,7 @@ export default class CompentencyGainedCard extends Vue {
     @Watch('competencySelectLevel')
     private changeFromCompetencyLevel(value: any) {
         this.isFromCompetency = true;
-        if (this.subjectsList.length) {
+        if (this.subjectsList.length && this.competencySelectLevel.type !== 'class') {
             this.loadPerformanceData(value);
         }
     }
@@ -120,6 +120,7 @@ export default class CompentencyGainedCard extends Vue {
     // Hooks
 
     private created() {
+        this.isFromCompetency = true;
         this.initLoader();
     }
 
@@ -168,13 +169,13 @@ export default class CompentencyGainedCard extends Vue {
     private loadPerformanceData(selectlevel: any) {
        this.selectLevelService(selectlevel)
         .then(axios.spread((performance: any, competency: any) => {
-            this.totalCompetencyGained = competency.overallStats.totalCompetencies || 0;
-            this.totalPerformance = performance.overallStats.averagePerformance || 0;
+            this.totalCompetencyGained = Math.abs(competency.overallStats.totalCompetencies) || 0;
+            this.totalPerformance = Math.round(performance.overallStats.averagePerformance) || 0;
             this.performanceData = performance;
             this.competencyData = competency;
             if (this.isFromCompetency) {
-                this.totalCompetency = competency.overallStats.totalCompetencies || 0;
-                this.totalPerformances = performance.overallStats.averagePerformance || 0;
+                this.totalCompetency = Math.abs(competency.overallStats.totalCompetencies) || 0;
+                this.totalPerformances = Math.round(performance.overallStats.averagePerformance) || 0;
             }
         }));
     }

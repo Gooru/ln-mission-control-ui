@@ -3,7 +3,7 @@
         <div class="texas-header">
             <div :class="['texas-title', breadcrumb.length ? '' : 'on-breadcrumb']">
                  <span v-on="breadcrumb.length ? {click :onBack} : {}"><material-icon icon="arrow_back"/></span>
-                 <h5 class="texas-title-head">{{seletedLevel.name}}</h5>
+                 <h5 class="texas-title-head">{{breadcrumb.length ? seletedLevel.name : countryData.name}}</h5>
             </div>
             <div class="texas-pullup-table">
                 <material-icon icon="bar_chart" />
@@ -25,7 +25,7 @@
                 <span>Since last month</span>
             </div>
         </div>
-           <texas-line-chart v-if="seletedLevel.type !== 'student' && dataList.data" :dataList="dataList.data"/>
+           <texas-line-chart v-if="seletedLevel.type !== 'class' && dataList.data" :dataList="chartData"/>
            <atc-view v-else :dataList="dataList"/>
        </div>
     </div>
