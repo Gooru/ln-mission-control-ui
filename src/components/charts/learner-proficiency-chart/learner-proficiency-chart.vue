@@ -30,7 +30,10 @@
             <b-spinner variant="primary" label="Spinning"></b-spinner>
           </div> -->
           <div class="scrollable-chart">
-            <div id="chart-area"></div>
+            <div id="chart-area">
+              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus]" :style="activeCompetencyStyle">
+              </div>
+            </div>
           </div>
         <!-- </div> -->
         <div class="domains-seq-list" v-if="domainCoOrdinates">
@@ -39,8 +42,6 @@
           </div>
         </div>
       </div>
-    </div>
-    <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus]" :style="activeCompetencyStyle">
     </div>
   </div>
 </template>
