@@ -27,6 +27,8 @@ export default class NewUserAvarageCard extends Vue {
 
     private isShowPopup: boolean = false;
 
+    private hiddenData: boolean = false;
+
 
 
 

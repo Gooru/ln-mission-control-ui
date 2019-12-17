@@ -16,7 +16,7 @@
         </div>
            <div class="chart-top">
                 <div class="texas-chart">
-                    <texas-chart v-if="isLoaded" :breadcrumb="breadcrumb" v-on:onBack ="onBack" v-on:onChangeBreadcrumb="onSelectLevel" :dataList="competencyData" :seletedLevel ="seletedLevel"/>
+                    <texas-chart v-if="isLoaded" :countryData="countryData"  :breadcrumb="breadcrumb" v-on:onBack ="onBack" v-on:onChangeBreadcrumb="onSelectLevel" :dataList="competencyData" :seletedLevel ="seletedLevel"/>
                 </div>
                 <div class="texas-district">
                     <texas-district-card v-if="isLoaded && (competencyData.drilldown.length || competencyData.length)" v-on:onSelectLevel="onSelectLevel" :dataList="competencyData"/>

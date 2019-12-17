@@ -36,6 +36,7 @@ export default class TexasCardsList extends Vue {
 
     private hiddenData: boolean = false;
 
+
     // -------------------------------------------------------------------------------
     // Methods
 

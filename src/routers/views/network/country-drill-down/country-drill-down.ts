@@ -93,6 +93,7 @@ export default class CountryDrillDown extends Vue {
         this.dataParams.month = moment(date).format('MM');
         this.dataParams.year = moment(date).format('YYYY');
         this.breadcrumb = [];
+        this.seletedLevel = this.countryData;
         this.getStateList();
     }
 

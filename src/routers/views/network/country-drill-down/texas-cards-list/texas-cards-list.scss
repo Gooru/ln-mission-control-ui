@@ -8,5 +8,10 @@
   margin: 20px 0;
   div {
     height: 100px;
+    &.struggling-competency {
+      align-self: baseline;
+      grid-row: 1 / span 2;
+      grid-column: 3;
+    }
   }
 }

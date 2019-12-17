@@ -15,7 +15,7 @@ export default class StrugglingCompetency extends Vue {
     // --------------------------------------------------------------------------------
     // Properties
 
-
+    private hiddenData: boolean = false;
 
 
     // -------------------------------------------------------------------------------
