@@ -51,7 +51,7 @@
                     <div class="country-header">
                          <div class="country-header-container">
                              <span @click="levelBack" v-if="!isFirstBreadCrumb"><material-icon icon="arrow_upward" /></span>  
-                             {{isFirstBreadCrumb ? 'state' : (breadCrumb[breadCrumb.length - 2] ? breadCrumb[breadCrumb.length - 2] .name : 'district') }} of {{isFirstBreadCrumb ? countryData.name : breadCrumb[breadCrumb.length -1].name }}
+                             {{isFirstBreadCrumb ? 'state' : (breadCrumb[breadCrumb.length - 2] ? (breadCrumb[breadCrumb.length - 2] .type === 'system'  ? breadCrumb[breadCrumb.length - 2] .subType : breadCrumb[breadCrumb.length - 2] .type) : 'district') }} of {{isFirstBreadCrumb ? countryData.name : breadCrumb[breadCrumb.length -1].name }}
                          </div>
                     </div>
                     <div class="country-progress-bar" v-if="subjectsList.length && performanceData.length">
@@ -65,12 +65,12 @@
                                     Performance
                                 </div>
                            </div>
-                           <div class="performance-bar-body" v-for="(level, levelIndex) in performanceData" :key="levelIndex" v-on="level.type !== 'class' ? {click: () => onSelectLevel(level)} : {}">
+                           <div class="performance-bar-body" v-for="(level, levelIndex) in performanceData" :key="levelIndex" v-on="level.type ? {click: () => onSelectLevel(level)} : {}">
                                 <div class="performance-list-body">
                                     {{level.name}}
                                 </div>
                                 <div class="performance-bar-chart-body">
-                                    <div class="bar-percentage">{{level.performance}}%</div>
+                                    <div class="bar-percentage">{{Math.round(level.performance)}}%</div>
                                     <performance-bar :totalWidth="[level.performance+'%']" :color="[performanceColor(level.performance)]"/>
                                 </div>
                            </div>

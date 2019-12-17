@@ -60,7 +60,7 @@ export default class CompetencyGainedPullup extends Vue {
     private get competencyDount() {
         return [{
             name: 'chart',
-            value:  this.performanceData ? getSum(this.performanceData, 'completedCompetencies') : 1,
+            value:  this.performanceData ? getSum(this.performanceData, 'completedCompetencies') : 0,
             color: '#0a66ba',
         },
         {

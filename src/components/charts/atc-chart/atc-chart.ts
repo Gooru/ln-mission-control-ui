@@ -1,4 +1,4 @@
-import {Vue, Component, Prop} from 'vue-property-decorator';
+import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
 import * as d3 from 'd3';
 
 @Component({
@@ -12,6 +12,11 @@ export default class AtcChart extends Vue {
   @Prop()
   private dataList: any;
 
+  @Watch('dataList')
+  private watchData(value: any) {
+    this.drawAtcChart(value);
+  }
+
   // ------------------------------------------------------------------------
   // Hooks
   private mounted() {
@@ -22,6 +27,7 @@ export default class AtcChart extends Vue {
   // -------------------------------------------------------------------------
   // Methods
   private drawAtcChart(dataset: any) {
+    d3.select('svg').remove();
     const margin = {
         top: 10,
         right: 20,
@@ -97,7 +103,7 @@ export default class AtcChart extends Vue {
       .attr('x', -7)
       .attr('y', -7)
       .attr('xlink:href' , (d: any) => {
-          return d.thumbnail;
+          return d.thumbnailUrl;
         })
       .attr('width', 24)
       .attr('height', 24);
