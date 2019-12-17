@@ -565,9 +565,11 @@ export default class LearnerProficiencyChart extends Vue {
     const rect = competencyContainer.getBoundingClientRect();
     const scrollLeft: any = window.pageXOffset;
     const scrollTop: any = window.pageYOffset;
+    const domainSeq: number | any = competency.domainSeq;
+    const competencySeq = competency.competencySeq;
     component.activeCompetencyStyle = {
-      top: rect.top + scrollTop + 'px',
-      left: rect.left + scrollLeft + 'px',
+      left: (domainSeq - 1) * component.cellWidth + 'px',
+      top: (competencySeq - 1) * component.cellHeight + 'px',
       width: component.cellWidth + 'px',
       height: component.cellHeight + 'px' };
   }
