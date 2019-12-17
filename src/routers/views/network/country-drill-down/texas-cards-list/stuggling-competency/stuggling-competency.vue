@@ -8,11 +8,11 @@
                 <div class="panel-content">
                     <div class="top-content">
                         <div class="content-title">8.EE.1</div>
-                        <div class="content-progress">
+                        <div class="content-progress" v-if="hiddenData">
                             <span>36%</span>
                             <progress-bar :totalWidth="['30%']" :color="['red']" />
                         </div>
-                        <div class="content-icon">
+                        <div class="content-icon" v-if="hiddenData">
                             <material-icon icon="explore" />
                         </div>
                     </div>

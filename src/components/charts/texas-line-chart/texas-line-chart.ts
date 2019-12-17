@@ -103,7 +103,7 @@ export default class TexasLineChart extends Vue {
                 }
                 return (d.week === moment().week()) ? '#fff' : '#ffffff3d';
             })
-            .attr('stroke-width', 30);
+            .attr('stroke-width', 50);
 
         // Add the points
         svg

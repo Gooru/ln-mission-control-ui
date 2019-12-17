@@ -8,14 +8,14 @@
                         <material-icon :icon="iconName" />
                         {{cardTitle}}
                     </div>
-                    <ul class="texas-card-list">
+                    <ul class="texas-card-list" v-if="hiddenData">
                     <li class="down"><material-icon icon="trending_down"/></li>
                     <li class="down">37%</li>
                     <li>since june</li>
                    </ul>
                 </div>
             </div>
-            <div class="avarage-card-footer">
+            <div class="avarage-card-footer" v-if="hiddenData">
                 <p>v/s <span>97,303</span> avarage across all States</p>
             </div>
         </div>

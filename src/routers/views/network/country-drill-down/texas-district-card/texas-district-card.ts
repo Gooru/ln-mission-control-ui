@@ -16,6 +16,8 @@ export default class TexasDistrictCard extends Vue {
     @Prop()
     private dataList: any;
 
+    private hiddenData: boolean = false;
+
     get cardName() {
         const dataList = this.dataList.drilldown ? this.dataList.drilldown : this.dataList;
         const type = dataList[0].type ? dataList[0].type : 'student';
@@ -23,7 +25,8 @@ export default class TexasDistrictCard extends Vue {
     }
 
     get cardData() {
-        return this.dataList.drilldown ? this.dataList.drilldown : this.dataList;
+        const cardData = this.dataList.drilldown ? this.dataList.drilldown : this.dataList;
+        return cardData.sort((a: any, b: any) =>  b.completedCompetencies - a.completedCompetencies );
     }
 
 
