@@ -16,10 +16,10 @@
       <top-providers />
     </div>
     <div class="class-activities-card">
-      <new-user-card iconName="people" cardValue="100k" cardTitle="Class Activities Conducted" cardName="class-activity"/>
+      <new-user-card iconName="people" :cardValue="cardDetails.gained_comp" cardTitle="Competencies Gained" cardName="class-activity"/>
     </div>
      <div class="struggling-competency">
-      <struggling-competency />
+      <struggling-competency :strugglingCompetencies="cardDetails.stugglingCompetency" />
     </div>
   </div>
 </template>

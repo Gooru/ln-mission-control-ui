@@ -5,9 +5,9 @@
                 <h4 class="header-title">Struggling Competencies</h4>
             </div>
             <div class="panel-body">
-                <div class="panel-content">
+                <div class="panel-content"  v-for="competency in strugglingCompetencies">
                     <div class="top-content">
-                        <div class="content-title">8.EE.1</div>
+                        <div class="content-title">{{competency.code}}</div>
                         <div class="content-progress" v-if="hiddenData">
                             <span>36%</span>
                             <progress-bar :totalWidth="['30%']" :color="['red']" />
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="sub-content-title">
-                        draw transformed figure
+                        {{competency.name}}
                     </div>
                 </div>
             </div>
