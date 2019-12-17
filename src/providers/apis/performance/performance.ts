@@ -98,6 +98,15 @@ export class PerfomanceAPI {
         });
     }
 
+    public fetchCardsDatabyCountryLevel(params: any) {
+        const endpoint = `${this.namespaceStub}/stats/countries/${params.country_id}.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return response.data;
+        });
+    }
+
+
 }
 
 export const perfomanceAPI = PerfomanceAPI.instance;

@@ -57,6 +57,8 @@ export default class CountryDrillDown extends Vue {
 
     private filteredData: any = [];
 
+    private cardDetails: any = {};
+
     // --------------------------------------------------------------
     // Hooks
 
@@ -90,6 +92,7 @@ export default class CountryDrillDown extends Vue {
         this.selectedDate = date;
         this.dataParams.month = moment(date).format('MM');
         this.dataParams.year = moment(date).format('YYYY');
+        this.breadcrumb = [];
         this.getStateList();
     }
 
@@ -101,9 +104,11 @@ export default class CountryDrillDown extends Vue {
         axios.all([
             perfomanceAPI.fetchStateCompetencyByCountryID(params, this.dataParams),
             perfomanceAPI.fetchCountrySubject(params, this.dataParams),
-        ]).then(axios.spread((competency, subjects) => {
+            perfomanceAPI.fetchCardsDatabyCountryLevel(params),
+        ]).then(axios.spread((competency, subjects, cardData) => {
             this.competencyData = competency;
             this.subjectsList = subjects;
+            this.cardDetails = this.getDataBasedOnData(cardData);
             this.isLoaded = true;
         }));
 
@@ -182,6 +187,12 @@ export default class CountryDrillDown extends Vue {
             });
            this.competencyData = filteredData;
          });
+    }
+
+    private getDataBasedOnData(userData: any) {
+        const month = this.dataParams.month;
+        const year = this.dataParams.year;
+        return userData[`${month}_${year}`];
     }
 
 }

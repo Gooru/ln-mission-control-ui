@@ -23,7 +23,13 @@
                 </div>
            </div>
            <div class="texas-performance-cards">
-                 <texas-card-list v-if="isLoaded" :selectedDate="selectedDate" :subjectsList="subjectsList" :countryData="countryData" :competencyData = "competencyData"/>
+                 <texas-card-list v-if="isLoaded"
+                  :seletedLevel="seletedLevel"
+                  :selectedDate="selectedDate" 
+                  :subjectsList="subjectsList" 
+                  :countryData="countryData" 
+                  :competencyData ="competencyData"
+                  :cardDetails="cardDetails"/>
            </div>
         </div>
         <div class="texas-performance-by-grade" v-if="hideProperty">
