@@ -1,7 +1,13 @@
 <template>
   <div id="learner-across-facets-chart">
     <div id="facets-chart-view">
+      <div class="facets-placeholder">
+        <span v-for="facet in facets" :style="{'width': facetWidth + 'px'}" class="facet-placeholder">
+          {{facet.code}}
+        </span>
+      </div>
     </div>
+
 
     <div v-if="isShowTooltip" class="facet-tooltip" :style="tooltipPos">
       <span v-for="competency in tooltipInfo.competenciesCount" class="count-info">

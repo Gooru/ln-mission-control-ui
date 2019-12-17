@@ -50,7 +50,8 @@
       background-color: $white;
       .left-panel-header {
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: auto auto auto;
+        align-items: center;
         position: relative;
         .learner-info {
           padding: 15px;
@@ -62,6 +63,27 @@
           .skyline-info {
             font-size: 12px;
           }
+        }
+        .facet-toggle {
+          display: grid;
+          grid-template-columns: auto auto;
+          column-gap: 5px;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          height: 30px;
+          background-color: #fff;
+          line-height: 30px;
+          border-radius: 20px;
+          width: max-content;
+          padding: 0 12px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          color: rgb(26, 169, 235);
+          font-weight: bold;
+          justify-self: right;
+          font-size: 12px;
+          width: inherit;
+          z-index: 99;
         }
         .filter-container {
           width: inherit;
