@@ -47,7 +47,8 @@
         <facets-info-panel
         :userId="learnerId"
         :month="activeMonth"
-        :year="activeYear"/>
+        :year="activeYear"
+        @onSelectPortfolioStat="onSelectPortfolioStat"/>
       </div>
     </div>
     <div v-else class="subject-proficiency-body">

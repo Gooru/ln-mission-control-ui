@@ -485,8 +485,10 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   @Watch('isDomainActive')
-  private onDomainToggle() {
-    this.toggleActiveDomainBar(0, this.isDomainActive);
+  private onCloseDomain() {
+    if (!this.isDomainActive) {
+      this.toggleActiveDomainBar(0, false);
+    }
   }
 
   private onClearGrade() {

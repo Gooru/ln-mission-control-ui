@@ -70,6 +70,14 @@ export default class LearnerFacetsProficiency extends Vue {
     this.isShowFacetsProficiency = true;
   }
 
+  private onSelectPortfolioStat(portfolioStat: any) {
+    const subject: SubjectModel | any = this.activeFacets.find(
+      (activeFacet: SubjectModel) => activeFacet.code === portfolioStat.subjectCode );
+    this.activeClassificationCode = subject.code.split('.')[0];
+    this.activeSubject = subject;
+    this.isShowFacetsProficiency = false;
+  }
+
   private listActiveFacets(facets: SubjectModel[]) {
     this.activeFacets = facets;
   }
