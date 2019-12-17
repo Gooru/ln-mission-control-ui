@@ -42,6 +42,16 @@ export default class CompentencyGainedCard extends Vue {
     private selectedDate?: string;
     @Prop()
     private subjectsList: any;
+    @Prop()
+    private score: any;
+
+    private get totalCompetency() {
+        return this.score.totalCompetencies ? this.score.totalCompetencies : 0;
+    }
+
+    private get totalPerformances() {
+        return this.score.averagePerformance ? Math.round(this.score.averagePerformance) : 0;
+    }
 
     private competencyData: any = {};
 
@@ -53,9 +63,6 @@ export default class CompentencyGainedCard extends Vue {
 
     private selectedLevel: any;
 
-    @Prop()
-    private competencySelectLevel: any;
-
     private params: any = {};
 
     private isShowCompetency: boolean = false;
@@ -66,27 +73,6 @@ export default class CompentencyGainedCard extends Vue {
 
     private totalPerformance: number = 0;
 
-    private totalCompetency: number = 0;
-
-    private totalPerformances: number = 0;
-
-    private isFromCompetency: boolean = false;
-
-
-
-    @Watch('subjectsList')
-    private changeSubject(value: any) {
-       this.initLoader();
-       this.isFromCompetency = true;
-    }
-
-    @Watch('competencySelectLevel')
-    private changeFromCompetencyLevel(value: any) {
-        this.isFromCompetency = true;
-        if (this.subjectsList.length && this.competencySelectLevel.type !== 'class') {
-            this.loadPerformanceData(value);
-        }
-    }
     // ------------------------------------------------------------
     // Actions
 
@@ -108,7 +94,6 @@ export default class CompentencyGainedCard extends Vue {
 
     private toggleCompetencyData() {
         if (this.subjectsList.length) {
-            this.isFromCompetency = false;
             this.isShowCompetency = !this.isShowCompetency;
             if (this.isShowCompetency) {
                 this.initLoader();
@@ -118,11 +103,6 @@ export default class CompentencyGainedCard extends Vue {
 
     // ---------------------------------------------------------------
     // Hooks
-
-    private created() {
-        this.isFromCompetency = true;
-        this.initLoader();
-    }
 
     // ----------------------------------------------------------------
     // Methods
@@ -173,23 +153,14 @@ export default class CompentencyGainedCard extends Vue {
             this.totalPerformance = Math.round(performance.overallStats.averagePerformance) || 0;
             this.performanceData = performance;
             this.competencyData = competency;
-            if (this.isFromCompetency) {
-                this.totalCompetency = Math.abs(competency.overallStats.totalCompetencies) || 0;
-                this.totalPerformances = Math.round(performance.overallStats.averagePerformance) || 0;
-            }
         }));
     }
 
     private initLoader() {
         this.selectedSubject = this.subjectsList.length ? this.subjectsList[0] : null;
-        if (this.selectedSubject) {
-            this.selectedSubject.isActive = true;
-            this.selectedLevel = this.countryData;
-            this.loadPerformanceData(this.selectedLevel);
-        } else {
-            this.totalCompetency =  0;
-            this.totalPerformances = 0;
-        }
+        this.selectedSubject.isActive = true;
+        this.selectedLevel = this.countryData;
+        this.loadPerformanceData(this.selectedLevel);
     }
 
 
