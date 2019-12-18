@@ -28,16 +28,16 @@ export default class NavLearningWorldWide extends Vue {
   private height: number = 500;
 
   /**
-   * Maintains the value of  nav learning world map pie  chart width
+   * Maintains the value of  nav learning world map circle maxwidth
    * @type {Number}
    */
-  private pieWidth: number = 65;
+  private circleMaxWidth: number = 80;
 
   /**
-   * Maintains the value of  nav learning world map pie chart height
+   * Maintains the value of  nav learning world map circle maxheight
    * @type {Number}
    */
-  private pieHeight: number = 65;
+  private circleMaxHeight: number = 80;
 
   /**
    * Maintains the element of map container
@@ -59,7 +59,7 @@ export default class NavLearningWorldWide extends Vue {
   private mapData: any;
 
   /**
-   * Maintains the country object when hover the pie chart.
+   * Maintains the country object when hover the circle.
    */
   private activeCountry: any = null;
 
@@ -106,7 +106,7 @@ export default class NavLearningWorldWide extends Vue {
       .translate([this.width / 2, this.height / 2]);
     this.dropShadow();
     this.drawMap();
-    this.drawPieChart();
+    this.drawCircle();
   }
 
   private drawMap() {
@@ -137,20 +137,12 @@ export default class NavLearningWorldWide extends Vue {
       });
   }
 
-  private drawPieChart() {
+  private drawCircle() {
     const projection = this.mapProjection;
     const data = this.mapData;
     const countries = data.countries.features;
-    const countryPieChartContainer = this.mapContainer.append('svg:g').attr('id', 'country-pie-chart');
-    const radius = Math.min(this.pieWidth, this.pieHeight) / 2;
-    const arc = d3.arc()
-      .outerRadius(radius - 10)
-      .innerRadius(0);
-    const pie = d3.pie()
-      .sort(null)
-      .value((d: any) => {
-        return d.value;
-      });
+    const countryCircleContainer = this.mapContainer.append('svg:g').attr('id', 'country-circle-container');
+
     const countriesHasData = countries.filter((country: any) => {
       return country.has_data;
     });
@@ -158,34 +150,15 @@ export default class NavLearningWorldWide extends Vue {
     countriesHasData.map((countryData: any) => {
       const longitude = countryData.longitude;
       const latitude = countryData.latitude;
-      const pieChartContainer = countryPieChartContainer.append('svg')
+      const circleChartContainer = countryCircleContainer.append('svg')
         .attr('x', projection([longitude, latitude])[0])
         .attr('y', projection([longitude, latitude])[1])
-        .attr('class', 'pie-box-shadow')
-        .attr('id', `pie-country-${countryData.country_code}`)
-        .attr('width', this.pieWidth)
-        .attr('height', this.pieHeight).append('g')
-        .attr('transform', 'translate(' + this.pieWidth / 2 + ',' + this.pieHeight / 2 + ')');
+        .attr('id', `circle-country-${countryData.country_code}`)
+        .attr('width', this.circleMaxWidth)
+        .attr('height', this.circleMaxHeight).append('g')
+        .attr('transform', 'translate(' + this.circleMaxWidth / 2 + ',' + this.circleMaxHeight / 2 + ')');
       const total = countryData.total_students + countryData.total_teachers + countryData.total_others;
-      const pieData = [{
-        key: 'teacher',
-        value: countryData.total_teachers,
-      },
-      {
-        key: 'student',
-        value: countryData.total_students,
-      }];
-
-      const pieChart = pieChartContainer.selectAll('.arc')
-        .data(pie(pieData as any)).enter().append('g').attr('class', 'arc');
-
-      pieChart.append('path')
-        .attr('d', arc)
-        .attr('class', (d: any) => {
-          return `key-${d.data.key}`;
-        });
-
-      pieChartContainer.on('mouseover', () => {
+      circleChartContainer.on('mouseover', () => {
         const element = d3.select(`#country-code-${countryData.country_code}`);
         const currentClass = element.attr('class');
         element.attr('class', `${currentClass} on-hover-country`);
@@ -196,15 +169,19 @@ export default class NavLearningWorldWide extends Vue {
         const element = d3.select(`#country-code-${countryData.country_code}`);
         element.attr('class', className);
         this.activeCountry = null;
+      }).on('click' , (d: any) => {
+        this.$router.push(`/network/countries/${countryData.country_id}/${countryData.country_name}`);
       });
-
-      pieChartContainer.append('text')
-        .attr('class', 'user-total-count')
-        .attr('dominant-baseline', 'middle')
-        .attr('text-anchor', 'middle')
-        .text(numberFormatWithTextSuffix(total));
-    });
-
+      const numberOfDigits = total.toString().length;
+      circleChartContainer.append('circle').attr('r', this.circleRadius(numberOfDigits));
+      if (numberOfDigits > 5) {
+        circleChartContainer.append('text')
+          .attr('class', 'user-total-count')
+          .attr('dominant-baseline', 'middle')
+          .attr('text-anchor', 'middle')
+          .text(numberFormatWithTextSuffix(total));
+      }
+  });
   }
 
   private dropShadow() {
@@ -233,7 +210,7 @@ export default class NavLearningWorldWide extends Vue {
   }
 
   private showNavLearningWorldwidePopover(countryCode: string) {
-    const element = `#pie-country-${countryCode}`;
+    const element = `#circle-country-${countryCode}`;
     const xAxis = Number(d3.select(element).attr('x'));
     const yAxis = Number(d3.select(element).attr('y'));
     const newXAxisVal = (xAxis + 580) > window.innerWidth ? (xAxis - 340) : (xAxis + 80);
@@ -242,6 +219,20 @@ export default class NavLearningWorldWide extends Vue {
       left: `${newXAxisVal}px`,
     };
     this.popoverStyle = style;
+  }
+
+  private circleRadius(numberOfDigits: number) {
+    if (numberOfDigits <= 2) {
+      return 8;
+    } else if (numberOfDigits === 3) {
+      return 12;
+    } else if (numberOfDigits === 4) {
+      return 16;
+    } else if (numberOfDigits === 5) {
+      return 24;
+    } else if (numberOfDigits >= 6) {
+      return 36;
+    }
   }
 
 }

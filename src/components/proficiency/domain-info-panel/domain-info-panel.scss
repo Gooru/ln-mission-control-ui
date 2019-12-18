@@ -1,0 +1,66 @@
+#domain-info-panel {
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  background-color: #fff;
+  // height: 100%;
+  // width: 100%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  .domain-info-header {
+    padding: 8px 15px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    position: relative;
+    .subject-classification-title {
+      font-style: italic;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    .domain-name {
+      font-size: 18px;
+      color: #666;
+      font-weight: bold;
+      width: 95%;
+    }
+
+    .close-panel {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      cursor: pointer;
+      opacity: 0.6;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+  .domain-info-body {
+    height: calc(100% - 63px);
+    > .tabbed-header {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      height: 40px;
+      line-height: 40px;
+      .tab-item {
+        cursor: pointer;
+        text-align: center;
+        border-bottom: 1px solid;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: bold;
+        &.active,
+        &:hover {
+          color: rgb(26, 169, 235);
+          border-bottom-width: 3px;
+          border-bottom-color: rgb(26, 169, 235);
+        }
+      }
+    }
+    > .active-tab-contents {
+      overflow-y: auto;
+      height: calc(100% - 40px);
+      margin-top: 4px;
+    }
+  }
+}

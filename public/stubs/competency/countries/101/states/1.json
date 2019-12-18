@@ -1,0 +1,34 @@
+{
+	"overallStats": {
+		"totalCompetencies": 21544
+	},
+	"data": [{
+		"week": 44,
+		"completedCompetencies": 100000
+	}, {
+		"week": 45,
+		"completedCompetencies": 8772
+	},
+	{
+		"week": 46,
+		"completedCompetencies": 9732
+	}, {
+		"week": 47,
+		"completedCompetencies": 59999
+	}],
+	"drilldown": [{
+		"id": 1,
+		"name": "Group 1",
+		"code": "34534",
+		"type": "system",
+		"sub_type": "district",
+		"completedCompetencies": 100
+	}, {
+		"id": 2,
+		"name": "Group 2",
+		"code": "65453",
+		"type": "system",
+		"sub_type": "district",
+		"completedCompetencies": 800
+	}]
+}

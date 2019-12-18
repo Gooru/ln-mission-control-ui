@@ -1,0 +1,184 @@
+#learner-proficiency-chart {
+  width: inherit;
+  display: grid;
+  .chart-actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 1px solid;
+    height: 50px;
+    align-items: top;
+    .back-action {
+      padding-left: 15px;
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-content: left;
+      column-gap: 10px;
+      align-items: top;
+      cursor: pointer;
+      width: max-content;
+      .back-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $white;
+        display: grid;
+        text-align: center;
+        align-content: center;
+      }
+      .subject-title {
+        display: grid;
+        align-items: center;
+        grid-template-rows: 20px 20px;
+        .title {
+          font-size: 18px;
+          color: #000;
+        }
+        .total-competencies {
+          font-size: 14px;
+          text-transform: uppercase;
+        }
+      }
+    }
+    .toggle-graph-view {
+      display: grid;
+      grid-template-columns: auto auto;
+      column-gap: 5px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      height: 30px;
+      background-color: #fff;
+      line-height: 30px;
+      border-radius: 20px;
+      width: max-content;
+      padding: 0 12px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      color: rgb(26, 169, 235);
+      font-weight: bold;
+      justify-self: right;
+      font-size: 12px;
+    }
+  }
+  .chart-view {
+    display: flex;
+    width: inherit;
+    height: calc(100vh - 210px);
+    // grid-template-columns: 150px 1fr;
+    .grade-selector {
+      position: relative;
+      margin-right: 15px;
+      padding-left: 8px;
+      // max-height: 300px;
+
+      .grade-label {
+        border-bottom: 1px solid #000;
+        color: #000;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: bold;
+        display: grid;
+        // grid-template-columns: auto auto;
+        align-items: center;
+        i {
+          font-size: 16px;
+        }
+      }
+      .taxonomy-grade-list {
+        width: max-content;
+        height: calc(100% - 30px);
+        overflow-y: auto;
+        .taxonomy-grade {
+          padding: 0 5px;
+          height: 30px;
+          line-height: 30px;
+          cursor: pointer;
+          display: grid;
+          grid-template-columns: auto auto;
+          align-items: center;
+          justify-content: left;
+          column-gap: 3px;
+          margin: 8px 0;
+          opacity: 0.6;
+          i.adjust {
+            font-size: 30px;
+          }
+          &.active,
+          &:hover {
+            opacity: 1;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+
+    .graph-visual {
+      display: grid;
+
+      // height: 300px;
+
+      // min-width: 300px;
+      // max-width: 500px;
+      width: inherit;
+      .scrollable-chart {
+      }
+      #chart-area {
+        width: inherit;
+        transform: rotateX(180deg);
+        transform-style: preserve-3d;
+        height: calc(100vh - 250px);
+        display: grid;
+        align-items: center;
+        overflow-y: auto;
+        position: relative;
+        svg#chart-graph {
+          width: max-content;
+
+          .non-active {
+            opacity: 0.2;
+          }
+
+          .active {
+            opacity: 1;
+          }
+          #cells-group {
+            #competency-cell {
+              stroke: #fff;
+              stroke-width: 1;
+              shape-rendering: crispedges;
+              stroke-opacity: 0.7;
+              cursor: pointer;
+            }
+          }
+          #skyline-group {
+            filter: url(#back-shadow);
+            line {
+              stroke: #fff;
+              stroke-width: 6px;
+            }
+          }
+          #gradeline-group {
+            line {
+              stroke: #8fd383;
+              stroke-width: 4px;
+            }
+          }
+        }
+      }
+      .domains-seq-list {
+        display: flex;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        .domain-seq {
+          font-weight: bold;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .active-competency {
+    position: absolute;
+    box-shadow: 0px 3px 9px 5px rgba(0, 0, 0, 0.5);
+  }
+}

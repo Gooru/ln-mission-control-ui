@@ -1,0 +1,28 @@
+#preferences-panel {
+  padding: 15px;
+  height: 100%;
+  overflow-y: auto;
+  .preference-info {
+    display: grid;
+    margin-bottom: 12px;
+    .label-info {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      column-gap: 8px;
+      .icon i {
+        width: 20px;
+        height: 20px;
+        background-size: 20px;
+      }
+      .label-text {
+        font-size: 12px;
+      }
+      .label-value {
+        color: #4a9847;
+        font-size: 16px;
+        font-weight: bold;
+      }
+    }
+  }
+}

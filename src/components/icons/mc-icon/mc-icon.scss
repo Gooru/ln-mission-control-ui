@@ -20,4 +20,58 @@
   &.navigator-mix-color {
     background-image: url($mc-icon-navigator-mix-color);
   }
+  &.offline-activity-gray {
+    background-image: url($mc-icon-offline-gray);
+  }
+  &.course-gray {
+    background-image: url($mc-icon-course-gray);
+  }
+  &.collection-gray {
+    background-image: url($mc-icon-collection-gray);
+  }
+  &.question-gray {
+    background-image: url($mc-icon-question-gray);
+  }
+  &.resource-gray {
+    background-image: url($mc-icon-resource-gray);
+  }
+  &.assessment-gray {
+    background-image: url($mc-icon-assessment-gray);
+  }
+
+  &.lesson-gray {
+    background-image: url($mc-icon-lesson-gray);
+  }
+
+  &.unit-gray {
+    background-image: url($mc-icon-unit-gray);
+  }
+
+  &.rubric-gray {
+    background-image: url($mc-icon-rubric-gray);
+  }
+
+  &.video-resource {
+    background-image: url($mc-icon-video-resource);
+  }
+
+  &.audio-resource {
+    background-image: url($mc-icon-audio-resource);
+  }
+
+  &.interactive-resource {
+    background-image: url($mc-icon-interactive-resource);
+  }
+
+  &.text-resource {
+    background-image: url($mc-icon-text-resource);
+  }
+
+  &.website-resource {
+    background-image: url($mc-icon-website-resource);
+  }
+
+  &.image-resource {
+    background-image: url($mc-icon-image-resource);
+  }
 }

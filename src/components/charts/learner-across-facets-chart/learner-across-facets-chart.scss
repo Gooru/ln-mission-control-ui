@@ -1,0 +1,117 @@
+#learner-across-facets-chart {
+  width: inherit;
+  #facets-chart-view {
+    width: inherit;
+    height: calc(100vh - 230px);
+    background-color: #fff;
+    display: grid;
+    overflow-y: auto;
+    svg#chart-container {
+      transform: rotateX(180deg);
+      transform-style: preserve-3d;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      margin: auto;
+      #facets-group {
+        rect {
+          stroke: #000;
+          stroke-width: 2;
+          shape-rendering: crispedges;
+          stroke-opacity: 0.2;
+          cursor: pointer;
+        }
+        // Comptency Color
+        rect.notstarted {
+          fill: #e7e8e9;
+        }
+
+        rect.inprogress {
+          fill: #1aa9eb;
+        }
+
+        rect.mastered {
+          fill: #1d7dc2;
+        }
+      }
+      #skyline-group {
+        polyline.skyline {
+          fill: none;
+          stroke: #fff;
+          stroke-width: 6px;
+          // filter: url(#back-shadow);
+        }
+      }
+    }
+  }
+
+  .facets-placeholder {
+    margin: auto;
+    display: flex;
+    grid-row-start: 2;
+    .facet-placeholder {
+      font-size: 11px;
+      color: #000;
+      text-align: center;
+    }
+  }
+
+  .facet-tooltip {
+    position: absolute;
+    background-color: #37424b;
+    width: 180px;
+    color: $white;
+    padding: 3px 5px;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: bold;
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 80px;
+      bottom: -20px;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-bottom-color: #37424b;
+      transform: rotateX(180deg);
+      transform-style: preserve-3d;
+    }
+    // &:after {
+    //   content: "";
+    //   display: block;
+    //   position: absolute;
+    //   left: calc(100% / 2);
+    //   bottom: 100%;
+    //   width: 0;
+    //   height: 0;
+    //   border: 9px solid transparent;
+    //   border-bottom-color: #37424b;
+    // }
+    display: grid;
+    .subject {
+      text-align: center;
+      font-size: 14px;
+    }
+    .count-info {
+      display: grid;
+      grid-template-columns: 25px auto;
+      padding: 3px 0;
+      justify-items: left;
+      .count-label {
+        width: 20px;
+        height: 20px;
+        display: block;
+        &.mastered {
+          background-color: #1d7dc2;
+        }
+        &.inprogress {
+          background-color: #1aa9eb;
+        }
+        &.notstarted {
+          background-color: #dcdfe0;
+        }
+      }
+    }
+  }
+}

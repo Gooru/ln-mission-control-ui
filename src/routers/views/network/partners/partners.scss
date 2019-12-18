@@ -1,6 +1,6 @@
 #nav-partners-container {
   padding-top: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 50px;
 
   h2 {
     font-family: open sans-serif;
@@ -15,19 +15,18 @@
     align-items: center;
     justify-items: center;
 
-    .header-panel-conatiner,
-    .panel-conatiner {
-      height: 150px;
+    .header-panel-container,
+    .panel-container {
+      height: 170px;
       background: $white;
       border-radius: 4px;
       box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
       width: 240px;
     }
 
-    .header-panel-conatiner {
-      margin-bottom: 20px;
+    .header-panel-container {
+      margin-bottom: 30px;
       position: relative;
-      cursor: pointer;
 
       &.has-not-partners {
         .panel-body {
@@ -45,14 +44,14 @@
         z-index: -1;
 
         &#connector-line-p10 {
-          top: 182px;
+          top: 240px;
           width: 374px;
           transform: rotate(55deg);
           left: 156px;
         }
 
         &#connector-line-p11 {
-          top: 95px;
+          top: 130px;
           width: 200px;
           transform: rotate(38deg);
           left: 206px;
@@ -66,21 +65,21 @@
         }
 
         &#connector-line-p13 {
-          top: 7px;
-          width: 273px;
+          top: -20px;
+          width: 300px;
           transform: rotate(-51deg);
           left: 180px;
         }
 
         &#connector-line-p20 {
-          top: 181px;
+          top: 240px;
           width: 374px;
           transform: rotate(126deg);
           right: 157px;
         }
 
         &#connector-line-p21 {
-          top: 95px;
+          top: 130px;
           width: 200px;
           transform: rotate(-37deg);
           right: 206px;
@@ -94,8 +93,8 @@
         }
 
         &#connector-line-p23 {
-          top: 7px;
-          width: 273px;
+          top: -20px;
+          width: 300px;
           transform: rotate(-129deg);
           right: 180px;
         }
@@ -105,15 +104,19 @@
         height: 30px;
         display: flex;
         align-items: center;
-
+        cursor: pointer;
+        transition: 0.3s;
         p {
           margin: 0;
           padding-left: 8px;
         }
       }
+      .panel-header:hover {
+        color: $dark-900;
+      }
 
       .panel-body {
-        height: 120px;
+        height: 140px;
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px;
         padding: 10px;
@@ -144,10 +147,23 @@
 
             .count {
               justify-self: end;
+              line-height: 2;
             }
 
             .name {
-              @include ellipsis(12px, 1.2, 1);
+              display: grid;
+              grid-template-columns: 35px 1fr;
+              align-items: center;
+              transition: 0.2s ease-in-out;
+              cursor: pointer;
+
+              &:hover {
+                color: $light-300;
+              }
+
+              span {
+                @include ellipsis(12px, 1.2, 1);
+              }
             }
           }
         }
@@ -155,7 +171,7 @@
     }
 
     #left-partner-panel {
-      .header-panel-conatiner {
+      .header-panel-container {
         .panel-body {
           background-color: $blue-400;
         }
@@ -169,7 +185,6 @@
           width: 60px;
           height: 70px;
           background-size: 60px 60px;
-          background-position: 0px 10px;
         }
 
         p {
@@ -192,14 +207,27 @@
           font-weight: bold;
         }
       }
+
+      .panel-container {
+        display: grid;
+        align-items: center;
+      }
     }
 
     #right-partner-panel {
-      .header-panel-conatiner {
+      .header-panel-container {
         .panel-body {
           background-color: $green-400;
         }
       }
+    }
+    .partner-logo img {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      margin-bottom: 2px;
+      background-color: $white;
+      box-shadow: 0 0 5px 0 $white;
     }
   }
 }

@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import AppLayout from '@/layouts/app-layout/app-layout.vue';
 import AppHeaderLayout from '@/layouts/app-header-layout/app-header-layout.vue';
 import { sessionService, SessionService } from '@/providers/services/auth/session';
+import 'pace-progressbar';
 
 Vue.use(Router);
 
@@ -19,9 +20,21 @@ const routes = [
         meta: { isRequiredAuth: true },
       },
       {
-        path: '/network/partners/:type',
+        path: '/network/countries/:id/:name?',
+        name: 'countries-with-state',
+        component: () => import('@/routers/views/network/country-drill-down/country-drill-down.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
+        path: '/network/partners/type/:type',
         name: 'network-partners-type',
         component: () => import('@/routers/views/network/partners/partners-type/partners-type.vue'),
+        meta: { isRequiredAuth: true },
+      },
+      {
+        path: '/network/partners/:id',
+        name: 'network-partners-profile',
+        component: () => import('@/routers/views/network/partners/partner-profile/partner-profile.vue'),
         meta: { isRequiredAuth: true },
       },
       {
@@ -41,9 +54,17 @@ const routes = [
       {
         path: '/learners',
         name: 'learners',
-        beforeEnter() {
-          window.location.href = '/research/learners';
+        component: () => import('@/routers/views/learners/learners.vue'),
+        meta: {isRequiredAuth: true},
+      },
+      {
+        path: '/learners/:id',
+        name: 'learners-proficiency',
+        component: () => {
+           // this need to move view
+          return import('@/components/proficiency/learner-facets-proficiency/learner-facets-proficiency.vue');
         },
+        meta: { isRequiredAuth: true },
       },
     ],
   },

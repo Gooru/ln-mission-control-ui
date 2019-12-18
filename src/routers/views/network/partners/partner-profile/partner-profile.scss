@@ -1,0 +1,28 @@
+#partners-profile-container {
+  width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+
+  #partner-profile-data {
+    background-color: $white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+  }
+  .partner-info-section {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+  }
+  .back-button i {
+    padding: 15px;
+    background: $light-200;
+    font-size: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .profile-distribution {
+    background-image: linear-gradient(to right, $blue-400, $green-400);
+  }
+  .partner-content-usage {
+    background-color: $white;
+  }
+}

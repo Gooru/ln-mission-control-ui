@@ -4,12 +4,11 @@
     <div id="partners-data">
       <div id="left-partner-panel">
         <div
-          class="header-panel-conatiner"
+          class="header-panel-container"
           v-for="(partnerType, typeIndex) in partition1PartnersData"
           :key="typeIndex"
-          @click="onPreviewPartnersType(partnerType.pathname)"
         >
-          <div class="panel-header">
+          <div class="panel-header" @click="onPreviewPartnersType(partnerType.pathname)">
             <p>
               <b>{{partnerType.total}}</b>
               {{$t(partnerType.labelKey)}}
@@ -27,7 +26,12 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name">{{partner.partner_name}}</div>
+                  <div class="name" @click="onPreviewPartnerDetails(partner.partner_id)">
+                    <div class="partner-logo">
+                      <img v-lazy="partner.logo">
+                    </div>
+                    <span>{{partner.partner_name}} </span>
+                  </div>
                   <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
               </div>
@@ -37,9 +41,9 @@
         </div>
       </div>
       <div id="partner-panel">
-        <div class="panel-conatiner">
+        <div class="panel-container">
           <div class="panel-body">
-            <mc-icon icon="navigator-mix-color" />
+            <mc-icon icon="navigator-mix-color"/>
             <p
               id="partner-count"
             >{{numberFormatWithTextSuffix(overallStats.total_partners)}} {{$tc('partner', 2)}}</p>
@@ -54,13 +58,12 @@
       </div>
       <div id="right-partner-panel">
         <div
-          class="header-panel-conatiner"
+          class="header-panel-container"
           v-for="(partnerType, typeIndex) in partition2PartnersData"
           :key="typeIndex"
-          @click="onPreviewPartnersType(partnerType.pathname)"
           :class="partnerType.showTop3Partners ? '' : 'has-not-partners'"
         >
-          <div class="panel-header">
+          <div class="panel-header" @click="onPreviewPartnersType(partnerType.pathname)">
             <p>
               <b v-if="partnerType.showTop3Partners">{{partnerType.total}}</b>
               {{$t(partnerType.labelKey)}}
@@ -78,7 +81,12 @@
                 :key="partnerIndex"
               >
                 <div class="tabular-data">
-                  <div class="name">{{partner.partner_name}}</div>
+                  <div class="name" @click="onPreviewPartnerDetails(partner.partner_id)">
+                    <div class="partner-logo">
+                      <img v-lazy="partner.logo">
+                    </div>
+                    <span>{{partner.partner_name}}</span>
+                  </div>
                   <div class="count">{{numberFormatWithTextSuffix(partner.total_users)}}</div>
                 </div>
               </div>

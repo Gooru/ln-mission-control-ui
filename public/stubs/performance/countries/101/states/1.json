@@ -1,0 +1,26 @@
+{
+	"overallStats": {
+       	"averagePerformance": 61.620000000000005
+    	},
+	"data": [{
+		"id": 1,
+		"name": "Baster",
+		"code": "2215",
+		"type": "system",
+		"sub_type": "district",
+		"timespent": 23,
+		"performance": 45.6,
+		"completedCompetencies": 80,
+	"inprogressCompetencies": 20
+	}, {
+		"id": 2,
+		"name": "DHAMTARI",
+		"code": "2213",
+		"type": "system",
+		"sub_type": "district",
+		"timespent": 986,
+		"performance": 85.1,
+		"completedCompetencies": 80,
+		"inprogressCompetencies": 20
+	}]
+}

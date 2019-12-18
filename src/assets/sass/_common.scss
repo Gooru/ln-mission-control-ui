@@ -1,0 +1,57 @@
+.grade-range-not-started {
+  background-color: #fff;
+}
+
+.grade-range-0-59 {
+  background-color: #f46360;
+}
+
+.grade-range-60-69 {
+  background-color: #ed8e36;
+}
+
+.grade-range-70-79 {
+  background-color: #faba36;
+}
+
+.grade-range-80-89 {
+  background-color: #a8c99c;
+}
+
+.grade-range-90-100 {
+  background-color: #4b9740;
+}
+
+// Common Style
+
+// Comptency Color
+.competency-status-0 {
+  background-color: #dcdfe0;
+}
+
+.competency-status-1 {
+  background-color: #1aa9eb;
+}
+
+.competency-status-2,
+.competency-status-3,
+.competency-status-4,
+.competency-status-5 {
+  background-color: #1d7dc2;
+}
+
+//Fill competency color at svg
+.competency-status-fill-0 {
+  fill: #dcdfe0;
+}
+
+.competency-status-fill-1 {
+  fill: #1aa9eb;
+}
+
+.competency-status-fill-2,
+.competency-status-fill-3,
+.competency-status-fill-4,
+.competency-status-fill-5 {
+  fill: #1d7dc2;
+}

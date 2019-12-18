@@ -1,0 +1,10 @@
+#performance-progress-bar {
+  width: 100%;
+  height: 10px;
+  background-color: $light-200;
+  display: inline-flex;
+  span {
+    height: 100%;
+    display: block;
+  }
+}

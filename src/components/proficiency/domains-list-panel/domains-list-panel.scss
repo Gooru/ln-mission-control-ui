@@ -1,0 +1,65 @@
+#domains-list-panel {
+  background-color: #fff;
+  height: 100%;
+  overflow-y: auto;
+  .panel-header {
+    padding: 15px;
+    border-bottom: 1px solid;
+  }
+  .panel-body {
+    padding: 4px 15px 15px 15px;
+    .domains-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #666;
+      padding-bottom: 4px;
+    }
+    .domains-list {
+      .domain-info {
+        padding: 4px 0px 10px 0px;
+        border-bottom: 1px solid rgb(204, 204, 204);
+        cursor: pointer;
+        .domain-name {
+          display: grid;
+          grid-template-columns: auto 1fr;
+          column-gap: 8px;
+          padding-bottom: 8px;
+          font-size: 13px;
+          .domain-seq {
+          }
+          .domain-title {
+            color: rgb(26, 169, 235);
+          }
+        }
+        .competencies-info {
+          display: grid;
+          grid-template-columns: auto auto auto 1fr;
+          column-gap: 5px;
+          .type-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            justify-items: right;
+            column-gap: 5px;
+            .count {
+            }
+            .box {
+              width: 30px;
+              height: 30px;
+              display: block;
+            }
+          }
+          .total-competencies {
+            border-left: 1px solid rgb(204, 204, 204);
+            padding-left: 8px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+            align-items: center;
+            column-gap: 8px;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+#data-distribution {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  text-align: center;
+  color: $white;
+
+  .distribution-competencies {
+    #competencies-heading {
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    #competencies-total {
+      font-weight: 900;
+      font-size: 30px;
+    }
+    #competencies-content {
+      font-size: 15px;
+    }
+  }
+}

@@ -32,28 +32,12 @@
       }
     }
 
-    #country-pie-chart {
-      .pie-box-shadow {
-        filter: url("#drop-shadow");
-        cursor: pointer;
-      }
-
-      p.user-total-count:hover {
-        text-shadow: 2px 2px $dark-900;
-      }
-
-      .key-student {
-        fill: $green-400;
-      }
-
-      .key-teacher {
+    #country-circle-container {
+      cursor: pointer;
+      circle {
         fill: $blue-400;
+        opacity: 0.8;
       }
-
-      .key-other {
-        fill: $white;
-      }
-
       .user-total-count {
         fill: $white;
         transition: 0.5s;

@@ -1,0 +1,103 @@
+#learner-facets-proficiency {
+  // padding: 0 15px 15px 15px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 15px;
+  background-color: #ededed;
+  > .proficiency-header {
+    background-color: $white;
+    display: grid;
+    justify-content: right;
+    box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.5);
+    grid-template-columns: auto auto 1fr;
+    padding-left: 30px;
+    align-items: center;
+    column-gap: 8px;
+    .back-action {
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    .learner-info {
+      display: grid;
+      grid-template-columns: auto auto;
+      align-items: center;
+      column-gap: 8px;
+      .learner-thumbnail {
+        width: 30px;
+        height: 30px;
+        display: block;
+        background-size: cover;
+        border-radius: 50%;
+      }
+      .learner-name {
+        display: grid;
+        align-items: center;
+        .student-label {
+          font-size: 12px;
+        }
+      }
+    }
+    .month-picker {
+      justify-self: center;
+    }
+  }
+  > .facets-proficiency-body {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    column-gap: 15px;
+    height: calc(100vh - 156px);
+    .facets-left-panel {
+      background-color: $white;
+      .left-panel-header {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        align-items: center;
+        position: relative;
+        .learner-info {
+          padding: 15px;
+          .student-name {
+            font-weight: bold;
+            font-size: 14px;
+            color: #666;
+          }
+          .skyline-info {
+            font-size: 12px;
+          }
+        }
+        .facet-toggle {
+          display: grid;
+          grid-template-columns: auto auto;
+          column-gap: 5px;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          height: 30px;
+          background-color: #fff;
+          line-height: 30px;
+          border-radius: 20px;
+          width: max-content;
+          padding: 0 12px;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          color: rgb(26, 169, 235);
+          font-weight: bold;
+          justify-self: right;
+          font-size: 12px;
+          width: inherit;
+          z-index: 99;
+        }
+        .filter-container {
+          width: inherit;
+        }
+      }
+      .left-panel-body {
+      }
+    }
+    .facets-right-panel {
+      height: inherit;
+    }
+  }
+  > .subject-proficiency-body {
+    width: 100%;
+    height: 100%;
+  }
+}

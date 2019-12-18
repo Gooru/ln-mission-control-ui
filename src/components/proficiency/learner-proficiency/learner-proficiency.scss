@@ -1,0 +1,35 @@
+#learner-proficiency {
+  background-color: #ededed;
+  width: inherit;
+  height: inherit;
+  .month-year-picker {
+    display: grid;
+    justify-content: right;
+    width: 100%;
+    background-color: #fff;
+    padding: 0 30px;
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, 0.5);
+  }
+  .proficiency-panels-container {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    justify-content: center;
+    width: inherit;
+    height: inherit;
+    column-gap: 15px;
+    height: calc(100vh - 156px);
+  }
+  .proficiency-left-panel {
+    justify-self: center;
+    width: inherit;
+    height: inherit;
+
+    .proficiency-body-container {
+      width: inherit;
+    }
+  }
+  .proficiency-right-panel {
+    height: inherit;
+    position: relative;
+  }
+}

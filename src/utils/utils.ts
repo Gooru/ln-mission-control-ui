@@ -1,3 +1,6 @@
+import {GRADING_SCALE} from '@/utils/constants';
+import { isNumeric } from '@/utils/math';
+
 /**
  * Find the route path last occurrence
  * @return {String}
@@ -37,4 +40,28 @@ export function sortByProperty<T>(array: T[], propName: keyof T, order: 'ASC' | 
     if (order === 'DESC') {
         array.reverse();
     }
+}
+
+/**
+ * This Method is identifying color code based on the performance
+ * @param  {Number}
+ */
+export function getGradeRange(score: number): string {
+  let scaleSize = GRADING_SCALE.length - 1;
+  let range = 'not-started'; // Default color
+
+  if (isNumeric(score)) {
+    for (; scaleSize >= 0; scaleSize--) {
+      if (score >= GRADING_SCALE[scaleSize].LOWER_LIMIT) {
+        range = GRADING_SCALE[scaleSize].RANGE;
+        break;
+      }
+    }
+  }
+  return range;
+}
+
+export function getSum(dataList: any, property: any) {
+     return dataList.reduce(
+        (count: any, data: any) => Math.abs(count) + Math.abs(data[property]), 0);
 }

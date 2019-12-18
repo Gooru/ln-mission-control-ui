@@ -1,0 +1,77 @@
+#learner-container {
+  width: $screen-lg;
+  margin: 0 auto;
+  background-color: $white;
+  border-radius: 5px;
+  .learner-section-container {
+    margin-top: 30px;
+    .learner-section-header {
+      padding: 10px;
+      padding-left: 50px;
+      .learner-section-header-title {
+        font-weight: bold;
+        font-size: 22px;
+        margin: 0;
+      }
+      span {
+        color: $light-500;
+        font-size: 13px;
+      }
+    }
+    .learner-table-section-container {
+      .learner-table-section {
+        .learner-table-seaction-header {
+          display: grid;
+          grid-template-columns: 30% 20% 30% 20%;
+          column-gap: 20px;
+          padding: 10px;
+          margin-top: 30px;
+          border-bottom: 5px solid $light-100;
+          box-shadow: 0 0 10px $light-100;
+          span {
+            width: 100%;
+            font-size: 12px;
+            display: block;
+            text-transform: uppercase;
+            font-weight: bold;
+            &.learner-user-name {
+              padding-left: 40px;
+            }
+          }
+        }
+        .learner-table-section-body {
+          .learner-table-section-body-content {
+            display: grid;
+            grid-template-columns: 30% 20% 30% 20%;
+            align-items: center;
+            column-gap: 20px;
+            padding: 10px;
+            border-bottom: 2px solid $light-100;
+            cursor: pointer;
+            div {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              &.user-profile {
+                display: grid;
+                grid-template-columns: 40px 1fr;
+                align-items: center;
+                img {
+                  width: 30px;
+                  height: 30px;
+                  object-fit: cover;
+                  border-radius: 50%;
+                }
+                span {
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

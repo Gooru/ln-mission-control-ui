@@ -1,0 +1,36 @@
+{
+	"overallStats": {
+		"totalCompetencies": 21544
+	},
+	"data": [{
+		"week": 44,
+		"completedCompetencies": 2082
+	}, {
+		"week": 45,
+		"completedCompetencies": 5023
+	},
+	{
+		"week": 46,
+		"completedCompetencies": 8722
+	}, {
+		"week": 47,
+		"completedCompetencies": 9018
+	}],
+	"drilldown": [{
+		"id": "d9f43404-bfab-4f6d-83c0-dc46681ca540",
+		"name": "Period 4",
+        "code": "ABHU34L",
+		"type": "class",
+		"course_id": "8928d310-a612-4b6b-a483-5d5e5d9bd35d",
+		"sub_type": null,
+		"completedCompetencies": 1022
+	}, {
+		"id": "d9f43404-bfab-4f6d-83c0-dc46681ca540",
+		"name": "Period 3",
+        "code": "WEWJ67S",
+		"type": "class",
+		"course_id": "8928d310-a612-4b6b-a483-5d5e5d9bd35d",
+		"sub_type": null,
+		"completedCompetencies": 80
+	}]
+}
