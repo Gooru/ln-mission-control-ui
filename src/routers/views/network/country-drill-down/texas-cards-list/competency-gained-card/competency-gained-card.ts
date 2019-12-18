@@ -46,7 +46,7 @@ export default class CompentencyGainedCard extends Vue {
     private score: any;
 
     private get totalCompetency() {
-        return this.score.totalCompetencies ? this.score.totalCompetencies : 0;
+        return this.score.totalCompetencies ? Math.abs(this.score.totalCompetencies) : 0;
     }
 
     private get totalPerformances() {
