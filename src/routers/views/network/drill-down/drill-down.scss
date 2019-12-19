@@ -1,0 +1,65 @@
+#texas-container {
+  width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  .texas-charts-with-district {
+    width: 100%;
+    margin: 0 auto;
+    .country-month-picker {
+      display: grid;
+      grid-template-columns: 20% 80%;
+      align-items: center;
+      background-color: $white;
+      margin-bottom: 30px;
+      box-shadow: 0 0 10px $light-300;
+      .country-header {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        padding-left: 10px;
+        .back-button {
+          display: grid;
+          align-items: center;
+          cursor: pointer;
+
+          i {
+            font-size: 20px;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: $light-100;
+            width: 40px;
+            height: 40px;
+          }
+        }
+        .profile-heading {
+          display: grid;
+          align-items: center;
+          text-transform: uppercase;
+          font-size: 14px;
+          font-weight: bold;
+        }
+      }
+      .country-month {
+        justify-self: end;
+      }
+    }
+    .chart-top {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 70% 30%;
+      .texas-chart {
+        overflow-y: auto;
+      }
+      .texas-district {
+        max-height: 325px;
+        overflow-y: auto;
+        background-color: #105472;
+      }
+    }
+    .texas-performance-cards {
+      width: 100%;
+    }
+  }
+  .texas-performance-by-grade {
+    height: 100%;
+  }
+}
