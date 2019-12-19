@@ -22,7 +22,7 @@ const routes = [
       {
         path: '/network/countries/:id/:name?',
         name: 'countries-with-state',
-        component: () => import('@/routers/views/network/country-drill-down/country-drill-down.vue'),
+        component: () => import('@/routers/views/network/drill-down/drill-down.vue'),
         meta: { isRequiredAuth: true },
       },
       {
