@@ -14,10 +14,9 @@
                 <month-picker v-on:onChageTimeline="onChageTimeline"/>
             </div>
         </div>
-           <div class="chart-top">
+           <div class="chart-top"  v-if="isLoaded" >
                 <div class="texas-chart">
                     <level-chart 
-                    v-if="this.isLoaded && (competencyData || studentList.length)" 
                     :studentList="studentList" 
                     :countryData="countryData"  
                     :breadcrumb="breadcrumb" 
@@ -28,7 +27,6 @@
                 </div>
                 <div class="texas-district">
                     <level-card 
-                    v-if="this.isLoaded && (competencyData || studentList.length)" 
                     :studentList="studentList"
                     v-on:onSelectLevel="onSelectLevel" 
                     :dataList="competencyData"/>

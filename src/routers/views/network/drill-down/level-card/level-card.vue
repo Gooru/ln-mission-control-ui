@@ -1,5 +1,5 @@
-level-card<template>
-    <div id="texas-card-container">
+<template>
+    <div id="texas-card-container" v-if="cardData.length">
         <div class="texas-district-title">
          <h5 class="texas-distict-name">{{cardName}}</h5>
             <material-icon icon="search" />
@@ -14,7 +14,7 @@ level-card<template>
                 </ul>
               </div>
               <div class="card-total">
-                  <h4 class="total-count">{{Math.abs(level.completedCompetencies)}}</h4>
+                  <h4 class="total-count">{{level.completedCompetencies}}</h4>
                   <span>Total</span>
               </div>
           </div>
