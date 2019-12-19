@@ -4,7 +4,7 @@
       <new-user-card iconName="people" :cardValue="cardDetails.user_count" cardTitle="New Users" cardName="new-user"/>
     </div>
     <div class="competency-performance-card">
-      <competency-gained-card  v-if="subjectsList.length" :score="competencyScore" :competencySelectLevel="seletedLevel" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
+      <competency-gained-card :score="competencyScore" :competencySelectLevel="seletedLevel" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
     </div>
     <div class="suggestion-mode-card" v-if="hiddenData">
       <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
