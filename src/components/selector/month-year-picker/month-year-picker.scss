@@ -1,5 +1,27 @@
 #month-year-picker {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  column-gap: 8px;
   .year-selector {
+  }
+  .load-month {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    i {
+      font-size: 25px;
+      line-height: 30px;
+    }
+    &.disabled {
+      pointer-events: none;
+      opacity: 0.3;
+    }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 50%;
+    }
   }
   .month-year-items {
     display: flex;
