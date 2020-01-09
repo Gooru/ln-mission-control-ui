@@ -31,6 +31,7 @@ export class ProfileSerializer {
       email: userProfile.email,
       fullName: userProfile.last_name + ' ' + userProfile.first_name,
       thumbnailUrl,
+      createdAt: userProfile.created_at,
     };
     return serializedUserProfile;
   }
