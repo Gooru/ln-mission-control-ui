@@ -7,4 +7,5 @@ export interface User {
   username?: string;
   userId?: string | any;
   email?: string;
+  createdAt?: string;
 }

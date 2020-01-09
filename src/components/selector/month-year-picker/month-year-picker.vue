@@ -1,5 +1,11 @@
 <template>
   <div id="month-year-picker">
+    <div class="year-selector">
+      <div class="active-year" @click="isShowYearDropdown = !isShowYearDropdown">{{formatYear(activeYear)}}</div>
+      <div class="year-dropdown" :class="{hidden: !isShowYearDropdown}">
+        <span class="year-val" :class="{active: currentYear === year}" v-for="year in yearList" @click="onSelectYear(year)">{{formatYear(year)}}</span>
+      </div>
+    </div>
     <div class="load-month prev-load" @click="onPopulateMonth('left')">
       <google-material-icon icon='keyboard_arrow_left' />
     </div>
@@ -9,7 +15,7 @@
         <div class="year">{{formatYear(date)}}</div>
       </div>
     </div>
-    <div class="load-month next-load" :class="{disabled: endDate === currentMonth}" @click="onPopulateMonth('right')">
+    <div class="load-month next-load" :class="{disabled: endDate >= currentMonth}" @click="onPopulateMonth('right')">
       <google-material-icon icon='keyboard_arrow_right' />
     </div>
   </div>

@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="month-picker">
-        <month-year-picker @onChageTimeline="onChageTimeline" />
+        <month-year-picker @onChageTimeline="onChageTimeline" :startYear="learner.createdAt" />
       </div>
     </div>
     <div v-if="isShowFacetsProficiency" class="facets-proficiency-body">

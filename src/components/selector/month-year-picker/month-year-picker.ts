@@ -29,8 +29,15 @@ export default class MonthYearPicker extends Vue {
   @Prop()
   private startYear!: string;
 
+  private currentYear: string = moment().format('YYYY');
+
+  private yearList: any = [];
+
+  private isShowYearDropdown: boolean = false;
+
   private created() {
     this.loadDateRange();
+    this.loadYearRange();
   }
 
   private onSelectMonthYear(date: string) {
@@ -38,11 +45,13 @@ export default class MonthYearPicker extends Vue {
     this.$emit('onChageTimeline', date);
   }
 
-  private onSelectYear() {
-    const year = 2017;
+  private onSelectYear(year: any = moment()) {
+    year = moment(year).format('YYYY');
     this.startDate = moment().format(`${year}-MM-01`);
     this.endDate = addMonth(this.startDate, 11);
+    this.activeYear = year;
     this.loadDateRange();
+    this.isShowYearDropdown = !this.isShowYearDropdown;
   }
 
   private onPopulateMonth(direction: string) {
@@ -66,6 +75,14 @@ export default class MonthYearPicker extends Vue {
     const endDate = this.endDate;
     const dateRangeList = getDateRangeArray(startDate, endDate, 'month');
     this.dateRangeList = dateRangeList;
+  }
+
+  private loadYearRange() {
+    let startYear = this.startYear || (parseInt(this.currentYear, 10) - 2).toString();
+    startYear = moment(startYear).format('YYYY');
+    const currentYear = moment(this.currentYear).format('YYYY');
+    const yearList = getDateRangeArray(startYear, currentYear, 'year');
+    this.yearList = yearList;
   }
 
   private formatMonth(date: string) {
