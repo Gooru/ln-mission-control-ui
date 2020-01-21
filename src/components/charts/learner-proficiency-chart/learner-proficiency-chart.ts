@@ -113,7 +113,6 @@ export default class LearnerProficiencyChart extends Vue {
 
   public created() {
     this.loadTaxonomyGrades();
-    this.loadChartData();
   }
 
   @Watch('subjectCode')
@@ -168,7 +167,6 @@ export default class LearnerProficiencyChart extends Vue {
       component.chartData = component.parseChartData(domainCoOrdinates, domainCompetencyMatrix);
       component.drawProficiencyChart();
       component.isLoading = false;
-      // component.parseGradeBoundaryChartData();
     }));
   }
 
@@ -176,6 +174,7 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     return taxonomyAPI.fetchTaxonomyGrades(this.subjectCode).then((taxonomyGrades: GradeModel[]) => {
       component.taxonomyGrades = taxonomyGrades;
+      component.loadChartData();
     });
   }
 
