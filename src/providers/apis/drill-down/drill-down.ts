@@ -26,7 +26,7 @@ export class DrillDownAPI {
 
     public fetchDistrictCompetencyByStateID(params: any, data: any): Promise<any> {
         const endpoint =
-        `${this.namespace}/competency/countries/${params.country_id}/states/${params.state_id}`;
+            `${this.namespace}/competency/countries/${params.country_id}/states/${params.state_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return drillDownSerializer.serializeCompetency(response.data);
@@ -41,7 +41,7 @@ export class DrillDownAPI {
         });
     }
 
-    public fetchClassCompetencyBySchoolID( params: any, data: any): Promise<any> {
+    public fetchClassCompetencyBySchoolID(params: any, data: any): Promise<any> {
         const endpoint = `${this.namespace}/competency/schools/${params.school_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
@@ -75,7 +75,7 @@ export class DrillDownAPI {
 
     public fetchDistrictPerformanceByStateID(params: any, data: any): Promise<any> {
         const endpoint =
-        `${this.namespace}/performance/countries/${params.country_id}/states/${params.state_id}`;
+            `${this.namespace}/performance/countries/${params.country_id}/states/${params.state_id}`;
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers, data).then((response) => {
             return drillDownSerializer.serializePerformance(response.data);
@@ -103,6 +103,8 @@ export class DrillDownAPI {
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers).then((response) => {
             return response.data;
+        }, (err) => {
+            return err;
         });
     }
 
@@ -111,6 +113,8 @@ export class DrillDownAPI {
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers).then((response) => {
             return response.data;
+        }, (err) => {
+            return err;
         });
     }
 
@@ -119,6 +123,8 @@ export class DrillDownAPI {
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers).then((response) => {
             return response.data;
+        }, (err) => {
+            return err;
         });
     }
 
@@ -127,6 +133,8 @@ export class DrillDownAPI {
         const headers = http.getTokenHeaders();
         return http.get(endpoint, headers).then((response) => {
             return response.data;
+        }, (err) => {
+            return err;
         });
     }
 
