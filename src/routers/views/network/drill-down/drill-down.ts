@@ -114,7 +114,7 @@ export default class DrillDown extends Vue {
             drillDownAPI.fetchCardsDatabyCountryLevel(params),
         ]).then(axios.spread((competency, cardData) => {
             this.competencyData = competency;
-            this.cardDetails = this.getDataBasedOnLevel(cardData) || {};
+            this.cardDetails = this.getDataBasedOnLevel(cardData);
             this.isLoaded = true;
         }));
 
@@ -170,7 +170,7 @@ export default class DrillDown extends Vue {
         const selectedService = this.selectLevelService(selectedLevel);
         return selectedService.then(axios.spread((levelData: any, cardData: any) => {
             this.competencyData = levelData;
-            this.cardDetails = this.getDataBasedOnLevel(cardData) || {};
+            this.cardDetails = this.getDataBasedOnLevel(cardData);
         }));
     }
 
@@ -216,7 +216,10 @@ export default class DrillDown extends Vue {
     private getDataBasedOnLevel(userData: any) {
         const month = this.dataParams.month;
         const year = this.dataParams.year;
-        return Object.keys(userData).length ? userData[`${month}_${year}`] : {};
+        return (userData &&
+             Object.keys(userData).length &&
+             userData[`${month}_${year}`])
+             ? userData[`${month}_${year}`] : {};
     }
 
     private getSubjectDetails(params: any) {

@@ -104,7 +104,7 @@ export class DrillDownAPI {
         return http.get(endpoint, headers).then((response) => {
             return response.data;
         }, (err) => {
-            return {};
+            return err;
         });
     }
 
@@ -114,7 +114,7 @@ export class DrillDownAPI {
         return http.get(endpoint, headers).then((response) => {
             return response.data;
         }, (err) => {
-            return {};
+            return err;
         });
     }
 
@@ -124,7 +124,7 @@ export class DrillDownAPI {
         return http.get(endpoint, headers).then((response) => {
             return response.data;
         }, (err) => {
-            return {};
+            return err;
         });
     }
 
@@ -134,7 +134,7 @@ export class DrillDownAPI {
         return http.get(endpoint, headers).then((response) => {
             return response.data;
         }, (err) => {
-            return {};
+            return err;
         });
     }
 
