@@ -66,6 +66,12 @@ const routes = [
         },
         meta: { isRequiredAuth: true },
       },
+      {
+        path: '/console',
+        name: 'console',
+        component: () => import('@/routers/views/console/console.vue'),
+        meta: {isRequiredAuth: true},
+      },
     ],
   },
   {
