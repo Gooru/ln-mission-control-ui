@@ -1,6 +1,7 @@
 <template>
   <div id="texas-cards-list-container">
     <div class="new-user-card">
+      <!-- we have to change this line cardValue logic when we get actual data -->
       <new-user-card iconName="people" :cardValue="cardDetails.user_count ? cardDetails.user_count : 0" cardTitle="New Users" cardName="new-user"/>
     </div>
     <div class="competency-performance-card">
@@ -10,15 +11,18 @@
       <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
     </div>
     <div class="avarage-time-card">
+       <!-- we have to change this line cardValue logic when we get actual data -->
       <new-user-card iconName="access_time" :cardValue="cardDetails.avg_count ? cardDetails.avg_count : 0" cardTitle="Avg. session time" cardName="avarage-time"/>
     </div>
     <div class="top-provider-card" v-if="hiddenData">
       <top-providers />
     </div>
     <div class="class-activities-card">
+       <!-- we have to change this line cardValue logic when we get actual data -->
       <new-user-card  :cardValue="cardDetails.gained_comp || 0" cardTitle="of students gained > 10 competencies" cardName="class-activity"/>
     </div>
      <div class="struggling-competency">
+        <!-- we have to change this line strugglingCompetencies logic when we get actual data -->
       <struggling-competency :strugglingCompetencies="cardDetails.stugglingCompetency || []" />
     </div>
   </div>
