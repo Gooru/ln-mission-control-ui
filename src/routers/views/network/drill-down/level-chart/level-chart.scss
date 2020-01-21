@@ -57,9 +57,15 @@
             padding: 0 2px;
           }
           &:last-child {
+            pointer-events: none;
             span {
               display: none;
             }
+          }
+        }
+        &.last-breadcrumb {
+          li {
+            pointer-events: auto;
           }
         }
       }

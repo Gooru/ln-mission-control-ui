@@ -24,7 +24,7 @@ export default class MonthYearPicker extends Vue {
 
   private carouselMonths: number = 2;
 
-  private activeYear!: string;
+  private activeYear?: string = moment().format('YYYY');
 
   @Prop()
   private startYear!: string;
