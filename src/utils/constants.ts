@@ -15,6 +15,10 @@ export const NAVIGATION_MENUS = [
     name: 'learners',
     path: '/learners',
   },
+  {
+    name: 'console',
+    path: '/console',
+  },
 ];
 
 export const PARTNERS_TYPE = [
