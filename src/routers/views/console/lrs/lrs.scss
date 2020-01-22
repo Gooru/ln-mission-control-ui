@@ -5,6 +5,9 @@
     background-color: $white;
     padding: 30px;
     margin-top: 50px;
+    .alert-box {
+      margin: 10px;
+    }
     .lrs-header {
       display: grid;
       grid-template-columns: 40px 1fr;
