@@ -1,6 +1,5 @@
 import {Component, Vue} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
-import moment from 'moment';
 import {consoleAPI} from '@/providers/apis/console/console';
 
 @Component({
@@ -17,7 +16,12 @@ export default class Lrs extends Vue {
     /**
      * @property {Object} postAgent this property hold the post data
      */
-    private postPayload: any = [];
+    private postPayload: any = '';
+
+    /**
+     * @property {Object} isShowMessage this property hold the alert message box
+     */
+    private isShowMessage: boolean = false;
 
     /**
      * @property {Object} queryData this property hold the query data
@@ -27,11 +31,14 @@ export default class Lrs extends Vue {
     // Action
 
     private onPost() {
-        consoleAPI.postStatementData(this.postPayload);
-    }
-
-    private objectToString(payload: any) {
-        return JSON.stringify(payload);
+        if (this.postPayload) {
+            consoleAPI.postStatementData(this.postPayload).then(() => {
+                this.isShowMessage = true;
+                setTimeout(() => {
+                    this.isShowMessage = false;
+                }, 5000);
+            });
+        }
     }
 
 }
