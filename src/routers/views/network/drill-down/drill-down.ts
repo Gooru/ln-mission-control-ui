@@ -178,6 +178,9 @@ export default class DrillDown extends Vue {
         const isBreadcrumb = this.breadcrumb.indexOf(selectedLevel);
         if (isBreadcrumb !== -1) {
             this.breadcrumb = this.breadcrumb.slice(0, isBreadcrumb);
+            if (this.breadcrumb.length !== 0) {
+                this.breadcrumb.push(selectedLevel);
+            }
         } else {
             if (this.breadcrumb.length === 0) {
                 this.breadcrumb.push(this.countryData);
@@ -213,7 +216,10 @@ export default class DrillDown extends Vue {
     private getDataBasedOnLevel(userData: any) {
         const month = this.dataParams.month;
         const year = this.dataParams.year;
-        return userData[`${month}_${year}`];
+        return (userData &&
+             Object.keys(userData).length &&
+             userData[`${month}_${year}`])
+             ? userData[`${month}_${year}`] : {};
     }
 
     private getSubjectDetails(params: any) {
