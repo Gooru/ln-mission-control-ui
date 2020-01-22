@@ -57,7 +57,7 @@ export default class Lrs extends Vue {
         queryValue = this.queryByActivity;
       }
       const endpoint = 'api/v1/xapi/statements';
-      const currentUrl = window.location.hostname;
+      const currentUrl = window.location.protocol + '//' + window.location.hostname;
       const getStatementsUrl = `${currentUrl}/${endpoint}?${queryBy}=${queryValue}`;
       window.open(getStatementsUrl, 'xapi-statement');
       // const queryBy = {'activity': 'http://adlnet.gov/expapi/activities/example'};
