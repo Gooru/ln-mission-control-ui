@@ -37,14 +37,13 @@ export default class Lrs extends Vue {
 
     private onPost() {
         if (this.postPayload) {
-            consoleAPI.postStatementData(this.postPayload).then(() => {
+            xAPI.postStatementData(this.postPayload).then(() => {
                 this.isShowMessage = true;
                 setTimeout(() => {
                     this.isShowMessage = false;
                 }, 5000);
             });
         }
-        xAPI.postStatementData(this.postPayload);
     }
 
     private onQueryStatements() {
@@ -58,7 +57,7 @@ export default class Lrs extends Vue {
         queryValue = this.queryByActivity;
       }
       const endpoint = 'api/v1/xapi/statements';
-      const currentUrl = 'http://nile.usalearning.net';
+      const currentUrl = window.location.hostname;
       const getStatementsUrl = `${currentUrl}/${endpoint}?${queryBy}=${queryValue}`;
       window.open(getStatementsUrl, 'xapi-statement');
       // const queryBy = {'activity': 'http://adlnet.gov/expapi/activities/example'};
@@ -67,8 +66,8 @@ export default class Lrs extends Vue {
       // })
     }
 
-    private objectToString(payload: any) {
-        return JSON.stringify(payload);
+    private onGoBack() {
+        this.$router.go(-1);
     }
 
 }
