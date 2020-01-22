@@ -52,7 +52,7 @@ export default class Lrs extends Vue {
       let queryValue = '';
       if (this.queryByAgent !== '') {
         queryBy = 'agent';
-        queryValue = this.queryByAgent;
+        queryValue = 'mailto:' + this.queryByAgent;
       } else if (this.queryByActivity !== '') {
         queryBy = 'activity';
         queryValue = this.queryByActivity;
