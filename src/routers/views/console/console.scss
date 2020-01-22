@@ -36,6 +36,12 @@
         padding: 3px 20px;
         width: max-content;
       }
+      .lrs-panel {
+        .xapi-lrs-btn {
+          background-color: #1d7dc2;
+          color: $white;
+        }
+      }
     }
   }
 }

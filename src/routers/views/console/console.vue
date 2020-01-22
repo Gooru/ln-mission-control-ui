@@ -20,11 +20,11 @@
               </button>
             </div>
             <div class="lrs-panel">
-              <h5>LRS</h5>
+              <h5>xAPI & LRS</h5>
               <p>
                 You can query LRS for xAPI statements or view data stream by user or activity
               </p>
-              <button v-on:click="onSelectTab('lrs')">Query LRS</button>
+              <button class="xapi-lrs-btn" v-on:click="onSelectTab('lrs')">Query LRS</button>
             </div>
          </div>
       </div>

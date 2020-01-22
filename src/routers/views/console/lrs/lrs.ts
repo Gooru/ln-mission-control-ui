@@ -46,6 +46,7 @@ export default class Lrs extends Vue {
         }
     }
 
+    // TODO Need to improve the function once exact requirements is ready
     private onQueryStatements() {
       let queryBy = '';
       let queryValue = '';
@@ -60,7 +61,6 @@ export default class Lrs extends Vue {
       const currentUrl = window.location.protocol + '//' + window.location.hostname;
       const getStatementsUrl = `${currentUrl}/${endpoint}?${queryBy}=${queryValue}`;
       window.open(getStatementsUrl, 'xapi-statement');
-      // const queryBy = {'activity': 'http://adlnet.gov/expapi/activities/example'};
       // xAPI.queryStatements(queryBy).then((statements) => {
       //   console.log('statements', statements);
       // })
