@@ -1,0 +1,71 @@
+.mc-competency-map {
+  .mc-competency-submenu {
+    background-color: #1b72ba;
+    padding: 10px;
+    text-align: center;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1100px) {
+      width: 1100px;
+      padding: 10px 0;
+    }
+
+    .mc-competency-submenu-blk {
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      width: 1100px;
+      padding: 0;
+      margin: 0 auto;
+      text-align: center;
+
+      li {
+        font-size: 15px;
+        color: $light-200;
+        padding: 0 10px;
+        text-transform: uppercase;
+        opacity: 0.6;
+        &.active {
+          color: $white;
+          font-weight: bold;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  .mc-competency-map-container {
+    width: 1100px;
+    margin: 0 auto;
+    margin-top: 30px;
+
+    .mc-competency-content-section {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      .competency-left-section {
+        background-color: $white;
+        border: 1px solid $light-100;
+        border-radius: 3px;
+        box-shadow: 0 0 10px $light-300;
+        .category-header {
+          width: 100%;
+          padding: 0 10px;
+          padding-bottom: 10px;
+          border-bottom: 4px solid #3890de;
+
+          .categories-dropdown {
+            display: grid;
+            justify-content: left;
+          }
+          .header-subtitle {
+            padding: 0 10px;
+            font-weight: bold;
+            color: $light-500;
+            font-size: 13px;
+          }
+        }
+      }
+      .competency-right-section {
+      }
+    }
+  }
+}
