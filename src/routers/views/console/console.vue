@@ -24,7 +24,7 @@
               <p>
                 You can query LRS for xAPI statements or view data stream by user or activity
               </p>
-              <button disabled>Query LRS</button>
+              <button v-on:click="onSelectTab('lrs')">Query LRS</button>
             </div>
          </div>
       </div>

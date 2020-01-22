@@ -7,4 +7,9 @@ export default class Console extends Vue {
     private get session() {
         return sessionService.getSession();
     }
+
+
+    private onSelectTab(name: string) {
+        this.$router.push(`/console/${name}`);
+    }
 }

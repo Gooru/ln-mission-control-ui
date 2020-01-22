@@ -72,6 +72,12 @@ const routes = [
         component: () => import('@/routers/views/console/console.vue'),
         meta: {isRequiredAuth: true},
       },
+      {
+        path: '/console/:name',
+        name: 'console-section',
+        component: () => import('@/routers/views/console/lrs/lrs.vue'),
+        meta: {isRequiredAuth: true},
+      },
     ],
   },
   {
