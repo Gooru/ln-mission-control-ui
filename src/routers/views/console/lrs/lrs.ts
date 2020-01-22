@@ -59,7 +59,7 @@ export default class Lrs extends Vue {
       }
       const endpoint = 'api/v1/xapi/statements';
       const currentUrl = window.location.protocol + '//' + window.location.hostname;
-      const getStatementsUrl = `${currentUrl}/${endpoint}?${queryBy}=${queryValue}`;
+      const getStatementsUrl = `${currentUrl}/${endpoint}?${queryBy}=${encodeURIComponent(queryValue)}`;
       window.open(getStatementsUrl, 'xapi-statement');
       // xAPI.queryStatements(queryBy).then((statements) => {
       //   console.log('statements', statements);

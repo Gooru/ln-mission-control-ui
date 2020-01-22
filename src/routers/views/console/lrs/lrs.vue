@@ -1,7 +1,7 @@
 <template>
     <div id="mc-console-lrs">
         <div class="mc-console-lrs-container">
-             <b-alert class="alert-box" :show="isShowMessage" variant="success">"The xAPI statement has been submitted" as a toast!</b-alert>
+             <b-alert class="alert-box" :show="isShowMessage" variant="success">The xAPI statement has been submitted successfully!</b-alert>
             <div class="lrs-header">
                  <span v-on:click ="onGoBack"><google-icon icon="arrow_back"/></span>
                 <span>xAPI & LRS Demo</span>
