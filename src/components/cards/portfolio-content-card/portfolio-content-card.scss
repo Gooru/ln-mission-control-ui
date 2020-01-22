@@ -36,6 +36,9 @@
         }
         .owner {
           font-size: 10px;
+          span {
+            text-transform: capitalize;
+          }
         }
       }
     }
