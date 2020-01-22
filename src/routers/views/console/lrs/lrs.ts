@@ -1,7 +1,7 @@
 import {Component, Vue} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import moment from 'moment';
-import {consoleAPI} from '@/providers/apis/console/console';
+import {xAPI} from '@/providers/apis/xapi/xapi';
 
 @Component({
     name: 'lrs-page',
@@ -23,11 +23,35 @@ export default class Lrs extends Vue {
      * @property {Object} queryData this property hold the query data
      */
     private queryData: any = {};
+
+    private queryByAgent: string = '';
+
+    private queryByActivity: string = '';
     // ------------------------------------------------------------------------------
     // Action
 
     private onPost() {
-        consoleAPI.postStatementData(this.postPayload);
+        xAPI.postStatementData(this.postPayload);
+    }
+
+    private onQueryStatements() {
+      let queryBy = '';
+      let queryValue = '';
+      if (this.queryByAgent !== '') {
+        queryBy = 'agent';
+        queryValue = this.queryByAgent;
+      } else if (this.queryByActivity !== '') {
+        queryBy = 'activity';
+        queryValue = this.queryByActivity;
+      }
+      const endpoint = 'api/v1/xapi/statements';
+      const currentUrl = 'http://nile.usalearning.net';
+      const getStatementsUrl = `${currentUrl}/${endpoint}?${queryBy}=${queryValue}`;
+      window.open(getStatementsUrl, 'xapi-statement');
+      // const queryBy = {'activity': 'http://adlnet.gov/expapi/activities/example'};
+      // xAPI.queryStatements(queryBy).then((statements) => {
+      //   console.log('statements', statements);
+      // })
     }
 
     private objectToString(payload: any) {
