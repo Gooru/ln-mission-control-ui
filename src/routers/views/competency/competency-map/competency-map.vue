@@ -43,7 +43,11 @@
                                 <div class="subject-name">{{subject.title}}</div>
                             </div>
                             <div class="competency-card-body">
-                                <div class="matrix-chart"></div>
+                                <div class="matrix-chart">
+                                    <competency-bar-chart
+                                    :subjectCode="subject.code || []"
+                                    />
+                                </div>
                             </div>
                         </div>
                     </div>

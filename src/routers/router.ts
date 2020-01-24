@@ -79,9 +79,9 @@ const routes = [
         meta: {isRequiredAuth: true},
       },
       {
-        path: '/competency-map/',
-        name: 'competency-map',
-        component: () => import('@/routers/views/competency-map/competency-map.vue'),
+        path: '/competency/:name',
+        name: 'competency-tab-competency-map',
+        component: () => import('@/routers/views/competency/competency.vue'),
         meta: {isRequiredAuth: true},
       },
     ],
