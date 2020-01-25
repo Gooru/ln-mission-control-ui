@@ -1,0 +1,42 @@
+.mc-domain-card {
+  .mc-domain-card-container {
+    background-color: $white;
+    box-shadow: 0 0 5px $light-200;
+    .domain-header {
+      padding: 10px;
+      margin: 0;
+      border-bottom: 1px solid $light-200;
+    }
+    .domain-body {
+      height: calc(100vh - 200px);
+      overflow-y: auto;
+
+      .domain-section {
+        .domain-content-title {
+          display: grid;
+          grid-template-columns: 40px 1fr 40px;
+          align-items: center;
+          padding: 10px 0;
+          border-top: 1px solid $light-200;
+          border-bottom: 1px solid $light-200;
+          i {
+            text-align: center;
+            font-size: 20px;
+            &.arrow_drop_down {
+              font-size: 25px;
+            }
+          }
+          .domain-name {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+          }
+        }
+        .domain-content-section {
+          padding: 10px;
+          display: none;
+        }
+      }
+    }
+  }
+}

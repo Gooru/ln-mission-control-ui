@@ -1,0 +1,12 @@
+.mc-proficiency-matrix {
+  margin-top: 40px;
+  .profiicency-matrix-container {
+    width: 100%;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-column-gap: 40px;
+    height: calc(100vh - 100px);
+    overflow: hidden;
+  }
+}

@@ -1,10 +1,12 @@
 import { Component, Vue } from 'vue-property-decorator';
 import CompetencyMap from './competency-map/competency-map';
+import ProficiencyMatrix from './proficiency-matrix/proficiency-matrix';
 
 @Component({
     name: 'competency',
     components: {
         'competency-map': CompetencyMap,
+        'proficiency-martix': ProficiencyMatrix,
     },
 })
 export default class Competency extends Vue {
@@ -16,6 +18,10 @@ export default class Competency extends Vue {
 
     private isShowProficiencyView: boolean = false;
 
+    private selectedSubject?: any;
+
+    private userId?: any;
+
     // ------------------------------------------------------------------------
     // Hooks
 
@@ -23,9 +29,16 @@ export default class Competency extends Vue {
         this.isShowCompetencyMap = true;
     }
 
+
     // ------------------------------------------------------------------------
     // Actions
 
+    private onSelectSubject(subject: any, userId: any) {
+        this.selectedSubject = subject;
+        this.userId = userId;
+        this.isShowProficiencyView = true;
+        this.isShowCompetencyMap = false;
+    }
     // -------------------------------------------------------------------------
     // Methods
 

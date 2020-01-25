@@ -26,8 +26,8 @@ export default class LearnerProficiencyChart extends Vue {
     const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
     const chartContainerHeight = chartContainer.offsetHeight;
     const chartHeight = component.isShowExpandedGraph ?
-     component.maxDomainSize * component.expandedGraphCellHeight + 5 :
-      chartContainerHeight ;
+      component.maxDomainSize * component.expandedGraphCellHeight + 5 :
+      chartContainerHeight;
     return chartHeight - 15;
   }
 
@@ -35,7 +35,7 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     const proficiencyChartData = component.chartData;
     const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
-    return chartContainer.offsetWidth - 30;
+    return chartContainer.offsetWidth ? chartContainer.offsetWidth - 30 : component.maxDomainSize * 10;
   }
 
   get subjectCode() {
@@ -54,7 +54,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   private domainCoOrdinates: DomainModel[] = [];
 
-  private chartData!: any;
+  private chartData?: any = [];
 
   private skylineContainer!: any;
 
@@ -77,7 +77,7 @@ export default class LearnerProficiencyChart extends Vue {
   private cellHeight: number = 10;
 
   @Prop()
-  private activeCompetency!: any;
+  private activeCompetency?: any;
 
   private maxDomainSize: number = 0;
 
@@ -92,23 +92,26 @@ export default class LearnerProficiencyChart extends Vue {
   private isLoading: boolean = false;
 
   @Prop()
-  private isDomainActive: boolean = false;
+  private isDomainActive?: boolean = false;
 
   @Prop()
-  private isCompetencyActive: boolean = false;
+  private isCompetencyActive?: boolean = false;
 
   @Prop()
-  private month!: string;
+  private month?: string;
 
   @Prop()
-  private year!: string;
+  private year?: string;
 
   private totalCompetencies: number = 0;
 
   @Prop()
-  private activeDomainSeq: number = 0;
+  private activeDomainSeq?: any = 0;
 
   private activeCompetencyStyle: any = null;
+
+  @Prop()
+  private isCompetencyMap?: boolean;
 
 
   public created() {
@@ -148,7 +151,7 @@ export default class LearnerProficiencyChart extends Vue {
   public onSelectDomain(domain: DomainModel) {
     const component = this;
     if (!domain.competencies) {
-      domain = this.chartData.find( (domainChart: DomainModel) => {
+      domain = this.chartData.find((domainChart: DomainModel) => {
         return domainChart.domainCode === domain.domainCode;
       });
     }
@@ -161,13 +164,16 @@ export default class LearnerProficiencyChart extends Vue {
     component.isLoading = true;
     axios.all([component.fetchUserDomainCompetencyMatrix(), component.fetchMatrixCoOrdinates()]).then(axios.spread(
       (domainCompetencyMatrix: any, matrixCoOrdinates: any) => {
-      const domainCoOrdinates = matrixCoOrdinates.domains;
-      component.domainCoOrdinates = domainCoOrdinates;
-      component.domainCompetencyMatrix = domainCompetencyMatrix;
-      component.chartData = component.parseChartData(domainCoOrdinates, domainCompetencyMatrix);
-      component.drawProficiencyChart();
-      component.isLoading = false;
-    }));
+        const domainCoOrdinates = matrixCoOrdinates.domains;
+        component.domainCoOrdinates = domainCoOrdinates;
+        component.domainCompetencyMatrix = domainCompetencyMatrix;
+        component.chartData = component.parseChartData(domainCoOrdinates, domainCompetencyMatrix);
+        component.drawProficiencyChart();
+        component.isLoading = false;
+        if (this.isCompetencyMap) {
+          this.$emit('loadingDomain', domainCoOrdinates);
+        }
+      }));
   }
 
   public loadTaxonomyGrades() {
@@ -190,7 +196,7 @@ export default class LearnerProficiencyChart extends Vue {
     const chartData: any = [];
     let maxDomainSize = 0;
     let totalCompetencies = 0;
-    domainCoOrdinates.map( (domainCoOrdinate: any) => {
+    domainCoOrdinates.map((domainCoOrdinate: any) => {
       const domainMatrixData = domainCompetencyMatrix.find(
         (domainMatrix: any) => domainMatrix.domainCode === domainCoOrdinate.domainCode,
       );
@@ -206,7 +212,7 @@ export default class LearnerProficiencyChart extends Vue {
       };
       maxDomainSize = competencies.length > maxDomainSize ? competencies.length : maxDomainSize;
       totalCompetencies += competencies.length;
-      competencies.map( (competency: CompetencyModel) => {
+      competencies.map((competency: CompetencyModel) => {
         const competencyData = {
           domainName,
           domainCode,
@@ -215,7 +221,7 @@ export default class LearnerProficiencyChart extends Vue {
           competencyName: competency.competencyName,
           competencySeq: competency.competencySeq,
           competencyStudentDesc: competency.competencyStudentDesc,
-          competencyStatus: competency.status,
+          competencyStatus: component.isCompetencyMap ? 2 : competency.status,
           isMastered: competency.status > 1,
           isInferred: competency.status === 2 || competency.status === 3,
           isSkyLineCompetency: false,
@@ -241,7 +247,7 @@ export default class LearnerProficiencyChart extends Vue {
     const proficiencyChartData = component.chartData;
     const gradeBoundaries = component.gradeBoundaries;
     if (gradeBoundaries && gradeBoundaries.length) {
-      proficiencyChartData.map( (domainChartData: DomainModel) => {
+      proficiencyChartData.map((domainChartData: DomainModel) => {
         const competencies = domainChartData.competencies;
         const existingGradeBoundary: any = competencies.find(
           (competency: any) => competency.isGradeBoundary,
@@ -305,10 +311,10 @@ export default class LearnerProficiencyChart extends Vue {
         const skylineClassName = competency.isSkyLineCompetency
           ? 'skyline-competency '
           : '';
-        const  gradeBoundaryClassName = competency.isGradeBoundary ? 'grade-boundary-competency' : '';
+        const gradeBoundaryClassName = competency.isGradeBoundary ? 'grade-boundary-competency' : '';
         return `${skylineClassName}domain-${competency.domainSeq} competency-${
           competency.competencySeq
-        } competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
+          } competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
       })
       .attr('id', 'competency-cell')
       .attr('width', cellWidth)
@@ -486,7 +492,7 @@ export default class LearnerProficiencyChart extends Vue {
     if (component.isShowExpandedGraph) {
       this.$emit('onSelectCompetency', competency);
     } else {
-      const activeDomain = component.chartData.find( (domain: DomainModel) => {
+      const activeDomain = component.chartData.find((domain: DomainModel) => {
         return domain.domainCode === competency.domainCode;
       });
       component.onSelectDomain(activeDomain);
@@ -570,7 +576,8 @@ export default class LearnerProficiencyChart extends Vue {
       left: (domainSeq - 1) * component.cellWidth + 'px',
       top: (competencySeq - 1) * component.cellHeight + 'px',
       width: component.cellWidth + 'px',
-      height: component.cellHeight + 'px' };
+      height: component.cellHeight + 'px',
+    };
   }
 
 }

@@ -36,7 +36,10 @@ export default class CompetencyMap extends Vue {
 
     private categories?: ClassificationModel[] = [];
 
-    private isShowProficiencyChart: boolean = false;
+    private userId() {
+        const session = sessionService.getSession();
+        return session ? session.user_id : '';
+    }
 
     @Watch('subjectList')
     private createAvatar(subjects: any) {
@@ -59,8 +62,7 @@ export default class CompetencyMap extends Vue {
     }
 
     private onSelectSubject(subject: any) {
-        this.isShowProficiencyChart = true;
-
+       this.$emit('onSelectSubject', subject, this.userId());
     }
 
     // ------------------------------------------------------------------------------

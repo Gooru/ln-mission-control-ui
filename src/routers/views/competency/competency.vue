@@ -1,6 +1,13 @@
 <template>
 <div>
-    <competency-map v-if="isShowCompetencyMap"/>
+    <competency-map 
+    v-if="isShowCompetencyMap"
+    v-on:onSelectSubject="onSelectSubject"
+    />
+    <proficiency-martix 
+    v-if="!isShowCompetencyMap"
+    :userId="userId"
+    :subject="selectedSubject" />
 </div>
 </template>
 

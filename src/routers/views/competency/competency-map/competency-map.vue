@@ -37,7 +37,7 @@
                 </div>
                 <div class="competency-right-section">
                     <div class="competency-cards-list">
-                        <div class="competency-card-panel" v-for="(subject, index) in subjectList" :key="index">
+                        <div class="competency-card-panel" v-for="(subject, index) in subjectList" v-on:click="onSelectSubject(subject)" :key="index">
                             <div class="competenct-card-header">
                                 <div class="card-thumbnail" :style="{backgroundColor: subject.color}">{{subject.title | avatarText}}</div>
                                 <div class="subject-name">{{subject.title}}</div>
