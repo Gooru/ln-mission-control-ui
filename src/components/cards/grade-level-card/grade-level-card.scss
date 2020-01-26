@@ -1,0 +1,80 @@
+.mc-grade-level-card {
+  .grade-level-card-container {
+    width: 100%;
+    background-color: $white;
+    box-shadow: 0 0 5px $light-200;
+
+    .grade-header {
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid $light-200;
+
+      .grade-title {
+        display: grid;
+        grid-template-columns: 1fr;
+        text-transform: capitalize;
+
+        span {
+          font-size: 12px;
+          line-height: 1.2;
+
+          &.grade-name {
+            font-weight: bold;
+            font-size: 17px;
+          }
+        }
+      }
+      i {
+        font-size: 30px;
+        text-align: center;
+        color: $light-400;
+        cursor: pointer;
+      }
+    }
+    .grade-competency-container {
+      .grade-description {
+        padding: 10px;
+      }
+      .competency-panel {
+        .competency-heading {
+          padding: 10px;
+          background-color: $dark-500;
+          color: $white;
+          font-size: 12px;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+        .competency-list {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          padding: 10px;
+
+          .competency-card {
+            box-shadow: 0 0 10px $light-400;
+            .competency-header {
+              padding: 5px;
+              display: grid;
+              grid-template-columns: 1fr;
+              border-bottom: 1px solid $dark-400;
+
+              .competency-code {
+                font-size: 20px;
+              }
+              .competency-title {
+                font-size: 12px;
+                font-weight: bold;
+                text-transform: capitalize;
+              }
+            }
+            .competency-footer {
+              padding: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

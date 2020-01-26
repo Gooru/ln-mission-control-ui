@@ -7,7 +7,8 @@
     <proficiency-martix 
     v-if="!isShowCompetencyMap"
     :userId="userId"
-    :subject="selectedSubject" />
+    :subject="selectedSubject"
+    v-on:backAction="backAction" />
 </div>
 </template>
 

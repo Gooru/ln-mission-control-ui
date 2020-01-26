@@ -39,6 +39,11 @@ export default class Competency extends Vue {
         this.isShowProficiencyView = true;
         this.isShowCompetencyMap = false;
     }
+
+    private backAction() {
+        this.isShowProficiencyView = false;
+        this.isShowCompetencyMap = true;
+    }
     // -------------------------------------------------------------------------
     // Methods
 

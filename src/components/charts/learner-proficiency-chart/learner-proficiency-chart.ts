@@ -159,6 +159,10 @@ export default class LearnerProficiencyChart extends Vue {
     component.toggleActiveDomainBar(domain.domainSeq);
   }
 
+  public backAction() {
+    this.$emit('backAction');
+  }
+
   public loadChartData() {
     const component = this;
     component.isLoading = true;

@@ -8,10 +8,14 @@
                 :isCompetencyActive="false"
                 :userId="userId"
                 :month="month"
-                :year="year"
+                :year="year" 
+                v-on:backAction="backAction"
                 :isCompetencyMap="true"
                 v-on:loadingDomain="loadingDomain" />
-            <domain-card v-if="domainList.length" :domainList="domainList"/>
+            <domain-card 
+            v-if="domainList.length"
+            :domainList="domainList"/>
+            <!-- <grade-level-card /> -->
         </div>
     </div>
 </template>

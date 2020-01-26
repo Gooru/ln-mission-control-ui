@@ -6,6 +6,7 @@
       padding: 10px;
       margin: 0;
       border-bottom: 1px solid $light-200;
+      font-size: 23px;
     }
     .domain-body {
       height: calc(100vh - 200px);
@@ -19,9 +20,11 @@
           padding: 10px 0;
           border-top: 1px solid $light-200;
           border-bottom: 1px solid $light-200;
+          font-weight: bold;
+          font-size: 13px;
           i {
             text-align: center;
-            font-size: 20px;
+            font-size: 19px;
             &.arrow_drop_down {
               font-size: 25px;
             }
