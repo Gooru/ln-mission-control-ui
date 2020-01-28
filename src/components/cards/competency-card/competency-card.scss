@@ -154,6 +154,91 @@
                 font-weight: bold;
               }
             }
+            .competency-complimentry-body {
+              .competency-complimentry-panel {
+                .complimentry-panel-card {
+                  display: grid;
+                  grid-template-columns: 40px 1fr;
+                  align-items: center;
+
+                  i {
+                    width: 30px;
+                    height: 30px;
+                    text-align: center;
+                    margin: 0 auto;
+                    font-size: 17px;
+                    display: grid;
+                    align-items: center;
+                  }
+
+                  .compli-competency-name {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    padding: 5px 10px;
+                    font-size: 12px;
+                    text-transform: capitalize;
+                    border-top: 1px solid $light-100;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .competency-micro {
+          .competency-micro-panel {
+            .competency-micro-heading {
+              display: grid;
+              grid-template-columns: 40px 1fr;
+              align-items: center;
+              background-color: $dark-500;
+              padding: 5px 10px;
+
+              .micro-icon {
+                padding: 5px;
+                background-color: $blue-300;
+                border: 3px solid $white;
+                border-radius: 50%;
+                width: 5px;
+                height: 5px;
+                margin-left: 3px;
+              }
+
+              span {
+                text-transform: uppercase;
+                color: $white;
+                font-size: 12px;
+                font-weight: bold;
+              }
+            }
+            .competency-micro-body {
+              .competency-micro-panel {
+                .micro-panel-card {
+                  display: grid;
+                  grid-template-columns: 40px 1fr;
+                  align-items: center;
+
+                  .micro-icon {
+                    padding: 5px;
+                    background-color: $blue-300;
+                    border: 3px solid $white;
+                    border-radius: 50%;
+                    width: 5px;
+                    height: 5px;
+                    margin: 0 auto;
+                    box-shadow: 0 3px 5px $light-300;
+                  }
+
+                  .micro-competency-name {
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    padding: 5px 10px;
+                    font-size: 12px;
+                    text-transform: capitalize;
+                    border-top: 1px solid $light-100;
+                  }
+                }
+              }
+            }
           }
         }
       }

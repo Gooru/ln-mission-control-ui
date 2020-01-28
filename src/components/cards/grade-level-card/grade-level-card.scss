@@ -39,6 +39,7 @@
         height: 100px;
         overflow-y: auto;
         text-overflow: ellipsis;
+        margin-bottom: 5px;
       }
       .competency-panel {
         .competency-heading {
@@ -70,14 +71,13 @@
               border-bottom: 1px solid $dark-400;
 
               .competency-code {
-                font-weight: bold;
-                font-size: 13px;
+                font-size: 15px;
                 text-overflow: ellipsis;
                 white-space: nowrap;
                 overflow: hidden;
               }
               .competency-title {
-                font-size: 12px;
+                font-size: 10px;
                 font-weight: bold;
                 text-transform: capitalize;
                 text-overflow: ellipsis;

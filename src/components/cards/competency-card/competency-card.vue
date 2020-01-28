@@ -50,7 +50,42 @@
                                 <span>complimentry edges</span>
                             </div>
                             <div class="competency-complimentry-body">
-
+                                <div class="competency-complimentry-panel">
+                                    <div class="complimentry-panel-card">
+                                        <material-icon icon="fiber_manual_record" />
+                                        <div class="compli-competency-name">
+                                            <span class="compli-competency-title">
+                                                competency name
+                                            </span>
+                                            <span class="compli-competency-code">
+                                                1.EEE.2
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="competency-micro">
+                        <div class="competency-micro-panel">
+                            <div class="competency-micro-heading">
+                                 <span class="micro-icon"></span>
+                                <span>Micro-Competencies</span>
+                            </div>
+                            <div class="competency-micro-body">
+                                <div class="competency-micro-panel">
+                                    <div class="micro-panel-card">
+                                        <span class="micro-icon"></span>
+                                        <div class="micro-competency-name">
+                                            <span class="micro-competency-title">
+                                                competency name
+                                            </span>
+                                            <span class="micro-competency-code">
+                                                1.EEE.2
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
