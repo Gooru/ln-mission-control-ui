@@ -4,24 +4,24 @@
             <div class="grade-header">
                <div class="grade-title">
                    <span>level</span>
-                    <span class="grade-name">grade</span>
+                    <span class="grade-name">{{activeGrade.grade}}</span>
                </div>
-               <material-icon icon="close"/>
+               <span  @click="onClose()"><material-icon icon="close"/></span>
             </div>
             <div class="grade-competency-container">
-                    <div class="grade-description">
-                        description
+                    <div class="grade-description" v-html="activeGrade.description">
+                        {{activeGrade.description}}
                     </div>
                     <div class="competency-panel">
                         <h4 class="competency-heading">Competencies</h4>
                         <div class="competency-list">      
-                            <div class="competency-card">
+                            <div class="competency-card" v-for="(competency, index) in gradeCompetency" :key="index">
                                 <div class="competency-header">
-                                    <span class="competency-code">ND9-4-BD</span>
-                                    <span class="competency-title">title</span>
+                                    <span class="competency-code">{{competency.competencyCode}}</span>
+                                    <span class="competency-title">{{competency.competencyStudentDesc}}</span>
                                 </div>
                                 <div class="competency-footer">
-                                    description
+                                    {{competency.competencyName}}
                                 </div>
                             </div>
                         </div>

@@ -35,7 +35,7 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     const proficiencyChartData = component.chartData;
     const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
-    return chartContainer.offsetWidth ? chartContainer.offsetWidth - 30 : component.maxDomainSize * 10;
+    return chartContainer.offsetWidth - 30;
   }
 
   get subjectCode() {
@@ -113,9 +113,20 @@ export default class LearnerProficiencyChart extends Vue {
   @Prop()
   private isCompetencyMap?: boolean;
 
+  @Prop()
+  private isDomainView?: boolean;
 
   public created() {
     this.loadTaxonomyGrades();
+  }
+
+  @Watch('isDomainView')
+  public watchCompetencyDomain(value: any) {
+    if (value) {
+      this.loadTaxonomyGrades();
+      this.loadChartData();
+      this.activeGrade = {};
+    }
   }
 
   @Watch('subjectCode')
@@ -145,6 +156,9 @@ export default class LearnerProficiencyChart extends Vue {
     component.activeGrade = grade;
     component.loadTaxonomyGradeBoundaries(grade.id).then(() => {
       component.parseGradeBoundaryChartData();
+      if (this.isCompetencyMap) {
+        this.$emit('onSelectGrade', this.chartData, this.activeGrade, this.gradeBoundaries);
+      }
     });
   }
 
@@ -491,7 +505,6 @@ export default class LearnerProficiencyChart extends Vue {
 
   public selectCompetency(competency: any) {
     const component = this;
-    // component.activeCompetency = competency;
     component.activeCompetency = competency;
     if (component.isShowExpandedGraph) {
       this.$emit('onSelectCompetency', competency);

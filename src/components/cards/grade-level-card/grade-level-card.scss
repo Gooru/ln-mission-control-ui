@@ -36,6 +36,9 @@
     .grade-competency-container {
       .grade-description {
         padding: 10px;
+        height: 100px;
+        overflow-y: auto;
+        text-overflow: ellipsis;
       }
       .competency-panel {
         .competency-heading {
@@ -49,11 +52,17 @@
         .competency-list {
           display: grid;
           grid-template-columns: 1fr 1fr;
+          grid-row-gap: 10px;
+          grid-column-gap: 10px;
           align-items: center;
           padding: 10px;
+          max-height: calc(100vh - 320px);
+          overflow-y: auto;
 
           .competency-card {
             box-shadow: 0 0 10px $light-400;
+            height: 100px;
+            overflow: hidden;
             .competency-header {
               padding: 5px;
               display: grid;
@@ -61,16 +70,27 @@
               border-bottom: 1px solid $dark-400;
 
               .competency-code {
-                font-size: 20px;
+                font-weight: bold;
+                font-size: 13px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
               }
               .competency-title {
                 font-size: 12px;
                 font-weight: bold;
                 text-transform: capitalize;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
               }
             }
             .competency-footer {
               padding: 5px;
+              line-height: 1.4;
+              font-size: 11px;
+              height: 37px;
+              overflow: hidden;
             }
           }
         }
