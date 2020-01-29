@@ -18,17 +18,15 @@ export class AuthAPI {
 
   private authNamespace: string = 'api/nucleus-auth';
 
+  private mcNamespace: string = 'api/missioncontrol';
+
 
   public logInWithCredential(
     usernameOrEmail: string,
     password: string,
   ): Promise<SessionModel> {
-    const data = {
-      client_id: process.env.VUE_APP_CLIENT_ID,
-      client_key: process.env.VUE_APP_CLIENT_KEY,
-      grant_type: 'credential',
-    };
-    const endpoint = `${this.authNamespace}/v2/signin`;
+    const data = {};
+    const endpoint = `${this.mcNamespace}/v2/auth/signin`;
     const token = `${usernameOrEmail}:${password}`;
     const headers = http.getBasicHeaders(token);
     return http.post(endpoint, headers, data).then((response) => {
