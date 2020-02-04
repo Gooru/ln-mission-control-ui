@@ -137,6 +137,7 @@ export default class DrillDown extends Vue {
                     drillDownAPI.fetchCardsDatabyStateLevel(this.paramsIds),
                 ]);
                 break;
+            case 'block':
             case 'system':
                 this.paramsIds.group_id = selectedLevel.id;
                 serviceLevel = axios.all([
@@ -151,7 +152,7 @@ export default class DrillDown extends Vue {
                     drillDownAPI.fetchCardsDatabySchoolLevel(this.paramsIds),
                 ]);
                 break;
-            default:
+            case 'class':
                 const params = {
                     classId: selectedLevel.id,
                     courseId: selectedLevel.courseId,
@@ -160,6 +161,8 @@ export default class DrillDown extends Vue {
                     year: this.dataParams.year,
                 };
                 this.fetchClassRoomStudentList(params);
+                break;
+            default:
                 break;
 
         }

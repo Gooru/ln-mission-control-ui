@@ -16,6 +16,14 @@ export class DrillDownAPI {
         return this.INSTANCE;
     }
 
+    public fetchCountryList() {
+        const endpoint =  `${this.namespace}/countries`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return drillDownSerializer.serializeCountry(response.data);
+        });
+    }
+
     public fetchStateCompetencyByCountryID(params: any, data: any): Promise<any> {
         const endpoint = `${this.namespace}/competency/countries/${params.country_id}`;
         const headers = http.getTokenHeaders();
