@@ -47,7 +47,7 @@ export default class LineChart extends Vue {
                 'translate(' + margin.left + ',' + margin.top + ')');
 
         const xMinValue: any = d3.min(data, (d: any) => d.week);
-        const xMaxValue: any = xMinValue + (data.length + 0.3);
+        const xMaxValue: any = xMinValue + (data.length + 0.3 - 1);
 
         const x = d3.scaleLinear()
             .domain([xMinValue - .3 , xMaxValue])
@@ -55,7 +55,7 @@ export default class LineChart extends Vue {
 
         svg.append('g')
             .attr('transform', 'translate(0,' + height + ')')
-            .call(d3.axisBottom(x).ticks(4).tickSize(10).tickFormat((d: any) => {
+            .call(d3.axisBottom(x).ticks(data.length).tickSize(10).tickFormat((d: any) => {
                 return  (moment().week() === d) ? 'Current Week ' + d : 'Week ' + d ;
             }))
             .style('font-size', '12px')
