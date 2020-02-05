@@ -44,7 +44,7 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private learner: User = {};
 
-  private isShowExpandedFacetChart: boolean = false;
+  private isShowExpandedFacetChart: boolean = true;
 
   public onChageTimeline(timeline: string) {
     const component = this;
