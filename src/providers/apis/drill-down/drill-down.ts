@@ -12,6 +12,8 @@ export class DrillDownAPI {
 
     private namespace1 = 'api/ds/users/v2/nc/atc/pvc';
 
+    private namespace2 = 'api/nucleus/v1/classes';
+
     static get instance() {
         return this.INSTANCE;
     }
@@ -64,6 +66,15 @@ export class DrillDownAPI {
             return drillDownSerializer.serializeClassRooms(response.data);
         });
     }
+
+    public fetchClassInfo(classId: string): Promise<any> {
+        const endpoint = `${this.namespace2}/${classId}`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return drillDownSerializer.serializeClassInfo(response.data);
+        });
+    }
+
 
     public fetchCountrySubject(params: any, data: any): Promise<any> {
         const endpoint = `${this.namespace}/performance/countries/${params.country_id}/subjects`;

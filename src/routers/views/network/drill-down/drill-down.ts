@@ -85,14 +85,14 @@ export default class DrillDown extends Vue {
     }
 
     private onBack() {
-         this.breadcrumb.pop();
-         if (this.breadcrumb.length > 1) {
+        this.breadcrumb.pop();
+        if (this.breadcrumb.length > 1) {
             this.seletedLevel = this.breadcrumb[this.breadcrumb.length - 1];
-         } else {
+        } else {
             this.seletedLevel = this.countryData;
             this.breadcrumb = [];
-         }
-         this.fetchSelectLevelData(this.seletedLevel);
+        }
+        this.fetchSelectLevelData(this.seletedLevel);
     }
 
     private onChageTimeline(date: any) {
@@ -195,34 +195,39 @@ export default class DrillDown extends Vue {
     }
 
     private fetchClassRoomStudentList(params: any) {
-
-        drillDownAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
-            const studentsId: any = [];
-            atcClassStudents.map((students: any) => {
-                return studentsId.push(students.userId);
-            });
-            const filteredData: any = [];
-            if (studentsId.length) {
-                profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
-                    profileList.map((profile) => {
-                        const findProfile = atcClassStudents.find((item: any) => item.userId === profile.userId);
-                        if (findProfile) {
-                            filteredData.push(Object.assign({}, findProfile, profile));
-                        }
+        if (params.classId) {
+            drillDownAPI.fetchClassInfo(params.classId).then((classInfo) => {
+                params.subjectCode = classInfo.preference ? classInfo.preference.subject : null;
+                drillDownAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
+                    const studentsId: any = [];
+                    atcClassStudents.map((students: any) => {
+                        return studentsId.push(students.userId);
                     });
+                    const filteredData: any = [];
+                    if (studentsId.length) {
+                        profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
+                            profileList.map((profile) => {
+                                const findProfile = atcClassStudents.find(
+                                    (item: any) => item.userId === profile.userId);
+                                if (findProfile) {
+                                    filteredData.push(Object.assign({}, findProfile, profile));
+                                }
+                            });
+                        });
+                    }
+                    this.studentList = filteredData;
                 });
-            }
-            this.studentList = filteredData;
-        });
+            });
+        }
     }
 
     private getDataBasedOnLevel(userData: any) {
         const month = this.dataParams.month;
         const year = this.dataParams.year;
         return (userData &&
-             Object.keys(userData).length &&
-             userData[`${month}_${year}`])
-             ? userData[`${month}_${year}`] : {};
+            Object.keys(userData).length &&
+            userData[`${month}_${year}`])
+            ? userData[`${month}_${year}`] : {};
     }
 
     private getSubjectDetails(params: any) {

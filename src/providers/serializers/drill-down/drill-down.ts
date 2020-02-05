@@ -6,6 +6,7 @@ import { CompetencyChart } from '@/models/drill-down/competency-chart';
 import { OverallStatsModel } from '@/models/drill-down/overall-stats';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
 import { CountryModel } from '@/models/drill-down/country';
+import { ClassInfoModel } from '@/models/content/class-info';
 
 
 export class DrillDownSerializer {
@@ -131,6 +132,13 @@ export class DrillDownSerializer {
         }
         return countriesList;
 
+    }
+
+    public serializeClassInfo(payload: any): ClassInfoModel {
+        return {
+            id: payload.id,
+            preference: payload.preference,
+        };
     }
 
 
