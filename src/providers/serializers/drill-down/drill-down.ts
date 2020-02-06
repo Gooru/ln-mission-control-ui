@@ -5,6 +5,8 @@ import { SubjectModel } from '@/models/drill-down/subject';
 import { CompetencyChart } from '@/models/drill-down/competency-chart';
 import { OverallStatsModel } from '@/models/drill-down/overall-stats';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
+import { CountryModel } from '@/models/drill-down/country';
+import { ClassInfoModel } from '@/models/content/class-info';
 
 
 export class DrillDownSerializer {
@@ -114,6 +116,32 @@ export class DrillDownSerializer {
         }
         return result;
     }
+
+    public serializeCountry(payload: any): CountryModel[] {
+        const countries = payload ? payload.countries : [];
+        const countriesList: CountryModel[] = [];
+        if (countries) {
+            countries.map((country: any) => {
+                countriesList.push({
+                    id: country.id,
+                    name: country.name,
+                    code: country.code,
+                    completedCompetencies: country.completedCompetencies,
+                });
+            });
+        }
+        return countriesList;
+
+    }
+
+    public serializeClassInfo(payload: any): ClassInfoModel {
+        return {
+            id: payload.id,
+            preference: payload.preference,
+        };
+    }
+
+
 
 
 

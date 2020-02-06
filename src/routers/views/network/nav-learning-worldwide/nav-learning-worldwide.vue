@@ -2,7 +2,7 @@
   <div id="mc-nav-learning-worldwide">
     <h2>{{$t('network.nav.learning.worldwide')}}</h2>
     <div id="nav-learning-worldwide-map"></div>
-    <div id="overall-user-count-container">
+    <div id="overall-user-count-container" v-if="isTenant">
       <div class="student count">{{numberFormat(overallStats.totalStudentsCount)}} {{$t('learners')}}</div>
       <div class="teacher count">{{numberFormat(overallStats.totalTeachersCount)}} {{$t('instructors')}}</div>
     </div>

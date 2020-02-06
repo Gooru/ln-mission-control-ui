@@ -27,6 +27,7 @@ export class AuthSerializer {
       last_name: res.last_name,
       user_category: res.user_category,
       thumbnail: res.thumbnail,
+      tenant: res.tenant,
       thumbnail_url: this.getThumbnailUrl(res),
       user_display_name: this.getUserDisplayName(res),
     };

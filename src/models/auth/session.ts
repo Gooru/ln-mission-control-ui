@@ -10,6 +10,11 @@ export interface SessionModel {
   last_name?: string;
   user_category?: string;
   thumbnail?: string;
+  tenant?: TenantModel;
   thumbnail_url?: string;
   user_display_name?: string;
+}
+
+export interface TenantModel {
+  tenant_id?: string;
 }
