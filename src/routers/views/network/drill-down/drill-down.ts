@@ -198,25 +198,27 @@ export default class DrillDown extends Vue {
         if (params.classId) {
             drillDownAPI.fetchClassInfo(params.classId).then((classInfo) => {
                 params.subjectCode = classInfo.preference ? classInfo.preference.subject : null;
-                drillDownAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
-                    const studentsId: any = [];
-                    atcClassStudents.map((students: any) => {
-                        return studentsId.push(students.userId);
-                    });
-                    const filteredData: any = [];
-                    if (studentsId.length) {
-                        profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
-                            profileList.map((profile) => {
-                                const findProfile = atcClassStudents.find(
-                                    (item: any) => item.userId === profile.userId);
-                                if (findProfile) {
-                                    filteredData.push(Object.assign({}, findProfile, profile));
-                                }
-                            });
+                if (params.subjectCode && params.courseId) {
+                    drillDownAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
+                        const studentsId: any = [];
+                        atcClassStudents.map((students: any) => {
+                            return studentsId.push(students.userId);
                         });
-                    }
-                    this.studentList = filteredData;
-                });
+                        const filteredData: any = [];
+                        if (studentsId.length) {
+                            profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
+                                profileList.map((profile) => {
+                                    const findProfile = atcClassStudents.find(
+                                        (item: any) => item.userId === profile.userId);
+                                    if (findProfile) {
+                                        filteredData.push(Object.assign({}, findProfile, profile));
+                                    }
+                                });
+                            });
+                        }
+                        this.studentList = filteredData;
+                    });
+                }
             });
         }
     }
