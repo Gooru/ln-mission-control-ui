@@ -95,6 +95,9 @@ export default class LearnerProficiencyChart extends Vue {
   private isDomainActive?: boolean = false;
 
   @Prop()
+  private isShowMultigrade?: boolean;
+
+  @Prop()
   private isCompetencyActive?: boolean = false;
 
   @Prop()
@@ -116,6 +119,10 @@ export default class LearnerProficiencyChart extends Vue {
   @Prop()
   private isDomainView?: boolean;
 
+  private multiGradeActiveList: any = [];
+
+  private activeGradeList: any = [];
+
   public created() {
     this.loadTaxonomyGrades();
   }
@@ -126,6 +133,7 @@ export default class LearnerProficiencyChart extends Vue {
       this.loadTaxonomyGrades();
       this.loadChartData();
       this.activeGrade = {};
+      this.activeGradeList = [];
     }
   }
 
@@ -145,7 +153,9 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     component.isShowExpandedGraph = !component.isShowExpandedGraph;
     component.drawProficiencyChart();
-    component.drawGradeBoundaryLine();
+    this.multiGradeActiveList.map((grade: any, index: any) => {
+      component.drawGradeBoundaryLine(index);
+    });
     if (component.activeDomainSeq) {
       component.toggleActiveDomainBar(component.activeDomainSeq);
     }
@@ -153,13 +163,53 @@ export default class LearnerProficiencyChart extends Vue {
 
   public onSelectGrade(grade: GradeModel | any) {
     const component = this;
+    component.multiGradeActiveList = [];
     component.activeGrade = grade;
-    component.loadTaxonomyGradeBoundaries(grade.id).then(() => {
-      component.parseGradeBoundaryChartData();
-      if (this.isCompetencyMap) {
-        this.$emit('onSelectGrade', this.chartData, this.activeGrade, this.gradeBoundaries);
-      }
+    const proficiencyChartData = component.chartData;
+    proficiencyChartData.map((domainData: any) => {
+      const competencies = domainData.competencies;
+      const filteredDomain = competencies.filter(
+        (competency: any) => competency.className && competency.className !== '');
+      filteredDomain.map((filteredCompetency: any) => {
+        filteredCompetency.className = '';
+      });
     });
+
+    if ((!component.activeGradeList.length) || (component.activeGradeList.length > 1)) {
+      component.activeGradeList = [];
+      component.activeGradeList.push(grade);
+    } else {
+      const maxValue = component.taxonomyGrades.findIndex(
+        (gradeItem) => gradeItem.id === component.activeGradeList[0].id);
+      const minValue = component.taxonomyGrades.findIndex(
+        (gradeItem) => gradeItem.id === grade.id);
+      const minIndex = minValue < maxValue ? minValue : maxValue;
+      const maxIndex = minValue < maxValue ? maxValue : minValue;
+      component.activeGradeList = component.taxonomyGrades.slice(minIndex, maxIndex + 1);
+    }
+
+    if (component.activeGradeList.length) {
+      const boundaryPromise = component.activeGradeList.map((gradeItem: any) => {
+        return new Promise((resovle) => {
+          component.loadTaxonomyGradeBoundaries(gradeItem.id).then((boundary) => {
+            component.multiGradeActiveList[gradeItem.id] = boundary;
+            component.gradeBoundaries = boundary;
+            return resovle(boundary);
+          });
+        });
+      });
+      Promise.all(boundaryPromise).then(() => {
+        component.parseGradeBoundaryChartData();
+        if (this.isCompetencyMap) {
+          this.$emit('onSelectGrade',
+            this.chartData, component.activeGradeList,
+            component.multiGradeActiveList.flat(1));
+        }
+      });
+    } else {
+      d3.selectAll('#gradeline-group line').remove();
+      d3.selectAll('#cells-group rect').classed('non-competency', false);
+    }
   }
 
   public onSelectDomain(domain: DomainModel) {
@@ -204,9 +254,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   public loadTaxonomyGradeBoundaries(gradeId: number) {
     const component = this;
-    return taxonomyAPI.fetchTaxonomyGradeBoundaries(gradeId).then((gradeBoundaries) => {
-      component.gradeBoundaries = gradeBoundaries;
-    });
+    return taxonomyAPI.fetchTaxonomyGradeBoundaries(gradeId);
   }
 
   public parseChartData(domainCoOrdinates: any, domainCompetencyMatrix: any) {
@@ -263,16 +311,27 @@ export default class LearnerProficiencyChart extends Vue {
   public parseGradeBoundaryChartData() {
     const component = this;
     const proficiencyChartData = component.chartData;
-    const gradeBoundaries = component.gradeBoundaries;
+    if (this.multiGradeActiveList.length) {
+      const boundaryList = component.multiGradeActiveList;
+      const multiGradePromise = boundaryList.map((gradeBoundaries: any, gradeIndex: any) => {
+        return new Promise((resolve) => {
+          return resolve(this.boundaryMapForMultiGrade(proficiencyChartData, gradeBoundaries, gradeIndex));
+        });
+      });
+      Promise.all(multiGradePromise).then(() => {
+        component.chartData = proficiencyChartData;
+        component.drawProficiencyChart();
+        boundaryList.map((grade: any, index: any) => {
+          component.drawGradeBoundaryLine(index);
+        });
+      });
+    }
+  }
+
+  public boundaryMapForMultiGrade(proficiencyChartData: any, gradeBoundaries: any, gradeIndex = null) {
     if (gradeBoundaries && gradeBoundaries.length) {
-      proficiencyChartData.map((domainChartData: DomainModel) => {
+      return proficiencyChartData.map((domainChartData: DomainModel) => {
         const competencies = domainChartData.competencies;
-        const existingGradeBoundary: any = competencies.find(
-          (competency: any) => competency.isGradeBoundary,
-        );
-        if (existingGradeBoundary) {
-          existingGradeBoundary.isGradeBoundary = false;
-        }
         const domainGradeBoundary: GradeBoundaryModel | any = gradeBoundaries.find(
           (gradeBoundary: GradeBoundaryModel) => gradeBoundary.domainCode === domainChartData.domainCode,
         );
@@ -283,11 +342,14 @@ export default class LearnerProficiencyChart extends Vue {
           );
         }
         gradeBoundaryCompetency.isGradeBoundary = true;
+        if (!gradeBoundaryCompetency.className ||
+          (gradeBoundaryCompetency.className &&
+            gradeBoundaryCompetency.className
+              .indexOf(`grade-boundary-competency-${gradeIndex}`) === -1)) {
+          gradeBoundaryCompetency.className += ` grade-boundary-competency-${gradeIndex}`;
+        }
       });
     }
-    component.chartData = proficiencyChartData;
-    component.drawProficiencyChart();
-    component.drawGradeBoundaryLine();
   }
 
   public drawProficiencyChart() {
@@ -322,6 +384,9 @@ export default class LearnerProficiencyChart extends Vue {
     let competencySeq = -1;
     const domainGroup = svg.append('g').attr('id', `domain-group-${domainChartData.domainSeq}`);
     const competencyCells = domainGroup.selectAll('.competency').data(domainChartData.competencies);
+    let maxSeq: any = domainChartData.competencies.filter(
+      (competency: any) => (competency.className && competency.className !== ''));
+    maxSeq = maxSeq.length ? maxSeq[maxSeq.length - 1] : 0;
     competencyCells
       .enter()
       .append('rect')
@@ -329,10 +394,12 @@ export default class LearnerProficiencyChart extends Vue {
         const skylineClassName = competency.isSkyLineCompetency
           ? 'skyline-competency '
           : '';
-        const gradeBoundaryClassName = competency.isGradeBoundary ? 'grade-boundary-competency' : '';
+        const gradeBoundaryClassName = competency.className ? competency.className : '';
+        const fadeClass = (maxSeq) ? (
+          (maxSeq.competencySeq < competency.competencySeq) ? 'non-competency' : '') : '';
         return `${skylineClassName}domain-${competency.domainSeq} competency-${
           competency.competencySeq
-          } competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
+          } ${fadeClass} competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
       })
       .attr('id', 'competency-cell')
       .attr('width', cellWidth)
@@ -348,12 +415,11 @@ export default class LearnerProficiencyChart extends Vue {
     competencyCells.exit().remove();
   }
 
-  public drawGradeBoundaryLine() {
+  public drawGradeBoundaryLine(gradeIndex = null) {
     const component = this;
-    const skylineElements: any = component.$el.querySelectorAll('.grade-boundary-competency');
+    const skylineElements: any = component.$el.querySelectorAll(`.grade-boundary-competency-${gradeIndex}`);
     const cellWidth = component.cellWidth;
     const cellHeight = component.cellHeight;
-    d3.select('#gradeline-group line').remove(); // Remove skyline, if exist
     const skylineContainer = component.gradelineContainer;
     skylineElements.forEach((skylineElement: any, elementIndex: number) => {
       const x1 = parseInt(skylineElement.getAttribute('x'), 10);
@@ -365,8 +431,8 @@ export default class LearnerProficiencyChart extends Vue {
         .attr('y1', linePoints.y1)
         .attr('x2', linePoints.x2)
         .attr('y2', linePoints.y2)
-        .attr('class', `line-${elementIndex}`);
-      component.joinGradelineVerticalPoints(elementIndex, linePoints);
+        .attr('class', `line-${gradeIndex}-${elementIndex}`);
+      component.joinGradelineVerticalPoints(elementIndex, linePoints, gradeIndex);
     });
   }
 
@@ -426,9 +492,10 @@ export default class LearnerProficiencyChart extends Vue {
    * @function joinSkyLinePoints
    * Method to draw vertical line to connects sky line points, if necessary
    */
-  public joinGradelineVerticalPoints(skylineStartPos: number, skylineEndPoint: any) {
+  public joinGradelineVerticalPoints(skylineStartPos: number, skylineEndPoint: any, gradeIndex: any) {
     const component = this;
-    const skylineStartElement: any | void = this.$el.querySelector(`#gradeline-group .line-${skylineStartPos - 1}`);
+    const skylineStartElement: any | void = this.$el.querySelector(
+      `#gradeline-group .line-${gradeIndex}-${skylineStartPos - 1}`);
     if (skylineStartElement) {
       const skyLineContainer = component.gradelineContainer;
       const skylineStartPoint: any | void = {
@@ -595,6 +662,10 @@ export default class LearnerProficiencyChart extends Vue {
       width: component.cellWidth + 'px',
       height: component.cellHeight + 'px',
     };
+  }
+
+  private isActiveGradeList(value: any) {
+    return this.activeGradeList.find((grade: any) => grade.id === value.id);
   }
 
 }

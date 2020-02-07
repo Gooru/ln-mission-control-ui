@@ -19,7 +19,7 @@
           Grade Selector
         </div>
         <div class="taxonomy-grade-list">
-          <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : taxonomyGrade == activeGrade}" @click="onSelectGrade(taxonomyGrade)">
+          <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : isActiveGradeList(taxonomyGrade)}" @click="onSelectGrade(taxonomyGrade)">
             <google-material-icon icon="adjust" />{{taxonomyGrade.grade}}
           </div>
         </div>

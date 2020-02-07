@@ -141,6 +141,12 @@
             opacity: 1;
           }
           #cells-group {
+            .non-competency {
+              opacity: 0.4;
+              &.clear-competency {
+                opacity: 1;
+              }
+            }
             #competency-cell {
               stroke: #fff;
               stroke-width: 1;

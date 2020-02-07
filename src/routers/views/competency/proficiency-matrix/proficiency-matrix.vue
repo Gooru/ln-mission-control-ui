@@ -16,6 +16,7 @@
                 v-on:onSelectGrade="onSelectGrade"
                 v-on:onSelectCompetency="onSelectCompetency"
                 :isCompetencyMap="true"
+                :isShowMultigrade="true"
                 :isDomainView="isDomainView" />
             </div>
              <div class="rigt-side-card">

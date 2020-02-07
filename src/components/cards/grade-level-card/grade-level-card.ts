@@ -23,4 +23,12 @@ export default class GradeLevelCard extends Vue {
   private onClose() {
     this.$emit('onClose');
   }
+
+  get firstGrade() {
+    return this.activeGrade.length ? this.activeGrade[0] : '';
+  }
+
+  get lastGrade() {
+    return this.activeGrade.length > 1 ? this.activeGrade[this.activeGrade.length - 1] : '';
+  }
 }

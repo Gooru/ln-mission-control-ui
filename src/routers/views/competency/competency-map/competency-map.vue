@@ -13,7 +13,7 @@
             <div class="mc-competency-content-section">
                 <div class="competency-left-section">
                     <div class="category-header">
-                         <b-dropdown class="categories-dropdown" :text="selectedCategory ? selectedCategory.title : ''" variant="none">
+                         <b-dropdown class="categories-dropdown" :text="selectedCategory ? selectedCategory.title : 'K12.MA'" variant="none">
                             <b-dropdown-item href="#" 
                             v-for="(category, index) in categories"  
                             :key="index" 
@@ -45,7 +45,7 @@
                             <div class="competency-card-body">
                                 <div class="matrix-chart">
                                     <competency-bar-chart
-                                    :subjectCode="subject.code || []"
+                                    :subjectCode="subject.code"
                                     />
                                 </div>
                             </div>

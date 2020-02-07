@@ -19,8 +19,10 @@
         span {
           font-size: 12px;
           line-height: 1.2;
-
-          &.grade-name {
+        }
+        .grade-name-container {
+          display: inline-flex;
+          .grade-name {
             font-weight: bold;
             font-size: 17px;
           }

@@ -4,13 +4,16 @@
             <div class="grade-header">
                <div class="grade-title">
                    <span>level</span>
-                    <span class="grade-name">{{activeGrade.grade}}</span>
+                    <div class="grade-name-container">
+                    <span class="grade-name">{{firstGrade.grade}}</span>
+                    <span class="grade-name" v-if="lastGrade"> - {{lastGrade.grade}}</span>
+                    </div>
                </div>
                <span  @click="onClose()"><material-icon icon="close"/></span>
             </div>
             <div class="grade-competency-container">
-                    <div class="grade-description" v-html="activeGrade.description">
-                        {{activeGrade.description}}
+                    <div class="grade-description"  v-if="activeGrade.length <= 1" v-html="activeGrade[0].description">
+                        {{activeGrade[0].description}}
                     </div>
                     <div class="competency-panel">
                         <h4 class="competency-heading">Competencies</h4>
