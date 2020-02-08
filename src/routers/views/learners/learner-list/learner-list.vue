@@ -6,7 +6,7 @@
           <div class="learner-filter-container">
             <div class="search-box-container">
               <div class="search-box">
-                <input v-on:keyup.enter="onSearchLearners" type="text" class="input-box" placeholder="Search..." v-model="searchLearnerText" />
+                <input v-on:keyup.enter="onSearchLearners" type="text" class="input-box" placeholder="Search Name or Email" v-model="searchLearnerText" />
                 <span class="search-btn" @click="onSearchLearners()"><material-icon icon="search" /></span>
                 <span @click="onClearSearch()" v-if="searchLearnerText !== ''" class="clear-search"><material-icon icon="clear" /></span>
               </div>
