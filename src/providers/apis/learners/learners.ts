@@ -11,10 +11,10 @@ export class LearnerAPI {
 
   private namespace: string = 'api/missioncontrol/v1';
 
-  public fetchLearners<T>(): Promise<LearnerModel[]> {
+  public fetchLearners<T>(params: any): Promise<LearnerModel[]> {
     const endpoint = `${this.namespace}/learners`;
     const headers = http.getTokenHeaders();
-    return http.get(endpoint, headers).then((response) => {
+    return http.post(endpoint, headers, params).then((response) => {
       return learnerSerializer.serializeLearners(response.data);
     });
   }

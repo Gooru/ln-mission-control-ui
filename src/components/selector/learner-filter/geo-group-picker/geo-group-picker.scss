@@ -1,0 +1,27 @@
+#geo-group-picker {
+  .group-picker-container {
+    width: auto;
+    .picker-header {
+      height: 40px;
+      line-height: 40px;
+      .picker-level {
+        text-transform: capitalize;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 8px;
+      }
+    }
+    .picker-body {
+      .picker-items-container {
+        max-height: 300px;
+        overflow-y: auto;
+        .picker-item {
+          height: 30px;
+          line-height: 30px;
+          padding: 0 8px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
