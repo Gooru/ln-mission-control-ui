@@ -2,6 +2,8 @@
   .competency-card-container {
     width: 100%;
     background-color: $white;
+    height: calc(100vh - 150px);
+    overflow-y: auto;
     .competency-head {
       .competency-title {
         display: grid;
@@ -113,6 +115,12 @@
                   display: grid;
                   text-transform: capitalize;
                   grid-template-columns: 1fr;
+                  .dep-competency-title {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    align-items: center;
+                    text-overflow: ellipsis;
+                  }
                 }
               }
             }
@@ -237,6 +245,31 @@
                     border-top: 1px solid $light-100;
                   }
                 }
+              }
+            }
+          }
+        }
+      }
+      .learning-map-tap {
+        .learning-map-container {
+          display: flex;
+          padding: 10px 0;
+          align-items: center;
+          justify-content: space-evenly;
+          font-size: 17px;
+          border: 1px solid $light-100;
+
+          .coures-content {
+            text-align: center;
+            border: 1px solid $light-100;
+            padding: 10px;
+            border-radius: 5px;
+
+            span {
+              i {
+                width: 25px;
+                height: 25px;
+                background-size: 20px 20px;
               }
             }
           }

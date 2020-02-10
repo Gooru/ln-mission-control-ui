@@ -72,6 +72,8 @@ export default class LearnerProficiencyChart extends Vue {
 
   private compressedGraphCellHeight: number = 10;
 
+  private prerequisiteContainer?: any;
+
   private cellWidth: number = 40;
 
   private cellHeight: number = 10;
@@ -123,6 +125,32 @@ export default class LearnerProficiencyChart extends Vue {
 
   private activeGradeList: any = [];
 
+  @Prop()
+  private prerequisites: any;
+
+  @Prop()
+  private isCompetencyView: boolean = false;
+
+  private isSelectedCompetency: boolean = false;
+
+  @Watch('prerequisites')
+  public onChangePrerequisite(value: any) {
+    this.drawProficiencyChart();
+    this.drawPrerequisitesLine();
+  }
+
+  @Watch('isCompetencyView')
+  public onChangeCompetencyView(value: boolean) {
+    if (!value) {
+      this.isSelectedCompetency = false;
+      this.drawProficiencyChart();
+      this.multiGradeActiveList.map((grade: any, index: any) => {
+        this.drawGradeBoundaryLine(index);
+      });
+      d3.select('#chart-area').classed('active-competency', false);
+    }
+  }
+
   public created() {
     this.loadTaxonomyGrades();
   }
@@ -152,7 +180,11 @@ export default class LearnerProficiencyChart extends Vue {
   public onToggleGraphView() {
     const component = this;
     component.isShowExpandedGraph = !component.isShowExpandedGraph;
+    component.isSelectedCompetency = false;
     component.drawProficiencyChart();
+    if (component.isCompetencyMap) {
+      component.$emit('onChangeGraphView', component.isShowExpandedGraph);
+    }
     this.multiGradeActiveList.map((grade: any, index: any) => {
       component.drawGradeBoundaryLine(index);
     });
@@ -368,6 +400,7 @@ export default class LearnerProficiencyChart extends Vue {
     svg.append('g').attr('id', 'cells-group');
     component.skylineContainer = svg.append('g').attr('id', 'skyline-group');
     component.gradelineContainer = svg.append('g').attr('id', 'gradeline-group');
+    component.prerequisiteContainer = svg.append('g').attr('id', 'prerequisite-group');
     component.proficiencyChartContainer = svg;
     proficiencyChartData.map((domainChartData: any) => {
       component.drawDomainChart(domainChartData);
@@ -394,12 +427,17 @@ export default class LearnerProficiencyChart extends Vue {
         const skylineClassName = competency.isSkyLineCompetency
           ? 'skyline-competency '
           : '';
+        const prerequisite = component.prerequisites.find((item: any) => item.id === competency.competencyCode);
+        const isActiveClass = (component.activeCompetency && this.isSelectedCompetency) ?
+          (component.activeCompetency.competencyCode === competency.competencyCode) : false;
         const gradeBoundaryClassName = competency.className ? competency.className : '';
         const fadeClass = (maxSeq) ? (
           (maxSeq.competencySeq < competency.competencySeq) ? 'non-competency' : '') : '';
         return `${skylineClassName}domain-${competency.domainSeq} competency-${
           competency.competencySeq
-          } ${fadeClass} competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
+          } ${fadeClass} ${((prerequisite || isActiveClass) && this.isCompetencyMap) ?
+            'prerequisite-content' : (this.isSelectedCompetency ?
+              'non-competency' : '')} competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
       })
       .attr('id', 'competency-cell')
       .attr('width', cellWidth)
@@ -411,6 +449,7 @@ export default class LearnerProficiencyChart extends Vue {
       })
       .on('click', (competency: any) => {
         component.selectCompetency(competency);
+        component.isSelectedCompetency = true;
       });
     competencyCells.exit().remove();
   }
@@ -667,5 +706,40 @@ export default class LearnerProficiencyChart extends Vue {
   private isActiveGradeList(value: any) {
     return this.activeGradeList.find((grade: any) => grade.id === value.id);
   }
+
+  private drawPrerequisitesLine() {
+    const prerequisiteElement: any = this.$el.querySelectorAll('.prerequisite-content');
+    const cellWidth = this.cellWidth;
+    const cellHeight = this.cellHeight;
+    const prerequisiteContainer = this.prerequisiteContainer;
+    const linePoints: any = [];
+    prerequisiteElement.forEach((element: any, elementIndex: number) => {
+      const x1 = parseInt(element.getAttribute('x'), 10);
+      const y1 = parseInt(element.getAttribute('y'), 10);
+      linePoints.push({
+        x: (x1 + (cellWidth / 2)),
+        y: (y1 + (cellHeight / 2)),
+      });
+      prerequisiteContainer
+        .append('circle')
+        .attr('class', 'pre-connect')
+        .attr('cx', (x1 + (cellWidth / 2)))
+        .attr('cy', (y1 + (cellHeight / 2)))
+        .attr('r', 5)
+        .style('fill', '#fff');
+    });
+    const line = d3.line()
+      .x((d: any) => d.x)
+      .y((d: any) => d.y)
+      .curve(d3.curveLinear);
+
+    prerequisiteContainer.append('path')
+      .attr('d', line(linePoints))
+      .attr('stroke', '#fff')
+      .attr('stroke-width', 4)
+      .attr('fill', 'none');
+
+  }
+
 
 }

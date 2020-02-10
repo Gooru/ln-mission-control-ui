@@ -8,7 +8,7 @@
                      <span>{{activeCompetency.competencyStudentDesc}}</span>
                      <span class="competency-code">{{activeCompetency.competencyCode}}</span>
                 </div>
-                <material-icon icon="close" />
+                <span @click="onClose()"><material-icon icon="close" /></span>
                 </div>
                 <div class="competency-description">
                      {{activeCompetency.competencyName}}
@@ -17,33 +17,34 @@
             <div class="competency-body">
                 <div class="competency-tab-header">
                     <ul>
-                        <li class="active">Meta</li>
-                        <li>Learning Map</li>
+                        <li :class="{active: isActive }" @click="onChangeTab(true)">Meta</li>
+                        <li :class="{active: !isActive }" @click="onChangeTab(false)">Learning Map</li>
                     </ul>
                 </div>
-                <div class="competency-list">
+                <div class="competency-list" v-if="isActive">
                     <div class="competency-dependency">
                         <div class="competency-dependency-panel">
                             <div class="dependency-panel-heading">
                                 <material-icon icon="fiber_manual_record" />
-                                <span>dependencies</span>
+                                <span>prerequisites</span>
                             </div>
-                            <div class="dependancy-panel-body">
-                                <div class="dependency-panel-card">
+                            <div class="dependancy-panel-body" v-if="prerequisites.length">
+                                <div class="dependency-panel-card" v-for="(prerequisite, index) in prerequisites" :key="index">
                                     <material-icon icon="more_horiz" />
                                     <div class="dep-competency-name">
                                         <span class="dep-competency-title">
-                                            competency name
+                                            {{prerequisite.title}}
                                         </span>
                                         <span class="dep-competency-code">
-                                            1.EEE.2
+                                            {{prerequisite.code}}
                                         </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="competency-complimentry">
+                    <!-- Note: currently we does in have API support for compelementry edges -->
+                    <div class="competency-complimentry" hidden>
                         <div class="competency-complimentry-panel">
                             <div class="competency-complimentry-heading">
                                 <material-icon icon="fiber_manual_record" />
@@ -88,6 +89,14 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="learning-map-tap" v-if="!isActive">
+                    <div class="learning-map-container" v-if="learningMapContent">
+                         <div class="coures-content" v-for="(collection, keys, index) in learningMapContent.totalCounts" :key="index">
+                             <span class="icon"><mc-icon :icon="keys + '-gray'" /></span>
+                             <span>{{collection}}</span>
+                         </div>
                     </div>
                 </div>
             </div>

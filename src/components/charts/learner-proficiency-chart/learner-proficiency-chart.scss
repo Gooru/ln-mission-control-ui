@@ -186,5 +186,9 @@
   .active-competency {
     position: absolute;
     box-shadow: 0px 3px 9px 5px rgba(0, 0, 0, 0.5);
+    &.active-competency-map {
+      border: 5px solid $white;
+      background-color: #1d7dc2;
+    }
   }
 }

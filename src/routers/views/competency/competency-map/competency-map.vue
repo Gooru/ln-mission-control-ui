@@ -2,11 +2,7 @@
     <div class="mc-competency-map">
         <div class="mc-competency-submenu">
                 <ul class="mc-competency-submenu-blk">
-                    <li>Dashboard</li>
-                    <li class="active">Competency Map</li>
-                    <li>Crosswalk</li>
-                    <li>Tree</li>
-                    <li>Learning Map</li>
+                    <li v-for="(navMenu, navIndex) in competencyNavMenu" :class="{active: navMenu === 'competency-map'}" :key="navIndex">{{$t(navMenu)}}</li>
                 </ul>
             </div>
         <div class="mc-competency-map-container">

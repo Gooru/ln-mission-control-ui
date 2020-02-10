@@ -31,7 +31,7 @@
           </div> -->
           <div class="scrollable-chart">
             <div id="chart-area">
-              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus]" :style="activeCompetencyStyle">
+              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus, {'active-competency-map': isCompetencyMap}]" :style="activeCompetencyStyle">
               </div>
             </div>
           </div>

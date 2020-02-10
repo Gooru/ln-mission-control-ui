@@ -10,6 +10,7 @@ import { competencyAPI } from '@/providers/apis/competency/competency';
 import { DomainModel } from '@/models/proficiency/domain';
 import { CompetencyModel } from '@/models/proficiency/competency';
 import CompetencyChartCard from '@/components/charts/competency-chart-card/competency-chart-card';
+import {COMPETENCY_NAVIGATION_MENUS} from '@/utils/constants';
 
 @Component({
     name: 'competency-map',
@@ -35,6 +36,8 @@ export default class CompetencyMap extends Vue {
     private defaultSubjectCode: string = 'K12.MA';
 
     private categories?: ClassificationModel[] = [];
+
+    private competencyNavMenu: any = COMPETENCY_NAVIGATION_MENUS;
 
     private userId() {
         const session = sessionService.getSession();

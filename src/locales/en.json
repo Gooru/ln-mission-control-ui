@@ -60,5 +60,10 @@
   "subject": "Subject",
   "total.count": "Total Count",
   "implementation.split":"Implementation Splits",
-  "content.usage":"Content Usage"
+  "content.usage":"Content Usage",
+  "matrix":"Matrix",
+  "crosswalk":"Crosswalk",
+  "tree":"Tree",
+  "competency-map": "Competency Map",
+  "learning-map": "Learning Map"
 }

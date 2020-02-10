@@ -1,9 +1,11 @@
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import LearnerProficiencyChart from '@/components/charts/learner-proficiency-chart/learner-proficiency-chart';
 import moment from 'moment';
 import DomainCard from '@/components/cards/domain-card/domain-card';
 import GradeLevelCard from '@/components/cards/grade-level-card/grade-level-card';
 import CompetencyCard from '@/components/cards/competency-card/competency-card';
+import Axios from 'axios';
+import { searchAPI } from '@/providers/apis/search/search';
 
 @Component({
     name: 'proficiency-matrix',
@@ -41,6 +43,18 @@ export default class ProficiencyMatrix extends Vue {
 
     private activeCompetency: any = null;
 
+    private isCompetencyActive: boolean = false;
+
+    private learningMapContent: any = [];
+
+    private prerequisites: any = [];
+
+
+    @Watch('activeCompetency')
+    private onChangeCompetencyCode(code: any) {
+        this.fetchLearningMapContent(code.competencyCode);
+    }
+
     // -----------------------------------------------------------------
     // Action
 
@@ -76,6 +90,10 @@ export default class ProficiencyMatrix extends Vue {
         this.activeCompetency = competency;
     }
 
+    private onChangeGraphView(isActive: boolean) {
+        this.isCompetencyActive = isActive;
+    }
+
     // -----------------------------------------------------------------------------
     // Methods
 
@@ -91,5 +109,14 @@ export default class ProficiencyMatrix extends Vue {
             });
         }
         this.gradeCompetency = competencyList;
+    }
+
+    private fetchLearningMapContent(competencyCode: any) {
+        Axios.all([
+            searchAPI.fetchLearningMapContents(competencyCode),
+        ]).then(Axios.spread((learningMap) => {
+             this.learningMapContent = learningMap;
+             this.prerequisites = learningMap.prerequisites;
+        }));
     }
 }

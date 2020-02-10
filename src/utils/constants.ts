@@ -228,3 +228,11 @@ export const LEARNER_PREFERENCE_META: any = {
     icon: 'offline-activity-gray',
   },
 };
+
+export const COMPETENCY_NAVIGATION_MENUS = [
+  'matrix',
+  'competency-map',
+  'crosswalk',
+  'tree',
+  'learning-map',
+];

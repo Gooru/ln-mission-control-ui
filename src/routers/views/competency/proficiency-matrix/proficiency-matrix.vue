@@ -7,7 +7,8 @@
                 :subject="subject"
                 :isDomainActive ="false"
                 :activeDomainSeq="0"
-                :isCompetencyActive="false"
+                :isCompetencyActive="isCompetencyActive"
+                v-on:onChangeGraphView="onChangeGraphView"
                 :userId="userId"
                 :month="month"
                 :year="year" 
@@ -16,8 +17,11 @@
                 v-on:onSelectGrade="onSelectGrade"
                 v-on:onSelectCompetency="onSelectCompetency"
                 :isCompetencyMap="true"
+                :activeCompetency="activeCompetency"
                 :isShowMultigrade="true"
-                :isDomainView="isDomainView" />
+                :isDomainView="isDomainView"
+                :isCompetencyView="isCompetencyView"
+                :prerequisites="prerequisites" />
             </div>
              <div class="rigt-side-card">
                 <domain-card 
@@ -31,6 +35,9 @@
                 <competency-card 
                     v-if="isCompetencyView && activeCompetency"
                     :activeCompetency="activeCompetency"
+                    :prerequisites="prerequisites"
+                    :learningMapContent="learningMapContent"
+                    v-on:onClose="onCloseGrade"
                 />
              </div>
            

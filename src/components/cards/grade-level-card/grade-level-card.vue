@@ -17,7 +17,7 @@
                     </div>
                     <div class="competency-panel">
                         <h4 class="competency-heading">Competencies</h4>
-                        <div class="competency-list">      
+                        <div :class="['competency-list',{'no-description': activeGrade.length > 1}]">      
                             <div class="competency-card" v-for="(competency, index) in gradeCompetency" :key="index">
                                 <div class="competency-header">
                                     <span class="competency-code">{{competency.competencyCode}}</span>
