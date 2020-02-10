@@ -104,6 +104,7 @@ export default class TaxonomyFilter extends Vue {
         } else {
           component.selectedSubjects = parsedSubjects;
         }
+        component.$emit('listActiveFacets', component.selectedSubjects);
       });
       component.activeClassification = defaultClassification;
     });
