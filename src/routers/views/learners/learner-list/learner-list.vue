@@ -24,7 +24,8 @@
             <div class="learner-table-section-body-content" v-for="(learner, learnerKey) in learnerDetails" :key="learnerKey" @click="onSelectLearner(learner)">
               <div class="user-profile">
                 <img :src="learner.thumbnail" alt="">
-                <span>{{learner.firstname}} {{learner.lastname}}</span>
+                <span v-if="learner.firstname && learner.firstname !== ' '">{{learner.firstname}} {{learner.lastname}}</span>
+                <span v-else>{{learner.username}}</span>
               </div>
               <div class="learner-role">
                 {{learner.userCategory}}

@@ -167,7 +167,8 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
     const chartViewElement = component.$el.querySelector('#facets-chart-view') as HTMLElement;
     let chartWidth = chartViewElement.offsetWidth - 60;
-    let chartHeight = chartViewElement.offsetHeight - 40;
+    const chartContainerHeight = chartViewElement.offsetHeight - 40;
+    let chartHeight = chartContainerHeight;
     const totalFacets = facetsMatrix.length || 0;
     // Set virtual height of chart based on expand/collapse mode
     if (this.isExpandedMode) {
@@ -194,6 +195,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
       } else {
         const meanValue = totalCompetencies / facetsMatrix.length;
         chartHeight = meanValue + (meanValue / 100);
+      }
+
+      // Set chart container height as chart height
+      if (chartHeight <= chartContainerHeight) {
+        chartHeight = chartContainerHeight;
       }
     }
 

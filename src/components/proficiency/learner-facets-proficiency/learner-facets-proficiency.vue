@@ -43,11 +43,12 @@
           :isExpandedMode="isShowExpandedFacetChart"/>
         </div>
       </div>
-      <div class="facets-right-panel">
+      <div v-if="activeFacets.length" class="facets-right-panel">
         <facets-info-panel
         :userId="learnerId"
         :month="activeMonth"
         :year="activeYear"
+        :activeFacets="activeFacets"
         @onSelectPortfolioStat="onSelectPortfolioStat"/>
       </div>
     </div>
