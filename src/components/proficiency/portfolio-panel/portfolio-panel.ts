@@ -29,7 +29,9 @@ export default class PortfolioPanel extends Vue {
     } else if (statsBucket === 'domain') {
       portfolioStats = this.portfolioDomainStats;
     } else {
-      portfolioStats = this.portfolioFacetsStats;
+      portfolioStats = this.portfolioFacetsStats.filter(
+        (portfolioFacetStat) => this.activeFacets.find(
+          (activeFacet) => portfolioFacetStat.subjectCode === activeFacet.id));
     }
     return portfolioStats;
   }
@@ -55,6 +57,9 @@ export default class PortfolioPanel extends Vue {
 
   @Prop()
   private year!: string;
+
+  @Prop()
+  private activeFacets!: SubjectModel[];
 
   private activityType = 'assessment';
 
