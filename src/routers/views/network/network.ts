@@ -72,7 +72,6 @@ export default class Network extends Vue {
             const country = countries.features.find((countryData: any) => {
               return countryCode === countryData.country_code;
             });
-
             if (country) {
               country.has_data = true;
               country.total_students = statsCountry.total_students;
@@ -84,11 +83,10 @@ export default class Network extends Vue {
               country.total_timespent = statsCountry.total_timespent;
               country.total_activities_conducted = statsCountry.total_activities_conducted;
               country.total_navigator_courses = statsCountry.total_navigator_courses;
-
+              country.country_id = statsCountry.id;
               if (this.isTenant) {
                 country.country_name = statsCountry.country_name;
               } else {
-                country.country_id = statsCountry.id;
                 country.country_name = statsCountry.name;
               }
 
