@@ -64,6 +64,12 @@ export default class CompetencyMap extends Vue {
             });
     }
 
+    private onChangeNav(navMenu: any) {
+        if (navMenu !== 'competency-map') {
+            window.location.href = '/research/competency/' + navMenu;
+        }
+    }
+
     private onSelectSubject(subject: any) {
        this.$emit('onSelectSubject', subject, this.userId());
     }
