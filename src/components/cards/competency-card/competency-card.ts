@@ -3,6 +3,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import { searchAPI } from '@/providers/apis/search/search';
 import Axios from 'axios';
 import MCIcon from '@/components/icons/mc-icon/mc-icon';
+import { SessionService, sessionService } from '@/providers/services/auth/session';
 
 @Component({
     name: 'competency-card',
@@ -25,8 +26,18 @@ export default class CompetencyCard extends Vue {
     @Prop()
     private learningMapContent: any;
 
+    @Prop()
+    private microCompetency: any;
+
     private isActive: any = true;
 
+    get signatureCollection() {
+        return this.learningMapContent.signatureCollections;
+    }
+
+    get signatureAssessment() {
+        return this.learningMapContent.signatureAssessments;
+    }
     // --------------------------------------------------------------------------
     // Actions
 
@@ -38,5 +49,7 @@ export default class CompetencyCard extends Vue {
         this.$emit('onClose');
     }
 
-
+    private onSelectContent(content: string) {
+        this.$emit('onSelectContent', content);
+    }
 }

@@ -8,7 +8,7 @@
                      <span>{{activeCompetency.competencyStudentDesc}}</span>
                      <span class="competency-code">{{activeCompetency.competencyCode}}</span>
                 </div>
-                <span @click="onClose()"><material-icon icon="close" /></span>
+                <span @click="onClose()" class="close-icon"><material-icon icon="close" /></span>
                 </div>
                 <div class="competency-description">
                      {{activeCompetency.competencyName}}
@@ -74,15 +74,15 @@
                                 <span>Micro-Competencies</span>
                             </div>
                             <div class="competency-micro-body">
-                                <div class="competency-micro-panel">
-                                    <div class="micro-panel-card">
+                                <div class="competency-micro-panel" v-if="microCompetency">
+                                    <div class="micro-panel-card" v-for="(competency , competencyIndex) in microCompetency" :key="competencyIndex">
                                         <span class="micro-icon"></span>
                                         <div class="micro-competency-name">
                                             <span class="micro-competency-title">
-                                                competency name
+                                                {{competency.title}}
                                             </span>
                                             <span class="micro-competency-code">
-                                                1.EEE.2
+                                                {{competency.code}}
                                             </span>
                                         </div>
                                     </div>
@@ -93,10 +93,29 @@
                 </div>
                 <div class="learning-map-tap" v-if="!isActive">
                     <div class="learning-map-container" v-if="learningMapContent">
-                         <div class="coures-content" v-for="(collection, keys, index) in learningMapContent.totalCounts" :key="index">
+                         <div class="coures-content" v-for="(collection, keys, index) in learningMapContent.totalCounts"  :key="index">
                              <span class="icon"><mc-icon :icon="keys + '-gray'" /></span>
                              <span>{{collection}}</span>
                          </div>
+                    </div>
+                     <div class="signature-content-section">
+                            <h4 class="collection-title signature-content-title">SIGNATURE COLLECTIONS</h4>
+                             <div v-if="signatureCollection.length">
+                              <div class="signature-panel" v-for="(collection, collectionIndex) in signatureCollection" :key="collectionIndex">
+                                    <div class="thumbnail-img"><img :src="collection.thumbnailUrl"></div>
+                                    <div class="signature-title">{{collection.title}}</div>
+                             </div>
+                             </div>
+                             <div v-else> There is no signature collection.</div>
+                             <h4 class="assessment-title signature-content-title">SIGNATURE ASSESSMENTS</h4>
+                             <div v-if="signatureAssessment.length">
+                                    <div class="signature-panel" v-for="(assessment, assessmentIndex) in signatureAssessment" :key="assessmentIndex">
+                                    <div class="thumbnail-img"><img :src="assessment.thumbnailUrl"></div>
+                                    <div class="signature-title">{{assessment.title}}</div>
+                                    </div>
+                             </div>
+                             <div v-else>There is no signature assessment.</div>
+                             
                     </div>
                 </div>
             </div>

@@ -1,3 +1,5 @@
+import { TaxonomyModel } from './taxonomy';
+
 export interface AssessmentModel {
   id: string;
   title: string;
@@ -6,4 +8,9 @@ export interface AssessmentModel {
   questionCount?: number;
   description?: string;
   thumbnailUrl: string;
+  efficacy?: number;
+  engagement?: number;
+  relevance?: number;
+  standards?: TaxonomyModel[];
+  creator?: any;
 }

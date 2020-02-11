@@ -6,6 +6,10 @@ import GradeLevelCard from '@/components/cards/grade-level-card/grade-level-card
 import CompetencyCard from '@/components/cards/competency-card/competency-card';
 import Axios from 'axios';
 import { searchAPI } from '@/providers/apis/search/search';
+import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
+import { getSubjectId, getDomainId, getCourseId } from '@/utils/utils';
+import { GOORU_DEFAULT_FRAMEWORK, MICRO_COMPETENCY_CODE_TYPES } from '@/utils/constants';
+import LearningMapContent from '@/components/cards/learning-map-content/learning-map-content';
 
 @Component({
     name: 'proficiency-matrix',
@@ -14,6 +18,7 @@ import { searchAPI } from '@/providers/apis/search/search';
         'domain-card': DomainCard,
         'grade-level-card': GradeLevelCard,
         'competency-card': CompetencyCard,
+        'learning-map-content': LearningMapContent,
     },
 })
 
@@ -49,6 +54,30 @@ export default class ProficiencyMatrix extends Vue {
 
     private prerequisites: any = [];
 
+    private microCompetency: any = [];
+
+    private fwCode: string = GOORU_DEFAULT_FRAMEWORK;
+
+    private microCompetencyCodes: any = MICRO_COMPETENCY_CODE_TYPES;
+
+    private isLoading: boolean = false;
+
+    private isLearningMapContent: boolean = false;
+
+    private selectedContent: string = '';
+
+    get subjectId() {
+        return this.activeCompetency ? getSubjectId(this.activeCompetency.competencyCode) : '';
+    }
+
+    get domainId() {
+        return this.activeCompetency ? getDomainId(this.activeCompetency.competencyCode) : '';
+    }
+
+    get courseId() {
+        return this.activeCompetency ? getCourseId(this.activeCompetency.competencyCode) : '';
+    }
+
 
     @Watch('activeCompetency')
     private onChangeCompetencyCode(code: any) {
@@ -81,6 +110,7 @@ export default class ProficiencyMatrix extends Vue {
         this.isDomainView = true;
         this.isGradeView = false;
         this.isCompetencyView = false;
+        this.isCompetencyActive = false;
     }
 
     private onSelectCompetency(competency: any) {
@@ -88,10 +118,24 @@ export default class ProficiencyMatrix extends Vue {
         this.isGradeView = false;
         this.isCompetencyView = true;
         this.activeCompetency = competency;
+        this.isCompetencyActive = true;
     }
 
     private onChangeGraphView(isActive: boolean) {
         this.isCompetencyActive = isActive;
+        if (!this.isCompetencyView) {
+            this.isCompetencyActive = false;
+        }
+    }
+
+    private onSelectContent(content: string) {
+        this.selectedContent = content;
+        this.isLearningMapContent = true;
+    }
+
+    private onCloseLearningMap() {
+        this.selectedContent = '';
+        this.isLearningMapContent = false;
     }
 
     // -----------------------------------------------------------------------------
@@ -112,11 +156,28 @@ export default class ProficiencyMatrix extends Vue {
     }
 
     private fetchLearningMapContent(competencyCode: any) {
+        this.isLoading = true;
+        const competencyPromise = taxonomyAPI.fetchCodes(this.fwCode, this.subjectId, this.courseId, this.domainId);
         Axios.all([
             searchAPI.fetchLearningMapContents(competencyCode),
-        ]).then(Axios.spread((learningMap) => {
-             this.learningMapContent = learningMap;
-             this.prerequisites = learningMap.prerequisites;
+            competencyPromise,
+        ]).then(Axios.spread((learningMap, competencyCodes: any) => {
+            this.learningMapContent = learningMap;
+            this.microCompetency = this.filterMicroCompetency(competencyCodes.codes);
+            this.prerequisites = learningMap.prerequisites;
+            this.isLoading = false;
         }));
+    }
+
+    private filterMicroCompetency(codes: any) {
+        const standardCode = this.activeCompetency.competencyCode;
+        const regex = new RegExp(standardCode);
+        const microCompetencies = codes.filter((code: any) => {
+            return (
+                regex.test(code.id) &&
+                (this.microCompetencyCodes.indexOf(code.code_type) !== -1)
+            );
+        });
+        return microCompetencies;
     }
 }

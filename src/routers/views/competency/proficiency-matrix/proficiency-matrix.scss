@@ -13,6 +13,15 @@
     }
     .rigt-side-card {
       width: 100%;
+      position: relative;
+      #learning-map-content {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: calc(100vh - 120px);
+        overflow: hidden;
+        background-color: $white;
+      }
     }
   }
 }

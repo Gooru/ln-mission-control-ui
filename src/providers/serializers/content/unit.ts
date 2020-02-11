@@ -11,6 +11,8 @@ export class UnitSerializer {
     const result: UnitModel = {
       id: unit.id,
       title: unit.title,
+      assessmentCount: unit.assessmentCount,
+      collectionCount: unit.collectionCount,
     };
     return result;
   }

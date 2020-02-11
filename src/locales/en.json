@@ -65,5 +65,8 @@
   "crosswalk":"Crosswalk",
   "tree":"Tree",
   "competency-map": "Competency Map",
-  "learning-map": "Learning Map"
+  "learning-map": "Learning Map",
+  "common.relevance": "relevance",
+  "common.engagement": "engagement",
+  "common.efficacy": "efficacy"
 }

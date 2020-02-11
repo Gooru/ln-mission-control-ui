@@ -113,6 +113,9 @@ export default class LearnerProficiencyChart extends Vue {
   @Prop()
   private activeDomainSeq?: any = 0;
 
+  @Prop()
+  private isCompetencyLoading: boolean = false;
+
   private activeCompetencyStyle: any = null;
 
   @Prop()
@@ -147,7 +150,6 @@ export default class LearnerProficiencyChart extends Vue {
       this.multiGradeActiveList.map((grade: any, index: any) => {
         this.drawGradeBoundaryLine(index);
       });
-      d3.select('#chart-area').classed('active-competency', false);
     }
   }
 
@@ -427,16 +429,19 @@ export default class LearnerProficiencyChart extends Vue {
         const skylineClassName = competency.isSkyLineCompetency
           ? 'skyline-competency '
           : '';
-        const prerequisite = component.prerequisites.find((item: any) => item.id === competency.competencyCode);
+        const prerequisite = component.prerequisites.find(
+          (item: any) => (item.id === competency.competencyCode) &&
+             (competency.domainSeq !== component.activeCompetency.domainSeq));
         const isActiveClass = (component.activeCompetency && this.isSelectedCompetency) ?
           (component.activeCompetency.competencyCode === competency.competencyCode) : false;
         const gradeBoundaryClassName = competency.className ? competency.className : '';
         const fadeClass = (maxSeq) ? (
           (maxSeq.competencySeq < competency.competencySeq) ? 'non-competency' : '') : '';
+
         return `${skylineClassName}domain-${competency.domainSeq} competency-${
           competency.competencySeq
           } ${fadeClass} ${((prerequisite || isActiveClass) && this.isCompetencyMap) ?
-            'prerequisite-content' : (this.isSelectedCompetency ?
+            'prerequisite-content' : ((this.isSelectedCompetency && this.isCompetencyMap) ?
               'non-competency' : '')} competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
       })
       .attr('id', 'competency-cell')
@@ -449,7 +454,9 @@ export default class LearnerProficiencyChart extends Vue {
       })
       .on('click', (competency: any) => {
         component.selectCompetency(competency);
-        component.isSelectedCompetency = true;
+        if (this.isCompetencyMap) {
+          component.isSelectedCompetency = true;
+        }
       });
     competencyCells.exit().remove();
   }
@@ -620,7 +627,9 @@ export default class LearnerProficiencyChart extends Vue {
       });
       component.onSelectDomain(activeDomain);
     }
-    component.highlightCompetency(competency);
+    if (!this.isCompetencyMap) {
+      component.highlightCompetency(competency);
+    }
   }
 
   @Watch('isDomainActive')
@@ -633,8 +642,10 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   @Watch('isCompetencyActive')
-  private onToggleCompetency() {
-    this.highlightCompetency(this.activeCompetency);
+  private onToggleCompetency(value: any) {
+    if (value) {
+      this.highlightCompetency(this.activeCompetency);
+    }
   }
 
   private onClearGrade() {
@@ -713,6 +724,7 @@ export default class LearnerProficiencyChart extends Vue {
     const cellHeight = this.cellHeight;
     const prerequisiteContainer = this.prerequisiteContainer;
     const linePoints: any = [];
+    this.highlightCompetency(this.activeCompetency);
     prerequisiteElement.forEach((element: any, elementIndex: number) => {
       const x1 = parseInt(element.getAttribute('x'), 10);
       const y1 = parseInt(element.getAttribute('y'), 10);

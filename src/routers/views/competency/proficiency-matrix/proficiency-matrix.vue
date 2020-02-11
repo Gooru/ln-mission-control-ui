@@ -21,6 +21,7 @@
                 :isShowMultigrade="true"
                 :isDomainView="isDomainView"
                 :isCompetencyView="isCompetencyView"
+                :isCompetencyLoading ="isLoading"
                 :prerequisites="prerequisites" />
             </div>
              <div class="rigt-side-card">
@@ -37,8 +38,15 @@
                     :activeCompetency="activeCompetency"
                     :prerequisites="prerequisites"
                     :learningMapContent="learningMapContent"
+                    :microCompetency="microCompetency"
                     v-on:onClose="onCloseGrade"
+                    v-on:onSelectContent="onSelectContent"
                 />
+                <learning-map-content
+                        v-if="isLearningMapContent"
+                        :selectedContent ="selectedContent"
+                        v-on:onClose ="onCloseLearningMap"
+                        :learningMapContent="learningMapContent"/>
              </div>
            
         </div>
