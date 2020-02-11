@@ -85,19 +85,25 @@ export default class TaxonomyFilter extends Vue {
     const component = this;
     taxonomyAPI.fetchTaxonomyClassifications().then((taxonomyClassifications: ClassificationModel[]) =>  {
       component.classifications = taxonomyClassifications;
-      const defaultClassification: ClassificationModel | any = taxonomyClassifications.find(
+      let defaultClassification: ClassificationModel | any = taxonomyClassifications.find(
         (classification: ClassificationModel) => classification.id === component.defaultClassificationId,
       );
+      defaultClassification = defaultClassification || taxonomyClassifications[0];
       component.loadTaxonomySubjects(defaultClassification.id).then((taxonomySubjects: SubjectModel[]) => {
         taxonomySubjects.forEach((subject: SubjectModel) => {
           subject.isActive = true;
         });
         const parsedSubjects =  (JSON.parse(JSON.stringify(taxonomySubjects)));
-        component.defaultOrderOfFacets.map((subjectCode: string) => {
-          component.selectedSubjects.push(
-            parsedSubjects.find( (subject: any) => subject.code === subjectCode),
-          );
-        });
+        // When default classification is not available
+        if (defaultClassification.id === component.defaultClassificationId) {
+          component.defaultOrderOfFacets.map((subjectCode: string) => {
+            component.selectedSubjects.push(
+              parsedSubjects.find( (subject: any) => subject.code === subjectCode),
+            );
+          });
+        } else {
+          component.selectedSubjects = parsedSubjects;
+        }
         component.$emit('listActiveFacets', component.selectedSubjects);
       });
       component.activeClassification = defaultClassification;
