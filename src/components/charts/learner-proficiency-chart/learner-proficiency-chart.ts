@@ -199,17 +199,18 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     component.multiGradeActiveList = [];
     component.activeGrade = grade;
-    const proficiencyChartData = component.chartData;
-    proficiencyChartData.map((domainData: any) => {
-      const competencies = domainData.competencies;
-      const filteredDomain = competencies.filter(
-        (competency: any) => competency.className && competency.className !== '');
-      filteredDomain.map((filteredCompetency: any) => {
-        filteredCompetency.className = '';
+    if (component.isCompetencyMap) {
+      const proficiencyChartData = component.chartData;
+      proficiencyChartData.map((domainData: any) => {
+        const competencies = domainData.competencies;
+        const filteredDomain = competencies.filter(
+          (competency: any) => competency.className && competency.className !== '');
+        filteredDomain.map((filteredCompetency: any) => {
+          filteredCompetency.className = '';
+        });
       });
-    });
-
-    if ((!component.activeGradeList.length) || (component.activeGradeList.length > 1)) {
+    }
+    if ((!component.activeGradeList.length) || (component.activeGradeList.length > 1) || !this.isCompetencyMap) {
       component.activeGradeList = [];
       component.activeGradeList.push(grade);
     } else {
@@ -429,9 +430,9 @@ export default class LearnerProficiencyChart extends Vue {
         const skylineClassName = competency.isSkyLineCompetency
           ? 'skyline-competency '
           : '';
-        const prerequisite = component.prerequisites.find(
+        const prerequisite = this.isCompetencyMap ? component.prerequisites.find(
           (item: any) => (item.id === competency.competencyCode) &&
-             (competency.domainSeq !== component.activeCompetency.domainSeq));
+            (competency.domainSeq !== component.activeCompetency.domainSeq)) : {};
         const isActiveClass = (component.activeCompetency && this.isSelectedCompetency) ?
           (component.activeCompetency.competencyCode === competency.competencyCode) : false;
         const gradeBoundaryClassName = competency.className ? competency.className : '';
