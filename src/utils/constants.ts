@@ -232,8 +232,8 @@ export const LEARNER_PREFERENCE_META: any = {
 export const COMPETENCY_NAVIGATION_MENUS = [
   'matrix',
   'competency-map',
-  'crosswalk',
   'tree',
+  'crosswalk',
   'learning-map',
 ];
 
