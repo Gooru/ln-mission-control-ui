@@ -22,7 +22,7 @@ export default class LearnerList extends Vue {
 
   private limit: number = 20;
 
-  private offset: number = 1;
+  private offset: number = 0;
 
   private isLoading: boolean = false;
 
@@ -52,7 +52,7 @@ export default class LearnerList extends Vue {
   }
 
   private onSearchLearners() {
-    this.offset = 1;
+    this.offset = 0;
     this.learnerDetails = [];
     this.loadLearners();
   }
@@ -86,7 +86,7 @@ export default class LearnerList extends Vue {
       const scrollTop = bodyContainer.scrollTop;
       const scrollHeight = bodyContainer.scrollHeight;
       if ((scrollTop + innerHeight >= scrollHeight - 100) && !component.isLoading && !component.isFetchedAllLearners) {
-        component.offset = component.learnerDetails.length + 1;
+        component.offset = component.learnerDetails.length;
         component.loadLearners();
       }
     };
