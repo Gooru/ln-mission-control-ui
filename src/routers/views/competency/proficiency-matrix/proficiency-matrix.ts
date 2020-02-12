@@ -10,6 +10,7 @@ import { taxonomyAPI } from '@/providers/apis/taxonomy/taxonomy';
 import { getSubjectId, getDomainId, getCourseId } from '@/utils/utils';
 import { GOORU_DEFAULT_FRAMEWORK, MICRO_COMPETENCY_CODE_TYPES } from '@/utils/constants';
 import LearningMapContent from '@/components/cards/learning-map-content/learning-map-content';
+import { MicroCompetencyModel } from '@/models/content/micro-competency';
 
 @Component({
     name: 'proficiency-matrix',
@@ -54,7 +55,7 @@ export default class ProficiencyMatrix extends Vue {
 
     private prerequisites: any = [];
 
-    private microCompetency: any = [];
+    private microCompetency: MicroCompetencyModel[] = [];
 
     private fwCode: string = GOORU_DEFAULT_FRAMEWORK;
 
@@ -163,7 +164,7 @@ export default class ProficiencyMatrix extends Vue {
             competencyPromise,
         ]).then(Axios.spread((learningMap, competencyCodes: any) => {
             this.learningMapContent = learningMap;
-            this.microCompetency = this.filterMicroCompetency(competencyCodes.codes);
+            this.microCompetency = this.filterMicroCompetency(competencyCodes);
             this.prerequisites = learningMap.prerequisites;
             this.isLoading = false;
         }));
@@ -175,7 +176,7 @@ export default class ProficiencyMatrix extends Vue {
         const microCompetencies = codes.filter((code: any) => {
             return (
                 regex.test(code.id) &&
-                (this.microCompetencyCodes.indexOf(code.code_type) !== -1)
+                (this.microCompetencyCodes.indexOf(code.codeType) !== -1)
             );
         });
         return microCompetencies;

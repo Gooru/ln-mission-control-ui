@@ -3,20 +3,20 @@ import { isMicroStandardId, getTaxonomyTags } from '@/utils/utils';
 import TaxonomyCard from '../taxonomy-card/taxonomy-card';
 
 @Component({
-    name: 'unit-card',
+    name: 'lesson-card',
     components: {
         'taxonomy-card': TaxonomyCard,
     },
 })
 
-export default class UnitCard extends Vue {
+export default class LessonCard extends Vue {
 
     // ------------------------------------------------------------------
     // Properties
     @Prop()
-    private unit: any;
+    private lesson: any;
 
-    private get tags() {
-        return this.unit.standards;
+    get tags() {
+        return this.lesson.standards;
     }
 }

@@ -1,4 +1,4 @@
-#unit-card {
+#lesson-card {
   .card-panel-container {
     width: 220px;
     height: 348px;
@@ -21,7 +21,7 @@
       background-size: 50px 50px;
       background-position-x: 86px;
       background-position-y: 15px;
-      background-image: url($mc-icon-unit-gray);
+      background-image: url($mc-icon-lesson-gray);
 
       .info {
         color: #0072bc;
@@ -45,7 +45,7 @@
       }
     }
 
-    .unit-format-container {
+    .lesson-format-container {
       height: 25px;
       width: 100%;
       border-bottom: 1px solid $light-600;
@@ -89,12 +89,12 @@
       }
     }
 
-    .unit-info-container {
+    .lesson-info-container {
       height: 150px;
       border-bottom: 1px solid #f2f2f2;
       padding: 15px;
 
-      .unit-user-info {
+      .lesson-user-info {
         height: 30px;
         cursor: default;
         @include flexbox;
@@ -125,7 +125,7 @@
         }
       }
 
-      .unit-description {
+      .lesson-description {
         $line-height: 1.5;
         $lines-to-show: 3;
         @include ellipsis(
@@ -137,7 +137,7 @@
     }
 
     .card-panel-footer {
-      .unit-prefs-container {
+      .lesson-prefs-container {
         .left-arc {
           display: block;
           height: 15px;
@@ -163,7 +163,7 @@
           top: -22px;
         }
 
-        .unit-prefs {
+        .lesson-prefs {
           width: 73.3px;
           height: 43px;
           float: left;

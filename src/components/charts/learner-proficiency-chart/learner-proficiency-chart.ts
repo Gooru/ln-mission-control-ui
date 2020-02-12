@@ -199,20 +199,14 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     component.multiGradeActiveList = [];
     component.activeGrade = grade;
-    if (component.isCompetencyMap) {
-      const proficiencyChartData = component.chartData;
-      proficiencyChartData.map((domainData: any) => {
-        const competencies = domainData.competencies;
-        const filteredDomain = competencies.filter(
-          (competency: any) => competency.className && competency.className !== '');
-        filteredDomain.map((filteredCompetency: any) => {
-          filteredCompetency.className = '';
-        });
-      });
-    }
-    if ((!component.activeGradeList.length) || (component.activeGradeList.length > 1) || !this.isCompetencyMap) {
-      component.activeGradeList = [];
-      component.activeGradeList.push(grade);
+    component.resetChart();
+    if ((!component.activeGradeList.length || (component.activeGradeList.length > 1)) || !this.isCompetencyMap) {
+      if (component.activeGradeList.length && grade.id === component.activeGradeList[0].id) {
+        component.activeGradeList = [];
+      } else {
+        component.activeGradeList = [];
+        component.activeGradeList.push(grade);
+      }
     } else {
       const maxValue = component.taxonomyGrades.findIndex(
         (gradeItem) => gradeItem.id === component.activeGradeList[0].id);
@@ -619,7 +613,6 @@ export default class LearnerProficiencyChart extends Vue {
 
   public selectCompetency(competency: any) {
     const component = this;
-    component.activeCompetency = competency;
     if (component.isShowExpandedGraph) {
       this.$emit('onSelectCompetency', competency);
     } else {
@@ -752,6 +745,18 @@ export default class LearnerProficiencyChart extends Vue {
       .attr('stroke-width', 4)
       .attr('fill', 'none');
 
+  }
+
+  private resetChart() {
+    const proficiencyChartData = this.chartData;
+    proficiencyChartData.map((domainData: any) => {
+      const competencies = domainData.competencies;
+      const filteredDomain = competencies.filter(
+        (competency: any) => competency.className && competency.className !== '');
+      filteredDomain.map((filteredCompetency: any) => {
+        filteredCompetency.className = '';
+      });
+    });
   }
 
 
