@@ -1,6 +1,7 @@
 import { sessionService } from '@/providers/services/auth/session';
 import {CollectionModel} from '@/models/content/collection';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
+import { taxonomySerializer } from './taxonomy';
 
 export class CollectionSerializer {
   private static INSTANCE = new CollectionSerializer();
@@ -23,6 +24,11 @@ export class CollectionSerializer {
       resourceCount: collection.resourceCount || 0,
       description: collection.learningObjective,
       format: collection.format || 'collection',
+      efficacy: collection.efficacy,
+      relevance: collection.relevance,
+      engagement: collection.engagement,
+      standards: taxonomySerializer.normalizeTaxonomyObject(collection.taxonomy),
+      creator: collection.creator,
       thumbnailUrl,
     };
     return result;

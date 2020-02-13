@@ -1,4 +1,15 @@
 <template>
+<div>
+    <competency-map 
+    v-if="isShowCompetencyMap"
+    v-on:onSelectSubject="onSelectSubject"
+    />
+    <proficiency-martix 
+    v-if="!isShowCompetencyMap"
+    :userId="userId"
+    :subject="selectedSubject"
+    v-on:backAction="backAction" />
+</div>
 </template>
 
 <script lang="ts" src="./competency.ts"></script>

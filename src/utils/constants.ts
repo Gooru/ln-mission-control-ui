@@ -228,3 +228,28 @@ export const LEARNER_PREFERENCE_META: any = {
     icon: 'offline-activity-gray',
   },
 };
+
+export const COMPETENCY_NAVIGATION_MENUS = [
+  'matrix',
+  'competency-map',
+  'tree',
+  'crosswalk',
+  'learning-map',
+];
+
+export const GOORU_DEFAULT_STANDARD = 'GDF';
+
+export const GOORU_DEFAULT_FRAMEWORK = 'GDT';
+
+export const MICRO_COMPETENCY_CODE_TYPES: any = [
+  'learning_target_level_0',
+  'learning_target_level_1',
+  'learning_target_level_2',
+];
+
+export const TAXONOMY_LEVELS = {
+  COURSE: 'course',
+  DOMAIN: 'domain',
+  STANDARD: 'standard',
+  MICRO: 'micro-standard',
+};

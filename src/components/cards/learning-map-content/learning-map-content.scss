@@ -1,0 +1,30 @@
+#learning-map-content {
+  .learning-map-content-container {
+    .content-header {
+      display: grid;
+      grid-template-columns: 1fr 40px;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid $light-100;
+      box-shadow: 0 1px 10px $light-100;
+      h4 {
+        text-transform: capitalize;
+        font-size: 20px;
+        margin: 0;
+      }
+      .close-icon {
+        cursor: pointer;
+      }
+    }
+    .content-body {
+      height: calc(100vh - 170px);
+      overflow-y: auto;
+      padding: 10px;
+
+      .content-panel {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}

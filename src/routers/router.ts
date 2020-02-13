@@ -78,6 +78,12 @@ const routes = [
         component: () => import('@/routers/views/console/lrs/lrs.vue'),
         meta: {isRequiredAuth: true},
       },
+      {
+        path: '/competency/:name',
+        name: 'competency-tab-competency-map',
+        component: () => import('@/routers/views/competency/competency.vue'),
+        meta: {isRequiredAuth: true},
+      },
     ],
   },
   {
