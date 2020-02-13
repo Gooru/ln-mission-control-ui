@@ -1,24 +1,23 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 import { isMicroStandardId, getTaxonomyTags } from '@/utils/utils';
 import TaxonomyCard from '../taxonomy-card/taxonomy-card';
-import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import { AssessmentModel } from '@/models/content/assessment';
 
 @Component({
-    name: 'collection-card',
+    name: 'assesment-card',
     components: {
-        'material-icon': GoogleMaterialIcon,
         'taxonomy-card': TaxonomyCard,
     },
 })
 
-export default class CollectionCard extends Vue {
+export default class AssessmentCard extends Vue {
     // ------------------------------------------------------------------------
     // Properties
     @Prop()
-    private collection: any;
+    private assessment: any;
 
     private get tags() {
-        return this.collection.standards;
+        return this.assessment.standards;
     }
 
 }

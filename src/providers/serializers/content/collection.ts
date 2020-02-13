@@ -28,7 +28,7 @@ export class CollectionSerializer {
       relevance: collection.relevance,
       engagement: collection.engagement,
       standards: taxonomySerializer.normalizeTaxonomyObject(collection.taxonomy),
-      creator: collection.creator,
+      creator: taxonomySerializer.normalizeCreator(collection.creator),
       thumbnailUrl,
     };
     return result;

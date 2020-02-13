@@ -93,7 +93,7 @@
                 </div>
                 <div class="learning-map-tap" v-if="!isActive">
                     <div class="learning-map-container" v-if="learningMapContent">
-                         <div class="coures-content" v-for="(collection, keys, index) in learningMapContent.totalCounts"  :key="index">
+                         <div class="coures-content" v-for="(collection, keys, index) in learningMapContent.totalCounts" @click="onSelectContent(keys)" :key="index">
                              <span class="icon"><mc-icon :icon="keys + '-gray'" /></span>
                              <span>{{collection}}</span>
                          </div>

@@ -57,13 +57,13 @@ export class TaxonomyAPI {
       return taxonomySerializer.serializeTaxonomyGradeBoundaries(response.data);
     });
   }
-  public fetchCodes(frameworkId: any, subjectId: any, courseId: any, domainId: any) {
+  public fetchCodes(frameworkId: any, subjectId: any, courseId: any, domainId: any): Promise<any> {
     const namespace = this.namespace1;
     const endpoint = `${namespace}/frameworks/${frameworkId}/subjects/${
       subjectId}/courses/${courseId}/domains/${domainId}/codes`;
     const headers = http.getTokenHeaders();
     return http.get(endpoint, headers).then((response) => {
-      return response.data;
+      return taxonomySerializer.normalizefetchCode(response.data);
     });
   }
 }

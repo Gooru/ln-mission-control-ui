@@ -7,3 +7,9 @@ Vue.filter('avatarText', (value: any) => {
     });
     return avatar.substr(0, 3);
 });
+
+Vue.filter('contentFormator',  (value: any, text: string) => {
+    const arrayString = value.split('_') || '';
+    const removeString = arrayString.filter((item: string) => item !== text);
+    return  removeString.join(' ');
+});

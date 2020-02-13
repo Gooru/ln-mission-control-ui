@@ -27,7 +27,7 @@ export class AssessmentSerializer {
       relevance: assessment.relevance,
       engagement: assessment.engagement,
       standards: taxonomySerializer.normalizeTaxonomyObject(assessment.taxonomy),
-      creator: assessment.creator,
+      creator: taxonomySerializer.normalizeCreator(assessment.creator),
       thumbnailUrl,
     };
     return result;
@@ -47,6 +47,7 @@ export class AssessmentSerializer {
     };
     return result;
   }
+
 
 }
 
