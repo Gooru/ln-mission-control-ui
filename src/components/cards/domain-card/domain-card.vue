@@ -7,7 +7,7 @@
                     <div class="domain-content-title">
                     <material-icon icon="format_align_center"/>
                     <span class="domain-name">{{domain.domainName}}</span>
-                    <material-icon icon="arrow_drop_down"/>
+                    <!-- <material-icon icon="arrow_drop_down"/> -->
                     </div>
                     <div class="domain-content-section">
                         description

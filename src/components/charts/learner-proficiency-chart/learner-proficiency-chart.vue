@@ -26,9 +26,9 @@
       </div>
       <div class="graph-visual">
         <!-- <div class="proficiency-chart-container"> -->
-          <!-- <div class="loading-spinner" v-if="isLoading">
+          <div class="loading-spinner" v-if="isLoading">
             <b-spinner variant="primary" label="Spinning"></b-spinner>
-          </div> -->
+          </div>
           <div class="scrollable-chart">
             <div id="chart-area">
               <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus, {'active-competency-map': isCompetencyMap}]" :style="activeCompetencyStyle">
