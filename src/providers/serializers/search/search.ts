@@ -18,41 +18,41 @@ export class SearchSerializer {
   public serializeLearningMapData(learningMapData: any) {
     const learningMapContents = learningMapData.contents;
     const assessmentContents = learningMapContents.assessment;
-    const collectionContents =  learningMapContents.collection;
+    const collectionContents = learningMapContents.collection;
     const courseContents = learningMapContents.course;
     const lessonContents = learningMapContents.lesson;
     const questionContents = learningMapContents.question;
     const resourceContents = learningMapContents.resource;
     const unitContents = learningMapContents.unit;
     const rubricContents = learningMapContents.rubric;
-    const serializedAssessmentContents = assessmentContents.searchResults.map( (assessment: any) => {
+    const serializedAssessmentContents = assessmentContents.searchResults.map((assessment: any) => {
       return assessmentSerializer.serializeAssessment(assessment);
     });
-    const serializedCollectionContents = collectionContents.searchResults.map( (collection: any) => {
+    const serializedCollectionContents = collectionContents.searchResults.map((collection: any) => {
       return collectionSerializer.serializeCollection(collection);
     });
 
-    const serializedCourseContents = courseContents.searchResults.map( (course: any) => {
+    const serializedCourseContents = courseContents.searchResults.map((course: any) => {
       return courseSerializer.serializeCourse(course);
     });
 
-    const serializedQuestionContents = questionContents.searchResults.map( (question: any) => {
+    const serializedQuestionContents = questionContents.searchResults.map((question: any) => {
       return questionSerializer.serializeQuestion(question);
     });
 
-    const serializedResourceContents = resourceContents.searchResults.map( (resource: any) => {
+    const serializedResourceContents = resourceContents.searchResults.map((resource: any) => {
       return resourceSerializer.serializeResource(resource);
     });
 
-    const serializedUnitContents = unitContents.searchResults.map( (unit: any) => {
+    const serializedUnitContents = unitContents.searchResults.map((unit: any) => {
       return unitSerializer.serializeUnit(unit);
     });
 
-    const serializedLessonContents = lessonContents.searchResults.map( (lesson: any) => {
+    const serializedLessonContents = lessonContents.searchResults.map((lesson: any) => {
       return lessonSerializer.serializeLesson(lesson);
     });
 
-    const serializedRubricContents = rubricContents.searchResults.map( (rubric: any) => {
+    const serializedRubricContents = rubricContents.searchResults.map((rubric: any) => {
       return rubricSerializer.serializeRubric(rubric);
     });
 
@@ -60,12 +60,12 @@ export class SearchSerializer {
 
     const signatureAssessments = signatureContents.assessments;
     const signatureCollections = signatureContents.collections;
-    const serializedSignatureAssessments = signatureAssessments.map( (assessment: any) => {
-        return assessmentSerializer.serializeSignatureAssessment(assessment);
+    const serializedSignatureAssessments = signatureAssessments.map((assessment: any) => {
+      return assessmentSerializer.serializeSignatureAssessment(assessment);
     });
 
-    const serializedSignatureCollections = signatureCollections.map( (collection: any) => {
-        return collectionSerializer.serializeSignatureCollection(collection);
+    const serializedSignatureCollections = signatureCollections.map((collection: any) => {
+      return collectionSerializer.serializeSignatureCollection(collection);
     });
 
     const serializedLearningMapData = {
@@ -79,11 +79,35 @@ export class SearchSerializer {
         question: serializedQuestionContents,
         rubric: serializedRubricContents,
       },
+      totalCounts: {
+        collection: learningMapContents.collection.totalHitCount,
+        assessment: learningMapContents.assessment.totalHitCount,
+        course: learningMapContents.course.totalHitCount,
+        unit: learningMapContents.unit.totalHitCount,
+        lesson: learningMapContents.lesson.totalHitCount,
+        resource: learningMapContents.resource.totalHitCount,
+        question: learningMapContents.question.totalHitCount,
+        rubric: learningMapContents.rubric.totalHitCount,
+      },
       signatureAssessments: serializedSignatureAssessments,
       signatureCollections: serializedSignatureCollections,
       prerequisites: competencySerializer.serializePrerequisites(learningMapData.prerequisites),
     };
     return serializedLearningMapData;
+  }
+
+  private serializedPrerequisites(payload: any) {
+    const prerequisitesData: any = [];
+    if (payload.length) {
+      payload.map((prerequitites: any) => {
+        prerequisitesData.push({
+          code: prerequitites.code,
+          id: prerequitites.id,
+          title: prerequitites.title,
+        });
+      });
+    }
+    return prerequisitesData;
   }
 }
 

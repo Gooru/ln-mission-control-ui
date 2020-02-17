@@ -1,6 +1,7 @@
 import { sessionService } from '@/providers/services/auth/session';
 import {AssessmentModel} from '@/models/content/assessment';
 import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
+import { taxonomySerializer } from './taxonomy';
 
 export class AssessmentSerializer {
   private static INSTANCE = new AssessmentSerializer();
@@ -22,6 +23,11 @@ export class AssessmentSerializer {
       questionCount: assessment.questionCount,
       description: assessment.learningObjective,
       format: assessment.format || 'assessment',
+      efficacy: assessment.efficacy,
+      relevance: assessment.relevance,
+      engagement: assessment.engagement,
+      standards: taxonomySerializer.normalizeTaxonomyObject(assessment.taxonomy),
+      creator: taxonomySerializer.normalizeCreator(assessment.creator),
       thumbnailUrl,
     };
     return result;
@@ -41,6 +47,7 @@ export class AssessmentSerializer {
     };
     return result;
   }
+
 
 }
 

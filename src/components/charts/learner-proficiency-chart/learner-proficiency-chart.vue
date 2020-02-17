@@ -2,7 +2,7 @@
   <div id="learner-proficiency-chart">
     <div class="chart-actions">
       <div class="back-action">
-        <div class="back-icon" @click="$emit('backAction')">
+        <div class="back-icon" @click="backAction()">
           <google-material-icon icon="keyboard_backspace" />
         </div>
         <span class="subject-title">
@@ -19,7 +19,7 @@
           Grade Selector
         </div>
         <div class="taxonomy-grade-list">
-          <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : taxonomyGrade == activeGrade}" @click="onSelectGrade(taxonomyGrade)">
+          <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : isActiveGradeList(taxonomyGrade)}" @click="onSelectGrade(taxonomyGrade)">
             <google-material-icon icon="adjust" />{{taxonomyGrade.grade}}
           </div>
         </div>
@@ -31,7 +31,7 @@
           </div> -->
           <div class="scrollable-chart">
             <div id="chart-area">
-              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus]" :style="activeCompetencyStyle">
+              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus, {'active-competency-map': isCompetencyMap}]" :style="activeCompetencyStyle">
               </div>
             </div>
           </div>

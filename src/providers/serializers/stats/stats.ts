@@ -22,6 +22,7 @@ export class StatsSerializer {
 
   private countryModelSerializer(res: any): CountryModel {
     const result: CountryModel = {
+      id: res.id,
       country_code: res.country_code,
       country_name: res.country_name,
       total_teachers: res.total_teachers,

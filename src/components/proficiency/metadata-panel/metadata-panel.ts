@@ -1,5 +1,5 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import { MICRO_COMPETENCY_CODE_TYPES } from '@/utils/constants';
+import { MICRO_COMPETENCY_CODE_TYPES, GOORU_DEFAULT_FRAMEWORK } from '@/utils/constants';
 import { CompetencyPrerequisite } from '@/models/proficiency/competency-prerequisite';
 import {CompetencyModel} from '@/models/proficiency/competency';
 import { TaxonomyCode } from '@/models/taxonomy/code';
@@ -34,7 +34,11 @@ export default class MetadataPanel extends Vue {
     const subjectId = getSubjectId(this.competencyCode);
     const courseId = getCourseId(this.competencyCode);
     const domainId = getDomainId(this.competencyCode);
-    taxonomyAPI.fetchTaxonomyCodes('GDT', subjectId, courseId, domainId).then((taxonomyCodes: TaxonomyCode[]) => {
+    taxonomyAPI.fetchTaxonomyCodes(
+      GOORU_DEFAULT_FRAMEWORK,
+      subjectId,
+      courseId,
+      domainId).then((taxonomyCodes: TaxonomyCode[]) => {
       this.microCompetencies = this.getMicroCompetencies(taxonomyCodes);
     });
   }
