@@ -228,3 +228,9 @@ export const LEARNER_PREFERENCE_META: any = {
     icon: 'offline-activity-gray',
   },
 };
+
+export const MICRO_COMPETENCY_CODE_TYPES = [
+  'learning_target_level_0',
+  'learning_target_level_1',
+  'learning_target_level_2',
+];

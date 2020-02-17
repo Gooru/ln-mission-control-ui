@@ -34,7 +34,6 @@
         v-bind="{competency: competency, learningMapData: learningMapData, statsBucket: 'competency', userId: userId, month: month, year: year}" />
       </div>
     </div>
-    <!-- <learning-map v-if="competency" :competencyCode = "competency.competencyCode" /> -->
   </div>
 </template>
 

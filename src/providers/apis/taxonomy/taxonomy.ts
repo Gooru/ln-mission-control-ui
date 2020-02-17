@@ -11,6 +11,8 @@ export class TaxonomyAPI {
 
   private namespace = 'api/nucleus/v2/taxonomy';
 
+  private taxonomyNamespace = 'api/nucleus/v1/taxonomy';
+
   private dsNamespace = 'api/ds/users/v2/tx';
 
   static get instance() {
@@ -53,6 +55,18 @@ export class TaxonomyAPI {
     const headers = http.getTokenHeaders();
     return http.get(endpoint, headers).then((response) => {
       return taxonomySerializer.serializeTaxonomyGradeBoundaries(response.data);
+    });
+  }
+
+  public fetchTaxonomyCodes(frameworkId: string, subjectId: string, courseId: string, domainId: string) {
+    const endpoint = `${this.taxonomyNamespace}/frameworks/${frameworkId}
+      /subjects/${subjectId}
+      /courses/${courseId}
+      /domains/${domainId}
+      /codes`;
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint, headers).then((response) => {
+      return taxonomySerializer.serializeTaxonomyCodes(response.data);
     });
   }
 }

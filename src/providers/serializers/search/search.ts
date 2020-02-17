@@ -6,6 +6,7 @@ import {lessonSerializer} from '@/providers/serializers/content/lesson';
 import {questionSerializer} from '@/providers/serializers/content/question';
 import {resourceSerializer} from '@/providers/serializers/content/resource';
 import {rubricSerializer} from '@/providers/serializers/content/rubric';
+import { competencySerializer } from '../competency/competency';
 
 export class SearchSerializer {
   private static INSTANCE = new SearchSerializer();
@@ -80,6 +81,7 @@ export class SearchSerializer {
       },
       signatureAssessments: serializedSignatureAssessments,
       signatureCollections: serializedSignatureCollections,
+      prerequisites: competencySerializer.serializePrerequisites(learningMapData.prerequisites),
     };
     return serializedLearningMapData;
   }

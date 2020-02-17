@@ -4,6 +4,7 @@ import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mind
 import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
 import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import MetadataPanel from '../metadata-panel/metadata-panel';
 import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
 import { searchAPI } from '@/providers/apis/search/search';
@@ -17,6 +18,7 @@ import moment from 'moment';
     'portfolio-panel': PortfolioPanel,
     'preferences-panel': PreferencesPanel,
     'mindsets-list-panel': MindsetsListPanel,
+    'metadata-panel': MetadataPanel,
   },
 })
 
@@ -51,6 +53,7 @@ export default class CompetencyInfoPanel extends Vue {
     },
     {
       title: 'Metadata',
+      component: 'metadata-panel',
     },
     {
       title: 'LearningMap',
@@ -86,7 +89,6 @@ export default class CompetencyInfoPanel extends Vue {
     searchAPI.fetchLearningMapContents(competencyCode).then((learningMapData) => {
       component.learningMapData = learningMapData;
     });
-
   }
 
 }
