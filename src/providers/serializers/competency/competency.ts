@@ -1,12 +1,13 @@
 import { FacetMatrix } from '@/models/proficiency/facet-matrix';
 import { FacetMatrixCount } from '@/models/proficiency/facet-matrix-count';
+import { CompetencyPrerequisite } from '@/models/proficiency/competency-prerequisite';
 
 export class CompetencySerializer {
-  private static INSTANCE = new CompetencySerializer();
 
   static get instance() {
     return this.INSTANCE;
   }
+  private static INSTANCE = new CompetencySerializer();
 
   public serializeDomainCompetencyMatrix(domainCompetencyMatrix: any) {
     const userDomainCompetencyMatrix = domainCompetencyMatrix.userCompetencyMatrix;
@@ -34,6 +35,19 @@ export class CompetencySerializer {
       return serializedFacetCompetencyMatrix;
     });
     return serializedFacetsCompetencyMatrix;
+  }
+
+  public serializePrerequisites(prerequisites: CompetencyPrerequisite[]) {
+    const serializedPrerequisites: CompetencyPrerequisite[] =
+      prerequisites.map( (prerequisite) => {
+        const serializedPrerequisite: CompetencyPrerequisite = {
+          code: prerequisite.code,
+          id: prerequisite.id,
+          title: prerequisite.title,
+        };
+        return serializedPrerequisite;
+      });
+    return serializedPrerequisites;
   }
 
   private normalizeFacetCompetencyMatrixCount(facetCompetencyStats: any) {

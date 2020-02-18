@@ -1,0 +1,64 @@
+#metadata-panel {
+  max-height: 300px;
+  overflow-y: auto;
+  .prerequisites-container,
+  .alt-concepts-container,
+  .micro-competencies-container {
+    .prerequisites-header,
+    .alt-c-header,
+    .micro-competencies-header {
+      font-size: 15px;
+      font-weight: 700;
+      color: #4a4a4a;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed #4a4a4a;
+      text-transform: uppercase;
+    }
+    .prerequisites-body {
+      display: grid;
+      grid-template-columns: auto auto;
+      justify-items: center;
+      margin-bottom: 15px;
+      .prerequisite-card {
+        width: 125px;
+        display: grid;
+        // row-gap: 8px;
+        margin: 5px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+        align-items: center;
+        .card-info {
+          border-bottom: 3px solid #979797;
+          padding: 0 8px;
+          height: 40px;
+          line-height: 40px;
+          font-weight: bold;
+        }
+        .card-details {
+          margin: 4px 8px 8px 8px;
+          @include ellipsis(11px, 1.2, 4);
+        }
+      }
+    }
+    .alt-c-body {
+      font-size: 16px;
+      margin: auto;
+      padding-left: 10px;
+    }
+    .micro-competencies-body {
+      .micro-competency-container {
+        height: 40px;
+        line-height: 40px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        .code {
+          font-size: 12px;
+          font-weight: 700;
+          color: #37424b;
+          height: auto;
+          padding: 0 0 0 10px;
+          align-items: center;
+          display: flex;
+        }
+      }
+    }
+  }
+}

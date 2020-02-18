@@ -4,12 +4,15 @@ import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { GradeModel } from '@/models/taxonomy/grade';
 import { GradeBoundaryModel } from '@/models/taxonomy/grade-boundary';
+import { TaxonomyCode } from '@/models/taxonomy/code';
 
 export class TaxonomyAPI {
 
   private static INSTANCE = new TaxonomyAPI();
 
   private namespace = 'api/nucleus/v2/taxonomy';
+
+  private taxonomyNamespace = 'api/nucleus/v1/taxonomy';
 
   private dsNamespace = 'api/ds/users/v2/tx';
 
@@ -57,6 +60,21 @@ export class TaxonomyAPI {
       return taxonomySerializer.serializeTaxonomyGradeBoundaries(response.data);
     });
   }
+
+  public fetchTaxonomyCodes(
+    frameworkId: string,
+    subjectId: string,
+    courseId: string,
+    domainId: string): Promise<TaxonomyCode[]> {
+    const endpoint = `${this.taxonomyNamespace}/frameworks/${frameworkId}/subjects/${
+      subjectId}/courses/${courseId}/domains/${domainId}/codes`;
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint, headers).then((response) => {
+      return taxonomySerializer.serializeTaxonomyCodes(response.data);
+
+    });
+  }
+
   public fetchCodes(frameworkId: any, subjectId: any, courseId: any, domainId: any): Promise<any> {
     const namespace = this.namespace1;
     const endpoint = `${namespace}/frameworks/${frameworkId}/subjects/${

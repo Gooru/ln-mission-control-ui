@@ -1,11 +1,12 @@
-import { assessmentSerializer } from '@/providers/serializers/content/assessment';
-import { collectionSerializer } from '@/providers/serializers/content/collection';
-import { courseSerializer } from '@/providers/serializers/content/course';
-import { unitSerializer } from '@/providers/serializers/content/unit';
-import { lessonSerializer } from '@/providers/serializers/content/lesson';
-import { questionSerializer } from '@/providers/serializers/content/question';
-import { resourceSerializer } from '@/providers/serializers/content/resource';
-import { rubricSerializer } from '@/providers/serializers/content/rubric';
+import {assessmentSerializer} from '@/providers/serializers/content/assessment';
+import {collectionSerializer} from '@/providers/serializers/content/collection';
+import {courseSerializer} from '@/providers/serializers/content/course';
+import {unitSerializer} from '@/providers/serializers/content/unit';
+import {lessonSerializer} from '@/providers/serializers/content/lesson';
+import {questionSerializer} from '@/providers/serializers/content/question';
+import {resourceSerializer} from '@/providers/serializers/content/resource';
+import {rubricSerializer} from '@/providers/serializers/content/rubric';
+import { competencySerializer } from '../competency/competency';
 
 export class SearchSerializer {
   private static INSTANCE = new SearchSerializer();
@@ -88,9 +89,9 @@ export class SearchSerializer {
         question: learningMapContents.question.totalHitCount,
         rubric: learningMapContents.rubric.totalHitCount,
       },
-      prerequisites: this.serializedPrerequisites(learningMapData.prerequisites),
       signatureAssessments: serializedSignatureAssessments,
       signatureCollections: serializedSignatureCollections,
+      prerequisites: competencySerializer.serializePrerequisites(learningMapData.prerequisites),
     };
     return serializedLearningMapData;
   }
