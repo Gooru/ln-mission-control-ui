@@ -120,10 +120,24 @@
                   text-transform: capitalize;
                   grid-template-columns: 1fr;
                   .dep-competency-title {
+                    color: $blue-300;
+                    font-weight: bold;
+                    font-size: 20px;
                     overflow: hidden;
                     white-space: nowrap;
                     align-items: center;
                     text-overflow: ellipsis;
+                    cursor: pointer;
+                    &.expanded {
+                      overflow: auto;
+                      text-overflow: auto;
+                      white-space: normal;
+                    }
+                    span {
+                      color: $dark-500;
+                      font-weight: 400;
+                      font-size: 13px;
+                    }
                   }
                 }
               }
@@ -252,6 +266,21 @@
                       overflow: hidden;
                       text-overflow: ellipsis;
                       white-space: nowrap;
+                      font-size: 20px;
+                      color: $blue-300;
+                      font-weight: bold;
+                      cursor: pointer;
+
+                      &.expanded {
+                        overflow: auto;
+                        text-overflow: auto;
+                        white-space: normal;
+                      }
+                      span {
+                        color: $dark-500;
+                        font-size: 13px;
+                        font-weight: 400;
+                      }
                     }
                   }
                 }

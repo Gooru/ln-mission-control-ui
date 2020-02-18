@@ -133,16 +133,17 @@
         justify-content: center;
       }
       .scrollable-chart {
-      }
-      #chart-area {
-        width: inherit;
-        transform: rotateX(180deg);
-        transform-style: preserve-3d;
         height: calc(100vh - 250px);
         display: grid;
         align-items: center;
         overflow-y: auto;
         position: relative;
+      }
+      #chart-area {
+        width: inherit;
+        transform: rotateX(180deg);
+        transform-style: preserve-3d;
+        height: 100%;
         svg#chart-graph {
           width: 100%;
 

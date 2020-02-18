@@ -41,6 +41,8 @@
                     :microCompetency="microCompetency"
                     v-on:onClose="onCloseGrade"
                     v-on:onSelectContent="onSelectContent"
+                    v-on:onSelectMicro ="onSelectMicro"
+                    v-on:onSelectDep ="onSelectDep"
                 />
                 <learning-map-content
                         v-if="isLearningMapContent"

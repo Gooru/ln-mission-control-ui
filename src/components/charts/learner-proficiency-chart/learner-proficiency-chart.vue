@@ -26,7 +26,7 @@
       </div>
       <div class="graph-visual">
         <!-- <div class="proficiency-chart-container"> -->
-          <div class="loading-spinner" v-if="isLoading">
+          <div class="loading-spinner" v-if="isLoading && isCompetencyMap">
             <b-spinner variant="primary" label="Spinning"></b-spinner>
           </div>
           <div class="scrollable-chart">

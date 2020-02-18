@@ -55,7 +55,7 @@ export default class ProficiencyMatrix extends Vue {
 
     private prerequisites: any = [];
 
-    private microCompetency: MicroCompetencyModel[] = [];
+    private microCompetency: MicroCompetencyModel[] | any = [];
 
     private fwCode: string = GOORU_DEFAULT_FRAMEWORK;
 
@@ -139,6 +139,23 @@ export default class ProficiencyMatrix extends Vue {
         this.isLearningMapContent = false;
     }
 
+    private onSelectMicro(competencyIndex: any) {
+        this.microCompetency.map((competency: any, index: number) => {
+            competency.isExpanded = false;
+            if (competencyIndex === index) {
+                competency.isExpanded = true;
+            }
+        });
+    }
+
+    private onSelectDep(prerequisiteIndex: any) {
+        this.prerequisites.map((prerequisite: any, index: number) => {
+            prerequisite.isExpanded = false;
+            if (prerequisiteIndex === index) {
+                prerequisite.isExpanded = true;
+            }
+        });
+    }
     // -----------------------------------------------------------------------------
     // Methods
 

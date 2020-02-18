@@ -32,9 +32,9 @@
                                 <div class="dependency-panel-card" v-for="(prerequisite, index) in prerequisites" :key="index">
                                     <material-icon icon="more_horiz" />
                                     <div class="dep-competency-name">
-                                        <span class="dep-competency-title">
-                                            {{prerequisite.title}}
-                                        </span>
+                                        <div pan :class="['dep-competency-title',{expanded: prerequisite.isExpanded}]" @click="onSelectDep(index)">
+                                            <span>{{prerequisite.title}}</span>
+                                        </div>
                                         <span class="dep-competency-code">
                                             {{prerequisite.code}}
                                         </span>
@@ -74,13 +74,13 @@
                                 <span>Micro-Competencies</span>
                             </div>
                             <div class="competency-micro-body">
-                                <div class="competency-micro-panel" v-if="microCompetency">
+                                <div class="competency-micro-panel" v-if="microCompetency.length">
                                     <div class="micro-panel-card" v-for="(competency , competencyIndex) in microCompetency" :key="competencyIndex">
                                         <span class="micro-icon"></span>
                                         <div class="micro-competency-name">
-                                            <span class="micro-competency-title">
-                                                {{competency.title}}
-                                            </span>
+                                            <div :class="['micro-competency-title', {expanded: competency.isExpanded}]" @click="onSelectMicro(competencyIndex)">
+                                                <span>{{competency.title}}</span>
+                                            </div>
                                             <span class="micro-competency-code">
                                                 {{competency.code}}
                                             </span>

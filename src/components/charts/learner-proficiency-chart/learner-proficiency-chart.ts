@@ -23,7 +23,7 @@ export default class LearnerProficiencyChart extends Vue {
   get chartHeight() {
     const component = this;
     const proficiencyChartData = component.chartData;
-    const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
+    const chartContainer = component.$el.querySelector('.scrollable-chart') as HTMLElement;
     const chartContainerHeight = chartContainer.offsetHeight;
     const chartHeight = component.isShowExpandedGraph ?
       component.maxDomainSize * component.expandedGraphCellHeight + 5 :
@@ -34,7 +34,7 @@ export default class LearnerProficiencyChart extends Vue {
   get chartWidth() {
     const component = this;
     const proficiencyChartData = component.chartData;
-    const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
+    const chartContainer = component.$el.querySelector('.scrollable-chart') as HTMLElement;
     return chartContainer.offsetWidth - 30;
   }
 
@@ -250,6 +250,7 @@ export default class LearnerProficiencyChart extends Vue {
         return domainChart.domainCode === domain.domainCode;
       });
     }
+    this.isLoading = false;
     this.$emit('onSelectDomain', domain);
     component.toggleActiveDomainBar(domain.domainSeq);
   }
@@ -411,6 +412,10 @@ export default class LearnerProficiencyChart extends Vue {
     if (!this.isCompetencyMap) {
       component.drawProficiencySkyline();
     }
+    if (!this.isSelectedCompetency) {
+      const chartContainer = component.$el.querySelector('.scrollable-chart') as HTMLElement;
+      chartContainer.scrollTop = chartHeight;
+    }
     component.isLoading = false;
   }
 
@@ -492,7 +497,11 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     const cellHeight = component.cellHeight;
     const cellWidth = component.cellWidth;
-    y1 = y1 === 0 ? y1 : y1 + cellHeight;
+    if (this.isCompetencyMap) {
+      y1 = y1 + cellHeight;
+    } else {
+      y1 = y1 === 0 ? y1 : y1 + cellHeight;
+    }
     const x2 = x1 + cellWidth;
     const y2 = y1;
     return {
@@ -635,6 +644,9 @@ export default class LearnerProficiencyChart extends Vue {
     }
     if (!this.isCompetencyMap) {
       component.highlightCompetency(competency);
+    } else {
+      component.activeGradeList = [];
+      component.resetChart();
     }
   }
 
