@@ -49,15 +49,15 @@ export default class CompetencyInfoPanel extends Vue {
       component: 'preferences-panel',
     },
     {
-      title: 'Route',
-    },
-    {
       title: 'Metadata',
       component: 'metadata-panel',
     },
     {
       title: 'LearningMap',
       component: 'learning-map',
+    },
+    {
+      title: 'Route',
     },
   ];
 
