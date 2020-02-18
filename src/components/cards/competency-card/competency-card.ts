@@ -52,4 +52,12 @@ export default class CompetencyCard extends Vue {
     private onSelectContent(content: string) {
         this.$emit('onSelectContent', content);
     }
+
+    private onSelectMicro(competencyIndex: any) {
+         this.$emit('onSelectMicro', competencyIndex);
+    }
+
+    private onSelectDep(prerequisiteIndex: any) {
+        this.$emit('onSelectDep', prerequisiteIndex);
+    }
 }

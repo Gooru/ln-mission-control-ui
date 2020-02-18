@@ -23,7 +23,7 @@ export default class LearnerProficiencyChart extends Vue {
   get chartHeight() {
     const component = this;
     const proficiencyChartData = component.chartData;
-    const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
+    const chartContainer = component.$el.querySelector('.scrollable-chart') as HTMLElement;
     const chartContainerHeight = chartContainer.offsetHeight;
     const chartHeight = component.isShowExpandedGraph ?
       component.maxDomainSize * component.expandedGraphCellHeight + 5 :
@@ -34,7 +34,7 @@ export default class LearnerProficiencyChart extends Vue {
   get chartWidth() {
     const component = this;
     const proficiencyChartData = component.chartData;
-    const chartContainer = component.$el.querySelector('#chart-area') as HTMLElement;
+    const chartContainer = component.$el.querySelector('.scrollable-chart') as HTMLElement;
     return chartContainer.offsetWidth - 30;
   }
 
@@ -138,8 +138,10 @@ export default class LearnerProficiencyChart extends Vue {
 
   @Watch('prerequisites')
   public onChangePrerequisite(value: any) {
+    this.isLoading = false;
     this.drawProficiencyChart();
     this.drawPrerequisitesLine();
+    this.highlightCompetency(this.activeCompetency);
   }
 
   @Watch('isCompetencyView')
@@ -215,8 +217,8 @@ export default class LearnerProficiencyChart extends Vue {
       const minIndex = minValue < maxValue ? minValue : maxValue;
       const maxIndex = minValue < maxValue ? maxValue : minValue;
       component.activeGradeList = component.taxonomyGrades.slice(minIndex, maxIndex + 1);
+      this.minGradeLine();
     }
-
     if (component.activeGradeList.length) {
       const boundaryPromise = component.activeGradeList.map((gradeItem: any) => {
         return new Promise((resovle) => {
@@ -248,6 +250,7 @@ export default class LearnerProficiencyChart extends Vue {
         return domainChart.domainCode === domain.domainCode;
       });
     }
+    this.isLoading = false;
     this.$emit('onSelectDomain', domain);
     component.toggleActiveDomainBar(domain.domainSeq);
   }
@@ -276,7 +279,7 @@ export default class LearnerProficiencyChart extends Vue {
   public loadTaxonomyGrades() {
     const component = this;
     return taxonomyAPI.fetchTaxonomyGrades(this.subjectCode).then((taxonomyGrades: GradeModel[]) => {
-      component.taxonomyGrades = taxonomyGrades;
+      component.taxonomyGrades = taxonomyGrades.sort((a: any, b: any) => a.id - b.id);
       component.loadChartData();
     });
   }
@@ -357,7 +360,7 @@ export default class LearnerProficiencyChart extends Vue {
     }
   }
 
-  public boundaryMapForMultiGrade(proficiencyChartData: any, gradeBoundaries: any, gradeIndex = null) {
+  public boundaryMapForMultiGrade(proficiencyChartData: any, gradeBoundaries: any, gradeIndex: any = null) {
     if (gradeBoundaries && gradeBoundaries.length) {
       return proficiencyChartData.map((domainChartData: DomainModel) => {
         const competencies = domainChartData.competencies;
@@ -374,8 +377,12 @@ export default class LearnerProficiencyChart extends Vue {
         if (!gradeBoundaryCompetency.className ||
           (gradeBoundaryCompetency.className &&
             gradeBoundaryCompetency.className
-              .indexOf(`grade-boundary-competency-${gradeIndex}`) === -1)) {
-          gradeBoundaryCompetency.className += ` grade-boundary-competency-${gradeIndex}`;
+              .indexOf(`grade-boundary-competency-${gradeIndex}`) === -1) && gradeIndex) {
+          if (gradeIndex) {
+            gradeBoundaryCompetency.className += ` grade-boundary-competency-${gradeIndex}`;
+          } else {
+            gradeBoundaryCompetency.isLowline = true;
+          }
         }
       });
     }
@@ -402,7 +409,13 @@ export default class LearnerProficiencyChart extends Vue {
     proficiencyChartData.map((domainChartData: any) => {
       component.drawDomainChart(domainChartData);
     });
-    component.drawProficiencySkyline();
+    if (!this.isCompetencyMap) {
+      component.drawProficiencySkyline();
+    }
+    if (!this.isSelectedCompetency) {
+      const chartContainer = component.$el.querySelector('.scrollable-chart') as HTMLElement;
+      chartContainer.scrollTop = chartHeight;
+    }
     component.isLoading = false;
   }
 
@@ -417,6 +430,9 @@ export default class LearnerProficiencyChart extends Vue {
     let maxSeq: any = domainChartData.competencies.filter(
       (competency: any) => (competency.className && competency.className !== ''));
     maxSeq = maxSeq.length ? maxSeq[maxSeq.length - 1] : 0;
+    let minSeq: any = domainChartData.competencies.filter(
+      (competency: any) => competency.isLowline);
+    minSeq = minSeq.length ? minSeq[0] : {};
     competencyCells
       .enter()
       .append('rect')
@@ -431,7 +447,7 @@ export default class LearnerProficiencyChart extends Vue {
           (component.activeCompetency.competencyCode === competency.competencyCode) : false;
         const gradeBoundaryClassName = competency.className ? competency.className : '';
         const fadeClass = (maxSeq) ? (
-          (maxSeq.competencySeq < competency.competencySeq) ? 'non-competency' : '') : '';
+          (maxSeq.competencySeq < competency.competencySeq || minSeq.competencySeq > competency.competencySeq) ? 'non-competency' : '') : '';
 
         return `${skylineClassName}domain-${competency.domainSeq} competency-${
           competency.competencySeq
@@ -481,7 +497,11 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     const cellHeight = component.cellHeight;
     const cellWidth = component.cellWidth;
-    y1 = y1 === 0 ? y1 : y1 + cellHeight;
+    if (this.isCompetencyMap) {
+      y1 = y1 + cellHeight;
+    } else {
+      y1 = y1 === 0 ? y1 : y1 + cellHeight;
+    }
     const x2 = x1 + cellWidth;
     const y2 = y1;
     return {
@@ -613,6 +633,7 @@ export default class LearnerProficiencyChart extends Vue {
 
   public selectCompetency(competency: any) {
     const component = this;
+    this.isLoading = true;
     if (component.isShowExpandedGraph) {
       this.$emit('onSelectCompetency', competency);
     } else {
@@ -623,6 +644,9 @@ export default class LearnerProficiencyChart extends Vue {
     }
     if (!this.isCompetencyMap) {
       component.highlightCompetency(competency);
+    } else {
+      component.activeGradeList = [];
+      component.resetChart();
     }
   }
 
@@ -718,7 +742,6 @@ export default class LearnerProficiencyChart extends Vue {
     const cellHeight = this.cellHeight;
     const prerequisiteContainer = this.prerequisiteContainer;
     const linePoints: any = [];
-    this.highlightCompetency(this.activeCompetency);
     prerequisiteElement.forEach((element: any, elementIndex: number) => {
       const x1 = parseInt(element.getAttribute('x'), 10);
       const y1 = parseInt(element.getAttribute('y'), 10);
@@ -752,12 +775,25 @@ export default class LearnerProficiencyChart extends Vue {
     proficiencyChartData.map((domainData: any) => {
       const competencies = domainData.competencies;
       const filteredDomain = competencies.filter(
-        (competency: any) => competency.className && competency.className !== '');
+        (competency: any) => (competency.className && competency.className !== '') || competency.isLowline);
       filteredDomain.map((filteredCompetency: any) => {
         filteredCompetency.className = '';
+        filteredCompetency.isLowline = false;
       });
     });
   }
 
+  private minGradeLine() {
+    const minGrade = this.activeGradeList.reduce(
+      (prev: any, current: any) => (prev.id < current.id) ? prev : current);
+    const minGradeIndex = this.taxonomyGrades.findIndex((grade) => grade.id === minGrade.id);
+    const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex - 1] : null;
+    if (prevGrade) {
+      this.loadTaxonomyGradeBoundaries(prevGrade.id).then((boundaries) => {
+        this.boundaryMapForMultiGrade(this.chartData, boundaries);
+      });
+    }
+
+  }
 
 }
