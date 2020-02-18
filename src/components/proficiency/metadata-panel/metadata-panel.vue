@@ -5,7 +5,7 @@
         Micro Competencies
       </div>
       <div class="micro-competencies-body">
-        <div class="micro-competency-container" v-for="(microCompetency, key) in microCompetencies" v-key="microCompetency">
+        <div class="micro-competency-container" v-for="(microCompetency, seq) in microCompetencies" :key="seq">
           <div class="code" v-b-tooltip.hover :title="microCompetency.title" placement="top">
             {{microCompetency.id}}
           </div>
@@ -17,7 +17,7 @@
         prerequisite Competencies
       </div>
       <div class="prerequisites-body">
-        <div class="prerequisite-card" v-for="(prerequisite, index) in prerequisites" v-key="index">
+        <div class="prerequisite-card" v-for="(prerequisite, index) in prerequisites" :key="index">
           <div class="card-info">
             <span>{{prerequisite.code}}</span>
             <span></span>

@@ -17,7 +17,9 @@ export default class MetadataPanel extends Vue {
   @Prop()
   private learningMapData!: any;
 
-  private prerequisites: CompetencyPrerequisite[] = this.learningMapData.prerequisites;
+  get prerequisites() {
+    return this.learningMapData.prerequisites;
+  }
 
   @Prop()
   private competency!: CompetencyModel;
@@ -27,6 +29,11 @@ export default class MetadataPanel extends Vue {
   private microCompetencies: any = [];
 
   public created() {
+    this.fetchTaxonomyCodes();
+  }
+
+  @Watch('learningMapData')
+  public onLoadMetadat() {
     this.fetchTaxonomyCodes();
   }
 
