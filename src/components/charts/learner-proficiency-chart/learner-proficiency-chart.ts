@@ -497,11 +497,7 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     const cellHeight = component.cellHeight;
     const cellWidth = component.cellWidth;
-    if (this.isCompetencyMap) {
-      y1 = y1 + cellHeight;
-    } else {
-      y1 = y1 === 0 ? y1 : y1 + cellHeight;
-    }
+    y1 = y1 === 0 ? y1 : y1 + cellHeight;
     const x2 = x1 + cellWidth;
     const y2 = y1;
     return {
