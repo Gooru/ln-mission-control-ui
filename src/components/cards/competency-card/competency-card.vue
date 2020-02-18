@@ -32,7 +32,7 @@
                                 <div class="dependency-panel-card" v-for="(prerequisite, index) in prerequisites" :key="index">
                                     <material-icon icon="more_horiz" />
                                     <div class="dep-competency-name">
-                                        <div pan :class="['dep-competency-title',{expanded: prerequisite.isExpanded}]" @click="onSelectDep(index)">
+                                        <div pan :class="['dep-competency-title',{expanded: prerequisite.isExpanded}]" @click="onSelectDep(prerequisite)">
                                             <span>{{prerequisite.title}}</span>
                                         </div>
                                         <span class="dep-competency-code">
@@ -78,7 +78,7 @@
                                     <div class="micro-panel-card" v-for="(competency , competencyIndex) in microCompetency" :key="competencyIndex">
                                         <span class="micro-icon"></span>
                                         <div class="micro-competency-name">
-                                            <div :class="['micro-competency-title', {expanded: competency.isExpanded}]" @click="onSelectMicro(competencyIndex)">
+                                            <div :class="['micro-competency-title', {expanded: competency.isExpanded}]" @click="onSelectMicro(competency)">
                                                 <span>{{competency.title}}</span>
                                             </div>
                                             <span class="micro-competency-code">

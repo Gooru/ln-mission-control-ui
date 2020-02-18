@@ -67,6 +67,10 @@ export default class ProficiencyMatrix extends Vue {
 
     private selectedContent: string = '';
 
+    private selectedDomain: any = {};
+
+    private selectedCompetency: any = {};
+
     get subjectId() {
         return this.activeCompetency ? getSubjectId(this.activeCompetency.competencyCode) : '';
     }
@@ -139,23 +143,14 @@ export default class ProficiencyMatrix extends Vue {
         this.isLearningMapContent = false;
     }
 
-    private onSelectMicro(competencyIndex: any) {
-        this.microCompetency.map((competency: any, index: number) => {
-            competency.isExpanded = false;
-            if (competencyIndex === index) {
-                competency.isExpanded = true;
-            }
-        });
+    private onSelectDomain(domain: any) {
+        this.selectedDomain = domain;
     }
 
-    private onSelectDep(prerequisiteIndex: any) {
-        this.prerequisites.map((prerequisite: any, index: number) => {
-            prerequisite.isExpanded = false;
-            if (prerequisiteIndex === index) {
-                prerequisite.isExpanded = true;
-            }
-        });
+    private cardCompetency(competency: any) {
+        this.selectedCompetency = competency;
     }
+
     // -----------------------------------------------------------------------------
     // Methods
 

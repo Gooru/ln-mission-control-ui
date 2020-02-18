@@ -21,6 +21,7 @@
           border-top: 1px solid $light-200;
           font-weight: bold;
           font-size: 13px;
+          cursor: pointer;
           i {
             text-align: center;
             font-size: 19px;
@@ -35,8 +36,37 @@
           }
         }
         .domain-content-section {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
+          grid-column-gap: 10px;
           padding: 10px;
-          display: none;
+          grid-row-gap: 10px;
+
+          .competency-panel {
+            padding: 10px;
+            box-shadow: 0 0 10px $light-200;
+            display: grid;
+            grid-template-columns: 1fr;
+            cursor: pointer;
+
+            .competency-title {
+              padding: 5px;
+              font-size: 13px;
+              font-weight: bold;
+              border-bottom: 1px solid $light-200;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            .competency-description {
+              padding: 5px;
+              overflow: hidden;
+              font-size: 13px;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
         }
       }
     }

@@ -15,4 +15,16 @@ export default class DomainCard extends Vue {
     @Prop()
     private domainList: any;
 
+    // ----------------------------------------------------------------------------------
+    // Actions
+    private onSelectDomain(domain: any) {
+        const isActive = domain.isExpanded ? false : true;
+        this.$set(domain, 'isExpanded', isActive);
+        this.$emit('onSelectDomain', domain);
+    }
+
+    private onSelectCompetency(competency: any) {
+        this.$emit('onSelectCompetency', competency);
+    }
+
 }
