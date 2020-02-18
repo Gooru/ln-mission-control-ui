@@ -129,9 +129,10 @@
                     text-overflow: ellipsis;
                     cursor: pointer;
                     &.expanded {
-                      overflow: auto;
+                      overflow: hidden;
                       text-overflow: auto;
                       white-space: normal;
+                      line-height: 1;
                     }
                     span {
                       color: $dark-500;
@@ -272,9 +273,10 @@
                       cursor: pointer;
 
                       &.expanded {
-                        overflow: auto;
+                        overflow: hidden;
                         text-overflow: auto;
                         white-space: normal;
+                        line-height: 1;
                       }
                       span {
                         color: $dark-500;

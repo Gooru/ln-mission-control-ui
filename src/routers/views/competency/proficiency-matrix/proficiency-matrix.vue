@@ -22,12 +22,16 @@
                 :isDomainView="isDomainView"
                 :isCompetencyView="isCompetencyView"
                 :isCompetencyLoading ="isLoading"
-                :prerequisites="prerequisites" />
+                :prerequisites="prerequisites"
+                :selectedDomain="selectedDomain"
+                :selectedCompetency="selectedCompetency" />
             </div>
              <div class="rigt-side-card">
                 <domain-card 
                     v-if="isDomainView"
-                    :domainList="domainList"/>
+                    :domainList="domainList"
+                    v-on:onSelectCompetency="cardCompetency"
+                    v-on:onSelectDomain="onSelectDomain"/>
                 <grade-level-card
                     v-if="isGradeView"
                     :activeGrade="activeGrade"
@@ -41,8 +45,6 @@
                     :microCompetency="microCompetency"
                     v-on:onClose="onCloseGrade"
                     v-on:onSelectContent="onSelectContent"
-                    v-on:onSelectMicro ="onSelectMicro"
-                    v-on:onSelectDep ="onSelectDep"
                 />
                 <learning-map-content
                         v-if="isLearningMapContent"
