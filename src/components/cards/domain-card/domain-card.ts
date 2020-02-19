@@ -1,4 +1,4 @@
-import { Vue, Component, Prop } from 'vue-property-decorator';
+import { Vue, Component, Prop, Watch } from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 
 @Component({
@@ -18,9 +18,15 @@ export default class DomainCard extends Vue {
     // ----------------------------------------------------------------------------------
     // Actions
     private onSelectDomain(domain: any) {
+        this.domainList.map((domainItem: any) => {
+            if (domain.domainCode !== domainItem.domainCode) {
+                this.$set(domainItem, 'isExpanded', false);
+            }
+        });
         const isActive = domain.isExpanded ? false : true;
         this.$set(domain, 'isExpanded', isActive);
-        this.$emit('onSelectDomain', domain);
+        this.$emit('onSelectDomain', isActive ? domain : null);
+
     }
 
     private onSelectCompetency(competency: any) {

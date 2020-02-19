@@ -144,7 +144,10 @@ export default class LearnerProficiencyChart extends Vue {
 
   @Watch('selectedDomain')
   public onChangeSelectedDomain(selectedDomain: any) {
-    this.onSelectDomain(selectedDomain);
+    this.toggleActiveDomainBar(0, false);
+    if (selectedDomain) {
+      this.onSelectDomain(selectedDomain);
+    }
   }
 
   @Watch('selectedCompetency')
@@ -271,6 +274,12 @@ export default class LearnerProficiencyChart extends Vue {
       });
     }
     this.isLoading = false;
+    if (this.isCompetencyMap) {
+      this.chartData.map((domainItem: any) => {
+        this.$set(domainItem, 'isExpanded', false);
+      });
+      this.$set(domain, 'isExpanded', true);
+    }
     this.$emit('onSelectDomain', domain);
     component.toggleActiveDomainBar(domain.domainSeq);
   }
