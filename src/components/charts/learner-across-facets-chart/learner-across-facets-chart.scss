@@ -6,11 +6,13 @@
     background-color: #fff;
     display: grid;
     overflow-y: auto;
+    grid-template-columns: auto auto;
+    justify-content: center;
     svg#chart-container {
       transform: rotateX(180deg);
       transform-style: preserve-3d;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
-      margin: auto;
+      // margin: auto;
       #facets-group {
         rect {
           stroke: #000;
@@ -32,6 +34,7 @@
           fill: #1d7dc2;
         }
       }
+
       #skyline-group {
         polyline.skyline {
           fill: none;
@@ -41,16 +44,30 @@
         }
       }
     }
-  }
 
-  .facets-placeholder {
-    margin: auto;
-    display: flex;
-    grid-row-start: 2;
-    .facet-placeholder {
-      font-size: 11px;
-      color: #000;
-      text-align: center;
+    svg#chart-container-y-axis {
+      path.domain {
+        stroke-width: 2px;
+      }
+      .tick {
+        text {
+          fill: black;
+          font-size: 13px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .facets-placeholder {
+      // margin: auto;
+      display: flex;
+      grid-row-start: 2;
+      grid-column-start: 2;
+      .facet-placeholder {
+        font-size: 11px;
+        color: #000;
+        text-align: center;
+      }
     }
   }
 

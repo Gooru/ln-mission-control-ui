@@ -486,7 +486,8 @@ export default class LearnerProficiencyChart extends Vue {
           competency.competencySeq
           } ${fadeClass} ${((prerequisite || isActiveClass) && this.isCompetencyMap) ?
             'prerequisite-content' : ((this.isSelectedCompetency && this.isCompetencyMap) ?
-              'no-competency' : '')} ${clearCompetency} competency-status-fill-${competency.competencyStatus} ${gradeBoundaryClassName}`;
+              'no-competency' : '')} ${clearCompetency} competency-status-fill-${competency.competencyStatus}
+              ${gradeBoundaryClassName}`;
       })
       .attr('id', 'competency-cell')
       .attr('width', cellWidth)
