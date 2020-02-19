@@ -164,6 +164,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
   private drawFacetsChart(facetsMatrix: FacetMatrix[]) {
     const component = this;
     d3.select('#chart-container').remove();
+    d3.select('#chart-container-y-axis').remove();
 
     const chartViewElement = component.$el.querySelector('#facets-chart-view') as HTMLElement;
     let chartWidth = chartViewElement.offsetWidth - 60;
@@ -171,20 +172,21 @@ export default class LearnerAcrossFacetsChart extends Vue {
     let chartHeight = chartContainerHeight;
     const totalFacets = facetsMatrix.length || 0;
     // Set virtual height of chart based on expand/collapse mode
+    let highestFacetCount: number | any = 0;
+    let totalCompetencies: number | any = 0;
+    let highestMasteredCount: number | any = 0;
+    facetsMatrix.map((facet: FacetMatrix| any) => {
+      const facetMasteredCount: FacetCompetenciesCount | any = facet.competenciesCount.find(
+        (competencyCount: FacetCompetenciesCount) => competencyCount.status === 'mastered',
+      );
+      highestMasteredCount = highestMasteredCount < facetMasteredCount.count
+        ? facetMasteredCount.count : highestMasteredCount;
+      totalCompetencies += facet.totalCompetenciesCount;
+      highestFacetCount = highestFacetCount < facet.totalCompetenciesCount
+        ? facet.totalCompetenciesCount : highestFacetCount;
+    });
     if (this.isExpandedMode) {
-      let totalCompetencies: number | any = 0;
-      let highestMasteredCount: number | any = 0;
-      let highestFacetCount: number | any = 0;
-      facetsMatrix.map((facet: FacetMatrix| any) => {
-        const facetMasteredCount: FacetCompetenciesCount | any = facet.competenciesCount.find(
-          (competencyCount: FacetCompetenciesCount) => competencyCount.status === 'mastered',
-        );
-        highestMasteredCount = highestMasteredCount < facetMasteredCount.count
-          ? facetMasteredCount.count : highestMasteredCount;
-        totalCompetencies += facet.totalCompetenciesCount;
-        highestFacetCount = highestFacetCount < facet.totalCompetenciesCount
-          ? facet.totalCompetenciesCount : highestFacetCount;
-      });
+
       if (highestMasteredCount) {
         // When there are mastered competencies available in a facet,
         // Logically the skyline points are created as boxed container based on
@@ -203,7 +205,21 @@ export default class LearnerAcrossFacetsChart extends Vue {
       }
     }
 
-    // const facetColumnWidth = Number(chartWidth / totalFacets);
+
+    const yScale = d3.scaleLinear()
+        .domain([0, highestFacetCount])
+        .range([chartHeight - 0, 5]);
+
+    const yAxis = d3.axisLeft(yScale).scale(yScale).ticks(this.isExpandedMode ? 40 : 10);
+
+    const svgYAxis = d3.select('#facets-chart-view')
+         .append('svg').attr('id', 'chart-container-y-axis')
+         .attr('width', 110 ).attr('height', chartHeight);
+    svgYAxis.append('g').attr('transform', 'translate(100, -5)').call(yAxis);
+    svgYAxis.append('g').attr('transform',
+      `translate(50, ${chartHeight - 40}) rotate(-90)`).append('text').text('# of Competencies');
+
+
     const facetColumnWidth = component.maxFacetWidth * totalFacets > chartWidth ?
      chartWidth / totalFacets :
       component.maxFacetWidth;
@@ -218,6 +234,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
       component.drawFacetColumn(facetMatrix, chartHeight, facetColumnWidth, seq);
     });
     component.drawSkyline();
+
     // Scroll to bottom of the chart while in full view
     chartViewElement.scrollTop = chartViewElement.scrollHeight;
   }
