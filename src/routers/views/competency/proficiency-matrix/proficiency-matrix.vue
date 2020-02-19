@@ -24,6 +24,7 @@
                 :isCompetencyLoading ="isLoading"
                 :prerequisites="prerequisites"
                 :selectedDomain="selectedDomain"
+                v-on:onSelectDomain="onSelectDomain"
                 :selectedCompetency="selectedCompetency" />
             </div>
              <div class="rigt-side-card">
