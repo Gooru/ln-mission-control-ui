@@ -226,7 +226,7 @@ export default class LearnerProficiencyChart extends Vue {
     component.activeGrade = grade;
     component.resetChart();
     if ((!component.activeGradeList.length || (component.activeGradeList.length > 1)) || !this.isCompetencyMap) {
-      if (component.activeGradeList.length && grade.id === component.activeGradeList[0].id) {
+      if (component.activeGradeList.length && grade.id === component.activeGradeList[0].id && !this.isCompetencyMap) {
         component.activeGradeList = [];
       } else {
         component.activeGradeList = [];
@@ -240,6 +240,8 @@ export default class LearnerProficiencyChart extends Vue {
       const minIndex = minValue < maxValue ? minValue : maxValue;
       const maxIndex = minValue < maxValue ? maxValue : minValue;
       component.activeGradeList = component.taxonomyGrades.slice(minIndex, maxIndex + 1);
+    }
+    if (this.isCompetencyMap) {
       this.minGradeLine();
     }
     if (component.activeGradeList.length) {
