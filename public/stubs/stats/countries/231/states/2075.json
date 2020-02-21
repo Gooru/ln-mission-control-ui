@@ -251,54 +251,48 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 497,
-    "avg_count": "24m.17s",
+		"user_count": 284,
+    "avg_count": "29m.17s",
 		"gained_comp": "23%",
 		"stugglingCompetency":[{
-			"code": "5.MD.3.b",
-			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units"
-		},{
-			"code": "5.NBT.1",
-			"name": "Recognize that in a multi-digit number, a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left."
+			"code": "3.NF.2",
+			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
 		},{
 			"code": "8.NS.2",
 			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		},{
+			"code": "7.EE.1",
+			"name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
 		}]
 	 },
 	 "01_2020" : {
-		"user_count": 567,
-    "avg_count": "23m.18s",
+		"user_count": 284,
+    "avg_count": "29m.17s",
 		"gained_comp": "23%",
 		"stugglingCompetency":[{
 			"code": "3.NF.2",
 			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
 		},{
-			"code": "4.NBT.4",
-			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
 		},{
-			"code": "5.MD.3.b",
-			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
-		},{
-			"code": "7.SP.5",
-			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+			"code": "7.EE.1",
+			"name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
 		}]
 	 },
-	 "02_2020" : {
-		"user_count": 567,
-    "avg_count": "23m.18s",
+     "02_2020" : {
+		"user_count": 184,
+    "avg_count": "29m.17s",
 		"gained_comp": "23%",
 		"stugglingCompetency":[{
 			"code": "3.NF.2",
 			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
 		},{
-			"code": "4.NBT.4",
-			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
 		},{
-			"code": "5.MD.3.b",
-			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
-		},{
-			"code": "7.SP.5",
-			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+			"code": "7.EE.1",
+			"name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
 		}]
 	 },
 	 "total" : {
