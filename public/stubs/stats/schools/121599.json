@@ -1,0 +1,50 @@
+{
+    "12_2019" : {
+       "user_count": 9,
+   "avg_count": "24m.17s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+           "code": "5.MD.3.b",
+           "name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+       },{
+           "code": "5.NBT.1",
+           "name": "Recognize that in a multi-digit number, a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left."
+       },{
+           "code": "8.NS.2",
+           "name": "Use rational approximations of irrational numbers to compare the size of irrational"
+       }]
+    },
+    "01_2020" : {
+        "user_count": 16,
+   "avg_count": "24m.17s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+           "code": "5.MD.3.b",
+           "name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+       },{
+           "code": "5.NBT.1",
+           "name": "Recognize that in a multi-digit number, a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left."
+       },{
+           "code": "8.NS.2",
+           "name": "Use rational approximations of irrational numbers to compare the size of irrational"
+       }]
+    },
+    "02_2020" : {
+        "user_count": 5,
+   "avg_count": "24m.17s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+           "code": "5.MD.3.b",
+           "name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+       },{
+           "code": "5.NBT.1",
+           "name": "Recognize that in a multi-digit number, a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left."
+       },{
+           "code": "8.NS.2",
+           "name": "Use rational approximations of irrational numbers to compare the size of irrational"
+       }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}
