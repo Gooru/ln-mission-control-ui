@@ -227,6 +227,7 @@ export default class LearnerProficiencyChart extends Vue {
     component.multiGradeActiveList = [];
     component.selectedGradeCompetency = [];
     component.activeGrade = grade;
+    component.isLoading = true;
     component.resetChart();
     if ((!component.activeGradeList.length || (component.activeGradeList.length > 1)) || !this.isCompetencyMap) {
       if (component.activeGradeList.length && grade.id === component.activeGradeList[0].id && !this.isCompetencyMap) {
@@ -245,8 +246,17 @@ export default class LearnerProficiencyChart extends Vue {
       component.activeGradeList = component.taxonomyGrades.slice(minIndex, maxIndex + 1);
     }
     if (this.isCompetencyMap) {
-      this.minGradeLine();
+      this.minGradeLine().then(() => {
+        this.parseBoundaryCompetency();
+      });
+    } else {
+      this.parseBoundaryCompetency();
     }
+
+  }
+
+  public parseBoundaryCompetency() {
+    const component = this;
     if (component.activeGradeList.length) {
       const boundaryPromise = component.activeGradeList.map((gradeItem: any) => {
         return new Promise((resovle) => {
@@ -828,15 +838,19 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   private minGradeLine() {
-    const minGrade = this.activeGradeList.reduce(
-      (prev: any, current: any) => (prev.id < current.id) ? prev : current);
-    const minGradeIndex = this.taxonomyGrades.findIndex((grade) => grade.id === minGrade.id);
-    const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex - 1] : null;
-    if (prevGrade) {
-      this.loadTaxonomyGradeBoundaries(prevGrade.id).then((boundaries) => {
-        this.boundaryMapForMultiGrade(this.chartData, boundaries);
-      });
-    }
+    return new Promise((resolve, reject) => {
+      const minGrade = this.activeGradeList.reduce(
+        (prev: any, current: any) => (prev.id < current.id) ? prev : current, this.activeGradeList);
+      const minGradeIndex = this.taxonomyGrades.findIndex((grade) => grade.id === minGrade.id);
+      const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex - 1] : null;
+      if (prevGrade) {
+        this.loadTaxonomyGradeBoundaries(prevGrade.id).then((boundaries) => {
+          return resolve(this.boundaryMapForMultiGrade(this.chartData, boundaries));
+        }, reject);
+      } else {
+        return resolve();
+      }
+    });
 
   }
 
