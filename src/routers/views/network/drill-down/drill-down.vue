@@ -35,6 +35,7 @@
            <div class="texas-performance-cards">
                  <card-list 
                   v-if="isLoaded"
+                  :studentList="studentList"
                   :seletedLevel="seletedLevel"
                   :selectedDate="selectedDate" 
                   :subjectsList="subjectsList" 
