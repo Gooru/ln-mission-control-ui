@@ -34,15 +34,21 @@ export default class CardsList extends Vue {
     private seletedLevel?: DrillDownModel;
     @Prop()
     private cardDetails: any;
-
+    @Prop()
+    private studentList: any;
 
     private hiddenData: boolean = false;
 
     private get competencyScore() {
-        if (this.competencyData) {
+        if (this.competencyData && this.seletedLevel && this.seletedLevel.type !== 'class') {
             return this.competencyData.overallStats ? this.competencyData.overallStats : {};
         } else {
-            return {};
+            const totalCompetency = this.studentList.reduce((a: any, b: any) => a + b.completedCompetencies, 0);
+            const totalAvg = this.studentList.reduce((a: any, b: any) => (a + b.percentScore) , 0);
+            return {
+                totalCompetencies: totalCompetency,
+                averagePerformance: Math.floor(totalAvg / this.studentList.length),
+            };
         }
 
     }
