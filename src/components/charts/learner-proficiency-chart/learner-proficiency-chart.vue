@@ -38,7 +38,7 @@
         <!-- </div> -->
         <div class="domains-seq-list" v-if="domainCoOrdinates">
           <div :class="['domain-seq', 'domain-' + domain.domainSeq]" v-for="domain in chartData" :key="domain.domainSeq" :style="{width: cellWidth + 'px'}" @click="onSelectDomain(domain)">
-            {{domain.domainSeq}}
+            <span v-b-tooltip:hover :title="domain.domainName">{{domain.domainSeq}}</span>
           </div>
         </div>
       </div>

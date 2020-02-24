@@ -142,6 +142,8 @@ export default class LearnerProficiencyChart extends Vue {
   @Prop()
   private selectedCompetency: any;
 
+  private selectedGradeCompetency: any = [];
+
   @Watch('selectedDomain')
   public onChangeSelectedDomain(selectedDomain: any) {
     this.toggleActiveDomainBar(0, false);
@@ -223,6 +225,7 @@ export default class LearnerProficiencyChart extends Vue {
   public onSelectGrade(grade: GradeModel | any) {
     const component = this;
     component.multiGradeActiveList = [];
+    component.selectedGradeCompetency = [];
     component.activeGrade = grade;
     component.resetChart();
     if ((!component.activeGradeList.length || (component.activeGradeList.length > 1)) || !this.isCompetencyMap) {
@@ -258,8 +261,7 @@ export default class LearnerProficiencyChart extends Vue {
         component.parseGradeBoundaryChartData();
         if (this.isCompetencyMap) {
           this.$emit('onSelectGrade',
-            this.chartData, component.activeGradeList,
-            component.multiGradeActiveList.flat(1));
+            this.selectedGradeCompetency, component.activeGradeList);
         }
       });
     } else {
@@ -490,8 +492,7 @@ export default class LearnerProficiencyChart extends Vue {
         const fadeClass = (maxSeq) ? (
           ((maxSeq.competencySeq < competency.competencySeq ||
              (minSeq.competencySeq > competency.competencySeq)) ||
-              hasNoCompetency) ? 'no-competency' : '') : '';
-
+              hasNoCompetency) ? 'no-competency' : this.selectedGradeCompetency.push(competency)) : '';
         return `${skylineClassName}domain-${competency.domainSeq} competency-${
           competency.competencySeq
           } ${fadeClass} ${((prerequisite || isActiveClass) && this.isCompetencyMap) ?

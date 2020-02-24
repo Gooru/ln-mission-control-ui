@@ -1,10 +1,5 @@
 <template>
     <div class="mc-competency-map">
-        <div class="mc-competency-submenu">
-                <ul class="mc-competency-submenu-blk">
-                    <li v-for="(navMenu, navIndex) in competencyNavMenu" :class="{active: navMenu === 'competency-map'}" @click="onChangeNav(navMenu)" :key="navIndex">{{$t(navMenu)}}</li>
-                </ul>
-            </div>
         <div class="mc-competency-map-container">
             <div class="mc-competency-content-section">
                 <div class="competency-left-section">
