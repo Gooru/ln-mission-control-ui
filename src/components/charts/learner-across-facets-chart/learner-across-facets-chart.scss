@@ -12,7 +12,6 @@
       transform: rotateX(180deg);
       transform-style: preserve-3d;
       border-top: 1px solid rgba(0, 0, 0, 0.1);
-      // margin: auto;
       #facets-group {
         rect {
           stroke: #000;
@@ -59,10 +58,10 @@
     }
 
     .facets-placeholder {
-      // margin: auto;
       display: flex;
       grid-row-start: 2;
       grid-column-start: 2;
+      height: 32px;
       .facet-placeholder {
         font-size: 11px;
         color: #000;
@@ -81,6 +80,7 @@
     border-radius: 4px;
     font-size: 13px;
     font-weight: bold;
+    z-index: 99;
     &:before {
       content: "";
       display: block;
@@ -94,17 +94,6 @@
       transform: rotateX(180deg);
       transform-style: preserve-3d;
     }
-    // &:after {
-    //   content: "";
-    //   display: block;
-    //   position: absolute;
-    //   left: calc(100% / 2);
-    //   bottom: 100%;
-    //   width: 0;
-    //   height: 0;
-    //   border: 9px solid transparent;
-    //   border-bottom-color: #37424b;
-    // }
     display: grid;
     .subject {
       text-align: center;
