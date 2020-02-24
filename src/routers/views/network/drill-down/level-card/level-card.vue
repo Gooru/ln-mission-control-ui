@@ -4,7 +4,7 @@
          <h5 class="texas-distict-name">{{cardName}}</h5>
             <material-icon icon="search" />
          </div>
-          <div class="texas-district-card" v-for="(level, levelIndex) in cardData" :key="levelIndex" v-on="cardName !== 'student' ? {click : () => onSelectLevel(level) } : {}">
+          <div class="texas-district-card" v-for="(level, levelIndex) in cardData" :key="levelIndex" @click="onSelectLevel(level)">
               <div class="card-heading">
                 <h5 class="card-title">{{level.type ? level.name : level.fullName}}</h5>
                 <ul class="texas-card-list" v-if="hiddenData">
