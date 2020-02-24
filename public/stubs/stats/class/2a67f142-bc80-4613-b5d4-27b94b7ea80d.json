@@ -253,7 +253,7 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 3279,
+		"user_count": 1,
     "avg_count": "24m 15s",
 		"gained_comp": "53%",
 		"stugglingCompetency":[{
@@ -268,7 +268,7 @@
         }]
 	 },
 	 "01_2020" : {
-		"user_count": 3400,
+		"user_count": 0,
     "avg_count": "22m 12s",
 		"gained_comp": "53%",
 		"stugglingCompetency":[{
@@ -286,7 +286,7 @@
         }]
 	 },
 	 "02_2020" : {
-		"user_count": 3470,
+		"user_count": 0,
     "avg_count": "23m 16s",
 		"gained_comp": "53%",
 		"stugglingCompetency":[{
