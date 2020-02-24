@@ -1,6 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import CompetencyMap from './competency-map/competency-map';
 import ProficiencyMatrix from './proficiency-matrix/proficiency-matrix';
+import {COMPETENCY_NAVIGATION_MENUS} from '@/utils/constants';
 
 @Component({
     name: 'competency',
@@ -21,6 +22,8 @@ export default class Competency extends Vue {
     private selectedSubject?: any;
 
     private userId?: any;
+
+    private competencyNavMenu: any = COMPETENCY_NAVIGATION_MENUS;
 
     // ------------------------------------------------------------------------
     // Hooks

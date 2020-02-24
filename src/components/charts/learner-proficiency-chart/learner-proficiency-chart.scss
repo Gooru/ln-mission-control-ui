@@ -192,6 +192,10 @@
         .domain-seq {
           font-weight: bold;
           cursor: pointer;
+
+          span {
+            padding: 5px;
+          }
         }
       }
     }

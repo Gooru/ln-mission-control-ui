@@ -103,9 +103,9 @@ export default class ProficiencyMatrix extends Vue {
         this.$emit('backAction');
     }
 
-    private onSelectGrade(gradeDomains: [], activeGrade: any, gradeBoundaries: []) {
+    private onSelectGrade(competencies: [], activeGrade: any) {
         this.activeGrade = activeGrade;
-        this.getCompetencyListForGrade(gradeDomains, activeGrade, gradeBoundaries);
+        this.gradeCompetency = competencies;
         this.isDomainView = false;
         this.isGradeView = true;
         this.isCompetencyView = false;
@@ -153,20 +153,6 @@ export default class ProficiencyMatrix extends Vue {
 
     // -----------------------------------------------------------------------------
     // Methods
-
-    private getCompetencyListForGrade(gradeDomains: [], activeGrade: any, gradeBoundaries: []) {
-        let competencyList: any = [];
-        if (gradeBoundaries.length && gradeDomains.length) {
-            gradeDomains.map((domain: any) => {
-                if (gradeBoundaries.some((gradeDomain: any) => {
-                    return domain.domainCode === gradeDomain.domainCode;
-                })) {
-                    competencyList = [...competencyList, ...domain.competencies];
-                }
-            });
-        }
-        this.gradeCompetency = competencyList;
-    }
 
     private fetchLearningMapContent(competencyCode: any) {
         this.isLoading = true;
