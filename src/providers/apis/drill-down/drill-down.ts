@@ -157,6 +157,16 @@ export class DrillDownAPI {
         });
     }
 
+    public fetchCardsDatabyClassID(params: any) {
+        const endpoint = `${this.namespaceStub}/stats/class/${params.classId}.json`;
+        const headers = http.getTokenHeaders();
+        return http.get(endpoint, headers).then((response) => {
+            return response.data;
+        }, (err) => {
+            return err;
+        });
+    }
+
 
 }
 
