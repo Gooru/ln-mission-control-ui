@@ -77,7 +77,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     component.loadChartData();
     // Scroll to bottom of the chart while in full view
     const chartContainer = component.$el.querySelector('#facets-chart-view') as HTMLElement;
-    chartContainer.scrollTop = chartContainer.scrollHeight;
+    chartContainer.scrollTop = chartContainer.scrollHeight + 30;
   }
 
   private loadFacetsCompetencyMatrixData() {
@@ -208,10 +208,15 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
     const yScale = d3.scaleLinear()
         .domain([0, highestFacetCount])
-        .range([chartHeight - 0, 5]);
+        .range([chartHeight, 9]);
 
-    const yAxis = d3.axisLeft(yScale).scale(yScale).ticks(this.isExpandedMode ? 40 : 10);
+    const yAxis = d3.axisLeft(yScale).scale(yScale);
 
+    if (this.isExpandedMode && chartHeight > 1000) {
+      yAxis.ticks(chartHeight / 100);
+    }
+
+    // Separate svg for showing axis line
     const svgYAxis = d3.select('#facets-chart-view')
          .append('svg').attr('id', 'chart-container-y-axis')
          .attr('width', 110 ).attr('height', chartHeight);

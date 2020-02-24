@@ -24,7 +24,7 @@ export default class TaxonomyFilter extends Vue {
 
   private isShowFilterBody: boolean = false;
 
-  private defaultClassificationId: string = 'k_12';
+  private defaultClassificationIds: [string, string] = ['k_12', 'skills_training'];
 
   private classifications: ClassificationModel[] = [];
 
@@ -39,6 +39,8 @@ export default class TaxonomyFilter extends Vue {
     'K12.MA',
     'K12.ELA',
     'K12.SC',
+    'SK.HOS',
+    'SK.XAPI',
   ];
 
   // ----------------------------------------------------------------
@@ -85,28 +87,37 @@ export default class TaxonomyFilter extends Vue {
     const component = this;
     taxonomyAPI.fetchTaxonomyClassifications().then((taxonomyClassifications: ClassificationModel[]) =>  {
       component.classifications = taxonomyClassifications;
-      let defaultClassification: ClassificationModel | any = taxonomyClassifications.find(
-        (classification: ClassificationModel) => classification.id === component.defaultClassificationId,
-      );
-      defaultClassification = defaultClassification || taxonomyClassifications[0];
-      component.loadTaxonomySubjects(defaultClassification.id).then((taxonomySubjects: SubjectModel[]) => {
-        taxonomySubjects.forEach((subject: SubjectModel) => {
-          subject.isActive = true;
-        });
-        const parsedSubjects =  (JSON.parse(JSON.stringify(taxonomySubjects)));
-        // When default classification is not available
-        if (defaultClassification.id === component.defaultClassificationId) {
-          component.defaultOrderOfFacets.map((subjectCode: string) => {
-            component.selectedSubjects.push(
-              parsedSubjects.find( (subject: any) => subject.code === subjectCode),
-            );
+
+      component.defaultClassificationIds.map((defaultClassificationId: string) => {
+        let defaultClassification: ClassificationModel | any = taxonomyClassifications.find(
+          (classification: ClassificationModel) => classification.id === defaultClassificationId,
+        );
+        defaultClassification = defaultClassification || taxonomyClassifications[0];
+        component.loadTaxonomySubjects(defaultClassification.id).then((taxonomySubjects: SubjectModel[]) => {
+          taxonomySubjects.forEach((subject: SubjectModel) => {
+            subject.isActive = false;
           });
-        } else {
-          component.selectedSubjects = parsedSubjects;
-        }
-        component.$emit('listActiveFacets', component.selectedSubjects);
+          const parsedSubjects =  (JSON.parse(JSON.stringify(taxonomySubjects)));
+          // When default classification is not available
+          if (defaultClassification.id === defaultClassificationId) {
+            component.defaultOrderOfFacets.map((subjectCode: string) => {
+              const matchingSubject = parsedSubjects.find( (subject: any) => subject.code === subjectCode);
+              const taxonomySubject = taxonomySubjects.find((subject: SubjectModel) => subject.code === subjectCode);
+              if (matchingSubject) {
+                component.selectedSubjects.push(matchingSubject);
+              }
+
+              if (taxonomySubject) {
+                taxonomySubject.isActive = true;
+              }
+            });
+          } else {
+            component.selectedSubjects = parsedSubjects;
+          }
+          component.$emit('listActiveFacets', component.selectedSubjects);
+        });
+        component.activeClassification = defaultClassification;
       });
-      component.activeClassification = defaultClassification;
     });
   }
 
