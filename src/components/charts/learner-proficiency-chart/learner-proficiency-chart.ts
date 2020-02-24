@@ -483,8 +483,7 @@ export default class LearnerProficiencyChart extends Vue {
            (maxSeq.competencySeq > minSeq.competencySeq ||
              maxSeq.competencySeq > competency.competencySeq)) ? 'clear-competency' : '';
         const prerequisite = this.isCompetencyMap ? component.prerequisites.find(
-          (item: any) => (item.id === competency.competencyCode) &&
-            (competency.domainSeq !== component.activeCompetency.domainSeq)) : {};
+          (item: any) => (item.id === competency.competencyCode)) : {};
         const isActiveClass = (component.activeCompetency && this.isSelectedCompetency) ?
           (component.activeCompetency.competencyCode === competency.competencyCode) : false;
         const gradeBoundaryClassName = competency.className ? competency.className : '';
