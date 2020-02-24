@@ -160,6 +160,9 @@ export default class DrillDown extends Vue {
                     month: this.dataParams.month,
                     year: this.dataParams.year,
                 };
+                drillDownAPI.fetchCardsDatabyClassID(params).then((cardData) => {
+                    this.cardDetails = this.getDataBasedOnLevel(cardData);
+                });
                 this.fetchClassRoomStudentList(params);
                 break;
             default:
