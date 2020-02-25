@@ -43,6 +43,12 @@ export default class Competency extends Vue {
         this.isShowCompetencyMap = false;
     }
 
+    private onChangeNav(navMenu: any) {
+        if (navMenu !== 'competency-map') {
+            window.location.href = '/research/competency/' + navMenu;
+        }
+    }
+
     private backAction() {
         this.isShowProficiencyView = false;
         this.isShowCompetencyMap = true;
