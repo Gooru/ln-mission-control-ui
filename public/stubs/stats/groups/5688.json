@@ -3,6 +3,19 @@
 		"user_count": 84,
     "avg_count": "19m.17s",
 		"gained_comp": "23%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "12%",
+			"overall": 72
+		},
+		"avg_card": {
+			"percent": "-2%",
+			"overall": "22m 10s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "20%"
+		},
 		"stugglingCompetency":[{
 			"code": "5.MD.3.b",
 			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
@@ -18,6 +31,19 @@
 		"user_count": 94,
     "avg_count": "17m.28s",
 		"gained_comp": "23%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "8%",
+			"overall": 70
+		},
+		"avg_card": {
+			"percent": "-1%",
+			"overall": "20m 24s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "21%"
+		},
 		"stugglingCompetency":[{
 			"code": "5.MD.3.b",
 			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
@@ -33,6 +59,19 @@
 		"user_count": 58,
     "avg_count": "21m.23s",
 		"gained_comp": "23%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "7%",
+			"overall": 64
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "22m 45s"
+		},
+		"student_gaind_card": {
+			"percent": "-1%",
+			"overall": "18%"
+		},
 		"stugglingCompetency":[{
 			"code": "5.MD.3.b",
 			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."

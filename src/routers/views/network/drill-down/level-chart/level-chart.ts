@@ -5,6 +5,7 @@ import { getSum } from '@/utils/utils';
 import AtcChart from '@/components/charts/atc-chart/atc-chart';
 import { CompetencyModel } from '@/models/drill-down/competency';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
+import { numberFormat } from '@/helpers/number-format';
 
 @Component({
     name: 'level-chart',
@@ -44,6 +45,7 @@ export default class LevelChart extends Vue {
         return dataList ? dataList.sort((a: any, b: any) => a.week - b.week ) : this.studentList;
 
     }
+
     // ----------------------------------------------------------------------
     // Hooks
 
@@ -59,6 +61,10 @@ export default class LevelChart extends Vue {
     }
     // --------------------------------------------------------------------------
     // Methods
+
+    private numberFormat(value: number) {
+        return numberFormat(value);
+    }
 
 
 

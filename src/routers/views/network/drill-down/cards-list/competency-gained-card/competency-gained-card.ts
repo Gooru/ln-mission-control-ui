@@ -9,6 +9,7 @@ import { CompetencyModel } from '@/models/drill-down/competency';
 import { PerformanceModel } from '@/models/drill-down/performance';
 import { SubjectModel } from '@/models/drill-down/subject';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
+import { numberFormat } from '@/helpers/number-format';
 
 @Component({
     name: 'competency-gained-card',
@@ -163,6 +164,10 @@ export default class CompentencyGainedCard extends Vue {
         this.selectedSubject.isActive = true;
         this.selectedLevel = this.countryData;
         this.loadPerformanceData(this.selectedLevel);
+    }
+
+    private numberFormat(value: number) {
+        return numberFormat(value);
     }
 
 

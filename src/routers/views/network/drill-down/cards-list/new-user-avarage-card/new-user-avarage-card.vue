@@ -8,15 +8,16 @@
                         <material-icon :icon="iconName" />
                         {{cardTitle}}
                     </div>
-                    <ul class="texas-card-list" v-if="hiddenData">
+                    <ul class="texas-card-list">
                     <li class="down"><material-icon icon="trending_down"/></li>
-                    <li class="down">37%</li>
-                    <li>since june</li>
+                    <li class="down">{{cardData.percent ? cardData.percent : ''}}</li>
+                    <li>since {{sinceMonth}}</li>
                    </ul>
                 </div>
             </div>
-            <div class="avarage-card-footer" v-if="hiddenData">
-                <p>v/s <span>97,303</span> avarage across all States</p>
+            <div class="avarage-card-footer" >
+                <p v-if="cardName === 'new-user'">v/s <span> {{ cardData.overall ? numberFormat(cardData.overall) : '' }}</span> on avarage across all {{nextLevelName}}</p>
+                <p v-if="cardName !== 'new-user'">v/s <span> {{ cardData.overall ? cardData.overall : '' }}</span> on avarage across all {{nextLevelName}}</p>
             </div>
         </div>
        <div class="card-popup-card">

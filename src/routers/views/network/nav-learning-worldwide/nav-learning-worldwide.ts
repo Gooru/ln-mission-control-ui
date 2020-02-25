@@ -4,6 +4,7 @@ import { numberFormatWithTextSuffix, numberFormat } from '@/helpers/number-forma
 import NavLearningWorldWidePopover from './nav-learning-worldwide-popover/nav-learning-worldwide-popover';
 import { sessionService } from '@/providers/services/auth/session';
 import { appConfigService } from '@/providers/services/app/app-config';
+import { DEMO_USERS } from '@/utils/constants';
 
 
 @Component({
@@ -87,7 +88,8 @@ export default class NavLearningWorldWide extends Vue {
 
   get isTenant() {
     if (this.session && this.session.tenant) {
-      return appConfigService.getClientId() === this.session.tenant.tenant_id;
+      return (appConfigService.getClientId() === this.session.tenant.tenant_id) ||
+      (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
     }
     return false;
   }
