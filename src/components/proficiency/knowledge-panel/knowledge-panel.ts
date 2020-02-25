@@ -76,6 +76,10 @@ export default class KnowledgePanel extends Vue {
     this.$emit('onSelectCompetency', competency);
   }
 
+  private created() {
+    this.isShowPortfolioContainer = this.statsBucket === 'competency' || this.statsBucket === 'facets';
+  }
+
   private onSelectPortfolioStat(portfolioStat: any) {
     this.$emit('onSelectPortfolioStat', portfolioStat);
   }

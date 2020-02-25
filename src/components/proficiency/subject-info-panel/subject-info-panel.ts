@@ -1,7 +1,5 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
-import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
-import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
 import KnowledgePanel from '../knowledge-panel/knowledge-panel';
 import CommunityPanel from '../community-panel/community-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
@@ -12,8 +10,6 @@ import moment from 'moment';
   name: 'subject-info-panel',
   components: {
     'mindsets-panel': MindsetsPanel,
-    'portfolio-panel': PortfolioPanel,
-    'preferences-panel': PreferencesPanel,
     'knowledge-panel': KnowledgePanel,
     'community-panel': CommunityPanel,
   },

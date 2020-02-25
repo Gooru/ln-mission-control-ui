@@ -19,12 +19,12 @@
           {{tabItem.title}}
         </div>
       </div>
-        <div class="active-tab-contents">
-          <component
-            v-bind:is="activeTab.component"
-            v-bind="{ month, year, subject, domain, statsBucket: 'domain', userId}"
-            @onSelectCompetency="onSelectCompetency"/>
-        </div>
+      <div class="active-tab-contents">
+        <component
+        v-bind:is="activeTab.component"
+        v-bind="{ month, year, subject, domain, statsBucket: 'domain', userId}"
+        @onSelectCompetency="onSelectCompetency"/>
+      </div>
     </div>
   </div>
 </template>
