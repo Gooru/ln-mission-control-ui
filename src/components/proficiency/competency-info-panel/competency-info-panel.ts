@@ -1,10 +1,12 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import LearningMap from '@/components/competency/learning-map/learning-map';
-import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
+import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
 import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import MetadataPanel from '../metadata-panel/metadata-panel';
+import KnowledgePanel from '../knowledge-panel/knowledge-panel';
+import CommunityPanel from '../community-panel/community-panel';
 import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
 import { searchAPI } from '@/providers/apis/search/search';
@@ -17,8 +19,10 @@ import moment from 'moment';
     'google-material-icon': GoogleMaterialIcon,
     'portfolio-panel': PortfolioPanel,
     'preferences-panel': PreferencesPanel,
-    'mindsets-list-panel': MindsetsListPanel,
+    'mindsets-panel': MindsetsPanel,
     'metadata-panel': MetadataPanel,
+    'knowledge-panel': KnowledgePanel,
+    'community-panel': CommunityPanel,
   },
 })
 
@@ -28,8 +32,8 @@ export default class CompetencyInfoPanel extends Vue {
   private competency!: CompetencyModel;
 
   private activeTab: object = {
-    title: 'Portfolio',
-    component: 'portfolio-panel',
+    title: 'Knowledge',
+    component: 'knowledge-panel',
   };
 
   @Prop()
@@ -37,27 +41,16 @@ export default class CompetencyInfoPanel extends Vue {
 
   private tabItems = [
     {
-      title: 'Portfolio',
-      component: 'portfolio-panel',
+      title: 'Knowledge',
+      component: 'knowledge-panel',
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-list-panel',
+      component: 'mindsets-panel',
     },
     {
-      title: 'Preferences',
-      component: 'preferences-panel',
-    },
-    {
-      title: 'Metadata',
-      component: 'metadata-panel',
-    },
-    {
-      title: 'LearningMap',
-      component: 'learning-map',
-    },
-    {
-      title: 'Route',
+      title: 'Community',
+      component: 'community-panel',
     },
   ];
 

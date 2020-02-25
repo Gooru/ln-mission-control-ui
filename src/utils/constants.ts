@@ -252,3 +252,16 @@ export const TAXONOMY_LEVELS = {
   STANDARD: 'standard',
   MICRO: 'micro-standard',
 };
+
+export const LEARNER_MINDSETS_VECTORS = [
+  'grit',
+  'perseverance',
+  'motivation',
+  'selfConfidence',
+];
+
+export const LEARNER_COMMUNITY_VECTORS = [
+  'citizenship',
+  'authority',
+  'reputation',
+];

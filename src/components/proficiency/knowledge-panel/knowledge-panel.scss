@@ -1,0 +1,15 @@
+#knowledge-panel {
+  height: 100%;
+  overflow-y: auto;
+  [class*="panel-container"] {
+    .panel-header-container {
+      display: grid;
+      grid-template-columns: 1fr 30px;
+      height: 35px;
+      align-items: center;
+      padding-left: 8px;
+      cursor: pointer;
+      border-bottom: 1px solid;
+    }
+  }
+}

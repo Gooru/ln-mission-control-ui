@@ -1,8 +1,9 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import DomainsListPanel from '@/components/proficiency/domains-list-panel/domains-list-panel';
-import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
+import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
 import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
+import KnowledgePanel from '../knowledge-panel/knowledge-panel';
+import CommunityPanel from '../community-panel/community-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import moment from 'moment';
@@ -10,10 +11,11 @@ import moment from 'moment';
 @Component({
   name: 'subject-info-panel',
   components: {
-    'domains-list-panel': DomainsListPanel,
-    'mindsets-list-panel': MindsetsListPanel,
+    'mindsets-panel': MindsetsPanel,
     'portfolio-panel': PortfolioPanel,
     'preferences-panel': PreferencesPanel,
+    'knowledge-panel': KnowledgePanel,
+    'community-panel': CommunityPanel,
   },
 })
 
@@ -26,26 +28,22 @@ export default class SubjectInfoPanel extends Vue {
   public subject!: SubjectModel;
 
   public activeTab: object = {
-    title: 'Domains',
-    component: 'domains-list-panel',
+    title: 'Knowledge',
+    component: 'knowledge-panel',
   };
 
   public tabItems = [
     {
-      title: 'Domains',
-      component: 'domains-list-panel',
+      title: 'Knowledge',
+      component: 'knowledge-panel',
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-list-panel',
+      component: 'mindsets-panel',
     },
     {
-      title: 'Portfolio',
-      component: 'portfolio-panel',
-    },
-    {
-      title: 'Preferences',
-      component: 'preferences-panel',
+      title: 'Community',
+      component: 'community-panel',
     },
   ];
 

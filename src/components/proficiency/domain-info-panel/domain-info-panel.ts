@@ -1,9 +1,9 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import CompetenciesListPanel from '@/components/proficiency/competencies-list-panel/competencies-list-panel';
-import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
-import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
-import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
+import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import KnowledgePanel from '../knowledge-panel/knowledge-panel';
+import CommunityPanel from '../community-panel/community-panel';
+import CompetenciesListPanel from '../competencies-list-panel/competencies-list-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { DomainModel } from '@/models/proficiency/domain';
@@ -13,10 +13,10 @@ import moment from 'moment';
   name: 'domain-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
+    'mindsets-panel': MindsetsPanel,
+    'knowledge-panel': KnowledgePanel,
+    'community-panel': CommunityPanel,
     'competencies-list-panel': CompetenciesListPanel,
-    'mindsets-list-panel': MindsetsListPanel,
-    'portfolio-panel': PortfolioPanel,
-    'preferences-panel': PreferencesPanel,
   },
 })
 export default class DomainInfoPanel extends Vue {
@@ -31,26 +31,22 @@ export default class DomainInfoPanel extends Vue {
   public classification!: ClassificationModel;
 
   public activeTab: object = {
-    title: 'Competencies',
-    component: 'competencies-list-panel',
+    title: 'Knowledge',
+    component: 'knowledge-panel',
   };
 
   public tabItems = [
     {
-      title: 'Competencies',
-      component: 'competencies-list-panel',
+      title: 'Knowledge',
+      component: 'knowledge-panel',
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-list-panel',
+      component: 'mindsets-panel',
     },
     {
-      title: 'Portfolio',
-      component: 'portfolio-panel',
-    },
-    {
-      title: 'Preferences',
-      component: 'preferences-panel',
+      title: 'Community',
+      component: 'community-panel',
     },
   ];
 
