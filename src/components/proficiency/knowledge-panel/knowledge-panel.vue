@@ -46,7 +46,8 @@
       </div>
     </div>
 
-    <div class="learning-map-panel-container" v-if="statsBucket === 'competency'">
+    <!-- TODO Learning Map and Metadat about competency may not required for now! -->
+    <div class="learning-map-panel-container" v-if="false">
       <div class="panel-header-container" @click="isShowLearningMap = !isShowLearningMap">
         <span>Learning Map</span><span class="toggle"><google-material-icon :icon="isShowLearningMap ? 'arrow_drop_up' : 'arrow_drop_down'" /></span>
       </div>
@@ -57,7 +58,7 @@
       </div>
     </div>
 
-    <div class="metadata-panel-container" v-if="statsBucket === 'competency'">
+    <div class="metadata-panel-container" v-if="false">
       <div class="panel-header-container" @click="isShowMetadata = !isShowMetadata">
         <span>Metadata</span><span class="toggle"><google-material-icon :icon="isShowMetadata ? 'arrow_drop_up' : 'arrow_drop_down'" /></span>
       </div>
