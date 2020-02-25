@@ -24,7 +24,7 @@
         <div class="left-panel-header">
           <div class="learner-info">
             <div class="student-name">{{learner.firstName}}'s Complete Skyline</div>
-            <div class="skyline-info">Each bar represent a subject within the relevant category</div>
+            <div class="skyline-info">Each bar represents a facet</div>
           </div>
           <div class="facet-toggle" @click="isShowExpandedFacetChart = !isShowExpandedFacetChart">
             <google-material-icon :icon="isShowExpandedFacetChart ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedFacetChart ? 'Compressed' : 'Expanded'}} Chart
