@@ -17,7 +17,7 @@
        <div class="chart-container">
         <div class="chart-totals">
             <div class="competency-total">
-                 <h4 class="total-counts">{{totalCompetencyGained}}</h4>
+                 <h4 class="total-counts">{{numberFormat(totalCompetencyGained)}}</h4>
                  <span>Competencies Gained</span>
             </div>
             <div class="competenc-from" v-if="hideScore">

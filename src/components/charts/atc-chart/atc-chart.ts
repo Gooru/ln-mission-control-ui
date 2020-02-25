@@ -85,8 +85,7 @@ export default class AtcChart extends Vue {
       .enter()
       .append('g')
       .attr('transform', (d: any) => {
-        return `translate(${xScale(d.completedCompetencies) +
-          12}, ${yScale(d.percentScore) - 20})`;
+        return `translate(${xScale(d.completedCompetencies)}, ${yScale(d.percentScore)})`;
       })
       .attr('class', 'node-point');
 
@@ -105,7 +104,7 @@ export default class AtcChart extends Vue {
       .attr('xlink:href' , (d: any) => {
           return d.thumbnailUrl;
         })
-      .attr('width', 24)
-      .attr('height', 24);
+        .attr('width', 24)
+        .attr('height', 24);
   }
 }

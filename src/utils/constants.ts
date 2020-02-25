@@ -252,3 +252,7 @@ export const TAXONOMY_LEVELS = {
   STANDARD: 'standard',
   MICRO: 'micro-standard',
 };
+
+export const DEMO_USERS = [
+  'e062559a-35d2-45e9-85fd-380987dc2fdf',
+];

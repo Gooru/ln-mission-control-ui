@@ -3,7 +3,7 @@
         <div id="competency-gained-container" @click="toggleCompetencyData">
             <div class="gained-header">
                 <h4 class="gained-percentage">{{totalPerformances}} <span>%</span></h4>
-                <h4 class="gained-counts">{{totalCompetency}}</h4>
+                <h4 class="gained-counts">{{numberFormat(totalCompetency)}}</h4>
             </div>
             <div class="gained-footer">
                 <span class="performance-title">Performance</span>

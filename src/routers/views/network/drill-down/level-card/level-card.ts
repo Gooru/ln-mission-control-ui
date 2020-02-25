@@ -1,6 +1,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import { CompetencyModel } from '@/models/drill-down/competency';
+import { numberFormat } from '@/helpers/number-format';
 
 
 @Component({
@@ -48,5 +49,11 @@ export default class LevelCard extends Vue {
         } else {
             this.$emit('onSelectLevel', seletectLevel);
         }
+    }
+
+    // -------------------------------------------------------------
+    // Methods
+    private numberFormat(value: number) {
+        return numberFormat(value);
     }
 }
