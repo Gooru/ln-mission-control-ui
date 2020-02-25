@@ -39,7 +39,7 @@
     height: calc(100% - 63px);
     > .tabbed-header {
       display: grid;
-      grid-template-columns: repeat(4, auto);
+      grid-template-columns: repeat(3, auto);
       height: 40px;
       line-height: 40px;
       .tab-item {

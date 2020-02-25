@@ -35,6 +35,9 @@ export default class MindsetsListPanel extends Vue {
 
   private learnerVectors: LearnerVector[] = [];
 
+  @Prop()
+  private allowedVectorKeys!: any;
+
   public created() {
     this.loadLearnerVectors();
   }
@@ -44,7 +47,7 @@ export default class MindsetsListPanel extends Vue {
     const learnerVectors: LearnerVector[] = [];
     const requestParams = component.getVectorReqParams();
     learnerAPI.fetchLearnerVectors(requestParams).then((learnerVectorPoints: LearnerVector[]) => {
-        component.learnerVectors = learnerVectorPoints;
+        component.learnerVectors = component.extractAllowedVectors(learnerVectorPoints);
     });
   }
 
@@ -67,6 +70,12 @@ export default class MindsetsListPanel extends Vue {
       requestParams.tx_domain_code = component.domain.domainCode;
     }
     return requestParams;
+  }
+
+  private extractAllowedVectors(learnerVectorPoints: LearnerVector[]) {
+    return this.allowedVectorKeys.map( (vectorKey: string) => {
+      return learnerVectorPoints.find( (learnerVectorPoint: LearnerVector) => vectorKey === learnerVectorPoint.label);
+    });
   }
 
 }

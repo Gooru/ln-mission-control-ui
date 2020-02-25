@@ -49,10 +49,10 @@
       border-bottom: 1px dashed #666;
     }
     .tabbed-header {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
       height: 40px;
       line-height: 40px;
-      overflow-x: auto;
       .tab-item {
         cursor: pointer;
         text-align: center;
