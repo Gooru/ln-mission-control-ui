@@ -1,9 +1,8 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
+import { Component, Vue, Prop } from 'vue-property-decorator';
 import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import KnowledgePanel from '../knowledge-panel/knowledge-panel';
 import CommunityPanel from '../community-panel/community-panel';
-import CompetenciesListPanel from '../competencies-list-panel/competencies-list-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { DomainModel } from '@/models/proficiency/domain';
@@ -13,10 +12,9 @@ import moment from 'moment';
   name: 'domain-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
-    'mindsets-panel': MindsetsPanel,
-    'knowledge-panel': KnowledgePanel,
-    'community-panel': CommunityPanel,
-    'competencies-list-panel': CompetenciesListPanel,
+    MindsetsPanel,
+    KnowledgePanel,
+    CommunityPanel,
   },
 })
 export default class DomainInfoPanel extends Vue {
@@ -32,21 +30,21 @@ export default class DomainInfoPanel extends Vue {
 
   public activeTab: object = {
     title: 'Knowledge',
-    component: 'knowledge-panel',
+    component: KnowledgePanel,
   };
 
   public tabItems = [
     {
       title: 'Knowledge',
-      component: 'knowledge-panel',
+      component: KnowledgePanel,
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-panel',
+      component: MindsetsPanel,
     },
     {
       title: 'Community',
-      component: 'community-panel',
+      component: CommunityPanel,
     },
   ];
 

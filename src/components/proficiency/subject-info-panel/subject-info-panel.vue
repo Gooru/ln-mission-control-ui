@@ -15,11 +15,13 @@
         </div>
       </div>
       <div class="active-tab-contents">
-        <component
-          v-bind:is="activeTab.component"
-          v-bind="{month: month, year: year, subject: subject, classification: classification, statsBucket: 'subject', userId: userId}"
-          @onSelectDomain="onSelectDomain"
-          @onSelectCompetency="onSelectCompetency"/>
+        <keep-alive>
+          <component
+            v-bind:is="activeTab.component"
+            v-bind="{month: month, year: year, subject: subject, classification: classification, statsBucket: 'subject', userId: userId}"
+            @onSelectDomain="onSelectDomain"
+            @onSelectCompetency="onSelectCompetency"/>
+        </keep-alive>
       </div>
     </div>
   </div>

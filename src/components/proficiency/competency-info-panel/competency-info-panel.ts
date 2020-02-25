@@ -1,10 +1,6 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import LearningMap from '@/components/competency/learning-map/learning-map';
 import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
-import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
-import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
-import MetadataPanel from '../metadata-panel/metadata-panel';
 import KnowledgePanel from '../knowledge-panel/knowledge-panel';
 import CommunityPanel from '../community-panel/community-panel';
 import {CompetencyModel} from '@/models/proficiency/competency';
@@ -15,14 +11,10 @@ import moment from 'moment';
 @Component({
   name: 'competency-info-panel',
   components: {
-    'learning-map': LearningMap,
     'google-material-icon': GoogleMaterialIcon,
-    'portfolio-panel': PortfolioPanel,
-    'preferences-panel': PreferencesPanel,
-    'mindsets-panel': MindsetsPanel,
-    'metadata-panel': MetadataPanel,
-    'knowledge-panel': KnowledgePanel,
-    'community-panel': CommunityPanel,
+    MindsetsPanel,
+    KnowledgePanel,
+    CommunityPanel,
   },
 })
 
@@ -33,7 +25,7 @@ export default class CompetencyInfoPanel extends Vue {
 
   private activeTab: object = {
     title: 'Knowledge',
-    component: 'knowledge-panel',
+    component: KnowledgePanel,
   };
 
   @Prop()
@@ -42,15 +34,15 @@ export default class CompetencyInfoPanel extends Vue {
   private tabItems = [
     {
       title: 'Knowledge',
-      component: 'knowledge-panel',
+      component: KnowledgePanel,
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-panel',
+      component: MindsetsPanel,
     },
     {
       title: 'Community',
-      component: 'community-panel',
+      component: CommunityPanel,
     },
   ];
 
