@@ -2,6 +2,7 @@ import {Component, Vue, Prop} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import NewUserPopup from './new-user-popup/new-user-popup';
 import AvgSessionPopup from './avg-session-popup/avg-session-popup';
+import { numberFormat } from '@/helpers/number-format';
 
 @Component({
     name: 'new-user-avarage-card',
@@ -24,12 +25,16 @@ export default class NewUserAvarageCard extends Vue {
     private iconName?: string;
     @Prop()
     private cardValue?: string;
+    @Prop()
+    private cardData?: any;
+    @Prop()
+    private sinceMonth?: string;
+    @Prop()
+    private nextLevelName: any;
 
     private isShowPopup: boolean = false;
 
     private hiddenData: boolean = false;
-
-
 
 
     // -----------------------------------------------------------------------------
@@ -39,6 +44,11 @@ export default class NewUserAvarageCard extends Vue {
         this.isShowPopup = show;
     }
 
+    // -----------------------------------------------------------------------------
+    // Method
 
+    private numberFormat(value: number) {
+        return numberFormat(value);
+    }
 
 }

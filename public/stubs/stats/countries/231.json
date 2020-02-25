@@ -256,6 +256,19 @@
 		"user_count": 16316,
     "avg_count": "23m 32s",
 		"gained_comp": "53%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "5%",
+			"overall": 25788
+		},
+		"avg_card": {
+			"percent": "3%",
+			"overall": "25m 22s"
+		},
+		"student_gaind_card": {
+			"percent": "1.5%",
+			"overall": "22%"
+		},
 		"stugglingCompetency":[{
         "code": "7.SP.5",
         "name": "Understand that the probability of a chance event is a number between 0 and 1 that"
@@ -271,6 +284,19 @@
 		"user_count": 16386,
     "avg_count": "28m 32s",
 		"gained_comp": "53%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "13%",
+			"overall": 24676
+		},
+		"avg_card": {
+			"percent": "3%",
+			"overall": "22m 36s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "21%"
+		},
 		"stugglingCompetency":[{
         "code": "3.NF.2",
         "name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram. using the standard algorithm."
@@ -289,6 +315,19 @@
 		"user_count": 9274,
     "avg_count": "21m 32s",
 		"gained_comp": "53%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "10%",
+			"overall": 12346
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "25m 21s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "18%"
+		},
 		"stugglingCompetency":[{
 			"code": "3.MD.5.a",
 			"name": "A square with side length 1 unit, called “a unit square,” is said to have “one square unit” of area, and can be used to measure area."

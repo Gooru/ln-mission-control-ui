@@ -254,6 +254,19 @@
 		"user_count": 8,
     "avg_count": "19m.12s",
 		"gained_comp": "23%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "2%",
+			"overall": 7
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "22m 05s"
+		},
+		"student_gaind_card": {
+			"percent": "-1%",
+			"overall": "18%"
+		},
 		"stugglingCompetency":[{
 			"code": "3.NF.2",
 			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
@@ -269,6 +282,19 @@
 		"user_count": 17,
     "avg_count": "22m.29s",
 		"gained_comp": "23%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "-1%",
+			"overall": 15
+		},
+		"avg_card": {
+			"percent": "2%",
+			"overall": "21m 25s"
+		},
+		"student_gaind_card": {
+			"percent": "2%",
+			"overall": "12%"
+		},
 		"stugglingCompetency":[{
 			"code": "3.NF.2",
 			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
@@ -284,6 +310,19 @@
 		"user_count": 12,
     "avg_count": "20m.16s",
 		"gained_comp": "23%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "1%",
+			"overall": 14
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "19m 43s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "13%"
+		},
 		"stugglingCompetency":[{
 			"code": "3.NF.2",
 			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."

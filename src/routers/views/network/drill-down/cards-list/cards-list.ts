@@ -9,6 +9,8 @@ import StrugglingCompetency from './stuggling-competency/stuggling-competency';
 import { SubjectModel } from '@/models/drill-down/subject';
 import { CompetencyModel } from '@/models/drill-down/competency';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
+import { numberFormat } from '@/helpers/number-format';
+import moment from 'moment';
 
 @Component({
     name: 'cards-list',
@@ -39,6 +41,11 @@ export default class CardsList extends Vue {
 
     private hiddenData: boolean = false;
 
+    private get sinceMonth() {
+       return this.cardDetails.month_since ?
+             this.cardDetails.month_since : moment().subtract(1, 'month').format('MMMM');
+    }
+
     private get competencyScore() {
         if (this.competencyData && this.seletedLevel && this.seletedLevel.type !== 'class') {
             return this.competencyData.overallStats ? this.competencyData.overallStats : {};
@@ -53,8 +60,21 @@ export default class CardsList extends Vue {
 
     }
 
+    private get nextLevelName() {
+        if (this.competencyData && this.seletedLevel && this.seletedLevel.type !== 'class') {
+            return this.competencyData.drilldown[0] ?
+             ((this.competencyData.drilldown[0].type === ('system' || 'block')) ?
+              this.competencyData.drilldown[0].subType : this.competencyData.drilldown[0].type) : 'states';
+        } else {
+            return 'districts';
+        }
+    }
+
 
     // -------------------------------------------------------------------------------
     // Methods
 
+    private numberFormat(value: number) {
+        return numberFormat(value);
+    }
 }
