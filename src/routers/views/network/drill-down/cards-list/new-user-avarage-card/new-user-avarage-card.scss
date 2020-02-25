@@ -37,6 +37,9 @@
             align-items: center;
             &.down {
               color: $red;
+              &.high {
+                color: $green;
+              }
             }
             i {
               font-size: 20px;

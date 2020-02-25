@@ -9,8 +9,8 @@
                         {{cardTitle}}
                     </div>
                     <ul class="texas-card-list">
-                    <li class="down"><material-icon icon="trending_down"/></li>
-                    <li class="down">{{cardData.percent ? cardData.percent : ''}}</li>
+                    <li :class="['down', {high: isLowPercent(cardData.percent) > 0} ]"><material-icon :icon=" isLowPercent(cardData.percent) > 0 ? 'trending_up' : 'trending_down'"/></li>
+                    <li :class="['down', {high: isLowPercent(cardData.percent) > 0} ]">{{cardData.percent ? cardData.percent : ''}}</li>
                     <li>since {{sinceMonth}}</li>
                    </ul>
                 </div>

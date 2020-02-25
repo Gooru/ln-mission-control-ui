@@ -1,0 +1,104 @@
+{
+    "12_2019" : {
+       "user_count": 257,
+   "avg_count": "9m.18s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "6%",
+           "overall": 8
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "15m.11s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       },
+       "stugglingCompetency":[{
+        "code": "1.NS.4",
+        "name": "Applies knowledge of association between number and quantity and compares numbers upto 20"
+    },{
+        "code": "2.PD.1",
+        "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+    },{
+        "code": "3.FD.1",
+        "name": "Understands fractions as equal share."
+    },{
+        "code": "4.FD.1",
+        "name": "Understands part to whole concept of fractions, language of fractions and representations"
+    }]
+    },
+    "01_2020" : {
+       "user_count": 259,
+   "avg_count": "22m.18s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "2%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "16m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "11%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.G.1",
+           "name": "Describes and classifies objects based on some geometrical ideas like number of sides, angles etc"
+       },{
+           "code": "2.M.2",
+           "name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units"
+       },{
+           "code": "3.NS.2",
+           "name": "Understands place value in three digit numbers in terms of units, tens and hundreds."
+       },{
+           "code": "4.G.6",
+           "name": "Understands the concept of perimeter of polygons5."
+       },{
+        "code": "5.G.2",
+        "name": "Sorts and names shapes [TRIANGLES] based on sides and angles"
+    }]
+    },
+    "02_2020" : {
+       "user_count": 259,
+       "avg_count": "22m.18s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.PN.1",
+           "name": "Sorts / classifies / groups different items and acquires and uses appropriate vocabulary"
+       },{
+           "code": "2.G.1",
+           "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+       },{
+           "code": "3.G.1",
+           "name": "Classifies shapes using nomenclature such as 2-D and 3-D shapes. Names common shapes and solids."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
+       },{
+        "code": "5.FD.3",
+        "name": "Adds and Subtracts fractions"
+    }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

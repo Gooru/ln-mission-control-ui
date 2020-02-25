@@ -29,7 +29,7 @@ export default class AtcChart extends Vue {
   private drawAtcChart(dataset: any) {
     d3.select('svg').remove();
     const margin = {
-        top: 10,
+        top: 30,
         right: 20,
         bottom: 30,
         left: 50,

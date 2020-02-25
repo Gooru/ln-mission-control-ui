@@ -93,9 +93,33 @@
                 </div>
                 <div class="learning-map-tap" v-if="!isActive">
                     <div class="learning-map-container" v-if="learningMapContent">
-                         <div class="coures-content" v-for="(collection, keys, index) in learningMapContent.totalCounts" @click="onSelectContent(keys)" :key="index">
-                             <span class="icon"><mc-icon :icon="keys + '-gray'" /></span>
-                             <span>{{collection}}</span>
+                        <div class="coures-content"  @click="onSelectContent('course')">
+                             <span class="icon"><mc-icon icon="course-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.course}}</span>
+                         </div>
+                         <div class="coures-content"  @click="onSelectContent('unit')">
+                             <span class="icon"><mc-icon icon="unit-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.unit}}</span>
+                         </div>
+                         <div class="coures-content"  @click="onSelectContent('lesson')">
+                             <span class="icon"><mc-icon icon="lesson-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.lesson}}</span>
+                         </div>
+                         <div class="coures-content"  @click="onSelectContent('collection')">
+                             <span class="icon"><mc-icon icon="collection-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.collection}}</span>
+                         </div>
+                         <div class="coures-content"  @click="onSelectContent('assessment')">
+                             <span class="icon"><mc-icon icon="assessment-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.assessment}}</span>
+                         </div>
+                         <div class="coures-content"  @click="onSelectContent('resource')">
+                             <span class="icon"><mc-icon icon="resource-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.resource}}</span>
+                         </div>
+                         <div class="coures-content"  @click="onSelectContent('rubric')">
+                             <span class="icon"><mc-icon icon="rubric-gray" /></span>
+                             <span>{{learningMapContent.totalCounts.rubric}}</span>
                          </div>
                     </div>
                      <div class="signature-content-section">

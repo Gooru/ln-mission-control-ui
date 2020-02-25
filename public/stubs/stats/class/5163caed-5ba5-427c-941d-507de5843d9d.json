@@ -1,0 +1,84 @@
+{
+    "12_2019" : {
+       "user_count": 13,
+   "avg_count": "16m.17s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "2%",
+           "overall": 2
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "13m 15s"
+       },
+       "student_gaind_card": {
+           "percent": "2%",
+           "overall": "12%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.PD.1",
+           "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+       },{
+           "code": "3.G.3",
+           "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+       },{
+           "code": "4.G.8",
+           "name": "Investigates mirror symmetry in shapes"
+       
+        }]
+    },
+    "01_2020" : {
+       "user_count": 9,
+   "avg_count": "19m.17s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "3%",
+           "overall": 1
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "17m.05s"
+       },
+       "student_gaind_card": {
+           "percent": "-1%",
+           "overall": "23%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.PD.1",
+           "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+       },{
+           "code": "3.G.3",
+           "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+       },{
+           "code": "4.G.8",
+           "name": "Investigates mirror symmetry in shapes"
+       }]
+    },
+    "02_2020" : {
+       "user_count": 7,
+       "avg_count": "23m.17s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "2%",
+           "overall": 1
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "18m.55s"
+       },
+       "student_gaind_card": {
+           "percent": "-2%",
+           "overall": "17%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.3",
+           "name": "Understands number upto 20 and applies in real life context."
+       }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

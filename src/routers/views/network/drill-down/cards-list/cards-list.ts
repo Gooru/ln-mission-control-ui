@@ -61,13 +61,7 @@ export default class CardsList extends Vue {
     }
 
     private get nextLevelName() {
-        if (this.competencyData && this.seletedLevel && this.seletedLevel.type !== 'class') {
-            return this.competencyData.drilldown[0] ?
-             ((this.competencyData.drilldown[0].type === ('system' || 'block')) ?
-              this.competencyData.drilldown[0].subType : this.competencyData.drilldown[0].type) : 'states';
-        } else {
-            return 'districts';
-        }
+        return this.seletedLevel ? this.seletedLevel.type : 'states';
     }
 
 
