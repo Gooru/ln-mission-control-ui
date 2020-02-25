@@ -1,0 +1,74 @@
+{
+    "12_2019" : {
+       "user_count": 239,
+   "avg_count": "17m.36s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "3%",
+           "overall": 7
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "12m.16s"
+       },
+       "student_gaind_card": {
+           "percent": "-2%",
+           "overall": "19%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.4",
+           "name": "Applies knowledge of association between number and quantity and compares numbers upto 20"
+       },{
+           "code": "3.G.1",
+           "name": "Classifies shapes using nomenclature such as 2-D and 3-D shapes. Names common shapes and solids."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations"
+       
+        },{
+            "code": "5.FD.3",
+            "name": "Adds and Subtracts fractions"
+         }]
+    },
+    "01_2020" : {
+       "user_count": 289,
+   "avg_count": "17m.36s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "4%",
+           "overall": 9
+       },
+       "avg_card": {
+           "percent": "-2%",
+           "overall": "14m.28s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       },
+       "stugglingCompetency":[{
+        "code": "1.PN.3",
+        "name": "Compares and orders objects using measurable attributes and acquires related vocabularyand compares numbers upto 20"
+    },{
+        "code": "2.NO.3",
+        "name": "Articulates strategies used in problem solving verbally."
+    },{
+        "code": "3.G.3",
+        "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+    },{
+        "code": "4.FD.1",
+        "name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
+    }]
+    },
+    "02_2020" : {
+       "user_count": 189,
+       "avg_count": "17m.36s",
+       "gained_comp": "53%",
+       "stugglingCompetency":[]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

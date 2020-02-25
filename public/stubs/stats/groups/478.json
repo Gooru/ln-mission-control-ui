@@ -1,0 +1,101 @@
+{
+    "12_2019" : {
+       "user_count": 11,
+   "avg_count": "13m.16s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "6%",
+           "overall": 8
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "15m.11s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.NO.7",
+           "name": "Understands the concept of division through contextual problems."
+       },{
+           "code": "3.PD.2",
+           "name": "Collects, organizes and interprets data for a defined objective"
+       },{
+           "code": "5.NO.6",
+           "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+       },{
+           "code": "5.PD.5",
+           "name": "Compares and interprets two different sets of data and draws conclusion"
+       }]
+    },
+    "01_2020" : {
+       "user_count": 12,
+   "avg_count": "15m.16s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "2%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "16m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "11%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.M.1",
+           "name": "Estimates, measures and compares length of objects and height using non standard units like hand span and foot length and prescribed non standard units; expresses measure as x hand spans or y foot length"
+       },{
+           "code": "3.PD.2",
+           "name": "Collects, organizes and interprets data for a defined objective"
+       },{
+           "code": "4.PD.2",
+           "name": "Understands different aspects of graphs like scale, X and Y axis and uses this to interpret and represent data in the form of graphs"
+       },{
+           "code": "5.NO.6",
+           "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+       },{
+        "code": "5.PD.5",
+        "name": "Compares and interprets two different sets of data and draws conclusion"
+    }]
+    },
+    "02_2020" : {
+       "user_count": 254,
+       "avg_count": "21m.18s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.3",
+           "name": "Understands number upto 20 and applies in real life context."
+       },{
+           "code": "2.G.1",
+           "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
+       }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

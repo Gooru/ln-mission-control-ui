@@ -51,4 +51,9 @@ export default class NewUserAvarageCard extends Vue {
         return numberFormat(value);
     }
 
+    private isLowPercent(value: string = '0') {
+        const percent = parseFloat(value) / 100.0;
+        return Math.sign(percent);
+    }
+
 }

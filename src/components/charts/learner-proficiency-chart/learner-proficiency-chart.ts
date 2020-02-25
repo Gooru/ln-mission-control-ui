@@ -322,7 +322,7 @@ export default class LearnerProficiencyChart extends Vue {
   public loadTaxonomyGrades() {
     const component = this;
     return taxonomyAPI.fetchTaxonomyGrades(this.subjectCode).then((taxonomyGrades: GradeModel[]) => {
-      component.taxonomyGrades = taxonomyGrades.sort((a: any, b: any) => a.id - b.id);
+      component.taxonomyGrades = taxonomyGrades.sort((a: any, b: any) => b.id - a.id);
       component.loadChartData();
     });
   }
@@ -840,9 +840,9 @@ export default class LearnerProficiencyChart extends Vue {
   private minGradeLine() {
     return new Promise((resolve, reject) => {
       const minGrade = this.activeGradeList.reduce(
-        (prev: any, current: any) => (prev.id < current.id) ? prev : current, this.activeGradeList);
+        (prev: any, current: any) => (prev.id < current.id) ? prev : current);
       const minGradeIndex = this.taxonomyGrades.findIndex((grade) => grade.id === minGrade.id);
-      const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex - 1] : null;
+      const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex + 1] : null;
       if (prevGrade) {
         this.loadTaxonomyGradeBoundaries(prevGrade.id).then((boundaries) => {
           return resolve(this.boundaryMapForMultiGrade(this.chartData, boundaries));
