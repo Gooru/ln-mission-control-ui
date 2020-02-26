@@ -6,6 +6,7 @@
         <span>Proficiency</span><span class="toggle"><google-material-icon :icon="isShowFacetsProficiency ? 'arrow_drop_up' : 'arrow_drop_down'" /></span>
       </div>
       <div class="panel-body-container" v-if="isShowFacetsProficiency">
+        <facets-list-panel :facetsCompetencyMatrix=facetsCompetencyMatrix />
       </div>
     </div>
 

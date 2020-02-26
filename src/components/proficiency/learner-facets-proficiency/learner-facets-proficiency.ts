@@ -80,8 +80,8 @@ export default class LearnerFacetsProficiency extends Vue {
     this.isShowFacetsProficiency = false;
   }
 
-  private getFacetsCompetencyMatrix(facetsCompetencyMatrix) {
-    console.log('in prof', facetsCompetencyMatrix);
+  private recognizeFacetCompetencyMatrix(facetsCompetencyMatrix: any) {
+    this.facetsCompetencyMatrix = facetsCompetencyMatrix;
   }
 
   private listActiveFacets(facets: SubjectModel[]) {

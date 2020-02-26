@@ -41,7 +41,7 @@
           :facets="activeFacets"
           :userId="learnerId"
           :isExpandedMode="isShowExpandedFacetChart"
-          @facetsCompetencyMatrix="getFacetsCompetencyMatrix"/>
+          @facetsCompetencyMatrix="recognizeFacetCompetencyMatrix"/>
         </div>
       </div>
       <div v-if="activeFacets.length" class="facets-right-panel">
