@@ -56,6 +56,9 @@ export default class KnowledgePanel extends Vue {
   @Prop()
   private learningMapData!: any;
 
+  @Prop()
+  private facetsCompetencyMatrix!: any;
+
   private isShowDomainList: boolean = true;
 
   private isShowCompetencyList: boolean = true;
@@ -67,6 +70,8 @@ export default class KnowledgePanel extends Vue {
   private isShowLearningMap: boolean = false;
 
   private isShowMetadata: boolean = false;
+
+  private isShowFacetsProficiency: boolean = true;
 
   public onSelectDomain(domain: any) {
     this.$emit('onSelectDomain', domain);

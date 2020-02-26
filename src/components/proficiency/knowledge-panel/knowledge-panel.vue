@@ -1,5 +1,14 @@
 <template>
   <div id="knowledge-panel">
+
+    <div class="facets-panel-container" v-if="statsBucket === 'facets'">
+      <div class="panel-header-container"  @click="isShowFacetsProficiency = !isShowFacetsProficiency">
+        <span>Proficiency</span><span class="toggle"><google-material-icon :icon="isShowFacetsProficiency ? 'arrow_drop_up' : 'arrow_drop_down'" /></span>
+      </div>
+      <div class="panel-body-container" v-if="isShowFacetsProficiency">
+      </div>
+    </div>
+
     <div class="domains-panel-container" v-if="statsBucket === 'subject'">
       <div class="panel-header-container"  @click="isShowDomainList = !isShowDomainList">
         <span>Proficiency</span><span class="toggle"><google-material-icon :icon="isShowDomainList ? 'arrow_drop_up' : 'arrow_drop_down'" /></span>

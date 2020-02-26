@@ -46,6 +46,8 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private isShowExpandedFacetChart: boolean = true;
 
+  private facetsCompetencyMatrix: any;
+
   public onChageTimeline(timeline: string) {
     const component = this;
     component.activeYear = moment(timeline).format('YYYY');
@@ -76,6 +78,10 @@ export default class LearnerFacetsProficiency extends Vue {
     this.activeClassificationCode = subject.code.split('.')[0];
     this.activeSubject = subject;
     this.isShowFacetsProficiency = false;
+  }
+
+  private getFacetsCompetencyMatrix(facetsCompetencyMatrix) {
+    console.log('in prof', facetsCompetencyMatrix);
   }
 
   private listActiveFacets(facets: SubjectModel[]) {
