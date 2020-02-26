@@ -1,7 +1,7 @@
 <template>
     <div id="texas-card-container" v-if="cardData.length">
         <div class="texas-district-title">
-         <h5 class="texas-distict-name">{{cardName}}</h5>
+         <h5 class="texas-distict-name">{{$t('common.'+cardName)}}</h5>
             <material-icon icon="search" />
          </div>
           <div class="texas-district-card" v-for="(level, levelIndex) in cardData" :key="levelIndex" @click="onSelectLevel(level)">
