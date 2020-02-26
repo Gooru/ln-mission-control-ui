@@ -61,7 +61,8 @@ export default class CardsList extends Vue {
     }
 
     private get nextLevelName() {
-        return this.seletedLevel ? this.seletedLevel.type : 'states';
+        return this.seletedLevel ? (this.seletedLevel.type !== 'system' ?
+         this.seletedLevel.type : this.seletedLevel.subType) : 'country';
     }
 
 

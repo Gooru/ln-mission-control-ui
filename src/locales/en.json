@@ -68,5 +68,14 @@
   "learning-map": "Learning Map",
   "common.relevance": "relevance",
   "common.engagement": "engagement",
-  "common.efficacy": "efficacy"
+  "common.efficacy": "efficacy",
+  "common.state": "States",
+  "common.school_district": "School Districts",
+  "common.district": "Districts",
+  "common.block": "Blocks",
+  "common.cluster": "Clusters",
+  "common.school": "Schools",
+  "common.class": "Classes",
+  "common.country": "Countries",
+  "common.student": "Students"
 }

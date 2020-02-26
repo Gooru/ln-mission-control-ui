@@ -11,13 +11,13 @@
                     <ul class="texas-card-list">
                     <li :class="['down', {high: isLowPercent(cardData.percent) > 0} ]"><material-icon :icon=" isLowPercent(cardData.percent) > 0 ? 'trending_up' : 'trending_down'"/></li>
                     <li :class="['down', {high: isLowPercent(cardData.percent) > 0} ]">{{cardData.percent ? cardData.percent : ''}}</li>
-                    <li>since {{sinceMonth}}</li>
+                    <li>since last {{sinceMonth}}</li>
                    </ul>
                 </div>
             </div>
             <div class="avarage-card-footer" >
-                <p v-if="cardName === 'new-user'">v/s <span> {{ cardData.overall ? numberFormat(cardData.overall) : '' }}</span> on avarage across all {{nextLevelName}}</p>
-                <p v-if="cardName !== 'new-user'">v/s <span> {{ cardData.overall ? cardData.overall : '' }}</span> on avarage across all {{nextLevelName}}</p>
+                <p v-if="cardName === 'new-user'">v/s <span> {{ cardData.overall ? numberFormat(cardData.overall) : '' }}</span> on avg across all {{ $t('common.' + nextLevelName) }}</p>
+                <p v-if="cardName !== 'new-user'">v/s <span> {{ cardData.overall ? cardData.overall : '' }}</span> on avg across all {{ $t('common.' + nextLevelName) }}</p>
             </div>
         </div>
        <div class="card-popup-card">
