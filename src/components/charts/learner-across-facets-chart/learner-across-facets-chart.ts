@@ -140,6 +140,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     });
     // component.maxFacetCompetenciesCount = maxFacetCompetenciesCount;
     component.facetsCompetencyMatrixData = parsedFacetsCompetencyMatrix;
+    component.$emit('facetsCompetencyMatrix', parsedFacetsCompetencyMatrix);
     component.loadChartData();
   }
 

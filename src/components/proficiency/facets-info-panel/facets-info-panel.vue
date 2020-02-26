@@ -15,7 +15,7 @@
       <div class="active-tab-contents">
         <component
           v-bind:is="activeTab.component"
-          v-bind="{statsBucket: 'facets', userId: userId, month: month, year: year, activeFacets: activeFacets}"
+          v-bind="{statsBucket: 'facets', userId: userId, month: month, year: year, activeFacets: activeFacets, facetsCompetencyMatrix: activeFacetsCompetencyMatrix}"
           @onSelectPortfolioStat="onSelectPortfolioStat"/>
       </div>
     </div>

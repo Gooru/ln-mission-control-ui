@@ -40,7 +40,8 @@
           @onSelectSubject="onSelectSubject"
           :facets="activeFacets"
           :userId="learnerId"
-          :isExpandedMode="isShowExpandedFacetChart"/>
+          :isExpandedMode="isShowExpandedFacetChart"
+          @facetsCompetencyMatrix="recognizeFacetCompetencyMatrix"/>
         </div>
       </div>
       <div v-if="activeFacets.length" class="facets-right-panel">
@@ -49,6 +50,7 @@
         :month="activeMonth"
         :year="activeYear"
         :activeFacets="activeFacets"
+        :facetsCompetencyMatrix="facetsCompetencyMatrix"
         @onSelectPortfolioStat="onSelectPortfolioStat"/>
       </div>
     </div>

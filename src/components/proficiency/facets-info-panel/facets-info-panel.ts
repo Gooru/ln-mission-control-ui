@@ -26,6 +26,16 @@ export default class FacetsInfoPanel extends Vue {
   @Prop()
   private activeFacets!: SubjectModel[];
 
+  @Prop()
+  private facetsCompetencyMatrix!: any;
+
+  get activeFacetsCompetencyMatrix() {
+    return this.activeFacets.map( (activeFacet: SubjectModel) => {
+      return this.facetsCompetencyMatrix.find( (
+        facetCompetencyMatrix: any) => facetCompetencyMatrix.subjectCode === activeFacet.code);
+    });
+  }
+
   private activeTab: object = {
     label: 'Knowledge',
     component: 'knowledge-panel',

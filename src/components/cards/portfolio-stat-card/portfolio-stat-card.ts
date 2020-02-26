@@ -23,7 +23,7 @@ export default class PortfolioStatCard extends Vue {
   public statType!: string;
 
   get totalCount() {
-    return this.statInfo.totalCount || 0;
+    return this.statInfo.totalCount || this.statInfo.totalCompetenciesCount || 0;
   }
 
   get title() {
@@ -33,6 +33,8 @@ export default class PortfolioStatCard extends Vue {
       title = this.statInfo.domainName;
     } else if (statType === 'domain') {
       title = this.statInfo.competencyCode;
+    } else if (statType === 'facetCompetencies') { // Facet subject name from competency matrix data
+      title = this.statInfo.subjectName;
     } else {
       title = this.statInfo.subjectName;
     }

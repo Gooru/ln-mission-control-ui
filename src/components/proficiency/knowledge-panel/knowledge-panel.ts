@@ -5,6 +5,7 @@ import DomainsListPanel from '../domains-list-panel/domains-list-panel';
 import CompetenciesListPanel from '../competencies-list-panel/competencies-list-panel';
 import MetadataPanel from '../metadata-panel/metadata-panel';
 import LearningMap from '@/components/competency/learning-map/learning-map';
+import FacetsListPanel from '../facets-list-panel/facets-list-panel';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { DomainModel } from '@/models/proficiency/domain';
@@ -21,6 +22,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
     'metadata-panel': MetadataPanel,
     'learning-map': LearningMap,
     'google-material-icon': GoogleMaterialIcon,
+    'facets-list-panel': FacetsListPanel,
   },
 })
 
@@ -56,6 +58,9 @@ export default class KnowledgePanel extends Vue {
   @Prop()
   private learningMapData!: any;
 
+  @Prop()
+  private facetsCompetencyMatrix!: any;
+
   private isShowDomainList: boolean = true;
 
   private isShowCompetencyList: boolean = true;
@@ -68,6 +73,8 @@ export default class KnowledgePanel extends Vue {
 
   private isShowMetadata: boolean = false;
 
+  private isShowFacetsProficiency: boolean = true;
+
   public onSelectDomain(domain: any) {
     this.$emit('onSelectDomain', domain);
   }
@@ -77,7 +84,7 @@ export default class KnowledgePanel extends Vue {
   }
 
   private created() {
-    this.isShowPortfolioContainer = this.statsBucket === 'competency' || this.statsBucket === 'facets';
+    this.isShowPortfolioContainer = this.statsBucket === 'competency';
   }
 
   private onSelectPortfolioStat(portfolioStat: any) {
