@@ -1,0 +1,98 @@
+{
+    "12_2019" : {
+       "user_count": 45,
+   "avg_count": "20m.16s",
+       "gained_comp": "23%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "2%",
+           "overall": 9
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "23m.28s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "24%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.3",
+           "name": "Understands number upto 20 and applies in real life context."
+       },{
+           "code": "2.G.1",
+           "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+        "code": "4.FD.1",
+        "name": "Understands part to whole concept of fractions, language of fractions and representations"
+        }]
+    },
+    "01_2020" : {
+        "user_count": 45,
+   "avg_count": "20m.16s",
+       "gained_comp": "23%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "5%",
+           "overall": 4
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "16m.45s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "33%"
+       },
+       "stugglingCompetency":[{
+        "code": "1.NS.3",
+        "name": "Understands number upto 20 and applies in real life context."
+    },{
+        "code": "2.G.1",
+        "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+    },{
+        "code": "3.FD.1",
+        "name": "Understands fractions as equal share."
+    },{
+     "code": "4.FD.1",
+     "name": "Understands part to whole concept of fractions, language of fractions and representations"
+     }]
+    },
+    "02_2020" : {
+        "user_count": 45,
+        "avg_count": "20m.16s",
+            "gained_comp": "23%",
+            "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 2
+       },
+       "avg_card": {
+           "percent": "-3%",
+           "overall": "19m.35s"
+       },
+       "student_gaind_card": {
+           "percent": "-3%",
+           "overall": "39%"
+       },
+            "stugglingCompetency":[{
+                "code": "1.NS.3",
+                "name": "Understands number upto 20 and applies in real life context."
+            },{
+                "code": "2.G.1",
+                "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+            },{
+                "code": "3.FD.1",
+                "name": "Understands fractions as equal share."
+            },{
+             "code": "4.FD.1",
+             "name": "Understands part to whole concept of fractions, language of fractions and representations"
+             }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

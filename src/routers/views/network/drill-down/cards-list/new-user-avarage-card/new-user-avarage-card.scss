@@ -46,6 +46,15 @@
             }
           }
         }
+        &.right-alignment {
+          text-align: right;
+          .user-details-title {
+            grid-template-columns: 1fr auto;
+            i {
+              padding: 0 5px;
+            }
+          }
+        }
       }
       &.suggestion {
         .user-details-title {
