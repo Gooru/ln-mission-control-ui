@@ -251,18 +251,96 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 5,
-    "avg_count": "31m 10s",
-		"gained_comp": "32%",
+		"user_count": 3312,
+    "avg_count": "29m.17s",
+		"gained_comp": "45%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "4%",
+			"overall": 45
+		},
+		"avg_card": {
+			"percent": "2%",
+			"overall": "14m 24s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "17%"
+		},
 		"stugglingCompetency":[{
-			"code": "5.NO.4",
-			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+			"code": "2.M.2",
+			"name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units"
 		},{
-			"code": "5.M.5",
-			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+			"code": "4.G.6",
+			"name": "Understands the concept of perimeter of polygons"
 		},{
-			"code": "5.PD.6",
-			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+			"code": "4.FD.3",
+			"name": "Understands concept composite fractions."
+		},{
+			"code": "5.FD.3",
+			"name": "Adds and Subtracts fractions"
+		}]
+	 },
+	 "01_2020" : {
+		"user_count": 3415,
+    "avg_count": "29m.17s",
+		"gained_comp": "45%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "4%",
+			"overall": 62
+		},
+		"avg_card": {
+			"percent": "-3%",
+			"overall": "17m.20s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "19%"
+		},
+		"stugglingCompetency":[{
+			"code": "2.M.2",
+			"name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units"
+		},{
+			"code": "4.FD.3",
+			"name": "Understands concept composite fractions."
+		},{
+			"code": "4.G.6",
+			"name": "Understands the concept of perimeter of polygons"
+		},{
+			"code": "5.FD.3",
+			"name": "Adds and Subtracts fractions"
+		}]
+	 },
+	 "02_2020" : {
+		"user_count": 1816,
+		"avg_count": "29m.17s",
+		"gained_comp": "53%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "-3%",
+			"overall": 44
+		},
+		"avg_card": {
+			"percent": "-2%",
+			"overall": "21m.10s"
+		},
+		"student_gaind_card": {
+			"percent": "-1%",
+			"overall": "18%"
+		},
+		"stugglingCompetency":[{
+			"code": "2.NO.7",
+			"name": "Understands the concept of division through contextual problems."
+		},{
+			"code": "3.PD.2",
+			"name": "Collects, organizes and interprets data for a defined objective"
+		},{
+			"code": "5.NO.6",
+			"name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+		},{
+			"code": "5.PD.5",
+			"name": "Compares and interprets two different sets of data and draws conclusion"
 		}]
 	 },
 	 "total" : {

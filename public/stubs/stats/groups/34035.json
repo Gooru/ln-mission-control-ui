@@ -1,0 +1,89 @@
+{
+    "12_2019" : {
+       "user_count": 268,
+   "avg_count": "20m.16s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "2%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "26m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "19%"
+       },
+       "stugglingCompetency":[{
+        "code": "2.PD.1",
+        "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+    },{
+        "code": "3.G.3",
+        "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+    },{
+        "code": "4.G.8",
+        "name": "Investigates mirror symmetry in shapes"
+    }]
+    },
+    "01_2020" : {
+       "user_count": 293,
+   "avg_count": "26m.12s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "4%",
+           "overall": 7
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "21m.23s"
+       },
+       "student_gaind_card": {
+           "percent": "4%",
+           "overall": "31%"
+       },
+       "stugglingCompetency":[{
+        "code": "2.PD.1",
+        "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+    },{
+        "code": "3.G.3",
+        "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+    },{
+        "code": "4.G.8",
+        "name": "Investigates mirror symmetry in shapes"
+    }]
+    },
+    "02_2020" : {
+       "user_count": 262,
+       "avg_count": "20m.16s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "6%",
+           "overall": 4
+       },
+       "avg_card": {
+           "percent": "-2%",
+           "overall": "17m.33s"
+       },
+       "student_gaind_card": {
+           "percent": "2%",
+           "overall": "35%"
+       },
+       "stugglingCompetency":[{
+        "code": "2.PD.1",
+        "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+    },{
+        "code": "3.G.3",
+        "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+    },{
+        "code": "4.G.8",
+        "name": "Investigates mirror symmetry in shapes"
+    }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}
