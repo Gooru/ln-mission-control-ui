@@ -21,19 +21,45 @@
     }
   }
   .portfolio-stat-body {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-    align-items: center;
-    height: 95px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-    .stat-detail {
+    > div {
       display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-items: center;
       align-items: center;
-      .content-count {
-        text-align: center;
-        font-size: 18px;
-        font-weight: bold;
+      height: 95px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      .stat-detail {
+        display: grid;
+        align-items: center;
+        .content-count {
+          text-align: center;
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+
+      .facet-status {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        .box {
+          width: 32px;
+          height: 32px;
+          display: block;
+          &.mastered {
+            background-color: #1d7dc2;
+          }
+          &.inprogress {
+            background-color: #1aa9eb;
+          }
+          &.notstarted {
+            background-color: #dcdfe0;
+          }
+        }
+        .count {
+          font-size: 18px;
+          font-weight: bold;
+        }
       }
     }
   }
