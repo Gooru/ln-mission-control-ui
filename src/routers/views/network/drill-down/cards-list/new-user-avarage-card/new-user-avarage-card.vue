@@ -3,7 +3,7 @@
         <div class="avarage-card-panel">
             <div :class="['avarage-card-header', cardName]">
                 <h4 class="new-user-count">{{cardValue}}</h4>
-                <div :class="['user-details-panel', {'right-alignment': cardName !== 'class-activity'}]">
+                <div :class="['user-details-panel', 'right-alignment']">
                     <div class="user-details-title">
                         <material-icon :icon="iconName" />
                         {{cardTitle}}
