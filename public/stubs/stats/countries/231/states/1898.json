@@ -343,6 +343,40 @@
 			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
 		}]
 	 },
+	 "03_2020" : {
+		"user_count": 752,
+    "avg_count": "26m.31s",
+		"gained_comp": "23%",
+		"month_since": "Mar",
+		"user_card": {
+			"percent": "9%",
+			"overall": 371
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "26m 43s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "27%"
+		},
+		"stugglingCompetency":[{
+			"code": "2.NBT.4",
+			"name": "Compare two three-digit numbers based on meanings of the hundreds, tens, and ones digits, using >, =, and < symbols to record the results of comparisons."
+		},{
+			"code": "3.G.2",
+			"name": "Partition shapes into parts with equal areas. Express the area of each part as a unit fraction of the whole."
+		},{
+			"code": "6.NS.7.d",
+			"name": "Distinguish comparisons of absolute value from statements about order Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+		},{
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		}]
+	 },
 	 "total" : {
 				"user_count": 4778
 	 }

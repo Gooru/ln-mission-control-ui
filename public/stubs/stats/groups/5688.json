@@ -83,6 +83,37 @@
 			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
 		}]
 	 },
+	 "03_2020" : {
+		"user_count": 63,
+    "avg_count": "26m.13s",
+		"gained_comp": "23%",
+		"month_since": "Mar",
+		"user_card": {
+			"percent": "11%",
+			"overall": 71
+		},
+		"avg_card": {
+			"percent": "2%",
+			"overall": "27m 15s"
+		},
+		"student_gaind_card": {
+			"percent": "-3%",
+			"overall": "22%"
+		},
+		"stugglingCompetency":[{
+			"code": "4.OA.1",
+			"name": "Interpret a multiplication equation as a comparison"
+		},{
+			"code": "7.EE.4.a",
+			"name": "Solve word problems leading to equations of the form px + q = r and p(x + q) = r, where p, q, and r are specific rational numbers."
+		},{
+			"code": "7.SP.7.a",
+			"name": "Develop a uniform probability model by assigning equal probability to all outcomes, and use the model to determine probabilities of events."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
 	 "total" : {
 				"user_count": 4778
 	 }

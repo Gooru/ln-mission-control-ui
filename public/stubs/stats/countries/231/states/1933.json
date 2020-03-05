@@ -268,6 +268,12 @@
 		"gained_comp": "23%",
 		"stugglingCompetency":[]
 	 },
+	 "03_2020" : {
+		"user_count": 280,
+    "avg_count": "22m.18s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[]
+	 },
 	 "total" : {
 				"user_count": 4778
 	 }

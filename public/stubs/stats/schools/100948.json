@@ -44,6 +44,21 @@
                 "name": "Understand that the probability of a chance event is a number between 0 and 1 that"
             }]
     },
+    "03_2020" : {
+        "user_count": 12,
+        "avg_count": "21m.17s",
+            "gained_comp": "23%",
+            "stugglingCompetency":[{
+                "code": "5.NBT.3.b",
+                "name": " Compare two decimals to thousandths based on meanings of the digits in each place, using >, =, and < symbols to record the results of comparisons."
+            },{
+                "code": "5.OA.1",
+                "name": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols."
+            },{
+                "code": "7.EE.4",
+                "name": "Use variables to represent quantities in a real-world or mathematical problem, and construct simple equations and inequalities to solve problems by reasoning about the quantities."
+            }]
+    },
     "total" : {
                "user_count": 4778
     }

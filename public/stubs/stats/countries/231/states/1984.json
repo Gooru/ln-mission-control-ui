@@ -304,6 +304,24 @@
 			"name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
 		}]
 	 },
+	 "03_2020" : {
+		"user_count": 184,
+    "avg_count": "29m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "3.MD.5.a",
+			"name": "A square with side length 1 unit, called “a unit square,” is said to have “one square unit” of area, and can be used to measure area."
+		},{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "6.RP.3.b",
+			"name": "Solve unit rate problems including those involving unit pricing and constant speed. For example, if it took 7 hours to mow 4 lawns, then at that rate, how many lawns could be mowed in 35 hours? At what rate were lawns being mowed?"
+		},{
+			"code": "8.F.2",
+			"name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
+		}]
+	 },
 	 "total" : {
 				"user_count": 4778
 	 }

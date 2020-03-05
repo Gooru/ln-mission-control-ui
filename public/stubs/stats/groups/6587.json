@@ -53,6 +53,24 @@
         "name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
     }]
     },
+    "03_2020" : {
+        "user_count": 59,
+   "avg_count": "21m.36s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+        "code": "4.OA.5",
+        "name": "Generate a number or shape pattern that follows a given rule. Identify apparent features of the pattern that were not explicit in the rule itself."
+    },{
+        "code": "5.NF.3",
+        "name": "nterpret a fraction as division of the numerator by the denominator. Solve word problems involving division of whole numbers leading to answers in the form of fractions or mixed numbers"
+    },{
+        "code": "6.RP.3.b",
+        "name": "Solve unit rate problems including those involving unit pricing and constant speed. For example, if it took 7 hours to mow 4 lawns, then at that rate, how many lawns could be mowed in 35 hours? At what rate were lawns being mowed?"
+    },{
+        "code": "8.F.2",
+        "name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
+    }]
+    },
     "total" : {
                "user_count": 4778
     }

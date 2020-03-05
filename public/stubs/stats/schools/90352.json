@@ -334,6 +334,34 @@
 			"name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
 		}]
 	 },
+	 "03_2020" : {
+		"user_count": 14,
+    "avg_count": "25m.11s",
+		"gained_comp": "23%",
+		"month_since": "Mar",
+		"user_card": {
+			"percent": "1%",
+			"overall": 16
+		},
+		"avg_card": {
+			"percent": "3%",
+			"overall": "25m 17s"
+		},
+		"student_gaind_card": {
+			"percent": "2%",
+			"overall": "19%"
+		},
+		"stugglingCompetency":[{
+			"code": "3.NF.2",
+			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		},{
+			"code": "7.EE.1",
+			"name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+		}]
+	 },
 	 "total" : {
 				"user_count": 4778
 	 }
