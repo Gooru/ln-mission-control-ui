@@ -95,6 +95,40 @@
             "name": "Understands part to whole concept of fractions, language of fractions and representations"
         }]
     },
+    "03_2020" : {
+		"user_count": 7,
+    "avg_count": "23m 16s",
+		"gained_comp": "53%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "2%",
+			"overall": 2
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "21m.19s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "27%"
+		},
+		"stugglingCompetency":[{
+            "code": "2.NO.3",
+            "name": "Articulates strategies used in problem solving verbally."
+            },{
+                "code": "3.PD.2",
+                "name": "Collects, organizes and interprets data for a defined objective"
+            },{
+                "code": "4.FD.3",
+                "name": "Understands concept composite fractions."
+            },{
+            "code": "4.G.8",
+            "name": "Investigates mirror symmetry in shapes"
+            },{
+                "code": "5.FD.1",
+                "name": "Understands equivalence in fractions and generates equivalent sets"
+            }]
+	 },
     "total" : {
                "user_count": 4778
     }

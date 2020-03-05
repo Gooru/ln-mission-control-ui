@@ -44,6 +44,21 @@
         "name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
     }]
     },
+    "03_2020" : {
+        "user_count": 56,
+   "avg_count": "23m.29s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+        "code": "4.NF.3.d",
+        "name": "Solve word problems involving addition and subtraction of fractions referring to the same whole and having like denominators"
+    },{
+        "code": "4.NBT.4",
+        "name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm.."
+    },{
+        "code": "7.EE.1",
+        "name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+    }]
+    },
     "total" : {
                "user_count": 4778
     }

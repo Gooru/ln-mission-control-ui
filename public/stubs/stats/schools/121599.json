@@ -44,6 +44,24 @@
            "name": "Use rational approximations of irrational numbers to compare the size of irrational"
        }]
     },
+    "03_2020" : {
+        "user_count": 9,
+   "avg_count": "19m.17s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+           "code": "3.MD.7.a",
+           "name": "Find the area of a rectangle with whole-number side lengths by tiling it, and show that the area is the same as would be found by multiplying the side lengths."
+       },{
+           "code": "5.G.2",
+           "name": "Represent real world and mathematical problems by graphing points in the first quadrant of the coordinate plane, and interpret coordinate values of points in the context of the situation."
+       },{
+           "code": "5.NBT.1",
+           "name": "Recognize that in a multi-digit number, a digit in one place represents 10 times as much as it represents in the place to its right and 1/10 of what it represents in the place to its left."
+       },{
+        "code": "7.SP.7.a",
+        "name": "Develop a uniform probability model by assigning equal probability to all outcomes, and use the model to determine probabilities of events."
+    }]
+    },
     "total" : {
                "user_count": 4778
     }

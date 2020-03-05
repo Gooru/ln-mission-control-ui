@@ -44,6 +44,24 @@
              "name": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities."
          }]
     },
+    "03_2020" : {
+        "user_count": 72,
+        "avg_count": "23m.33s",
+            "gained_comp": "23%",
+            "stugglingCompetency":[{
+             "code": "3.NF.2",
+             "name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram.using the standard algorithm."
+         },{
+             "code": "5.MD.3.b",
+             "name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+         },{
+             "code": "8.SP.1",
+             "name": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities."
+         },{
+            "code": "8.F.2",
+            "name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
+        }]
+    },
     "total" : {
                "user_count": 4778
     }

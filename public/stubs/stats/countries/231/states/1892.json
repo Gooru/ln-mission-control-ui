@@ -286,6 +286,12 @@
 			"name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
 		}]
 	 },
+	 "03_2020" : {
+		"user_count": 125,
+    "avg_count": "20m.16s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[]
+	 },
 	 "total" : {
 				"user_count": 4778
 	 }
