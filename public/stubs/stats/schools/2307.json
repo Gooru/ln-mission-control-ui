@@ -99,6 +99,40 @@
             "name": "Compares and interprets two different sets of data and draws conclusion"
         }]
     },
+    "03_2020" : {
+        "user_count": 22,
+        "avg_count": "23m.14s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%%"
+        },
+        "stugglingCompetency":[{
+            "code": "2.NO.7",
+            "name": "Understands the concept of division through contextual problems."
+        },
+         {
+             "code": "3.PD.2",
+             "name": "Understands the concept of division through contextual problems."
+         },
+         {
+             "code": "5.NO.6",
+             "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly"
+         },
+         {
+             "code": "5.PD.5",
+             "name": "Compares and interprets two different sets of data and draws conclusion"
+         }] 
+     },
     "total" : {
                "user_count": 4778
     }

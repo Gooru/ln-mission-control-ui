@@ -92,6 +92,37 @@
         "name": "Understands part to whole concept of fractions, language of fractions and representations"
     }]
     },
+    "03_2020" : {
+        "user_count": 221,
+        "avg_count": "22m.11s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%"
+        },
+        "stugglingCompetency":[{
+         "code": "1.PN.3",
+         "name": "Compares and orders objects using measurable attributes and acquires related vocabulary"
+     },{
+         "code": "2.NO.3",
+         "name": "Articulates strategies used in problem solving verbally."
+     },{
+         "code": "3.G.3",
+         "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+     },{
+         "code": "4.FD.1",
+         "name": "Understands part to whole concept of fractions, language of fractions and representations"
+     }]
+     },
     "total" : {
                "user_count": 4778
     }
