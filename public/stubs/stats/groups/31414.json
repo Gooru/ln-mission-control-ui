@@ -92,6 +92,37 @@
         "name": "Adds and Subtracts fractions"
     }]
     },
+    "03_2020" : {
+        "user_count": 186,
+        "avg_count": "19m.16s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%"
+        },
+        "stugglingCompetency":[{
+         "code": "1.NS.4",
+         "name": "Applies knowledge of association between number and quantity and compares numbers upto 20"
+     },{
+         "code": "3.G.1",
+         "name": "Classifies shapes using nomenclature such as 2-D and 3-D shapes. Names common shapes and solids."
+     },{
+         "code": "4.FD.1",
+         "name": "Understands part to whole concept of fractions, language of fractions and representations"
+     },{
+         "code": "5.FD.3",
+         "name": "Adds and Subtracts fractions"
+     }]
+     },
     "total" : {
                "user_count": 4778
     }

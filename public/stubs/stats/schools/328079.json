@@ -92,6 +92,37 @@
              "name": "Understands part to whole concept of fractions, language of fractions and representations"
              }]
     },
+    "03_2020" : {
+        "user_count": 51,
+        "avg_count": "26m.22s",
+            "gained_comp": "23%",
+            "month_since": "Mar'18",
+       "user_card": {
+           "percent": "3%",
+           "overall": 2
+       },
+       "avg_card": {
+           "percent": "-3%",
+           "overall": "19m.35s"
+       },
+       "student_gaind_card": {
+           "percent": "-3%",
+           "overall": "39%"
+       },
+            "stugglingCompetency":[{
+                "code": "1.NS.3",
+                "name": "Understands number upto 20 and applies in real life context."
+            },{
+                "code": "2.G.1",
+                "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+            },{
+                "code": "3.FD.1",
+                "name": "Understands fractions as equal share."
+            },{
+             "code": "4.FD.1",
+             "name": "Understands part to whole concept of fractions, language of fractions and representations"
+             }]
+    },
     "total" : {
                "user_count": 4778
     }

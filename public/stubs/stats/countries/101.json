@@ -324,6 +324,37 @@
 				"name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
 			}]
 		 },
+		 "03_2020" : {
+			"user_count": 27863,
+			"avg_count": "19m 54s",
+			"gained_comp": "53%",
+			"month_since": "Mar'18",
+			"user_card": {
+				"percent": "3%",
+				"overall": 25788
+			},
+			"avg_card": {
+				"percent": "2.00%",
+				"overall": "25m 22s"
+			},
+			"student_gaind_card": {
+				"percent": "2%",
+				"overall": "22%"
+			},
+			"stugglingCompetency":[{
+				"code": "5.NO.4",
+				"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+			},{
+				"code": "5.G.4",
+				"name": "Classify two-dimensional figures in a hierarchy based on properties."
+			},{
+				"code": "3.M.3",
+				"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+			},{
+				"code": "8.F.2",
+				"name": "Compare properties of two functions each represented in a different way (algebraically, graphically, numerically in tables, or by verbal descriptions)."
+			}]
+		 },
 	 "total" : {
 				"user_count": 4778
 	 }

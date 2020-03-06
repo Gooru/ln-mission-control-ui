@@ -83,6 +83,34 @@
                 "name": "Investigates mirror symmetry in shapes"
             }]
     },
+    "03_2020" : {
+        "user_count": 51,
+        "avg_count": "19m.37s",
+            "gained_comp": "23%",
+            "month_since": "Mar'18",
+       "user_card": {
+           "percent": "3%",
+           "overall": 2
+       },
+       "avg_card": {
+           "percent": "-3%",
+           "overall": "19m.35s"
+       },
+       "student_gaind_card": {
+           "percent": "-3%",
+           "overall": "39%"
+       },
+            "stugglingCompetency":[{
+                "code": "2.PD.1",
+                "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+            },{
+                "code": "3.G.3",
+                "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+            },{
+                "code": "4.G.8",
+                "name": "Investigates mirror symmetry in shapes"
+            }]
+    },
     "total" : {
                "user_count": 4778
     }

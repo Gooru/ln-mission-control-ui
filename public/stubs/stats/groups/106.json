@@ -98,7 +98,34 @@
            "name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
        }]
     },
-    "total" : {
+    "03_2020" : {
+        "user_count": 178,
+        "avg_count": "19m.28s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%%"
+        },
+        "stugglingCompetency":[{
+            "code": "2.PD.1 ",
+            "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+        },{
+            "code": "3.G.3",
+            "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+        },{
+            "code": "4.G.8",
+            "name": "Investigates mirror symmetry in shapes"
+        }]
+     },    "total" : {
                "user_count": 4778
     }
 }
