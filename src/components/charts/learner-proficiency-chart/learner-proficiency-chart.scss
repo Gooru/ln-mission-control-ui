@@ -181,6 +181,19 @@
             line {
               stroke: #8fd383;
               stroke-width: 4px;
+
+              &.multi-grade {
+                stroke: #f5a623;
+                stroke-width: 3px;
+              }
+              &.multi-grade-hiline {
+                stroke: #f5a623;
+                stroke-width: 5px;
+              }
+              &.mulit-grade-lowline {
+                stroke: $dark-300;
+                stroke-width: 4px;
+              }
             }
           }
         }
