@@ -25,6 +25,7 @@
                 :prerequisites="prerequisites"
                 :selectedDomain="selectedDomain"
                 v-on:onSelectDomain="onSelectDomain"
+                :isGradeSelect = "isGradeSelect"
                 :selectedCompetency="selectedCompetency" />
             </div>
              <div class="rigt-side-card">
@@ -37,6 +38,7 @@
                     v-if="isGradeView"
                     :activeGrade="activeGrade"
                     :gradeCompetency="gradeCompetency"
+                    v-on:onSelectCompetencyList ="cardCompetency"
                     v-on:onClose="onCloseGrade"/>
                 <competency-card 
                     v-if="isCompetencyView && activeCompetency"

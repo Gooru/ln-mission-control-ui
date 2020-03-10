@@ -180,7 +180,7 @@
           #gradeline-group {
             line {
               stroke: #8fd383;
-              stroke-width: 4px;
+              stroke-width: 3px;
 
               &.multi-grade {
                 stroke: #f5a623;
@@ -188,9 +188,9 @@
               }
               &.multi-grade-hiline {
                 stroke: #f5a623;
-                stroke-width: 5px;
+                stroke-width: 4px;
               }
-              &.mulit-grade-lowline {
+              &.low-line {
                 stroke: $dark-300;
                 stroke-width: 4px;
               }
