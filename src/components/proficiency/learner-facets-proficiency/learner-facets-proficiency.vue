@@ -30,7 +30,7 @@
             <google-material-icon :icon="isShowExpandedFacetChart ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedFacetChart ? 'Compressed' : 'Expanded'}} Chart
           </div>
           <div class="filter-container">
-            <taxonomy-filter @listActiveFacets="listActiveFacets" />
+            <taxonomy-filter @listActiveFacets="listActiveFacets" :isActiveFacetsLoaded="isActiveFacetsLoaded" :selectedSubjects="activeFacets"/>
           </div>
         </div>
         <div class="left-panel-body">

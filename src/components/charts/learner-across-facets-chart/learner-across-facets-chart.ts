@@ -272,9 +272,11 @@ export default class LearnerAcrossFacetsChart extends Vue {
           component.selectFacet(facetMatrix);
         })
         .on('mousemove', (event) => {
+          const subjectNameStrLength = facetMatrix.subjectName.length;
           component.tooltipPos = {
             left: `${d3.event.pageX - 90}px`,
-            top: `${d3.event.pageY - 130}px`,
+            // Add additional height when the subject title is goes to morethan one line.
+            top: `${d3.event.pageY - (130 + (Math.floor(subjectNameStrLength / 15) * 25)) }px`,
           };
           component.tooltipInfo = facetMatrix;
           component.isShowTooltip = true;

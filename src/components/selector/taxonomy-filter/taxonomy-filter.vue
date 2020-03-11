@@ -9,7 +9,7 @@
       <div class="selected-filters">
         <h5 class="selected-label">Seleted Facets</h5>
         <ul class="active-facet-list">
-          <li class="active-facet" v-for="subject in selectedSubjects">{{subject.id | extractClassification}} / <span>{{subject.title}}</span></li>
+          <li class="active-facet" v-for="(subject, subjectSeq) in selectedSubjects" :key="subjectSeq">{{subject.id | extractClassification}} / <span>{{subject.title}}</span></li>
         </ul>
       </div>
       <div class="filter-classifications">

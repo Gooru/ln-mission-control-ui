@@ -69,7 +69,7 @@ export default class LearnerList extends Vue {
     const params = {
       offset: component.offset,
       limit: component.limit,
-      query: component.searchLearnerText.length ? component.searchLearnerText.toLowerCase() : undefined,
+      query: component.searchLearnerText.length ? component.searchLearnerText.toLowerCase().trim() : undefined,
     };
     learnerAPI.fetchLearners(params).then((learners: LearnerModel[]) => {
        component.learnerDetails = learnerDetails.concat(learners);

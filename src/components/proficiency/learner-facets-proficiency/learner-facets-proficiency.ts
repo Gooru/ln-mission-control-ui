@@ -48,6 +48,8 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private facetsCompetencyMatrix: any;
 
+  private isActiveFacetsLoaded = false;
+
   public onChageTimeline(timeline: string) {
     const component = this;
     component.activeYear = moment(timeline).format('YYYY');
@@ -69,6 +71,7 @@ export default class LearnerFacetsProficiency extends Vue {
   }
 
   private backAction() {
+    this.isActiveFacetsLoaded = true;
     this.isShowFacetsProficiency = true;
   }
 
@@ -85,7 +88,9 @@ export default class LearnerFacetsProficiency extends Vue {
   }
 
   private listActiveFacets(facets: SubjectModel[]) {
-    this.activeFacets = facets;
+    if (!this.isActiveFacetsLoaded) {
+      this.activeFacets = facets;
+    }
   }
 
   private loadUserData() {
