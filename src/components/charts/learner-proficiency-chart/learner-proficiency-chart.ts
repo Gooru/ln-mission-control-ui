@@ -259,16 +259,6 @@ export default class LearnerProficiencyChart extends Vue {
     } else {
       component.activeGradeList[0].id > grade.id ?
          this.activeGradeList.push(grade) : this.activeGradeList.unshift(grade);
-
-      // Note:- Disabled to show multigrade line, we may enable if we needed
-
-      // const maxValue = component.taxonomyGrades.findIndex(
-      //   (gradeItem) => gradeItem.id === component.activeGradeList[0].id);
-      // const minValue = component.taxonomyGrades.findIndex(
-      //   (gradeItem) => gradeItem.id === grade.id);
-      // const minIndex = minValue > maxValue ? minValue : maxValue;
-      // const maxIndex = minValue > maxValue ? maxValue : minValue;
-      // component.activeGradeList = component.taxonomyGrades.slice(maxIndex, minIndex + 1);
     }
     if (this.isCompetencyMap) {
       this.minGradeLine().then(() => {
@@ -447,9 +437,7 @@ export default class LearnerProficiencyChart extends Vue {
             gradeBoundaryCompetency.isGradeBoundary = true;
           }
         } else {
-          // if (gradeIndex) {
           gradeBoundaryCompetency.isNoMapping = true;
-          // }
         }
         if (!gradeBoundaryCompetency.className ||
           (gradeBoundaryCompetency.className &&
