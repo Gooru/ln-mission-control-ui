@@ -16,10 +16,10 @@
       <div v-if="taxonomyGrades.length > 0" class="grade-selector">
         <div class="grade-label">
           <!-- Hi-Line {{activeGrade.grade}} <google-material-icon :icon="isShowTaxonomyGradeList ? 'arrow_drop_up' : 'arrow_drop_down'"/> -->
-          Grade Selector
+          {{!isCompetencyMap ? 'Grade Selector' : 'Level Selector'}}
         </div>
         <div class="taxonomy-grade-list">
-          <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : isActiveGradeList(taxonomyGrade)}" @click="onSelectGrade(taxonomyGrade)">
+          <div class="taxonomy-grade" v-for="(taxonomyGrade, gradeIndex) in taxonomyGrades" v-bind:class="{active : isActiveGradeList(taxonomyGrade), 'competency-map':isCompetencyMap}" @click="onSelectGrade(taxonomyGrade)" :key="gradeIndex">
             <google-material-icon icon="adjust" />{{taxonomyGrade.grade}}
           </div>
         </div>

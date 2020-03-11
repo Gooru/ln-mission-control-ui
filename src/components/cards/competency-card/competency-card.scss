@@ -2,8 +2,6 @@
   .competency-card-container {
     width: 100%;
     background-color: $white;
-    height: calc(100vh - 150px);
-    overflow-y: auto;
     .competency-head {
       .competency-title {
         display: grid;
@@ -38,11 +36,13 @@
           cursor: pointer;
         }
       }
+    }
+    .competency-body {
+      height: calc(100vh - 200px);
+      overflow-y: auto;
       .competency-description {
         padding: 10px;
       }
-    }
-    .competency-body {
       .competency-tab-header {
         text-align: center;
         ul {

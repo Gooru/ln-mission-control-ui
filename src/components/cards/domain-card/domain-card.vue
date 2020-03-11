@@ -6,7 +6,7 @@
                <div class="domain-section" v-for="(domain, index) in domainList" :key="index">
                     <div class="domain-content-title" @click="onSelectDomain(domain)">
                     <material-icon icon="format_align_center"/>
-                    <span class="domain-name">{{domain.domainName}}</span>
+                    <span class="domain-name">{{domain.domainName}} ({{domain.competencies.length}})</span>
                     <material-icon :icon="domain.isExpanded ? 'arrow_drop_up' : 'arrow_drop_down'"/>
                     </div>
                     <div class="domain-content-section" v-if="domain.isExpanded">

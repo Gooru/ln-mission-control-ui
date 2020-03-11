@@ -71,6 +71,8 @@ export default class ProficiencyMatrix extends Vue {
 
     private selectedCompetency: any = {};
 
+    private isGradeSelect: boolean = false;
+
     get subjectId() {
         return this.activeCompetency ? getSubjectId(this.activeCompetency.competencyCode) : '';
     }
@@ -111,9 +113,10 @@ export default class ProficiencyMatrix extends Vue {
         this.isCompetencyView = false;
     }
 
-    private onCloseGrade() {
-        this.isDomainView = true;
-        this.isGradeView = false;
+    private onCloseGrade(isClosed: boolean = false) {
+        const isclosedGrade = !isClosed && this.isGradeSelect;
+        this.isDomainView = isclosedGrade ? false : true;
+        this.isGradeView = isclosedGrade ? true : false;
         this.isCompetencyView = false;
         this.isCompetencyActive = false;
     }
@@ -147,7 +150,8 @@ export default class ProficiencyMatrix extends Vue {
         this.selectedDomain = domain;
     }
 
-    private cardCompetency(competency: any) {
+    private cardCompetency(competency: any, isGradeSelect: boolean = false) {
+        this.isGradeSelect = isGradeSelect;
         this.selectedCompetency = competency;
     }
 
