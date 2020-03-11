@@ -10,11 +10,11 @@
                 </div>
                 <span @click="onClose()" class="close-icon"><material-icon icon="close" /></span>
                 </div>
+            </div>
+            <div class="competency-body">
                 <div class="competency-description">
                      {{activeCompetency.competencyName}}
                 </div>
-            </div>
-            <div class="competency-body">
                 <div class="competency-tab-header">
                     <ul>
                         <li :class="{active: isActive }" @click="onChangeTab(true)">Meta</li>

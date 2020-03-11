@@ -257,13 +257,18 @@ export default class LearnerProficiencyChart extends Vue {
         component.activeGradeList.push(grade);
       }
     } else {
-      const maxValue = component.taxonomyGrades.findIndex(
-        (gradeItem) => gradeItem.id === component.activeGradeList[0].id);
-      const minValue = component.taxonomyGrades.findIndex(
-        (gradeItem) => gradeItem.id === grade.id);
-      const minIndex = minValue > maxValue ? minValue : maxValue;
-      const maxIndex = minValue > maxValue ? maxValue : minValue;
-      component.activeGradeList = component.taxonomyGrades.slice(maxIndex, minIndex + 1);
+      component.activeGradeList[0].id > grade.id ?
+         this.activeGradeList.push(grade) : this.activeGradeList.unshift(grade);
+
+      // Note:- Disabled to show multigrade line, we may enable if we needed
+
+      // const maxValue = component.taxonomyGrades.findIndex(
+      //   (gradeItem) => gradeItem.id === component.activeGradeList[0].id);
+      // const minValue = component.taxonomyGrades.findIndex(
+      //   (gradeItem) => gradeItem.id === grade.id);
+      // const minIndex = minValue > maxValue ? minValue : maxValue;
+      // const maxIndex = minValue > maxValue ? maxValue : minValue;
+      // component.activeGradeList = component.taxonomyGrades.slice(maxIndex, minIndex + 1);
     }
     if (this.isCompetencyMap) {
       this.minGradeLine().then(() => {
@@ -278,13 +283,15 @@ export default class LearnerProficiencyChart extends Vue {
   public parseBoundaryCompetency() {
     const component = this;
     if (component.activeGradeList.length) {
-      const boundaryPromise = component.activeGradeList.map((gradeItem: any) => {
+      // Note : We Currently use only Hi line so we use first object
+      const hiLineGrade = [component.activeGradeList[0]];
+      const boundaryPromise = hiLineGrade.map((gradeItem: any, gradeIndex: number) => {
         return new Promise((resovle) => {
-          component.loadTaxonomyGradeBoundaries(gradeItem.id).then((boundary) => {
-            component.multiGradeActiveList[gradeItem.id] = boundary;
-            component.gradeBoundaries = boundary;
-            return resovle(boundary);
-          });
+            component.loadTaxonomyGradeBoundaries(gradeItem.id).then((boundary) => {
+              component.multiGradeActiveList[gradeItem.id] = boundary;
+              component.gradeBoundaries = boundary;
+              return resovle(boundary);
+            });
         });
       });
       Promise.all(boundaryPromise).then(() => {
@@ -409,9 +416,9 @@ export default class LearnerProficiencyChart extends Vue {
     if (this.multiGradeActiveList.length) {
       const boundaryList = component.multiGradeActiveList;
       const multiGradePromise = boundaryList.map((gradeBoundaries: any, gradeIndex: any) => {
-        return new Promise((resolve) => {
-          return resolve(this.boundaryMapForMultiGrade(proficiencyChartData, gradeBoundaries, gradeIndex));
-        });
+          return new Promise((resolve) => {
+            return resolve(this.boundaryMapForMultiGrade(proficiencyChartData, gradeBoundaries, gradeIndex));
+          });
       });
       Promise.all(multiGradePromise).then(() => {
         component.chartData = proficiencyChartData;
@@ -814,7 +821,9 @@ export default class LearnerProficiencyChart extends Vue {
   }
 
   private isActiveGradeList(value: any) {
-    return this.activeGradeList.find((grade: any) => grade.id === value.id);
+    return this.activeGradeList.find((grade: any) => grade.id === value.id) ||
+        (this.activeGradeList.length > 1 &&
+           this.activeGradeList[0].id > value.id && this.activeGradeList[1].id < value.id);
   }
 
   private drawPrerequisitesLine() {

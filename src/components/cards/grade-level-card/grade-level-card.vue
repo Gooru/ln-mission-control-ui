@@ -5,8 +5,8 @@
                <div class="grade-title">
                    <span>level</span>
                     <div class="grade-name-container">
-                    <span class="grade-name">{{firstGrade.grade}}</span>
-                    <span class="grade-name" v-if="lastGrade"> - {{lastGrade.grade}}</span>
+                    <span class="grade-name" v-if="lastGrade">{{lastGrade.grade}} - </span>
+                    <span class="grade-name"> {{firstGrade.grade}}</span>
                     </div>
                </div>
                <span  @click="onClose()"><material-icon icon="close"/></span>
