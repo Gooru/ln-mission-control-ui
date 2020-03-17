@@ -30,9 +30,9 @@ export default class CompetencyMap extends Vue {
 
     private selectedSubject: any = {};
 
-    private defaultCategoryId: string = 'k_12';
+    private defaultCategoryId: string = '';
 
-    private defaultSubjectCode: string = 'K12.MA';
+    private defaultSubjectCode: string = '';
 
     private categories?: ClassificationModel[] = [];
 
@@ -76,16 +76,15 @@ export default class CompetencyMap extends Vue {
     // Methods
 
     private fetchTaxonomyData() {
-        const classificationPromise = taxonomyAPI.fetchTaxonomyClassifications();
-        const subjectPromise = this.subjectsByCategory(this.defaultCategoryId);
-        axios.all([
-            classificationPromise,
-            subjectPromise,
-        ]).then(axios.spread((classifications, subjects) => {
+        taxonomyAPI.fetchTaxonomyClassifications().then((classifications) => {
+            this.defaultCategoryId = classifications.length ? classifications[0].id : '';
             this.categories = classifications;
+            this.subjectsByCategory(this.defaultCategoryId).then((subjects) => {
             this.subjectList = subjects;
-            this.selectedCategory = this.categories.find((category) => category.id === this.defaultCategoryId);
-        }));
+            this.selectedCategory = classifications ?
+                classifications.find((category) => category.id === this.defaultCategoryId) : null;
+            });
+        });
     }
 
     private subjectsByCategory(categoryId: string) {
