@@ -1,4 +1,4 @@
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import { Vue, Component, Watch, Prop } from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import axios from 'axios';
 import { SubjectModel } from '@/models/taxonomy/subject';
@@ -30,7 +30,8 @@ export default class CompetencyMap extends Vue {
 
     private selectedSubject: any = {};
 
-    private defaultCategoryId: string = '';
+    @Prop()
+    private defaultCategoryId?: any;
 
     private defaultSubjectCode: string = '';
 
@@ -55,6 +56,9 @@ export default class CompetencyMap extends Vue {
 
     private onSelectCategory(category: any) {
         this.selectedCategory = category;
+        if (category) {
+            this.$emit('onChangeCategoryId', category.id);
+        }
         this.subjectsByCategory(category.id)
             .then((subjects) => {
                 this.subjectList = subjects;
@@ -62,7 +66,7 @@ export default class CompetencyMap extends Vue {
     }
 
     private onSelectSubject(subject: any) {
-       this.$emit('onSelectSubject', subject, this.userId());
+        this.$emit('onSelectSubject', subject, this.userId());
     }
 
     // ------------------------------------------------------------------------------
@@ -77,12 +81,16 @@ export default class CompetencyMap extends Vue {
 
     private fetchTaxonomyData() {
         taxonomyAPI.fetchTaxonomyClassifications().then((classifications) => {
-            this.defaultCategoryId = classifications.length ? classifications[0].id : '';
+            let defaultCategory = this.defaultCategoryId;
+            if (!this.defaultCategoryId || this.defaultCategoryId === '') {
+                defaultCategory = classifications.length ? classifications[0].id : '';
+                this.$emit('onChangeCategoryId', defaultCategory);
+            }
             this.categories = classifications;
-            this.subjectsByCategory(this.defaultCategoryId).then((subjects) => {
-            this.subjectList = subjects;
-            this.selectedCategory = classifications ?
-                classifications.find((category) => category.id === this.defaultCategoryId) : null;
+            this.subjectsByCategory(defaultCategory).then((subjects) => {
+                this.subjectList = subjects;
+                this.selectedCategory = classifications ?
+                    classifications.find((category) => category.id === defaultCategory) : null;
             });
         });
     }

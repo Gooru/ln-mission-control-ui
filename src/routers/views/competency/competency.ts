@@ -21,6 +21,8 @@ export default class Competency extends Vue {
 
     private selectedSubject?: any;
 
+    private defaultCategoryId: string = '';
+
     private userId?: any;
 
     private competencyNavMenu: any = COMPETENCY_NAVIGATION_MENUS;
