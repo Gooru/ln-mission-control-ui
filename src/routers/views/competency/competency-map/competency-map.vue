@@ -23,7 +23,7 @@
                             </div> 
                         </div>
                     </div>
-                    <div class="create-course">
+                    <div class="create-course" hidden>
                         <b-button variant="light" block>Create Course</b-button>
                     </div>
                 </div>

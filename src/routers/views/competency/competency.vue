@@ -8,6 +8,8 @@
     <div class="competency-main">
         <competency-map 
     v-if="isShowCompetencyMap"
+    :defaultCategoryId ="defaultCategoryId"
+    v-on:onChangeCategoryId = "defaultCategoryId = arguments[0]"
     v-on:onSelectSubject="onSelectSubject"
     />
     <proficiency-martix 
