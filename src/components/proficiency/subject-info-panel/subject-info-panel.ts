@@ -44,6 +44,9 @@ export default class SubjectInfoPanel extends Vue {
   ];
 
   @Prop()
+  private activeToggleList?: string;
+
+  @Prop()
   private month!: string;
 
   @Prop()
@@ -57,6 +60,12 @@ export default class SubjectInfoPanel extends Vue {
   }
 
   public onSelectCompetency(competency: any) {
+
     this.$emit('onSelectCompetency', competency);
   }
+
+  private onSelectPortfolioStat(portfolio: any) {
+    this.$emit('onSelectPortfolioStat', portfolio);
+  }
+
 }

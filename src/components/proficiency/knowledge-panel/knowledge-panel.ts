@@ -61,6 +61,9 @@ export default class KnowledgePanel extends Vue {
   @Prop()
   private facetsCompetencyMatrix!: any;
 
+  @Prop()
+  private activeToggleList?: string;
+
   private isShowDomainList: boolean = true;
 
   private isShowCompetencyList: boolean = true;
@@ -75,6 +78,13 @@ export default class KnowledgePanel extends Vue {
 
   private isShowFacetsProficiency: boolean = true;
 
+  @Prop()
+  private portfolioDomain!: any;
+
+  private get isPortfolioTab() {
+    return this.activeToggleList && this.activeToggleList !== '';
+  }
+
   public onSelectDomain(domain: any) {
     this.$emit('onSelectDomain', domain);
   }
@@ -85,9 +95,22 @@ export default class KnowledgePanel extends Vue {
 
   private created() {
     this.isShowPortfolioContainer = this.statsBucket === 'competency';
+    if (this.isPortfolioTab) {
+      this.$set(this, `is${this.activeToggleList}`, true);
+      if (this.isShowPortfolioContainer) {
+          this.isShowDomainList = false;
+          this.isShowCompetencyList = false;
+      }
+    }
   }
 
   private onSelectPortfolioStat(portfolioStat: any) {
+    if (this.statsBucket === 'domain' && this.isShowPortfolioContainer) {
+      const competency = this.portfolioDomain.find(
+        (item: any) => item.competencyCode === portfolioStat.competencyCode);
+      this.$emit('onSelectCompetency', competency);
+      return;
+    }
     this.$emit('onSelectPortfolioStat', portfolioStat);
   }
 }

@@ -20,7 +20,7 @@
             :activeCompetency="activeCompetency"
             @backAction="backAction"
             @onSelectDomain="onSelectDomain"
-            @onSelectCompetency="onSelectCompetency"/>
+            @onSelectCompetency="onSelectLearnerCompetency"/>
         </div>
       </div>
       <div class="proficiency-right-panel" v-if="subjectCode">
@@ -31,8 +31,11 @@
           :classification="classification"
           :userId="userId"
           :month="month"
+          :competencyList="competencyList"
           :year="year"
-          @onCloseDomainInfoPanel = "onCloseDomainInfoPanel"
+          :activeToggleList="activeToggleList"
+          :portfolioDomain="portfolioDomain"
+          @onCloseDomainInfoPanel ="onCloseDomainInfoPanel"
           @onSelectCompetency="onSelectCompetency"/>
 
         <competency-info-panel
@@ -51,6 +54,8 @@
           :month="month"
           :year="year"
           @onSelectDomain="onSelectDomain"
+          :activeToggleList="activeToggleList"
+          @onSelectPortfolioStat="onSelectPortfolioStat"
           @onSelectCompetency="onSelectCompetency"/>
       </div>
     </div>

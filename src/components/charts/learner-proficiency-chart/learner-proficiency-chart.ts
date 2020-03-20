@@ -232,11 +232,14 @@ export default class LearnerProficiencyChart extends Vue {
       if (this.selectedDomain.domainSeq && this.isDomainView) {
         component.toggleActiveDomainBar(component.selectedDomain.domainSeq);
       }
+    } else {
+      component.highlightCompetency(component.activeCompetency);
     }
     this.multiGradeActiveList.map((grade: any, index: any) => {
       component.drawGradeBoundaryLine(index);
     });
     component.drawGradeBoundaryLine();
+
     if (component.activeDomainSeq) {
       component.toggleActiveDomainBar(component.activeDomainSeq);
     }

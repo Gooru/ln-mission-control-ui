@@ -28,6 +28,12 @@ export default class DomainInfoPanel extends Vue {
   @Prop()
   public classification!: ClassificationModel;
 
+  @Prop()
+  public activeToggleList?: string;
+
+  @Prop()
+  public portfolioDomain: any;
+
   public activeTab: object = {
     title: 'Knowledge',
     component: KnowledgePanel,

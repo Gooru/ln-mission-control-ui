@@ -1,9 +1,10 @@
 <template>
   <div id="portfolio-panel">
-    <div class="portfolio-body">
+     <b-spinner v-if="isLoading" variant="primary" label="Spinning"></b-spinner>
+    <div class="portfolio-body" v-if="!isLoading">
       <div v-if="isLoadContents || statsBucket == 'competency'" class="content-card-container">
         <div v-for="content in portfolioContents">
-          <portfolio-content-card :content="content" />
+          <portfolio-content-card :content="content"/>
         </div>
       </div>
       <div v-else>
