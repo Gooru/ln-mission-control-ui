@@ -36,6 +36,8 @@ export default class LearnerProficiency extends Vue {
 
   private subjects!: SubjectModel[];
 
+  private activeToggleList: string = '';
+
   @Prop()
   private defaultCategoryId: string = 'k_12';
 
@@ -67,6 +69,8 @@ export default class LearnerProficiency extends Vue {
 
   private isShowDomainInfo: boolean = false;
 
+  private portfolioDomain!: any;
+
   private activeCompetency: CompetencyModel = {
     competencyCode: '',
     competencyDesc: '',
@@ -79,12 +83,15 @@ export default class LearnerProficiency extends Vue {
   private activeCompetencySeq!: number;
 
   private isShowCompetencyPanel: boolean = false;
-
   @Prop()
   private month!: string;
 
   @Prop()
   private year!: string;
+
+  private get isLevelContent() {
+    return this.activeToggleList && this.activeToggleList !== '';
+  }
 
   public created() {
     this.loadTaxonomyData();
@@ -132,6 +139,17 @@ export default class LearnerProficiency extends Vue {
     this.activeDomainInfo = domain;
     this.activeDomainSeq = domain.domainSeq;
     this.isShowDomainInfo = true;
+    this.activeToggleList = 'ShowDomainList';
+  }
+
+  private onSelectPortfolioStat(portfolio: DomainModel) {
+    this.activeDomainInfo = portfolio;
+    this.activeDomainSeq = portfolio.domainSeq;
+    this.isShowDomainInfo = true;
+    if (portfolio.competencies) {
+      this.portfolioDomain = portfolio.competencies;
+    }
+    this.activeToggleList = 'ShowPortfolioContainer';
   }
 
   private onSelectCompetency(competency: CompetencyModel) {
@@ -141,12 +159,21 @@ export default class LearnerProficiency extends Vue {
     this.activeCompetency = competency;
   }
 
+  private onSelectLearnerCompetency(competency: CompetencyModel) {
+   this.onSelectCompetency(competency);
+   this.activeToggleList = '';
+  }
+
+
   private onCloseDomainInfoPanel() {
     this.isShowDomainInfo = false;
     this.activeDomainSeq = 0;
   }
 
   private onCloseCompetencyInfoPanel() {
+    if (this.isLevelContent) {
+      this.isShowDomainInfo = true;
+    }
     this.isShowCompetencyPanel = false;
   }
 

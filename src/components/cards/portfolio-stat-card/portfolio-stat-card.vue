@@ -28,7 +28,7 @@
         </div>
       </div>
       <div v-else>
-        <div class="stat-detail" v-for="(stat, index) in statDetails" v-bind:key="index">
+        <div class="stat-detail" v-for="(stat, index) in statDetails" @click="$emit('onSelectPortfolioStat', statInfo)" v-bind:key="index">
           <span class="content-icon">
             <mc-icon :icon="stat.type + '-gray'" />
           </span>

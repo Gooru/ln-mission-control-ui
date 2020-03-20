@@ -22,7 +22,7 @@
       <div class="active-tab-contents">
         <component
         v-bind:is="activeTab.component"
-        v-bind="{ month, year, subject, domain, statsBucket: 'domain', userId}"
+        v-bind="{ month, year, subject, domain, statsBucket: 'domain', userId , activeToggleList, portfolioDomain}"
         @onSelectCompetency="onSelectCompetency"/>
       </div>
     </div>
