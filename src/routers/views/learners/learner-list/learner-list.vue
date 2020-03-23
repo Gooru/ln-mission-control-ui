@@ -17,7 +17,7 @@
           <div class="learner-table-seaction-header">
             <span class="learner-user-name">Name</span>
             <span>Role</span>
-            <span>UserID</span>
+            <span hidden>UserID</span>
             <span class="learner-country">Country</span>
           </div>
           <div class="learner-table-section-body">
@@ -30,7 +30,7 @@
               <div class="learner-role">
                 {{learner.userCategory}}
               </div>
-              <div class="learner-userid">
+              <div class="learner-userid" hidden>
                 {{learner.email}}
               </div>
               <div class="country">
