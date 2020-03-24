@@ -71,7 +71,7 @@
         }
         .learner-table-seaction-header {
           display: grid;
-          grid-template-columns: 1fr 20% 30% 20%;
+          grid-template-columns: 1fr 1fr 1fr;
           padding: 10px;
           padding-right: 24px;
           border-bottom: 5px solid $light-100;
@@ -94,7 +94,7 @@
           }
           .learner-table-section-body-content {
             display: grid;
-            grid-template-columns: 1fr 20% 30% 20%;
+            grid-template-columns: 1fr 1fr 1fr;
             align-items: center;
             // column-gap: 20px;
             padding: 10px;
