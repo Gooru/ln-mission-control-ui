@@ -1,0 +1,328 @@
+{
+	"01_2019": {
+        "user_count": 0,
+        "avg_count": "12m 30s",
+				"gained_comp": "10%",
+				"stugglingCompetency":[{
+					"code": "3.NO.1",
+					"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+				},{
+					"code": "3.M.3",
+					"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+				},{
+					"code": "4.FD.2",
+					"name": "Develops an understanding of unit fractions"
+				},{
+					"code": "4.G.4",
+					"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+				},{
+					"code": "5.NO.4",
+					"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+				},{
+					"code": "5.M.5",
+					"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+				},{
+					"code": "5.PD.6",
+					"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+				}]
+	 },
+	 "02_2019": {
+		"user_count": 242,
+		"avg_count": "20m 10s",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "03_2019": {
+		"user_count": 0,
+        "avg_count": "0m"
+	 },
+	 "04_2019": {
+        "user_count": 0,
+        "avg_count": "0m"
+	 },
+	 "05_2019" : {
+		"user_count": 0,
+    "avg_count": "40m",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "06_2019" : {
+		"user_count": 0,
+    "avg_count": "30m 3s",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "07_2019" : {
+		"user_count": 758,
+    "avg_count": "10m 40s",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "08_2019" : {
+		"user_count": 1723,
+    "avg_count": "20m 3s",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "09_2019" : {
+		"user_count": 0,
+    "avg_count": "30m 2s",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "10_2019": {
+		"user_count": 0,
+    "avg_count": "40m",
+		"gained_comp": "10%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "11_2019" : {
+		"user_count": 1518,
+    "avg_count": "0m",
+		"gained_comp": "30%",
+		"stugglingCompetency":[{
+			"code": "3.NO.1",
+			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+		},{
+			"code": "3.M.3",
+			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+		},{
+			"code": "4.FD.2",
+			"name": "Develops an understanding of unit fractions"
+		},{
+			"code": "4.G.4",
+			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+		},{
+			"code": "5.NO.4",
+			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+		},{
+			"code": "5.M.5",
+			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+		},{
+			"code": "5.PD.6",
+			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+		}]
+	 },
+	 "12_2019" : {
+		"user_count": 284,
+    "avg_count": "29m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "5.OA.1",
+			"name": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
+	 "01_2020" : {
+		"user_count": 284,
+    "avg_count": "29m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "5.OA.1",
+			"name": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
+     "02_2020" : {
+		"user_count": 284,
+    "avg_count": "29m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "5.OA.1",
+			"name": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
+	 "03_2020" : {
+		"user_count": 284,
+    "avg_count": "29m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "5.OA.1",
+			"name": "Use parentheses, brackets, or braces in numerical expressions, and evaluate expressions with these symbols."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
+	 "total" : {
+				"user_count": 4778
+	 }
+}

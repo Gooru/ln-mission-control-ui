@@ -1,0 +1,47 @@
+.mc-console {
+  .mc-console-container {
+    width: 1024px;
+    margin: 0 auto;
+    margin-top: 40px;
+    background-color: $white;
+    padding: 30px;
+
+    .mc-console-title {
+      margin: 0;
+      padding: 0;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 50px;
+    }
+    .mc-console-content-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-column-gap: 50px;
+      grid-row-gap: 50px;
+      h5,
+      p {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+      }
+      h5 {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      button {
+        background-color: $light-300;
+        outline: none;
+        border: 1px solid $dark-100;
+        border-radius: 4px;
+        padding: 3px 20px;
+        width: max-content;
+      }
+      .lrs-panel {
+        .xapi-lrs-btn {
+          background-color: #1d7dc2;
+          color: $white;
+        }
+      }
+    }
+  }
+}

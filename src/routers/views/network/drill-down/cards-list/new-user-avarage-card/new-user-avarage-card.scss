@@ -1,0 +1,90 @@
+#avarage-card-container {
+  .avarage-card-panel {
+    background-color: $white;
+    padding: 5px 10px;
+    box-shadow: 0 0 10px $light-300;
+    border-radius: 2px;
+    height: 100%;
+    .avarage-card-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      border-bottom: 1px solid $light-300;
+      height: 60px;
+      .new-user-count {
+        font-size: 40px;
+        padding: 0 5px;
+        font-weight: 100;
+      }
+      .user-details-panel {
+        .user-details-title {
+          display: grid;
+          grid-template-columns: 30px 1fr;
+          align-items: center;
+          font-weight: bold;
+          font-size: 12px;
+          text-transform: capitalize;
+        }
+        .texas-card-list {
+          list-style: none;
+          display: inline-flex;
+          margin: 0;
+          padding: 0;
+          li {
+            padding: 0 4px;
+            font-size: 12px;
+            display: grid;
+            align-items: center;
+            &.down {
+              color: $red;
+              &.high {
+                color: $green;
+              }
+            }
+            i {
+              font-size: 20px;
+            }
+          }
+        }
+        &.right-alignment {
+          text-align: right;
+          .user-details-title {
+            grid-template-columns: 1fr auto;
+            i {
+              padding: 0 5px;
+            }
+          }
+        }
+      }
+      &.suggestion {
+        .user-details-title {
+          color: $orange;
+          font-size: 15px;
+        }
+      }
+      &.avarage-time {
+        .new-user-count {
+          color: $orange;
+        }
+        .user-details-title {
+          i {
+            color: $orange;
+          }
+        }
+      }
+      &.class-activity {
+        grid-template-columns: 160px 1fr;
+      }
+    }
+    .avarage-card-footer {
+      p {
+        margin: 0;
+        font-size: 13px;
+        padding: 5px 0;
+        span {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="month-picker">
-        <month-year-picker @onChageTimeline="onChageTimeline" />
+        <month-year-picker @onChageTimeline="onChageTimeline" :startYear="learner.createdAt" />
       </div>
     </div>
     <div v-if="isShowFacetsProficiency" class="facets-proficiency-body">
@@ -24,7 +24,7 @@
         <div class="left-panel-header">
           <div class="learner-info">
             <div class="student-name">{{learner.firstName}}'s Complete Skyline</div>
-            <div class="skyline-info">Each bar represent a subject within the relevant category</div>
+            <div class="skyline-info">Each bar represents a facet</div>
           </div>
           <div class="facet-toggle" @click="isShowExpandedFacetChart = !isShowExpandedFacetChart">
             <google-material-icon :icon="isShowExpandedFacetChart ? 'unfold_less' : 'unfold_more'"/> Show {{isShowExpandedFacetChart ? 'Compressed' : 'Expanded'}} Chart
@@ -40,14 +40,17 @@
           @onSelectSubject="onSelectSubject"
           :facets="activeFacets"
           :userId="learnerId"
-          :isExpandedMode="isShowExpandedFacetChart"/>
+          :isExpandedMode="isShowExpandedFacetChart"
+          @facetsCompetencyMatrix="recognizeFacetCompetencyMatrix"/>
         </div>
       </div>
-      <div class="facets-right-panel">
+      <div v-if="activeFacets.length" class="facets-right-panel">
         <facets-info-panel
         :userId="learnerId"
         :month="activeMonth"
         :year="activeYear"
+        :activeFacets="activeFacets"
+        :facetsCompetencyMatrix="facetsCompetencyMatrix"
         @onSelectPortfolioStat="onSelectPortfolioStat"/>
       </div>
     </div>

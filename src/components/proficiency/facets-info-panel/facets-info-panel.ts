@@ -1,14 +1,15 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
-import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
-import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
+import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
+import CommunityPanel from '../community-panel/community-panel';
+import KnowledgePanel from '../knowledge-panel/knowledge-panel';
+import { SubjectModel } from '@/models/taxonomy/subject';
 
 @Component({
   name: 'facets-info-panel',
   components: {
-    'mindsets-list-panel': MindsetsListPanel,
-    'portfolio-panel': PortfolioPanel,
-    'preferences-panel': PreferencesPanel,
+    'mindsets-panel': MindsetsPanel,
+    'knowledge-panel': KnowledgePanel,
+    'community-panel': CommunityPanel,
   },
 })
 export default class FacetsInfoPanel extends Vue {
@@ -22,23 +23,36 @@ export default class FacetsInfoPanel extends Vue {
   @Prop()
   private year!: string;
 
+  @Prop()
+  private activeFacets!: SubjectModel[];
+
+  @Prop()
+  private facetsCompetencyMatrix!: any;
+
+  get activeFacetsCompetencyMatrix() {
+    return this.activeFacets.map( (activeFacet: SubjectModel) => {
+      return this.facetsCompetencyMatrix.find( (
+        facetCompetencyMatrix: any) => facetCompetencyMatrix.subjectCode === activeFacet.code);
+    });
+  }
+
   private activeTab: object = {
-    label: 'Portfolio',
-    component: 'portfolio-panel',
+    label: 'Knowledge',
+    component: 'knowledge-panel',
   };
 
   private tabItems = [
     {
-      label: 'Portfolio',
-      component: 'portfolio-panel',
+      label: 'Knowledge',
+      component: 'knowledge-panel',
     },
     {
       label: 'Mindsets',
-      component: 'mindsets-list-panel',
+      component: 'mindsets-panel',
     },
     {
-      label: 'Preferences',
-      component: 'preferences-panel',
+      label: 'Community',
+      component: 'community-panel',
     },
   ];
 

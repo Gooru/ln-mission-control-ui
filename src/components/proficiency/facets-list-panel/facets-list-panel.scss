@@ -1,0 +1,55 @@
+#facets-list-panel {
+  .facet-competency {
+    .facet-header {
+      display: grid;
+      grid-template-columns: 30px 1fr 30px;
+      align-items: center;
+      height: 50px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      .facet-seq {
+        text-align: center;
+      }
+      .facet-info {
+        display: grid;
+        .facet-title {
+          font-size: 13px;
+        }
+        .total-competencies {
+          font-size: 11px;
+        }
+      }
+      .toggle {
+        cursor: pointer;
+      }
+    }
+    .facet-body {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 95px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+      .facet-status {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        .box {
+          width: 32px;
+          height: 32px;
+          display: block;
+          &.mastered {
+            background-color: #1d7dc2;
+          }
+          &.inprogress {
+            background-color: #1aa9eb;
+          }
+          &.notstarted {
+            background-color: #dcdfe0;
+          }
+        }
+        .count {
+          font-size: 18px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}

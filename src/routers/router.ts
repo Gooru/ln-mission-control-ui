@@ -22,7 +22,7 @@ const routes = [
       {
         path: '/network/countries/:id/:name?',
         name: 'countries-with-state',
-        component: () => import('@/routers/views/network/country-drill-down/country-drill-down.vue'),
+        component: () => import('@/routers/views/network/drill-down/drill-down.vue'),
         meta: { isRequiredAuth: true },
       },
       {
@@ -65,6 +65,24 @@ const routes = [
           return import('@/components/proficiency/learner-facets-proficiency/learner-facets-proficiency.vue');
         },
         meta: { isRequiredAuth: true },
+      },
+      {
+        path: '/console',
+        name: 'console',
+        component: () => import('@/routers/views/console/console.vue'),
+        meta: {isRequiredAuth: true},
+      },
+      {
+        path: '/console/:name',
+        name: 'console-section',
+        component: () => import('@/routers/views/console/lrs/lrs.vue'),
+        meta: {isRequiredAuth: true},
+      },
+      {
+        path: '/competency/:name',
+        name: 'competency-tab-competency-map',
+        component: () => import('@/routers/views/competency/competency.vue'),
+        meta: {isRequiredAuth: true},
       },
     ],
   },

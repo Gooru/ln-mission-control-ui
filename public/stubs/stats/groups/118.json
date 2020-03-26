@@ -1,0 +1,142 @@
+{
+    "12_2019" : {
+       "user_count": 321,
+   "avg_count": "10m.17s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "3%",
+           "overall": 7
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "12m.16s"
+       },
+       "student_gaind_card": {
+           "percent": "-2%",
+           "overall": "19%"
+       },
+       "stugglingCompetency":[{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+           "code": "4.G.2",
+           "name": "Understands and differentiates curved and straight lines, properties of a line and constructs line segments"
+       },{
+           "code": "5.FD.1",
+           "name": "Understands equivalence in fractions and generates equivalent sets"
+       
+        },{
+            "code": "5.PD.2",
+            "name": "Creates and analyzes patterns of square numbers using both numbers and shapes"
+         }]
+    },
+    "01_2020" : {
+       "user_count": 421,
+   "avg_count": "29m.17s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "4%",
+           "overall": 9
+       },
+       "avg_card": {
+           "percent": "-2%",
+           "overall": "14m.28s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       }, 
+       "stugglingCompetency":[{
+           "code": "1.PD.1",
+           "name": "Using materials in the environment, creates patterns and recognizes them in the surroundings"
+       },{
+           "code": "2.NO.3",
+           "name": "Articulates strategies used in problem solving verbally."
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+        "code": "4.G.2",
+        "name": "Understands and differentiates curved and straight lines, properties of a line and constructs line segments"
+        },{
+            "code": "5.FD.1",
+            "name": "Understands equivalence in fractions and generates equivalent sets"
+        },{
+            "code": "5.PD.2",
+            "name": "Creates and analyzes patterns of square numbers using both numbers and shapes"
+        }]
+    },
+    "02_2020" : {
+       "user_count": 222,
+       "avg_count": "29m.17s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.M.2",
+           "name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units "
+       },
+        {
+            "code": "4.FD.3",
+            "name": "Understands concept composite fractions."
+        },
+        {
+            "code": "4.G.6",
+            "name": "Understands the concept of perimeter of polygons"
+        },
+        {
+            "code": "5.FD.3",
+            "name": "Adds and Subtracts fractions"
+        }]
+    },
+    "03_2020" : {
+        "user_count": 241,
+        "avg_count": "18m.27s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%%"
+        },
+        "stugglingCompetency":[{
+            "code": "2.M.2",
+            "name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units "
+        },
+         {
+             "code": "4.FD.3",
+             "name": "Understands concept composite fractions."
+         },
+         {
+             "code": "4.G.6",
+             "name": "Understands the concept of perimeter of polygons"
+         },
+         {
+             "code": "5.FD.3",
+             "name": "Adds and Subtracts fractions"
+         }]
+     },
+    "total" : {
+               "user_count": 4778
+    }
+}

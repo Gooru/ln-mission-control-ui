@@ -20,14 +20,61 @@
     }
     .learner-table-section-container {
       .learner-table-section {
+        .learner-filter-container {
+          .search-box-container {
+            .search-box {
+              position: relative;
+              height: 45px;
+              line-height: 45px;
+              width: 100%;
+              border-radius: 5px;
+              box-shadow: 0px 2px 6px 1px rgba(32, 33, 36, 0.28);
+              padding: 0 8px;
+              .input-box {
+                margin: 0;
+                padding: 0;
+                width: 90%;
+                border: none;
+                padding-left: 25px;
+                color: rgb(117, 117, 117);
+                &:active,
+                &:focus {
+                  border: none;
+                  outline: unset;
+                }
+                &::placeholder {
+                  color: $light-300;
+                }
+              }
+
+              .search-btn {
+                position: absolute;
+                left: 8px;
+                cursor: pointer;
+                i.search {
+                  line-height: 45px;
+                  font-size: 22px;
+                  color: rgb(117, 117, 117);
+                }
+              }
+              .clear-search {
+                position: absolute;
+                right: 8px;
+                cursor: pointer;
+                i.clear {
+                  line-height: 45px;
+                  font-size: 18px;
+                }
+              }
+            }
+          }
+        }
         .learner-table-seaction-header {
           display: grid;
-          grid-template-columns: 30% 20% 30% 20%;
-          column-gap: 20px;
+          grid-template-columns: 1fr 1fr 1fr;
           padding: 10px;
-          margin-top: 30px;
+          padding-right: 24px;
           border-bottom: 5px solid $light-100;
-          box-shadow: 0 0 10px $light-100;
           span {
             width: 100%;
             font-size: 12px;
@@ -40,11 +87,16 @@
           }
         }
         .learner-table-section-body {
+          max-height: 400px;
+          overflow-y: auto;
+          .loading-spinner {
+            margin: 15px 0;
+          }
           .learner-table-section-body-content {
             display: grid;
-            grid-template-columns: 30% 20% 30% 20%;
+            grid-template-columns: 1fr 1fr 1fr;
             align-items: center;
-            column-gap: 20px;
+            // column-gap: 20px;
             padding: 10px;
             border-bottom: 2px solid $light-100;
             cursor: pointer;
@@ -69,6 +121,10 @@
                 }
               }
             }
+          }
+          .no-learners {
+            text-align: center;
+            margin: 8px 0;
           }
         }
       }

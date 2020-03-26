@@ -10,6 +10,8 @@ import { PortfolioCompetencyStat } from '@/models/stats/portfolio-competency';
 import PortfolioContentCard from '@/components/cards/portfolio-content-card/portfolio-content-card';
 import PortfolioStatCard from '@/components/cards/portfolio-stat-card/portfolio-stat-card';
 import moment from 'moment';
+import Axios from 'axios';
+import { competencyAPI } from '@/providers/apis/competency/competency';
 
 @Component({
   name: 'portfolio-panel',
@@ -29,7 +31,9 @@ export default class PortfolioPanel extends Vue {
     } else if (statsBucket === 'domain') {
       portfolioStats = this.portfolioDomainStats;
     } else {
-      portfolioStats = this.portfolioFacetsStats;
+      portfolioStats = this.portfolioFacetsStats.filter(
+        (portfolioFacetStat) => this.activeFacets.find(
+          (activeFacet) => portfolioFacetStat.subjectCode === activeFacet.id));
     }
     return portfolioStats;
   }
@@ -56,6 +60,9 @@ export default class PortfolioPanel extends Vue {
   @Prop()
   private year!: string;
 
+  @Prop()
+  private activeFacets!: SubjectModel[];
+
   private activityType = 'assessment';
 
   private portfolioContents: PortfolioContent[] = [];
@@ -69,6 +76,8 @@ export default class PortfolioPanel extends Vue {
   private protfolioStats: PortfolioDomainStat[] | PortfolioCompetencyStat[] | PortfolioSubjectStat[] = [];
 
   private isLoadContents: boolean = false;
+
+  private isLoading: boolean = false;
 
   @Prop()
   private statsBucket!: string;
@@ -104,10 +113,42 @@ export default class PortfolioPanel extends Vue {
 
   public getPortfolioStatsBySubject() {
     const component = this;
+    this.isLoading = true;
     const requestParams = component.getStatsParams();
-    portfolioAPI.fetchPortfolioStatsBySubject(requestParams).then((portfolioSubjectStats: PortfolioDomainStat[]) => {
-      component.portfolioSubjectStats = portfolioSubjectStats;
-    });
+    const domainParams = component.getStatsParams(true);
+    const domainPromise: Promise<any> = competencyAPI.fetchUserDomainCompetencyMatrix(domainParams);
+    Axios.all([
+      domainPromise,
+      portfolioAPI.fetchPortfolioStatsBySubject(requestParams),
+    ]).then(Axios.spread((domainMatrix, portfolioSubjectStats: PortfolioDomainStat[]) => {
+      const MaterixStats: PortfolioDomainStat[] | any = portfolioSubjectStats.map((stat) => {
+        const domainCompetency: any =  domainMatrix.find((materix) => materix.domainCode === stat.domainCode);
+        if (domainCompetency) {
+          domainCompetency.competencies = domainCompetency.competencies.map((competency: any) => {
+           return {
+            competencyCode: competency.competencyCode,
+            competencyName: competency.competencyName,
+            competencySeq: competency.competencySeq,
+            competencyStatus: competency.status,
+            competencyStudentDesc: competency.competencyStudentDesc,
+            domainCode: stat.domainCode,
+            domainName: stat.domainName,
+            domainSeq: stat.domainSeq,
+            isMastered: competency.status > 1,
+            isInferred: competency.status === 2 || competency.status === 3,
+            isSkyLineCompetency: false,
+            isGradeBoundary: false,
+           };
+          });
+          return {
+            ...stat,
+            ...domainCompetency,
+          };
+        }
+      });
+      this.isLoading = false;
+      component.portfolioSubjectStats = MaterixStats;
+    }));
   }
 
   public getPortfolioStatsByDomain() {
@@ -132,18 +173,22 @@ export default class PortfolioPanel extends Vue {
     });
   }
 
-  public getStatsParams() {
+  public getStatsParams(isDomain = false) {
     const component = this;
     const requestParams: any = {
       user: component.userId,
       month: Number(component.month),
       year: Number(component.year),
     };
-    if (component.statsBucket === 'subject') {
-      requestParams.tx_subject_code = component.subject.code;
-    } else if (component.statsBucket === 'domain') {
-      requestParams.tx_subject_code = component.subject.code;
-      requestParams.tx_domain_code = component.domain.domainCode;
+    if (isDomain) {
+      requestParams.subject = component.subject.code;
+    } else {
+      if (component.statsBucket === 'subject') {
+        requestParams.tx_subject_code = component.subject.code;
+      } else if (component.statsBucket === 'domain') {
+        requestParams.tx_subject_code = component.subject.code;
+        requestParams.tx_domain_code = component.domain.domainCode;
+      }
     }
     return requestParams;
   }

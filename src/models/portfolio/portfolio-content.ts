@@ -20,5 +20,5 @@ export interface PortfolioContent {
   engagement?: number;
   relevance?: number;
   activityTimestamp?: number;
-  owner: User;
+  owner?: User;
 }

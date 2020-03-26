@@ -1,0 +1,69 @@
+{
+	 "12_2019" : {
+		"user_count": 12,
+    "avg_count": "14m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		},{
+			"code": "8.SP.1",
+			"name": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities."
+		}]
+	 },
+	 "01_2020" : {
+		"user_count": 15,
+    "avg_count": "14m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		},{
+			"code": "8.SP.1",
+			"name": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities."
+		}]
+	 },
+     "02_2020" : {
+		"user_count": 9,
+    "avg_count": "14m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "5.G.4",
+			"name": "Classify two-dimensional figures in a hierarchy based on properties."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		},{
+			"code": "8.SP.1",
+			"name": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities."
+		}]
+	 },
+	 "03_2020" : {
+		"user_count": 13,
+    "avg_count": "19m.17s",
+		"gained_comp": "23%",
+		"stugglingCompetency":[{
+			"code": "4.MD.3",
+			"name": "Apply the area and perimeter formulas for rectangles in real world and mathematical problems."
+		},{
+			"code": "5.NBT.3.a",
+			"name": "Read and write decimals to thousandths using base-ten numerals, number names, and expanded form"
+		},
+		{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		},{
+			"code": "8.SP.1",
+			"name": "Construct and interpret scatter plots for bivariate measurement data to investigate patterns of association between two quantities."
+		}]
+	 },
+	 "total" : {
+				"user_count": 4778
+	 }
+}

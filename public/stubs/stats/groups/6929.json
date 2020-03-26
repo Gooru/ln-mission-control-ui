@@ -1,0 +1,65 @@
+{
+    "12_2019" : {
+       "user_count": 67,
+   "avg_count": "20m.16s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+        "code": "3.NF.2",
+        "name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
+    },{
+        "code": "4.NBT.4",
+        "name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm.."
+    },{
+        "code": "7.EE.1",
+        "name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+    }]
+    },
+    "01_2020" : {
+        "user_count": 77,
+        "avg_count": "20m.16s",
+            "gained_comp": "23%",
+            "stugglingCompetency":[{
+             "code": "3.NF.2",
+             "name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
+         },{
+             "code": "4.NBT.4",
+             "name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm.."
+         },{
+             "code": "7.EE.1",
+             "name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+         }]
+    },
+    "02_2020" : {
+        "user_count": 45,
+   "avg_count": "20m.16s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+        "code": "3.NF.2",
+        "name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
+    },{
+        "code": "4.NBT.4",
+        "name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm.."
+    },{
+        "code": "7.EE.1",
+        "name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+    }]
+    },
+    "03_2020" : {
+        "user_count": 56,
+   "avg_count": "23m.29s",
+       "gained_comp": "23%",
+       "stugglingCompetency":[{
+        "code": "4.NF.3.d",
+        "name": "Solve word problems involving addition and subtraction of fractions referring to the same whole and having like denominators"
+    },{
+        "code": "4.NBT.4",
+        "name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm.."
+    },{
+        "code": "7.EE.1",
+        "name": "Apply properties of operations as strategies to add, subtract, factor, and expand linear expressions with rational coefficients."
+    }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

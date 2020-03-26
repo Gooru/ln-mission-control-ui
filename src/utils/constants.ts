@@ -15,6 +15,10 @@ export const NAVIGATION_MENUS = [
     name: 'learners',
     path: '/learners',
   },
+  {
+    name: 'console',
+    path: '/console',
+  },
 ];
 
 export const PARTNERS_TYPE = [
@@ -224,3 +228,44 @@ export const LEARNER_PREFERENCE_META: any = {
     icon: 'offline-activity-gray',
   },
 };
+
+export const COMPETENCY_NAVIGATION_MENUS = [
+  'competency-map',
+  'tree',
+  'crosswalk',
+  'learning-map',
+];
+
+export const GOORU_DEFAULT_STANDARD = 'GDF';
+
+export const GOORU_DEFAULT_FRAMEWORK = 'GDT';
+
+export const MICRO_COMPETENCY_CODE_TYPES = [
+  'learning_target_level_0',
+  'learning_target_level_1',
+  'learning_target_level_2',
+];
+
+export const TAXONOMY_LEVELS = {
+  COURSE: 'course',
+  DOMAIN: 'domain',
+  STANDARD: 'standard',
+  MICRO: 'micro-standard',
+};
+
+export const LEARNER_MINDSETS_VECTORS = [
+  'grit',
+  'perseverance',
+  'motivation',
+  'selfConfidence',
+];
+
+export const LEARNER_COMMUNITY_VECTORS = [
+  'citizenship',
+  'authority',
+  'reputation',
+
+];
+export const DEMO_USERS = [
+  'e062559a-35d2-45e9-85fd-380987dc2fdf',
+];

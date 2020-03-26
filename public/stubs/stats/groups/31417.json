@@ -1,0 +1,129 @@
+{
+    "12_2019" : {
+       "user_count": 367,
+   "avg_count": "29m.17s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "6%",
+           "overall": 8
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "15m.11s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       },
+       "stugglingCompetency":[{
+        "code": "3.FD.1",
+        "name": "Understands fractions as equal share."
+    },{
+        "code": "4.G.2",
+        "name": "Understands and differentiates curved and straight lines, properties of a line and constructs line segments"
+    },{
+        "code": "5.FD.1",
+        "name": "Understands equivalence in fractions and generates equivalent sets"
+    },{
+        "code": "5.PD.2",
+        "name": "Creates and analyzes patterns of square numbers using both numbers and shapes"
+    }]
+    },
+    "01_2020" : {
+       "user_count": 367,
+   "avg_count": "29m.17s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "2%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "16m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "11%"
+       },
+       "stugglingCompetency":[{
+        "code": "3.FD.1",
+        "name": "Understands fractions as equal share."
+    },{
+        "code": "4.G.2",
+        "name": "Understands and differentiates curved and straight lines, properties of a line and constructs line segments"
+    },{
+        "code": "5.FD.1",
+        "name": "Understands equivalence in fractions and generates equivalent sets"
+    },{
+        "code": "5.PD.2",
+        "name": "Creates and analyzes patterns of square numbers using both numbers and shapes"
+    }]
+    },
+    "02_2020" : {
+       "user_count": 167,
+       "avg_count": "29m.17s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%"
+       },
+       "stugglingCompetency":[{
+        "code": "3.FD.1",
+        "name": "Understands fractions as equal share."
+    },{
+        "code": "4.G.2",
+        "name": "Understands and differentiates curved and straight lines, properties of a line and constructs line segments"
+    },{
+        "code": "5.FD.1",
+        "name": "Understands equivalence in fractions and generates equivalent sets"
+    },{
+        "code": "5.PD.2",
+        "name": "Creates and analyzes patterns of square numbers using both numbers and shapes"
+    }]
+    },
+    "03_2020" : {
+        "user_count": 203,
+        "avg_count": "26m.17s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%"
+        },
+        "stugglingCompetency":[{
+         "code": "3.FD.1",
+         "name": "Understands fractions as equal share."
+     },{
+         "code": "4.G.2",
+         "name": "Understands and differentiates curved and straight lines, properties of a line and constructs line segments"
+     },{
+         "code": "5.FD.1",
+         "name": "Understands equivalence in fractions and generates equivalent sets"
+     },{
+         "code": "5.PD.2",
+         "name": "Creates and analyzes patterns of square numbers using both numbers and shapes"
+     }]
+     },
+    "total" : {
+               "user_count": 4778
+    }
+}

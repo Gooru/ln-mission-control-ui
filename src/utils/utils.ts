@@ -63,5 +63,39 @@ export function getGradeRange(score: number): string {
 
 export function getSum(dataList: any, property: any) {
      return dataList.reduce(
-        (count: any, data: any) => Math.abs(count) + Math.abs(data[property]), 0);
+        (count: any, data: any) => count + data[property], 0);
 }
+
+export function getDomainId(id: any) {
+  const ids = id.split('-');
+  return `${ids[0]}-${ids[1]}-${ids[2]}`;
+}
+export function getCourseId(id: any) {
+  const ids = id.split('-');
+  return `${ids[0]}-${ids[1]}`;
+}
+
+export function getSubjectId(id: any) {
+  return id.substring(0, id.indexOf('-'));
+}
+
+export function isMicroStandardId(id: any) {
+    return /.*\d{2}-\d{2}/.test(id) || /.*\.\d{2}\.\d{2}\./.test(id);
+  }
+
+export function getTaxonomyTags(
+    taxonomy = [],
+    editable = false,
+    removable = false,
+    canAdd = false,
+  ) {
+    return taxonomy.map((tagData) => {
+      return  {
+        isActive: false,
+        isReadonly: !editable,
+        isRemovable: removable,
+        canAdd,
+        data: tagData,
+      };
+    });
+  }

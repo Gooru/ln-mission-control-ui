@@ -41,3 +41,11 @@ export function formatTime(timeInMillis: number) {
 
   return result;
 }
+
+export function subtractMonth(curDate: any = moment(), numberOfMonth: number = 1) {
+  return moment(curDate).subtract(numberOfMonth, 'month').format('YYYY-MM-DD');
+}
+
+export function addMonth(curDate: any = moment(), numberOfMonth: number = 1) {
+  return moment(curDate).add(numberOfMonth, 'month').format('YYYY-MM-DD');
+}

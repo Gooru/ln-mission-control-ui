@@ -1,0 +1,49 @@
+#taxonomy-card {
+  @mixin taxonomyCard {
+    .taxonomy-content {
+      padding: 5px;
+      border: 1px solid $light-300;
+      border-radius: 3px;
+      font-size: 12px;
+      span {
+        line-height: 1;
+        display: block;
+
+        &.framework-code {
+          opacity: 0.4;
+        }
+      }
+    }
+  }
+
+  .taxonomy-card-container {
+    position: relative;
+    .taxonomy-visible-container {
+      display: inline-flex;
+      padding: 4px;
+      align-items: center;
+      @include taxonomyCard;
+
+      .show-more-btn {
+        font-size: 10px;
+        margin-left: 5px;
+      }
+    }
+
+    .taxonomy-nonvisible-container {
+      position: absolute;
+      width: 100%;
+      margin: 0 auto;
+      right: 0;
+      z-index: 100;
+      background-color: $light-100;
+      max-height: 200px;
+      overflow: auto;
+      @include taxonomyCard;
+      .taxonomy-content {
+        margin: 10px;
+        background-color: $white;
+      }
+    }
+  }
+}

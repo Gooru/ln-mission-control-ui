@@ -5,6 +5,11 @@ import { statsAPI } from '@/providers/apis/stats/stats';
 import NavLearningWorldWide from './nav-learning-worldwide/nav-learning-worldwide';
 import Partners from './partners/partners';
 import { CountryModel } from '@/models/stats/country';
+import { drillDownAPI } from '@/providers/apis/drill-down/drill-down';
+import { sessionService } from '@/providers/services/auth/session';
+import { appConfigService } from '@/providers/services/app/app-config';
+import { DEMO_USERS } from '@/utils/constants';
+
 
 @Component({
   components: {
@@ -21,7 +26,20 @@ export default class Network extends Vue {
    * Maintains the data of map plotting values
    * @type {Object}
    */
-   private mapData: any = null;
+  private mapData: any = null;
+
+  get session() {
+    return sessionService.getSession();
+  }
+
+  get isTenant() {
+    if (this.session && this.session.tenant) {
+      return (appConfigService.getClientId() === this.session.tenant.tenant_id) ||
+       (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
+    }
+    return false;
+  }
+
 
 
   // -------------------------------------------------------------------------
@@ -43,16 +61,18 @@ export default class Network extends Vue {
       totalTeachersCount: 0,
       totalOthersCount: 0,
     };
+    const countryService = this.isTenant ? statsAPI.getCountries() : drillDownAPI.fetchCountryList();
     return axios.all([
       mapDataSetAPI.getCountries(),
-      statsAPI.getCountries(),
+      countryService,
       mapDataSetAPI.getCountriesRegion(),
     ])
       .then(axios.spread((countries, statsCountries, countriesRegion) => {
         if (statsCountries) {
-          statsCountries.map((statsCountry: CountryModel) => {
+          statsCountries.map((statsCountry: any) => {
+            const countryCode = this.isTenant ? statsCountry.country_code : statsCountry.code;
             const country = countries.features.find((countryData: any) => {
-              return statsCountry.country_code === countryData.country_code;
+              return countryCode === countryData.country_code;
             });
             if (country) {
               country.has_data = true;
@@ -65,7 +85,12 @@ export default class Network extends Vue {
               country.total_timespent = statsCountry.total_timespent;
               country.total_activities_conducted = statsCountry.total_activities_conducted;
               country.total_navigator_courses = statsCountry.total_navigator_courses;
-              country.country_name = statsCountry.country_name;
+              country.country_id = statsCountry.id;
+              if (this.isTenant) {
+                country.country_name = statsCountry.country_name;
+              } else {
+                country.country_name = statsCountry.name;
+              }
 
 
               // Calculate the overall count of Student, Teachers and Others
@@ -74,7 +99,7 @@ export default class Network extends Vue {
               overallStats.totalOthersCount += statsCountry.total_others;
 
               const countryRegion = countriesRegion.find((region: any) => {
-                return region.country_code === statsCountry.country_code;
+                return region.country_code === countryCode;
               });
               if (countryRegion) {
                 country.latitude = countryRegion.latitude;
@@ -92,4 +117,4 @@ export default class Network extends Vue {
       }));
   }
 
- }
+}

@@ -1,9 +1,8 @@
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import CompetenciesListPanel from '@/components/proficiency/competencies-list-panel/competencies-list-panel';
-import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
-import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
-import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
+import { Component, Vue, Prop } from 'vue-property-decorator';
+import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import KnowledgePanel from '../knowledge-panel/knowledge-panel';
+import CommunityPanel from '../community-panel/community-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { DomainModel } from '@/models/proficiency/domain';
@@ -13,10 +12,9 @@ import moment from 'moment';
   name: 'domain-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
-    'competencies-list-panel': CompetenciesListPanel,
-    'mindsets-list-panel': MindsetsListPanel,
-    'portfolio-panel': PortfolioPanel,
-    'preferences-panel': PreferencesPanel,
+    MindsetsPanel,
+    KnowledgePanel,
+    CommunityPanel,
   },
 })
 export default class DomainInfoPanel extends Vue {
@@ -30,27 +28,29 @@ export default class DomainInfoPanel extends Vue {
   @Prop()
   public classification!: ClassificationModel;
 
+  @Prop()
+  public activeToggleList?: string;
+
+  @Prop()
+  public portfolioDomain: any;
+
   public activeTab: object = {
-    title: 'Competencies',
-    component: 'competencies-list-panel',
+    title: 'Knowledge',
+    component: KnowledgePanel,
   };
 
   public tabItems = [
     {
-      title: 'Competencies',
-      component: 'competencies-list-panel',
+      title: 'Knowledge',
+      component: KnowledgePanel,
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-list-panel',
+      component: MindsetsPanel,
     },
     {
-      title: 'Portfolio',
-      component: 'portfolio-panel',
-    },
-    {
-      title: 'Preferences',
-      component: 'preferences-panel',
+      title: 'Community',
+      component: CommunityPanel,
     },
   ];
 

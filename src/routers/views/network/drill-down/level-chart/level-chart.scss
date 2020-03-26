@@ -1,0 +1,117 @@
+#texas-chart-container {
+  background-image: linear-gradient(to right, $blue-400, $blue-700);
+  width: 100%;
+  color: $white;
+  .texas-header {
+    display: grid;
+    grid-template-columns: 1fr 50px 1fr;
+    align-items: center;
+    padding: 5px;
+    height: 40px;
+    border-bottom: 1px solid $white;
+    padding: 0 10px;
+    .texas-title {
+      display: grid;
+      grid-template-columns: 30px 1fr;
+      align-items: center;
+      i {
+        cursor: pointer;
+      }
+      &.on-breadcrumb {
+        i {
+          cursor: not-allowed;
+          opacity: 0.5;
+        }
+      }
+
+      .texas-title-head {
+        font-weight: bold;
+        margin: 0;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+    }
+    .texas-pullup-table {
+      i {
+        display: none;
+      }
+    }
+    .texas-nav-tab {
+      overflow: hidden;
+      .texas-breadcrumb {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        font-size: 12px;
+        text-transform: capitalize;
+        opacity: 0.8;
+        li {
+          cursor: pointer;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-weight: bold;
+          span {
+            padding: 0 2px;
+          }
+          &:last-child {
+            pointer-events: none;
+            span {
+              display: none;
+            }
+          }
+        }
+        &.last-breadcrumb {
+          li {
+            pointer-events: auto;
+          }
+        }
+      }
+    }
+  }
+  .chart-container {
+    padding: 10px;
+    .chart-totals {
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      margin-bottom: 10px;
+      padding: 0 10px;
+      .competency-total {
+        text-align: left;
+        display: grid;
+        align-items: center;
+        .total-counts {
+          font-weight: bold;
+          margin: 0;
+          font-size: 30px;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+      .competenc-from {
+        text-align: right;
+        display: grid;
+        align-items: center;
+        .perfomance-avarage {
+          font-weight: bold;
+          margin: 0;
+          opacity: 0.5;
+          font-size: 30px;
+          i {
+            position: relative;
+            top: 5px;
+            left: 5px;
+          }
+        }
+        span {
+          font-size: 13px;
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+}

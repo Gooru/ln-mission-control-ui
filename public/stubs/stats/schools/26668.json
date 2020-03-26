@@ -1,0 +1,140 @@
+{
+    "12_2019" : {
+       "user_count": 18,
+   "avg_count": "17m.17s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "3%",
+           "overall": 7
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "12m.16s"
+       },
+       "student_gaind_card": {
+           "percent": "-2%",
+           "overall": "19%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.4",
+           "name": "Applies knowledge of association between number and quantity and compares numbers upto 20"
+       },{
+           "code": "3.G.1",
+           "name": "Classifies shapes using nomenclature such as 2-D and 3-D shapes. Names common shapes and solids."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations"
+       
+        },{
+            "code": "5.FD.3",
+            "name": "Adds and Subtracts fractions"
+         }]
+    },
+    "01_2020" : {
+       "user_count": 9,
+   "avg_count": "27m.17s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "4%",
+           "overall": 9
+       },
+       "avg_card": {
+           "percent": "-2%",
+           "overall": "14m.28s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.4",
+           "name": "Applies knowledge of association between number and quantity and compares numbers upto 20."
+       },{
+           "code": "2.NO.6",
+           "name": "Solves real life problems orally pertaining to multiplication [product upto 20]. Understands the aspect of repeated addition in multiplication"
+       },{
+           "code": "3.G.1",
+           "name": "Classifies shapes using nomenclature such as 2-D and 3-D shapes. Names common shapes and solids."
+       },{
+        "code": "5.FD.3",
+        "name": "Adds and Subtracts fractions"
+    },{
+        "code": "4.FD.1",
+        "name": "Understands part to whole concept of fractions, language of fractions and representations"
+    }]
+    },
+    "02_2020" : {
+       "user_count": 17,
+       "avg_count": "27m.17s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.PD.1",
+           "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+       },{
+            "code": "3.G.3",
+            "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+        },{
+            "code": "3.PD.2",
+            "name": "Collects, organizes and interprets data for a defined objective"
+        },{
+            "code": "4.G.8",
+            "name": "Investigates mirror symmetry in shapes"
+        },{
+            "code": "5.FD.8",
+            "name": "Compares [and orders] decimals up to 2 decimal places. Recognises that for this, the whole has to be the same."
+        }]
+    },
+    "03_2020" : {
+        "user_count": 12,
+        "avg_count": "18m.41s",
+        "gained_comp": "53%",
+        "month_since": "Mar'18",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%%"
+        },
+        "stugglingCompetency":[{
+            "code": "2.PD.1",
+            "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+        },{
+             "code": "3.G.3",
+             "name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+         },{
+             "code": "3.PD.2",
+             "name": "Collects, organizes and interprets data for a defined objective"
+         },{
+             "code": "4.G.8",
+             "name": "Investigates mirror symmetry in shapes"
+         },{
+             "code": "5.FD.8",
+             "name": "Compares [and orders] decimals up to 2 decimal places. Recognises that for this, the whole has to be the same."
+         }]
+     },
+ 
+    "total" : {
+               "user_count": 4778
+    }
+}

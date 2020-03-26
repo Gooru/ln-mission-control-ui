@@ -1,0 +1,129 @@
+{
+    "12_2019" : {
+       "user_count": 11,
+   "avg_count": "15m.18s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "5%",
+           "overall": 8
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "16m 24s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "31%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.3",
+           "name": "Understands number upto 20 and applies in real life context."
+       },{
+           "code": "2.G.1",
+           "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations"
+       }]
+    },
+    "01_2020" : {
+       "user_count": 78,
+   "avg_count": "21m.18s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "6%",
+           "overall": 7
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "18m.14s"
+       },
+       "student_gaind_card": {
+           "percent": "2%",
+           "overall": "18%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.4",
+           "name": "Applies knowledge of association between number and quantity and compares numbers upto 20"
+       },{
+           "code": "2.PD.1",
+           "name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations"
+       }]
+    },
+    "02_2020" : {
+       "user_count": 254,
+       "avg_count": "21m.18s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.3",
+           "name": "Understands number upto 20 and applies in real life context."
+       },{
+           "code": "2.G.1",
+           "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
+       }]
+    },
+    "03_2020" : {
+       "user_count": 273,
+       "avg_count": "26m.14s",
+       "gained_comp": "53%",
+       "month_since": "Mar'18",
+       "user_card": {
+           "percent": "3%",
+           "overall": 7
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "17m.31s"
+       },
+       "student_gaind_card": {
+           "percent": "-1%",
+           "overall": "24%"
+       },
+       "stugglingCompetency":[{
+           "code": "1.NS.3",
+           "name": "Understands number upto 20 and applies in real life context."
+       },{
+           "code": "2.G.1",
+           "name": "Recognises different kinds of lines and surfaces based on their orientation and properties"
+       },{
+           "code": "3.FD.1",
+           "name": "Understands fractions as equal share."
+       },{
+           "code": "4.FD.1",
+           "name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
+       }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

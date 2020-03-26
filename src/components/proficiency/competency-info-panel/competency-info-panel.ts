@@ -1,9 +1,8 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import LearningMap from '@/components/competency/learning-map/learning-map';
-import MindsetsListPanel from '@/components/proficiency/mindsets-list-panel/mindsets-list-panel';
-import PortfolioPanel from '@/components/proficiency/portfolio-panel/portfolio-panel';
-import PreferencesPanel from '@/components/proficiency/preferences-panel/preferences-panel';
+import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
+import KnowledgePanel from '../knowledge-panel/knowledge-panel';
+import CommunityPanel from '../community-panel/community-panel';
 import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
 import { searchAPI } from '@/providers/apis/search/search';
@@ -12,11 +11,10 @@ import moment from 'moment';
 @Component({
   name: 'competency-info-panel',
   components: {
-    'learning-map': LearningMap,
     'google-material-icon': GoogleMaterialIcon,
-    'portfolio-panel': PortfolioPanel,
-    'preferences-panel': PreferencesPanel,
-    'mindsets-list-panel': MindsetsListPanel,
+    MindsetsPanel,
+    KnowledgePanel,
+    CommunityPanel,
   },
 })
 
@@ -26,8 +24,8 @@ export default class CompetencyInfoPanel extends Vue {
   private competency!: CompetencyModel;
 
   private activeTab: object = {
-    title: 'Portfolio',
-    component: 'portfolio-panel',
+    title: 'Knowledge',
+    component: KnowledgePanel,
   };
 
   @Prop()
@@ -35,26 +33,16 @@ export default class CompetencyInfoPanel extends Vue {
 
   private tabItems = [
     {
-      title: 'Portfolio',
-      component: 'portfolio-panel',
+      title: 'Knowledge',
+      component: KnowledgePanel,
     },
     {
       title: 'Mindsets',
-      component: 'mindsets-list-panel',
+      component: MindsetsPanel,
     },
     {
-      title: 'Preferences',
-      component: 'preferences-panel',
-    },
-    {
-      title: 'Route',
-    },
-    {
-      title: 'Metadata',
-    },
-    {
-      title: 'LearningMap',
-      component: 'learning-map',
+      title: 'Community',
+      component: CommunityPanel,
     },
   ];
 
@@ -86,7 +74,6 @@ export default class CompetencyInfoPanel extends Vue {
     searchAPI.fetchLearningMapContents(competencyCode).then((learningMapData) => {
       component.learningMapData = learningMapData;
     });
-
   }
 
 }

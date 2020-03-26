@@ -1,0 +1,120 @@
+{
+	 "12_2019" : {
+		"user_count": 84,
+    "avg_count": "19m.17s",
+		"gained_comp": "23%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "12%",
+			"overall": 72
+		},
+		"avg_card": {
+			"percent": "-2%",
+			"overall": "22m 10s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "20%"
+		},
+		"stugglingCompetency":[{
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+		},{
+			"code": "4.NBT.4",
+			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+     },
+     "01_2020" : {
+		"user_count": 94,
+    "avg_count": "17m.28s",
+		"gained_comp": "23%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "8%",
+			"overall": 70
+		},
+		"avg_card": {
+			"percent": "-1%",
+			"overall": "20m 24s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "21%"
+		},
+		"stugglingCompetency":[{
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+		},{
+			"code": "4.NBT.4",
+			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+     },
+     "02_2020" : {
+		"user_count": 58,
+    "avg_count": "21m.23s",
+		"gained_comp": "23%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "7%",
+			"overall": 64
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "22m 45s"
+		},
+		"student_gaind_card": {
+			"percent": "-1%",
+			"overall": "18%"
+		},
+		"stugglingCompetency":[{
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+		},{
+			"code": "4.NBT.4",
+			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
+	 "03_2020" : {
+		"user_count": 63,
+    "avg_count": "26m.13s",
+		"gained_comp": "23%",
+		"month_since": "Mar",
+		"user_card": {
+			"percent": "11%",
+			"overall": 71
+		},
+		"avg_card": {
+			"percent": "2%",
+			"overall": "27m 15s"
+		},
+		"student_gaind_card": {
+			"percent": "-3%",
+			"overall": "22%"
+		},
+		"stugglingCompetency":[{
+			"code": "4.OA.1",
+			"name": "Interpret a multiplication equation as a comparison"
+		},{
+			"code": "7.EE.4.a",
+			"name": "Solve word problems leading to equations of the form px + q = r and p(x + q) = r, where p, q, and r are specific rational numbers."
+		},{
+			"code": "7.SP.7.a",
+			"name": "Develop a uniform probability model by assigning equal probability to all outcomes, and use the model to determine probabilities of events."
+		},{
+			"code": "8.NS.2",
+			"name": "Use rational approximations of irrational numbers to compare the size of irrational"
+		}]
+	 },
+	 "total" : {
+				"user_count": 4778
+	 }
+}

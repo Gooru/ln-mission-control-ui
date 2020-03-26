@@ -2,7 +2,7 @@
   <div id="learner-proficiency-chart">
     <div class="chart-actions">
       <div class="back-action">
-        <div class="back-icon" @click="$emit('backAction')">
+        <div class="back-icon" @click="backAction()">
           <google-material-icon icon="keyboard_backspace" />
         </div>
         <span class="subject-title">
@@ -16,29 +16,29 @@
       <div v-if="taxonomyGrades.length > 0" class="grade-selector">
         <div class="grade-label">
           <!-- Hi-Line {{activeGrade.grade}} <google-material-icon :icon="isShowTaxonomyGradeList ? 'arrow_drop_up' : 'arrow_drop_down'"/> -->
-          Grade Selector
+          {{!isCompetencyMap ? 'Grade Selector' : 'Level Selector'}}
         </div>
         <div class="taxonomy-grade-list">
-          <div class="taxonomy-grade" v-for="taxonomyGrade in taxonomyGrades" v-bind:class="{active : taxonomyGrade == activeGrade}" @click="onSelectGrade(taxonomyGrade)">
+          <div class="taxonomy-grade" v-for="(taxonomyGrade, gradeIndex) in taxonomyGrades" v-bind:class="{active : isActiveGradeList(taxonomyGrade), 'competency-map':isCompetencyMap}" @click="onSelectGrade(taxonomyGrade)" :key="gradeIndex">
             <google-material-icon icon="adjust" />{{taxonomyGrade.grade}}
           </div>
         </div>
       </div>
       <div class="graph-visual">
         <!-- <div class="proficiency-chart-container"> -->
-          <!-- <div class="loading-spinner" v-if="isLoading">
+          <div class="loading-spinner" v-if="isLoading && isCompetencyMap">
             <b-spinner variant="primary" label="Spinning"></b-spinner>
-          </div> -->
+          </div>
           <div class="scrollable-chart">
             <div id="chart-area">
-              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus]" :style="activeCompetencyStyle">
+              <div v-if="isCompetencyActive" :class="['active-competency', 'competency-status' + activeCompetency.competencyStatus, {'active-competency-map': isCompetencyMap}]" :style="activeCompetencyStyle">
               </div>
             </div>
           </div>
         <!-- </div> -->
         <div class="domains-seq-list" v-if="domainCoOrdinates">
           <div :class="['domain-seq', 'domain-' + domain.domainSeq]" v-for="domain in chartData" :key="domain.domainSeq" :style="{width: cellWidth + 'px'}" @click="onSelectDomain(domain)">
-            {{domain.domainSeq}}
+            <span v-b-tooltip:hover :title="domain.domainName">{{domain.domainSeq}}</span>
           </div>
         </div>
       </div>

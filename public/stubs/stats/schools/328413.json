@@ -1,0 +1,129 @@
+{
+    "12_2019" : {
+       "user_count": 61,
+   "avg_count": "14m.17s",
+       "gained_comp": "23%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "2%",
+           "overall": 9
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "23m.28s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "24%"
+       },
+       "stugglingCompetency":[{
+           "code": "2.NO.7",
+           "name": "Understands the concept of division through contextual problems."
+       },{
+           "code": "3.PD.2",
+           "name": "Collects, organizes and interprets data for a defined objective"
+       },{
+           "code": "5.NO.6",
+           "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+       },{
+        "code": "5.PD.5",
+        "name": "Compares and interprets two different sets of data and draws conclusion"
+        }]
+    },
+    "01_2020" : {
+        "user_count": 61,
+   "avg_count": "14m.17s",
+       "gained_comp": "23%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "5%",
+           "overall": 4
+       },
+       "avg_card": {
+           "percent": "3%",
+           "overall": "16m.45s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "33%"
+       },
+       "stugglingCompetency":[{
+        "code": "2.NO.7",
+        "name": "Understands the concept of division through contextual problems."
+    },{
+        "code": "3.PD.2",
+        "name": "Collects, organizes and interprets data for a defined objective"
+    },{
+        "code": "5.NO.6",
+        "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+    },{
+     "code": "5.PD.5",
+     "name": "Compares and interprets two different sets of data and draws conclusion"
+     }]
+    },
+    "02_2020" : {
+        "user_count": 61,
+        "avg_count": "14m.17s",
+            "gained_comp": "23%",
+            "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 2
+       },
+       "avg_card": {
+           "percent": "-3%",
+           "overall": "19m.35s"
+       },
+       "student_gaind_card": {
+           "percent": "-3%",
+           "overall": "39%"
+       },
+            "stugglingCompetency":[{
+                "code": "2.NO.7",
+                "name": "Understands the concept of division through contextual problems."
+            },{
+                "code": "3.PD.2",
+                "name": "Collects, organizes and interprets data for a defined objective"
+            },{
+                "code": "5.NO.6",
+                "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+            },{
+             "code": "5.PD.5",
+             "name": "Compares and interprets two different sets of data and draws conclusion"
+             }]
+    },
+    "03_2020" : {
+        "user_count": 63,
+        "avg_count": "24m.17s",
+            "gained_comp": "23%",
+            "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 2
+       },
+       "avg_card": {
+           "percent": "-3%",
+           "overall": "19m.35s"
+       },
+       "student_gaind_card": {
+           "percent": "-3%",
+           "overall": "39%"
+       },
+            "stugglingCompetency":[{
+                "code": "2.NO.7",
+                "name": "Understands the concept of division through contextual problems."
+            },{
+                "code": "3.PD.2",
+                "name": "Collects, organizes and interprets data for a defined objective"
+            },{
+                "code": "5.NO.6",
+                "name": "Given a multiplication fact, identifies factors and multiples of numbers correctly."
+            },{
+             "code": "5.PD.5",
+             "name": "Compares and interprets two different sets of data and draws conclusion"
+             }]
+    },
+    "total" : {
+               "user_count": 4778
+    }
+}

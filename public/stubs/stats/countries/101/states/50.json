@@ -251,18 +251,151 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 537,
-    "avg_count": "31m 10s",
+		"user_count": 3030,
+    "avg_count": "17m.18s",
 		"gained_comp": "45%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "4%",
+			"overall": 2335
+		},
+		"avg_card": {
+			"percent": "3%",
+			"overall": "19m.22s"
+		},
+		"student_gaind_card": {
+			"percent": "2%",
+			"overall": "18%"
+		},
 		"stugglingCompetency":[{
-			"code": "3.NO.1",
-			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+			"code": "1.NS.3",
+			"name": "Understands number upto 20 and applies in real life context."
 		},{
-			"code": "3.M.3",
-			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+			"code": "2.M.2",
+			"name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units"
 		},{
-			"code": "4.FD.2",
-			"name": "Develops an understanding of unit fractions"
+			"code": "4.FD.3",
+			"name": "Understands concept composite fractions."
+		},{
+			"code": "4.G.6",
+			"name": "Understands the concept of perimeter of polygons"
+		},{
+			"code": "5.FD.3",
+			"name": "Adds and Subtracts fractions"
+		},{
+			"code": "5.PD.5",
+			"name": "Compares and interprets two different sets of data and draws conclusion"
+		}]
+	 },
+	 "01_2020" : {
+		"user_count": 3292,
+    "avg_count": "22m.18s",
+		"gained_comp": "45%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "9%",
+			"overall": 2134
+		},
+		"avg_card": {
+			"percent": "4%",
+			"overall": "14m.28s"
+		},
+		"student_gaind_card": {
+			"percent": "-1%",
+			"overall": "19%"
+		},
+		"stugglingCompetency":[{
+			"code": "1.PN.1",
+			"name": "Sorts / classifies / groups different items and acquires and uses appropriate vocabulary"
+		},{
+			"code": "2.PD.1",
+			"name": "Creates patterns, extends and interpolates given patterns [both number and shapes]"
+		},{
+			"code": "3.G.3",
+			"name": "Estimates, measures and compares area using non standard units. [using activities like tiling]"
+		},{
+			"code": "4.G.8",
+			"name": "Investigates mirror symmetry in shapes"
+		},{
+			"code": "4.FD.3",
+			"name": "Understands concept composite fractions."
+		},{
+			"code": "4.G.6",
+			"name": "Understands the concept of perimeter of polygons"
+		},{
+			"code": "5.FD.3",
+			"name": "Adds and Subtracts fractions"
+		},{
+			"code": "5.PD.5",
+			"name": "Compares and interprets two different sets of data and draws conclusion"
+		}]
+	 },
+	 "02_2020" : {
+		"user_count": 2108,
+		"avg_count": "22m.18s",
+		"gained_comp": "53%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "7%",
+			"overall": 1876
+		},
+		"avg_card": {
+			"percent": "-2%",
+			"overall": "19m.28s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "22%"
+		},
+		"stugglingCompetency":[{
+			"code": "1.PN.3",
+			"name": "Compares and orders objects using measurable attributes and acquires related vocabularyand compares numbers upto 20"
+		},{
+			"code": "2.M.2",
+			"name": "Uses a pan balance to compare weight of different objects and measures weight using non standard units"
+		},{
+			"code": "3.FD.1",
+			"name": "Understands fractions as equal share.4.G.8 Investigates mirror symmetry in shapes"
+		},{
+			"code": "4.FD.1",
+			"name": "Understands part to whole concept of fractions, language of fractions and representations4.G.6 Understands the concept of perimeter of polygons"
+		},{
+			"code": "5.FD.3",
+			"name": "Adds and Subtracts fractions"
+		},{
+			"code": "4.FD.1",
+			"name": "Compares and interprets two different sets of data and draws conclusion"
+		}]
+	 },
+	 "03_2020" : {
+		"user_count": 2253,
+		"avg_count": "24m.12s",
+		"gained_comp": "53%",
+		"month_since": "Mar's",
+		"user_card": {
+			"percent": "11%",
+			"overall": 1876
+		},
+		"avg_card": {
+			"percent": "-3%",
+			"overall": "19m.28s"
+		},
+		"student_gaind_card": {
+			"percent": "2%",
+			"overall": "22%"
+		},
+		"stugglingCompetency":[{
+			"code": "1.G.1",
+			"name": "Describes and classifies objects based on some geometrical ideas like number of sides, angles etc"
+		},{
+			"code": "2.NO.2",
+			"name": "Finds the difference of 2 two digit numbers [represented both in horizontal and vertical forms] with and without regrouping and is familiar with vocabulary of subtraction"
+		},{
+			"code": "3.FD.1",
+			"name": "Understands fractions as equal share.4.G.8 Investigates mirror symmetry in shapes"
+		},{
+			"code": "5.FD.3",
+			"name": "Adds and Subtracts fractions"
 		}]
 	 },
 	 "total" : {

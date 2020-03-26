@@ -1,0 +1,141 @@
+{
+    "12_2019" : {
+       "user_count": 239,
+   "avg_count": "17m.36s",
+       "gained_comp": "45%",
+       "month_since": "Dec '18",
+       "user_card": {
+           "percent": "6%",
+           "overall": 8
+       },
+       "avg_card": {
+           "percent": "2%",
+           "overall": "15m.11s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "21%"
+       },
+       "stugglingCompetency":[{
+        "code": "3.PD.2",
+        "name": "Collects, organizes and interprets data for a defined objective"
+    },{
+        "code": "2.NO.3",
+        "name": "Articulates strategies used in problem solving verbally."
+    },{
+        "code": "4.FD.3",
+        "name": "Understands concept composite fractions."
+    },{
+        "code": "4.G.8",
+        "name": "Investigates mirror symmetry in shapes"
+    },{
+        "code": "4.FD.1",
+        "name": "Understands equivalence in fractions and generates equivalent sets"
+    }]
+    },
+    "01_2020" : {
+       "user_count": 321,
+   "avg_count": "17m.36s",
+       "gained_comp": "45%",
+       "month_since": "Jan",
+       "user_card": {
+           "percent": "2%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "1%",
+           "overall": "16m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "1%",
+           "overall": "11%"
+       },
+       "stugglingCompetency":[{
+        "code": "3.PD.2",
+        "name": "Collects, organizes and interprets data for a defined objective"
+    },{
+        "code": "2.NO.3",
+        "name": "Articulates strategies used in problem solving verbally."
+    },{
+        "code": "4.FD.3",
+        "name": "Understands concept composite fractions."
+    },{
+        "code": "4.G.8",
+        "name": "Investigates mirror symmetry in shapes"
+    },{
+        "code": "5.FD.8",
+        "name": "Compares [and orders] Janimals up to 2 Janimal places. Recognises that for this, the whole has to be the same."
+    }]
+    },
+    "02_2020" : {
+       "user_count": 151,
+       "avg_count": "17m.36s",
+       "gained_comp": "53%",
+       "month_since": "Feb",
+       "user_card": {
+           "percent": "3%",
+           "overall": 5
+       },
+       "avg_card": {
+           "percent": "-1%",
+           "overall": "14m.12s"
+       },
+       "student_gaind_card": {
+           "percent": "3%",
+           "overall": "22%"
+       },
+       "stugglingCompetency":[{
+        "code": "3.PD.2",
+        "name": "Collects, organizes and interprets data for a defined objective"
+    },{
+        "code": "2.NO.3",
+        "name": "Articulates strategies used in problem solving verbally."
+    },{
+        "code": "4.FD.3",
+        "name": "Understands concept composite fractions."
+    },{
+        "code": "4.G.8",
+        "name": "Investigates mirror symmetry in shapes"
+    },{
+        "code": "5.FD.1",
+        "name": "Understands equivalence in fractions and generates equivalent sets"
+    }]
+    },
+    "03_2020" : {
+        "user_count": 181,
+        "avg_count": "27m.36s",
+        "gained_comp": "53%",
+        "month_since": "Feb",
+        "user_card": {
+            "percent": "3%",
+            "overall": 5
+        },
+        "avg_card": {
+            "percent": "-1%",
+            "overall": "14m.12s"
+        },
+        "student_gaind_card": {
+            "percent": "3%",
+            "overall": "22%"
+        },
+        "stugglingCompetency":[{
+         "code": "2.NO.3",
+         "name": "Articulates strategies used in problem solving verbally."
+     },{
+        "code": "3.PD.2",
+        "name": "Collects, organizes and interprets data for a defined objective"
+    },{
+         "code": "4.FD.3",
+         "name": "Understands concept composite fractions."
+     },{
+         "code": "4.G.8",
+         "name": "Investigates mirror symmetry in shapes"
+     },{
+         "code": "5.FD.1",
+         "name": "Understands equivalence in fractions and generates equivalent sets"
+     }]
+     },
+    "total" : {
+               "user_count": 4778
+    }
+}

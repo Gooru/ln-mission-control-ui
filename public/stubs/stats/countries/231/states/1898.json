@@ -251,30 +251,130 @@
 		}]
 	 },
 	 "12_2019" : {
-		"user_count": 537,
-    "avg_count": "10m",
+		"user_count": 497,
+    "avg_count": "22m.18s",
 		"gained_comp": "23%",
+		"month_since": "Dec '18",
+		"user_card": {
+			"percent": "8%",
+			"overall": 465
+		},
+		"avg_card": {
+			"percent": "5%",
+			"overall": "24m 12s"
+		},
+		"student_gaind_card": {
+			"percent": "1%",
+			"overall": "24%"
+		},
 		"stugglingCompetency":[{
-			"code": "3.NO.1",
-			"name": "Expands understanding of concept of addition and acquires the skill of adding three digit numbers with upto three digit numbers [sum within 1,000]"
+			"code": "3.NF.2",
+			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
 		},{
-			"code": "3.M.3",
-			"name": "Uses non standard measures to find volume of liquids and capacity of containers and expresses them as 'x' cups or 'y' mugs"
+			"code": "4.NBT.4",
+			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
 		},{
-			"code": "4.FD.2",
-			"name": "Develops an understanding of unit fractions"
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
 		},{
-			"code": "4.G.4",
-			"name": "Understands the idea of an angle and measures an angle using non-standard tools such as cardboard triangle, rhombus etc. Differentiates between different types of angles and names them."
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		}]
+	 },
+	 "01_2020" : {
+		"user_count": 567,
+    "avg_count": "22m.10s",
+		"gained_comp": "23%",
+		"month_since": "Jan",
+		"user_card": {
+			"percent": "18%",
+			"overall": 428
+		},
+		"avg_card": {
+			"percent": "2%",
+			"overall": "23m 12s"
+		},
+		"student_gaind_card": {
+			"percent": "-4%",
+			"overall": "22%"
+		},
+		"stugglingCompetency":[{
+			"code": "3.NF.2",
+			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
 		},{
-			"code": "5.NO.4",
-			"name": "Solves simple and multi step daily life problems that involve more than one operation [for example unitary method]"
+			"code": "4.NBT.4",
+			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
 		},{
-			"code": "5.M.5",
-			"name": "Applies knowledge of fractions, decimals, measures, units and conversions to solve problems in real life context."
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
 		},{
-			"code": "5.PD.6",
-			"name": "Derives and comprehends the meaning of average and finds average of a set of data"
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		}]
+	 },
+	 "02_2020" : {
+		"user_count": 393,
+    "avg_count": "23m.18s",
+		"gained_comp": "23%",
+		"month_since": "Feb",
+		"user_card": {
+			"percent": "12%",
+			"overall": 356
+		},
+		"avg_card": {
+			"percent": "2%",
+			"overall": "23m 12s"
+		},
+		"student_gaind_card": {
+			"percent": "-4%",
+			"overall": "22%"
+		},
+		"stugglingCompetency":[{
+			"code": "3.NF.2",
+			"name": "Understand a fraction as a number on the number line; represent fractions on a number line diagram."
+		},{
+			"code": "4.NBT.4",
+			"name": "Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+		},{
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
+		}]
+	 },
+	 "03_2020" : {
+		"user_count": 752,
+    "avg_count": "26m.31s",
+		"gained_comp": "23%",
+		"month_since": "Mar",
+		"user_card": {
+			"percent": "9%",
+			"overall": 371
+		},
+		"avg_card": {
+			"percent": "1%",
+			"overall": "26m 43s"
+		},
+		"student_gaind_card": {
+			"percent": "-2%",
+			"overall": "27%"
+		},
+		"stugglingCompetency":[{
+			"code": "2.NBT.4",
+			"name": "Compare two three-digit numbers based on meanings of the hundreds, tens, and ones digits, using >, =, and < symbols to record the results of comparisons."
+		},{
+			"code": "3.G.2",
+			"name": "Partition shapes into parts with equal areas. Express the area of each part as a unit fraction of the whole."
+		},{
+			"code": "6.NS.7.d",
+			"name": "Distinguish comparisons of absolute value from statements about order Fluently add and subtract multi-digit whole numbers using the standard algorithm."
+		},{
+			"code": "5.MD.3.b",
+			"name": "A solid figure which can be packed without gaps or overlaps using n unit cubes is said to have a volume of n cubic units."
+		},{
+			"code": "7.SP.5",
+			"name": "Understand that the probability of a chance event is a number between 0 and 1 that"
 		}]
 	 },
 	 "total" : {

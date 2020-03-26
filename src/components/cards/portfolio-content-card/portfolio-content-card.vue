@@ -6,7 +6,8 @@
         </div>
         <div class="activity-title">
           <span class="title">{{content.title}}</span>
-          <span class="owner">by {{content.owner.lastName}} {{content.owner.firstName}}</span>
+          <!-- TODO owner data should be available, unitl BE get fixed, added check -->
+          <span v-if="content.owner" class="owner">by <span>{{content.owner.lastName}} {{content.owner.firstName}}</span></span>
         </div>
       </div>
       <div class="activity-details">
