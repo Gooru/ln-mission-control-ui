@@ -154,6 +154,7 @@ export default class CompentencyGainedCard extends Vue {
         .then(axios.spread((performance: any, competency: any) => {
             this.totalCompetencyGained = Math.abs(competency.overallStats.totalCompetencies) || 0;
             this.totalPerformance = Math.round(performance.overallStats.averagePerformance) || 0;
+            performance.data = performance.data.sort((a: any, b: any) => b.performance - a.performance );
             this.performanceData = performance;
             this.competencyData = competency;
         }));

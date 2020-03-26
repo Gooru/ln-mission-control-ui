@@ -51,14 +51,14 @@
                     <div class="country-header">
                          <div class="country-header-container">
                              <span @click="levelBack" v-if="!isFirstBreadCrumb"><material-icon icon="arrow_upward" /></span>  
-                             {{navCurrentName}} of {{navFromName}}
+                             {{navCurrentName.split('_').join(' ')}} of {{navFromName}}
                          </div>
                     </div>
                     <div class="country-progress-bar" v-if="subjectsList.length && performanceData.length">
                         <div class="performance-bar">
                            <div class="performance-bar-header">
                                 <div class="performance-list-header">
-                                    {{level}}
+                                    {{level.split('_').join(' ')}}
                                     <material-icon icon="search"/>
                                 </div>
                                 <div class="performance-bar-chart-header">
@@ -95,9 +95,9 @@
                          margin="20" 
                          :data ="competencyDount"
                          :count="competencyDount[0].value" 
-                         title="Competency Mastered"/>
+                         title="Competencies Mastered"/>
                     </div>
-                    <div class="progress-bar-right">
+                    <div class="progress-bar-right" hidden>
                         <div class="mastery-bar">
                             <span :style="{'right': '0', 'top': '-10px', color: '#2070b9'}"> {{progressPercent.completed}} mastered</span>
                             <performance-bar :totalWidth ="[progressPercent.completed]" :color="['#2070b9']"/>
