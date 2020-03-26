@@ -277,23 +277,16 @@ export default class LearnerProficiencyChart extends Vue {
     const component = this;
     if (component.activeGradeList.length) {
       // Note : We Currently use only Hi line so we use first object
-      const hiLineGrade = [component.activeGradeList[0]];
-      const boundaryPromise = hiLineGrade.map((gradeItem: any, gradeIndex: number) => {
-        return new Promise((resovle) => {
-            component.loadTaxonomyGradeBoundaries(gradeItem.id).then((boundary) => {
-              component.multiGradeActiveList[gradeItem.id] = boundary;
+      const hiLineGrade = component.activeGradeList[0];
+      component.loadTaxonomyGradeBoundaries(hiLineGrade.id).then((boundary) => {
+              component.multiGradeActiveList[hiLineGrade.id] = boundary;
               component.gradeBoundaries = boundary;
-              return resovle(boundary);
+              component.parseGradeBoundaryChartData();
+              if (this.isCompetencyMap) {
+                this.$emit('onSelectGrade',
+                  this.selectedGradeCompetency, component.activeGradeList);
+              }
             });
-        });
-      });
-      Promise.all(boundaryPromise).then(() => {
-        component.parseGradeBoundaryChartData();
-        if (this.isCompetencyMap) {
-          this.$emit('onSelectGrade',
-            this.selectedGradeCompetency, component.activeGradeList);
-        }
-      });
     } else {
       d3.selectAll('#gradeline-group line').remove();
       d3.selectAll('#cells-group rect').classed('no-competency', false);
@@ -442,17 +435,13 @@ export default class LearnerProficiencyChart extends Vue {
         } else {
           gradeBoundaryCompetency.isNoMapping = true;
         }
-        if (!gradeBoundaryCompetency.className ||
-          (gradeBoundaryCompetency.className &&
-            gradeBoundaryCompetency.className
-              .indexOf(`grade-boundary-competency-${gradeIndex}`) === -1) && gradeIndex) {
-          if (gradeIndex) {
+
+        if (gradeIndex) {
             gradeBoundaryCompetency.className += ` grade-boundary-competency-${gradeIndex}`;
           } else {
             gradeBoundaryCompetency.isLowline = true;
             gradeBoundaryCompetency.className += ` grade-lo-line-competency`;
           }
-        }
       });
     }
   }

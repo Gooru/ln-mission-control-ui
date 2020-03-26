@@ -25,7 +25,7 @@
                 :prerequisites="prerequisites"
                 :selectedDomain="selectedDomain"
                 v-on:onSelectDomain="onSelectDomain"
-                :isGradeSelect = "isGradeSelect"
+                :isGradeSelect ="isGradeSelect"
                 :selectedCompetency="selectedCompetency" />
             </div>
              <div class="rigt-side-card">
