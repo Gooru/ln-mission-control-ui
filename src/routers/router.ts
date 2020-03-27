@@ -47,9 +47,7 @@ const routes = [
       {
         path: '/catalog',
         name: 'catalog',
-        beforeEnter() {
-          window.location.href = '/research/catalog';
-        },
+        component: () => import('@/routers/views/catalog/catalog.vue'),
       },
       {
         path: '/learners',

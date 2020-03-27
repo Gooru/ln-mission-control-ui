@@ -1,6 +1,6 @@
 <template>
   <div class="mc-catalog">
-    catalog
+    <catalog-search />
   </div>
 </template>
 
