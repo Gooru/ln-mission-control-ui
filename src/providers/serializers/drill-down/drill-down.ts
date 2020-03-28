@@ -11,11 +11,11 @@ import { ClassInfoModel } from '@/models/content/class-info';
 
 export class DrillDownSerializer {
 
-    private static INSTANCE = new DrillDownSerializer();
-
     static get instance() {
         return this.INSTANCE;
     }
+
+    private static INSTANCE = new DrillDownSerializer();
 
     public serializeCompetency(res: any): CompetencyModel {
         const result: CompetencyModel = {
@@ -36,19 +36,10 @@ export class DrillDownSerializer {
 
     public serializeClassRooms(res: any): PvcModel[] {
         const students: PvcModel[] = new Array();
-        const classRoomList = res.competencyStats ? res.competencyStats : [];
+        const classRoomList = res.students ? res.students : [];
         if (classRoomList.length) {
             classRoomList.map((list: any) => {
-                const student: PvcModel = {
-                    completedCompetencies: Math.round(list.completedCompetencies),
-                    grade: list.grade,
-                    gradeId: list.gradeId,
-                    inprogressCompetencies: Math.abs(list.inprogressCompetencies),
-                    percentCompletion: list.percentCompletion,
-                    percentScore: list.percentScore,
-                    totalCompetencies: Math.abs(list.totalCompetencies),
-                    userId: list.userId,
-                };
+                const student = this.serializeStudentCompetency(list);
                 students.push(student);
             });
         }
@@ -139,6 +130,24 @@ export class DrillDownSerializer {
             id: payload.id,
             preference: payload.preference,
         };
+    }
+
+    private serializeStudentCompetency(payload: any): PvcModel {
+         const studentInfo = payload.student;
+         const competencyStats = payload.summaryData;
+         const performanceScore = competencyStats.interactions.assessment ?
+                 competencyStats.interactions.assessment.averageScore : 0;
+         const totalCompetencies = competencyStats.completed.length +
+                competencyStats.inprogress.length + competencyStats.inferred.length;
+         return {
+            completedCompetencies: competencyStats.completed.length,
+            inprogressCompetencies: competencyStats.inprogress.length,
+            percentScore: performanceScore,
+            fullName: studentInfo.firstName + ' ' + studentInfo.lastName,
+            thumbnailUrl: studentInfo.profileImage,
+            totalCompetencies,
+            userId: studentInfo.id,
+         };
     }
 
 

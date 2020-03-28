@@ -7,7 +7,6 @@ import PerformanceByGrade from './performance-by-grade/performance-by-grade';
 import axios from 'axios';
 import MonthYearPicker from '@/components/selector/month-year-picker/month-year-picker';
 import moment from 'moment';
-import { profileAPI } from '@/providers/apis/profile/profile';
 import { CompetencyModel } from '@/models/drill-down/competency';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
 import { SubjectModel } from '@/models/drill-down/subject';
@@ -53,6 +52,8 @@ export default class DrillDown extends Vue {
     private dataParams: any = {
         month: moment().format('MM'),
         year: moment().format('YYYY'),
+        fromDate: moment().startOf('month').format('YYYY-MM-DD'),
+        toDate: moment().endOf('month').format('YYYY-MM-DD'),
         frequency: 'monthly',
     };
 
@@ -98,6 +99,8 @@ export default class DrillDown extends Vue {
     private onChageTimeline(date: any) {
         this.selectedDate = date;
         this.dataParams.month = moment(date).format('MM');
+        this.dataParams.fromDate = moment(date).startOf('month').format('YYYY-MM-DD');
+        this.dataParams.toDate = moment(date).endOf('month').format('YYYY-MM-DD');
         this.dataParams.year = moment(date).format('YYYY');
         this.getSubjectDetails(this.paramsIds);
         this.fetchSelectLevelData(this.seletedLevel);
@@ -157,8 +160,8 @@ export default class DrillDown extends Vue {
                     classId: selectedLevel.id,
                     courseId: selectedLevel.courseId,
                     subjectCode: 'K12.MA',
-                    month: this.dataParams.month,
-                    year: this.dataParams.year,
+                    fromDate: this.dataParams.fromDate,
+                    toDate: this.dataParams.toDate,
                 };
                 drillDownAPI.fetchCardsDatabyClassID(params).then((cardData) => {
                     this.cardDetails = this.getDataBasedOnLevel(cardData);
@@ -203,23 +206,7 @@ export default class DrillDown extends Vue {
                 params.subjectCode = classInfo.preference ? classInfo.preference.subject : null;
                 if (params.subjectCode && params.courseId) {
                     drillDownAPI.fetchStudentsByClassID(params).then((atcClassStudents) => {
-                        const studentsId: any = [];
-                        atcClassStudents.map((students: any) => {
-                            return studentsId.push(students.userId);
-                        });
-                        const filteredData: any = [];
-                        if (studentsId.length) {
-                            profileAPI.fetchUserProfiles(studentsId.toString()).then((profileList) => {
-                                profileList.map((profile) => {
-                                    const findProfile = atcClassStudents.find(
-                                        (item: any) => item.userId === profile.userId);
-                                    if (findProfile) {
-                                        filteredData.push(Object.assign({}, findProfile, profile));
-                                    }
-                                });
-                            });
-                        }
-                        this.studentList = filteredData;
+                        this.studentList = atcClassStudents;
                     });
                 }
             });
