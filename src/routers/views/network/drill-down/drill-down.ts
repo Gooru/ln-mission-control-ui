@@ -11,6 +11,8 @@ import { CompetencyModel } from '@/models/drill-down/competency';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
 import { SubjectModel } from '@/models/drill-down/subject';
 import { drillDownAPI } from '@/providers/apis/drill-down/drill-down';
+import { sessionService } from '@/providers/services/auth/session';
+import { DEMO_USERS } from '@/utils/constants';
 
 
 @Component({
@@ -60,6 +62,19 @@ export default class DrillDown extends Vue {
     private hideProperty: boolean = false;
 
     private cardDetails: any = {};
+
+    get session() {
+        return sessionService.getSession();
+    }
+
+    get isTenant() {
+        if (this.session) {
+          return (this.session.isSuperAdmin) ||
+           (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
+        }
+        return false;
+      }
+
 
     // --------------------------------------------------------------
     // Hooks
