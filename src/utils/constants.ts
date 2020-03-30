@@ -269,3 +269,42 @@ export const LEARNER_COMMUNITY_VECTORS = [
 export const DEMO_USERS = [
   'e062559a-35d2-45e9-85fd-380987dc2fdf',
 ];
+
+
+export const ACTIVITY_FILTER = [
+  {
+    title: 'filter-types.filter-types.21-century-skills',
+    code: '21-century-skills',
+  },
+  {
+    title: 'filter-types.filter-types.dok',
+    code: 'dok',
+  },
+  {
+    title: 'filter-types.filter-types.license',
+    code: 'licenses',
+  },
+  {
+    title: 'filter-types.filter-types.publisher',
+    code: 'publisher',
+  },
+  {
+    title: 'filter-types.filter-types.audience',
+    code: 'audience',
+  },
+];
+
+export const DEFAULT_ACTIVITY_FILTERS = [
+  {
+    title: 'filter-types.category',
+    code: 'category',
+  },
+  {
+    title: 'filter-types.subject',
+    code: 'subject',
+  },
+  {
+    title: 'filter-types.course',
+    code: 'course',
+  },
+];

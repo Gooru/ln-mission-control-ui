@@ -1,0 +1,30 @@
+.activity-search-filter {
+  .activity-search-filter-container {
+    width: 100%;
+    background-color: $white;
+    border-bottom: 1px solid $light-200;
+    border-top: 2px solid $light-200;
+    .filter-heading {
+      padding: 8px 5px;
+      border-bottom: 2px solid $light-500;
+      border-bottom-style: dashed;
+      text-transform: uppercase;
+      display: grid;
+      grid-template-columns: 1fr 30px;
+      align-items: center;
+      .filter-title {
+        margin: 0;
+        font-size: 15px;
+      }
+      span {
+        cursor: pointer;
+      }
+    }
+    .default-activity-filters {
+      padding: 2px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+}

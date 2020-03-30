@@ -5,6 +5,7 @@ import { ClassificationModel } from '@/models/taxonomy/classification';
 import { GradeModel } from '@/models/taxonomy/grade';
 import { GradeBoundaryModel } from '@/models/taxonomy/grade-boundary';
 import { TaxonomyCode } from '@/models/taxonomy/code';
+import { CourseModel } from '@/models/taxonomy/course';
 
 export class TaxonomyAPI {
 
@@ -38,6 +39,14 @@ export class TaxonomyAPI {
     };
     return http.get(endpoint, headers, data).then((response) => {
       return taxonomySerializer.serializeTaxonomySubjects(response.data);
+    });
+  }
+
+  public fetchTaxonomyCourse(subject: any): Promise<CourseModel[]> {
+    const endpoint = `${this.taxonomyNamespace}/frameworks/${subject.frameworkId || 'GDT'}/subjects/${subject.id}/courses`;
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint, headers).then((response) => {
+      return taxonomySerializer.serializeTaxonomyCourse(response.data);
     });
   }
 

@@ -19,6 +19,10 @@ export class TaxonomySerializer {
     return taxonomySubjects ? taxonomySubjects.subjects : [];
   }
 
+  public serializeTaxonomyCourse(taxonomySubjects: any) {
+    return taxonomySubjects ? taxonomySubjects.courses : [];
+  }
+
   public serializeTaxonomyGrades(taxonomyGrades: any) {
     return taxonomyGrades ? taxonomyGrades.grades : [];
   }

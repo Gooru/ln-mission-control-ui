@@ -1,0 +1,79 @@
+.filter-card {
+  .filter-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    .filter-card-panel {
+      background-color: #000;
+      color: $white;
+      padding: 0 5px;
+      border-radius: 5px;
+      margin: 0 5px;
+      display: grid;
+      grid-template-columns: 1fr 20px;
+      align-items: center;
+
+      .title {
+        max-width: 50px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .close-icon {
+        display: grid;
+        align-items: center;
+        text-align: right;
+        cursor: pointer;
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+    .non-visible-filter {
+      position: relative;
+      .non-visible-title {
+        background-color: #000;
+        color: $white;
+        padding: 0 5px;
+        border-radius: 5px;
+        display: grid;
+        align-items: center;
+        max-width: 50px;
+        grid-template-columns: auto 16px;
+        cursor: pointer;
+
+        i {
+          font-size: 16px;
+          justify-self: end;
+        }
+      }
+      .non-visible-filter-container {
+        position: absolute;
+        left: 0;
+        width: max-content;
+        background-color: #000;
+        border-radius: 2px;
+        padding: 10px;
+        top: 30px;
+        box-shadow: 0 0 3px $light-300;
+        color: $white;
+        .non-visible-filter-list {
+          display: grid;
+          grid-template-columns: 1fr 30px;
+          align-items: center;
+
+          span {
+            display: grid;
+            align-items: center;
+            justify-content: end;
+            cursor: pointer;
+            i {
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

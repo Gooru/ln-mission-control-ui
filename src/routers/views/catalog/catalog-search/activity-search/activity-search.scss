@@ -4,16 +4,81 @@
     padding: 5px;
 
     .search-header {
-      display: flex;
-      justify-content: space-around;
+      display: grid;
       align-items: center;
+      grid-template-columns: 70px 110px auto auto 40px 40px 40px 100px;
+
+      .sub-header {
+        font-size: 14px;
+        font-weight: bold;
+      }
       .gooru-logo {
         display: block;
         background-image: url($gooruLogo);
-        width: 70px;
-        height: 50px;
+        width: 60px;
+        height: 40px;
         background-position: center;
-        background-size: 70px 50px;
+        background-size: 60px 40px;
+      }
+      .search-input {
+        border: none;
+        outline: none;
+      }
+      .search-icon {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        justify-content: center;
+      }
+      .comparative-search {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        padding-left: 10px;
+        color: $blue;
+        border-left: 1px solid $light-200;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        cursor: pointer;
+        i {
+          color: $dark-200;
+        }
+      }
+    }
+    .activity-tab {
+      .activity-tab-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 10px;
+        align-items: center;
+        text-align: center;
+        transition: 0.1s ease-in-out;
+        span {
+          padding: 5px;
+          text-transform: capitalize;
+          opacity: 0.5;
+          font-size: 11px;
+          cursor: pointer;
+          &.active {
+            opacity: 1;
+            font-weight: bold;
+          }
+          i {
+            margin: 0 auto;
+            width: 20px;
+            height: 20px;
+            background-size: 20px 20px;
+          }
+        }
+        &.no-search {
+          opacity: 0.2;
+          pointer-events: none;
+          span {
+            font-weight: normal;
+          }
+        }
       }
     }
   }

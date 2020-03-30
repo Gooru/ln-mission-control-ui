@@ -99,3 +99,16 @@ export function getTaxonomyTags(
       };
     });
   }
+
+export function resetList(list: any, currentItem: any, params= ['checked', 'id']) {
+    list.map((item: any) => {
+      if (item[params[0]] && currentItem[params[1]] !== item[params[1]]) {
+          item[params[0]] = false;
+      }
+      return item;
+  });
+  }
+
+export function clone(obj: any) {
+    return JSON.parse(JSON.stringify(obj));
+  }

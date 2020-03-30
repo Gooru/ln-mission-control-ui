@@ -23,7 +23,8 @@
   &.offline-activity-gray {
     background-image: url($mc-icon-offline-gray);
   }
-  &.course-gray {
+  &.course-gray,
+  &.summary-gray {
     background-image: url($mc-icon-course-gray);
   }
   &.collection-gray {
@@ -47,7 +48,8 @@
     background-image: url($mc-icon-unit-gray);
   }
 
-  &.rubric-gray {
+  &.rubric-gray,
+  &.rubrics {
     background-image: url($mc-icon-rubric-gray);
   }
 
