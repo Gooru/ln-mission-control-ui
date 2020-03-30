@@ -8,6 +8,8 @@ export interface SessionModel {
   email?: string;
   first_name?: string;
   last_name?: string;
+  isSuperAdmin?: boolean;
+  permissions?: any;
   user_category?: string;
   thumbnail?: string;
   tenant?: TenantModel;

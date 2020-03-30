@@ -10,7 +10,7 @@ export class DrillDownAPI {
 
     private namespace = 'api/reports/v1';
 
-    private namespace1 = 'api/ds/users/v2/nc/atc/pvc';
+    private namespace1 = 'api/reports/v1/class';
 
     private namespace2 = 'api/nucleus/v1/classes';
 
@@ -60,9 +60,9 @@ export class DrillDownAPI {
     }
 
     public fetchStudentsByClassID(data: any): Promise<any> {
-        const endpoint = `${this.namespace1}`;
+        const endpoint = `${this.namespace1}/${data.classId}/student/summary?fromDate=${data.fromDate}&toDate=${data.toDate}&subjectCode=${data.subjectCode}`;
         const headers = http.getTokenHeaders();
-        return http.get(endpoint, headers, data).then((response) => {
+        return http.get(endpoint, headers).then((response) => {
             return drillDownSerializer.serializeClassRooms(response.data);
         });
     }

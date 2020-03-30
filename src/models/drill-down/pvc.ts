@@ -1,9 +1,8 @@
 export interface PvcModel {
     completedCompetencies: number;
-    grade: string;
-    gradeId: number;
+    thumbnailUrl: string;
     inprogressCompetencies: number;
-    percentCompletion: number;
+    fullName: string;
     percentScore: number;
     totalCompetencies: number;
     userId: string;

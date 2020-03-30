@@ -84,12 +84,12 @@ export default class NavLearningWorldWide extends Vue {
 
   get session() {
     return sessionService.getSession();
-  }
+}
 
-  get isTenant() {
-    if (this.session && this.session.tenant) {
-      return (appConfigService.getClientId() === this.session.tenant.tenant_id) ||
-      (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
+get isTenant() {
+    if (this.session) {
+      return (this.session.isSuperAdmin) ||
+       (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
     }
     return false;
   }
