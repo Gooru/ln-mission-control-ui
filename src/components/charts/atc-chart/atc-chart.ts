@@ -40,7 +40,7 @@ export default class AtcChart extends Vue {
     const xScale = d3.scaleLinear()
       .domain([
         0,
-        d3.max(dataset, (d: any) => d.totalCompetencies as number) as number,
+        d3.max(dataset, (d: any) => d.completedCompetencies / 5 + d.completedCompetencies as number) as number,
       ])
       .range([0, width]);
 
@@ -91,16 +91,16 @@ export default class AtcChart extends Vue {
 
     studentNode
       .append('circle')
-      .attr('cx', 5)
-      .attr('cy', 5)
+      .attr('cx', 0)
+      .attr('cy', 3)
       .attr('r', 16)
       .style('fill', (d: any) => d);
 
     studentNode
       .append('svg:image')
       .attr('class', 'student-profile')
-      .attr('x', -7)
-      .attr('y', -7)
+      .attr('x', -12)
+      .attr('y', -8)
       .attr('xlink:href' , (d: any) => {
           return d.thumbnailUrl;
         })

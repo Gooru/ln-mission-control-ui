@@ -6,6 +6,13 @@
     min-height: 220px;
     max-height: 220px;
     overflow-y: auto;
+
+    &.no-tenant {
+      opacity: 0.7;
+      pointer-events: none;
+      background-color: $light-300;
+    }
+
     .panel-heading {
       .header-title {
         padding: 0;

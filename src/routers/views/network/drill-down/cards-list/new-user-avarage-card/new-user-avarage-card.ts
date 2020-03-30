@@ -32,6 +32,9 @@ export default class NewUserAvarageCard extends Vue {
     @Prop()
     private nextLevelName: any;
 
+    @Prop()
+    private isTenant?: boolean;
+
     private isShowPopup: boolean = false;
 
     private hiddenData: boolean = false;

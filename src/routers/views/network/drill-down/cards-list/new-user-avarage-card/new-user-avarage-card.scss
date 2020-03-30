@@ -5,6 +5,12 @@
     box-shadow: 0 0 10px $light-300;
     border-radius: 2px;
     height: 100%;
+
+    &.no-tenant {
+      opacity: 0.7;
+      pointer-events: none;
+      background-color: $light-300;
+    }
     .avarage-card-header {
       display: grid;
       grid-template-columns: auto 1fr;

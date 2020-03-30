@@ -17,6 +17,8 @@ export default class StrugglingCompetency extends Vue {
 
     @Prop()
     private strugglingCompetencies: any;
+    @Prop()
+    private isTenant?: boolean;
 
     private hiddenData: boolean = false;
 

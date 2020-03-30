@@ -11,6 +11,8 @@ import { CompetencyModel } from '@/models/drill-down/competency';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
 import { numberFormat } from '@/helpers/number-format';
 import moment from 'moment';
+import { sessionService } from '@/providers/services/auth/session';
+import { DEMO_USERS } from '@/utils/constants';
 
 @Component({
     name: 'cards-list',
@@ -40,6 +42,18 @@ export default class CardsList extends Vue {
     private studentList: any;
 
     private hiddenData: boolean = false;
+
+    get session() {
+        return sessionService.getSession();
+    }
+
+    get isTenant() {
+        if (this.session) {
+          return (this.session.isSuperAdmin) ||
+           (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
+        }
+        return false;
+      }
 
     private get sinceMonth() {
        return this.cardDetails.month_since ?

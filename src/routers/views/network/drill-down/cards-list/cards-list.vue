@@ -1,25 +1,25 @@
 <template>
   <div id="texas-cards-list-container">
     <div class="new-user-card">
-      <new-user-card iconName="people" :nextLevelName="nextLevelName" :sinceMonth="sinceMonth" :cardData="cardDetails.user_card || {}" :cardValue="cardDetails.user_count ? numberFormat(cardDetails.user_count) : 0" cardTitle="New Users" cardName="new-user"/>
+      <new-user-card iconName="people" :isTenant="isTenant" :nextLevelName="nextLevelName" :sinceMonth="sinceMonth" :cardData="cardDetails.user_card || {}" :cardValue="cardDetails.user_count ? numberFormat(cardDetails.user_count) : 0" cardTitle="New Users" cardName="new-user"/>
     </div>
     <div class="competency-performance-card">
-      <competency-gained-card :score="competencyScore" :competencySelectLevel="seletedLevel" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
+      <competency-gained-card :score="competencyScore" :isTenant="isTenant" :competencySelectLevel="seletedLevel" :subjectsList="subjectsList" :selectedDate="selectedDate" :countryData="countryData"/>
     </div>
     <div class="suggestion-mode-card" v-if="hiddenData">
-      <new-user-card iconName="explore" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
+      <new-user-card iconName="explore" :isTenant="isTenant" cardValue="91k" cardTitle="Suggestions mode" cardName="suggestion"/>
     </div>
     <div class="avarage-time-card">
-      <new-user-card iconName="access_time" :nextLevelName="nextLevelName" :sinceMonth="sinceMonth" :cardData="cardDetails.avg_card || {}" :cardValue="cardDetails.avg_count ? cardDetails.avg_count : 0" cardTitle="Avg. session time" cardName="avarage-time"/>
+      <new-user-card iconName="access_time" :isTenant="isTenant" :nextLevelName="nextLevelName" :sinceMonth="sinceMonth" :cardData="cardDetails.avg_card || {}" :cardValue="cardDetails.avg_count ? cardDetails.avg_count : 0" cardTitle="Avg. session time" cardName="avarage-time"/>
     </div>
     <div class="top-provider-card" v-if="hiddenData">
       <top-providers />
     </div>
     <div class="class-activities-card">
-      <new-user-card  iconName="person" :nextLevelName="nextLevelName" :sinceMonth="sinceMonth" :cardData="cardDetails.student_gaind_card || {}" :cardValue="cardDetails.gained_comp || 0" cardTitle="of students gained > 10 competencies" cardName="class-activity"/>
+      <new-user-card  iconName="person" :isTenant="isTenant" :nextLevelName="nextLevelName" :sinceMonth="sinceMonth" :cardData="cardDetails.student_gaind_card || {}" :cardValue="cardDetails.gained_comp || 0" cardTitle="of students gained > 10 competencies" cardName="class-activity"/>
     </div>
      <div class="struggling-competency">
-      <struggling-competency :strugglingCompetencies="cardDetails.stugglingCompetency || []" />
+      <struggling-competency :isTenant="isTenant" :strugglingCompetencies="cardDetails.stugglingCompetency || []" />
     </div>
   </div>
 </template>
