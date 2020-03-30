@@ -1,10 +1,10 @@
 <template>
     <div id="struggling-competency-conatiner">
-        <div class="struggling-competency-panel">
+        <div :class="['struggling-competency-panel',{'no-tenant':!isTenant}]">
             <div class="panel-heading">
-                <h4 class="header-title">Struggling Competencies</h4>
+                <h4 class="header-title">Learning Challenges</h4>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" v-if="isTenant">
                 <div class="panel-content"  v-for="competency in strugglingCompetencies" :key="competency.code">
                     <div class="top-content">
                         <div class="content-title">{{competency.code}}</div>

@@ -5,6 +5,11 @@
     box-shadow: 0 0 10px $light-300;
     border-radius: 2px;
     height: 100%;
+
+    &.no-tenant {
+      pointer-events: none;
+    }
+
     cursor: pointer;
     .gained-header {
       display: grid;
