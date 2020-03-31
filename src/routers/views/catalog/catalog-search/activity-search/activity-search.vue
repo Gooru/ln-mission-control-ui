@@ -6,7 +6,7 @@
                 <span class="sub-header">Gooru Catalog</span>
                 <input type="text" class="search-input" v-model="searchTerms" @keypress.enter="onSearch" placeholder="Search Gooru's Catalog">
                 <div class="search-filter-items">
-                    <filter-card :filterList.sync="filterList"/>
+                    <filter-card :filterList.sync="filterList" @onClearItem="onClearItem"/>
                 </div>
                 <div class="search-icon"> <span v-if="isSearchTerms" @click="clearSearchBox"><material-icon icon="clear"/></span></div>
                 <div class="search-icon" @click="onSearch"><material-icon icon="search"/></div>

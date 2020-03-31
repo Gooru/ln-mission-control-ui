@@ -84,18 +84,48 @@ export default class ActivitySearch extends Vue {
 
 
     private onSelectCategory(category: any, filter: any) {
-        if (filter.code === 'category') {
-            const activeCategory: any = {};
+        if (filter.code === 'category' || filter.code === 'subject') {
+            let activeCategory: any = {};
+            if (filter.code === 'subject') {
+                activeCategory.category = this.filterList.category;
+            }
             activeCategory[filter.code]  =  category;
+            if (this.filterList.subject) {
+                activeCategory = this.resetCheckbox(filter);
+            }
             this.$set(this, 'filterList', activeCategory);
-        } else if (filter.code === 'subject') {
-            const activeSubject: any = {};
-            activeSubject.category = this.filterList.category;
-            activeSubject[filter.code]  =  category;
-            this.$set(this, 'filterList', activeSubject);
         } else {
             this.$set(this.filterList, filter.code, category);
         }
+    }
+
+    private onClearItem(item: any) {
+        item.checked = false;
+        if (item.type === 'category' || item.type === 'subject') {
+                const activeList = this.resetCheckbox(item);
+                this.$set(this, 'filterList', activeList);
+
+            } else {
+                item.checked = false;
+                const activeList = (this.filterList[item.type]).filter((items: any) => items.checked);
+                this.$set(this.filterList, item.type , activeList);
+
+            }
+    }
+
+    private resetCheckbox(item: any) {
+        let activeList = {};
+        Object.keys(this.filterList).map((itemValue: any) => {
+            if (Array.isArray(this.filterList[itemValue])) {
+                this.filterList[itemValue].map((items: any) => {
+                    items.checked = false;
+                });
+            } else {
+                 activeList = item.type === 'category' ? (this.filterList.subject ?
+                     this.filterList.subject.checked = false : {}) : {category: this.filterList.category};
+            }
+        });
+        return activeList;
     }
 
 }

@@ -56,23 +56,7 @@ export default class FilterCard extends Vue {
         // -------------------------------------------------------------------------
         // Actions
         private onClearItem(item: any) {
-            item.checked = false;
-            if (item.type === 'category' || item.type === 'subject') {
-                const activeList = Object.keys(this.filterList).map((itemValue: any) => {
-                    return item.type === itemValue ?
-                    {} :  {category: this.filterList.category};
-                });
-                this.$set(this, 'filterList', activeList);
-
-            } else {
-                const removeItem = this.filterList[item.type].findIndex((itemValue: any) => itemValue.id === item.id);
-                if (removeItem) {
-                    this.filterList[item.type].splice(removeItem, 1);
-                }
-            }
-            this.$set(this, 'filterList', this.filterList);
-
-
+            this.$emit('onClearItem', item);
         }
 
 }
