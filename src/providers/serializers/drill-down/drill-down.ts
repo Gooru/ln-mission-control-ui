@@ -140,7 +140,7 @@ export class DrillDownSerializer {
          const totalCompetencies = competencyStats.completed.length +
                 competencyStats.inprogress.length + competencyStats.inferred.length;
          return {
-            completedCompetencies: competencyStats.completed.length,
+            completedCompetencies: competencyStats.completed.length +  competencyStats.inferred.length,
             inprogressCompetencies: competencyStats.inprogress.length,
             percentScore: performanceScore,
             fullName: studentInfo.firstName + ' ' + studentInfo.lastName,
