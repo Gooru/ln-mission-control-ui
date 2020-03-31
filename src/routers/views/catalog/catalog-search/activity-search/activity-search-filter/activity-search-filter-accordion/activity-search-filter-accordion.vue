@@ -12,7 +12,7 @@
                 <span class="item-list" v-for="(item , index) in subjectList" :key="index" @click="onSelectSubject(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/>{{item.title}}</span>
                 </div>
                 <div class="filter-body-content" v-if="filter.code === 'course' && filter.isActive">
-                <span class="item-list" v-for="(item , index) in courseList" :key="index" @click="onSelectSubject(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/>{{item.title}}</span>
+                <span class="item-list" v-for="(item , index) in courseList" :key="index" @click="onSelectCourse(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/>{{item.title}}</span>
                 </div>
             </div>
         </div>

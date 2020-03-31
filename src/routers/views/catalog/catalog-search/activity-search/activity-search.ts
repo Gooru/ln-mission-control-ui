@@ -84,7 +84,18 @@ export default class ActivitySearch extends Vue {
 
 
     private onSelectCategory(category: any, filter: any) {
-        this.$set(this.filterList, filter.code, category);
+        if (filter.code === 'category') {
+            const activeCategory: any = {};
+            activeCategory[filter.code]  =  category;
+            this.$set(this, 'filterList', activeCategory);
+        } else if (filter.code === 'subject') {
+            const activeSubject: any = {};
+            activeSubject.category = this.filterList.category;
+            activeSubject[filter.code]  =  category;
+            this.$set(this, 'filterList', activeSubject);
+        } else {
+            this.$set(this.filterList, filter.code, category);
+        }
     }
 
 }
