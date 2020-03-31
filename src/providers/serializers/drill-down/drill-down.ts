@@ -7,6 +7,7 @@ import { OverallStatsModel } from '@/models/drill-down/overall-stats';
 import { DrillDownModel } from '@/models/drill-down/drill-down';
 import { CountryModel } from '@/models/drill-down/country';
 import { ClassInfoModel } from '@/models/content/class-info';
+import { DEFAULT_IMAGES_PATH } from '@/utils/constants';
 
 
 export class DrillDownSerializer {
@@ -139,12 +140,14 @@ export class DrillDownSerializer {
                  competencyStats.interactions.assessment.averageScore : 0;
          const totalCompetencies = competencyStats.completed.length +
                 competencyStats.inprogress.length + competencyStats.inferred.length;
+         const studentProfile = studentInfo.profileImage ?
+                     studentInfo.profileImage : window.location.origin + DEFAULT_IMAGES_PATH.profile;
          return {
             completedCompetencies: competencyStats.completed.length +  competencyStats.inferred.length,
             inprogressCompetencies: competencyStats.inprogress.length,
             percentScore: performanceScore,
             fullName: studentInfo.firstName + ' ' + studentInfo.lastName,
-            thumbnailUrl: studentInfo.profileImage,
+            thumbnailUrl: studentProfile,
             totalCompetencies,
             userId: studentInfo.id,
          };
