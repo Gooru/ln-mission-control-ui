@@ -3,7 +3,7 @@
         <div class="activity-search-filter-container">
             <div class="filter-heading">
                 <h5 class="filter-title">Filters</h5>
-                <span><material-icon icon="close"/></span>
+                <span @click="$emit('onCloseFilter')"><material-icon icon="close"/></span>
             </div>
             <div class="default-activity-filters">
                 <activity-search-filter-accordion 

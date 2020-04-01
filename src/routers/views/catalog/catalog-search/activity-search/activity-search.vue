@@ -10,7 +10,7 @@
                 </div>
                 <div class="search-icon"> <span v-if="isSearchTerms" @click="clearSearchBox"><material-icon icon="clear"/></span></div>
                 <div class="search-icon" @click="onSearch"><material-icon icon="search"/></div>
-                <div class="search-icon"><material-icon icon="filter_list" /></div>
+                <div class="search-icon" @click="isShowFilterDropdown = !isShowFilterDropdown"><material-icon icon="filter_list" /></div>
                 <div class="comparative-search"> Compare <material-icon icon="person"></material-icon></div>
             </div>
             <div class="activity-tab">
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-         <activity-search-filter  @onSelectCategory="onSelectCategory" />
+         <activity-search-filter v-if="isShowFilterDropdown" @onCloseFilter="isShowFilterDropdown = !isShowFilterDropdown" @onSelectCategory="onSelectCategory" />
     </div>
    
 </template>

@@ -69,6 +69,8 @@ export default class ActivitySearch extends Vue {
 
     private filterList: any = {};
 
+    private isShowFilterDropdown: boolean = false;
+
     // ----------------------------------------------------------------------------------
     // Actions
     private onSearch() {
@@ -85,18 +87,12 @@ export default class ActivitySearch extends Vue {
 
     private onSelectCategory(category: any, filter: any) {
         if (filter.code === 'category' || filter.code === 'subject') {
-            let activeCategory: any = {};
-            if (filter.code === 'subject') {
-                activeCategory.category = this.filterList.category;
-            }
-            activeCategory[filter.code]  =  category;
-            if (this.filterList.subject) {
-                activeCategory = this.resetCheckbox(filter);
-            }
-            this.$set(this, 'filterList', activeCategory);
-        } else {
-            this.$set(this.filterList, filter.code, category);
+             this.filterList = this.resetCheckbox(filter);
+             if (!category.checked) {
+                return;
+             }
         }
+        this.$set(this.filterList, filter.code, category);
     }
 
     private onClearItem(item: any) {
@@ -104,7 +100,6 @@ export default class ActivitySearch extends Vue {
         if (item.type === 'category' || item.type === 'subject') {
                 const activeList = this.resetCheckbox(item);
                 this.$set(this, 'filterList', activeList);
-
             } else {
                 item.checked = false;
                 const activeList = (this.filterList[item.type]).filter((items: any) => items.checked);
@@ -121,8 +116,14 @@ export default class ActivitySearch extends Vue {
                     items.checked = false;
                 });
             } else {
-                 activeList = item.type === 'category' ? (this.filterList.subject ?
-                     this.filterList.subject.checked = false : {}) : {category: this.filterList.category};
+                if ((item.type || item.code) === 'category') {
+                    if (this.filterList.subject) {
+                        this.filterList.subject.checked = false;
+                    }
+                    activeList = {};
+                } else {
+                    activeList = {category: this.filterList.category};
+                }
             }
         });
         return activeList;

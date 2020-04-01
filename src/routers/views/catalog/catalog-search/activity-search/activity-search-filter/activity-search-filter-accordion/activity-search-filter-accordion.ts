@@ -48,18 +48,18 @@ export default class ActivitySearchFilterAccordion extends Vue {
 
     private onSelectCategory(category: any) {
         this.$store.dispatch('activityStore/fetchSubject', category.id);
-        this.$emit('onSelectCategory', category, this.filter);
         this.resetList(this.categoryList, category);
         const isActive = category.checked ? false : true;
         this.$set(category, 'checked', isActive);
+        this.$emit('onSelectCategory', isActive ? category  : {}, this.filter);
     }
 
     private onSelectSubject(subject: any) {
         this.$store.dispatch('activityStore/fetchCourse', subject);
-        this.$emit('onSelectCategory', subject, this.filter);
         this.resetList(this.subjectList, subject);
         const isActive = subject.checked ? false : true;
         this.$set(subject, 'checked', isActive);
+        this.$emit('onSelectCategory', isActive ? subject : {}, this.filter);
     }
 
     private onSelectCourse(course: any) {
