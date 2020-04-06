@@ -1,5 +1,4 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
-import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import KnowledgePanel from '../knowledge-panel/knowledge-panel';
 import CommunityPanel from '../community-panel/community-panel';
@@ -7,12 +6,13 @@ import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { DomainModel } from '@/models/proficiency/domain';
 import moment from 'moment';
+import MindsetsListPanel from '../mindsets-list-panel/mindsets-list-panel';
 
 @Component({
   name: 'domain-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
-    MindsetsPanel,
+    MindsetsListPanel,
     KnowledgePanel,
     CommunityPanel,
   },
@@ -46,7 +46,7 @@ export default class DomainInfoPanel extends Vue {
     },
     {
       title: 'Mindsets',
-      component: MindsetsPanel,
+      component: MindsetsListPanel,
     },
     {
       title: 'Community',

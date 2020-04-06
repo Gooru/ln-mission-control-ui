@@ -41,6 +41,8 @@
         <competency-info-panel
           v-else-if="isShowCompetencyPanel"
           :competency="activeCompetency"
+          :domain="activeDomainInfo"
+          :subject="activeSubject"
           :userId="userId"
           :month="month"
           :year="year"

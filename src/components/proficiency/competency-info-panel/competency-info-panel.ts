@@ -1,5 +1,4 @@
 import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
-import MindsetsPanel from '@/components/proficiency/mindsets-panel/mindsets-panel';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import KnowledgePanel from '../knowledge-panel/knowledge-panel';
 import CommunityPanel from '../community-panel/community-panel';
@@ -7,18 +6,27 @@ import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
 import { searchAPI } from '@/providers/apis/search/search';
 import moment from 'moment';
+import MindsetsListPanel from '../mindsets-list-panel/mindsets-list-panel';
+import { DomainModel } from '@/models/proficiency/domain';
+import { SubjectModel } from '@/models/taxonomy/subject';
 
 @Component({
   name: 'competency-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
-    MindsetsPanel,
+    MindsetsListPanel,
     KnowledgePanel,
     CommunityPanel,
   },
 })
 
 export default class CompetencyInfoPanel extends Vue {
+
+  @Prop()
+  public domain!: DomainModel;
+
+  @Prop()
+  public subject!: SubjectModel;
 
   @Prop()
   private competency!: CompetencyModel;
@@ -38,7 +46,7 @@ export default class CompetencyInfoPanel extends Vue {
     },
     {
       title: 'Mindsets',
-      component: MindsetsPanel,
+      component: MindsetsListPanel,
     },
     {
       title: 'Community',
@@ -52,7 +60,7 @@ export default class CompetencyInfoPanel extends Vue {
   @Prop()
   private year!: string;
 
-  private learningMapData!: any;
+  private learningMapData?: any = [];
 
   @Watch('competency')
   private onChangeCompetency() {

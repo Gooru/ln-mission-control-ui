@@ -31,7 +31,7 @@
       <div class="active-tab-contents">
         <component
         v-bind:is="activeTab.component"
-        v-bind="{competency: competency, learningMapData: learningMapData, statsBucket: 'competency', userId: userId, month: month, year: year}" />
+        v-bind="{competency: competency, subject, domain, learningMapData: learningMapData, statsBucket: 'competency', userId: userId, month: month, year: year}" />
       </div>
     </div>
   </div>
