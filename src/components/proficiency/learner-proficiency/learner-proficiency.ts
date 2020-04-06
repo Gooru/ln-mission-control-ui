@@ -1,4 +1,4 @@
-import { Component, Vue, Prop } from 'vue-property-decorator';
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator';
 import LearnerProficiencyChart from '@/components/charts/learner-proficiency-chart/learner-proficiency-chart';
 import SubjectInfoPanel from '@/components/proficiency/subject-info-panel/subject-info-panel';
 import DomainsListPanel from '@/components/proficiency/domains-list-panel/domains-list-panel';
@@ -63,6 +63,9 @@ export default class LearnerProficiency extends Vue {
   @Prop()
   private userId!: string;
 
+  @Prop()
+  private isActiveProficiency?: boolean;
+
   private activeDomainInfo!: DomainModel;
 
   private activeDomainSeq: number = 0;
@@ -94,6 +97,9 @@ export default class LearnerProficiency extends Vue {
   }
 
   public created() {
+    if (!this.isActiveProficiency) {
+      this.activeToggleList = 'ShowPortfolioContainer';
+    }
     this.loadTaxonomyData();
   }
 

@@ -50,6 +50,8 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private facetsCompetencyMatrix: any;
 
+  private isActiveProficiency: boolean = true;
+
   public onChageTimeline(timeline: string) {
     const component = this;
     component.activeYear = moment(timeline).format('YYYY');
@@ -75,6 +77,7 @@ export default class LearnerFacetsProficiency extends Vue {
   }
 
   private onSelectPortfolioStat(portfolioStat: any) {
+    this.isActiveProficiency = portfolioStat.isProficiency ? portfolioStat.isProficiency : false;
     const subject: SubjectModel | any = this.activeFacets.find(
       (activeFacet: SubjectModel) => activeFacet.code === portfolioStat.subjectCode );
     this.activeClassificationCode = subject.code.split('.')[0];

@@ -14,9 +14,13 @@ export default class FacetsListPanel extends Vue {
   @Prop()
   private facetsCompetencyMatrix!: any;
 
+  @Prop()
+  private isProficiency?: boolean;
+
   private isShowCompetencyDetails: boolean = false;
 
   private onSelectPortfolioStat(portfolioStat: any) {
+    portfolioStat.isProficiency = this.isProficiency;
     this.$emit('onSelectPortfolioStat', portfolioStat);
   }
 
