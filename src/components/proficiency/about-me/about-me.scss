@@ -11,12 +11,15 @@
         font-weight: bold;
       }
       img {
-        width: 100%;
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
         border-radius: 50%;
       }
     }
     label {
       font-size: 12px;
+      display: block;
       font-weight: bold;
     }
     span {
@@ -25,14 +28,8 @@
     .profile-body {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
-      align-items: center;
       grid-row-gap: 20px;
       padding: 20px 0;
-
-      .panel-details {
-        display: grid;
-        grid-template-columns: 1fr;
-      }
     }
     .biography {
       display: grid;
