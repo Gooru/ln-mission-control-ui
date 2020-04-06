@@ -1,6 +1,7 @@
 <template>
     <div class="catalog-search">
         <activity-search />
+        
     </div>
 </template>
 

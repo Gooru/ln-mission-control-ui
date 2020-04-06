@@ -8,6 +8,8 @@ export class SearchAPI {
       return this.INSTANCE;
   }
 
+  private namespace: string = '/gooru-search/rest/v2/search';
+
   private pedagogyNamespace: string = 'gooru-search/rest/v1/pedagogy-search';
 
   public fetchLearningMapContents(competencyCode: string) {
@@ -19,6 +21,21 @@ export class SearchAPI {
     };
     return http.get(endpoint, headers).then((response) => {
       return searchSerializer.serializeLearningMapData(response.data);
+    });
+  }
+
+  private collectionfetch(params: any) {
+    const endpoint = `${this.namespace}/scollection`;
+    const constantParams = Object.assign({}, {
+      'q': '*',
+      'length': 20,
+      'startAt': 0,
+      'flt.collectionType': 'collection',
+      'isCrosswalk': false,
+    }, params);
+    const headers = http.getTokenHeaders();
+    return http.get(endpoint, headers, constantParams).then((response) => {
+      return response.data;
     });
   }
 

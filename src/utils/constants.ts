@@ -308,3 +308,47 @@ export const DEFAULT_ACTIVITY_FILTERS = [
     code: 'course',
   },
 ];
+
+export const CATALOG_MENUS = [
+  {
+      name: 'summary',
+      tab: 'SummaryActivity',
+      key: 'summary',
+      isActive: true,
+  },
+  {
+      name: 'courses',
+      key: 'course',
+      tab: 'ContentLoader',
+  },
+  {
+      name: 'collections',
+      key: 'collection',
+      tab: 'ContentLoader',
+  },
+  {
+      name: 'assessments',
+      key: 'assessment',
+      tab: 'ContentLoader',
+  },
+  {
+      name: 'offline Activities',
+       key: 'offline-activity',
+      tab: 'ContentLoader',
+  },
+  {
+      name: 'resources',
+      key: 'resource',
+      tab: 'ContentLoader',
+  },
+  {
+      name: 'questions',
+      key: 'question',
+      tab: 'ContentLoader',
+  },
+  {
+      name: 'rubrics',
+      key: 'rubric',
+      tab: 'ContentLoader',
+  },
+];

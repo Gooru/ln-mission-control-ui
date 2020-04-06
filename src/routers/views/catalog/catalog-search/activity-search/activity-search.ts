@@ -3,6 +3,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import MCIcon from '@/components/icons/mc-icon/mc-icon';
 import ActivitySearchFilter from './activity-search-filter/activity-search-filter';
 import FilterCard from '@/components/cards/filter-card/filter-card';
+import { CATALOG_MENUS } from '@/utils/constants';
 
 @Component({
     name: 'activity-search',
@@ -19,49 +20,7 @@ export default class ActivitySearch extends Vue {
     // --------------------------------------------------------------------------------
     // Properties
 
-    private activityTabs: any = [
-        {
-            name: 'summary',
-            tab: 'SummaryActivity',
-            key: 'summary',
-            isActive: true,
-        },
-        {
-            name: 'courses',
-             key: 'course',
-            tab: 'CourseActivity',
-        },
-        {
-            name: 'collections',
-            key: 'collection',
-            tab: 'CollectionActivity',
-        },
-        {
-            name: 'assessments',
-            key: 'assessment',
-            tab: 'AssessmentActivity',
-        },
-        {
-            name: 'offline Activities',
-             key: 'offline-activity',
-            tab: 'OfflineActivity',
-        },
-        {
-            name: 'resources',
-            key: 'resource',
-            tab: 'ResourceActivity',
-        },
-        {
-            name: 'questions',
-            key: 'question',
-            tab: 'QuestionActivity',
-        },
-        {
-            name: 'rubrics',
-            key: 'rubric',
-            tab: 'RubricsActivity',
-        },
-    ];
+    private activityTabs: any = CATALOG_MENUS;
 
     private searchTerms: string = '';
 
