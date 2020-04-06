@@ -32,6 +32,12 @@ export class ProfileSerializer {
       fullName: userProfile.last_name + ' ' + userProfile.first_name,
       thumbnailUrl,
       createdAt: userProfile.created_at,
+      country: userProfile.country,
+      state: userProfile.state,
+      district: userProfile.district || userProfile.school_district,
+      about: userProfile.about,
+      updateAt: userProfile.updated_at,
+      role: userProfile.user_category,
     };
     return serializedUserProfile;
   }

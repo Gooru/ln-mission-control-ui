@@ -9,6 +9,7 @@ import { SubjectModel } from '@/models/taxonomy/subject';
 import { User } from '@/models/profile/user';
 import { profileAPI } from '@/providers/apis/profile/profile';
 import moment from 'moment';
+import AboutMe from '../about-me/about-me';
 
 @Component({
   name: 'learner-facets-proficiency',
@@ -19,6 +20,7 @@ import moment from 'moment';
     'learner-proficiency': LearnerProficiency,
     'taxonomy-filter': TaxonomyFilter,
     'google-material-icon': GoogleMaterialIcon,
+    'about-me': AboutMe,
   },
 })
 
@@ -44,7 +46,7 @@ export default class LearnerFacetsProficiency extends Vue {
 
   private learner: User = {};
 
-  private isShowExpandedFacetChart: boolean = true;
+  private isShowExpandedFacetChart: boolean = false;
 
   private facetsCompetencyMatrix: any;
 

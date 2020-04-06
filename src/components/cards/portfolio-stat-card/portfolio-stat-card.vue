@@ -14,7 +14,7 @@
         <google-material-icon :icon="isShowStatDetails ? 'arrow_drop_up' : 'arrow_drop_down'" />
       </div>
     </div>
-    <div v-if="isShowStatDetails" class="portfolio-stat-body">
+    <div v-if="isShowStatDetails" class="portfolio-stat-body" @click="$emit('onSelectPortfolioStat', statInfo)">
       <div v-if="statType === 'facetCompetencies'">
         <div
           class="facet-status"
@@ -28,7 +28,7 @@
         </div>
       </div>
       <div v-else>
-        <div class="stat-detail" v-for="(stat, index) in statDetails" @click="$emit('onSelectPortfolioStat', statInfo)" v-bind:key="index">
+        <div class="stat-detail" v-for="(stat, index) in statDetails" v-bind:key="index">
           <span class="content-icon">
             <mc-icon :icon="stat.type + '-gray'" />
           </span>

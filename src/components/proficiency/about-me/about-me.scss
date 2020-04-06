@@ -1,0 +1,43 @@
+.about-me {
+  .learners-details {
+    padding: 0 20px;
+    .profile-header {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      align-items: center;
+      grid-column-gap: 20px;
+      span {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      img {
+        width: 100%;
+        border-radius: 50%;
+      }
+    }
+    label {
+      font-size: 12px;
+      font-weight: bold;
+    }
+    span {
+      font-size: 15px;
+    }
+    .profile-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      grid-row-gap: 20px;
+      padding: 20px 0;
+
+      .panel-details {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+    }
+    .biography {
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-top: 20px;
+    }
+  }
+}
