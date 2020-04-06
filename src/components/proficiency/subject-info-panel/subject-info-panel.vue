@@ -18,6 +18,7 @@
         <keep-alive>
           <component
             v-bind:is="activeTab.component"
+            :key="activeTab.component"
             v-bind="{month: month, year: year, subject: subject, classification: classification, statsBucket: 'subject', userId: userId, activeToggleList}"
             @onSelectDomain="onSelectDomain"
             @onSelectPortfolioStat="onSelectPortfolioStat"

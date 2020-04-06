@@ -95,10 +95,14 @@ export default class KnowledgePanel extends Vue {
 
   private created() {
     this.isShowPortfolioContainer = this.statsBucket === 'competency';
+
     if (this.isPortfolioTab) {
       this.$set(this, `is${this.activeToggleList}`, true);
       if (this.isShowPortfolioContainer) {
           this.isShowDomainList = false;
+          if (this.statsBucket === 'facets') {
+              this.isShowFacetsProficiency = false;
+          }
           this.isShowCompetencyList = false;
       }
     }

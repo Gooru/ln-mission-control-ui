@@ -29,6 +29,13 @@ export default class FacetsInfoPanel extends Vue {
   @Prop()
   private facetsCompetencyMatrix!: any;
 
+  @Prop()
+  private isActiveProficiency?: boolean;
+
+  private get activeToggleList() {
+    return this.isActiveProficiency ? '' : 'ShowPortfolioContainer';
+  }
+
   get activeFacetsCompetencyMatrix() {
     return this.activeFacets.map( (activeFacet: SubjectModel) => {
       return this.facetsCompetencyMatrix.find( (

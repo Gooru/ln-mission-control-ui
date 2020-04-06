@@ -50,6 +50,7 @@
         :userId="learnerId"
         :month="activeMonth"
         :year="activeYear"
+        :isActiveProficiency="isActiveProficiency"
         :activeFacets="activeFacets"
         :facetsCompetencyMatrix="facetsCompetencyMatrix"
         @onSelectPortfolioStat="onSelectPortfolioStat"/>
@@ -61,6 +62,7 @@
       :activeSubject="activeSubject"
       :month="activeMonth"
       :year="activeYear"
+      :isActiveProficiency="isActiveProficiency"
       @backAction="backAction"
       :userId="learnerId"/>
     </div>

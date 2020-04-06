@@ -5,6 +5,8 @@ import { DomainModel } from '@/models/proficiency/domain';
 import { LearnerVector } from '@/models/proficiency/learner-vector';
 import { learnerAPI } from '@/providers/apis/learner/learner';
 import moment from 'moment';
+import { LEARNER_MINDSETS_VECTORS } from '@/utils/constants';
+import { CompetencyModel } from '@/models/proficiency/competency';
 
 @Component({
   name: 'mindsets-list-panel',
@@ -17,6 +19,9 @@ export default class MindsetsListPanel extends Vue {
 
   @Prop()
   public subject!: SubjectModel;
+
+  @Prop()
+  private competency!: CompetencyModel;
 
   @Prop()
   private domain!: DomainModel;
@@ -35,8 +40,7 @@ export default class MindsetsListPanel extends Vue {
 
   private learnerVectors: LearnerVector[] = [];
 
-  @Prop()
-  private allowedVectorKeys!: any;
+  private allowedVectorKeys: any = LEARNER_MINDSETS_VECTORS;
 
   public created() {
     this.loadLearnerVectors();
@@ -68,6 +72,10 @@ export default class MindsetsListPanel extends Vue {
     } else if (component.statsBucket === 'domain') {
       requestParams.tx_subject_code = component.subject.code;
       requestParams.tx_domain_code = component.domain.domainCode;
+    } else if (component.statsBucket === 'competency') {
+      requestParams.tx_subject_code = component.subject.code;
+      requestParams.tx_domain_code = component.domain.domainCode;
+      requestParams.tx_competency_code = component.competency.competencyCode;
     }
     return requestParams;
   }
