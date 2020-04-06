@@ -23,7 +23,7 @@
       <div class="facets-left-panel">
         <div class="left-panel-header">
           <div class="learner-info">
-            <div class="student-name">{{learner.firstName}}'s Complete Skyline</div>
+            <div class="student-name">{{learner.firstName}}'s Learner Identity</div>
             <div class="skyline-info">Each bar represents a facet</div>
           </div>
           <div class="facet-toggle" @click="isShowExpandedFacetChart = !isShowExpandedFacetChart">
@@ -34,6 +34,7 @@
           </div>
         </div>
         <div class="left-panel-body">
+          <about-me :learner="learner"/>
           <learner-across-facets-chart
           :month="activeMonth"
           :year="activeYear"

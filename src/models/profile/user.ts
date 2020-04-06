@@ -8,4 +8,10 @@ export interface User {
   userId?: string | any;
   email?: string;
   createdAt?: string;
+  state?: string;
+  country?: string;
+  district?: string;
+  about?: string;
+  updateAt?: string;
+  role?: string;
 }
