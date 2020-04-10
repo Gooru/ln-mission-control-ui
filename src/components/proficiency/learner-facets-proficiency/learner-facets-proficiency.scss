@@ -48,9 +48,10 @@
     height: calc(100vh - 156px);
     .facets-left-panel {
       background-color: $white;
+      padding-right: 10px;
       .left-panel-header {
         display: grid;
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 1fr 1fr 60px;
         align-items: center;
         position: relative;
         .learner-info {
@@ -60,33 +61,45 @@
             font-size: 14px;
             color: #666;
           }
+        }
+        .facet-header {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          align-items: center;
           .skyline-info {
             font-size: 12px;
+            text-align: right;
+          }
+          .facet-toggle {
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 5px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            height: 30px;
+            background-color: #fff;
+            line-height: 30px;
+            border-radius: 20px;
+            width: max-content;
+            padding: 0 12px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            color: rgb(26, 169, 235);
+            font-weight: bold;
+            justify-self: right;
+            font-size: 12px;
+            width: inherit;
+            z-index: 99;
           }
         }
-        .facet-toggle {
-          display: grid;
-          grid-template-columns: auto auto;
-          column-gap: 5px;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          height: 30px;
-          background-color: #fff;
-          line-height: 30px;
-          border-radius: 20px;
-          width: max-content;
-          padding: 0 12px;
-          border: 1px solid rgba(0, 0, 0, 0.1);
-          color: rgb(26, 169, 235);
-          font-weight: bold;
-          justify-self: right;
-          font-size: 12px;
-          width: inherit;
-          z-index: 99;
-        }
+
         .filter-container {
           width: inherit;
+          display: grid;
+          align-items: center;
+          #taxonomy-filter {
+            top: 6px;
+          }
         }
       }
       .left-panel-body {
