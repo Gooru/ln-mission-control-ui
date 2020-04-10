@@ -15,7 +15,7 @@
             </div>
             <div class="activity-tab">
                 <div :class="['activity-tab-container',{'no-search': !isSearchTerms}]">
-                    <span v-for="(activity, index) in activityTabs" :key="index" :class="{active:activity.isActive}"><mc-icon :icon="activity.key+'-gray'"/>{{activity.name}}</span>
+                    <span v-for="(activity, index) in activityTabs" :key="index" :class="{active:activity.isActive}" @click="onChangeTab(activity)"><mc-icon :icon="activity.key+'-gray'"/>{{activity.name}}</span>
                 </div>
             </div>
         </div>

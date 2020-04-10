@@ -1,7 +1,9 @@
 <template>
     <div class="catalog-search">
         <activity-search />
-        
+        <div class="content-loader">
+            <content-loader/>
+        </div>
     </div>
 </template>
 

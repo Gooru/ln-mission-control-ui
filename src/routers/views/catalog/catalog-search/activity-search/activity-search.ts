@@ -43,6 +43,13 @@ export default class ActivitySearch extends Vue {
         this.searchTerms = '';
     }
 
+    private onChangeTab(activity: any) {
+        const activeTabs = this.activityTabs.find((item: any) => item.isActive);
+        this.$set(activeTabs, 'isActive', false);
+        if (!activeTabs.isActive) {
+            this.$set(activity, 'isActive', true);
+        }
+    }
 
     private onSelectCategory(category: any, filter: any) {
         if (filter.code === 'category' || filter.code === 'subject') {

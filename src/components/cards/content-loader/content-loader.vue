@@ -1,6 +1,10 @@
 <template>
     <div class="content-loader">
-        
+            <component 
+            :is="activeComponent.tab"
+            v-bind.sync="{activeComponent}">
+
+            </component>
     </div>
 </template>
 

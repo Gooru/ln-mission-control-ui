@@ -14,7 +14,7 @@
                 :filter="filter"/>
             </div>
             <div class="activity-filters">
-                 
+                    
             </div>
             
         </div>

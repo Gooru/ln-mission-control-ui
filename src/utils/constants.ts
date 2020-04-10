@@ -312,43 +312,43 @@ export const DEFAULT_ACTIVITY_FILTERS = [
 export const CATALOG_MENUS = [
   {
       name: 'summary',
-      tab: 'SummaryActivity',
+      tab: 'SummaryContent',
       key: 'summary',
       isActive: true,
   },
   {
       name: 'courses',
       key: 'course',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
   {
       name: 'collections',
       key: 'collection',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
   {
       name: 'assessments',
       key: 'assessment',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
   {
       name: 'offline Activities',
        key: 'offline-activity',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
   {
       name: 'resources',
       key: 'resource',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
   {
       name: 'questions',
       key: 'question',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
   {
       name: 'rubrics',
       key: 'rubric',
-      tab: 'ContentLoader',
+      tab: 'ActivityContent',
   },
 ];
