@@ -136,10 +136,12 @@ export const LEARNING_MAP_CONTENT_TYPE = [
   {
     labelKey: 'assessment',
     type: 'assessment',
+    isCatalog: true,
   },
   {
     labelKey: 'collection',
     type: 'collection',
+    isCatalog: true,
   },
   {
     labelKey: 'resource',
@@ -152,6 +154,7 @@ export const LEARNING_MAP_CONTENT_TYPE = [
   {
     labelKey: 'course',
     type: 'course',
+    isCatalog: true,
   },
   {
     labelKey: 'question',
@@ -160,10 +163,12 @@ export const LEARNING_MAP_CONTENT_TYPE = [
   {
     labelKey: 'lesson',
     type: 'lesson',
+    isCatalog: true,
   },
   {
     labelKey: 'unit',
     type: 'unit',
+    isCatalog: true,
   },
   {
     labelKey: 'rubric',
@@ -311,44 +316,65 @@ export const DEFAULT_ACTIVITY_FILTERS = [
 
 export const CATALOG_MENUS = [
   {
-      name: 'summary',
-      tab: 'SummaryContent',
-      key: 'summary',
-      isActive: true,
+    name: 'summary',
+    tab: 'SummaryContent',
+    key: 'summary',
+    isActive: true,
   },
   {
-      name: 'courses',
-      key: 'course',
-      tab: 'ActivityContent',
+    name: 'courses',
+    key: 'course',
+    tab: 'ActivityContent',
   },
   {
-      name: 'collections',
-      key: 'collection',
-      tab: 'ActivityContent',
+    name: 'collections',
+    key: 'collection',
+    tab: 'ActivityContent',
   },
   {
-      name: 'assessments',
-      key: 'assessment',
-      tab: 'ActivityContent',
+    name: 'assessments',
+    key: 'assessment',
+    tab: 'ActivityContent',
   },
   {
-      name: 'offline Activities',
-       key: 'offline-activity',
-      tab: 'ActivityContent',
+    name: 'offline Activities',
+    key: 'offline-activity',
+    tab: 'ActivityContent',
   },
   {
-      name: 'resources',
-      key: 'resource',
-      tab: 'ActivityContent',
+    name: 'resources',
+    key: 'resource',
+    tab: 'ActivityContent',
   },
   {
-      name: 'questions',
-      key: 'question',
-      tab: 'ActivityContent',
+    name: 'questions',
+    key: 'question',
+    tab: 'ActivityContent',
   },
   {
-      name: 'rubrics',
-      key: 'rubric',
-      tab: 'ActivityContent',
+    name: 'rubrics',
+    key: 'rubric',
+    tab: 'ActivityContent',
   },
 ];
+
+export const DEFAULT_CATALOG_STRING: any = {
+  audio_resource: { name: 'Audio', colorCode: '#76C8BC' },
+  video_resource: { name: 'Videos', colorCode: '#3EB6A6' },
+  interactive_resource: { name: 'Interactive', colorCode: '#76C8BC' },
+  image_resource: { name: 'Images', colorCode: '#76C8BC' },
+  webpage_resource: { name: 'Webpages', colorCode: '#009A87' },
+  text_resource: { name: 'Text', colorCode: '#76C8BC' },
+  multiple_choice_question: { name: 'Multiple Choice', colorCode: '#3A434D' },
+  multiple_answer_question: { name: 'Multiple Answer', colorCode: '#6E767D' },
+  true_false_question: { name: 'True Or False', colorCode: '#93999E' },
+  fill_in_the_blank_question: { name: 'Fill In The Blank', colorCode: '#3A434D' },
+  hot_spot_image_question: { name: 'Multiple Select - Image', colorCode: '#3A434D' },
+  hot_spot_text_question: { name: 'Multiple Select - Text', colorCode: '#93999E' },
+  hot_text_highlight_question: { name: 'Highlight Text', colorCode: '#93999E' },
+  hot_text_reorder_question: { name: 'Drag And Drop Order', colorCode: '#3A434D' },
+  open_ended_question: { name: 'Open Ended', colorCode: '#3A434D' },
+};
+
+
+export const COLORCODE: any = ['#3A434D', '#93999E', '#6E767D'];

@@ -8,7 +8,7 @@ export class SearchAPI {
       return this.INSTANCE;
   }
 
-  private namespace: string = '/gooru-search/rest/v2/search';
+  private namespace: string = 'gooru-search/rest/v2/search';
 
   private pedagogyNamespace: string = 'gooru-search/rest/v1/pedagogy-search';
 
@@ -33,12 +33,11 @@ export class SearchAPI {
       const endpoint = `${this.namespace}/scollection`;
       const headers = http.getTokenHeaders();
       const data = Object.assign({
-          'q': term,
-          'flt.collectionType': params.contentType,
-          'flt.publishStatus': 'published',
-          'start': params.start,
-          'length': params.length,
-      }, params.filters);
+          q: term,
+          isCrossWalk: false,
+          start: params.start,
+          length: params.length,
+      }, params);
       return http.get(endpoint, headers, data).then((response) => {
           // Note :- currently used only for total counts
           return response.data;
@@ -50,22 +49,19 @@ export class SearchAPI {
    * @param term
    * @param params
    */
-  public fetchResources(term = '*', params: any= {}) {
+  public fetchResources(params: any= {}) {
       const endpoint = `${this.namespace}/resource`;
       const headers = http.getTokenHeaders();
       const resourceflt = params.contentType === 'resource' ?
        {'flt.contentFormat': params.contentType} : {'flt.resourceFormat': params.contentType};
-      const options = {
-          'q': term,
-          'flt.publishStatus': 'published',
-          'start': params.start,
-          'length': params.length,
-          'scopeKey': params.isMyContent ? 'my-content' : '',
-      };
-      const data = {...options, ...resourceflt};
-      return http.get(endpoint, headers, data).then((response) => {
-          // Note :- currently used only for total counts
-          return response.data;
+      const options = Object.assign({
+          q: '*',
+          isCrossWalk: false,
+          start: params.start,
+          length: params.length,
+      }, params.filters, resourceflt);
+      return http.get(endpoint, headers, options).then((response) => {
+          return searchSerializer.serializeAggregation(response.data);
       });
   }
 
@@ -77,12 +73,12 @@ export class SearchAPI {
   public fetchCourse(term = '*', params: any= {}) {
       const endpoint = `${this.namespace}/course`;
       const headers = http.getTokenHeaders();
-      const data = {
+      const data = Object.assign({
           q: term,
           start: params.start,
           length: params.length,
-          scopeKey: params.isMyContent ? 'my-content' : '',
-      };
+          isCrossWalk: false,
+      }, params);
       return http.get(endpoint, headers, data).then((response) => {
           // Note :- currently used only for total counts
           return response.data;
@@ -97,12 +93,12 @@ export class SearchAPI {
   public fetchRubrics(term = '*', params: any= {}) {
       const endpoint = `${this.namespace}/rubric`;
       const headers = http.getTokenHeaders();
-      const data = {
-          q: term,
-          start: params.start,
-          length: params.length,
-          scopeKey: params.isMyContent ? 'my-content' : '',
-      };
+      const data = Object.assign({
+        q: term,
+        start: params.start,
+        length: params.length,
+        isCrossWalk: false,
+    }, params);
       return http.get(endpoint, headers, data).then((response) => {
           // Note :- currently used only for total counts
           return response.data;
@@ -119,14 +115,11 @@ export class SearchAPI {
       const headers = http.getTokenHeaders();
       const data = {
           q: term,
-          startAt: params.start || 0,
           length: params.length || 0,
-          scopeKey: params.isMycontent ? 'my-content' : 'open-all',
       };
 
       return http.get(endpoint, headers, data).then((response) => {
-          // Note :- currently used only for total counts
-          return response.data;
+          return searchSerializer.serializeLearningMapData(response.data);
       });
   }
 

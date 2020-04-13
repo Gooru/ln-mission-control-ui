@@ -1,6 +1,8 @@
 <template>
     <div class="catalog-search">
-        <activity-search />
+        <div class="search-section">
+            <activity-search />
+        </div>
         <div class="content-loader">
             <content-loader/>
         </div>

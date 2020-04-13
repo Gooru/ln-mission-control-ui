@@ -7,13 +7,14 @@ import {questionSerializer} from '@/providers/serializers/content/question';
 import {resourceSerializer} from '@/providers/serializers/content/resource';
 import {rubricSerializer} from '@/providers/serializers/content/rubric';
 import { competencySerializer } from '../competency/competency';
+import { DEFAULT_CATALOG_STRING } from '@/utils/constants';
 
 export class SearchSerializer {
-  private static INSTANCE = new SearchSerializer();
 
   static get instance() {
     return this.INSTANCE;
   }
+  private static INSTANCE = new SearchSerializer();
 
   public serializeLearningMapData(learningMapData: any) {
     const learningMapContents = learningMapData.contents;
@@ -96,6 +97,19 @@ export class SearchSerializer {
     return serializedLearningMapData;
   }
 
+  public serializeAggregation(payload: any) {
+      const result: any = [];
+      const aggregation = payload.aggregations ? payload.aggregations : [];
+      if (aggregation.length) {
+        aggregation.map((item: any) => {
+          const normalizeText = DEFAULT_CATALOG_STRING[item.key];
+          normalizeText.value = item.doc_count;
+          result.push(normalizeText);
+        });
+      }
+      return result;
+  }
+
   private serializedPrerequisites(payload: any) {
     const prerequisitesData: any = [];
     if (payload.length) {
@@ -109,6 +123,7 @@ export class SearchSerializer {
     }
     return prerequisitesData;
   }
+
 }
 
 export const searchSerializer = SearchSerializer.instance;

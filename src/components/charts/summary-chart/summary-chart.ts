@@ -48,26 +48,30 @@ export default class SummaryChart extends Vue {
    * Inner Radius of donut chart
    * @return {Number}
    */
-  private innerRadius: number = 65;
+  @Prop()
+  private innerRadius!: number;
 
   /**
    *  radius of donut chart
    * @return {Number}
    */
-  private radius: number = 85;
+  @Prop()
+  private radius!: number;
 
 
   /**
    * Inner Radius of arc two
    * @return {Number}
    */
-  private innerRadius1: number = 65;
+  @Prop()
+  private innerRadius1!: number;
 
   /**
    *  radius of arc two
    * @return {Number}
    */
-  private radius1: number = 85;
+  @Prop()
+  private radius1!: number;
 
   /**
    * default label  for the dounut chart
@@ -85,12 +89,13 @@ export default class SummaryChart extends Vue {
   // -------------------------------------------------------------------------
   // Methods
 
-  private created() {
+  private mounted() {
    this.drawchart(this.data);
   }
 
   private drawchart(data: any) {
-    const svgConst = this;
+    d3.select(this.$el).select('svg').remove();
+    const svgConst: any = this;
     const svg = d3.select(this.$el)
       .append('svg')
       .attr('class', 'pie')
@@ -132,28 +137,27 @@ export default class SummaryChart extends Vue {
       .attr('d', arc)
       .attr('fill', (d: any) => {
         return d.data.colorCode;
-      })
-      .on('mouseover', (d: any) => {
-        d3.select(this).style('cursor', 'pointer');
-        const selectedElement = d3.select(`#path-arc${  d.index}`);
+      }).on('mouseover', (d: any) => {
+        d3.select(this.$el).select(d3.event.currentElement).style('cursor', 'pointer');
+        const selectedElement = d3.select(this.$el).select(`#path-arc${  d.index}`);
         selectedElement.attr('fill', d.data.colorCode);
-        d3.select(this).transition()
+        d3.select(this.$el).select(d3.event.currentElement).transition()
           .duration(500)
           .ease(d3.easeBounce)
           .attr('d', arc.innerRadius((svgConst.innerRadius - 5)).outerRadius(svgConst.radius));
-        d3.select('.header-title').text(d.data.name);
-        d3.select('.header-count').text(d.data.value.toLocaleString('en-US'));
+        d3.select(this.$el).select('.header-title').text(d.data.name);
+        d3.select(this.$el).select('.header-count').text(d.data.value);
       })
       .on('mouseout', () => {
-        d3.select(this)
+        d3.select(this.$el).select(d3.event.currentElement)
           .style('cursor', 'none');
-        d3.select('.arc1 path').attr('fill', '#FFF');
-        d3.select(this).transition()
+        d3.select(this.$el).selectAll('.arc1 path').attr('fill', '#FFF');
+        d3.select(this.$el).select(d3.event.currentElement).transition()
           .duration(500)
           .ease(d3.easeBounce)
           .attr('d', arc.innerRadius(svgConst.innerRadius).outerRadius(svgConst.radius));
-        d3.select('.header-title').text(svgConst.label);
-        d3.select('.header-count').text(svgConst.totalCount.toLocaleString('en-US'));
+        d3.select(this.$el).select('.header-title').text(svgConst.label);
+        d3.select(this.$el).select('.header-count').text(svgConst.totalCount);
       });
 
     const arcs1 = g.selectAll('arc1')
@@ -169,7 +173,8 @@ export default class SummaryChart extends Vue {
       .attr('fill', '#FFF');
 
     const text = g.append('svg:foreignObject')
-      .attr('width', (this.width / 2)).attr('height', this.radius)
+      .attr('class', 'heading')
+      .attr('width', (this.width / 2))
       .attr('x', -(this.width / 4))
       .attr('y', -(this.radius / 4));
     text.append('xhtml:div')
