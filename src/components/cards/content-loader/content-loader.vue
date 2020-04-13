@@ -2,7 +2,7 @@
     <div class="content-loader">
             <component 
             :is="activeComponent.tab"
-            v-bind.sync="{activeComponent}">
+            v-bind.sync="{activeComponent, filterParams}">
 
             </component>
     </div>

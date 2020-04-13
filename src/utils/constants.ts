@@ -136,12 +136,14 @@ export const LEARNING_MAP_CONTENT_TYPE = [
   {
     labelKey: 'assessment',
     type: 'assessment',
-    isCatalog: true,
+    isSummaryFooter: true,
+    isSummaryFooterSeq: 5,
   },
   {
     labelKey: 'collection',
     type: 'collection',
-    isCatalog: true,
+    isSummaryFooter: true,
+    isSummaryFooterSeq: 4,
   },
   {
     labelKey: 'resource',
@@ -154,7 +156,8 @@ export const LEARNING_MAP_CONTENT_TYPE = [
   {
     labelKey: 'course',
     type: 'course',
-    isCatalog: true,
+    isSummaryFooter: true,
+    isSummaryFooterSeq: 1,
   },
   {
     labelKey: 'question',
@@ -163,12 +166,14 @@ export const LEARNING_MAP_CONTENT_TYPE = [
   {
     labelKey: 'lesson',
     type: 'lesson',
-    isCatalog: true,
+    isSummaryFooter: true,
+    isSummaryFooterSeq: 3,
   },
   {
     labelKey: 'unit',
     type: 'unit',
-    isCatalog: true,
+    isSummaryFooter: true,
+    isSummaryFooterSeq: 2,
   },
   {
     labelKey: 'rubric',

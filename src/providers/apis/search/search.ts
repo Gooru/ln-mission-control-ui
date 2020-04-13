@@ -110,16 +110,16 @@ export class SearchAPI {
    * @param term
    * @param params
    */
-  public fetachLearnerContent(term = '*', params: any= {}) {
-      const endpoint = `${this.namespace}/learning-maps`;
+  public fetachLearnerContent(params: any= {}) {
+      const endpoint = `${this.pedagogyNamespace}/learning-maps`;
       const headers = http.getTokenHeaders();
-      const data = {
-          q: term,
+      const data = Object.assign({
+          q: '*',
           length: params.length || 0,
-      };
+      }, params);
 
       return http.get(endpoint, headers, data).then((response) => {
-          return searchSerializer.serializeLearningMapData(response.data);
+          return response.data.contents;
       });
   }
 

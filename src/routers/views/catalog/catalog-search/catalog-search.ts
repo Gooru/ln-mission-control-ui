@@ -23,4 +23,7 @@ export default class CatalogSearch extends Vue {
 
     private isComparativeSearch: boolean = false;
 
+    private filterParams: any = {
+        q: '*',
+    };
 }

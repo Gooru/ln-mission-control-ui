@@ -13,7 +13,6 @@ export default ({
         summaryResource: [],
         summaryQuestion: [],
         learnerContent: [],
-
     },
     mutations: {
         fetchCategory(state: any, category: ClassificationModel[]) {
@@ -53,19 +52,21 @@ export default ({
             });
         },
         fetcSummaryCatalog(context: any, params: any) {
-            axios.all([
-                searchAPI.fetchResources(params.resource),
-                searchAPI.fetchResources(params.question),
-            ]).then((response) => {
+            const list = Object.keys(params).map((param: any) => {
+                return searchAPI.fetchResources(params[param]);
+            });
+            axios.all(list).then((response) => {
                 context.commit('fetchSummaryCatalog', response);
             });
         },
 
         fetachLearnerContent(context: any, params: any) {
-            searchAPI.fetachLearnerContent(params)
-                    .then((content) => {
-                        context.commit('fetachLearnerContent', content);
-                    });
+            const list = Object.keys(params).map((param: any) => {
+                return searchAPI.fetachLearnerContent(params[param]);
+            });
+            axios.all(list).then((response) => {
+                context.commit('fetachLearnerContent', response);
+            });
         },
     },
 });

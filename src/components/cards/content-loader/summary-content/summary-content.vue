@@ -6,7 +6,7 @@
                  <summary-chart :data="summaryQuestions" width="400" height="350" radius="115" innerRadius="100" radius1="90" innerRadius1="80"  label="question"/>
             </div>
             <div class="summary-chart-footer">
-                 <div v-for="(item, index) in summaryCatalogFooter" :key="index" class="footer-icon"><mc-icon :icon="item.type+'-gray'"/> 30</div>
+                 <div v-for="(item, index) in summaryCatalogFooter" :key="index" class="footer-icon"><mc-icon :icon="item.type+'-gray'"/>  {{Object.keys(learnerContent).length ? learnerContent[item.type].totalHitCount : ''}}</div>
             </div>
         </div>
     </div>

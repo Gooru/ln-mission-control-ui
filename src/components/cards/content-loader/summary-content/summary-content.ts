@@ -1,4 +1,4 @@
-import {Vue, Component, Prop} from 'vue-property-decorator';
+import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import SummaryChart from '@/components/charts/summary-chart/summary-chart';
 import { LEARNING_MAP_CONTENT_TYPE } from '@/utils/constants';
@@ -15,11 +15,10 @@ import MCIcon from '@/components/icons/mc-icon/mc-icon';
 
 export default class SummaryContent extends Vue {
 
-    @Prop()
-    private activeComponent: any;
-
     private get summaryCatalogFooter() {
-      return LEARNING_MAP_CONTENT_TYPE.filter((item) => item.isCatalog) || [];
+      return LEARNING_MAP_CONTENT_TYPE
+      .filter((item: any) => item.isSummaryFooter)
+      .sort((a: any, b: any) => a.isSummaryFooterSeq - b.isSummaryFooterSeq);
     }
 
     private get summaryResources() {
@@ -31,8 +30,18 @@ export default class SummaryContent extends Vue {
     }
 
     private get learnerContent() {
-      return this.$store.state.activityStore.learnerContent;
+      return this.$store.state.activityStore.learnerContent[0] || {};
     }
+
+   private get parsedFilterList() {
+        return Object.assign(this.summaryDefaultfilter, this.filterParams);
+   }
+
+    @Prop()
+    private activeComponent: any;
+
+    @Prop()
+    private filterParams: any;
 
    private summaryDefaultfilter: any = {
     'aggBy': 'contentSubFormat',
@@ -40,24 +49,34 @@ export default class SummaryContent extends Vue {
    };
 
    private contentData: any = {
-    filters: this.summaryDefaultfilter,
+    filters: this.parsedFilterList,
     contentType: 'question',
   };
 
   private resourceAggregatedFilters: any = {
-    filters: this.summaryDefaultfilter,
+    filters: this.parsedFilterList,
     contentType: 'resource',
   };
 
+    @Watch('filterParams', {deep: true})
+    private onChangeParams(value: any) {
+      this.summaryDefaultfilter.q = value.q;
+      this.onLoad();
+    }
+
 
   private created() {
-      const params: any = {
-        resource: this.resourceAggregatedFilters,
-        question: this.contentData,
-      };
-      this.$store.dispatch('activityStore/fetcSummaryCatalog', params);
+      this.onLoad();
+  }
 
-      this.$store.dispatch('activityStore/fetachLearnerContent');
+  private onLoad() {
+    const params: any = {
+      resource: this.resourceAggregatedFilters,
+      question: this.contentData,
+    };
+    this.$store.dispatch('activityStore/fetcSummaryCatalog', params);
+
+    this.$store.dispatch('activityStore/fetachLearnerContent', {param: this.filterParams});
   }
 
 }

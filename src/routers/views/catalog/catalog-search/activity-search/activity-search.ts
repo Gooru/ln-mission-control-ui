@@ -1,4 +1,4 @@
-import { Vue, Component, Watch } from 'vue-property-decorator';
+import { Vue, Component, Watch, Prop } from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import MCIcon from '@/components/icons/mc-icon/mc-icon';
 import ActivitySearchFilter from './activity-search-filter/activity-search-filter';
@@ -28,6 +28,9 @@ export default class ActivitySearch extends Vue {
 
     private filterList: any = {};
 
+    @Prop()
+    private filterParams!: any;
+
     private isShowFilterDropdown: boolean = false;
 
     // ----------------------------------------------------------------------------------
@@ -35,12 +38,14 @@ export default class ActivitySearch extends Vue {
     private onSearch() {
         if (this.searchTerms !== '') {
             this.isSearchTerms = true;
+            this.$set(this.filterParams, 'q', this.searchTerms);
         }
     }
 
     private clearSearchBox() {
         this.isSearchTerms = false;
         this.searchTerms = '';
+        this.$set(this.filterParams, 'q', '*');
     }
 
     private onChangeTab(activity: any) {

@@ -19,6 +19,9 @@ export default class ContentLoder extends Vue {
     @Prop()
     public contentType: any;
 
+    @Prop()
+    private filterParams: any;
+
     private get contentList() {
         return;
     }
