@@ -52,7 +52,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
   private facetWidth: number = 40;
 
   @Prop()
-  private isExpandedMode: boolean = true;
+  private isExpandedMode!: boolean;
 
   @Watch('month')
   public onChageTimeline() {
@@ -164,6 +164,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
   private drawFacetsChart(facetsMatrix: FacetMatrix[]) {
     const component = this;
+    const cellHeight = 5;
     d3.select('#chart-container').remove();
     d3.select('#chart-container-y-axis').remove();
 
@@ -186,6 +187,8 @@ export default class LearnerAcrossFacetsChart extends Vue {
       highestFacetCount = highestFacetCount < facet.totalCompetenciesCount
         ? facet.totalCompetenciesCount : highestFacetCount;
     });
+    highestMasteredCount = highestMasteredCount * cellHeight;
+    highestFacetCount = highestFacetCount;
     if (this.isExpandedMode) {
 
       if (highestMasteredCount) {
@@ -205,6 +208,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
         chartHeight = chartContainerHeight;
       }
     }
+    chartHeight = chartHeight * cellHeight;
 
 
     const yScale = d3.scaleLinear()
@@ -214,7 +218,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
     const yAxis = d3.axisLeft(yScale).scale(yScale);
 
     if (this.isExpandedMode && chartHeight > 1000) {
-      yAxis.ticks(chartHeight / 100);
+      yAxis.ticks(highestFacetCount / 100);
     }
 
     // Separate svg for showing axis line
@@ -261,27 +265,32 @@ export default class LearnerAcrossFacetsChart extends Vue {
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
     let height = competency.count / chartHeightLevel * 100;
     height = Number((height * chartHeight) / 100);
-    facetsGroup
-        .append('rect')
-        .attr('class', `${competency.status}`)
-        .attr('x', width * seq)
-        .attr('y', `${yAxis}`)
-        .attr('width', width)
-        .attr('height', `${height}`)
-        .on('click', () => {
-          component.selectFacet(facetMatrix);
-        })
-        .on('mousemove', (event) => {
-          component.tooltipPos = {
-            left: `${d3.event.pageX - 90}px`,
-            top: `${d3.event.pageY - 130}px`,
-          };
-          component.tooltipInfo = facetMatrix;
-          component.isShowTooltip = true;
-        })
-        .on('mouseout', () => {
-          component.isShowTooltip = false;
-        });
+    for (let i = 1; i <= competency.count; i++) {
+      const cellHeight = height / competency.count;
+      facetsGroup
+          .append('rect')
+          .attr('class', `${competency.status}`)
+          .attr('x', width * seq)
+          .attr('y', `${yAxis}`)
+          .attr('width', width)
+          .attr('height', `${cellHeight}`)
+          .on('click', () => {
+            component.selectFacet(facetMatrix);
+          })
+          .on('mousemove', (event) => {
+            component.tooltipPos = {
+              left: `${d3.event.pageX - 90}px`,
+              top: `${d3.event.pageY - 130}px`,
+            };
+            component.tooltipInfo = facetMatrix;
+            component.isShowTooltip = true;
+          })
+          .on('mouseout', () => {
+            component.isShowTooltip = false;
+          });
+      yAxis = yAxis + cellHeight;
+    }
+
     if (competency.status === 'mastered') {
         component.skylinePoints.push({
           x1: width * seq,
@@ -291,7 +300,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
         });
       }
 
-    yAxis = yAxis + height;
+
     });
   }
 
