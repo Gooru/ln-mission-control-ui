@@ -1,6 +1,10 @@
 <template>
     <div class="activity-content">
-      {{activeComponent.name}}
+         <div class="">
+           <component
+           :is="activeComponent.key"
+           v-bind="{ course: courseContent}"></component>
+         </div>
     </div>
 </template>
 

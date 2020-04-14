@@ -10,6 +10,16 @@ export class CourseSerializer {
     return this.INSTANCE;
   }
 
+  public serializeCourses(payload: any): CourseModel[] {
+      const courseList: any = [];
+      if (payload.searchResults.length) {
+        payload.searchResults.map((course: any) => {
+          courseList.push(this.serializeCourse(course));
+        });
+      }
+      return courseList;
+  }
+
   public serializeCourse(course: any): CourseModel {
     const cdnUrls = sessionService.getCdnUrl();
     const contentCdnUrl = cdnUrls.content_cdn_url;

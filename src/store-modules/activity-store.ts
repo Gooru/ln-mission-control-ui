@@ -13,6 +13,8 @@ export default ({
         summaryResource: [],
         summaryQuestion: [],
         learnerContent: [],
+        courseCatalog: [],
+        collectionCatalog: [],
     },
     mutations: {
         fetchCategory(state: any, category: ClassificationModel[]) {
@@ -31,6 +33,14 @@ export default ({
 
         fetachLearnerContent(state: any, content: any) {
             state.learnerContent = content;
+        },
+
+        courseCatalogDetails(state: any, course: any) {
+            state.courseCatalog = course;
+        },
+
+        collectionCatalogDetails(state: any, collection: any) {
+            state.collectionCatalog = collection.searchResults;
         },
     },
     actions: {
@@ -67,6 +77,20 @@ export default ({
             axios.all(list).then((response) => {
                 context.commit('fetachLearnerContent', response);
             });
+        },
+
+        courseCatalogDetails(context: any, params: any) {
+            searchAPI.fetchCourse(params)
+                .then((courses) => {
+                    context.commit('courseCatalogDetails', courses);
+                });
+        },
+
+        collectionCatalogDetails(context: any, params: any) {
+            searchAPI.fetchCollections(params)
+                .then((collection) => {
+                    context.commit('collectionCatalogDetails', collection);
+                });
         },
     },
 });

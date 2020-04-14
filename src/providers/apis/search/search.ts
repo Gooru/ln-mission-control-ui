@@ -1,5 +1,6 @@
 import { http } from '@/providers/apis/http';
 import { searchSerializer } from '@/providers/serializers/search/search';
+import { courseSerializer } from '@/providers/serializers/content/course';
 
 export class SearchAPI {
   private static INSTANCE = new SearchAPI();
@@ -29,11 +30,11 @@ export class SearchAPI {
    * @param term
    * @param params
    */
-  public fetchCollections(term = '*', params: any= {}) {
+  public fetchCollections(params: any= {}) {
       const endpoint = `${this.namespace}/scollection`;
       const headers = http.getTokenHeaders();
       const data = Object.assign({
-          q: term,
+          q: '*',
           isCrossWalk: false,
           start: params.start,
           length: params.length,
@@ -70,18 +71,18 @@ export class SearchAPI {
    * @param term
    * @param params
    */
-  public fetchCourse(term = '*', params: any= {}) {
+  public fetchCourse(params: any= {}) {
       const endpoint = `${this.namespace}/course`;
       const headers = http.getTokenHeaders();
       const data = Object.assign({
-          q: term,
+          q: '*',
           start: params.start,
           length: params.length,
           isCrossWalk: false,
       }, params);
       return http.get(endpoint, headers, data).then((response) => {
           // Note :- currently used only for total counts
-          return response.data;
+          return courseSerializer.serializeCourses(response.data);
       });
   }
 

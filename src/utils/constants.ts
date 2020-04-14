@@ -330,36 +330,43 @@ export const CATALOG_MENUS = [
     name: 'courses',
     key: 'course',
     tab: 'ActivityContent',
+    apiKey: 'course',
   },
   {
     name: 'collections',
     key: 'collection',
     tab: 'ActivityContent',
+    apiKey: 'collection',
   },
   {
     name: 'assessments',
     key: 'assessment',
     tab: 'ActivityContent',
+    apiKey: 'collection',
   },
   {
     name: 'offline Activities',
     key: 'offline-activity',
     tab: 'ActivityContent',
+    apiKey: 'collection',
   },
   {
     name: 'resources',
     key: 'resource',
     tab: 'ActivityContent',
+    apiKey: 'resource',
   },
   {
     name: 'questions',
     key: 'question',
     tab: 'ActivityContent',
+    apiKey: 'question',
   },
   {
     name: 'rubrics',
     key: 'rubric',
     tab: 'ActivityContent',
+    apiKey: 'rubric',
   },
 ];
 

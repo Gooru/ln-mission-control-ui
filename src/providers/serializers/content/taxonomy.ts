@@ -41,7 +41,7 @@ export class TaxonomySerializer {
 
   public normalizeCreator(payload: any) {
     return {
-      usernameDisplay: payload.usernameDisplay,
+      usernameDisplay: payload.usernameDisplay ? payload.usernameDisplay : '',
       profileImage: payload.profileImage ? payload.profileImage : DEFAULT_IMAGES_PATH.profile,
     };
   }

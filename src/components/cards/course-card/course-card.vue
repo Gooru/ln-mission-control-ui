@@ -12,11 +12,11 @@
   </div>
   <div class="course-info-container">
     <div class="course-user-info">
-      <div class="created-by">{{course.creator.usernameDisplay}}</div>
+      <div class="created-by">{{course.creator.usernameDisplay || ''}}</div>
       <div class="img-container pull-left">
         <img class="img-responsive"  :src="course.creator.profileImage" >
       </div>
-      <div class="username">{{course.creator.usernameDisplay}}</div>
+      <div class="username">{{course.creator.usernameDisplay || ''}}</div>
     </div>
     <div class="course-description" v-html="course.description">
       {{course.description}}
