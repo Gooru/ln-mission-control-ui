@@ -14,10 +14,10 @@
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       #facets-group {
         rect {
-          stroke: #000;
-          stroke-width: 2;
-          shape-rendering: crispedges;
-          stroke-opacity: 0.2;
+          stroke: $light-300;
+          stroke-width: 1;
+          // shape-rendering: crispedges;
+          // stroke-opacity: 0.2;
           cursor: pointer;
         }
         // Comptency Color
