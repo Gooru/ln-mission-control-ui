@@ -19,7 +19,7 @@
           <component
             v-bind:is="activeTab.component"
             :key="activeTab.component"
-            v-bind="{month: month, year: year, subject: subject, classification: classification, statsBucket: 'subject', userId: userId, activeToggleList}"
+            v-bind="{month, year, subject, classification, statsBucket: 'subject', userId, activeToggleList}"
             @onSelectDomain="onSelectDomain"
             @onSelectPortfolioStat="onSelectPortfolioStat"
             @onSelectCompetency="onSelectCompetency"/>
