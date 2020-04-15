@@ -1,6 +1,7 @@
 import { http } from '@/providers/apis/http';
 import { searchSerializer } from '@/providers/serializers/search/search';
 import { courseSerializer } from '@/providers/serializers/content/course';
+import { collectionSerializer } from '@/providers/serializers/content/collection';
 
 export class SearchAPI {
   private static INSTANCE = new SearchAPI();
@@ -41,7 +42,7 @@ export class SearchAPI {
       }, params);
       return http.get(endpoint, headers, data).then((response) => {
           // Note :- currently used only for total counts
-          return response.data;
+          return collectionSerializer.normalizeSearchCollection(response.data);
       });
   }
 

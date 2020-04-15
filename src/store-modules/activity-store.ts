@@ -15,6 +15,7 @@ export default ({
         learnerContent: [],
         courseCatalog: [],
         collectionCatalog: [],
+        assessmentCatalog: [],
     },
     mutations: {
         fetchCategory(state: any, category: ClassificationModel[]) {
@@ -35,12 +36,16 @@ export default ({
             state.learnerContent = content;
         },
 
-        courseCatalogDetails(state: any, course: any) {
+        courseCatalogSearch(state: any, course: any) {
             state.courseCatalog = course;
         },
 
-        collectionCatalogDetails(state: any, collection: any) {
-            state.collectionCatalog = collection.searchResults;
+        collectionCatalogSearch(state: any, collection: any) {
+            state.collectionCatalog = collection;
+        },
+
+        assessmentCatalogSearch(state: any, assessment: any) {
+            state.assessmentCatalog = assessment;
         },
     },
     actions: {
@@ -79,17 +84,20 @@ export default ({
             });
         },
 
-        courseCatalogDetails(context: any, params: any) {
+        courseCatalogSearch(context: any, params: any) {
             searchAPI.fetchCourse(params)
                 .then((courses) => {
-                    context.commit('courseCatalogDetails', courses);
+                    context.commit('courseCatalogSearch', courses);
                 });
         },
 
-        collectionCatalogDetails(context: any, params: any) {
+        collectionCatalogSearch(context: any, params: any) {
             searchAPI.fetchCollections(params)
                 .then((collection) => {
-                    context.commit('collectionCatalogDetails', collection);
+                    params['flt.collectionType'] === 'collection'
+                        ? context.commit('collectionCatalogSearch', collection)
+                        : context.commit('assessmentCatalogSearch', collection);
+
                 });
         },
     },

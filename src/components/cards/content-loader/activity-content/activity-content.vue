@@ -1,9 +1,12 @@
 <template>
     <div class="activity-content">
-         <div class="">
-           <component
-           :is="activeComponent.key"
-           v-bind="{ course: courseContent}"></component>
+         <div class="activity-content-loader" v-if="contents.length">
+          <component 
+                    v-for="content in contents" 
+                    :key="content.id"
+                    v-bind="contentBind(content)"
+                    :is="activeComponent.key">
+          </component>
          </div>
     </div>
 </template>

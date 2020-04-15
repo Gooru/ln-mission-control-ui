@@ -1,0 +1,9 @@
+.activity-content {
+  .activity-content-loader {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+  }
+}

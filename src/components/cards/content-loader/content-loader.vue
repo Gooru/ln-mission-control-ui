@@ -1,10 +1,11 @@
 <template>
     <div class="content-loader">
+           <keep-alive>
             <component 
             :is="activeComponent.tab"
-            v-bind.sync="{activeComponent, filterParams}">
-
+            v-bind="{activeComponent, filterParams}">
             </component>
+            </keep-alive>
     </div>
 </template>
 
