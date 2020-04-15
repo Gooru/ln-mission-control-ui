@@ -6,13 +6,13 @@ import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import { DomainModel } from '@/models/proficiency/domain';
 import moment from 'moment';
-import MindsetsListPanel from '../mindsets-list-panel/mindsets-list-panel';
+import MindsetsPanel from '../mindsets-panel/mindsets-panel';
 
 @Component({
   name: 'domain-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
-    MindsetsListPanel,
+    MindsetsPanel,
     KnowledgePanel,
     CommunityPanel,
   },
@@ -46,7 +46,7 @@ export default class DomainInfoPanel extends Vue {
     },
     {
       title: 'Mindsets',
-      component: MindsetsListPanel,
+      component: MindsetsPanel,
     },
     {
       title: 'Community',

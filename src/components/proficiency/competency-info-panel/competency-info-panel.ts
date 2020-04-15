@@ -6,7 +6,7 @@ import {CompetencyModel} from '@/models/proficiency/competency';
 import { competencyStatus } from '@/helpers/competency';
 import { searchAPI } from '@/providers/apis/search/search';
 import moment from 'moment';
-import MindsetsListPanel from '../mindsets-list-panel/mindsets-list-panel';
+import MindsetsPanel from '../mindsets-panel/mindsets-panel';
 import { DomainModel } from '@/models/proficiency/domain';
 import { SubjectModel } from '@/models/taxonomy/subject';
 
@@ -14,7 +14,7 @@ import { SubjectModel } from '@/models/taxonomy/subject';
   name: 'competency-info-panel',
   components: {
     'google-material-icon': GoogleMaterialIcon,
-    MindsetsListPanel,
+    MindsetsPanel,
     KnowledgePanel,
     CommunityPanel,
   },
@@ -46,7 +46,7 @@ export default class CompetencyInfoPanel extends Vue {
     },
     {
       title: 'Mindsets',
-      component: MindsetsListPanel,
+      component: MindsetsPanel,
     },
     {
       title: 'Community',

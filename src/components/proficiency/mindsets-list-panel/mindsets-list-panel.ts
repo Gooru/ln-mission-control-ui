@@ -38,9 +38,10 @@ export default class MindsetsListPanel extends Vue {
   @Prop()
   private year!: string;
 
-  private learnerVectors: LearnerVector[] = [];
+  private learnerVectors: LearnerVector[] | any = [];
 
-  private allowedVectorKeys: any = LEARNER_MINDSETS_VECTORS;
+  @Prop()
+  private allowedVectorKeys!: string[];
 
   public created() {
     this.loadLearnerVectors();

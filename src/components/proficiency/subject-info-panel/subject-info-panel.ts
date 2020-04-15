@@ -1,15 +1,15 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import KnowledgePanel from '../knowledge-panel/knowledge-panel';
 import CommunityPanel from '../community-panel/community-panel';
+import MindsetsPanel from '../mindsets-panel/mindsets-panel';
 import { SubjectModel } from '@/models/taxonomy/subject';
 import { ClassificationModel } from '@/models/taxonomy/classification';
 import moment from 'moment';
-import MindsetsListPanel from '../mindsets-list-panel/mindsets-list-panel';
 
 @Component({
   name: 'subject-info-panel',
   components: {
-    'mindsets-panel': MindsetsListPanel,
+    'mindsets-panel': MindsetsPanel,
     'knowledge-panel': KnowledgePanel,
     'community-panel': CommunityPanel,
   },

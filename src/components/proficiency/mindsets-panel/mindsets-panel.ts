@@ -13,7 +13,7 @@ import { LEARNER_MINDSETS_VECTORS } from '@/utils/constants';
 })
 export default class MindsetsPanel extends Vue {
 
-  private allowedMindsetKeys: any = LEARNER_MINDSETS_VECTORS;
+  public allowedMindsetKeys: string[] = LEARNER_MINDSETS_VECTORS;
 
   @Prop()
   private subject!: SubjectModel;

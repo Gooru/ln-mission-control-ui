@@ -1,7 +1,7 @@
 <template>
   <div id="community-panel">
     <mindsets-list-panel
-    v-bind="{statsBucket: 'facets', userId, month, year, activeFacets, allowedVectorKeys: allowedCommunityKeys}"
+    v-bind="{statsBucket, subject, domain, competency, userId, month, year, activeFacets, allowedVectorKeys: allowedCommunityKeys}"
     />
   </div>
 </template>
