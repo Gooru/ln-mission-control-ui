@@ -76,7 +76,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
   private onToggleFacetChart() {
     const component = this;
     this.skylinePoints = [];
-    this.cellHeight = this.isExpandedMode ? 30 : 4;
+    this.cellHeight = this.isExpandedMode ? 10 : 4;
     component.loadChartData();
     // Scroll to bottom of the chart while in full view
     const chartContainer = component.$el.querySelector('#facets-chart-view') as HTMLElement;
@@ -207,7 +207,6 @@ export default class LearnerAcrossFacetsChart extends Vue {
       if (chartHeight <= chartContainerHeight) {
         chartHeight = chartContainerHeight;
       }
-      chartHeight = chartHeight * this.cellHeight;
     }
 
 
