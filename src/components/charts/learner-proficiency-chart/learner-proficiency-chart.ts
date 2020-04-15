@@ -142,6 +142,8 @@ export default class LearnerProficiencyChart extends Vue {
   @Prop()
   private selectedCompetency: any;
 
+  private isToggleGrade: boolean = false;
+
   private get maxGradeNumber() {
     return this.activeGradeList.reduce(
       (prev: any, current: any) => (prev.id > current.id) ?
