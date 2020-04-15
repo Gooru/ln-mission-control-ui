@@ -1,4 +1,4 @@
-import {GRADING_SCALE} from '@/utils/constants';
+import { GRADING_SCALE } from '@/utils/constants';
 import { isNumeric } from '@/utils/math';
 
 /**
@@ -26,20 +26,20 @@ export function getRoutePathFirstOccurrence() {
  * @param  {string} 'ASC|DESC'
  */
 export function sortByProperty<T>(array: T[], propName: keyof T, order: 'ASC' | 'DESC'): void {
-    array.sort((a, b) => {
-        if (a[propName] < b[propName]) {
-            return -1;
-        }
-
-        if (a[propName] > b[propName]) {
-            return 1;
-        }
-        return 0;
-    });
-
-    if (order === 'DESC') {
-        array.reverse();
+  array.sort((a, b) => {
+    if (a[propName] < b[propName]) {
+      return -1;
     }
+
+    if (a[propName] > b[propName]) {
+      return 1;
+    }
+    return 0;
+  });
+
+  if (order === 'DESC') {
+    array.reverse();
+  }
 }
 
 /**
@@ -62,8 +62,8 @@ export function getGradeRange(score: number): string {
 }
 
 export function getSum(dataList: any, property: any) {
-     return dataList.reduce(
-        (count: any, data: any) => count + data[property], 0);
+  return dataList.reduce(
+    (count: any, data: any) => count + data[property], 0);
 }
 
 export function getDomainId(id: any) {
@@ -80,35 +80,45 @@ export function getSubjectId(id: any) {
 }
 
 export function isMicroStandardId(id: any) {
-    return /.*\d{2}-\d{2}/.test(id) || /.*\.\d{2}\.\d{2}\./.test(id);
-  }
+  return /.*\d{2}-\d{2}/.test(id) || /.*\.\d{2}\.\d{2}\./.test(id);
+}
 
 export function getTaxonomyTags(
-    taxonomy = [],
-    editable = false,
-    removable = false,
-    canAdd = false,
-  ) {
-    return taxonomy.map((tagData) => {
-      return  {
-        isActive: false,
-        isReadonly: !editable,
-        isRemovable: removable,
-        canAdd,
-        data: tagData,
-      };
-    });
-  }
-
-export function resetList(list: any, currentItem: any, params= ['checked', 'id']) {
-    list.map((item: any) => {
-      if (item[params[0]] && currentItem[params[1]] !== item[params[1]]) {
-          item[params[0]] = false;
-      }
-      return item;
+  taxonomy = [],
+  editable = false,
+  removable = false,
+  canAdd = false,
+) {
+  return taxonomy.map((tagData) => {
+    return {
+      isActive: false,
+      isReadonly: !editable,
+      isRemovable: removable,
+      canAdd,
+      data: tagData,
+    };
   });
-  }
+}
+
+export function resetList(list: any, currentItem: any, params = ['checked', 'id']) {
+  list.map((item: any) => {
+    if (item[params[0]] && currentItem[params[1]] !== item[params[1]]) {
+      item[params[0]] = false;
+    }
+    return item;
+  });
+}
 
 export function clone(obj: any) {
-    return JSON.parse(JSON.stringify(obj));
-  }
+  return JSON.parse(JSON.stringify(obj));
+}
+
+/**
+ * Get the resource format to be App compliant
+ * @function
+ * @param format
+ * @returns {string}
+ */
+export function getResourceFormat(format: any) {
+  return format ? format.split('_')[0] : undefined; // i.e video_resource to video
+}

@@ -319,6 +319,9 @@ export const DEFAULT_ACTIVITY_FILTERS = [
   },
 ];
 
+/**
+ * Please Make sure when try to change API key or key it will affect API calls on catalog tabs
+ */
 export const CATALOG_MENUS = [
   {
     name: 'summary',
@@ -342,14 +345,14 @@ export const CATALOG_MENUS = [
     name: 'assessments',
     key: 'assessment',
     tab: 'ActivityContent',
-    apiKey: 'collection',
+    apiKey: 'assessment',
   },
-  {
-    name: 'offline Activities',
-    key: 'offline-activity',
-    tab: 'ActivityContent',
-    apiKey: 'collection',
-  },
+  // {
+  //   name: 'offline Activities',
+  //   key: 'offline-activity',
+  //   tab: 'ActivityContent',
+  //   apiKey: 'collection',
+  // },
   {
     name: 'resources',
     key: 'resource',
@@ -362,12 +365,12 @@ export const CATALOG_MENUS = [
     tab: 'ActivityContent',
     apiKey: 'question',
   },
-  {
-    name: 'rubrics',
-    key: 'rubric',
-    tab: 'ActivityContent',
-    apiKey: 'rubric',
-  },
+  // {
+  //   name: 'rubrics',
+  //   key: 'rubric',
+  //   tab: 'ActivityContent',
+  //   apiKey: 'rubric',
+  // },
 ];
 
 export const DEFAULT_CATALOG_STRING: any = {

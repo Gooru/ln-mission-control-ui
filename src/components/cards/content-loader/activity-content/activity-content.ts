@@ -3,6 +3,8 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import CourseCard from '../../course-card/course-card';
 import CollectionCard from '../../collection-card/collection-card';
 import AssessmentCard from '../../assessment-card/assessment-card';
+import ResourceCard from '../../resource-card/resource-card';
+import QuestionCard from '../../question-card/question-card';
 
 @Component({
     name: 'activity-content',
@@ -11,6 +13,8 @@ import AssessmentCard from '../../assessment-card/assessment-card';
         'course': CourseCard,
         'collection': CollectionCard,
         'assessment': AssessmentCard,
+        'resource': ResourceCard,
+        'question': QuestionCard,
     },
 })
 
@@ -43,9 +47,6 @@ export default class ActivityContent extends Vue {
             start: this.start,
             length: this.length,
         };
-        if (this.activeComponent.key === 'collection' || this.activeComponent.key === 'assessment') {
-            params['flt.collectionType'] = this.activeComponent.key;
-        }
         return Object.assign(params, this.filterParams);
     }
 

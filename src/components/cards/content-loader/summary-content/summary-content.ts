@@ -33,34 +33,14 @@ export default class SummaryContent extends Vue {
       return this.$store.state.activityStore.learnerContent[0] || {};
     }
 
-   private get parsedFilterList() {
-        return Object.assign(this.summaryDefaultfilter, this.filterParams);
-   }
-
     @Prop()
     private activeComponent: any;
 
     @Prop()
     private filterParams: any;
 
-   private summaryDefaultfilter: any = {
-    'aggBy': 'contentSubFormat',
-    'flt.audience': 'All Students,Teachers',
-   };
-
-   private contentData: any = {
-    filters: this.parsedFilterList,
-    contentType: 'question',
-  };
-
-  private resourceAggregatedFilters: any = {
-    filters: this.parsedFilterList,
-    contentType: 'resource',
-  };
-
     @Watch('filterParams', {deep: true})
     private onChangeParams(value: any) {
-      this.summaryDefaultfilter.q = value.q;
       this.onLoad();
     }
 
@@ -71,8 +51,8 @@ export default class SummaryContent extends Vue {
 
   private onLoad() {
     const params: any = {
-      resource: this.resourceAggregatedFilters,
-      question: this.contentData,
+      resource: this.filterParams,
+      question: this.filterParams,
     };
     this.$store.dispatch('activityStore/fetcSummaryCatalog', params);
 

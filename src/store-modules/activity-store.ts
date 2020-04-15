@@ -10,12 +10,14 @@ export default ({
         categoryList: [],
         subjectList: [],
         courseList: [],
-        summaryResource: [],
-        summaryQuestion: [],
-        learnerContent: [],
-        courseCatalog: [],
-        collectionCatalog: [],
-        assessmentCatalog: [],
+        summaryResource: {},
+        summaryQuestion: {},
+        learnerContent: {},
+        courseCatalog: {},
+        collectionCatalog: {},
+        assessmentCatalog: {},
+        resourceCatalog: {},
+        questionCatalog: {},
     },
     mutations: {
         fetchCategory(state: any, category: ClassificationModel[]) {
@@ -47,6 +49,12 @@ export default ({
         assessmentCatalogSearch(state: any, assessment: any) {
             state.assessmentCatalog = assessment;
         },
+        resourceCatalogSearch(state: any, resource: any) {
+            state.resourceCatalog = resource;
+        },
+        questionCatalogSearch(state: any, question: any) {
+            state.questionCatalog = question;
+        },
     },
     actions: {
         fetchCategory({commit}: {commit: any}) {
@@ -67,9 +75,10 @@ export default ({
             });
         },
         fetcSummaryCatalog(context: any, params: any) {
-            const list = Object.keys(params).map((param: any) => {
-                return searchAPI.fetchResources(params[param]);
-            });
+            const list = [
+                searchAPI.fetchAggregationResources(params.resource),
+                searchAPI.fetchAggregationQuestion(params.question),
+            ];
             axios.all(list).then((response) => {
                 context.commit('fetchSummaryCatalog', response);
             });
@@ -94,10 +103,25 @@ export default ({
         collectionCatalogSearch(context: any, params: any) {
             searchAPI.fetchCollections(params)
                 .then((collection) => {
-                    params['flt.collectionType'] === 'collection'
-                        ? context.commit('collectionCatalogSearch', collection)
-                        : context.commit('assessmentCatalogSearch', collection);
-
+                    context.commit('collectionCatalogSearch', collection);
+                });
+        },
+        assessmentCatalogSearch(context: any, params: any) {
+            searchAPI.fetchAssessment(params)
+                .then((assessment) => {
+                    context.commit('assessmentCatalogSearch', assessment);
+                });
+        },
+        resourceCatalogSearch(context: any, params: any) {
+            searchAPI.fetchResources(params)
+                .then((resource) => {
+                    context.commit('resourceCatalogSearch', resource);
+                });
+        },
+        questionCatalogSearch(context: any, params: any) {
+            searchAPI.fetchQuestions(params)
+                .then((question) => {
+                    context.commit('questionCatalogSearch', question);
                 });
         },
     },
