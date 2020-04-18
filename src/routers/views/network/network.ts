@@ -7,7 +7,6 @@ import Partners from './partners/partners';
 import { CountryModel } from '@/models/stats/country';
 import { drillDownAPI } from '@/providers/apis/drill-down/drill-down';
 import { sessionService } from '@/providers/services/auth/session';
-import { appConfigService } from '@/providers/services/app/app-config';
 import { DEMO_USERS } from '@/utils/constants';
 
 
@@ -33,11 +32,7 @@ export default class Network extends Vue {
 }
 
   get isTenant() {
-    if (this.session) {
-      return (this.session.isSuperAdmin) ||
-       (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
-    }
-    return false;
+     return this.$access.hasPermission(this.$access.ACL.network);
   }
 
 
@@ -69,6 +64,12 @@ export default class Network extends Vue {
     ])
       .then(axios.spread((countries, statsCountries, countriesRegion) => {
         if (statsCountries) {
+          if (statsCountries.length === 1) {
+              const countryDetails = statsCountries[0];
+              if (this.$access.hasPermission(this.$access.ACL.compDrilldown)) {
+                  this.$router.push(`network/countries/${countryDetails.id}/${countryDetails.name}`);
+              }
+          }
           statsCountries.map((statsCountry: any) => {
             const countryCode = this.isTenant ? statsCountry.country_code : statsCountry.code;
             const country = countries.features.find((countryData: any) => {

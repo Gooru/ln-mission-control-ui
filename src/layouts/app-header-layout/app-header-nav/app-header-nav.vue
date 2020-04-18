@@ -8,7 +8,7 @@
         :key="item.path"
         v-bind:class="(currentRoutePath.includes(item.path)) ? 'active':''"
       >
-        <span>{{ $t(item.name) }}</span>
+        <span v-if="$access.hasMenuAccess(item.name)">{{ $t(item.name) }}</span>
       </div>
     </div>
   </div>

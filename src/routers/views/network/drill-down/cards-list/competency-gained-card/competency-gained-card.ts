@@ -49,9 +49,6 @@ export default class CompentencyGainedCard extends Vue {
     private subjectsList: any;
     @Prop()
     private score: any;
-    @Prop()
-    private isTenant?: boolean;
-
     private get totalCompetency() {
         return this.score.totalCompetencies
             ? this.score.totalCompetencies : 0;

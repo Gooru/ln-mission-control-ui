@@ -11,9 +11,24 @@ export class AppConfigService {
 
   private APP_CONFIG: string = 'MC_APP_CONFIG';
 
+  private APP_USER_ROLE: string = 'MC_APP_USER_ROLE';
+
 
   public setAppConfig(appConfigModel: AppConfigModel) {
     localStorage.setItem(this.APP_CONFIG, JSON.stringify(appConfigModel));
+  }
+
+  public setAppUserRole(userRole: any) {
+    localStorage.setItem(this.APP_USER_ROLE, JSON.stringify(userRole));
+  }
+
+  public getAppUserRole() {
+    let role = null;
+    const userRole = localStorage.getItem(this.APP_USER_ROLE);
+    if ( userRole ) {
+      role = JSON.parse(userRole);
+    }
+    return role;
   }
 
 

@@ -1,0 +1,218 @@
+{
+
+    "VIEW_COMP_DD_REPORTS_FOR_SC_AND_CLS_IN_SC": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-school-drilldown"]
+    },
+    "VIEW_AC_DD_FOR_ALL_CLS_IN_SC": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown","competency-drilldown-analytic", "analytic-school-cards"]
+    },
+    "VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-dashboard","competency-school-dashboard"]
+    },
+    "VIEW_COMP_GPH_CROSS_TV_LM_ALL_ACCESS_FW": {
+        "menus": ["competency"],
+        "pages": ["competency", "competency-tab-access"]
+    },
+    "EDIT_COMP_TNT_AUTHORIZED_USER": {
+
+    },
+    "VIEW_CATALOG_DASH_TNT_AND_PUB_LIB": {
+        "menus": ["catalog"],
+        "pages": ["catalog", "catalog-dashboard"]
+    },
+    "SEARCH_FILT_CATALOG_ALL_ACCESS_LIB": {
+        "menus": ["catalog"],
+        "pages": ["catalog", "catalog-search-filter"]
+    },
+    "COMPARE_WITH_GOOGLE_BING_ANONYMIZE_LEARNER": {
+        "menus": ["catalog"],
+        "pages": ["catalog", "catalog-comparative-search"]
+    },
+    "EDIT_CONTENT_ONLY_TNT_LIB": {},
+    "LEARNER_IDENTITY_AND_DD_ONLY_AUTHORIZED_USER": {
+        "menus": ["learners"],
+        "pages": ["learners", "learners-identity"]
+    },
+    "LEARNER_EXAMINE_ROUTES": {},
+    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_CLUS": {
+        "menus": ["network"],
+        "pages": ["network-map","competency-drilldown", "competency-cluster-drilldown"]
+    },
+    "VIEW_AC_DD_FOR_ALL_CLS_IN_CLUS": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-drilldown-analytic", "analytic-cluster-cards"]
+    },
+    "VIEW_COMP_DASH_CLUS_AND_TNT_AND_PUB_FW": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-dashboard","competency-cluster-dashboard"]
+    },
+    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_BLOCK": {
+        "menus": ["network"],
+        "pages": ["network-map","competency-drilldown", "competency-block-drilldown"]
+    },
+    "VIEW_AC_DD_FOR_ALL_CLS_IN_DISTRICT": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-district-drilldown","competency-drilldown-analytic" ,"analytic-district-cards"]
+    },
+    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown","competency-dashboard" ,"competency-district-dashboard"]
+    },
+    "VIEW_AC_DD_FOR_ALL_CLS_IN_BLOCK": {
+        "menus": ["network"],
+        "pages": ["network-map" ,"competency-drilldown", "competency-block-drilldown", "competency-drilldown-analytic", "analytic-block-cards"]
+    },
+    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_STATE": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-state-drilldown"]
+    },
+    "VIEW_AC_DD_FOR_ALL_CLS_IN_STATE": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-state-drilldown", "competency-drilldown-analytic", "analytic-state-cards"]
+    },
+    "VIEW_COMP_DD_REPORTS_FOR_ASSIGNED_COHORT": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-drilldown-cohort"]
+    },
+    "VIEW_FUNDER_AC_AND_DD": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown"]
+    },
+    "VIEW_COMP_DASH_PUB_FW": {
+        "menus": ["network"],
+        "pages": ["network-map", "competency-drilldown", "competency-dashboard", "competency-dashboard-gooru-framework"]
+    },
+    "VIEW_CONTENT_DASHBOARD": {
+        "menus": ["network"],
+        "pages": ["partner", "content-provider"]
+    },
+    "VIEW_CONTENT_AC_AND_DD": {
+        "menus": ["network", "competency", "catalog", "learners", "console"],
+        "pages": ["all"]
+    },
+
+    "SUPER_ADMIN": {
+        "menus": ["all"],
+        "landingPage": "network",
+        "pages": ["all"]
+    },
+
+    "TENANT_ADMIN": {
+        "menus": ["network", "competency", "catalog", "learners"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"],
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters"],
+            "learners": ["learner-identity", "learner-drill-down"]
+        }
+    },
+
+    "SCHOOL_ADMIN": {
+        "menus": ["network", "competency", "catalog", "learners"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"],
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters"],
+            "learners": ["learner-identity", "learner-drill-down"]
+        }
+    },
+
+    "CLUSTER_ADMIN": {
+        "menus": ["network", "competency", "catalog", "learners"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"],
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters"],
+            "learners": ["learner-identity", "learner-drill-down"]
+        }
+    },
+
+    "BLOCK_ADMIN": {
+        "menus": ["network", "learners"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"],
+            "learners": ["learner-identity", "learner-drill-down"]
+        }
+    },
+
+    "DISTRICT_SUPERINTENDENT": {
+        "menus": ["network", "learners"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"]
+        }
+    },
+
+    "CURRICULUM_COORDINATOR": {
+        "menus": ["network", "competency", "catalog"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"],
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters"]
+        }
+    },
+
+    "STATE_ADMIN": {
+        "menus": ["network"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"]
+        }
+    },
+
+    "FUNDER": {
+        "menus": ["network", "competency", "catalog"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["competency-drilldown", "analytic-cards"],
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters", "catalog-comparative-search"]
+        }
+    },
+
+    "CONTENT_PROVIDER": {
+        "menus": ["network", "competency", "catalog"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["content-provider", "competency-drilldown", "analytic-cards"],
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters", "catalog-comparative-search"]
+        }
+    },
+
+    "RESEARCHER": {
+        "menus": ["competency", "catalog", "console"],
+        "landingPage": "competency",
+        "pages": {
+            "competency": ["competency-dashboard", "all-submenus"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters"],
+            "console": ["console-filters"]
+        }
+    },
+
+    "PARENTS": {
+        "menus": ["learners"],
+        "landingPage": "learners",
+        "pages": {
+            "learners": ["learner-identity", "learner-drill-down"]
+        }
+    },
+
+    "REPORT_GROUP_GET": {
+        "menus": ["network", "learners", "catalog"],
+        "landingPage": "network",
+        "pages": {
+            "network": ["content-provider"],
+            "catalog": ["catalog-dashboard", "catalog-search-filters"],
+            "learners": ["learner-identity", "learner-drill-down"]
+        }
+    }
+}

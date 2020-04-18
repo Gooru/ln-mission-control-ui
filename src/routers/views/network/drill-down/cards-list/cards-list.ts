@@ -47,13 +47,12 @@ export default class CardsList extends Vue {
         return sessionService.getSession();
     }
 
+    /**
+     * Checking is tenant user are not
+     */
     get isTenant() {
-        if (this.session) {
-          return (this.session.isSuperAdmin) ||
-           (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
-        }
-        return false;
-      }
+        return this.$access.hasPermission(this.$access.ACL.compDrillAnalytic);
+    }
 
     private get sinceMonth() {
        return this.cardDetails.month_since ?
