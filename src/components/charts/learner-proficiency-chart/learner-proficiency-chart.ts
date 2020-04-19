@@ -150,6 +150,14 @@ export default class LearnerProficiencyChart extends Vue {
         prev : current);
   }
 
+  private get selectedGradeList() {
+    let selectedGrade = this.activeGradeList;
+    if (this.activeGradeList.length > 1) {
+        selectedGrade = this.taxonomyGrades.filter((items) => this.isActiveGradeList(items));
+    }
+    return selectedGrade;
+  }
+
   private minGradeNumber!: any;
 
   private selectedGradeCompetency: any = [];

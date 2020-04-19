@@ -6,6 +6,7 @@ import { FacetCompetenciesCount } from '@/models/proficiency/facet-competencies-
 import { SubjectModel } from '@/models/taxonomy/subject';
 import * as d3 from 'd3';
 import moment from 'moment';
+import { isNumeric } from '@/utils/math';
 
 @Component({
   name: 'learner-across-facets-chart',
@@ -190,8 +191,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
         ? facet.totalCompetenciesCount : highestFacetCount;
     });
     if (this.isExpandedMode) {
-
-      if (highestMasteredCount) {
+      if (highestMasteredCount && highestMasteredCount > 50) {
         // When there are mastered competencies available in a facet,
         // Logically the skyline points are created as boxed container based on
         // -highest facet count. Each box is 75% height of the chart container.
@@ -201,6 +201,7 @@ export default class LearnerAcrossFacetsChart extends Vue {
       } else {
         const meanValue = totalCompetencies / facetsMatrix.length;
         chartHeight = meanValue + (meanValue / 100);
+        chartHeight = chartHeight * this.cellHeight;
       }
 
       // Set chart container height as chart height
@@ -212,12 +213,12 @@ export default class LearnerAcrossFacetsChart extends Vue {
 
     const yScale = d3.scaleLinear()
         .domain([0, highestFacetCount])
-        .range([chartHeight, 9]);
+        .range([chartHeight, 0]);
 
     const yAxis = d3.axisLeft(yScale).scale(yScale);
 
     if (this.isExpandedMode && chartHeight > 1000) {
-      yAxis.ticks(chartHeight / 100);
+      yAxis.ticks(highestFacetCount / 50);
     }
 
     // Separate svg for showing axis line
@@ -265,11 +266,13 @@ export default class LearnerAcrossFacetsChart extends Vue {
     facetMatrix.competenciesCount.forEach( (competency: any ) => {
     let height = competency.count / chartHeightLevel * 100;
     height = Number((height * chartHeight) / 100);
+    const hasHighMaster = ((height * this.cellHeight) / competency.count) > this.cellHeight;
+    const expandedCell = hasHighMaster ? ((height * this.cellHeight) / competency.count) : this.cellHeight;
     facetsGroup
         .selectAll('.competency')
         .data(() => {
           const competencyList = [];
-          for (let i = 0; i <  height; i++) {
+          for (let i = 0; i < (hasHighMaster ? (competency.count) : height); i++) {
             competencyList.push(i);
           }
           return competencyList;
@@ -280,10 +283,10 @@ export default class LearnerAcrossFacetsChart extends Vue {
         .attr('x', width * seq)
         .attr('y', () => {
           competencySeq++;
-          return competencySeq * this.cellHeight;
+          return competencySeq * expandedCell;
         })
         .attr('width', width)
-        .attr('height', this.cellHeight)
+        .attr('height', expandedCell)
         .on('click', () => {
           component.selectFacet(facetMatrix);
         })
@@ -301,9 +304,9 @@ export default class LearnerAcrossFacetsChart extends Vue {
     if (competency.status === 'mastered') {
         component.skylinePoints.push({
           x1: width * seq,
-          y1: (competencySeq + 1) * this.cellHeight,
+          y1: isNumeric(expandedCell) ? (competencySeq + 1) * expandedCell : 0,
           x2: width * seq + width,
-          y2: (competencySeq + 1) * this.cellHeight,
+          y2: isNumeric(expandedCell) ? (competencySeq + 1) * expandedCell : 0,
         });
       }
 
