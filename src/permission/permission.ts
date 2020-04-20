@@ -22,7 +22,7 @@ export default {
      */
     hasPermission(value: any) {
         return this.userRole.pages
-            ? (this.userRole.pages.indexOf(value) !== -1)
+            ? (this.userRole.pages.indexOf(value) !== -1 || this.userRole.pages.indexOf('all') !== -1)
             : false;
     },
 

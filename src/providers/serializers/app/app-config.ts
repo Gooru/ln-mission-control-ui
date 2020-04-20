@@ -31,7 +31,7 @@ export class AppConfigSerializer {
         userRole.pages = Array.from(new Set([...userRole.pages, ...res[role].pages]));
       });
     }
-    userRole.landingPage = userRole.menus[0];
+    userRole.landingPage = userRole.menus.indexOf('network') !== -1 ? 'network' :  userRole.menus[0];
     return userRole;
   }
 
