@@ -35,12 +35,18 @@ export default class Network extends Vue {
      return this.$access.hasPermission(this.$access.ACL.network);
   }
 
+  /**
+   * Showing UI after the country API loaded
+   */
+  private isLoading: boolean = false;
+
 
 
   // -------------------------------------------------------------------------
   // Hooks
 
   private created() {
+    this.isLoading = true;
     const worldMapDataSet = this.fetchNavWorldWideMapData();
     worldMapDataSet.then((data) => {
       this.mapData = data;
@@ -66,10 +72,12 @@ export default class Network extends Vue {
         if (statsCountries) {
           if (statsCountries.length === 1) {
               const countryDetails = statsCountries[0];
-              if (this.$access.hasPermission(this.$access.ACL.compDrilldown)) {
+              if (this.$access.hasPermission(this.$access.ACL.compDrilldown)
+                      && !this.$access.hasPermission(this.$access.ACL.partner) ) {
                   this.$router.push(`network/countries/${countryDetails.id}/${countryDetails.name}`);
               }
           }
+          this.isLoading = false;
           statsCountries.map((statsCountry: any) => {
             const countryCode = this.isTenant ? statsCountry.country_code : statsCountry.code;
             const country = countries.features.find((countryData: any) => {

@@ -65,7 +65,6 @@ export default class Login extends Vue {
         .logInWithCredential(this.usernameOrEmail, this.password)
         .then(
         (session) => {
-          session.permissions = ['VIEW_COMP_DD_REPORTS_FOR_SC_AND_CLS_IN_SC', 'VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW'];
           appConfigAPI.getAppPermissions(session.permissions).then((userRole: any) => {
             if (userRole) {
               appConfigService.setAppUserRole(userRole);

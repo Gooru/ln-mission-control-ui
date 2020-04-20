@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import AppLayout from '@/layouts/app-layout/app-layout.vue';
 import AppHeaderLayout from '@/layouts/app-header-layout/app-header-layout.vue';
 import { sessionService, SessionService } from '@/providers/services/auth/session';
+import access from '@/permission/permission';
 import 'pace-progressbar';
 
 Vue.use(Router);
@@ -17,25 +18,25 @@ const routes = [
         path: '/network',
         name: 'network',
         component: () => import('@/routers/views/network/network.vue'),
-        meta: { isRequiredAuth: true },
+        meta: { isRequiredAuth: true, permission: 'network' },
       },
       {
         path: '/network/countries/:id/:name?',
         name: 'countries-with-state',
         component: () => import('@/routers/views/network/drill-down/drill-down.vue'),
-        meta: { isRequiredAuth: true },
+        meta: { isRequiredAuth: true, permission: 'network' },
       },
       {
         path: '/network/partners/type/:type',
         name: 'network-partners-type',
         component: () => import('@/routers/views/network/partners/partners-type/partners-type.vue'),
-        meta: { isRequiredAuth: true },
+        meta: { isRequiredAuth: true, permission: 'network' },
       },
       {
         path: '/network/partners/:id',
         name: 'network-partners-profile',
         component: () => import('@/routers/views/network/partners/partner-profile/partner-profile.vue'),
-        meta: { isRequiredAuth: true },
+        meta: { isRequiredAuth: true, permission: 'network' },
       },
       {
         path: '/competency',
@@ -55,7 +56,7 @@ const routes = [
         path: '/learners',
         name: 'learners',
         component: () => import('@/routers/views/learners/learners.vue'),
-        meta: {isRequiredAuth: true},
+        meta: {isRequiredAuth: true, permission: 'learners'},
       },
       {
         path: '/learners/:id',
@@ -64,25 +65,25 @@ const routes = [
            // this need to move view
           return import('@/components/proficiency/learner-facets-proficiency/learner-facets-proficiency.vue');
         },
-        meta: { isRequiredAuth: true },
+        meta: { isRequiredAuth: true, permission: 'learners' },
       },
       {
         path: '/console',
         name: 'console',
         component: () => import('@/routers/views/console/console.vue'),
-        meta: {isRequiredAuth: true},
+        meta: {isRequiredAuth: true, permission: 'console'},
       },
       {
         path: '/console/:name',
         name: 'console-section',
         component: () => import('@/routers/views/console/lrs/lrs.vue'),
-        meta: {isRequiredAuth: true},
+        meta: {isRequiredAuth: true, permission: 'console'},
       },
       {
         path: '/competency/:name',
         name: 'competency-tab-competency-map',
         component: () => import('@/routers/views/competency/competency.vue'),
-        meta: {isRequiredAuth: true},
+        meta: {isRequiredAuth: true, permission: 'competency'},
       },
     ],
   },
@@ -125,10 +126,11 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.isRequiredAuth && !sessionService.isAuthorized()) {
-    next({ path: '/login', query: { redirect: to.fullPath } });
-  } else {
-    next();
+    return next({ path: '/login', query: { redirect: to.fullPath } });
+  } else if (to.meta.permission &&  !access.hasMenuAccess(to.meta.permission)) {
+    return next({path: `/${access.landingPage()}`});
   }
+  next();
 });
 
 export default router;

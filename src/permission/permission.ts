@@ -5,13 +5,14 @@ export default {
 
     ACL: PERMISSION_LIST,
 
+    userRole : appConfigService.getAppUserRole(),
+
     /**
      * Show the menus based on permission
      * @param value
      */
     hasMenuAccess(value: any) {
-        const userRole: any = appConfigService.getAppUserRole();
-        return userRole.menus.indexOf(value) !== -1;
+        return this.userRole.menus.indexOf(value) !== -1;
     },
 
     /**
@@ -20,9 +21,15 @@ export default {
      * @param value
      */
     hasPermission(value: any) {
-        const userRole: any = appConfigService.getAppUserRole();
-        return userRole.pages
-            ? (userRole.pages.indexOf(value) !== -1)
+        return this.userRole.pages
+            ? (this.userRole.pages.indexOf(value) !== -1)
             : false;
+    },
+
+    /**
+     * It hold the landing page for the tenant user
+     */
+    landingPage() {
+       return this.userRole.landingPage;
     },
 };

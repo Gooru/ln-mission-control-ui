@@ -27,8 +27,8 @@ export class AppConfigSerializer {
     };
     if (permission && permission.length && res) {
       permission.map((role: any) => {
-        userRole.menus = [...userRole.menus, ...res[role].menus];
-        userRole.pages = [...userRole.pages, ...res[role].pages];
+        userRole.menus = Array.from(new Set([...userRole.menus, ...res[role].menus]));
+        userRole.pages = Array.from(new Set([...userRole.pages, ...res[role].pages]));
       });
     }
     userRole.landingPage = userRole.menus[0];
