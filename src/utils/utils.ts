@@ -1,5 +1,6 @@
 import {GRADING_SCALE} from '@/utils/constants';
 import { isNumeric } from '@/utils/math';
+import { appConfigService } from '@/providers/services/app/app-config';
 
 /**
  * Find the route path last occurrence

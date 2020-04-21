@@ -269,3 +269,14 @@ export const LEARNER_COMMUNITY_VECTORS = [
 export const DEMO_USERS = [
   'e062559a-35d2-45e9-85fd-380987dc2fdf',
 ];
+
+export const PERMISSION_LIST = {
+  networkMap: 'network-map',
+  compDrilldown: 'competency-drilldown',
+  compDrillAnalytic: 'competency-drilldown-analytic',
+  compDashboard: 'competency-dashboard',
+  partner: 'content-provider',
+  learners: 'learners',
+  console: 'console',
+  all: 'all',
+};

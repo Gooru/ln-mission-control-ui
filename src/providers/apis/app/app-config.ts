@@ -24,6 +24,13 @@ export class AppConfigAPI {
       return appConfigSerializer.appConfigModelSerializer(response.data);
     });
   }
+
+  public getAppPermissions(permission: any): Promise<any> {
+    const endpoint = `${window.location.origin}/${this.appConfigNamespace}/permissions.json`;
+    return http.get(endpoint).then((response) => {
+      return appConfigSerializer.appPermissionSerializer(response.data, permission);
+    }, () =>  Promise.resolve());
+  }
 }
 
 export const appConfigAPI = AppConfigAPI.instance;

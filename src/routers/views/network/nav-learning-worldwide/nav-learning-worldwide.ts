@@ -87,12 +87,14 @@ export default class NavLearningWorldWide extends Vue {
 }
 
 get isTenant() {
-    if (this.session) {
-      return (this.session.isSuperAdmin) ||
-       (this.session.user_id && DEMO_USERS.indexOf(this.session.user_id) !== -1);
-    }
-    return false;
-  }
+    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.networkMap);
+}
+
+
+private get isDrilldown() {
+  return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrilldown)
+            || this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrillAnalytic);
+}
 
 
 
@@ -188,7 +190,9 @@ get isTenant() {
         element.attr('class', className);
         this.activeCountry = null;
       }).on('click', (d: any) => {
-        this.$router.push(`/network/countries/${countryData.country_id}/${countryData.country_name}`);
+        if (this.isDrilldown) {
+          this.$router.push(`/network/countries/${countryData.country_id}/${countryData.country_name}`);
+        }
       });
       const numberOfDigits = total.toString().length;
       circleChartContainer.append('circle').attr('r', this.circleRadius(numberOfDigits));

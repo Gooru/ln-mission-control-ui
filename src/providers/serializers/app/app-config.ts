@@ -20,6 +20,42 @@ export class AppConfigSerializer {
     return result;
   }
 
+  public appPermissionSerializer(res: any, permission: any) {
+    const userRole: any = {
+      menus: [],
+      pages: {},
+    };
+    if (permission && permission.length && res) {
+      permission.map((pageAccess: any) => {
+        Object.keys(res).map((menuPages) => {
+          if (!userRole.pages.hasOwnProperty(menuPages)) {
+            userRole.pages[menuPages] = [];
+          }
+          Object.keys(res[menuPages]).map((pages) => {
+                if (res[menuPages][pages].indexOf(pageAccess) !== -1) {
+                  if (userRole.menus.indexOf(menuPages) === -1) {
+                    userRole.menus.push(menuPages);
+                  }
+                  if (userRole.pages[menuPages].indexOf(pageAccess) === -1) {
+                     userRole.pages[menuPages].push(pages);
+                  }
+                }
+            });
+        });
+      });
+    }
+    userRole.landingPage = userRole.menus.indexOf('network') !== -1 ? 'network' :  userRole.menus[0];
+    return userRole;
+  }
+
+  private serializerPermissionComponents(userRole: any, res: any) {
+    Object.keys(res).map((pages) => {
+      const hasPage: any = userRole[pages] ? userRole[pages] : [];
+      userRole[pages] = [...hasPage, ...res[pages]];
+    });
+    return userRole;
+  }
+
 
 }
 

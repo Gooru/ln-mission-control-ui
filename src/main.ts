@@ -12,7 +12,9 @@ import { appConfigService } from '@/providers/services/app/app-config';
 import { authService } from '@/providers/services/auth/auth';
 import i18n from '@/i18n';
 import './filters/filters';
+import Permissions from '@/permission/permission';
 
+Vue.prototype.$access = Permissions;
 
 Vue.config.productionTip = false;
 

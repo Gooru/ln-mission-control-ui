@@ -38,10 +38,4 @@ export default class AppHeaderNav extends Vue {
     this.$emit('send', currentPath);
 
   }
-
-  // -------------------------------------------------------------------------
-  //  Methods
-
-
-
 }

@@ -1,6 +1,8 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { authAPI } from '@/providers/apis/auth/auth';
 import { sessionService } from '@/providers/services/auth/session';
+import { appConfigAPI } from '@/providers/apis/app/app-config';
+import { appConfigService } from '@/providers/services/app/app-config';
 
 @Component
 export default class Login extends Vue {
@@ -63,9 +65,19 @@ export default class Login extends Vue {
         .logInWithCredential(this.usernameOrEmail, this.password)
         .then(
         (session) => {
-          sessionService.setSession(session);
-          const redirect = this.$router.currentRoute.query.redirect;
-          this.$router.push(redirect ? redirect as string : '/network');
+          appConfigAPI.getAppPermissions(session.permissions).then((userRole: any) => {
+            if (userRole) {
+              appConfigService.setAppUserRole(userRole);
+              sessionService.setSession(session);
+              this.$router.push(userRole.landingPage);
+            } else {
+              this.validationRoleMessage();
+            }
+            // const redirect = this.$router.currentRoute.query.redirect;
+            // this.$router.push(redirect ? redirect as string : '/network');
+          }, (onerror) => {
+            this.validationToastMessage();
+          });
         },
         (onerror) => {
           this.validationToastMessage();
@@ -79,6 +91,17 @@ export default class Login extends Vue {
       this.$i18n.t('errors.login.credentials.not.valid') as string,
       {
         title: this.$i18n.t('errors.login.failed') as string,
+        variant: 'danger',
+        solid: true,
+      },
+    );
+  }
+
+  private validationRoleMessage() {
+    this.$bvToast.toast(
+      'Don\'t have permission to access any page',
+      {
+        title: 'Permission Denied',
         variant: 'danger',
         solid: true,
       },

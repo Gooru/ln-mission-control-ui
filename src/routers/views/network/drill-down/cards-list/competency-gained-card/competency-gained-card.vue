@@ -1,6 +1,6 @@
 /<template>
     <div id="card-container">
-        <div id="competency-gained-container" :class="{'no-tenant': !isTenant}" @click="toggleCompetencyData">
+        <div id="competency-gained-container" :class="{'no-tenant': !$access.hasPermission($access.menus.network, $access.ACL.compDashboard)}" @click="toggleCompetencyData">
             <div class="gained-header">
                 <h4 class="gained-percentage">{{totalPerformances}} <span>%</span></h4>
                 <h4 class="gained-counts">{{numberFormat(totalCompetency)}}</h4>

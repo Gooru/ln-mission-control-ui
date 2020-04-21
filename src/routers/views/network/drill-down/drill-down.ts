@@ -61,6 +61,12 @@ export default class DrillDown extends Vue {
 
     private cardDetails: any = {};
 
+    private get hasAnalyticAccess() {
+        const access = this.$access;
+        return access.hasPermission(access.menus.network, access.ACL.compDrillAnalytic) ||
+                   access.hasPermission(access.menus.network, access.ACL.compDashboard);
+    }
+
 
     // --------------------------------------------------------------
     // Hooks
