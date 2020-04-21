@@ -91,6 +91,12 @@ get isTenant() {
 }
 
 
+private get isDrilldown() {
+  return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrilldown)
+            || this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrillAnalytic);
+}
+
+
 
   // -------------------------------------------------------------------------
   // Actions
@@ -184,7 +190,7 @@ get isTenant() {
         element.attr('class', className);
         this.activeCountry = null;
       }).on('click', (d: any) => {
-        if (this.isTenant) {
+        if (this.isDrilldown) {
           this.$router.push(`/network/countries/${countryData.country_id}/${countryData.country_name}`);
         }
       });

@@ -35,6 +35,11 @@ export default class Network extends Vue {
      return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.networkMap);
   }
 
+  private get isDrilldown() {
+    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrilldown)
+              || this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrillAnalytic);
+  }
+
   /**
    * Showing UI after the country API loaded
    */
@@ -72,7 +77,7 @@ export default class Network extends Vue {
         if (statsCountries) {
           if (statsCountries.length === 1) {
               const countryDetails = statsCountries[0];
-              if (this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrilldown)
+              if (this.isDrilldown
                       && !this.isTenant
                       && !this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.partner)) {
                   this.$router.push(`network/countries/${countryDetails.id}/${countryDetails.name}`);
