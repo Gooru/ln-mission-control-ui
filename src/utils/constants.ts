@@ -283,23 +283,23 @@ export const DEMO_USERS = [
 
 export const ACTIVITY_FILTER = [
   {
-    title: 'filter-types.filter-types.21-century-skills',
+    title: 'filter-types.21-century-skills',
     code: '21-century-skills',
   },
   {
-    title: 'filter-types.filter-types.dok',
+    title: 'filter-types.dok',
     code: 'dok',
   },
   {
-    title: 'filter-types.filter-types.license',
+    title: 'filter-types.license',
     code: 'licenses',
   },
   {
-    title: 'filter-types.filter-types.publisher',
+    title: 'filter-types.publisher',
     code: 'publisher',
   },
   {
-    title: 'filter-types.filter-types.audience',
+    title: 'filter-types.audience',
     code: 'audience',
   },
 ];

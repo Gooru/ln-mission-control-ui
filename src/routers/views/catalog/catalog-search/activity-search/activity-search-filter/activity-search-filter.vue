@@ -14,7 +14,12 @@
                 :filter="filter"/>
             </div>
             <div class="activity-filters">
-                    
+               <activity-search-filter-accordion 
+                v-for="(filter, index) in activityFilter" 
+                :key="index"
+                @onSelectCategory="$emit('onSelectCategory', arguments[0], arguments[1])"
+                :defaultActivityFilter="defaultActivityFilter"
+                :filter="filter"/>
             </div>
             
         </div>

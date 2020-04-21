@@ -2,7 +2,7 @@
     <div class="activity-search-filter-accordion">
         <div class="activity-search-filter-accordion-container">
             <div class="filter-header" @click="onDropdown(filter)">
-                {{filter.code}} <material-icon :icon="filter.isActive ? 'arrow_drop_up': 'arrow_drop_down'"/>
+                {{$t(filter.title)}} <material-icon :icon="filter.isActive ? 'arrow_drop_up': 'arrow_drop_down'"/>
             </div>
             <div class="filter-body">
                 <div class="filter-body-content" v-if="filter.code === 'category' && filter.isActive">
