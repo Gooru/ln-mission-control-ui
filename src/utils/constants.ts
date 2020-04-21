@@ -271,13 +271,12 @@ export const DEMO_USERS = [
 ];
 
 export const PERMISSION_LIST = {
-  network: 'network-map-all',
-  networkTenant: 'network-map',
+  networkMap: 'network-map',
   compDrilldown: 'competency-drilldown',
   compDrillAnalytic: 'competency-drilldown-analytic',
   compDashboard: 'competency-dashboard',
   partner: 'content-provider',
   learners: 'learners',
   console: 'console',
-
+  all: 'all',
 };

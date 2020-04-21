@@ -1,96 +1,50 @@
 {
 
-    "VIEW_COMP_DD_REPORTS_FOR_SC_AND_CLS_IN_SC": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-school-drilldown"]
-    },
-    "VIEW_AC_DD_FOR_ALL_CLS_IN_SC": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown","competency-drilldown-analytic", "analytic-school-cards"]
-    },
-    "VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-dashboard","competency-school-dashboard"]
-    },
-    "VIEW_COMP_GPH_CROSS_TV_LM_ALL_ACCESS_FW": {
-        "menus": ["competency"],
-        "pages": ["competency", "competency-tab-access"]
-    },
-    "EDIT_COMP_TNT_AUTHORIZED_USER": {
+    "network": {
+        "network-map": ["GROUP_ADMIN"],
+        "competency-drilldown": ["VIEW_COMP_DD_REPORTS_FOR_SC_AND_CLS_IN_SC",
+                                 "VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW",
+                                 "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_CLUS",
+                                "VIEW_COMP_DASH_CLUS_AND_TNT_AND_PUB_FW",
+                                "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_BLOCK",
+                                "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT",
+                                "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_STATE",
+                                "VIEW_COMP_DD_REPORTS_FOR_ASSIGNED_COHORT",
+                                "VIEW_FUNDER_AC_AND_DD",
+                                "VIEW_COMP_DASH_PUB_FW"],
+
+        "competency-drilldown-analytic": ["VIEW_AC_DD_FOR_ALL_CLS_IN_SC",
+                                          "VIEW_AC_DD_FOR_ALL_CLS_IN_CLUS",
+                                          "VIEW_AC_DD_FOR_ALL_CLS_IN_DISTRICT",
+                                          "VIEW_AC_DD_FOR_ALL_CLS_IN_BLOCK",
+                                          "VIEW_AC_DD_FOR_ALL_CLS_IN_STATE", 
+                                          "GROUP_ADMIN"],
+
+        "competency-dashboard": ["VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW",
+                                 "VIEW_COMP_DASH_CLUS_AND_TNT_AND_PUB_FW",
+                                "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT",
+                                "VIEW_COMP_DASH_PUB_FW"],
+
+        "content-provider": ["VIEW_CONTENT_DASHBOARD"],
+        
+        "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN"]
 
     },
-    "VIEW_CATALOG_DASH_TNT_AND_PUB_LIB": {
-        "menus": ["catalog"],
-        "pages": ["catalog", "catalog-dashboard"]
+    "competency": {
+        "competency-tab-access": ["VIEW_COMP_GPH_CROSS_TV_LM_ALL_ACCESS_FW"],
+        "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN", "GROUP_ADMIN"]
     },
-    "SEARCH_FILT_CATALOG_ALL_ACCESS_LIB": {
-        "menus": ["catalog"],
-        "pages": ["catalog", "catalog-search-filter"]
+    "catalog": {
+        "catalog-dashboard": ["VIEW_CATALOG_DASH_TNT_AND_PUB_LIB", "GROUP_ADMIN"],
+        "catalog-search-filter": ["SEARCH_FILT_CATALOG_ALL_ACCESS_LIB", "GROUP_ADMIN"],
+        "catalog-comparative-search": ["COMPARE_WITH_GOOGLE_BING_ANONYMIZE_LEARNER"],
+        "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN"]
     },
-    "COMPARE_WITH_GOOGLE_BING_ANONYMIZE_LEARNER": {
-        "menus": ["catalog"],
-        "pages": ["catalog", "catalog-comparative-search"]
+    "learners": {
+        "learners-identity": "LEARNER_IDENTITY_AND_DD_ONLY_AUTHORIZED_USER",
+        "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN", "GROUP_ADMIN"]
     },
-    "EDIT_CONTENT_ONLY_TNT_LIB": {},
-    "LEARNER_IDENTITY_AND_DD_ONLY_AUTHORIZED_USER": {
-        "menus": ["learners"],
-        "pages": ["learners", "learners-identity"]
-    },
-    "LEARNER_EXAMINE_ROUTES": {},
-    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_CLUS": {
-        "menus": ["network"],
-        "pages": ["network-map","competency-drilldown", "competency-cluster-drilldown"]
-    },
-    "VIEW_AC_DD_FOR_ALL_CLS_IN_CLUS": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-drilldown-analytic", "analytic-cluster-cards"]
-    },
-    "VIEW_COMP_DASH_CLUS_AND_TNT_AND_PUB_FW": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-dashboard","competency-cluster-dashboard"]
-    },
-    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_BLOCK": {
-        "menus": ["network"],
-        "pages": ["network-map","competency-drilldown", "competency-block-drilldown"]
-    },
-    "VIEW_AC_DD_FOR_ALL_CLS_IN_DISTRICT": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-district-drilldown","competency-drilldown-analytic" ,"analytic-district-cards"]
-    },
-    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown","competency-dashboard" ,"competency-district-dashboard"]
-    },
-    "VIEW_AC_DD_FOR_ALL_CLS_IN_BLOCK": {
-        "menus": ["network"],
-        "pages": ["network-map" ,"competency-drilldown", "competency-block-drilldown", "competency-drilldown-analytic", "analytic-block-cards"]
-    },
-    "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_STATE": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-state-drilldown"]
-    },
-    "VIEW_AC_DD_FOR_ALL_CLS_IN_STATE": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-state-drilldown", "competency-drilldown-analytic", "analytic-state-cards"]
-    },
-    "VIEW_COMP_DD_REPORTS_FOR_ASSIGNED_COHORT": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-drilldown-cohort"]
-    },
-    "VIEW_FUNDER_AC_AND_DD": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown"]
-    },
-    "VIEW_COMP_DASH_PUB_FW": {
-        "menus": ["network"],
-        "pages": ["network-map", "competency-drilldown", "competency-dashboard", "competency-dashboard-gooru-framework"]
-    },
-    "VIEW_CONTENT_DASHBOARD": {
-        "menus": ["network"],
-        "pages": ["partner", "content-provider"]
-    },
-    "VIEW_CONTENT_AC_AND_DD": {
-        "menus": ["network", "competency", "catalog", "learners", "console"],
-        "pages": ["all"]
+    "console": {
+        "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN"]
     }
 }

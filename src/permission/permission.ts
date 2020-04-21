@@ -5,6 +5,17 @@ export default {
 
     ACL: PERMISSION_LIST,
 
+    /**
+     * Help to defined the menu list
+     */
+    menus: {
+        network: 'network',
+        competency: 'competency',
+        learners: 'learners',
+        catalog: 'catalog',
+        console: 'console',
+    },
+
     userRole : appConfigService.getAppUserRole(),
 
     /**
@@ -20,9 +31,10 @@ export default {
      * @param component
      * @param value
      */
-    hasPermission(value: any) {
-        return this.userRole.pages
-            ? (this.userRole.pages.indexOf(value) !== -1 || this.userRole.pages.indexOf('all') !== -1)
+    hasPermission(menu: any , value: any) {
+
+        return this.userRole.pages[menu]
+            ? (this.userRole.pages[menu].indexOf(value) !== -1 || this.userRole.pages[menu].indexOf('all') !== -1)
             : false;
     },
 

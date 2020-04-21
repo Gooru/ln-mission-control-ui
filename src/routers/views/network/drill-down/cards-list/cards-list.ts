@@ -51,7 +51,8 @@ export default class CardsList extends Vue {
      * Checking is tenant user are not
      */
     get isTenant() {
-        return this.$access.hasPermission(this.$access.ACL.compDrillAnalytic);
+        const access = this.$access;
+        return access.hasPermission(access.menus.network, access.ACL.compDrillAnalytic);
     }
 
     private get sinceMonth() {

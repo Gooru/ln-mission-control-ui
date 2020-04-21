@@ -32,7 +32,7 @@
                     :dataList="competencyData"/>
                 </div>
            </div>
-           <div class="texas-performance-cards">
+           <div class="texas-performance-cards" v-if ="hasAnalyticAccess">
                  <card-list 
                   v-if="isLoaded"
                   :studentList="studentList"

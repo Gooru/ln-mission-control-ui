@@ -87,7 +87,7 @@ export default class NavLearningWorldWide extends Vue {
 }
 
 get isTenant() {
-    return this.$access.hasPermission(this.$access.ACL.network);
+    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.networkMap);
 }
 
 
@@ -184,7 +184,7 @@ get isTenant() {
         element.attr('class', className);
         this.activeCountry = null;
       }).on('click', (d: any) => {
-        if (this.$access.hasPermission(this.$access.ACL.compDrilldown)) {
+        if (this.isTenant) {
           this.$router.push(`/network/countries/${countryData.country_id}/${countryData.country_name}`);
         }
       });

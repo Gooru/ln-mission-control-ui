@@ -32,7 +32,7 @@ export default class Network extends Vue {
 }
 
   get isTenant() {
-     return this.$access.hasPermission(this.$access.ACL.network);
+     return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.networkMap);
   }
 
   /**
@@ -72,12 +72,12 @@ export default class Network extends Vue {
         if (statsCountries) {
           if (statsCountries.length === 1) {
               const countryDetails = statsCountries[0];
-              if (this.$access.hasPermission(this.$access.ACL.compDrilldown)
-                      && !this.$access.hasPermission(this.$access.ACL.partner) ) {
+              if (this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.compDrilldown)
+                      && !this.isTenant
+                      && !this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.partner)) {
                   this.$router.push(`network/countries/${countryDetails.id}/${countryDetails.name}`);
               }
           }
-          this.isLoading = false;
           statsCountries.map((statsCountry: any) => {
             const countryCode = this.isTenant ? statsCountry.country_code : statsCountry.code;
             const country = countries.features.find((countryData: any) => {
@@ -117,7 +117,7 @@ export default class Network extends Vue {
             }
           });
         }
-
+        this.isLoading = false;
         return {
           countries,
           statsCountries,
