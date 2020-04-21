@@ -16,14 +16,13 @@ export default {
         console: 'console',
     },
 
-    userRole : appConfigService.getAppUserRole(),
-
     /**
      * Show the menus based on permission
      * @param value
      */
     hasMenuAccess(value: any) {
-        return this.userRole.menus.indexOf(value) !== -1;
+        const userRole = appConfigService.getAppUserRole();
+        return userRole.menus.indexOf(value) !== -1;
     },
 
     /**
@@ -32,9 +31,9 @@ export default {
      * @param value
      */
     hasPermission(menu: any , value: any) {
-
-        return this.userRole.pages[menu]
-            ? (this.userRole.pages[menu].indexOf(value) !== -1 || this.userRole.pages[menu].indexOf('all') !== -1)
+        const userRole = appConfigService.getAppUserRole();
+        return userRole.pages[menu]
+            ? (userRole.pages[menu].indexOf(value) !== -1 || userRole.pages[menu].indexOf('all') !== -1)
             : false;
     },
 
@@ -42,6 +41,7 @@ export default {
      * It hold the landing page for the tenant user
      */
     landingPage() {
-       return this.userRole.landingPage;
+        const userRole = appConfigService.getAppUserRole();
+        return userRole.landingPage;
     },
 };
