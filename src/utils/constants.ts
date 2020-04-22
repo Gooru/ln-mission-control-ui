@@ -393,3 +393,10 @@ export const DEFAULT_CATALOG_STRING: any = {
 
 
 export const COLORCODE: any = ['#3A434D', '#93999E', '#6E767D'];
+
+export const CENTURY_SKILLS_GROUPS = {
+  KEY_COGNITIVE_SKILLS_AND_STRATEGIES: 'Key Cognitive Skills and Strategies',
+  KEY_CONTENT_KNOWLEDGE: 'Key Content Knowledge',
+  KEY_LEARNING_SKILLS_AND_TECHNIQUES: 'Key Learning Skills and Techniques',
+};
+

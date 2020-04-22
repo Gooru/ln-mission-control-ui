@@ -1,4 +1,5 @@
 import { http } from '@/providers/apis/http';
+import { lookupSerializer } from '@/providers/serializers/lookup/lookup';
 
 
 export class LookupAPI {
@@ -19,12 +20,9 @@ export class LookupAPI {
     public readAudiences() {
         const namespace = this.namespace;
         const url = `${namespace}/audience`;
-        const options = {
-            type: 'GET',
-            headers: http.getTokenHeaders(),
-        };
-        return http.get(url, options).then((response) => {
-            return response.data;
+        const headers = http.getTokenHeaders();
+        return http.get(url, headers).then((response) => {
+            return lookupSerializer.normalizeReadAudiences(response.data);
         });
     }
 
@@ -35,15 +33,38 @@ export class LookupAPI {
   public readDepthOfKnowledgeItems() {
     const namespace = this.namespace;
     const url = `${namespace}/dok`;
-    const options = {
-      type: 'GET',
-      headers: http.getTokenHeaders(),
-    };
-    return http.get(url, options).then((response) =>  {
-      return response.data;
+    const headers = http.getTokenHeaders();
+    return http.get(url, headers).then((response) =>  {
+      return lookupSerializer.normalizeReadDepthOfKnowledgeItems(response.data);
+    });
+  }
+
+  /**
+   * Gets the depth of knowledge list information
+   * @returns {Promise.<[]>}
+   */
+  public readLicenses() {
+    const namespace = this.namespace;
+    const url = `${namespace}/licenses`;
+    const headers = http.getTokenHeaders();
+    return http.get(url, headers).then((response) => {
+      return lookupSerializer.normalizeReadLicenses(response.data);
+    });
+  }
+
+  /**
+   * Gets the 21st Century Skills list information
+   * @returns {Promise.<[]>}
+   */
+  public readCenturySkills() {
+    const namespace = this.namespace;
+    const url = `${namespace}/21-century-skills`;
+    const headers = http.getTokenHeaders();
+    return  http.get(url, headers).then((response) => {
+      return lookupSerializer.normalizeCenturySkills(response.data);
     });
   }
 
 }
 
-export const lookup = LookupAPI.instance;
+export const lookupAPI = LookupAPI.instance;

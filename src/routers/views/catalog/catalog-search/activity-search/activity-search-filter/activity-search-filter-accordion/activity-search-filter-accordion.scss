@@ -22,6 +22,7 @@
         z-index: 2;
         padding: 10px;
         width: max-content;
+        max-width: 400px;
         box-shadow: 0 0 4px $light-200;
         max-height: 200px;
         overflow-y: auto;
@@ -37,6 +38,14 @@
           i {
             color: $blue;
             font-size: 22px;
+          }
+          span {
+            display: grid;
+            display: block;
+            align-items: center;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
           }
         }
       }

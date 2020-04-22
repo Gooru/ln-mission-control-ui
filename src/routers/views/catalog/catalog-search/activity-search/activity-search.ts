@@ -33,6 +33,31 @@ export default class ActivitySearch extends Vue {
 
     private isShowFilterDropdown: boolean = false;
 
+    @Watch('filterList', { deep: true })
+    private onChangeFilterList(value: any) {
+        if (value.category) {
+            this.$set(this.filterParams, 'flt.subjectClassification', value.category.id);
+        }
+        if (value.subject) {
+            this.$set(this.filterParams, 'flt.subject', value.subject.id);
+        }
+        if (value.course) {
+           this.$set(this.filterParams, 'flt.course', this.arrangeParams(value.course, ',', 'id'));
+        }
+        if (value.licenses) {
+           this.$set(this.filterParams, 'flt.licenseName', this.arrangeParams(value.licenses, '~~'));
+        }
+        if (value['21-century-skills']) {
+            this.$set(this.filterParams, 'flt.21CenturySkills', this.arrangeParams(value['21-century-skills'], '~~'));
+        }
+        if (value.audience) {
+            this.$set(this.filterParams, 'flt.audience', this.arrangeParams(value.audience));
+        }
+        if (value.dok) {
+            this.$set(this.filterParams, 'flt.depthOfKnowledge', this.arrangeParams(value.dok));
+        }
+    }
+
     // ----------------------------------------------------------------------------------
     // Actions
     private onSearch() {
@@ -58,10 +83,10 @@ export default class ActivitySearch extends Vue {
 
     private onSelectCategory(category: any, filter: any) {
         if (filter.code === 'category' || filter.code === 'subject') {
-             this.filterList = this.resetCheckbox(filter);
-             if (!category.checked) {
+            this.filterList = this.resetCheckbox(filter);
+            if (!category.checked) {
                 return;
-             }
+            }
         }
         this.$set(this.filterList, filter.code, category);
     }
@@ -69,14 +94,14 @@ export default class ActivitySearch extends Vue {
     private onClearItem(item: any) {
         item.checked = false;
         if (item.type === 'category' || item.type === 'subject') {
-                const activeList = this.resetCheckbox(item);
-                this.$set(this, 'filterList', activeList);
-            } else {
-                item.checked = false;
-                const activeList = (this.filterList[item.type]).filter((items: any) => items.checked);
-                this.$set(this.filterList, item.type , activeList);
+            const activeList = this.resetCheckbox(item);
+            this.$set(this, 'filterList', activeList);
+        } else {
+            item.checked = false;
+            const activeList = (this.filterList[item.type]).filter((items: any) => items.checked);
+            this.$set(this.filterList, item.type, activeList);
 
-            }
+        }
     }
 
     private resetCheckbox(item: any) {
@@ -93,11 +118,29 @@ export default class ActivitySearch extends Vue {
                     }
                     activeList = {};
                 } else {
-                    activeList = {category: this.filterList.category};
+                    activeList = { category: this.filterList.category };
                 }
             }
         });
         return activeList;
+    }
+
+    /**
+     * Help to arrange params
+     * @param filterInfo
+     * @param delimiter
+     * @param keyName
+     */
+    private arrangeParams(filterInfo: any, delimiter = ',', keyName = 'label') {
+        let label = '';
+        if (Array.isArray(filterInfo)) {
+            filterInfo.map((filterData) => {
+                label += delimiter + filterData[`${keyName}`];
+            });
+            const numOfCharsRemove = delimiter === ',' ? 1 : 2;
+            return label.substring(numOfCharsRemove);
+        }
+        return label;
     }
 
 }

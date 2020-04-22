@@ -6,13 +6,22 @@
             </div>
             <div class="filter-body">
                 <div class="filter-body-content" v-if="filter.code === 'category' && filter.isActive">
-                <span class="item-list" v-for="(item , index) in categoryList" :key="index" @click="onSelectCategory(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/>{{item.title}}</span>
+                <span class="item-list" v-for="(item , index) in categoryList" :key="index" @click="onSelectCategory(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span>{{item.title}}</span></span>
                 </div>
                 <div class="filter-body-content" v-if="filter.code === 'subject' && filter.isActive">
-                <span class="item-list" v-for="(item , index) in subjectList" :key="index" @click="onSelectSubject(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/>{{item.title}}</span>
+                <span class="item-list" v-for="(item , index) in subjectList" :key="index" @click="onSelectSubject(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span>{{item.title}}</span></span>
                 </div>
                 <div class="filter-body-content" v-if="filter.code === 'course' && filter.isActive">
-                <span class="item-list" v-for="(item , index) in courseList" :key="index" @click="onSelectCourse(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/>{{item.title}}</span>
+                <span class="item-list" v-for="(item , index) in courseList" :key="index" @click="onSelectCourse(item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span>{{item.title}}</span></span>
+                </div>
+                <div class="filter-body-content" v-if="filter.code === 'dok' && filter.isActive">
+                <span class="item-list" v-for="(item , index) in dok" :key="index" @click="onOtherAcivityFilter(dok, item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span>{{item.label}}</span></span>
+                </div>
+                <div class="filter-body-content" v-if="filter.code === 'licenses' && filter.isActive">
+                <span class="item-list" v-for="(item , index) in license" :key="index" @click="onOtherAcivityFilter(license, item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span :title="item.label">{{item.label}}</span></span>
+                </div>
+                <div class="filter-body-content" v-if="filter.code === 'audience' && filter.isActive">
+                <span class="item-list" v-for="(item , index) in audience" :key="index" @click="onOtherAcivityFilter(audience, item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span :title="item.label">{{item.label}}</span></span>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import { Vue, Component, Prop} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
-import { DEFAULT_ACTIVITY_FILTERS } from '@/utils/constants';
+import { DEFAULT_ACTIVITY_FILTERS, ACTIVITY_FILTER } from '@/utils/constants';
 import { resetList } from '@/utils/utils';
 
 @Component({
@@ -33,6 +33,22 @@ export default class ActivitySearchFilterAccordion extends Vue {
     private get courseList() {
         return this.$store.state.activityStore.courseList;
     }
+
+    private get centurySkills() {
+        return this.$store.state.lookupStore.centurySkills;
+    }
+
+    private get dok() {
+        return this.$store.state.lookupStore.dok;
+    }
+
+    private get audience() {
+        return this.$store.state.lookupStore.audience;
+    }
+
+    private get license() {
+        return this.$store.state.lookupStore.license;
+    }
     // -------------------------------------------------------------------------
     // Hooks
 
@@ -40,6 +56,7 @@ export default class ActivitySearchFilterAccordion extends Vue {
     // Actions
     private onDropdown(filter: any) {
         resetList(DEFAULT_ACTIVITY_FILTERS, filter, ['isActive', 'code']);
+        resetList(ACTIVITY_FILTER, filter, ['isActive', 'code']);
         const isActive = filter.isActive ? false : true;
         this.$set(filter, 'isActive', isActive);
     }
@@ -56,6 +73,7 @@ export default class ActivitySearchFilterAccordion extends Vue {
 
     private onSelectSubject(subject: any) {
         this.$store.dispatch('activityStore/fetchCourse', subject);
+        this.$store.dispatch('lookupStore/fetchActivityDetails');
         this.resetList(this.subjectList, subject);
         const isActive = subject.checked ? false : true;
         this.$set(subject, 'checked', isActive);
@@ -67,6 +85,13 @@ export default class ActivitySearchFilterAccordion extends Vue {
         this.$set(course, 'checked', isActive);
         const selectedCourse = this.courseList.filter((item: any) => item.checked);
         this.$emit('onSelectCategory', selectedCourse, this.filter);
+    }
+
+    private onOtherAcivityFilter(content: any, items: any) {
+        const isActive = items.checked ? false : true;
+        this.$set(items, 'checked', isActive);
+        const selectedItems = content.filter((item: any) => item.checked);
+        this.$emit('onSelectCategory', selectedItems, this.filter);
     }
 
     private resetList(list: any, currentItem: any) {
