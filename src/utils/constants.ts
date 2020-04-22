@@ -271,6 +271,10 @@ export const DEMO_USERS = [
 ];
 
 export const PERMISSION_LIST = {
+  networkView: 'network-view',
+  competencyView: 'competency-view',
+  learnersView: 'learners-view',
+  consoleView: 'console-view',
   networkMap: 'network-map',
   compDrilldown: 'competency-drilldown',
   compDrillAnalytic: 'competency-drilldown-analytic',
@@ -279,4 +283,12 @@ export const PERMISSION_LIST = {
   learners: 'learners',
   console: 'console',
   all: 'all',
+};
+
+export const ROLE_MENUS = {
+  network: 'network',
+  competency: 'competency',
+  learners: 'learners',
+  catalog: 'catalog',
+  console: 'console',
 };

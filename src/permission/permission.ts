@@ -1,47 +1,54 @@
 import { appConfigService } from '@/providers/services/app/app-config';
-import { PERMISSION_LIST } from '@/utils/constants';
+import { PERMISSION_LIST, ROLE_MENUS } from '@/utils/constants';
 
-export default {
+/**
+ * Permission class help to show UI based on users permissions
+ */
+export class Permission {
 
-    ACL: PERMISSION_LIST,
+    private static INSTANCE = new Permission();
+
+    static get instance() {
+        return this.INSTANCE;
+    }
+
+    public get userRole() {
+        return appConfigService.getAppUserRole();
+    }
+
+    public ACL = PERMISSION_LIST;
 
     /**
      * Help to defined the menu list
      */
-    menus: {
-        network: 'network',
-        competency: 'competency',
-        learners: 'learners',
-        catalog: 'catalog',
-        console: 'console',
-    },
+    public menus = ROLE_MENUS;
 
     /**
      * Show the menus based on permission
      * @param value
      */
-    hasMenuAccess(value: any) {
-        const userRole = appConfigService.getAppUserRole();
-        return userRole.menus.indexOf(value) !== -1;
-    },
+    public hasMenuAccess(value: any) {
+        return this.userRole.menus.indexOf(value) !== -1;
+    }
 
     /**
      * Show the pages based on permissions
      * @param component
      * @param value
      */
-    hasPermission(menu: any , value: any) {
-        const userRole = appConfigService.getAppUserRole();
+    public hasPermission(menu: any , value: any) {
+        const userRole = this.userRole;
         return userRole.pages[menu]
             ? (userRole.pages[menu].indexOf(value) !== -1 || userRole.pages[menu].indexOf('all') !== -1)
             : false;
-    },
+    }
 
     /**
      * It hold the landing page for the tenant user
      */
-    landingPage() {
-        const userRole = appConfigService.getAppUserRole();
-        return userRole.landingPage;
-    },
-};
+    public landingPage() {
+        return this.userRole.landingPage;
+    }
+}
+
+export default Permission.instance;
