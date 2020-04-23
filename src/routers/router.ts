@@ -65,7 +65,7 @@ const routes = [
            // this need to move view
           return import('@/components/proficiency/learner-facets-proficiency/learner-facets-proficiency.vue');
         },
-        meta: { isRequiredAuth: true, permission: 'learners' },
+        meta: { isRequiredAuth: true},
       },
       {
         path: '/console',
