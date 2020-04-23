@@ -36,7 +36,7 @@ export class AppConfigSerializer {
                   if (userRole.menus.indexOf(menuPages) === -1) {
                     userRole.menus.push(menuPages);
                   }
-                  if (userRole.pages[menuPages].indexOf(pageAccess) === -1) {
+                  if (userRole.pages[menuPages].indexOf(pages) === -1) {
                      userRole.pages[menuPages].push(pages);
                   }
                 }

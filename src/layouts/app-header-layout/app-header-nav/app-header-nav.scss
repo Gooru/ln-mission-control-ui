@@ -1,12 +1,10 @@
 .app-header-nav {
   .nav-menu-container {
-    display: grid;
-    grid-template-columns: 150px 180px 150px 150px 150px;
+    display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: space-around;
     font-size: 15px;
     min-width: 600px;
-    padding-left: 95px;
     @media only screen and (max-width: $screen-xs) {
       display: unset;
     }
