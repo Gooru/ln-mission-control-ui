@@ -11,7 +11,6 @@
                                 "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT",
                                 "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_STATE",
                                 "VIEW_COMP_DD_REPORTS_FOR_ASSIGNED_COHORT",
-                                "VIEW_FUNDER_AC_AND_DD",
                                 "VIEW_COMP_DASH_PUB_FW"],
 
         "competency-drilldown-analytic": ["VIEW_AC_DD_FOR_ALL_CLS_IN_SC",
@@ -19,6 +18,7 @@
                                           "VIEW_AC_DD_FOR_ALL_CLS_IN_DISTRICT",
                                           "VIEW_AC_DD_FOR_ALL_CLS_IN_BLOCK",
                                           "VIEW_AC_DD_FOR_ALL_CLS_IN_STATE", 
+                                          "VIEW_FUNDER_AC_AND_DD",
                                           "GROUP_ADMIN",
                                           "REPORT_GROUP_GET"],
 
