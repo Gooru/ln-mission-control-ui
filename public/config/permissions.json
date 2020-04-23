@@ -11,6 +11,7 @@
                                 "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT",
                                 "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_STATE",
                                 "VIEW_COMP_DD_REPORTS_FOR_ASSIGNED_COHORT",
+                                "LEARNER_IDENTITY_AND_DD_ONLY_AUTHORIZED_USER",
                                 "VIEW_COMP_DASH_PUB_FW"],
 
         "competency-drilldown-analytic": ["VIEW_AC_DD_FOR_ALL_CLS_IN_SC",
@@ -24,7 +25,6 @@
 
         "competency-dashboard": ["VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW",
                                  "VIEW_COMP_DASH_CLUS_AND_TNT_AND_PUB_FW",
-                                "VIEW_COMP_DD_REPORTS_FOR_ALL_CLS_IN_DISTRICT",
                                 "VIEW_COMP_DASH_PUB_FW"],
 
         "content-provider": ["VIEW_CONTENT_DASHBOARD"],

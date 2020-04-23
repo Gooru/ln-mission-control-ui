@@ -44,7 +44,8 @@ export default class LevelCard extends Vue {
     // ---------------------------------------------------------------
     // Actions
     private onSelectLevel(seletectLevel: any) {
-        if (this.cardName === 'student') {
+        if (this.cardName === 'student'
+                && this.$access.hasPermission(this.$access.menu.learners, this.$access.ACL.learnerIdentity)) {
             this.$router.push(`/learners/${seletectLevel.userId}`);
         } else {
             this.$emit('onSelectLevel', seletectLevel);

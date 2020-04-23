@@ -33,7 +33,8 @@ export class AppConfigSerializer {
           }
           Object.keys(res[menuPages]).map((pages) => {
                 if (res[menuPages][pages].indexOf(pageAccess) !== -1) {
-                  if (userRole.menus.indexOf(menuPages) === -1) {
+                  if (userRole.menus.indexOf(menuPages) === -1
+                          && (pages === `${menuPages}-view` || pages === 'all')) {
                     userRole.menus.push(menuPages);
                   }
                   if (userRole.pages[menuPages].indexOf(pages) === -1) {
