@@ -100,3 +100,17 @@ export function getTaxonomyTags(
       };
     });
   }
+export function unique(arr: any, prop: any) {
+      const values = [...new Set(arr.map((obj: any) => obj[prop]))];
+      return values.filter((item) => item);
+}
+
+export function arrUnique(arr: any) {
+  let results: any = [];
+  arr.map((item: any) => {
+     if (item.teams) {
+      results = [...new Set([...results, ...item.teams])];
+     }
+  });
+  return results;
+}

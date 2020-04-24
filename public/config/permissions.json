@@ -27,7 +27,7 @@
                                  "VIEW_COMP_DASH_CLUS_AND_TNT_AND_PUB_FW",
                                 "VIEW_COMP_DASH_PUB_FW"],
 
-        "content-provider": ["VIEW_CONTENT_DASHBOARD"],
+        "content-provider": ["VIEW_PARTNERS"],
         
         "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN", "ALL_ACCESS"]
 
@@ -51,6 +51,10 @@
     },
     "console": {
         "console-view": ["VIEW_CONSOLE"],
+        "all": ["GROUP_SUPER_ADMIN", "ALL_ACCESS"]
+    },
+    "research": {
+        "research-view": ["VIEW_RESEARCH"],
         "all": ["GROUP_SUPER_ADMIN", "ALL_ACCESS"]
     }
 }

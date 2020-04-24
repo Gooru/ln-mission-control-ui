@@ -11,6 +11,9 @@ export default class AppHeaderNav extends Vue {
 
   private currentRoutePath: string = '/network';
 
+
+  private submenuStyle: any = {};
+
   // -------------------------------------------------------------------------
   // Computed Properties
 
