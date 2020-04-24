@@ -28,6 +28,10 @@ export default class ActivitySearch extends Vue {
 
     private filterList: any = {};
 
+    private get enableActivityTabs() {
+        return this.isSearchTerms || this.filterList.subject;
+    }
+
     @Prop()
     private filterParams!: any;
 

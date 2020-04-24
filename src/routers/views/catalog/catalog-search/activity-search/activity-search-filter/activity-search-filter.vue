@@ -9,15 +9,15 @@
                 <activity-search-filter-accordion 
                 v-for="(filter, index) in defaultActivityFilter" 
                 :key="index"
-                @onSelectCategory="$emit('onSelectCategory', arguments[0], arguments[1])"
+                @onSelectCategory="onSelectCategory"
                 :defaultActivityFilter="defaultActivityFilter"
                 :filter="filter"/>
             </div>
-            <div class="activity-filters">
+            <div class="activity-filters" v-if="enableOtherFilter">
                <activity-search-filter-accordion 
                 v-for="(filter, index) in activityFilter" 
                 :key="index"
-                @onSelectCategory="$emit('onSelectCategory', arguments[0], arguments[1])"
+                @onSelectCategory="onSelectCategory"
                 :defaultActivityFilter="defaultActivityFilter"
                 :filter="filter"/>
             </div>

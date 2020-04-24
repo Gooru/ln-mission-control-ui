@@ -14,7 +14,7 @@
                 <div class="comparative-search"> Compare <material-icon icon="person"></material-icon></div>
             </div>
             <div class="activity-tab">
-                <div :class="['activity-tab-container',{'no-search': !isSearchTerms}]">
+                <div :class="['activity-tab-container',{'no-search': !enableActivityTabs}]">
                     <span v-for="(activity, index) in activityTabs" :key="index" :class="{active:activity.isActive}" @click="onChangeTab(activity)"><mc-icon :icon="activity.key+'-gray'"/>{{activity.name}}</span>
                 </div>
             </div>

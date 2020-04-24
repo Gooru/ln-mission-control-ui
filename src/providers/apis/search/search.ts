@@ -169,7 +169,7 @@ export class SearchAPI {
             'start': params.start,
             'length': params.length,
             'flt.audience': 'All Students,Teachers',
-            'flt.contentFormat': 'resource',
+            'flt.resourceFormat': 'question',
         }, params);
         return http.get(endpoint, headers, options).then((response) => {
             return questionSerializer.normalizeSearchQuestions(response.data);
