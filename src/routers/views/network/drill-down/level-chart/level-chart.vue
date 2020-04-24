@@ -9,8 +9,8 @@
                 <material-icon icon="bar_chart" />
             </div>
             <div class="texas-nav-tab">
-                <ul :class="['texas-breadcrumb', breadcrumb.length === 1 ? 'last-breadcrumb': '' ]" v-if="breadcrumb">
-                    <li v-for="(list, navIndex) in breadcrumb" :key="navIndex" @click="onChangeBreadcrumb(list)">{{list.name}} <span> > </span></li>
+                <ul :class="['texas-breadcrumb']" v-if="breadcrumbList">
+                    <li v-for="(list, navIndex) in breadcrumbList" :key="navIndex" @click="onChangeBreadcrumb(list)">{{list.name}} <span> > </span></li>
                 </ul>
             </div>
         </div>
