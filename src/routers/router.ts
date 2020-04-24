@@ -85,6 +85,12 @@ const routes = [
         component: () => import('@/routers/views/competency/competency.vue'),
         meta: {isRequiredAuth: true, permission: 'competency'},
       },
+      {
+        path: '/projects',
+        name: 'research',
+        component: () => import('@/routers/views/research/research.vue'),
+        meta: {isRequiredAuth: true, permission: 'research'},
+      },
     ],
   },
   {

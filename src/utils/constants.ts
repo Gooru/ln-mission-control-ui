@@ -16,6 +16,16 @@ export const NAVIGATION_MENUS = [
     path: '/learners',
   },
   {
+    name: 'research',
+    path: '/projects',
+    subMenu: [{
+      name: 'Projects',
+      path: '/projects',
+    }, {
+      name: 'Data',
+    }],
+  },
+  {
     name: 'console',
     path: '/console',
   },
@@ -293,4 +303,5 @@ export const ROLE_MENUS = {
   learners: 'learners',
   catalog: 'catalog',
   console: 'console',
+  research: 'research',
 };

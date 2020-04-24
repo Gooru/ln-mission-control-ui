@@ -14,7 +14,7 @@
     }
 
     .nav-menu {
-      cursor: pointer;
+      padding: 19px 0;
       @media only screen and (max-width: $screen-xs) {
         padding-left: 30px;
         padding-top: 15px;
@@ -28,8 +28,6 @@
       }
 
       &.active {
-        color: $blue-700;
-
         span {
           color: $blue-700;
           font-weight: bold;
@@ -40,6 +38,42 @@
         color: $dark-400;
         text-transform: uppercase;
         font-weight: 300;
+        cursor: pointer;
+      }
+      &:hover .research-submenu {
+        display: block;
+      }
+      .research-submenu {
+        position: absolute;
+        display: grid;
+        padding: 0;
+        margin: 0;
+        background-color: $white;
+        margin-top: 18px;
+        grid-template-columns: 1fr;
+        list-style: none;
+        box-shadow: 0 0 4px $light-200;
+        display: none;
+        z-index: 10;
+        li {
+          border-bottom: 1px solid $light-200;
+          padding: 5px;
+          width: 100px;
+          cursor: pointer;
+          font-size: 13px;
+          text-transform: uppercase;
+
+          &.active {
+            color: $blue-700;
+          }
+
+          &:last-child {
+            border: none;
+            pointer-events: none;
+            opacity: 0.3;
+            color: $dark-400;
+          }
+        }
       }
     }
   }
