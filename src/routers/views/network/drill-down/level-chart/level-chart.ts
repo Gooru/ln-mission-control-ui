@@ -31,6 +31,10 @@ export default class LevelChart extends Vue {
     @Prop()
     private studentList: any;
 
+    private get breadcrumbList() {
+        return this.breadcrumb.slice(0, -1) || [];
+    }
+
     private hideScore: boolean = false;
 
     private get totalCompetencyGained() {
