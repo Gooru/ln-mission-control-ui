@@ -46,7 +46,6 @@
       .research-submenu {
         position: absolute;
         display: grid;
-        padding: 0;
         margin: 0;
         background-color: $white;
         margin-top: 18px;
@@ -55,9 +54,10 @@
         box-shadow: 0 0 4px $light-200;
         display: none;
         z-index: 10;
+        padding: 5px 10px;
         li {
           border-bottom: 1px solid $light-200;
-          padding: 5px;
+          padding: 10px;
           width: 100px;
           cursor: pointer;
           font-size: 13px;
