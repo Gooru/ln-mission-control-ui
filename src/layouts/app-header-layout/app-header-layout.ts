@@ -3,7 +3,7 @@ import { sessionService } from '@/providers/services/auth/session';
 import { Events } from '@/events';
 import AppHeaderNav from '@/layouts/app-header-layout/app-header-nav/app-header-nav.vue';
 import { authAPI } from '@/providers/apis/auth/auth';
-import { NAVIGATION_MENUS, DEFAULT_ROLES } from '@/utils/constants';
+import { NAVIGATION_MENUS } from '@/utils/constants';
 import RoleList from '@/components/cards/role-list/role-list';
 
 @Component({
@@ -18,6 +18,11 @@ export default class AppHeaderLayout extends Vue {
   // Properties
 
   private currentRouteName: string = 'network';
+
+  /**
+   * @returns {boolean} isDemoUser help to show the user role list
+   */
+  private isDemoUser: boolean = false;
 
   // -------------------------------------------------------------------------
   // Computed Properties

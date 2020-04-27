@@ -10,11 +10,11 @@
       <div class="selected-app-nav-menu d-sm-none">{{$t(currentRouteName)}}</div>
       <app-header-nav class="d-none d-sm-block" />
       <div class="user-info-container">
-        <div class="user-profile-img">
+        <div class="user-profile-img" @click="isDemoUser = !isDemoUser">
           <img v-lazy="session.thumbnail_url" />
         </div>
-        <div class="username d-none d-sm-block">{{session.user_display_name}}</div>
-        <div class="role-list">
+        <div class="username d-none d-sm-block" @click="isDemoUser = !isDemoUser">{{session.user_display_name}}</div>
+        <div class="role-list" v-if="isDemoUser">
           <RoleList/>
         </div>
       </div>

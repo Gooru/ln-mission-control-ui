@@ -15,6 +15,11 @@ export class SessionService {
   private SESSION: string = 'MC_SESSION';
 
   /**
+   * Maintains the Demo user session copy
+   */
+  private DEMO_SESSION: string = 'MC_DEMO_SESSION';
+
+  /**
    * Maintains the RGO mission control session.
    */
   private SESSION_RGO: string = 'ember_simple_auth-research-session';
@@ -33,6 +38,17 @@ export class SessionService {
   public setSession(session: SessionModel) {
     localStorage.setItem(this.SESSION, JSON.stringify(session));
     localStorage.setItem(this.SESSION_RGO, JSON.stringify(authSerializer.sessionModelRGOSerializer(session)));
+  }
+
+  public setDemoSessionCopy() {
+    const session: any = JSON.stringify(this.getSession());
+    localStorage.setItem(this.DEMO_SESSION, session);
+  }
+
+  public getDemoSessionCopy() {
+    const demoSession: any = localStorage.getItem(this.DEMO_SESSION);
+    const session: any = JSON.parse(demoSession);
+    return session;
   }
 
   public deleteSession() {
