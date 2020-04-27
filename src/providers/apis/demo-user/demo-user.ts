@@ -14,6 +14,9 @@ export class DemoUser extends Vue {
 
     private namespace: string = 'stubs';
 
+    /**
+     * Help to fetch roles list from the json
+     */
     public fetchDemoAccounts() {
         const endpoints = `${window.location.origin}/${this.namespace}/demo-accounts.json`;
         const headers = http.getTokenHeaders();

@@ -18,10 +18,20 @@ export default class RoleList extends Vue {
     // -------------------------------------------------------------------------
     // Properties
 
+    /**
+     * Holding all the user roles data
+     */
     private roleList: any = [{
         name: 'Current User',
         code: 'DEMO_USER',
     }];
+
+    /**
+     * Help to handle show current user option in menus
+     */
+    private get showCurrentUser() {
+        return sessionService.getDemoSessionCopy() ? true : false;
+    }
 
     // -------------------------------------------------------------------------
     // Hooks
@@ -45,16 +55,20 @@ export default class RoleList extends Vue {
             return;
         }
         const session = sessionService.getDemoSessionCopy();
-        appConfigAPI.getAppPermissions(session.permissions).then((userRole: any) => {
-            if (userRole) {
-              appConfigService.setAppUserRole(userRole);
-              sessionService.setSession(session);
-              this.$router.push(userRole.landingPage);
-              window.location.reload(true);
-            }
-          }, (onerror) => {
-            this.validationToastMessage();
-          });
+        if (session) {
+            appConfigAPI.getAppPermissions(session.permissions).then((userRole: any) => {
+                if (userRole) {
+                  appConfigService.setAppUserRole(userRole);
+                  sessionService.setSession(session);
+                  localStorage.removeItem(sessionService.DEMO_SESSION);
+                  this.$router.push(userRole.landingPage);
+                  window.location.reload(true);
+                }
+              }, (onerror) => {
+                this.validationToastMessage();
+              });
+        }
+
     }
 
     /**

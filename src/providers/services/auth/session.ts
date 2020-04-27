@@ -3,21 +3,21 @@ import { authSerializer } from '@/providers/serializers/auth/auth';
 
 export class SessionService {
 
-  private static INSTANCE = new SessionService();
-
   static get instance() {
     return this.INSTANCE;
   }
+
+  private static INSTANCE = new SessionService();
+
+  /**
+   * Maintains the Demo user session copy
+   */
+  public DEMO_SESSION: string = 'MC_DEMO_SESSION';
 
   /**
    * Maintains the mission control session
    */
   private SESSION: string = 'MC_SESSION';
-
-  /**
-   * Maintains the Demo user session copy
-   */
-  private DEMO_SESSION: string = 'MC_DEMO_SESSION';
 
   /**
    * Maintains the RGO mission control session.
@@ -54,6 +54,7 @@ export class SessionService {
   public deleteSession() {
     localStorage.removeItem(this.SESSION);
     localStorage.removeItem(this.SESSION_RGO);
+    localStorage.removeItem(this.DEMO_SESSION);
   }
 
   public isAuthorized() {

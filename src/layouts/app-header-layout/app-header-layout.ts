@@ -22,7 +22,15 @@ export default class AppHeaderLayout extends Vue {
   /**
    * @returns {boolean} isDemoUser help to show the user role list
    */
-  private isDemoUser: boolean = false;
+  private isShowRole: boolean = false;
+
+  /**
+   * Help to identify demo user
+   */
+  private get isDemoUser() {
+    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.all)
+              || sessionService.getDemoSessionCopy();
+  }
 
   // -------------------------------------------------------------------------
   // Computed Properties
