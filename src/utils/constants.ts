@@ -305,3 +305,10 @@ export const ROLE_MENUS = {
   console: 'console',
   research: 'research',
 };
+
+export const DEFAULT_ROLES = [
+  {name: 'Super Admin', code: 'SUPER_ADMIN'},
+  {name: 'Cluster Admin', code: 'CLUSTER_ADMIN'},
+  {name: 'School Admin', code: 'SCHOOL_ADMIN'},
+  {name: 'Content Provider', code: 'CONTENT_PROVIDER'},
+];

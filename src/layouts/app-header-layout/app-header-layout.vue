@@ -14,6 +14,9 @@
           <img v-lazy="session.thumbnail_url" />
         </div>
         <div class="username d-none d-sm-block">{{session.user_display_name}}</div>
+        <div class="role-list">
+          <RoleList/>
+        </div>
       </div>
       <b-navbar-nav>
         <b-nav-item-dropdown right>

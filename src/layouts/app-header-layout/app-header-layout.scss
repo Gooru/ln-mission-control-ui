@@ -46,6 +46,7 @@
       grid-template-columns: 40px 1fr;
       align-items: center;
       justify-items: center;
+      position: relative;
 
       .username {
         font-size: 13px;
@@ -61,6 +62,12 @@
           height: 36px;
           box-shadow: 0 0 5px 0 rgba(136, 152, 170, 0.7);
         }
+      }
+      .role-list {
+        position: absolute;
+        top: 50px;
+        right: 0;
+        min-width: 200px;
       }
     }
 

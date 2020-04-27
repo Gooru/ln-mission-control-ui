@@ -1,0 +1,24 @@
+.role-list-container {
+  background-color: $white;
+  box-shadow: 0 0 10px $light-100;
+  padding: 10px;
+  width: 100%;
+  .role-list-blk {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+
+    li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      align-items: center;
+      grid-column-gap: 5px;
+      padding: 5px;
+      font-size: 14px;
+      text-transform: capitalize;
+      i {
+        font-size: 20px;
+      }
+    }
+  }
+}

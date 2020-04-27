@@ -3,11 +3,13 @@ import { sessionService } from '@/providers/services/auth/session';
 import { Events } from '@/events';
 import AppHeaderNav from '@/layouts/app-header-layout/app-header-nav/app-header-nav.vue';
 import { authAPI } from '@/providers/apis/auth/auth';
-import { NAVIGATION_MENUS } from '@/utils/constants';
+import { NAVIGATION_MENUS, DEFAULT_ROLES } from '@/utils/constants';
+import RoleList from '@/components/cards/role-list/role-list';
 
 @Component({
   components: {
     AppHeaderNav,
+    RoleList,
   },
 })
 export default class AppHeaderLayout extends Vue {
@@ -16,7 +18,6 @@ export default class AppHeaderLayout extends Vue {
   // Properties
 
   private currentRouteName: string = 'network';
-
 
   // -------------------------------------------------------------------------
   // Computed Properties
