@@ -2,12 +2,14 @@ import {Vue, Component, Prop, Watch} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import { DEFAULT_ACTIVITY_FILTERS, ACTIVITY_FILTER } from '@/utils/constants';
 import ActivitySearchFilterAccordion from './activity-search-filter-accordion/activity-search-filter-accordion';
+import CenturySkills from '@/components/cards/century-skills/century-skills';
 
 @Component({
     name: 'activity-search-filter',
     components: {
         'material-icon': GoogleMaterialIcon,
         'activity-search-filter-accordion': ActivitySearchFilterAccordion,
+        'century-skills': CenturySkills,
     },
 })
 

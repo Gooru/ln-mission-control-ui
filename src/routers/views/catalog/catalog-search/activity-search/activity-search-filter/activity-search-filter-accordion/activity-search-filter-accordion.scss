@@ -19,11 +19,11 @@
         top: 10px;
         left: 0;
         background-color: $white;
-        z-index: 2;
+        z-index: 100;
         padding: 10px;
         width: max-content;
         max-width: 400px;
-        box-shadow: 0 0 4px $light-200;
+        box-shadow: 0 0 4px $light-300;
         max-height: 200px;
         overflow-y: auto;
 

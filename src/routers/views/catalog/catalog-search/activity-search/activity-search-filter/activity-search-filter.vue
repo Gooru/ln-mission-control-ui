@@ -21,7 +21,6 @@
                 :defaultActivityFilter="defaultActivityFilter"
                 :filter="filter"/>
             </div>
-            
         </div>
     </div>
 </template>
