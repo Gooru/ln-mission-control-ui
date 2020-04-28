@@ -1,6 +1,9 @@
 import { appConfigService } from '@/providers/services/app/app-config';
 import { PERMISSION_LIST, ROLE_MENUS } from '@/utils/constants';
-
+import { authAPI } from '@/providers/apis/auth/auth';
+import { sessionService } from '@/providers/services/auth/session';
+import { appConfigAPI } from '@/providers/apis/app/app-config';
+import router from '@/routers/router';
 /**
  * Permission class help to show UI based on users permissions
  */
@@ -36,7 +39,7 @@ export class Permission {
      * @param component
      * @param value
      */
-    public hasPermission(menu: any , value: any) {
+    public hasPermission(menu: any, value: any) {
         const userRole = this.userRole;
         return userRole.pages[menu]
             ? (userRole.pages[menu].indexOf(value) !== -1 || userRole.pages[menu].indexOf('all') !== -1)
@@ -48,6 +51,42 @@ export class Permission {
      */
     public landingPage() {
         return this.userRole.landingPage;
+    }
+
+    /**
+     * help to login as a demo user
+     * @param userDetails holding user login credentials
+     */
+    public doLoginInWithCredential(userDetails: any) {
+        const username = userDetails.username;
+        const password = atob(userDetails.password);
+        authAPI
+            .logInWithCredential(username, password)
+            .then(
+                (session) => {
+                    this.updateRole(session);
+                },
+            );
+    }
+
+
+    public updateRole(session: any) {
+        if (!sessionService.getDemoSessionCopy()) {
+            sessionService.setDemoSessionCopy();
+        }
+        appConfigAPI.getAppPermissions(session.permissions).then((userRole: any) => {
+            if (userRole) {
+                appConfigService.setAppUserRole(userRole);
+                sessionService.setSession(session);
+                router.push(userRole.landingPage);
+                // Remove once the ember js not used on mission control
+                if (sessionService.getMcUpdate()) {
+                    sessionService.deleteMcUpdate();
+                } else {
+                    window.location.reload(true);
+                }
+            }
+        });
     }
 }
 

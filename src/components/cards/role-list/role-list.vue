@@ -1,7 +1,7 @@
 <template>
     <div class="role-list-container">
         <ul class="role-list-blk">
-            <li v-for="(role) in roleList" :class="{'in-active': !showCurrentUser && role.code === 'DEMO_USER' }" :key="role.code" @click="onChangeRole(role)"> <material-icon icon="person" /> <em>{{role.name}}</em></li>
+            <li v-for="(role) in roleList" :class="{'in-active': role.code === showCurrentUser }" :key="role.code" @click="onChangeRole(role)"> <material-icon icon="person" /> <em>{{role.name}}</em></li>
         </ul>
     </div>
 </template>
