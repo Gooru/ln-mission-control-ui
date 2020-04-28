@@ -102,6 +102,7 @@ const routes = [
         path: '/login',
         name: 'login',
         component: () => import('@/routers/views/login/login.vue'),
+        meta: {isVerifyLogin: true},
       },
       {
         path: '/logout',
@@ -135,6 +136,16 @@ router.beforeEach((to, from, next) => {
     return next({ path: '/login', query: { redirect: to.fullPath } });
   } else if (to.meta.permission &&  !access.hasMenuAccess(to.meta.permission)) {
     return next({path: `/${access.landingPage()}`});
+  } else if (to.meta.isVerifyLogin && sessionService.getMcUpdate()) {
+    // Note: if ember js removed no need to use this
+    if (sessionService.getMcUpdate().code !== 'DEMO_USER') {
+      access.doLoginInWithCredential(sessionService.getMcUpdate());
+      return;
+    }
+    const session = sessionService.getDemoSessionCopy();
+    if (session) {
+      access.updateRole(session);
+    }
   }
   next();
 });

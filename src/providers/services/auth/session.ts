@@ -3,16 +3,28 @@ import { authSerializer } from '@/providers/serializers/auth/auth';
 
 export class SessionService {
 
-  private static INSTANCE = new SessionService();
-
   static get instance() {
     return this.INSTANCE;
   }
+
+  private static INSTANCE = new SessionService();
+
+  /**
+   * Maintains the Demo user session copy
+   */
+  public DEMO_SESSION: string = 'MC_DEMO_SESSION';
 
   /**
    * Maintains the mission control session
    */
   private SESSION: string = 'MC_SESSION';
+
+  private ACTIVE_ACCOUNT: string = 'DEMO_ACTIVE';
+
+  /**
+   * Maintains the demo user from RGO
+   */
+  private MC_UPDATE: string = 'MC_UPDATE_LOGIN';
 
   /**
    * Maintains the RGO mission control session.
@@ -35,9 +47,48 @@ export class SessionService {
     localStorage.setItem(this.SESSION_RGO, JSON.stringify(authSerializer.sessionModelRGOSerializer(session)));
   }
 
+  public setDemoSessionCopy() {
+    const session: any = JSON.stringify(this.getSession());
+    localStorage.setItem(this.DEMO_SESSION, session);
+  }
+
+  public getDemoSessionCopy() {
+    const demoSession: any = localStorage.getItem(this.DEMO_SESSION);
+    const session: any = JSON.parse(demoSession);
+    return session;
+  }
+
   public deleteSession() {
     localStorage.removeItem(this.SESSION);
     localStorage.removeItem(this.SESSION_RGO);
+    localStorage.removeItem(this.DEMO_SESSION);
+    localStorage.removeItem(this.ACTIVE_ACCOUNT);
+  }
+
+  /**
+   * We have to remove this logic when we moved all the page into vue js
+   */
+  public getMcUpdate() {
+    const login: any = localStorage.getItem(this.MC_UPDATE);
+    return JSON.parse(login);
+  }
+
+  public deleteMcUpdate() {
+    localStorage.removeItem(this.MC_UPDATE);
+  }
+
+  /**
+   * We have to remove this logic when we moved all the page into vue js
+   */
+  public setActive(code: any) {
+    localStorage.setItem(this.ACTIVE_ACCOUNT, JSON.stringify(code));
+  }
+   /**
+    * We have to remove this logic when we moved all the page into vue js
+    */
+  public getActive() {
+    const login: any = localStorage.getItem(this.ACTIVE_ACCOUNT);
+    return JSON.parse(login);
   }
 
   public isAuthorized() {
