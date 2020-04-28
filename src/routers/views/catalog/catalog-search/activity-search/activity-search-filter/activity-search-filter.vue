@@ -22,6 +22,7 @@
                 :filter="filter"/>
             </div>
         </div>
+        <century-skills @onSubmit="onSelectCategory" v-if="showCentury" :showCentury="showCentury"/>
     </div>
 </template>
 

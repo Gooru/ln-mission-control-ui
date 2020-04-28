@@ -26,6 +26,10 @@ export default class ActivitySearchFilter extends Vue {
 
     private activityFilter: any = ACTIVITY_FILTER;
 
+    private get showCentury() {
+        return this.activityFilter.find((item: any) => item.code === '21-century-skills' && item.isActive);
+    }
+
     private created() {
         this.$store.dispatch('activityStore/fetchCategory');
     }

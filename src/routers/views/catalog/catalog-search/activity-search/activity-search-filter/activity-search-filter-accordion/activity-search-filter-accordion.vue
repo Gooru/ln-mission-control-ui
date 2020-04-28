@@ -23,6 +23,9 @@
                 <div class="filter-body-content" v-if="filter.code === 'audience' && filter.isActive">
                 <span class="item-list" v-for="(item , index) in audience" :key="index" @click="onOtherAcivityFilter(audience, item)"><material-icon :icon="item.checked ? 'check_box' : 'check_box_outline_blank'"/><span :title="item.label">{{item.label}}</span></span>
                 </div>
+                <div class="filter-body-content" v-if="filter.code === '21-century-skills' && filter.isActive">
+            
+                </div>
             </div>
         </div>
     </div>
