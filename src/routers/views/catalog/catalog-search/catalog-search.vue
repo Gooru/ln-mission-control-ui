@@ -1,7 +1,7 @@
 <template>
     <div class="catalog-search">
         <div class="search-section">
-            <activity-search :filterParams="filterParams"/>
+            <component :is="searchComponent" @switchSearch="switchSearch()" :filterParams="filterParams"></component>
         </div>
         <div class="content-loader">
             <content-loader :filterParams="filterParams"/>

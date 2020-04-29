@@ -1,0 +1,33 @@
+.comparative-search-container {
+  .comparative-search-section {
+    display: grid;
+    grid-template-columns: 40px 1fr 150px;
+    align-items: center;
+    background-color: $white;
+    .back-icon {
+      background-color: $light-100;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr;
+      padding: 10px;
+    }
+    .search-box {
+      border: none;
+      padding: 8px;
+      outline: none;
+    }
+
+    .personalize-search {
+      display: grid;
+      grid-template-columns: 1fr 30px;
+      align-items: center;
+      border-left: 1px solid $light-100;
+      padding: 0 5px;
+      text-transform: uppercase;
+      font-size: 13px;
+      span {
+        text-align: right;
+      }
+    }
+  }
+}

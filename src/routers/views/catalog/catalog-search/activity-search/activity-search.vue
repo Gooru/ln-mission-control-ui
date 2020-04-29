@@ -11,7 +11,7 @@
                 <div class="search-icon"> <span v-if="isSearchTerms" @click="clearSearchBox"><material-icon icon="clear"/></span></div>
                 <div class="search-icon" @click="onSearch"><material-icon icon="search"/></div>
                 <div class="search-icon" @click="isShowFilterDropdown = !isShowFilterDropdown"><material-icon icon="filter_list" /></div>
-                <div class="comparative-search"> Compare <material-icon icon="person"></material-icon></div>
+                <div class="comparative-search" @click="switchSearch()"> Compare <material-icon icon="person"></material-icon></div>
             </div>
             <div class="activity-tab">
                 <div :class="['activity-tab-container',{'no-search': !enableActivityTabs}]">

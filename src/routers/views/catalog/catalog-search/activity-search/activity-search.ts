@@ -71,6 +71,10 @@ export default class ActivitySearch extends Vue {
         }
     }
 
+    private switchSearch() {
+        this.$emit('switchSearch');
+    }
+
     private clearSearchBox() {
         this.isSearchTerms = false;
         this.searchTerms = '';
