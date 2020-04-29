@@ -48,6 +48,10 @@
       justify-items: center;
       position: relative;
 
+      &.inActive {
+        pointer-events: none;
+      }
+
       .username {
         cursor: pointer;
         font-size: 13px;
@@ -68,7 +72,7 @@
       .role-list {
         position: absolute;
         top: 50px;
-        right: 0;
+        left: 0;
         min-width: 200px;
       }
     }
