@@ -19,6 +19,9 @@ export class Permission {
         return appConfigService.getAppUserRole();
     }
 
+    /**
+     * Help to identify roles by pages
+     */
     public ACL = PERMISSION_LIST;
 
     /**
@@ -59,7 +62,7 @@ export class Permission {
      */
     public doLoginInWithCredential(userDetails: any) {
         const username = userDetails.username;
-        const password = atob(userDetails.password);
+        const password = userDetails.password;
         authAPI
             .logInWithCredential(username, password)
             .then(

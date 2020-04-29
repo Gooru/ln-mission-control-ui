@@ -18,16 +18,18 @@ export default class RoleList extends Vue {
   /**
    * Holding all the user roles data
    */
-  private roleList: any = [{
-    name: 'Super User',
-    code: 'DEMO_USER',
-  }];
+  private roleList: any = [];
+
+  private get session() {
+    return sessionService.getDemoSessionCopy()
+            ? sessionService.getDemoSessionCopy() : sessionService.getSession();
+  }
 
   /**
    * Help to handle show current user option in menus
    */
   private get showCurrentUser() {
-    return sessionService.getActive() ? sessionService.getActive().code : 'DEMO_USER';
+    return sessionService.getActive() ? sessionService.getActive().code : this.roleList[0].code;
   }
 
   // -------------------------------------------------------------------------
@@ -35,7 +37,14 @@ export default class RoleList extends Vue {
 
   private created() {
     demoUser.fetchDemoAccounts().then((roles) => {
-      this.roleList = [...this.roleList, ...roles];
+      let superUser: any = {};
+      superUser = {
+           username: this.session ? this.session.username : 'Super User',
+           name: 'Super User',
+           code: 'DEMO_USER',
+         };
+      const userExist = roles.find((items: any) => items.username === superUser.username);
+      this.roleList = userExist ? roles : [...[superUser], ...roles];
     });
   }
 

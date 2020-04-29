@@ -1,5 +1,11 @@
 {
 
+    "nav": {
+        "role-view": ["SHOW_ROLE_LIST"]
+    },
+    "all":{
+        "all": ["ALL_ACCESS"]
+    },
     "network": {
         "network-view": ["VIEW_NETWORK"],
         "network-map": ["GROUP_ADMIN"],

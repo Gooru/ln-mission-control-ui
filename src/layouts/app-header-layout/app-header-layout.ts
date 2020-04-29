@@ -28,8 +28,9 @@ export default class AppHeaderLayout extends Vue {
    * Help to identify demo user
    */
   private get isDemoUser() {
-    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.all)
-              || sessionService.getDemoSessionCopy();
+    return this.$access.hasPermission(this.$access.menus.nav, this.$access.ACL.roleView)
+              || sessionService.getDemoSessionCopy()
+              || this.$access.hasPermission(this.$access.menus.all, this.$access.ACL.all);
   }
 
   // -------------------------------------------------------------------------
