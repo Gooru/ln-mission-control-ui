@@ -295,6 +295,7 @@ export const PERMISSION_LIST = {
   learners: 'learners',
   console: 'console',
   all: 'all',
+  roleView: 'role-view',
 };
 
 export const ROLE_MENUS = {
@@ -304,4 +305,6 @@ export const ROLE_MENUS = {
   catalog: 'catalog',
   console: 'console',
   research: 'research',
+  nav: 'nav',
+  all: 'all',
 };
