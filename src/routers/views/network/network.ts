@@ -2,12 +2,14 @@ import { Component, Vue } from 'vue-property-decorator';
 import axios from 'axios';
 import { mapDataSetAPI } from '@/providers/apis/app/map-dataset';
 import { statsAPI } from '@/providers/apis/stats/stats';
+import { groupsApi } from '@/providers/apis/groups/groups';
 import NavLearningWorldWide from './nav-learning-worldwide/nav-learning-worldwide';
 import Partners from './partners/partners';
 import { CountryModel } from '@/models/stats/country';
 import { drillDownAPI } from '@/providers/apis/drill-down/drill-down';
 import { sessionService } from '@/providers/services/auth/session';
 import { DEMO_USERS } from '@/utils/constants';
+import { GroupHierarchy } from '@/models/groups/hierarchy';
 
 
 @Component({
@@ -52,6 +54,7 @@ export default class Network extends Vue {
 
   private created() {
     this.isLoading = true;
+    this.loadHierarchyData();
     const worldMapDataSet = this.fetchNavWorldWideMapData();
     worldMapDataSet.then((data) => {
       this.mapData = data;
@@ -60,6 +63,13 @@ export default class Network extends Vue {
 
   // -------------------------------------------------------------------------
   // Methods
+
+  private loadHierarchyData() {
+
+    groupsApi.fetchUserHierarchies().then((groupHierarchies: GroupHierarchy[]) => {
+      console.log('fetch user hierarchies', groupHierarchies);
+    });
+  }
 
   private fetchNavWorldWideMapData() {
     const overallStats = {
