@@ -9,7 +9,7 @@
       </div>
       <div class="selected-app-nav-menu d-sm-none">{{$t(currentRouteName)}}</div>
       <app-header-nav class="d-none d-sm-block" />
-      <div class="user-info-container">
+      <div :class="['user-info-container',{inActive: !isDemoUser}]">
         <div class="user-profile-img" @click="isShowRole = !isShowRole">
           <img v-lazy="session.thumbnail_url" />
         </div>
