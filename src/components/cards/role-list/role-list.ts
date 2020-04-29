@@ -29,7 +29,8 @@ export default class RoleList extends Vue {
    * Help to handle show current user option in menus
    */
   private get showCurrentUser() {
-    return sessionService.getActive() ? sessionService.getActive().code : this.roleList[0].code;
+    const role = sessionService.getSession();
+    return role ? role.username : this.roleList[0].username;
   }
 
   // -------------------------------------------------------------------------
@@ -56,7 +57,6 @@ export default class RoleList extends Vue {
    * @param role it has selected role details
    */
   private onChangeRole(role: any) {
-    sessionService.setActive({code: role.code});
     if (role.code !== 'DEMO_USER') {
       this.$access.doLoginInWithCredential(role);
       return;
