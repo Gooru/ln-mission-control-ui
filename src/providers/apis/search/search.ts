@@ -5,6 +5,7 @@ import { collectionSerializer } from '@/providers/serializers/content/collection
 import { assessmentSerializer } from '@/providers/serializers/content/assessment';
 import { resourceSerializer } from '@/providers/serializers/content/resource';
 import { questionSerializer } from '@/providers/serializers/content/question';
+import { GOOGLE_API_KEY, SEARCH_API } from '@/utils/constants';
 
 export class SearchAPI {
     private static INSTANCE = new SearchAPI();
@@ -208,7 +209,31 @@ export class SearchAPI {
         }, params);
 
         return http.get(endpoint, headers, data).then((response) => {
-            return response.data.contents;
+            return searchSerializer.normalizeSearchLearningMapsContentInfo(response.data.contents);
+        });
+    }
+
+    /**
+     * @function googleSearch
+     * Method to search google content
+     */
+    public googleSearch(query: string, start = 1) {
+        const key = GOOGLE_API_KEY[Math.floor(Math.random() * GOOGLE_API_KEY.length)];
+        const url = `${SEARCH_API.baseUrl}?key=${key}&cx=${SEARCH_API.googleCx}&q=${query}&start=${start}`;
+        return http.get(url).then((response) => {
+            return response.data;
+        });
+    }
+
+    /**
+     * @function bingSearch
+     * Method to search bing content
+     */
+    public bingSearch(query: string, start = 1) {
+        const key = GOOGLE_API_KEY[Math.floor(Math.random() * GOOGLE_API_KEY.length)];
+        const url = `${SEARCH_API.baseUrl}?key=${key}&cx=${SEARCH_API.bingCx}&q=${query}&start=${start}`;
+        return http.get(url).then((response) => {
+            return response.data;
         });
     }
 

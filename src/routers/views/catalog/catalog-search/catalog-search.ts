@@ -3,6 +3,7 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 import ActivitySearch from './activity-search/activity-search';
 import ContentLoder from '@/components/cards/content-loader/content-loader';
 import ComparativeSearch from './comparative-search/comparative-search';
+import ComparativeContent from './comparative-search/comparative-content/comparative-content';
 
 @Component({
     name: 'catalog-search',
@@ -10,7 +11,8 @@ import ComparativeSearch from './comparative-search/comparative-search';
         'material-icon': GoogleMaterialIcon,
          ActivitySearch,
          ComparativeSearch,
-        'content-loader': ContentLoder,
+         ComparativeContent,
+         ContentLoder,
     },
 })
 
@@ -21,6 +23,10 @@ export default class CatalogSearch extends Vue {
 
     private get searchComponent() {
         return this.isComparativeSearch ? 'ComparativeSearch' : 'ActivitySearch';
+    }
+
+    private get contentComponent() {
+        return this.isComparativeSearch ? 'ComparativeContent' : 'ContentLoder';
     }
 
     private isComparativeSearch: boolean = false;
@@ -35,4 +41,5 @@ export default class CatalogSearch extends Vue {
     private switchSearch() {
         this.isComparativeSearch = !this.isComparativeSearch;
     }
+
 }

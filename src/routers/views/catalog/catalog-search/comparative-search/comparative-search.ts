@@ -1,4 +1,4 @@
-import {Vue, Component} from 'vue-property-decorator';
+import {Vue, Component, Prop} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 
 @Component({
@@ -9,5 +9,15 @@ import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-m
 })
 
 export default class ComparativeSearch extends Vue {
+
+    // -----------------------------------------------------------------
+    // Properties
+    // --------------------------------------------------------------------------
+    // Actions
+    private switchSearch() {
+        this.$emit('switchSearch');
+    }
+
+
 
 }

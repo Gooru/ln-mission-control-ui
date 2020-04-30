@@ -1,10 +1,15 @@
 <template>
     <div class="catalog-search">
         <div class="search-section">
-            <component :is="searchComponent" @switchSearch="switchSearch()" :filterParams="filterParams"></component>
+            <component :is="searchComponent" 
+                        @switchSearch="switchSearch" 
+                        v-bind="{filterParams}">
+                        </component>
         </div>
         <div class="content-loader">
-            <content-loader :filterParams="filterParams"/>
+            <component :is="contentComponent" 
+                        v-bind="{filterParams}">
+            </component>
         </div>
     </div>
 </template>

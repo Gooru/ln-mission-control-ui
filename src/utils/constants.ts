@@ -120,6 +120,7 @@ export const DEFAULT_IMAGES_PATH: any = {
   partner: '/img/default-images/partner.png',
   collection: '/img/default-images/collection-default.png',
   assessment: '/img/default-images/assessment-default.png',
+  offlineActivity: `/img/default-images/offline-activity-default.png`,
 };
 
 // Competency status
@@ -258,6 +259,10 @@ export const MICRO_COMPETENCY_CODE_TYPES = [
 
 export const TAXONOMY_LEVELS = {
   COURSE: 'course',
+  ASSESSMENT: 'assessment',
+  COLLECTION: 'collection',
+  RESOURCE: 'resource',
+  QUESTION: 'question',
   DOMAIN: 'domain',
   STANDARD: 'standard',
   MICRO: 'micro-standard',
@@ -303,6 +308,25 @@ export const ACTIVITY_FILTER = [
     code: 'audience',
   },
 ];
+
+export const GOOGLE_API_KEY = [
+  'AIzaSyD9z1JhHhwZ2b-i6WRxhG5i2JgIgIDxglA',
+  'AIzaSyABfhoEot0VkJFnSvwEsw9ivMFR_PfdYDY',
+  'AIzaSyA8wyzY0XMOVBTD2RBBRZL4Qk-pUIK_Sfk',
+  'AIzaSyAP847Hfs03TSR49RcfuItBTOfUsH6nY-g',
+  'AIzaSyAqfU3qDEBuX2_sqiEj5sr3MC8pQPIE7nU',
+  'AIzaSyC7-EsuJBK_kRwha7JZlopwUrEm9GDMSdM',
+  'AIzaSyCacylTMwgg1e6D7TXbtpw02terqlPbNiQ',
+  'AIzaSyAj3rw2xqm7KUBxxyFlT5g2eDM_2lPGl4k',
+  'AIzaSyARoulEDz8GHplwF-t9NGb7jTbfCqYfj_s',
+  'AIzaSyC-KPkkPxf7ghUJ2fq58cbRdpfjVpHemhE',
+];
+
+export const SEARCH_API = {
+  baseUrl: 'https://www.googleapis.com/customsearch/v1',
+  googleCx: '014236057503552390158:jjjumkgqhli',
+  bingCx: '014236057503552390158:nhidtvjygpo',
+};
 
 export const DEFAULT_ACTIVITY_FILTERS = [
   {
