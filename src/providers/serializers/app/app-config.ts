@@ -21,6 +21,7 @@ export class AppConfigSerializer {
   }
 
   public appPermissionSerializer(res: any, permission: any) {
+    let isEnableResearchPage: boolean = false;
     const userRole: any = {
       menus: [],
       pages: {},
@@ -33,6 +34,7 @@ export class AppConfigSerializer {
           }
           Object.keys(res[menuPages]).map((pages) => {
                 if (res[menuPages][pages].indexOf(pageAccess) !== -1) {
+                  isEnableResearchPage = pages === 'research-view';
                   if (userRole.menus.indexOf(menuPages) === -1
                           && (pages === `${menuPages}-view` || pages === 'all')) {
                     userRole.menus.push(menuPages);
@@ -45,19 +47,10 @@ export class AppConfigSerializer {
         });
       });
     }
-    userRole.landingPage = userRole.menus.indexOf('network') !== -1 ? 'network' :  userRole.menus[0];
+    userRole.landingPage = isEnableResearchPage
+      ? 'projects' : (userRole.menus.indexOf('network') !== -1 ? 'network' :  userRole.menus[0]);
     return userRole;
   }
-
-  private serializerPermissionComponents(userRole: any, res: any) {
-    Object.keys(res).map((pages) => {
-      const hasPage: any = userRole[pages] ? userRole[pages] : [];
-      userRole[pages] = [...hasPage, ...res[pages]];
-    });
-    return userRole;
-  }
-
-
 }
 
 export const appConfigSerializer = AppConfigSerializer.instance;
