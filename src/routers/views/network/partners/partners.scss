@@ -25,7 +25,8 @@
     }
 
     .header-panel-container {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      margin-top: 20px;
       position: relative;
 
       &.has-not-partners {
@@ -47,21 +48,21 @@
           top: 240px;
           width: 374px;
           transform: rotate(55deg);
-          left: 156px;
+          left: 90px;
         }
 
         &#connector-line-p11 {
-          top: 130px;
           width: 200px;
-          transform: rotate(38deg);
+          transform: rotate(0deg);
           left: 206px;
+          top: 90px;
         }
 
         &#connector-line-p12 {
-          top: 74px;
-          width: 200px;
-          transform: rotate(-40deg);
-          left: 206px;
+          top: 0;
+          width: 220px;
+          transform: rotate(120deg);
+          left: 120px;
         }
 
         &#connector-line-p13 {
@@ -75,21 +76,21 @@
           top: 240px;
           width: 374px;
           transform: rotate(126deg);
-          right: 157px;
+          right: 90px;
         }
 
         &#connector-line-p21 {
-          top: 130px;
+          top: 90px;
           width: 200px;
-          transform: rotate(-37deg);
+          transform: rotate(0deg);
           right: 206px;
         }
 
         &#connector-line-p22 {
-          top: 74px;
-          width: 200px;
-          transform: rotate(39deg);
-          right: 206px;
+          top: -17px;
+          width: 220px;
+          transform: rotate(60deg);
+          right: 132px;
         }
 
         &#connector-line-p23 {
@@ -171,7 +172,14 @@
     }
 
     #left-partner-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: 50px;
       .header-panel-container {
+        &:first-child,
+        &:last-child {
+          left: 150px;
+        }
         .panel-body {
           background-color: $blue-400;
         }
@@ -215,7 +223,14 @@
     }
 
     #right-partner-panel {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-row-gap: 50px;
       .header-panel-container {
+        &:first-child,
+        &:last-child {
+          right: 150px;
+        }
         .panel-body {
           background-color: $green-400;
         }
