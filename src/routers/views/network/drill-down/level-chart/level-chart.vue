@@ -1,8 +1,8 @@
 <template>
     <div id="texas-chart-container">
         <div class="texas-header">
-            <div :class="['texas-title', breadcrumb.length ? '' : 'on-breadcrumb']">
-                 <span v-on="breadcrumb.length ? {click :onBack} : {}"><material-icon icon="arrow_back"/></span>
+            <div :class="['texas-title', breadcrumb.length || isTenant ? '' : 'on-breadcrumb']">
+                 <span v-on="breadcrumb.length ? {click :onBack} : (isTenant ? {click: onGoNetwork} : {})"><material-icon icon="arrow_back"/></span>
                  <h5 class="texas-title-head">{{breadcrumb.length ? seletedLevel.name : countryData.name}}</h5>
             </div>
             <div class="texas-pullup-table">

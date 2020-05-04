@@ -31,6 +31,10 @@ export default class LevelChart extends Vue {
     @Prop()
     private studentList: any;
 
+    get isTenant() {
+        return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.all)
+                 || this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.partner);
+     }
     private get breadcrumbList() {
         return this.breadcrumb.slice(0, -1) || [];
     }
@@ -62,6 +66,10 @@ export default class LevelChart extends Vue {
 
     private onBack() {
        this.$emit('onBack');
+    }
+
+    private onGoNetwork() {
+        this.$router.push('/network');
     }
     // --------------------------------------------------------------------------
     // Methods
