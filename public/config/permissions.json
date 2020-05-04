@@ -52,7 +52,7 @@
     },
     "learners": {
         "learners-view": ["VIEW_LEARNERS"],
-        "learners-identity": "LEARNER_IDENTITY_AND_DD_ONLY_AUTHORIZED_USER",
+        "learners-identity": ["LEARNER_IDENTITY_AND_DD_ONLY_AUTHORIZED_USER"],
         "all": ["GROUP_SUPER_ADMIN", "GROUP_ADMIN", "ALL_ACCESS"]
     },
     "console": {

@@ -1,7 +1,7 @@
 <template>
   <div id="mc-network">
-    <nav-learning-worldwide v-if="mapData && !isLoading && (isDrilldown || this.isTenant)" :mapData="mapData"  />
-    <partners v-if="mapData && $access.hasPermission($access.menus.network, $access.ACL.partner)" :mapData="mapData"/>
+    <nav-learning-worldwide v-if="mapData && !isLoading && (isDrilldown || isTenant)" :mapData="mapData"  />
+    <partners v-if="mapData && isTenant" :mapData="mapData"/>
   </div>
 </template>
 

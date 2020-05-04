@@ -87,7 +87,8 @@ export default class NavLearningWorldWide extends Vue {
 }
 
 get isTenant() {
-    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.networkMap);
+    return this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.all)
+        || this.$access.hasPermission(this.$access.menus.network, this.$access.ACL.partner);
 }
 
 
