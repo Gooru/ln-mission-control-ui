@@ -270,7 +270,7 @@ export default class LearnerProficiencyChart extends Vue {
         component.activeGradeList.push(grade);
       }
     } else {
-      component.activeGradeList[0].id > grade.id ?
+      component.activeGradeList[0].sequence > grade.sequence ?
          this.activeGradeList.push(grade) : this.activeGradeList.unshift(grade);
     }
     if (this.isCompetencyMap) {
@@ -352,7 +352,7 @@ export default class LearnerProficiencyChart extends Vue {
   public loadTaxonomyGrades() {
     const component = this;
     return taxonomyAPI.fetchTaxonomyGrades(this.subjectCode).then((taxonomyGrades: GradeModel[]) => {
-      component.taxonomyGrades = taxonomyGrades.sort((a: any, b: any) => b.id - a.id);
+      component.taxonomyGrades = taxonomyGrades.sort((a: any, b: any) => a.sequence - b.sequence);
       component.loadChartData();
     });
   }
@@ -522,7 +522,7 @@ export default class LearnerProficiencyChart extends Vue {
         const hasNoCompetency = (!competency.isGradeBoundary &&
           competency.isNoMapping) || competency.isLowline;
         const clearCompetency = (competency.isNoMapping &&
-          (maxSeq.competencySeq > minSeq.competencySeq ||
+          (maxSeq.competencySeq > minSeq.competencySeq &&
             maxSeq.competencySeq > competency.competencySeq)) ? 'clear-competency' : '';
         const prerequisite = this.isCompetencyMap ? component.prerequisites.find(
           (item: any) => (item.id === competency.competencyCode)) : {};
@@ -880,9 +880,9 @@ export default class LearnerProficiencyChart extends Vue {
   private minGradeLine() {
     return new Promise((resolve, reject) => {
       const minGrade = this.activeGradeList.reduce(
-        (prev: any, current: any) => (prev.id < current.id) ? prev : current);
+        (prev: any, current: any) => (prev.sequence < current.sequence) ? prev : current);
       const minGradeIndex = this.taxonomyGrades.findIndex((grade) => grade.id === minGrade.id);
-      const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex + 1] : null;
+      const prevGrade: any = minGradeIndex ? this.taxonomyGrades[minGradeIndex - 1] : null;
       if (prevGrade) {
         this.minGradeNumber = prevGrade;
         this.loadTaxonomyGradeBoundaries(prevGrade.id).then((boundaries) => {
