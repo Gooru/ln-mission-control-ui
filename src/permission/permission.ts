@@ -45,7 +45,7 @@ export class Permission {
     public hasPermission(menu: any, value: any) {
         const userRole = this.userRole;
         return userRole.pages[menu]
-            ? (userRole.pages[menu].indexOf(value) !== -1 || userRole.pages[menu].indexOf('all') !== -1)
+            ? (userRole.pages[menu].indexOf(value) !== -1 || userRole.pages.all.indexOf('all') !== -1)
             : false;
     }
 
