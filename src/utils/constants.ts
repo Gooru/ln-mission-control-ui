@@ -40,10 +40,24 @@ export const PARTNERS_TYPE = [
     showTop3Partners: true,
   },
   {
+    labelKey: 'integration.partners',
+    type: 'integration_partners',
+    pathname: 'integration',
+    partition: 2,
+    showTop3Partners: true,
+  },
+  {
     labelKey: 'researcher.partners',
     type: 'researchers',
     pathname: 'researchers',
-    partition: 1,
+    partition: 2,
+    showTop3Partners: true,
+  },
+  {
+    labelKey: 'funders',
+    type: 'funders',
+    pathname: 'funders',
+    partition: 2,
     showTop3Partners: true,
   },
   {
@@ -60,34 +74,20 @@ export const PARTNERS_TYPE = [
     partition: 1,
     showTop3Partners: true,
   },
-  {
-    labelKey: 'integration.partners',
-    type: 'integration_partners',
-    pathname: 'integration',
-    partition: 2,
-    showTop3Partners: true,
-  },
-  {
-    labelKey: 'instructors',
-    type: 'implementation_partners',
-    pathname: 'instructors',
-    partition: 2,
-    showTop3Partners: false,
-  },
-  {
-    labelKey: 'learners',
-    type: 'learners',
-    pathname: 'learners',
-    partition: 2,
-    showTop3Partners: false,
-  },
-  {
-    labelKey: 'funders',
-    type: 'funders',
-    pathname: 'funders',
-    partition: 2,
-    showTop3Partners: true,
-  },
+  // {
+  //   labelKey: 'instructors',
+  //   type: 'implementation_partners',
+  //   pathname: 'instructors',
+  //   partition: 2,
+  //   showTop3Partners: false,
+  // },
+  // {
+  //   labelKey: 'learners',
+  //   type: 'learners',
+  //   pathname: 'learners',
+  //   partition: 2,
+  //   showTop3Partners: false,
+  // },
 ];
 
 export const CONTENT_TYPE = [
