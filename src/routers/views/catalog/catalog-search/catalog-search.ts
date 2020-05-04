@@ -42,4 +42,8 @@ export default class CatalogSearch extends Vue {
         this.isComparativeSearch = !this.isComparativeSearch;
     }
 
+    private comparativeSearch(params: string) {
+        this.filterParams = params;
+    }
+
 }

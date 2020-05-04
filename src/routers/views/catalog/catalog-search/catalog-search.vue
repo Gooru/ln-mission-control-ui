@@ -2,7 +2,8 @@
     <div class="catalog-search">
         <div class="search-section">
             <component :is="searchComponent" 
-                        @switchSearch="switchSearch" 
+                        @switchSearch="switchSearch"
+                        @comparativeSearch="comparativeSearch" 
                         v-bind="{filterParams}">
                         </component>
         </div>

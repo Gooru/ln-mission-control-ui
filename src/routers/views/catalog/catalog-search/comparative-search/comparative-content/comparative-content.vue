@@ -1,6 +1,6 @@
 <template>
     <div class="comparative-content-container">
-            Comparative Search content
+         
     </div>
 </template>
 
