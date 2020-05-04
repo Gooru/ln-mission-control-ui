@@ -27,6 +27,7 @@
                                           "VIEW_AC_DD_FOR_ALL_CLS_IN_STATE", 
                                           "VIEW_FUNDER_AC_AND_DD",
                                           "GROUP_ADMIN",
+                                          "VIEW_CONTENT_AC_AND_DD",
                                           "REPORT_GROUP_GET"],
 
         "competency-dashboard": ["VIEW_COMP_DASH_SC_AND_TNT_AND_PUB_FW",
@@ -35,7 +36,7 @@
 
         "content-provider": ["VIEW_PARTNERS"],
         
-        "all": ["VIEW_CONTENT_AC_AND_DD", "GROUP_SUPER_ADMIN", "ALL_ACCESS"]
+        "all": ["GROUP_SUPER_ADMIN", "ALL_ACCESS"]
 
     },
     "competency": {
