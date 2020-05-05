@@ -210,13 +210,13 @@ export default class LearnerProficiencyChart extends Vue {
   @Watch('isDomainView')
   public watchCompetencyDomain(value: any) {
     if (value) {
+      this.activeGrade = {};
+      this.activeGradeList = [];
       this.resetChart();
       this.drawProficiencyChart();
       if (this.selectedDomain.domainSeq) {
         this.toggleActiveDomainBar(this.selectedDomain.domainSeq);
       }
-      this.activeGrade = {};
-      this.activeGradeList = [];
     }
   }
 
