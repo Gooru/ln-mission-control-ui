@@ -130,7 +130,7 @@
                                     <div class="signature-title">{{collection.title}}</div>
                              </div>
                              </div>
-                             <div v-else> There is no signature collection.</div>
+                             <div class="no-signature" v-else> There are no signature collections.</div>
                              <h4 class="assessment-title signature-content-title">SIGNATURE ASSESSMENTS</h4>
                              <div v-if="signatureAssessment.length">
                                     <div class="signature-panel" v-for="(assessment, assessmentIndex) in signatureAssessment" :key="assessmentIndex">
@@ -138,7 +138,7 @@
                                     <div class="signature-title">{{assessment.title}}</div>
                                     </div>
                              </div>
-                             <div v-else>There is no signature assessment.</div>
+                             <div class="no-signature" v-else>There are no signature assessments.</div>
                              
                     </div>
                 </div>
