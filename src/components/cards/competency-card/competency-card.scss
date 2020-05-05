@@ -318,6 +318,9 @@
         }
         .signature-content-section {
           padding: 10px 0;
+          .no-signature {
+            padding-left: 10px;
+          }
           .signature-content-title {
             margin-top: 20px;
             font-size: 16px;
