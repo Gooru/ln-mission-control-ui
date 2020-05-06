@@ -1,6 +1,7 @@
 import { Vue, Component, Watch} from 'vue-property-decorator';
 import GoogleMaterialIcon from '@/components/icons/google-material-icon/google-material-icon';
 import { ResearchModel } from '@/models/research/research';
+import { sortByProperty } from '@/utils/utils';
 
 @Component({
     name: 'research',
@@ -19,6 +20,8 @@ export default class Research extends Vue {
     private isTeamList: boolean = false;
 
     private activeIndex: number = -1;
+
+    private sortOptions: any = [];
 
     /**
      * Hold the list of research projects
@@ -97,6 +100,31 @@ export default class Research extends Vue {
     private teamsTypes(name: string) {
         return this.researchProjects.filter(
             (item: ResearchModel) => item.teams && item.teams.includes(name)) || [];
+    }
+
+    private sortTable(itemName: any) {
+        this.sortOptions = this.sortOptions.indexOf(itemName) !== -1
+                ? this.sortOptions.filter((items: any) => items !== itemName)
+                : this.sortOptions.concat([itemName]);
+        const sortOrder = this.sortOptions.indexOf(itemName) !== -1 ? 'ASC' : 'DESC';
+        if (itemName === 'teams') {
+            this.contentList = this.contentList.sort((a: any, b: any) => {
+                if (a.teams === b.teams) {
+                    return 0;
+                } else if (a.teams === null) {
+                    return 1;
+                } else if (b.teams === null) {
+                    return -1;
+                } else {
+                    return a.teams[0] < b.teams[0] ? 1 : -1;
+                }
+        });
+            if (sortOrder === 'DESC') {
+             this.contentList = this.contentList.reverse();
+        }
+            return;
+      }
+        sortByProperty(this.contentList, itemName, sortOrder);
     }
 
 }

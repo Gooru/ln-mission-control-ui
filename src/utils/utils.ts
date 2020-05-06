@@ -28,14 +28,20 @@ export function getRoutePathFirstOccurrence() {
  */
 export function sortByProperty<T>(array: T[], propName: keyof T, order: 'ASC' | 'DESC'): void {
     array.sort((a, b) => {
-        if (a[propName] < b[propName]) {
+          if (a[propName] === null) {
+            return 1;
+        }
+          if (b[propName] === null) {
+            return -1;
+        }
+          if (a[propName] < b[propName]) {
             return -1;
         }
 
-        if (a[propName] > b[propName]) {
+          if (a[propName] > b[propName]) {
             return 1;
         }
-        return 0;
+          return 0;
     });
 
     if (order === 'DESC') {
