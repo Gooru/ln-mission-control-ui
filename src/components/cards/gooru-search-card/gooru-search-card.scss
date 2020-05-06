@@ -1,0 +1,14 @@
+.gooru-search-card-container {
+  width: 100%;
+  .search-logo {
+    .logo {
+      width: 100px;
+      height: 40px;
+      margin: 20px auto;
+      display: block;
+      background-position: center;
+      background-size: 100px 41px;
+      background-image: url($gooruLogo);
+    }
+  }
+}

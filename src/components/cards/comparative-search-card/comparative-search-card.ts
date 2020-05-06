@@ -1,13 +1,16 @@
 import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component({
-    name: 'comparative-card',
+    name: 'comparative-search-card',
 })
 
-export default class ComparativeCard extends Vue {
+export default class ComparativeSearchCard extends Vue {
 
     // ------------------------------------------------------------------------
     // Properties
     @Prop()
-    private searchItem: any;
+    private cardName?: string;
+
+    @Prop()
+    private content: any;
 }

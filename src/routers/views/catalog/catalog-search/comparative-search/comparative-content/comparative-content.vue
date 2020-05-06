@@ -1,6 +1,8 @@
 <template>
     <div class="comparative-content-container">
-         
+         <comparative-search-card cardName="google" />
+         <comparative-search-card cardName="bing" />
+         <gooru-search-card />
     </div>
 </template>
 

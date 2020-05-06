@@ -7,7 +7,7 @@
                         v-bind="{filterParams}">
                         </component>
         </div>
-        <div class="content-loader">
+        <div class="content-search-loader">
             <component :is="contentComponent" 
                         v-bind="{filterParams}">
             </component>

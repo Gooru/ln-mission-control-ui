@@ -17,7 +17,7 @@ export default {
         },
 
         comparativeSearch(state: any, search: any) {
-            state.googleSearch = search;
+            state.gooruSearch = search;
         },
 
     },
