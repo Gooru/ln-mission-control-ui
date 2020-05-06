@@ -1,6 +1,6 @@
 <template>
         <div class="research-container">
-        <h3 class="research-head">Research Projects</h3>
+        <!-- <h3 class="research-head">Research Projects</h3> -->
        <div class="research-sections">
          <div class="research-list-section">
              <div class="category-section">
@@ -19,16 +19,27 @@
              </div>
          </div>
          <div class="research-content-section">
-             <template v-if="contentList.length">
+             <div class="content-header">
+                 <div class="title-header">
+                     <span class="title-text">Title <span class="sort-icon" @click="sortTable('title')"><material-icon :icon="sortOptions.indexOf('title') === -1 ? 'arrow_drop_down' : 'arrow_drop_up'"/></span> </span> 
+                     <span class="search-icon"><material-icon icon='search'/></span>
+                 </div>
+                 <div class="category-header"><span class="title-text">Categories <span class="sort-icon" @click="sortTable('category')"><material-icon :icon="sortOptions.indexOf('category') === -1 ? 'arrow_drop_down' : 'arrow_drop_up'" /></span></span></div>
+                 <div class="research-header"><span class="title-text">Research Teams <span class="sort-icon" @click="sortTable('teams')"><material-icon :icon="sortOptions.indexOf('teams') === -1 ? 'arrow_drop_down' : 'arrow_drop_up'" /></span></span></div>
+             </div>
+             <div class="research-content-panel" v-if="contentList.length">
                 <div class="research-content-list" v-for="(content, index) in contentList" :key="index">
+                   <div class="description-content"> 
                     <h4>{{content.title}}</h4>
-                    <span class="sub-category"><em>{{content.category}}</em></span>
                     <p>{{content.summary}}</p>
+                   </div>
+                    <span class="sub-category">{{content.category}}</span>
+
                     <div class="teams-list" v-if="content.teams">
                         <span v-for="(team, index) in content.teams" :key="index">{{team}}</span>
                     </div>
                 </div>
-             </template>
+             </div>
              
          </div>
       </div>
